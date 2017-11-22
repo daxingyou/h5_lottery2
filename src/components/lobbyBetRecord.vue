@@ -90,7 +90,7 @@
     import Mixin from '@/Mixin'
    // import 'swiper'
     import '../../static/js/swiper-3.4.2.jquery.min.js'
-    import '../../static/frist/css/swiper-3.4.2.min.css'
+    import '../../static/css/swiper-3.4.2.min.css'
     
     export default {
         name: 'betRecord',
