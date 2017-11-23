@@ -54,7 +54,8 @@
                 <div class="so-con-left" id="nav-wrapper">
                     <ul>
                         <li :class="(index == 0 && 'active')"  v-for="(kind,index) in kinds" @click="switchTab">
-                            <a :href="'#so-item'+index">{{kind}}</a>
+                           <!-- <a :href="'#so-item'+index">{{kind}}</a>-->
+                            <a>{{kind}}</a>
                         </li>
                     </ul>
                 </div>

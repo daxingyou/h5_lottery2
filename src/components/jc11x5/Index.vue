@@ -76,7 +76,8 @@
                     <div class="so-con-left " id="nav-wrapper">
                         <ul>
                             <li :data-type="(index==2?'lineplay':'nomalplay')" :class="(index == 0 && 'active') + (index==2 ? ' reset_bet' : '')" v-for="(kind,index) in kinds" @click="switchTab">
-                                <a :href="'#so-item'+index">{{kind}}</a>
+                                <!--<a :href="'#so-item'+index">{{kind}}</a>-->
+                                <a >{{kind}}</a>
                             </li>
 
                         </ul>
