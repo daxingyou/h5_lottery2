@@ -127,7 +127,7 @@
         </div>
     </div>
     <div class="so-index">
-        <div class="so-in-top">
+        <div class="new_header so-in-top">
             <ul>
                 <li class="so-menu">
                     <img src="static/frist/images/top/icon-menu.png" class="so-top-menu">

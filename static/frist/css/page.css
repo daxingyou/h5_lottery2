@@ -1,6 +1,7 @@
 @charset "UTF-8";
-/* 用法 @include respond-to('尺寸(ex:sm,xs..)')*/
-/* 用法 @include respond-to('尺寸(ex:sm,xs..)')*/
+/* -----------------------------------------
+// init
+-----------------------------------------*/
 a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video { margin: 0; padding: 0; border: 0; /* font-size: 100%; */ /* font: inherit; */ vertical-align: baseline; outline: 0; font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu !important; }
 
 ol, ul { list-style: none; }
@@ -11,9 +12,9 @@ a { color: #fff; text-decoration: none; cursor: pointer; }
 
 html, body {/* height: 100% ;*/}
 
-html { -webkit-text-size-adjust: none; background-color: #19222f !important; }
+html { -webkit-text-size-adjust: none; }
 
-body { width: 100%; font: 14px 'Microsoft YaHei', Helvetica,sans-serif; font: .35rem; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none; }
+body { width: 100%; font: 14px 'Microsoft YaHei', Helvetica,sans-serif; font: .35rem; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none; color: #4b280c; background-color: #fae6c7; }
 
 input, select, option { font: 14px 'Microsoft YaHei', Helvetica,sans-serif; }
 
@@ -31,6 +32,24 @@ hr { border-top: 1px solid rgba(70, 74, 78, 0.1); border-bottom: none; border-ri
 
 input, select, button, a { outline: none; }
 
+/* -----------------------------------------
+// common
+-----------------------------------------*/
+
+.clearfix::after { display: block; clear: both; content: ""; }
+
+.text-red { color: #c93030; }
+
+.text-yellow { color: #ffbd00; }
+
+.text-default { color: #d7e8f0; }
+
+.text-l-yellow { color: #fdf19b; }
+
+.text-green { color: #71c341; }
+
+h2 { font-weight: 300; }
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */ color: #3c5369; }
 
 ::-moz-placeholder { /* Firefox 19+ */ color: #3c5369; }
@@ -39,63 +58,86 @@ input, select, button, a { outline: none; }
 
 :-moz-placeholder { /* Firefox 18- */ color: #3c5369; }
 
-#pa_con { width: 10rem; height: 100%; text-align: center; margin: auto; background: url("/static/frist/images/bg.jpg"); background-size: 100%; min-height: 18rem; }
+/* -----------------------------------------
+// layout
+-----------------------------------------*/
 
+
+/* header */
+.new_header { overflow: hidden; height: 1.36rem; background: url('/static/frist/images/bg_wood.jpg') no-repeat top; background-size: 100% auto; color: #d7e8f0; font-size: .4rem; position: fixed; z-index: 51; width: 10rem; top: 0; }
+
+.new_header:after { display: block; clear: both; content: ""; }
+
+.new_header.index_nav_top { position: fixed; top: 0; z-index: 50; width: 10rem; }
+
+.new_header.login { height: auto; background-color: transparent; float: none; z-index: 1; position: relative; }
+
+.new_header.login > img { width: 100%; }
+
+.new_header > .center { text-align: center; padding: .5rem 0; width: calc(100% - 3rem); font-weight: 300; color: #d7e8f0; font-size: .38rem; float: left; }
+
+.new_header > .center > img { width: 3.2rem; max-width: 100%; margin-top: -.25rem; }
+
+.new_header > .center.logo { width: auto; }
+
+.new_header > .center.logo_left { margin-left: -1.5rem; }
+
+.new_header > .center.lottery_name { width: calc(100% - 3.2rem); position: absolute; top:0px; left:50%; margin-left: calc(-50% + 1.6rem);}
+
+.new_header > .left { float: left; width: 1.2rem; height: 1.5rem; }
+
+.new_header > .left a { display: inline-block; height: 1.5rem; }
+
+.new_header > .left a img { width: 150%; margin: 0; }
+
+.new_header > .left a.btn_leftside { width: 100%; }
+
+.new_header > .left a.btn_leftside img { width: 30%; margin: 0; margin-top: .5rem; }
+
+.new_header > .right { float: right; padding-right: .3rem; }
+
+.new_header > .right > .so-top-zoushi { height: 1.48rem; width: 1.48rem; }
+
+.new_header > .right > .so-top-zoushi img { height: 0.6rem; position: relative; top: 0.46rem; left: -0.1rem; }
+
+.new_header > .right > a { background-color: #1a2331; -webkit-border-radius: 0.1rem; -moz-border-radius: 0.1rem; -ms-border-radius: 0.1rem; border-radius: 0.1rem; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6); font-size: .35rem; display: inline-block; color: #d7e8f0; padding: .2rem; margin-top: .3rem; height: .5rem; vertical-align: top; }
+
+.new_header > .right > a:hover, #pa_head > .right > a:active, #pa_head > .right > a:focus { border-bottom: 1px solid rgba(255, 255, 255, 0.3); background-color: #1c3252; }
+
+.new_header > .right > a.login { background-color: transparent; -webkit-box-shadow: inherit; box-shadow: inherit; position: relative; }
+
+.new_header > .right > a.login > i { background-image: url("/static/frist/images/icon.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: .55rem; height: .5rem; display: block; background-position-y: bottom; }
+
+.new_header > .right > a.login > b { display: block; background-color: #c93030; width: .15rem; height: .15rem; -webkit-border-radius: 100%; -moz-border-radius: 100%; -ms-border-radius: 100%; border-radius: 100%; position: absolute; top: .2rem; right: .1rem; }
+
+.new_header > .right > a.guset { background-color: transparent; -webkit-box-shadow: inherit; box-shadow: inherit; line-height: .5rem; }
+
+.new_header > .right > a.guset > i { background-image: url("/static/frist/images/signs.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: .5rem; height: .5rem; display: block; float: left; margin-right: .1rem; }
+
+
+.new_header .so-menu { display: block; height: 1.48rem; width: 1rem; position: relative; z-index: 2; }
+
+.new_header .left_top_logo { color: #fff; font-size: .4rem; margin-top: .45rem; width: 2.5rem; background-size: 100%; height: 1rem; background-position-y: -.9rem; }
+
+.new_header.k3bg { background-image: url(/static/frist/images/k3/bg_top.jpg); background-size: auto 100%; }
+
+.new_header ul > li { height: 100%; min-width: 1rem; display: block; float: left; }
+
+.new_header ul > li.purse { position: relative; left: 1.2rem; }
+
+.new_header ul > li > .so-top-menu { height: 0.47rem; position: relative; top: 0.5rem; left: 0.25rem; }
+
+.new_header ul > li > .so-top-logo { position: relative; left: -0.8rem; top: 0.1rem; height: 1.3rem; }
+
+.new_header ul > li.so-top-zoushi { float: right; height: 1.48rem; }
+
+.new_header ul > li.so-top-zoushi img { height: 0.6rem; position: relative; top: 0.46rem; left: -0.1rem; }
+
+/* content */
+#pa_con { width: 10rem; height: 100%; text-align: center; margin: auto; background: url("/static/frist/images/bg.jpg") repeat #fae6c7; background-size: 100%; min-height: 18rem; }
 #pa_con .so-right > div:first-child img { right: 0.49rem; }
 
 #pa_con.cover_bg:after { content: ''; position: absolute; display: block; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.48); width: 100%; height: 100%; background-size: cover; z-index: 1; }
-
-#pa_head { overflow: hidden; height: 1.5rem; background-color: #0a1625; color: #d7e8f0; font-size: .4rem; position: fixed; z-index: 51; width: 10rem; top: 0; }
-
-#pa_head:after { display: block; clear: both; content: ""; }
-
-#pa_head.index_nav_top { position: fixed; top: 0; z-index: 50; width: 10rem; }
-
-#pa_head.login { height: auto; background-color: transparent; float: none; z-index: 1; position: relative; }
-
-#pa_head.login > img { width: 100%; }
-
-#pa_head > * { display: inline-block; }
-
-#pa_head > .center { text-align: center; padding: .5rem 0; width: calc(100% - 3rem); font-weight: 300; color: #d7e8f0; font-size: .38rem; float: left; }
-
-#pa_head > .center > img { width: 3.2rem; max-width: 100%; margin-top: -.25rem; }
-
-#pa_head > .center.logo { width: auto; }
-
-#pa_head > .center.logo_left { margin-left: -1.5rem; }
-
-#pa_head > .center.lottery_name { width: calc(100% - 3.2rem); position: absolute; top:0px; left:50%; margin-left: calc(-50% + 1.6rem);}
-
-#pa_head > .left { float: left; width: 1.2rem; height: 1.5rem; }
-
-#pa_head > .left a { display: inline-block; height: 1.5rem; }
-
-#pa_head > .left a img { width: 150%; margin: 0; }
-
-#pa_head > .left a.btn_leftside { width: 100%; }
-
-#pa_head > .left a.btn_leftside img { width: 30%; margin: 0; margin-top: .5rem; }
-
-#pa_head > .right { float: right; padding-right: .3rem; }
-
-#pa_head > .right > .so-top-zoushi { height: 1.48rem; width: 1.48rem; }
-
-#pa_head > .right > .so-top-zoushi img { height: 0.6rem; position: relative; top: 0.46rem; left: -0.1rem; }
-
-#pa_head > .right > a { background-color: #1a2331; -webkit-border-radius: 0.1rem; -moz-border-radius: 0.1rem; -ms-border-radius: 0.1rem; border-radius: 0.1rem; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6); font-size: .35rem; display: inline-block; color: #d7e8f0; padding: .2rem; margin-top: .3rem; height: .5rem; vertical-align: top; }
-
-#pa_head > .right > a:hover, #pa_head > .right > a:active, #pa_head > .right > a:focus { border-bottom: 1px solid rgba(255, 255, 255, 0.3); background-color: #1c3252; }
-
-#pa_head > .right > a.login { background-color: transparent; -webkit-box-shadow: inherit; box-shadow: inherit; position: relative; }
-
-#pa_head > .right > a.login > i { background-image: url("/static/frist/images/icon.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: .55rem; height: .5rem; display: block; background-position-y: bottom; }
-
-#pa_head > .right > a.login > b { display: block; background-color: #c93030; width: .15rem; height: .15rem; -webkit-border-radius: 100%; -moz-border-radius: 100%; -ms-border-radius: 100%; border-radius: 100%; position: absolute; top: .2rem; right: .1rem; }
-
-#pa_head > .right > a.guset { background-color: transparent; -webkit-box-shadow: inherit; box-shadow: inherit; line-height: .5rem; }
-
-#pa_head > .right > a.guset > i { background-image: url("/static/frist/images/signs.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: .5rem; height: .5rem; display: block; float: left; margin-right: .1rem; }
 
 #pa_content { margin-top: 1.5rem; position: relative; z-index: 2; padding-top: .9rem; }
 
@@ -111,9 +153,11 @@ input, select, button, a { outline: none; }
 
 .warp > .content { padding-top: .1rem; position: relative; z-index: 2; }
 
-footer.bot_nav { position: fixed; bottom: 0; width: 10rem; background-image: url("/static/frist/images/bot_nav.jpg"); background-repeat: no-repeat; background-position: 0; background-color: #102634; background-size: 100%; background-size: contain; background-repeat: repeat-x; height: 1.5rem; z-index: 51; }
+.so-con { width: 10rem; height: 100%; text-align: center; margin: auto; }
 
-footer.bot_nav:before { content: ''; position: absolute; display: block; top: 0; left: 0; background-image: url("/static/frist/images/bottom_line.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; height: .5rem; width: 100%; top: -.4rem; right: -30%; left: inherit; z-index: 1; }
+/* footer */
+footer{ background: url("/static/frist/images/bg_wood.jpg") no-repeat bottom; background-size: 100% auto; }
+footer.bot_nav { position: fixed; bottom: 0; width: 10rem;  height: 1.5rem; z-index: 51; }
 
 footer.bot_nav > ul { text-align: center; overflow: hidden; margin: 0 auto; font-size: 0; border-top: 1px solid #326087; }
 
@@ -139,19 +183,63 @@ footer.bot_nav > ul > li a.record .Footer-icon { background-position-y: -1.4rem;
 
 footer.bot_nav > ul > li a.member .Footer-icon { background-position-y: -2.05rem; }
 
-.clearfix::after { display: block; clear: both; content: ""; }
+/* 左側選單 */
+.so-con .so-left { width: 8.7rem; position: fixed; z-index: 200; top: 0; bottom: 0; left: -100%; }
 
-.text-red { color: #c93030; }
+.so-con .so-left .so-left-close { background-color: #050709; border-left: 3px solid #202f45; width: 0.79rem; height: 100%; float: left; }
 
-.text-yellow { color: #ffbd00; }
+.so-con .so-left .so-left-close img { display: block; width: 0.46rem; position: relative; top: 48%; left: 0.15rem; }
 
-.text-default { color: #d7e8f0; }
+.so-con .so-left .so-left-con { height: 100%; width: 7.5rem; float: left; border-left: solid 0.03rem #293454; border-right: solid 0.03rem #293454; background-color: rgba(17, 22, 28, 0.9); }
 
-.text-l-yellow { color: #fdf19b; }
+.so-con .so-left .so-left-con .so-l-c-top { width: 100%; height: 1.97rem; position: relative; }
 
-.text-green { color: #71c341; }
+.so-con .so-left .so-left-con .so-l-c-top:before { content: ''; position: absolute; display: block; top: 0; left: 0; background: -webkit-linear-gradient(#212637, #384465); background: -webkit-gradient(linear, left top, left bottom, from(#212637), to(#384465)); background: -o-linear-gradient(#212637, #384465); background: linear-gradient(#212637, #384465); height: 1.97rem; width: 99.9%; z-index: 0; }
 
-h2 { font-weight: 300; }
+.so-con .so-left .so-left-con .so-l-c-top:after { content: ''; position: absolute; display: block; top: 0; left: 0; background-image: url("/static/frist/images/past_bg.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; background-position-y: bottom; right: -1.7rem; left: inherit; top: inherit; width: 35%; height: 1rem; bottom: -.1rem; }
+
+.so-con .so-left .so-left-con .so-l-c-top > div { float: left; height: 100%; width: calc(100% - 3rem); }
+
+.so-con .so-left .so-left-con .so-l-c-top > div:first-child { width: 1.97rem; }
+
+.so-con .so-left .so-left-con .so-l-c-top > div:first-child img { width: 1.4rem; position: relative; top: 0.2rem; left: 0.1rem; }
+
+.so-con .so-left .so-left-con .so-l-c-top > div:last-child { margin-left: .5rem; }
+
+.so-con .so-left .so-left-con .so-l-c-top > div:last-child > p { margin-top: .5rem; position: relative; text-align: left; font-size: .4rem; }
+
+.so-con .so-left .so-left-con .so-l-c-top > div:last-child .user_name { position: relative; text-align: left; margin-left: 0; line-height: 1.8em; margin-top: .2rem; color: #fff; font-size: .4rem; }
+
+.so-con .so-left .so-left-con .so-l-c-top > div:last-child .user_name > strong { display: block; color: #fff; letter-spacing: 1px; font-weight: 500; font-size: .4rem; }
+
+.so-con .so-left .so-left-con .so-l-c-top > div:last-child .purse { width: 100%; height: .5rem; top: .1rem; left: 0; position: relative; }
+
+.so-con .so-left .so-left-con .so-l-c-top > div:last-child .purse .so-top-sum, .so-con .so-left .so-left-con .so-l-c-top > div:last-child .purse .so-in-top-sum { position: absolute; top: 0; }
+
+.so-con .so-left .so-left-con .so-l-c-top > div:last-child .purse .so-top-sum { left: 0; }
+
+.so-con .so-left .so-left-con .so-l-c-top > div:last-child .purse .so-in-top-sum { left: .3rem; top: .05rem; }
+
+.so-con .so-left .so-left-con .so-l-c-con { width: 100%; height: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; padding-bottom: 2rem; }
+
+.so-con .so-left .so-left-con .so-l-c-con ul:after { content: ""; display: block; clear: both; }
+
+.so-con .so-left .so-left-con .so-l-c-con li { background: url("/static/frist/images/left/left-kuang.jpg"); background-size: 100%; width: 3.27rem; height: 3.14rem; display: block; float: left; margin: 0.21rem; }
+
+.so-con .so-left .so-left-con .so-l-c-con li > .badge { margin: 0 auto; margin-top: .3rem; }
+
+.so-con .so-left .so-left-con .so-l-c-con li p { font-size: 0.34rem; color: white; }
+
+.so-con .so-left .so-left-con .so-l-c-con li.active { -webkit-box-shadow: 0 0 15px 4px rgba(0, 228, 255, 0.5) inset; box-shadow: 0 0 15px 4px rgba(0, 228, 255, 0.5) inset; }
+
+.so-con .so-left.active { left: 0; }
+
+.so-con .so-left.close { left: -100%; }
+
+
+
+
+
 
 .slide_toggle { text-align: left; color: #ACACAC; cursor: pointer; }
 
@@ -453,153 +541,50 @@ i.index_s.index_s03, i.index_s.index_s04 { background-image: url("/static/frist/
 
 i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }
 
-/* 用法 @include respond-to('尺寸(ex:sm,xs..)')*/
-.so-con { width: 10rem; height: 100%; text-align: center; margin: auto; }
+/* -----------------------------------------
+// bet lottery
+-----------------------------------------*/
 
-.so-con .so-left { width: 8.7rem; position: fixed; z-index: 200; top: 0; bottom: 0; left: -100%; }
 
-.so-con .so-left .so-left-close { background-color: #050709; border-left: 3px solid #202f45; width: 0.79rem; height: 100%; float: left; }
 
-.so-con .so-left .so-left-close img { display: block; width: 0.46rem; position: relative; top: 48%; left: 0.15rem; }
+.so-top-all { height: 4.12rem; width: 100%; position: fixed;  z-index: 10;}
 
-.so-con .so-left .so-left-con { height: 100%; width: 7.5rem; float: left; border-left: solid 0.03rem #293454; border-right: solid 0.03rem #293454; background-color: rgba(17, 22, 28, 0.9); }
+.so-in-main { height: 2.78rem; background: url("/static/frist/images/bg.jpg"); background-size: 100%; position: fixed; top: 1.36rem; }
+.so-in-main > div { background-color: rgba(225, 170, 95, 0.2); border-bottom: 1px solid rgba(56,32,30,0.2);}
+.so-in-main .so-main-top { width: 100%; height: 1.99rem; border-bottom: 1px solid rgba(56,32,30,0.2); }
+.so-in-main .so-main-top div { float: left; }
+.so-in-main .so-main-top .so-m-t-left { height: 100%; width: 3.42rem; }
+.so-in-main .so-main-top .so-m-t-left div:first-child { height: 1.1rem; width: 3.3rem; font-size: 0.34rem; line-height: 1.4rem; text-align: right; margin-right: 0.12rem; white-space: nowrap; }
+.so-in-main .so-main-top .so-m-t-left div:last-child p { display: block;  width: 1.64rem; height: 0.5rem; position: relative; left: .3rem; top: .2rem; color: #d7e8f0; line-height: .5rem; text-align: center; font-size: 0.3rem; }
+.so-in-main .so-main-top .so-m-t-right { width: 6.57rem; height: 100%; }
+.so-in-main .so-main-top .so-m-t-right div:first-child ul li { float: left; background: url("/static/frist/images/content/qui02.png") no-repeat; background-size: 1.2rem; background-position: 0.1rem 0.09rem; display: block; width: 1.3rem; height: 1.3rem; color: #fffbe2; font-size: 0.6rem; text-align: center; line-height: 1.3rem; text-indent: 0.1rem; }
+.so-in-main .so-main-top .so-m-t-right div:last-child ul { margin-left: 0.4rem; }
+.so-in-main .so-main-top .so-m-t-right div:last-child ul li { display: block; float: left; width: .9rem; height: .35rem; border: solid .01rem #ffffff; background-color: #ffbd00; -webkit-border-radius: .19rem; -moz-border-radius: .19rem; border-radius: .19rem; text-align: center; margin-top: 0.14rem; margin-right: 0.23rem; font-size: 0.34rem; line-height: 0.35rem; }
+.so-in-main .so-main-down { width: 100%; height: 0.79rem; }
+.so-in-main .so-main-down ul li { display: block; float: left; width: 3.33rem; }
+.so-in-main .so-main-down ul li > p { line-height: 0.79rem; font-size: .34rem; text-align: right; }
+.so-in-main .so-main-down ul li > i { content: ""; display: block; background: url(/static/frist/images/main/sj.png) no-repeat; background-size: 100%; width: .4rem; height: .4rem; float: left; margin-top: 0.13rem; margin-left: 0.5rem; }
+.so-in-main .so-main-down ul li > span { display: block; height: .4rem; float: left; margin-top: 0.13rem; margin-left: 0.1rem; font-size: 0.32rem; }
+.so-in-main .so-main-down ul li > a { display: inline-block; width: 1.6rem; height: .45rem; border-radius: .19rem; border: solid .01rem #233044; line-height: 0.45rem; margin: auto; font-size: 0.32rem; text-align: center; margin-top: 0.12rem; color: #ffffff; }
 
-.so-con .so-left .so-left-con .so-l-c-top { width: 100%; height: 1.97rem; position: relative; }
-
-.so-con .so-left .so-left-con .so-l-c-top:before { content: ''; position: absolute; display: block; top: 0; left: 0; background: -webkit-linear-gradient(#212637, #384465); background: -webkit-gradient(linear, left top, left bottom, from(#212637), to(#384465)); background: -o-linear-gradient(#212637, #384465); background: linear-gradient(#212637, #384465); height: 1.97rem; width: 99.9%; z-index: 0; }
-
-.so-con .so-left .so-left-con .so-l-c-top:after { content: ''; position: absolute; display: block; top: 0; left: 0; background-image: url("/static/frist/images/past_bg.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; background-position-y: bottom; right: -1.7rem; left: inherit; top: inherit; width: 35%; height: 1rem; bottom: -.1rem; }
-
-.so-con .so-left .so-left-con .so-l-c-top > div { float: left; height: 100%; width: calc(100% - 3rem); }
-
-.so-con .so-left .so-left-con .so-l-c-top > div:first-child { width: 1.97rem; }
-
-.so-con .so-left .so-left-con .so-l-c-top > div:first-child img { width: 1.4rem; position: relative; top: 0.2rem; left: 0.1rem; }
-
-.so-con .so-left .so-left-con .so-l-c-top > div:last-child { margin-left: .5rem; }
-
-.so-con .so-left .so-left-con .so-l-c-top > div:last-child > p { margin-top: .5rem; position: relative; text-align: left; font-size: .4rem; }
-
-.so-con .so-left .so-left-con .so-l-c-top > div:last-child .user_name { position: relative; text-align: left; margin-left: 0; line-height: 1.8em; margin-top: .2rem; color: #fff; font-size: .4rem; }
-
-.so-con .so-left .so-left-con .so-l-c-top > div:last-child .user_name > strong { display: block; color: #fff; letter-spacing: 1px; font-weight: 500; font-size: .4rem; }
-
-.so-con .so-left .so-left-con .so-l-c-top > div:last-child .purse { width: 100%; height: .5rem; top: .1rem; left: 0; position: relative; }
-
-.so-con .so-left .so-left-con .so-l-c-top > div:last-child .purse .so-top-sum, .so-con .so-left .so-left-con .so-l-c-top > div:last-child .purse .so-in-top-sum { position: absolute; top: 0; }
-
-.so-con .so-left .so-left-con .so-l-c-top > div:last-child .purse .so-top-sum { left: 0; }
-
-.so-con .so-left .so-left-con .so-l-c-top > div:last-child .purse .so-in-top-sum { left: .3rem; top: .05rem; }
-
-.so-con .so-left .so-left-con .so-l-c-con { width: 100%; height: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; padding-bottom: 2rem; }
-
-.so-con .so-left .so-left-con .so-l-c-con ul:after { content: ""; display: block; clear: both; }
-
-.so-con .so-left .so-left-con .so-l-c-con li { background: url("/static/frist/images/left/left-kuang.jpg"); background-size: 100%; width: 3.27rem; height: 3.14rem; display: block; float: left; margin: 0.21rem; }
-
-.so-con .so-left .so-left-con .so-l-c-con li > .badge { margin: 0 auto; margin-top: .3rem; }
-
-.so-con .so-left .so-left-con .so-l-c-con li p { font-size: 0.34rem; color: white; }
-
-.so-con .so-left .so-left-con .so-l-c-con li.active { -webkit-box-shadow: 0 0 15px 4px rgba(0, 228, 255, 0.5) inset; box-shadow: 0 0 15px 4px rgba(0, 228, 255, 0.5) inset; }
-
-.so-con .so-left.active { left: 0; }
-
-.so-con .so-left.close { left: -100%; }
-
-.so-top-all { height: 4.26rem;  background: #061626;  width: 100%; position: fixed;  z-index: 10;}
-
-.so-con .so-in-top { background-color: #061626; width: 100%; height: 1.48rem; position: fixed; }
-
-.so-con .so-in-top .so-menu { display: block; height: 1.48rem; width: 1rem; position: relative; z-index: 2; }
-
-.so-con .so-in-top .left_top_logo { color: #fff; font-size: .4rem; margin-top: .45rem; width: 2.5rem; background-size: 100%; height: 1rem; background-position-y: -.9rem; }
-
-.so-con .so-in-top.k3bg { background-image: url(/static/frist/images/k3/bg_top.jpg); background-size: auto 100%; }
-
-.so-con .so-in-top ul > li { height: 100%; min-width: 1rem; display: block; float: left; }
-
-.so-con .so-in-top ul > li.purse { position: relative; left: 1.2rem; }
-
-.so-con .so-in-top ul > li > .so-top-menu { height: 0.47rem; position: relative; top: 0.5rem; left: 0.25rem; }
-
-.so-con .so-in-top ul > li > .so-top-logo { position: relative; left: -0.8rem; top: 0.1rem; height: 1.3rem; }
-
-.so-con .so-in-top ul > li.so-top-zoushi { float: right; height: 1.48rem; }
-
-.so-con .so-in-top ul > li.so-top-zoushi img { height: 0.6rem; position: relative; top: 0.46rem; left: -0.1rem; }
-
-.so-con .so-in-main { height: 2.78rem; background: url("/static/frist/images/bg.jpg"); background-size: 100%; position: fixed; top: 1.5rem; }
-
-.so-con .so-in-main > div { width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); }
-
-.so-con .so-in-main > div .so-main-top { width: 100%; height: 1.99rem; background: url(/static/frist/images/main/main-bg.png) no-repeat 1rem 1.45rem; background-size: auto 0.5rem; }
-
-.so-con .so-in-main > div .so-main-top div { float: left; }
-
-.so-con .so-in-main > div .so-main-top .so-m-t-left { height: 100%; width: 3.42rem; }
-
-.so-con .so-in-main > div .so-main-top .so-m-t-left div:first-child { height: 1.1rem; width: 3.3rem; color: #d7e8f0; font-size: 0.34rem; line-height: 1.4rem; text-align: right; margin-right: 0.12rem; white-space: nowrap; }
-
-.so-con .so-in-main > div .so-main-top .so-m-t-left div:last-child p { display: block; background: url(/static/frist/images/main/ckwq.png); background-size: 1.64rem 0.5rem; width: 1.64rem; height: 0.5rem; position: relative; left: .3rem; top: .2rem; color: #d7e8f0; line-height: .5rem; text-align: center; font-size: 0.3rem; }
-
-.so-con .so-in-main > div .so-main-top .so-m-t-right { width: 6.57rem; height: 100%; }
-
-.so-con .so-in-main > div .so-main-top .so-m-t-right div:first-child ul li { float: left; background: url("/static/frist/images/content/qui02.png") no-repeat; background-size: 1.2rem; background-position: 0.1rem 0.09rem; display: block; width: 1.3rem; height: 1.3rem; color: #fffbe2; font-size: 0.6rem; text-align: center; line-height: 1.3rem; text-indent: 0.1rem; }
-
-.so-con .so-in-main > div .so-main-top .so-m-t-right div:last-child ul { margin-left: 0.4rem; }
-
-.so-con .so-in-main > div .so-main-top .so-m-t-right div:last-child ul li { display: block; float: left; width: .9rem; height: .35rem; border: solid .01rem #ffffff; background-color: #ffbd00; -webkit-border-radius: .19rem; -moz-border-radius: .19rem; border-radius: .19rem; text-align: center; margin-top: 0.14rem; margin-right: 0.23rem; font-size: 0.34rem; line-height: 0.35rem; }
-
-.so-con .so-in-main > div .so-main-down { width: 100%; height: 0.79rem; }
-
-.so-con .so-in-main > div .so-main-down ul li { display: block; float: left; width: 3.33rem; }
-
-@media (max-width: 359px) { .so-con .so-in-main > div .so-main-down ul li:first-child { width: 3.4rem; } }
-
-@media (max-width: 359px) { .so-con .so-in-main > div .so-main-down ul li { width: 3.3rem; } }
-
-.so-con .so-in-main > div .so-main-down ul li > p { line-height: 0.79rem; font-size: .34rem; color: #d7e8f0; text-align: right; }
-
-.so-con .so-in-main > div .so-main-down ul li > i { content: ""; display: block; background: url(/static/frist/images/main/sj.png) no-repeat; background-size: 100%; width: .4rem; height: .4rem; float: left; margin-top: 0.13rem; margin-left: 0.5rem; }
-
-.so-con .so-in-main > div .so-main-down ul li > span { display: block; color: #d7e8f0; height: .4rem; float: left; margin-top: 0.13rem; margin-left: 0.1rem; font-size: 0.32rem; }
-
-.so-con .so-in-main > div .so-main-down ul li > a { display: inline-block; background-color: #0b1723; width: 1.6rem; height: .45rem; border-radius: .19rem; border: solid .01rem #233044; line-height: 0.45rem; margin: auto; font-size: 0.32rem; text-align: center; margin-top: 0.12rem; color: #ffffff; }
-
-@media (max-width: 359px) { .so-con .so-in-main > div .so-main-down ul li > a { width: 1.3rem; } }
-
-/*.so-con .so-in-con { width: 100%; background-color: #19222f; position: fixed; cursor: pointer; top: 4.3rem; }*/
-.so-con .so-in-con { width: 100%; background-color: #19222f; position: fixed; cursor: pointer; top: 4.26rem;bottom: 1rem; }
-
+.so-con .so-in-con { width: 100%; position: fixed; cursor: pointer; top: 4.12rem;bottom: 1rem; }
 .so-con .so-in-con > div:after { content: ""; display: block; clear: both; }
 
-.so-con .so-in-con .so-con-left { width: 2.3rem; float: left; background-color: #19222f; height: 100%; /*overflow-y: scroll; -webkit-overflow-scrolling: touch; */padding-bottom: .8rem;    position: fixed;  z-index: 5; }
+.so-con-left { width: 2.3rem; float: left; height: 100%; padding-bottom: .8rem; position: fixed; z-index: 5; border-right: 1px solid rgba(56,32,30,0.2); }
+.so-con-left ul { overflow-y: scroll; -webkit-overflow-scrolling: touch; cursor: pointer; }
+.so-con-left ul li { display: block; width: 100%; height: 1.25rem; border-bottom: solid .02rem #293454; color: #ffffff; font-size: 0.4rem; line-height: 1.3rem; text-align: center; background-position-y: -1.5rem; cursor: pointer; }
+.so-con-left ul li.active { }
 
-.so-con .so-in-con .so-con-left ul { overflow-y: scroll; -webkit-overflow-scrolling: touch; cursor: pointer; }
-
-.so-con .so-in-con .so-con-left ul li { display: block; width: 100%; height: 1.25rem; border-bottom: solid .02rem #293454; color: #ffffff; font-size: 0.4rem; line-height: 1.3rem; text-align: center; background-position-y: -1.5rem; cursor: pointer; }
-
-.so-con .so-in-con .so-con-left ul li.active { background: url(/static/frist/images/content/nav-active.png) no-repeat; background-size: auto 1.7rem; background-position-y: -0.2rem; }
-
-/*
-.so-con .so-in-con .so-con-right {  float: right; width: 7.7rem; height: 100%;overflow: hidden; !*overflow-y: scroll;*! !* -webkit-overflow-scrolling: touch;*! position: absolute;  left: 23% ;  }
-*/
-
-.so-con .so-in-con .so-con-right {  width: 7.7rem;  height: 100%; padding-bottom: .8rem;  position: fixed;  z-index: 5;left: 23% ; }
-
-.so-con .so-in-con .so-con-right > div { padding-bottom: 2.4rem; }
-
-.so-con .so-in-con .so-con-right > div.active { display: block; }
-
-.so-con .so-in-con .so-con-right ul > li { display: block; padding-top: 0.5rem; }
+.so-con-right {  width: 7.7rem;  height: 100%; padding-bottom: .8rem;  position: fixed;  z-index: 5;left: 23% ; }
+.so-con-right > div { padding-bottom: 2.4rem; }
+.so-con-right > div.active { display: block; }
+.so-con-right ul > li { display: block; padding-top: 0.5rem; }
 
 .so-top-sum { display: block; height: .7rem; position: relative; top: .45rem; left: .68rem; z-index: 8; }
 
 .so-in-top-sum { color: #fdf19b; text-align: center; z-index: 2; display: block; margin-top: -0.04rem; font-size: .32rem; border: solid 0.02rem #2d3755; background: #1d2839; /* Old browsers */ background: -moz-linear-gradient(top, #1d2839 43%, #263651 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top, #1d2839 43%, #263651 100%); /* Chrome10-25,Safari5.1-6 */ background: -webkit-gradient(linear, left top, left bottom, color-stop(43%, #1d2839), to(#263651)); background: -o-linear-gradient(top, #1d2839 43%, #263651 100%); background: linear-gradient(to bottom, #1d2839 43%, #263651 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ border-left: hidden; border-radius: 0.1rem; padding-right: 0.1rem; position: relative; left: 1rem; padding: .05rem .1rem .05rem .4rem; top: -.1rem; width: 2.2rem; overflow: hidden; white-space: nowrap; -o-text-overflow: ellipsis; text-overflow: ellipsis; }
 
-#so-item0 ul li > div, #so-item0.jc115 ul li ul li > div { width: 7rem; text-align: center; margin: auto; }
+/*#so-item0 ul li > div, #so-item0.jc115 ul li ul li > div { width: 7rem; text-align: center; margin: auto; }
 
 #so-item0 ul li > div > h2, #so-item0.jc115 ul li ul li > div > h2 { color: #ffffff; font-size: .4rem; line-height: 1.12rem; background: url("/static/frist/images/content/panel_header.png") no-repeat; background-size: 100% 100%; line-height: 0.9rem; }
 
@@ -634,8 +619,6 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }
 #so-item1 ul li > div > div p span:first-child { background: url("/static/frist/images/content/qui02.png") no-repeat; background-size: 1.2rem; background-position: 0 -1.25rem; display: block; width: 1.2rem; height: 1.3rem; color: #fffbe2; font-size: 0.6rem; line-height: 1.3rem; }
 
 #so-item1 ul li > div > div p.active span:first-child { background: url("/static/frist/images/content/qui02.png") no-repeat; background-size: 1.2rem; background-position: 0 0.05rem; }
-
-#so-item1 ul li > div > div:after { content: ''; display: block; position: absolute; width: 7rem; bottom: -3px; clear: both; background: url("/static/frist/images/content/panel_footer.png") no-repeat; background-size: 100% 100%; height: 0.4rem; margin-top: -0.4rem; overflow: hidden; }
 
 #so-item2 ul li > div { width: 7rem; text-align: center; margin: auto; }
 
@@ -687,17 +670,16 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }
 
 #so-item0 .so-con-span-short, #so-item0.jc115 ul li .so-con-span-short { width: 1.9rem !important; }
 
-#so-item0 .so-con-span-short span, #so-item0.jc115 ul li .so-con-span-short span { padding-left: .15rem; padding-right: .1rem; }
+#so-item0 .so-con-span-short span, #so-item0.jc115 ul li .so-con-span-short span { padding-left: .15rem; padding-right: .1rem; }*/
 
-.so-foot { height: 2rem; width: 10rem; position: fixed; z-index:20; bottom: -.3rem; background-color: #0e1a28; }
+/* bet footer */
+.so-foot { background: url("/static/frist/images/bg_wood.jpg") no-repeat center bottom; background-size: 100% auto; height: 1.5rem; width: 10rem; position: fixed; z-index:20; bottom: 0rem; }
 
 .so-foot > div:first-child { height: 0.6rem; }
 
 .so-foot > div:first-child p { color: #ffffff; line-height: 0.6rem; font-size: .36rem; text-align: left; text-indent: 0.4rem; }
 
 .so-foot > div:first-child p span { color: #ffbd00; font-size: 0.34rem; padding: 0 .3rem; }
-
-.so-foot > div:nth-child(2) { height: 100%; background: url("/static/frist/images/foot/foot-bg.png") no-repeat; background-size: 100%; }
 
 .so-foot > div:nth-child(2) input { display: block; width: 3.88rem; height: .65rem; background: url(/static/frist/images/foot/shurukuang.png) no-repeat; background-size: 100%; border: solid .01rem #0b1723; position: relative; top: 0.2rem; left: 0.2rem; color: #ffffff; text-indent: 0.2rem; font-size: 0.34rem; float: left; }
 
@@ -1682,4 +1664,3 @@ fieldset { display: block; margin: .5rem 0 !important; font-size: .35rem; }
 
 input.date:after { content: ''; position: absolute; display: block; top: 0; left: 0; background: url("/static/frist/images/icon_member.png") no-repeat; background-position: -.17rem 83.5%; background-size: 145%; width: 2em; height: 1rem; position: absolute; right: 0; left: inherit; top: .1rem; cursor: pointer; }
 
-/*# sourceMappingURL=all.css.map */

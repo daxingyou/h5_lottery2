@@ -1,6 +1,6 @@
 <template>
     <div id="pa_con" class="so-con warp cover_bg">
-        <header id="pa_head">
+        <header id="pa_head" class="new_header">
             <div class="left">
                 <a href="javascript:;">
 

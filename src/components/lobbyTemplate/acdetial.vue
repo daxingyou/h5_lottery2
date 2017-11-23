@@ -1,6 +1,6 @@
 <template>
     <div id="pa_con">
-        <header id="pa_head">
+        <header id="pa_head" class="new_header">
             <div class="left">
                 <a href="#" @click.prevent="goBack">
                     <img src="../../../static/frist/images/back.png" alt="">

@@ -4,7 +4,7 @@
       <!--用户导航 so-left -->
       <UserNavigation el=".more-games" ref="navone" > </UserNavigation>
       <IndexNavigation el=".btn_leftside" ref="navtwo" > </IndexNavigation>
-      <header id="pa_head" class="index_nav_top">
+      <header id="pa_head" class="new_header index_nav_top">
              <div class="left index_side">
                  <a class="btn_leftside" href="javascript:;" v-show="haslogin">
                      <img src="static/frist/images/nav.png" alt="">

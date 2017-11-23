@@ -1,7 +1,7 @@
 <template>
 <div id="pk10">
     <div id="pa_con">
-        <header id="pa_head">
+        <header id="pa_head" class="new_header">
             <div class="left">
                 <a href="javascript:;" onclick="history.go(-1)">
                     <img src="/static/frist/images/back.png" alt="">

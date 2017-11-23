@@ -34,43 +34,6 @@
 #pk10 .select-li {
   height: auto;
   padding-top: 0.3rem; }
-#pk10 .pk10_panel {
-  background: none;
-  height: auto;
-  position: relative; }
-  #pk10 .pk10_panel h2 {
-    background: url(../images/content/panel_header.png) no-repeat;
-    background-size: 100% 100%;
-    line-height: 0.9rem; }
-  #pk10 .pk10_panel > div {
-    background: url(../images/content/panel_body.png) no-repeat;
-    background-size: 100% 100%;
-    padding: 3% 3% 3.5%;
-    height: auto;
-    margin: 0px auto; }
-    #pk10 .pk10_panel > div p {
-      margin: 2% 1.8% 2% 2.2%; }
-      #pk10 .pk10_panel > div p span:last-child {
-        padding-left: 0rem; }
-    #pk10 .pk10_panel > div:after {
-      content: '';
-      display: table;
-      clear: both; }
-  #pk10 .pk10_panel:after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 100%;
-    bottom: 0px;
-    clear: both;
-    background: url(../images/content/panel_footer.png) no-repeat;
-    background-size: 100% 100%;
-    height: 0.4rem;
-    margin-top: -0.4rem; }
-  #pk10 .pk10_panel.style1 h2 {
-    background-image: url(../images/content/panel_header_1.png); }
-  #pk10 .pk10_panel .pk10_ball {
-    transform: scale(0.9); }
 #pk10 .play_th ul {
   margin-top: 0.05rem; }
   #pk10 .play_th ul li {

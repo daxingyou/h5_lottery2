@@ -1,6 +1,6 @@
 <template>
     <div id="pa_con" class="so-con warp bule_bg">
-        <header id="pa_head">
+        <header id="pa_head" class="new_header">
             <div class="left">
                 <router-link :to="'/lobbyTemplate/info'">
                     <img src="../../../static/frist/images/back.png" alt="">
