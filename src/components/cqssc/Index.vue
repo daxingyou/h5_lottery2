@@ -25,7 +25,7 @@
                             <div class="so-m-t-right" v-show="ishwowpriod">
                                 <div class="last-open-num">
                                     <ul>
-                                        <li v-for="item in winNumber.split(',')">{{item}}</li>
+                                        <li :class="'active round_ball num_' + item" v-for="item in winNumber.split(',')">{{item}}</li>
                                     </ul>
                                 </div>
                                 <div class="last-open-dou">
@@ -69,11 +69,11 @@
                                         <!--总和&龙虎-->
                                         <ul>
                                             <li class="select-li" v-for="item in doubleSideList.filter((temp)=>{return temp.cid==21600})">
-                                                <div>
+                                                <div class="bet_panel">
                                                     <h2>
                                                         {{item.name}}
                                                     </h2>
-                                                    <div>
+                                                    <div class="bet_box">
                                                         <p :data-id="itemChild.cid" :class="([21605,21606,21607].includes(itemChild.cid) && 'so-con-span-short')" v-for="itemChild in item.childrens" @click="betSelect($event, itemChild, item)">
                                                             <span>{{itemChild.name}}</span>
                                                             <span class="bet-times">{{payoffFormat(itemChild.oddsData.payoff)}}</span>
@@ -82,11 +82,11 @@
                                                 </div>
                                             </li>
                                             <li :class="'select-li' + ({'0':' first_ball', '1':' sec_ball'}[index] || ' sec_ball')" v-for="(item,index) in doubleSideList.filter((temp)=>{return temp.cid<21600})">
-                                                <div>
+                                                <div class="bet_panel">
                                                     <h2>
                                                         {{item.name}}
                                                     </h2>
-                                                    <div>
+                                                    <div class="bet_box">
                                                         <p :data-id="itemChild.cid" v-for="itemChild in item.childrens" @click="betSelect($event, itemChild, item)">
                                                             <span>{{itemChild.name}}</span>
                                                             <span class="bet-times">{{payoffFormat(itemChild.oddsData.payoff)}}</span>
@@ -99,13 +99,13 @@
                                     <div id="so-item1"class="content-right" style="display:none;">
                                         <ul>
                                             <li class="select-li" v-for="item in oneToFiveList">
-                                                <div>
+                                                <div class="bet_panel">
                                                     <h2>
                                                         {{item.name}}
                                                     </h2>
-                                                    <div>
-                                                        <p :data-id="itemChild.cid" v-for="itemChild in item.childrens">
-                                                            <span @click="OFSelect($event, itemChild, item)">{{itemChild.name}}</span>
+                                                    <div class="bet_ball">
+                                                        <p :data-id="itemChild.cid" v-for="(itemChild,index) in item.childrens">
+                                                            <span :class="'round_ball num_' + index" @click="OFSelect($event, itemChild, item)">{{itemChild.name}}</span>
                                                             <span class="bet-times">{{payoffFormat(itemChild.oddsData.payoff)}}</span>
                                                         </p>
                                                     </div>
@@ -117,11 +117,11 @@
                                     <div id="so-item2" class="content-right" style="display:none;">
                                         <ul>
                                             <li class="select-li" v-for="item in frontCenterBackList">
-                                                <div>
+                                                <div class="bet_panel">
                                                     <h2>
                                                         {{item.name}}
                                                     </h2>
-                                                    <div>
+                                                    <div class="bet_box">
                                                         <p :data-id="itemChild.cid" v-for="itemChild in item.childrens" @click="betSelect($event, itemChild, item)">
                                                             <span>{{itemChild.name}}</span>
                                                             <span class="bet-times">{{payoffFormat(itemChild.oddsData.payoff)}}</span>
@@ -493,24 +493,5 @@ export default {
 </script>
 
 <style scoped>
-    #so-item0 ul li > div > div p, #so-item0.jc115 ul li ul li > div > div p {
-        display: block;
-
-    }
-
-
-/*    .scroll-content {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        overflow: hidden;
-        margin-top: -1px;
-        padding-top: 1px;
-        margin-bottom: -1px;
-        width: auto;
-        height: auto;
-    }*/
 
 </style>

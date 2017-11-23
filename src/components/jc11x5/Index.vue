@@ -11,19 +11,21 @@
                 <div class="new_header so-in-top">
                     <ul>
                         <li class="so-menu">
-                            <img src="/static/frist/images/top/icon-menu.png" class="so-top-menu">
+                            
+    <span class="icon icon_nav"></span>
+
                         </li>
                         <li class="left_top_logo">
                             {{moduleName || '江西11选5'}}
                         </li>
                         <li class="purse">
-                            <img src="/static/frist/images/top/sjinbi.png" class="so-top-sum">
+                            <span class="icon icon_money"></span>
                             <div class="so-in-top-sum">
                                 {{ fortMoney(roundAmt(balanceData.balance), 2)}}
                             </div>
                         </li>
                         <li class="so-top-zoushi">
-                            <img src="/static/frist/images/top/zoushi.png">
+                            <span class="icon icon_trend"></span>
                         </li>
                     </ul>
                 </div>
@@ -92,11 +94,11 @@
                                <div id="so-item0" class="active jc115 item_one" >
                                    <ul>
                                        <li class="select-li" v-for="item in doubleSideList">
-                                           <div>
+                                           <div class="bet_panel">
                                                <h2>
                                                    {{item.name}}
                                                </h2>
-                                               <div>
+                                               <div class="bet_box">
                                                    <!-- :data-id="itemChild.cid" -->
                                                    <p v-for="itemChild in item.childrens" @click="betSelect($event, itemChild, item)">
                                                        <span>{{itemChild.name}}</span>
@@ -113,13 +115,13 @@
                                <div id="so-item1" class="jc115"  >
                                    <ul>
                                        <li class="select-li" v-for="item in oneToFiveList">
-                                           <div>
+                                           <div class="bet_panel">
                                                <h2>
                                                    {{item.name}}
                                                </h2>
-                                               <div>
-                                                   <p :data-id="itemChild.cid" v-for="itemChild in item.childrens">
-                                                       <span @click="OFSelect($event, itemChild, item)">{{itemChild.name}}</span>
+                                               <div class="bet_ball">
+                                                   <p :data-id="itemChild.cid" v-for="(itemChild,index) in item.childrens">
+                                                       <span :class="'round_ball num_' + (index+1)" @click="OFSelect($event, itemChild, item)">{{itemChild.name}}</span>
                                                        <span class="bet-times">{{payoffFormat(itemChild.oddsData.payoff)}}</span>
                                                    </p>
                                                </div>
@@ -134,9 +136,9 @@
                                    <div class="bd">
                                        <ul :class="'tab_content tab_content_'+ (index+1) + (index==0 ? ' show' : '')" v-for="(kind,index) in continuedNumberList">
                                            <li class="select-li">
-                                               <div>
+                                               <div class="bet_panel">
                                                    <h2>{{kind.name}}</h2>
-                                                   <div>
+                                                   <div class="bet_box">
                                                        <BallItem :key="index" v-for="(subItem,index) in continueNumberSubList"
                                                                  :model="{ cid:kind.childrens[0].cid, name:++subItem, oddsData:{payoff:kind.childrens[0].oddsData.payoff}, parentItem:kind }"
                                                                  @selected="continueNumberSelect"

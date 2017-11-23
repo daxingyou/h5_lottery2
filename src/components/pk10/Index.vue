@@ -15,23 +15,23 @@
 
         <div class="so-index">
             <div class="so-top-all">
-                <div class="so-in-top">
+                <div class="new_header so-in-top">
                     <ul>
                         <li class="so-menu">
-                            <img src="/static/frist/images/top/icon-menu.png" class="so-top-menu">
+                            <span class="icon icon_nav"></span>
                         </li>
                         <li class="left_top_logo">
                             {{moduleName || '北京PK10'}}
                         </li>
 
                         <li class="purse">
-                            <img src="/static/frist/images/top/sjinbi.png" class="so-top-sum">
+                            <span class="icon icon_money"></span>
                             <div class="so-in-top-sum">
                                 {{ fortMoney(roundAmt(balanceData.balance), 2)}}
                             </div>
                         </li>
                         <li class="so-top-zoushi">
-                            <img src="/static/frist/images/top/zoushi.png">
+                            <span class="icon icon_trend"></span>
                         </li>
                     </ul>
                 </div>
@@ -95,11 +95,11 @@
                                 <div id="pk10-item0" class="active pk10_item item_one">
                                     <ul>
                                         <li class="select-li" v-for="item in doubleSideList">
-                                            <div class="pk10_panel">
+                                            <div class="bet_panel">
                                                 <h2>
                                                     {{item.name}}
                                                 </h2>
-                                                <div>
+                                                <div class="bet_box">
                                                     <p :data-id="itemChild.cid"  v-for="itemChild in item.childrens" @click="betSelect($event, itemChild, item)">
                                                         <span :data-val="itemChild.name">{{itemChild.name}}</span>
                                                         <span class="bet-times"> {{payoffFormat(itemChild.oddsData.payoff)}}</span>
@@ -115,11 +115,11 @@
                                 <div id="pk10-item1" class="pk10_item" style="display:none;">
                                     <ul>
                                         <li class="select-li" v-for="item in oneToFiveList">
-                                            <div class="pk10_panel">
+                                            <div class="bet_panel">
                                                 <h2>
                                                     {{item.name}}
                                                 </h2>
-                                                <div>
+                                                <div class="bet_box">
                                                     <p :data-id="itemChild.cid"  v-for="itemChild in item.childrens" @click="betSelect($event, itemChild, item)">
                                                         <span :data-val="itemChild.name">{{itemChild.name}}</span>
                                                         <span class="bet-times"> {{payoffFormat(itemChild.oddsData.payoff)}}</span>
@@ -134,11 +134,11 @@
                                 <div id="pk10-item2" class="pk10_item" style="display:none;">
                                     <ul>
                                         <li class="select-li" v-for="item in frontCenterBackList">
-                                            <div class="pk10_panel">
+                                            <div class="bet_panel">
                                                 <h2>
                                                     {{item.name}}
                                                 </h2>
-                                                <div>
+                                                <div class="bet_box">
                                                     <p :data-id="itemChild.cid"  v-for="itemChild in item.childrens" @click="betSelect($event, itemChild, item)">
                                                         <span class="pk10_num_bg" :data-val="itemChild.name">
                                                             <span class="pk10_ball" :class="'num_0'+itemChild.name" v-if="itemChild.name<10"></span>
@@ -157,11 +157,11 @@
                                 <div id="pk10-item3" class="pk10_item" style="display:none;">
                                     <ul>
                                         <li class="select-li" v-for="item in frontLastBackList">
-                                            <div class="pk10_panel">
+                                            <div class="bet_panel">
                                                 <h2>
                                                     {{item.name}}
                                                 </h2>
-                                                <div>
+                                                <div class="bet_box">
                                                     <p :data-id="itemChild.cid"  v-for="itemChild in item.childrens" @click="betSelect($event, itemChild, item)">
                                                         <span class="pk10_num_bg" :data-val="itemChild.name">
                                                             <span class="pk10_ball" :class="'num_0'+itemChild.name" v-if="itemChild.name<10"></span>

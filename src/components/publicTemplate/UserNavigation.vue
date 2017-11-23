@@ -13,7 +13,7 @@
            <div>
               <p class="user_name" v-if="haslogin">{{getCookie('username')}}</p>
               <div class="purse"  v-if="haslogin">
-                  <img src="/static/frist/images/top/sjinbi.png" class="so-top-sum">
+                  <span class="icon icon_money"></span>
                   <div class="so-in-top-sum" >
                     <!--  {{ fortMoney(roundAmt(balanceData ? balanceData.balance : 0), 2)}}-->
                       {{ fortMoney(roundAmt($parent.balanceData ? $parent.balanceData.balance : getCookie('membalance') ), 2)}}

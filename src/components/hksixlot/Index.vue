@@ -12,7 +12,7 @@
                  <div>
                     <p>KWHRBFHQEWBH</p>
                     <div class="purse">
-                        <img src="static/frist/images/top/sjinbi.png" class="so-top-sum">
+                        <span class="icon icon_money"></span>
                         <div class="so-in-top-sum">
                             821406.00
                         </div>
@@ -130,19 +130,19 @@
         <div class="new_header so-in-top">
             <ul>
                 <li class="so-menu">
-                    <img src="static/frist/images/top/icon-menu.png" class="so-top-menu">
+                    <span class="icon icon_nav"></span>
                 </li>
                 <li>
                     <img src="static/frist/images/top/logo_jc11x5.png" class="so-top-logo">
                 </li>
                 <li class="purse">
-                    <img src="static/frist/images/top/sjinbi.png" class="so-top-sum">
+                    <span class="icon icon_money"></span>
                     <div class="so-in-top-sum">
                         821406.00
                     </div>
                 </li>
                 <li class="so-top-zoushi">
-                    <img src="static/frist/images/top/zoushi.png">
+                    <span class="icon icon_trend"></span>
                 </li>
             </ul>
         </div>

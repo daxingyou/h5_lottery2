@@ -24,7 +24,7 @@
                                 <strong v-if="!demoName">{{userLogin}}</strong>
                                 <strong v-if="demoName">{{getCookie('username')}}</strong>
                                 <div class="purse">
-                                    <img src="/static/frist/images/top/sjinbi.png" class="so-top-sum">
+                                    <span class="icon icon_money"></span>
                                     <div class="so-in-top-sum">
                                        {{fortMoney(roundAmt(Money), 2)}}
                                     </div>

@@ -5,9 +5,6 @@
   display: table;
   clear: both; }
 
-#pk10 .so-in-top, #pk10 #pa_head {
-  background-image: url(../images/pk10/bg_top.jpg);
-  background-size: auto 100%; }
 #pk10 .so-m-t-left {
   width: 2.5rem; }
   #pk10 .so-m-t-left div:first-child {
@@ -67,53 +64,6 @@
   white-space: nowrap;
   overflow-x: scroll; }
 
-.pk10_item ul li .pk10_panel {
-  width: 7rem;
-  height: 5rem;
-  background-size: 8.4rem 5rem;
-  background-position-x: -1.1rem;
-  text-align: center;
-  margin: auto; }
-  .pk10_item ul li .pk10_panel > h2 {
-    color: #ffffff;
-    font-size: .4rem;
-    line-height: 1.12rem; }
-  .pk10_item ul li .pk10_panel > div {
-    padding: 3%;
-    width: 94%;
-    height: 3.1rem; }
-    .pk10_item ul li .pk10_panel > div p {
-      float: left;
-      border: solid 1px #277ca5;
-      height: 0.85rem;
-      width: 2.96rem;
-      margin-bottom: 4%;
-      margin-left: 3.5%;
-      cursor: pointer; }
-      .pk10_item ul li .pk10_panel > div p > span {
-        color: #d7e8f0;
-        font-size: .34rem;
-        display: block;
-        float: left;
-        padding-left: .25rem;
-        padding-right: .2rem;
-        line-height: 0.9rem; }
-        .pk10_item ul li .pk10_panel > div p > span:last-child {
-          float: right; }
-        .pk10_item ul li .pk10_panel > div p > span .pk10_ball {
-          margin-top: -0.1rem; }
-    .pk10_item ul li .pk10_panel > div p.active {
-      background: url(../images/content/changkuang.png) no-repeat;
-      background-size: 100% 100%;
-      background-position: -0.01rem;
-      border-color: #42371c; }
-      .pk10_item ul li .pk10_panel > div p.active > span:first-child {
-        color: #010101; }
-      .pk10_item ul li .pk10_panel > div p.active > span:last-child {
-        color: #ab0000; }
-.pk10_item ul li .so-con-span-short {
-  width: 2.96rem !important;
-  background-size: 3.06rem 0.9rem; }
 
 .pk10_ball {
   display: inline-block;

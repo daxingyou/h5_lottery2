@@ -2,19 +2,19 @@
     <div class="new_header so-in-top">
         <ul>
             <li class="so-menu">
-                <img src="/static/frist/images/top/icon-menu.png" class="so-top-menu">
+                <span class="icon icon_nav"></span>
             </li>
             <li class="left_top_logo">
                 {{moduleName || '江苏快3'}}
             </li>
             <li class="purse">
-                <img src="/static/frist/images/top/sjinbi.png" class="so-top-sum">
+                <span class="icon icon_money"></span>
                 <div class="so-in-top-sum">
                     {{ fortMoney(roundAmt(balance), 2)}}
                 </div>
             </li>
             <li class="so-top-zoushi">
-                <img src="/static/frist/images/top/zoushi.png">
+                <span class="icon icon_trend"></span>
             </li>
         </ul>
     </div>

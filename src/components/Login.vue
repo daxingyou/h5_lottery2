@@ -1,6 +1,6 @@
 <template>
     <div id="pa_con" class="so-con warp ">
-        <header id="pa_head" class="new_header login">
+        <header id="pa_head" class="login">
             <img src="static/frist/images/login_logo.png" alt="">
         </header>
         <div class="content">

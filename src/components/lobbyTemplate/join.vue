@@ -23,7 +23,7 @@
                             <div class="user_name">
                                 <strong>{{getCookie('username')}}</strong>
                                 <div class="purse">
-                                    <img src="../../../static/frist/images/top/sjinbi.png" class="so-top-sum">
+                                    <span class="icon icon_money"></span>
                                     <div class="so-in-top-sum">
                                         {{getCookie('membalance')}}
                                     </div>
