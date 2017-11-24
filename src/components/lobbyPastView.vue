@@ -223,7 +223,7 @@ export default {
               _self.doubleCount('') ;
               setTimeout(function () {
                   _self.hasaction = false ;
-              },500)
+              },1000)
           });
 
 
