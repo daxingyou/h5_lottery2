@@ -2,22 +2,22 @@
 
     <div v-if="showNavigation" :class="'so-left '+ (showNavigation?'active':'')">
         <div class="so-shade" @click="close"></div>
-        <div class="so-left-close" @click="close">
+        <!--<div class="so-left-close" @click="close">
             <img src="../../../static/frist/images/left/left808.png">
-        </div>
+        </div>-->
         <div class="so-left-con" >
             <div class="so-l-c-top">
-                <div>
+                <!--<div>
                     <img src="../../../static/frist/images/left/user.png">
-                </div>
+                </div>-->
                 <div>
                     <p class="user_name" v-if="haslogin">{{getCookie('username')}}</p>
-                    <div class="purse"  v-if="haslogin">
+                    <!--<div class="purse"  v-if="haslogin">
                         <span class="icon icon_money"></span>
                         <div class="so-in-top-sum" >
                             {{ fortMoney(roundAmt($parent.balanceData ? $parent.balanceData.balance : 0), 2)}}
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
             <div class="so-l-c-con indexside">

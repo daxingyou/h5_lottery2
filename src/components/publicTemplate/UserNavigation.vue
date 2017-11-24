@@ -2,23 +2,24 @@
 
     <div v-if="showNavigation" :class="'so-left '+ (showNavigation?'active':'')">
     <div class="so-shade" @click="close"></div>
-    <div class="so-left-close" @click="close">
+    <!--<div class="so-left-close" @click="close">
         <img src="/static/frist/images/left/left808.png">
-    </div>
+    </div>-->
     <div class="so-left-con">
       <div class="so-l-c-top">
-          <div>
+          <!--<div>
               <img src="/static/frist/images/left/user.png">
-          </div>
+          </div>-->
            <div>
+               <span class="icon icon_user"></span>
               <p class="user_name" v-if="haslogin">{{getCookie('username')}}</p>
-              <div class="purse"  v-if="haslogin">
+              <!--<div class="purse"  v-if="haslogin">
                   <span class="icon icon_money"></span>
                   <div class="so-in-top-sum" >
-                    <!--  {{ fortMoney(roundAmt(balanceData ? balanceData.balance : 0), 2)}}-->
+                      {{ fortMoney(roundAmt(balanceData ? balanceData.balance : 0), 2)}}
                       {{ fortMoney(roundAmt($parent.balanceData ? $parent.balanceData.balance : getCookie('membalance') ), 2)}}
                   </div>
-              </div>
+              </div>-->
           </div>
       </div>
       <div class="so-l-c-con" style="position: relative;z-index: 1000">
@@ -26,7 +27,7 @@
           <div style="position: relative;z-index: 2000">
                 <div class="back_home" >
                   <router-link v-bind:to="'/'">
-                    <span><img src="/static/frist/images/left/icon_home.png"></span>
+                    <!--<span><img src="/static/frist/images/left/icon_home.png"></span>-->
                         <span>返回竞彩大厅</span>
                   </router-link>
                 </div>

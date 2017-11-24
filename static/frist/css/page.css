@@ -50,7 +50,7 @@ input, select, button, a { outline: none; }
 
 .new_header.login { height: auto; background-color: transparent; float: none; z-index: 1; position: relative; }
 
-.new_header.login > img { width: 100%; }
+.login > img { width: 100%; }
 
 .new_header > .center { text-align: center; padding: .5rem 0; width: calc(100% - 3rem); font-weight: 300; color: #d7e8f0; font-size: .38rem; float: left; }
 
@@ -151,50 +151,37 @@ footer.bot_nav > ul > li a.record .Footer-icon { background-position-y: -1.4rem;
 footer.bot_nav > ul > li a.member .Footer-icon { background-position-y: -2.05rem; }
 
 /* 左侧选单 */
-.so-con .so-left { width: 8.7rem; position: fixed; z-index: 200; top: 0; bottom: 0; left: -100%; }
+.so-left { width: 8rem; position: fixed; z-index: 200; top: 0; bottom: 0; left: -100%; }
 
-.so-con .so-left .so-left-close { background-color: #050709; border-left: 3px solid #202f45; width: 0.79rem; height: 100%; float: left; }
+.so-left .so-left-con { height: 100%; width: 8rem; background-color: rgba(0, 0, 0, 0.8); }
 
-.so-con .so-left .so-left-close img { display: block; width: 0.46rem; position: relative; top: 48%; left: 0.15rem; }
+.so-left .so-l-c-top { width: 100%; height: 1.97rem; position: relative; }
 
-.so-con .so-left .so-left-con { height: 100%; width: 7.5rem; float: left; border-left: solid 0.03rem #293454; border-right: solid 0.03rem #293454; background-color: rgba(17, 22, 28, 0.9); }
+.so-left .so-l-c-top > div { float: left; height: 100%; width: calc(100% - 3rem); }
 
-.so-con .so-left .so-left-con .so-l-c-top { width: 100%; height: 1.97rem; position: relative; }
+.so-left .so-l-c-top > div:first-child { width: 1.97rem; }
 
-.so-con .so-left .so-left-con .so-l-c-top:before { content: ''; position: absolute; display: block; top: 0; left: 0; background: -webkit-linear-gradient(#212637, #384465); background: -webkit-gradient(linear, left top, left bottom, from(#212637), to(#384465)); background: -o-linear-gradient(#212637, #384465); background: linear-gradient(#212637, #384465); height: 1.97rem; width: 99.9%; z-index: 0; }
+.so-left .so-l-c-top > div:first-child img { width: 1.4rem; position: relative; top: 0.2rem; left: 0.1rem; }
 
-.so-con .so-left .so-left-con .so-l-c-top:after { content: ''; position: absolute; display: block; top: 0; left: 0; background-image: url("/static/frist/images/past_bg.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; background-position-y: bottom; right: -1.7rem; left: inherit; top: inherit; width: 35%; height: 1rem; bottom: -.1rem; }
+.so-left .so-l-c-top > div:last-child { margin-left: .5rem; }
 
-.so-con .so-left .so-left-con .so-l-c-top > div { float: left; height: 100%; width: calc(100% - 3rem); }
+.so-left .so-l-c-top > div:last-child > p { margin-top: .5rem; position: relative; text-align: left; font-size: .4rem; }
 
-.so-con .so-left .so-left-con .so-l-c-top > div:first-child { width: 1.97rem; }
+.so-left .so-l-c-top .user_name { position: relative; text-align: left; margin-left: 0; line-height: 1.8em; margin-top: .2rem; color: #fff; font-size: .4rem; }
 
-.so-con .so-left .so-left-con .so-l-c-top > div:first-child img { width: 1.4rem; position: relative; top: 0.2rem; left: 0.1rem; }
+.so-left .so-l-c-top .user_name > strong { display: block; color: #fff; letter-spacing: 1px; font-weight: 500; font-size: .4rem; }
 
-.so-con .so-left .so-left-con .so-l-c-top > div:last-child { margin-left: .5rem; }
+.so-left .back_home { text-align: left; }
+.so-left .back_home a { color: white; }
+.so-left .back_home a span {  }
+.so-left .so-l-c-con { width: 100%; height: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; padding-bottom: 2rem; }
+.so-left .so-l-c-con li { text-align: left;}
+.so-left .so-l-c-con li .badge { display: none; }
+.so-left .so-l-c-con li p { font-size: 0.34rem; color: white; }
+.so-left .so-l-c-con li.active {  }
 
-.so-con .so-left .so-left-con .so-l-c-top > div:last-child > p { margin-top: .5rem; position: relative; text-align: left; font-size: .4rem; }
-
-.so-con .so-left .so-left-con .so-l-c-top > div:last-child .user_name { position: relative; text-align: left; margin-left: 0; line-height: 1.8em; margin-top: .2rem; color: #fff; font-size: .4rem; }
-
-.so-con .so-left .so-left-con .so-l-c-top > div:last-child .user_name > strong { display: block; color: #fff; letter-spacing: 1px; font-weight: 500; font-size: .4rem; }
-
-
-.so-con .so-left .so-left-con .so-l-c-con { width: 100%; height: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; padding-bottom: 2rem; }
-
-.so-con .so-left .so-left-con .so-l-c-con ul:after { content: ""; display: block; clear: both; }
-
-.so-con .so-left .so-left-con .so-l-c-con li { background: url("/static/frist/images/left/left-kuang.jpg"); background-size: 100%; width: 3.27rem; height: 3.14rem; display: block; float: left; margin: 0.21rem; }
-
-.so-con .so-left .so-left-con .so-l-c-con li > .badge { margin: 0 auto; margin-top: .3rem; }
-
-.so-con .so-left .so-left-con .so-l-c-con li p { font-size: 0.34rem; color: white; }
-
-.so-con .so-left .so-left-con .so-l-c-con li.active { -webkit-box-shadow: 0 0 15px 4px rgba(0, 228, 255, 0.5) inset; box-shadow: 0 0 15px 4px rgba(0, 228, 255, 0.5) inset; }
-
-.so-con .so-left.active { left: 0; }
-
-.so-con .so-left.close { left: -100%; }
+.so-left.active { left: 0; }
+.so-left.close { left: -100%; }
 
 
 
@@ -428,6 +415,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .icon.icon_nav{ background-position: 0 0; }
 .icon.icon_trend{ background-position: -0.64rem 0;}
 .icon.icon_money{ background-position: 0 -0.64rem;}
+.icon.icon_user{ background-position: -1.28rem -0.64rem;}
 
 i.filter { background-image: url("/static/frist/images/filter.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; }
 
@@ -530,14 +518,19 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }
 .bet_panel .bet_box p:nth-child(even){ margin-right: 0;}
 .bet_panel .bet_box p > span { float: left; line-height: 0.9rem; }
 .bet_panel .bet_box p > span:last-child { float: right; }
-.bet_panel .bet_box p.active {  border-color: #42371c; }
-/*.bet_panel .so-con-span-short { width: 2.96rem !important; background-size: 3.06rem 0.9rem; }*/
+.bet_panel .bet_box p.active {  border-color: #b41a17;background: url('/static/frist/images/bet_box_selected.png') repeat-x border-box left 99%; background-size: auto 200%; border-color: transparent; position: relative; box-shadow: 0px 1px 2px rgba(0, 0, 0,0.65); -webkit-box-shadow: 0px 2px 1px rgba(0, 0, 0,0.65);}
+.bet_panel .bet_box p.active:before{content: ''; position: absolute; top: -1px; bottom: -1px; left: -0.1rem; width: 0.14rem; background: url('/static/frist/images/bet_box_selected.png') no-repeat border-box left top; background-size: auto 200%; }
+.bet_panel .bet_box p.active:after{content: ''; position: absolute; top: -1px; bottom: -1px; right: -0.1rem; width: 0.14rem; background: url('/static/frist/images/bet_box_selected.png') no-repeat border-box right top; background-size: auto 200%; }
+.bet_panel .bet_box p.active > span:first-child { color: #b41a17; }
+.bet_panel .bet_box p.so-con-span-short { width: 30.666%; margin-right: 4%;}
+.bet_panel .bet_box p.so-con-span-short:nth-child(even){ margin-right: 4%;}
+.bet_panel .bet_box p.so-con-span-short:last-child{ margin-right: 0;}
 .bet_panel .bet_ball:after{ content: ''; display: table; clear: both;}
 .bet_panel .bet_ball p { float: left; width: 20%; margin-bottom: 0.2rem; }
 
 /* 开奖资讯 */
 .so-top-all { width: 100%; position: fixed;  z-index: 10;}
-.so-in-main {  background: url("/static/frist/images/bg.jpg"); background-size: 100%; position: fixed; top: 1.36rem; border-bottom: 1px solid rgba(56,32,30,0.2); }
+.so-in-main {  background: url("/static/frist/images/bg.jpg"); background-size: 100%; width:100%; position: fixed; top: 1.36rem; border-bottom: 1px solid rgba(56,32,30,0.2); }
 .so-in-main > div { background-color: rgba(225, 170, 95, 0.2);}
 .so-in-main .so-main-top { width: 100%; height: 2.3rem; border-bottom: 1px solid rgba(56,32,30,0.2); box-sizing: border-box; padding-top: 0.2rem; }
 .so-in-main .so-main-top > div { float: left; }
@@ -576,41 +569,21 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }
 /* bet footer */
 .so-foot { background: url("/static/frist/images/bg_wood.jpg") no-repeat center bottom; background-size: 100% auto; height: 1.5rem; width: 10rem; position: fixed; z-index:20; bottom: 0rem; }
 
-.so-foot > div:first-child { height: 0.6rem; }
+.so-foot .bet_selected { position: absolute; left: 1rem; bottom: .45rem; height: 0.6rem; }
+.so-foot .bet_selected p { color: #ffffff; line-height: 0.6rem; font-size: .32rem; text-align: left; }
+.so-foot .bet_selected p span { color: #fea832; padding: 0.05rem;}
 
-.so-foot > div:first-child p { color: #ffffff; line-height: 0.6rem; font-size: .36rem; text-align: left; text-indent: 0.4rem; }
+.so-foot .bet_count { margin: 0.2rem 0 0 0.3rem; background: url('/static/frist/images/bet_info_bg.png') no-repeat; background-size: 100% 100%; width: 3.653rem; padding: 0 0.5rem; height: 1.187rem; }
+.so-foot .bet_count input { display: block; margin-top: 0.2rem; margin-right: 0.15rem; float: right; width: 2rem; height: .65rem; background-color: transparent; border: none;color: #fea832; font-size: 0.44rem;  text-align: right;}
+.so-foot .bet_count input::-webkit-input-placeholder { color: #FFF; opacity: 0.5; }
+.so-foot .bet_count a.submit{ position: fixed; bottom: 0.37rem; right:0.2rem; width: 1.5rem; border-radius: 0.1rem; display: block; line-height: 0.68rem; text-align: center; border: 1px solid #fff;  color: white; opacity: 0.5; }
 
-.so-foot > div:first-child p span { color: #ffbd00; font-size: 0.34rem; padding: 0 .3rem; }
+.so-foot .bet_btn { position: fixed; bottom: 0.13rem; right: 2rem; }
+.so-foot .bet_btn > div { width: 2.493rem; height: 1.1rem; background: url("/static/frist/images/bet_btn_bg.png") no-repeat; background-size: 100%; }
+.so-foot .bet_btn > div p { font-size: 0.42rem; line-height: 0.9rem; letter-spacing: 0.15rem; padding-left: 0.5rem; }
 
-.so-foot > div:nth-child(2) input { display: block; width: 3.88rem; height: .65rem; background-color: transparent; border: solid .01rem #0b1723; position: relative; top: 0.2rem; left: 0.2rem; color: #ffffff; text-indent: 0.2rem; font-size: 0.34rem; float: left; }
-
-.so-foot > div:nth-child(2) input::-webkit-input-placeholder { color: white; }
-
-.so-foot > div:nth-child(2) a.submit{ width: 2.1rem; display: block; height: 1.7rem; float: left; line-height: 0.68rem; position: relative; top: 0.2rem; left: 0.4rem; text-align: center; background: url("/static/frist/images/foot/chongzhi.png") no-repeat; background-size: 100% 0.68rem; color: white; font-size: 0.34rem;  }
-
-.so-foot > div:last-child { width: 5rem; position: fixed; bottom: 0; right: -2rem; }
-
-.so-foot > div:last-child > div { position: relative; bottom: 0.13rem; width: 2.493rem; height: 1.1rem; background: url("/static/frist/images/bet_btn_bg.png") no-repeat; background-size: 100%; }
-.so-foot > div:last-child > div p { font-size: 0.42rem; line-height: 0.9rem; letter-spacing: 0.15rem; padding-left: 0.5rem; }
-
-.so-foot.close > div:first-child { background-color: #404040; }
-
-.so-foot.close > div:nth-child(2) {  background-size: 100%; }
-
-.so-foot.close > div:nth-child(2) input { background: #404040; border: none; }
-
-.so-foot.close > div:nth-child(2) a { background-size: 100% 0.68rem; border: none; }
-
-.so-foot.close > div:last-child { width: 5rem; position: fixed; bottom: 0; right: -2rem; }
-
-.so-foot.close > div:last-child > div {  background-size: 84%; background-position: 0.17rem 0.5rem; }
-
-
-
-
-.so-fengpan { display: block; background-color: rgba(0, 0, 0, 0.6); width: 10rem; height: 2.1rem; position: fixed; bottom: 0; z-index: 35; }
-
-.so-fengpan a { color: #fff; line-height: 2.3rem; font-size: 0.4rem; }
+.so-fengpan { display: block; background-color: rgba(0, 0, 0, 0.6); width: 10rem; height: 1.5rem; position: fixed; bottom: 0; z-index: 35; }
+.so-fengpan a { color: #fff; line-height: 1.5rem; font-size: 0.4rem; }
 
 .so-right.active { display: block; }
 
@@ -768,13 +741,7 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 
 #so-item2.jc115 .bd .tab_content li { padding-top: 0; }*/
 
-.back_home { position: relative; }
 
-.back_home a { display: inline-block; font-size: 0.34rem; padding: 0.1rem 0.4rem; margin-top: 0.2rem; background: url(/static/frist/images/left/left-kuang.jpg); background-size: 100% 100%; border-left: 0.03rem solid #424a71; border-right: 0.03rem solid #424a71; border-radius: 1rem; -webkit-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.6); box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.6); }
-
-.back_home a span { vertical-align: middle; display: inline-block; margin-right: 0.2rem; height: 0.7rem; line-height: 0.7rem; }
-
-.back_home a span img { height: 100%; }
 
 /* 用法 @include respond-to('尺寸(ex:sm,xs..)')*/
 .tab { font-size: 0; }

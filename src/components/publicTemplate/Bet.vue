@@ -3,17 +3,17 @@
         <!--封盘时给foot加上class:close-->
         <!--<div class="so-foot close">-->
         <div class="so-foot">
-            <div>
-                <p>已选中<span class="bet-select-num">{{betCount}}</span>注</p>
+            <div class="bet_selected">
+                <p>已选<span class="bet-select-num">{{betCount}}</span>注</p>
             </div>
-            <div>
+            <div class="bet_count">
                 <form>
                     <input placeholder="输入金额" type="tel" class="bet-amount" v-model="betAmount">
                     <!--<input type="reset" @click="$parent.resetAction()" value="重置" >-->
                     <a class="submit" href="javascript:;" @click="$parent.resetAction()">重置</a>
                 </form>
             </div>
-            <div>
+            <div class="bet_btn">
                 <div class="so-add" @click="startBet($event)">
                     <p>下注</p>
                 </div>
