@@ -104,17 +104,18 @@ var MyMixin = {
         setScroll: function() {
             this.navScroll = new iScroll("nav-wrapper",{ // 侧边栏
                 hScrollbar:false,
-                vScrollbar:false
+                vScrollbar:false,
+                click: true ,
             });
             this.conScroll = new iScroll("content-wrapper",{  // 投注区域
                 onScrollEnd: function(){
                     this.refresh() ;
                 },
-                click: true,
                 vScroll:true,
-                mouseWheel: true,
-                hScrollbar:false,
-                vScrollbar:false
+                mouseWheel: true ,
+                hScrollbar:false ,
+                vScrollbar:false ,
+                click: true ,
             });
 
         },
@@ -200,13 +201,7 @@ var MyMixin = {
                         resolve(this.playTreeList);
                     },
                     error: function (e) {
-                        if(e.responseJSON.error == 'invalid_token'){  // token 过期
-                            _self.clearAllCookie() ;
-                            setTimeout(function () {
-                                window.location = '/login' ;
-                            },300)
-                            return false ;
-                        }
+                        _self.errorAction(e) ;
                         reject(e);
                     }
                 });
@@ -236,13 +231,7 @@ var MyMixin = {
                         }
                     }).bind(this),
                     error: function (e) {
-                        if(e.responseJSON.error == 'invalid_token'){  // token 过期
-                            _self.clearAllCookie() ;
-                            setTimeout(function () {
-                                window.location = '/login' ;
-                            },300)
-                            return false ;
-                        }
+                        _self.errorAction(e) ;
                         reject(e);
                     }
                 });
@@ -306,13 +295,7 @@ var MyMixin = {
                         resolve(sys_time);
                     },
                     error: function (e) {
-                        if(e.responseJSON.error == 'invalid_token'){  // token 过期
-                            _self.clearAllCookie() ;
-                            setTimeout(function () {
-                                window.location = '/login' ;
-                            },300)
-                            return false ;
-                        }
+                        _self.errorAction(e) ;
                         reject(e);
                     }
                 });
