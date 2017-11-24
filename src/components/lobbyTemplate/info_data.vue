@@ -550,7 +550,7 @@ export default {
                     _self.qq      = res.data.qq;
                     _self.email   = res.data.email
                 },
-                error: ()=>{
+                error: (e)=>{
 
                 }
             })
