@@ -43,10 +43,10 @@
                                     <div class="play_th">
                                         <div class="prd_num">
                                             <i class="prd"></i>
-                                            <span>{{(lotteryid == '8')? list.issueAlias:list.pcode}}</span>
+                                            <span>{{  ( (lotteryid == '8')||(lotteryid == '108') )? list.issueAlias:list.pcode}}</span>
                                            <span>期</span>
                                         </div>
-                                        <ul class="double-count" v-if="lotteryid == '8'"> <!-- 上面一排数据 -->
+                                        <ul class="double-count" v-if="(lotteryid == '8')||(lotteryid == '108')  "> <!-- 上面一排数据 -->
                                             <li>{{list.doubleData.top2_total}}</li>
                                             <li>{{list.doubleData.top2_sizer}}</li>
                                             <li>{{list.doubleData.top2_doubler}}</li>
@@ -61,14 +61,14 @@
                                             <li>{{list.doubleData.total}}</li>
                                             <li>{{list.doubleData.sizer}}</li>
                                             <li>{{list.doubleData.doubler}}</li>
-                                            <li v-if="(lotteryid == '4' || lotteryid == '16') || (lotteryid == '18')">{{list.doubleData.sizerEnd}}</li>
+                                            <li v-if="(lotteryid == '4'|| lotteryid == '104'|| lotteryid == '16') || (lotteryid == '18')">{{list.doubleData.sizerEnd}}</li>
                                             <li>{{list.doubleData.longer}}</li>
 
                                         </ul>
                                     </div>
                                     <!-- 北京pk10  -->
                                   <!--  <ul class="lo_ball double-numbers" v-if="lotteryid == '8'"> -->
-                                    <ul  :class="ulclass[list.lotteryId]" v-if="(list.lotteryId == '8') || (list.lotteryId == '6') || (list.lotteryId == '20') || (list.lotteryId == '22')">
+                                    <ul  :class="ulclass[list.lotteryId]" v-if="(list.lotteryId == '8')||(list.lotteryId == '108') || (list.lotteryId == '6')||(list.lotteryId == '106') || (list.lotteryId == '20') || (list.lotteryId == '22')">
                                         <li v-for="listnum in list.winNumber.split(',')" >
                                            <!-- <span class="pk10_ball" :class="'num_'+listnum"></span>-->
                                             <span :class="[spanclass[list.lotteryId],'num_'+listnum]"></span>
@@ -104,22 +104,48 @@ export default {
     data :function() {
         return {
             pastView:{} ,
-            ulclass :{'8':'lo_ball double-numbers','6':'lo_ball double-numbers','20':'lo_ball double-numbers','22':'lo_ball double-numbers'} ,
-            spanclass :{'8':'pk10_ball small_ball','6':'k3_dice','20':'k3_dice','22':'k3_dice'} ,
+            ulclass :{
+              '8':'lo_ball double-numbers',
+              '108':'lo_ball double-numbers',
+              '6':'lo_ball double-numbers',
+              '106':'lo_ball double-numbers',
+              '20':'lo_ball double-numbers',
+              '22':'lo_ball double-numbers'
+            } ,
+            spanclass :{
+              '8':'pk10_ball small_ball',
+              '108':'pk10_ball small_ball',
+              '6':'k3_dice',
+              '106':'k3_dice',
+              '20':'k3_dice',
+              '22':'k3_dice'
+            } ,
             lotteryid :this.getCookie('lt_lotteryid') , // 彩种 id
             count :'30' , // 每次请求数量
-            cssid :{'8':'pk10','6':'k3','20':'k3','22':'k3'} ,
+            cssid :{
+              '8':'pk10',
+              '108':'pk10',
+              '6':'k3',
+              '106':'k3',
+              '20':'k3',
+              '22':'k3'
+              } ,
             gamechoose :[
-                {id:'2','name':'重庆时时彩'} ,
-                {id:'12','name':'天津时时彩'} ,
+               
+                 {id:'2','name':'重庆时时彩'} ,
+                {id:'102','name':'秒速时时彩'} ,
                 {id:'14','name':'新疆时时彩'} ,
+                {id:'108','name':'秒速赛车'},
+                {id:'8','name':'北京PK10'} ,
+                {id:'12','name':'天津时时彩'} ,
                 {id:'4','name':'江西11选5'} ,
+                {id:'104','name':'秒速11选5'} ,
                 {id:'16','name':'广东11选5'} ,
                 {id:'18','name':'山东11选5'} ,
+                {id:'106','name':'秒速快3'} ,
                 {id:'6','name':'江苏快3'} ,
-                {id:'20','name':'安徽快3'} ,
                 {id:'22','name':'湖北快3'} ,
-                {id:'8','name':'北京PK10'} ,
+                {id:'20','name':'安徽快3'} ,
             ],
         }
     },
@@ -158,9 +184,11 @@ this.setMenuAction() ;
                     if(!data.data[i].winNumber){
                         switch (this.lotteryid.toString()){
                             case '8': // 北京pk10
+                            case '108': //秒速赛车
                                 data.data[i].winNumber ='20,20,20,20,20,20,20,20,20,20' ;
                                 break;
                             case '6': // 江苏快 3
+                            case '106': // 秒速快 3
                             case '20': // 快 3
                             case '22': // 快 3
                                 data.data[i].winNumber ='20,20,20' ;
