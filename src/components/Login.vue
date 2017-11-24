@@ -87,7 +87,7 @@ export default {
     //获取验证码；
     switchYzmcode:function () {
           let _self =this ;
-          let url= this.action.uaa + 'apis/member/code/get?time='+ Math.random();
+          let url= this.action.uaa + 'apid/member/code/get?time='+ Math.random();
           $.ajax({
               type:"GET",
               url:url,
