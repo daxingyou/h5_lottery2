@@ -11,13 +11,14 @@
                     <img src="../../../static/frist/images/left/user.png">
                 </div>-->
                 <div>
+                    <span class="icon icon_user"></span>
                     <p class="user_name" v-if="haslogin">{{getCookie('username')}}</p>
-                    <!--<div class="purse"  v-if="haslogin">
+                    <div class="purse"  v-if="haslogin">
                         <span class="icon icon_money"></span>
                         <div class="so-in-top-sum" >
                             {{ fortMoney(roundAmt($parent.balanceData ? $parent.balanceData.balance : 0), 2)}}
                         </div>
-                    </div>-->
+                    </div>
                 </div>
             </div>
             <div class="so-l-c-con indexside">
