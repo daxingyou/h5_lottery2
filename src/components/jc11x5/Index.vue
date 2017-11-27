@@ -531,6 +531,8 @@
                     this.$refs.bet.betAmount = '' ;
                 }
                 this.getMemberBalance(this.lotteryID) ; // 更新余额
+                this.$refs.bet.showList = false; // 关闭下注弹窗
+                this.combineCount=0
             },
             combineCountCaculate:function(item){
                 const rule = this.selectRules[item.parentItem.cid];
