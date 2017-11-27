@@ -531,8 +531,12 @@
                     this.$refs.bet.betAmount = '' ;
                 }
                 this.getMemberBalance(this.lotteryID) ; // 更新余额
+<<<<<<< HEAD
                 this.$refs.bet.showList = false; // 关闭下注弹窗
                 this.combineCount=0
+=======
+                this.$refs.bet.showList = false ; // 关闭下注弹窗
+>>>>>>> a4078b7186f5788a3bf751eac644ee6322874382
             },
             combineCountCaculate:function(item){
                 const rule = this.selectRules[item.parentItem.cid];

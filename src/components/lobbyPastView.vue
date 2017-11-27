@@ -1,6 +1,6 @@
 <template>
     <div id="pa_con">
-        <header id="pa_head">
+        <header id="pa_head" class="new_header">
             <div class="left">
                 <a href="javascript:;">
                 </a>
@@ -18,7 +18,7 @@
                                     <div class="prd_num"><i class="prd"></i><span>{{list.lotteryName}}</span></div>
                                     <div class="prd_num02">第{{(list.lotteryId == '8' || list.lotteryId == '108')?list.issueAlias :list.pcode}}期</div>
                                    <!-- <div class="time timerset" :data-time=" (format(formatTimeUnlix(list.endTime)).getTime() - format(formatTimeUnlix(sys_time)).getTime()) / 1000 ">-->
-                                    <div class="time timerset endtime" :data-time="0" v-if="(list.endTime > sys_time)">
+                                    <div class="time timerset endtime" :data-time="0" v-if="(format(formatTimeUnlix(list.endTime,0)).getTime() > format(formatTimeUnlix(sys_time,0)).getTime())">
                                        <!-- {{ (format(formatTimeUnlix(list.endTime)).getTime() - format(formatTimeUnlix(sys_time)).getTime()) / 1000 }}-->
                                         <!--{{setTimerAction(list.endTime,sys_time) }}-->
                                         {{ formatTime((format(formatTimeUnlix(list.endTime,0)).getTime() - format(formatTimeUnlix(sys_time),0).getTime())/1000 ,0)}}
@@ -91,17 +91,17 @@ export default {
                 "2":"cqssc",
                 "12":"cqssc/tianJinIndex",
                 "14":"cqssc/xinJiangIndex",
-                "102":"cqssc/SecondSsc",
+                "102":"cqssc/SecondSscIndex",
                 "4":"jc11x5",     //江西11选5
                 "18":"jc11x5/sd11x5Index",  //山东11选5
-                "104":"jc11x5/MiaoSuIndex",  // 秒速11选5
+                "104":"jc11x5/ms11x5Index",  // 秒速11选5
                 "16":"jc11x5/gd11x5Index",  //广东11选5
                 "8":"pk10",
-                "108":"SecondPk10",  // 秒速 赛车
+                "108":"pk10/SecondPk10",  // 秒速 赛车
                 "6":"k3/",  //江苏快3
                 "20":"k3/anHuiK3Index",
                 "22":"k3/huBeiK3Index",
-                "106":"k3/MiaoSuIndex",  // 秒速k3
+                "106":"k3/miaoSuK3Index",  // 秒速k3
 
             }, // 对应彩种的id
             gameName : {
@@ -177,7 +177,7 @@ export default {
             success: (data) => {
                 for(var i=0;i<data.data.length;i++){
                     if(!data.data[i].winNumber || data.data[i].winNumber==''){
-                        switch (data.data[i].lotteryId){
+                        switch (data.data[i].lotteryId.toString()){
                             case '8': // 北京pk10
                             case '108': // 秒速赛车
                                 data.data[i].winNumber ='20,20,20,20,20,20,20,20,20,20' ;
@@ -193,12 +193,12 @@ export default {
                                 break ;
                         }
                     }
-                    if(data.data[i].endTime > this.sys_time){ // 如果当前期结束时间大于系统时间
-                        console.log('结束时间大')
-                        $('.timerset').eq(i).attr('data-time',(this.format(this.formatTimeUnlix(data.data[i].endTime,0)).getTime() - this.format(this.formatTimeUnlix(this.sys_time,0)).getTime()) / 1000) ;
+                    if(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() > _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime() ){ // 如果当前期结束时间大于系统时间
+                        console.log('结束时间大') ;
+                        $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000) ;
                     }else{
-                        console.log('结束时间小')
-                        $('.timerset').eq(i).attr('data-time',(this.format(this.formatTimeUnlix(data.data[i].nextEndTime,0)).getTime() - this.format(this.formatTimeUnlix(this.sys_time,0)).getTime()) / 1000) ;
+                        console.log('结束时间小') ;
+                        $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.nextEndTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000) ;
                     }
 
                 }
@@ -223,7 +223,7 @@ export default {
               _self.doubleCount('') ;
               setTimeout(function () {
                   _self.hasaction = false ;
-              },1000)
+              },2000) ;
           });
 
 

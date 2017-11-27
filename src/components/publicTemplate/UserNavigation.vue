@@ -22,9 +22,9 @@
               </div>-->
           </div>
       </div>
-      <div class="so-l-c-con" style="position: relative;z-index: 1000">
+      <div class="so-l-c-con">
 
-          <div style="position: relative;z-index: 2000">
+          <div>
                 <div class="back_home" >
                   <router-link v-bind:to="'/'">
                     <!--<span><img src="/static/frist/images/left/icon_home.png"></span>-->

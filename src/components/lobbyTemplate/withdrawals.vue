@@ -153,6 +153,7 @@ export default {
               url: _self.action.uaa + 'api/data/member/info',
               data: {},
               success: (res) => {
+
                   _self.memberId = res.data.memberId;
                   _self.acType = res.data.acType;
                   _self.getBalance(_self.memberId, _self.acType)
@@ -176,6 +177,12 @@ export default {
               url: _self.action.hermes + 'api/balance/get',
               data: BaData,
               success: (res) => {
+                  if(!res.data){ // 没有数据返回
+                      res.data = {
+                          balance:0 ,
+                          payoff:0 ,
+                      }
+                  }
                   _self.memBalance = res.data.balance;
               },
               error: (e) => {

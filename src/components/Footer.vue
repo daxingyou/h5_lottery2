@@ -2,8 +2,8 @@
     <footer class="bot_nav">
         <ul>
             <li :class="menu.path == $route.path && 'active'" v-for="menu in menus">
-                <router-link :class="menu.className" :to="menu.path">
-                    <span class="Footer-icon"></span>
+                <router-link :to="menu.path">
+                    <span :class="'icon icon_'+menu.className"></span>
                     <span class="Footer-font">{{menu.name}}</span>
                 </router-link>
             </li>
@@ -29,7 +29,7 @@
             return {
                 menus:[
                     { name:'首页大厅', className:'index', path:'/'},
-                    { name:'往期开奖', className:'trend', path:'/lobbyPastView'},
+                    { name:'往期开奖', className:'history', path:'/lobbyPastView'},
                     { name:'投注纪录', className:'record', path:'/lobbyBetRecord'},
                     { name:'个人中心', className:'member', path:'/lobbyTemplate/info'},
                 ]

@@ -52,7 +52,7 @@ input, select, button, a { outline: none; }
 
 .login > img { width: 100%; }
 
-.new_header > .center { text-align: center; padding: .5rem 0; width: calc(100% - 3rem); font-weight: 300; color: #d7e8f0; font-size: .38rem; float: left; }
+.new_header > .center { text-align: center; padding: .4rem 0; width: calc(100% - 3rem); font-weight: 300; color: #fff; font-size: .38rem; float: left; }
 
 .new_header > .center > img { width: 3.2rem; max-width: 100%; margin-top: -.25rem; }
 
@@ -95,7 +95,7 @@ input, select, button, a { outline: none; }
 .new_header ul > li { position: absolute; top: 0; }
 .new_header .so-menu { left: 0;  width: 1.36rem; height: 1.36rem; z-index: 2; }
 .new_header .icon_nav, .new_header .icon_trend{ margin-top: 0.36rem;}
-.new_header .left_top_logo { left: 1.36rem; width: 2.5rem; line-height: 1.36rem; text-align: left; color: #fff; font-size: .4rem; }
+.new_header .left_top_logo { left: 1.36rem; width: 2.5rem; line-height: 1.36rem; text-align: left; color: #fff; font-size: .4rem; background: -webkit-linear-gradient(top,#fbd4a9 0,#fdae40 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent; }
 .new_header .purse { right: 1.36rem; top: 0.345rem;}
 .new_header .so-top-zoushi { right: 0; width: 1.36rem; height: 1.36rem; }
 
@@ -106,7 +106,7 @@ input, select, button, a { outline: none; }
 
 #pa_con.cover_bg:after { content: ''; position: absolute; display: block; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.48); width: 100%; height: 100%; background-size: cover; z-index: 1; }
 
-#pa_content { margin-top: 1.5rem; position: relative; z-index: 2; padding-top: .9rem; }
+#pa_content { margin-top: 1.36rem; position: relative; z-index: 2; padding-top: .9rem; }
 
 #pa_content.lobby_past_view { padding: .5rem 0 2rem 0; }
 
@@ -126,59 +126,32 @@ input, select, button, a { outline: none; }
 footer{ background: url("/static/frist/images/bg_wood.jpg") no-repeat bottom; background-size: 100% auto; }
 footer.bot_nav { position: fixed; bottom: 0; width: 10rem;  height: 1.5rem; z-index: 51; }
 
-footer.bot_nav > ul { text-align: center; overflow: hidden; margin: 0 auto; font-size: 0; border-top: 1px solid #326087; }
+footer.bot_nav ul { text-align: center; overflow: hidden; margin: 0 auto; font-size: 0;  }
+footer.bot_nav ul li { display: inline-block; font-size: .34rem; text-align: center; width: 25%; height: 1.5rem; }
+footer.bot_nav ul li.active, footer.bot_nav > ul > li:hover, footer.bot_nav > ul > li:focus { background-color: rgba(0, 0, 0, 0.4); box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8) inset; -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8) inset; }
 
-footer.bot_nav > ul > li { display: inline-block; font-size: .33rem; text-align: center; width: 25%; height: 1.5rem; }
+footer.bot_nav ul li a { position: relative; display: inline-block; width: 100%; height: 100%; color:#fbd4a9; }
 
-footer.bot_nav > ul > li:after { content: ''; position: absolute; display: block; top: 0; left: 0; background-image: -webkit-gradient(linear, left top, left bottom, from(#172b3b), to(#365d82)); background-image: -webkit-linear-gradient(#172b3b, #365d82); background-image: -o-linear-gradient(#172b3b, #365d82); background-image: linear-gradient(#172b3b, #365d82); width: .03rem; height: 2.1rem; }
-
-footer.bot_nav > ul > li.active, footer.bot_nav > ul > li:hover, footer.bot_nav > ul > li:focus { background: #162538; /* Old browsers */ background: -moz-linear-gradient(top, #162538 0%, #165c85 92%, #165c85 92%, #49bed8 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top, #162538 0%, #165c85 92%, #165c85 92%, #49bed8 100%); /* Chrome10-25,Safari5.1-6 */ background: -webkit-gradient(linear, left top, left bottom, from(#162538), color-stop(92%, #165c85), color-stop(92%, #165c85), to(#49bed8)); background: -o-linear-gradient(top, #162538 0%, #165c85 92%, #165c85 92%, #49bed8 100%); background: linear-gradient(to bottom, #162538 0%, #165c85 92%, #165c85 92%, #49bed8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
-
-footer.bot_nav > ul > li.active a, footer.bot_nav > ul > li:hover a, footer.bot_nav > ul > li:focus a { text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9); }
-
-footer.bot_nav > ul > li a { position: relative; display: inline-block; width: 100%; height: 100%; }
-
-footer.bot_nav > ul > li a > span.Footer-icon { content: ''; position: absolute; display: block; top: 0; left: 0; background-image: url("/static/frist/images/icon.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: .5rem; height: .5rem; top: .48rem; left: calc(55% - 1rem); }
-
-footer.bot_nav > ul > li a > span.Footer-font { position: absolute; top: .48rem; left: .9rem; }
-
-footer.bot_nav > ul > li a.index .Footer-icon { background-position-y: 0.05rem; }
-
-footer.bot_nav > ul > li a.trend .Footer-icon { background-position-y: -.66rem; }
-
-footer.bot_nav > ul > li a.record .Footer-icon { background-position-y: -1.4rem; }
-
-footer.bot_nav > ul > li a.member .Footer-icon { background-position-y: -2.05rem; }
+footer.bot_nav ul li a span.icon { display: block; margin: 0.2rem auto 0.1rem;  }
+footer.bot_nav ul li a span.Footer-font { display: block; }
 
 /* 左侧选单 */
-.so-left { width: 8rem; position: fixed; z-index: 200; top: 0; bottom: 0; left: -100%; }
+.so-left { width: 7.24rem; position: fixed; z-index: 200; top: 0; bottom: 0; left: -100%; }
+.so-left .so-left-con { height: 100%; width: 7.24rem; background-color: rgba(0, 0, 0, 0.7); }
 
-.so-left .so-left-con { height: 100%; width: 8rem; background-color: rgba(0, 0, 0, 0.8); }
+.so-left .so-l-c-top { position: relative; background: url('/static/frist/images/leftmenu_user_bg.png') no-repeat center center; background-size: 100% 100%; padding: 0.5rem 0.7rem; text-align: left; }
+.so-left .so-l-c-top .user_name { display: inline-block; vertical-align: middle; text-align: left; margin-left: 0; color: #ffc388; font-size: .4rem; }
 
-.so-left .so-l-c-top { width: 100%; height: 1.97rem; position: relative; }
-
-.so-left .so-l-c-top > div { float: left; height: 100%; width: calc(100% - 3rem); }
-
-.so-left .so-l-c-top > div:first-child { width: 1.97rem; }
-
-.so-left .so-l-c-top > div:first-child img { width: 1.4rem; position: relative; top: 0.2rem; left: 0.1rem; }
-
-.so-left .so-l-c-top > div:last-child { margin-left: .5rem; }
-
-.so-left .so-l-c-top > div:last-child > p { margin-top: .5rem; position: relative; text-align: left; font-size: .4rem; }
-
-.so-left .so-l-c-top .user_name { position: relative; text-align: left; margin-left: 0; line-height: 1.8em; margin-top: .2rem; color: #fff; font-size: .4rem; }
-
-.so-left .so-l-c-top .user_name > strong { display: block; color: #fff; letter-spacing: 1px; font-weight: 500; font-size: .4rem; }
-
-.so-left .back_home { text-align: left; }
-.so-left .back_home a { color: white; }
-.so-left .back_home a span {  }
-.so-left .so-l-c-con { width: 100%; height: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; padding-bottom: 2rem; }
-.so-left .so-l-c-con li { text-align: left;}
-.so-left .so-l-c-con li .badge { display: none; }
-.so-left .so-l-c-con li p { font-size: 0.34rem; color: white; }
-.so-left .so-l-c-con li.active {  }
+.so-left .so-l-c-con{position: relative;z-index: 1000;}
+.so-left .so-l-c-con .back_home { }
+.so-left .so-l-c-con .back_home a, .so-left .so-l-c-con li a { text-align: left; display: block; color: #d59559; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding: 0.5rem 0.7rem; font-size: 0.4rem }
+.so-left .so-l-c-con .back_home a {  }
+.so-left .so-l-c-con .all_lottery { width: 100%; height: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; padding-bottom: 2rem; }
+.so-left .so-l-c-con .all_lottery li { width: 50%; float: left;}
+.so-left .so-l-c-con .all_lottery li:nth-child(odd) a { border-right: 1px solid rgba(255, 255, 255, 0.2); }
+.so-left .so-l-c-con .all_lottery:after{ content: ''; display: table; clear: both;}
+.so-left .so-l-c-con .all_lottery .badge { display: none; }
+.so-left .so-l-c-con .all_lottery.active {  }
 
 .so-left.active { left: 0; }
 .so-left.close { left: -100%; }
@@ -416,6 +389,10 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .icon.icon_trend{ background-position: -0.64rem 0;}
 .icon.icon_money{ background-position: 0 -0.64rem;}
 .icon.icon_user{ background-position: -1.28rem -0.64rem;}
+.icon.icon_index{ background-position: -1.92rem -0.64rem;}
+.icon.icon_history{ background-position: -2.56rem -0.64rem;}
+.icon.icon_record{ background-position: -3.2rem -0.64rem;}
+.icon.icon_member{ background-position: -3.84rem -0.64rem;}
 
 i.filter { background-image: url("/static/frist/images/filter.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; }
 
