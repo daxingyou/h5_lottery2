@@ -272,7 +272,7 @@
       props:['moduleName', 'moduleLotteryID','moduleplay'],
       data: function() {
         return {
-            now_pcode:0,  // 当前期数
+            now_pcode:'',  // 当前期数
             previous_pcode:'',//上一期期数
             winNumber:'',    //上期开奖号
             lastTermStatic:'',  //上期开奖数据统计
@@ -531,7 +531,12 @@
                     this.$refs.bet.betAmount = '' ;
                 }
                 this.getMemberBalance(this.lotteryID) ; // 更新余额
+<<<<<<< HEAD
+                this.$refs.bet.showList = false; // 关闭下注弹窗
+                this.combineCount=0
+=======
                 this.$refs.bet.showList = false ; // 关闭下注弹窗
+>>>>>>> a4078b7186f5788a3bf751eac644ee6322874382
             },
             combineCountCaculate:function(item){
                 const rule = this.selectRules[item.parentItem.cid];
