@@ -3,7 +3,7 @@
         <header id="pa_head" class="new_header">
             <div class="left">
                 <a href="javascript:;" >
-                   <!-- <img src="/static/frist/images/back.png" alt="">-->
+                   <!-- <span class="icon icon_back"></span>-->
                 </a>
             </div>
             <h2 class="center lottery_name">{{lotteryname}}</h2>
@@ -19,8 +19,8 @@
                         <li :class="{'active':lotteryid== list.id}" :data-val="list.id" v-for="list in gamechoose"><a href="javascript:void(0);"> {{list.name}} </a></li>
                     </ul>
                     <div>
-                        <div class="btn btn_two round btn_outline"><a href="javascript:;">取消</a></div>
-                        <div class="btn btn_two round btn_blue02 btn_submit"><a href="javascript:;">确定</a></div>
+                        <div class="btn_outline"><a class="new_btn cancel" href="javascript:;"><span>取消</span></a></div>
+                        <div class="btn_submit"><a class="new_btn ok" href="javascript:;"><span>确定</span></a></div>
                     </div>
                 </div>
             </div>

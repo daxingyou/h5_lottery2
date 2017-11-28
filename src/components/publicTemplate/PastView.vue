@@ -3,7 +3,7 @@
         <header id="pa_head" class="new_header">
             <div class="left">
                 <a href="javascript:;" onclick="history.go(-1)">
-                    <img src="/static/frist/images/back.png" alt="">
+                    <span class="icon icon_back"></span>
                 </a>
             </div>
             <h2 class="center lottery_name"> </h2>
@@ -20,8 +20,8 @@
 
                     </ul>
                     <div>
-                        <div class="btn btn_two round btn_outline"><a href="javascript:;">取消</a></div>
-                        <div class="btn btn_two round btn_blue02 btn_submit"><a href="javascript:;">确定</a></div>
+                        <div class="btn_outline"><a class="new_btn cancel" href="javascript:;"><span>取消</span></a></div>
+                        <div class="btn_submit"><a class="new_btn ok" href="javascript:;"><span>确定</span></a></div>
                     </div>
                 </div>
             </div>
@@ -38,11 +38,11 @@
                 <div class="bd" :id="cssid[lotteryid]">
                     <ul class="tab_content double-all">
                         <li class="past_view" v-for="(list,index) in pastView" v-if="list.winNumber !=''"> <!--  没有开奖号码不显示  -->
-                            <ul class="panel">
+                            <ul class="new_panel">
                                 <li class="prod" data-status="not_open" >
                                     <div class="play_th">
                                         <div class="prd_num">
-                                            <i class="prd"></i>
+                                            <!--<i class="prd"></i>-->
                                             <span>{{  ( (lotteryid == '8')||(lotteryid == '108') )? list.issueAlias:list.pcode}}</span>
                                            <span>期</span>
                                         </div>
@@ -75,7 +75,7 @@
                                         </li>
                                     </ul>
                                     <ul class="lo_ball double-numbers"  v-else>
-                                        <li v-for="listnum in list.winNumber.split(',')">{{listnum}}</li>
+                                        <li v-for="listnum in list.winNumber.split(',')" :class="'active round_ball num_'+listnum">{{listnum}}</li>
                                     </ul>
                                 </li>
                             </ul>

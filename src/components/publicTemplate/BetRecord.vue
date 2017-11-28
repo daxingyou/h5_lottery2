@@ -3,7 +3,7 @@
         <header id="pa_head" class="new_header">
             <div class="left">
                 <a href="javascript:;" onclick="history.go(-1) ">
-                    <img src="/static/frist/images/back.png" alt="">
+                    <span class="icon icon_back"></span>
                 </a>
             </div>
             <h2 class="center lottery_name">{{lotteryname}} 投注记录</h2>
@@ -30,8 +30,8 @@
 
                     </ul>
                     <div>
-                        <div class="btn btn_two round btn_outline"><a href="javascript:;">取消</a></div>
-                        <div class="btn btn_two round btn_blue02 btn_submit"><a href="javascript:;">确定</a></div>
+                        <div class="btn btn_two round btn_outline"><a class="new_btn cancel" href="javascript:;">取消</a></div>
+                        <div class="btn btn_two round btn_blue02 btn_submit"><a class="new_btn ok" href="javascript:;">确定</a></div>
                     </div>
                 </div>
             </div>

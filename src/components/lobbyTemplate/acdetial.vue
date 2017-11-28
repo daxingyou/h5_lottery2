@@ -2,8 +2,8 @@
     <div id="pa_con">
         <header id="pa_head" class="new_header">
             <div class="left">
-                <a href="#" @click.prevent="goBack">
-                    <img src="../../../static/frist/images/back.png" alt="">
+                <a href="javascript:;" @click.prevent="goBack">
+                    <span class="icon icon_back"></span>
                 </a>
             </div>
             <h2 class="center">帐户明细</h2>

@@ -19,22 +19,24 @@
                 </div>
             </div>
         </div>
-        <div v-if="showList" class="so-shade"></div>
-        <div v-if="showList" class="so-pop">
-            <h2>下注清单<a @click="closeListDialog"></a></h2>
-            <p class="grey_text">请核对您的下注信息</p>
-            <div>
-                <div class="boxlist bet-go-list">
-                    <p :data-id="item.cid" data-type="" v-for="item in betSelectedList">【<span class="each-title">{{item.parentItem && item.parentItem.name}}</span>-<span class="each-content">{{item.name}}</span>】 @ <span class="each-times">{{payoffFormat(item.oddsData.payoff)}}</span> x <span class="each-mon">{{betAmount}}</span></p>
-                   <!-- <p>【第一球-单】 @ 1.995 x 10</p>-->
+        <!--<div v-if="showList" class="so-shade"></div>-->
+        <div v-if="showList" class="modal so-pop">
+            <div class="m_content">
+                <h2>下注清单<a @click="closeListDialog"></a></h2>
+                <p class="grey_text">请核对您的下注信息</p>
+                <div class="bet_list">
+                    <div class="boxlist bet-go-list">
+                        <p :data-id="item.cid" data-type="" v-for="item in betSelectedList">【<span class="each-title">{{item.parentItem && item.parentItem.name}}</span>-<span class="each-content">{{item.name}}</span>】 @ <span class="each-times">{{payoffFormat(item.oddsData.payoff)}}</span> x <span class="each-mon">{{betAmount}}</span></p>
+                    <!-- <p>【第一球-单】 @ 1.995 x 10</p>-->
+                    </div>
                 </div>
+                <p class="so-pop-sum">
+                【总计】总注数：<span class="total-bet-num">{{betCount}}</span>
+                总金额：<span class="total-bet-mon">{{totalAmount}}</span>
+                </p>
+                <a class="new_btn cancel" @click="closeListDialog"><span>取消</span></a>
+                <a class="new_btn btn-submit ok" @click="submitAction(lotteryID)"><span>确定</span></a>
             </div>
-            <p class="so-pop-sum">
-            【总计】总注数：<span class="total-bet-num">{{betCount}}</span> <br/>
-            总金额：<span class="total-bet-mon">{{totalAmount}}</span>
-            </p>
-            <a class="cancle" @click="closeListDialog">取消</a>
-            <a class="btn-submit ok" @click="submitAction(lotteryID)">确定</a>
         </div>
         <!--封盘底部遮挡-->
          <!-- <div class="so-fengpan">

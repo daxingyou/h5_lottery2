@@ -48,7 +48,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="bule_bg"></div>
+                <div class="body_bg"></div>
                 <div  id="content-wrapper">
                      <div class="so-con-right ">
                       <div id="scroller"  class="scroller" >

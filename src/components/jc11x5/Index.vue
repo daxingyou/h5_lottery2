@@ -84,9 +84,9 @@
 
                         </ul>
                     </div>
-                <div class="bule_bg" > </div>
+                <div class="body_bg" > </div>
                 <div  id="content-wrapper">
-                    <div class="so-con-right " >  <!-- bule_bg -->
+                    <div class="so-con-right " >  <!-- body_bg -->
                          <div id="scroller"  class="scroller" >
                            <div class="content-all">
                               <!--以下为盘面不同样式，根据ID+class区分-->

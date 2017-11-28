@@ -3,7 +3,7 @@
         <header id="pa_head" class="new_header">
             <div class="left">
                 <a href="javascript:;" onclick="history.go(-1)">
-                    <img src="../../../static/frist/images/back.png" alt="">
+                    <span class="icon icon_back"></span>
                 </a>
             </div>
             <h2 class="center">充值</h2>
@@ -285,7 +285,7 @@
                     <br/>
                 </p>
                 <div class="action">
-                    <a class="ok">确定</a>
+                    <a class="new_btn ok"><span>确定</span></a>
                 </div>
             </div>
         </div>
