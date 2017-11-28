@@ -12,9 +12,9 @@
             <div id="betting_record" class="tab_container tabBox">
                 <ul class="tab_content">
                     <li class="past_view" v-for="(list,index) in pastView">
-                        <ul class="panel">
+                        <ul class="new_panel">
                             <li class="prod cqssc" >
-                                <div class="play_th">
+                                <div class="new_panel_top play_th">
                                     <div class="prd_num"><i class="prd"></i><span>{{list.lotteryName}}</span></div>
                                     <div class="prd_num02">第{{(list.lotteryId == '8' || list.lotteryId == '108')?list.issueAlias :list.pcode}}期</div>
                                    <!-- <div class="time timerset" :data-time=" (format(formatTimeUnlix(list.endTime)).getTime() - format(formatTimeUnlix(sys_time)).getTime()) / 1000 ">-->
@@ -28,14 +28,14 @@
                                     </div>
                                 </div>
                                 <!--  北京pk10  秒速赛车 江苏快3 -->
-                                <ul :class="ulclass[list.lotteryId]" v-if="(list.lotteryId == '8') || (list.lotteryId == '108') || (list.lotteryId == '6') || (list.lotteryId == '106') || (list.lotteryId == '20') || (list.lotteryId == '22')">
+                                <ul :class="'new_panel_center '+ulclass[list.lotteryId]" v-if="(list.lotteryId == '8') || (list.lotteryId == '108') || (list.lotteryId == '6') || (list.lotteryId == '106') || (list.lotteryId == '20') || (list.lotteryId == '22')">
                                     <li v-for="listnum in list.winNumber.split(',')" >
                                        <!-- <span class="pk10_ball small_ball" :class="'num_'+listnum"></span>-->
                                         <span :class="[spanclass[list.lotteryId],'num_'+listnum]"></span>
                                     </li>
                                 </ul>
 
-                                <ul class="lo_ball" v-else>
+                                <ul class="new_panel_center lo_ball" v-else>
                                     <li v-for="listnum in list.winNumber.split(',')">{{listnum}}</li>
                                 </ul>
 

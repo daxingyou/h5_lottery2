@@ -7,18 +7,18 @@
       <header id="pa_head" class="new_header index_nav_top">
              <div class="left index_side">
                  <a class="btn_leftside" href="javascript:;" v-show="haslogin">
-                     <img src="static/frist/images/nav.png" alt="">
+                     <span class="icon icon_nav"></span>
                  </a>
              </div>
-             <h2 class="center logo" v-bind:class="[haslogin ? '' : 'logo_left']"><img src="static/frist/images/nav_top_logo.png" alt="宝池彩票"></h2>
+             <h2 class="center logo" v-bind:class="[haslogin ? '' : 'logo_left']"><img src="static/frist/images/logo.png" alt="宝池彩票"></h2>
              <div class="right">
-                 <router-link to="/login" v-show="!haslogin">登录</router-link>
-                 <router-link to="/reg" v-show="!haslogin" >注册</router-link>
-                 <a href="javascript:;" v-show="!haslogin"  @click="demoPlay()">试玩</a>
+                 <router-link to="/login" class="new_btn_outline" v-show="!haslogin">登录</router-link>
+                 <router-link to="/reg" class="new_btn_outline" v-show="!haslogin" >注册</router-link>
+                 <a href="javascript:;" class="new_btn_outline" v-show="!haslogin"  @click="demoPlay()">试玩</a>
                  <!-- <router-link class="login" to="/lobbyTemplate/info" v-show="haslogin" ><i></i><b></b></router-link>--> <!-- 普通用户 -->
-                 <a class="guset" href="javascript:;" v-show="haslogin && logintype=='2'" @click="CheckDemoPlay()"><i></i>游客</a>  <!--  试玩帐号 -->
+                 <a class="guset" href="javascript:;" v-show="haslogin && logintype=='2'" @click="CheckDemoPlay()"><span class="icon icon_user"></span>游客</a>  <!--  试玩帐号 -->
                  <span class="memberaccount" v-show="haslogin && logintype=='1'">{{getCookie('username')}}</span>
-                 <a href="javascript:;" v-show="haslogin" @click="loginOut()">退出</a>
+                 <a class="new_btn_outline" href="javascript:;" v-show="haslogin" @click="loginOut()">退出</a>
              </div>
          </header>
       <div class="news">
@@ -80,7 +80,7 @@
         <ul>
             <li>
                 <a href="javascript:;" @click="CheckDemoPlay('CZ')">
-                    <div class="icon">
+                    <div class="icon_account">
                         <span class="icon_deposit"></span>
                     </div>
                     <p>充值</p>
@@ -88,7 +88,7 @@
             </li>
             <li>
                 <a href="javascript:;" @click="CheckDemoPlay('TK')">
-                    <div class="icon">
+                    <div class="icon_account">
                         <span class="icon_withdrawals"></span>
                     </div>
                     <p>提款</p>
@@ -97,7 +97,7 @@
             <li>
               <!--  <router-link to="/lobbyTemplate/promo">-->
                 <a href="javascript:;"  @click="Continued()">
-                    <div class="icon">
+                    <div class="icon_account">
                         <span class="icon_promo"></span>
                     </div>
                     <p>优惠活动</p>
@@ -105,7 +105,7 @@
             </li>
             <li>
                 <a href="javascript:;"  @click="openGame('https://messenger.providesupport.com/messenger/1sppddzqo56sf08wzrnuxiv6yt.html')">
-                    <div class="icon">
+                    <div class="icon_account">
                         <span class="icon_service"></span>
                     </div>
                     <p>在线客服</p>
@@ -117,7 +117,7 @@
 
       <div id="index_content" class="content">
           <section class="hotgame_area">
-              <h3><img src="static/frist/images/title_hotgame.png" alt="热门游戏"></h3>
+              <!--<h3><img src="static/frist/images/title_hotgame.png" alt="热门游戏"></h3>-->
               <ul>
 
                  <!-- <li v-for="lottery in allLottery" v-if="lottery.ifHot==1">-->
@@ -141,7 +141,7 @@
                     <li>
                         <a href="javascript:;" class="more-games">
                             <div class="badge">
-                                <img src="/static/frist/images/logo/more.png" lazy="loaded">
+                                <img src="/static/frist/images/lotteryicon/logo_more.png" lazy="loaded">
                             </div>
                         </a>
                         <p>更多游戏</p>
@@ -149,7 +149,7 @@
                     <li >
                         <a href="javascript:;" @click="Continued()">
                             <div class="badge">
-                                <img src="/static/frist/images/logo/download.png" lazy="loaded">
+                                <img src="/static/frist/images/lotteryicon/logo_app.png" lazy="loaded">
                             </div>
                         </a>
                         <p>APP下载</p>
@@ -158,7 +158,7 @@
               </ul>
           </section>
           <!--20171116 新增優惠活動-->
-          <section class="promoindex_area">
+          <!--<section class="promoindex_area">
               <h3>
                   <img src="static/frist/images/title_promos.png" alt="优惠活动">
                   <a  @click="Continued()" style="float: right;">更多</a>
@@ -166,9 +166,9 @@
               <a  @click="Continued()">
                   <img src="/static/frist/images/banner/promo-1.jpg">
               </a>
-          </section>
+          </section>-->
           <!--end 20171116 新增優惠活動-->
-          <section class="cooper_area">
+          <!--<section class="cooper_area">
               <div class="cooper">
                   <h3><img src="static/frist/images/title_cooperation.png" alt="合作加盟"></h3>
                   <ul>
@@ -183,7 +183,7 @@
                       </li>
                   </ul>
               </div>
-          </section>
+          </section>-->
 
       </div>
       <Confirm ref="confirm" />

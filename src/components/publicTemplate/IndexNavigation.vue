@@ -26,7 +26,7 @@
                     <ul>
                         <li @click="CheckDemoPlay('CZ')">
                             <a>
-                                <div class="icon">
+                                <div class="">
                                     <div>
                                         <i class="index_s index_s01"></i>
                                     </div>
@@ -36,7 +36,7 @@
                         </li>
                         <li @click="CheckDemoPlay('TK')">
                             <a>
-                                <div class="icon">
+                                <div class="">
                                     <div>
                                         <i class="index_s index_s02"></i>
                                     </div>
@@ -46,7 +46,7 @@
                         </li>
                         <li>
                             <router-link v-bind:to="'/lobbyTemplate/acdetial'">
-                                <div class="icon">
+                                <div class="">
                                     <div>
                                         <i class="index_s index_s03"></i>
                                     </div>
@@ -56,7 +56,7 @@
                         </li>
                         <li>
                             <a href="javascript:;" @click="openGame('https://messenger.providesupport.com/messenger/1sppddzqo56sf08wzrnuxiv6yt.html')">
-                                <div class="icon">
+                                <div class="">
                                     <div>
                                         <i class="index_s index_s04"></i>
                                     </div>

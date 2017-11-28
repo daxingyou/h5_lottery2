@@ -36,7 +36,7 @@
                     <a :href="'/'+gameHref[lottery.cid]" >
                       <div class="badge">
                           <!-- <img :src="lottery.imgUrl" alt="">-->
-                          <img v-lazy="'../static/frist/images/lotteryicon/cp'+lottery.cid+'.png'">
+                          <!--<img v-lazy="'../static/frist/images/lotteryicon/cp'+lottery.cid+'.png'">-->
                       </div>
                       <p>{{lottery.name}}</p>
                     </a>
