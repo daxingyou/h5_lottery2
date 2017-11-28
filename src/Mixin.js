@@ -119,6 +119,13 @@ var MyMixin = {
             });
 
         },
+        // 初始化滚动高度
+        setInitHeight:function () {
+            var conth = $('.so-con-right .item_one').height()-310 ;
+            $('.so-con-right').css('height',conth+'px') ;
+            window.PointerEvent = undefined ;
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        },
     /*    dateFormat:function(p0, p1, p2) {
             return DateFormat(...arguments);
         },*/
@@ -187,17 +194,20 @@ var MyMixin = {
 
         // 玩法树
         loadPlayTree:function(gameid) {
-            var _slef = this ;
+            var _self = this ;
             return new Promise((resolve, reject)=>{
                 $.ajax({
                     type: 'get',
                     headers: {
-                        "Authorization": "bearer  " + this.getAccessToken,
+                        "Authorization": "bearer  " + _self.getAccessToken,
                     },
                     url: this.action.forseti + 'api/playsTree',
                     data: {lotteryId: gameid,}, // 当前彩种id
                     success: (res) => {
                         this.playTreeList = res.data ? res.data.childrens :[];
+                     setTimeout(function () {
+                         _self.setInitHeight() ;
+                     },200) ;
                         resolve(this.playTreeList);
                     },
                     error: function (e) {
@@ -253,12 +263,7 @@ var MyMixin = {
                     url: this.action.hermes + 'api/balance/get',
                     data: { lotteryId: lotteryid },
                     success: (res) => {
-                        if(!res.data){ // 没有数据返回
-                            res.data = {
-                                balance:0 ,
-                                payoff:0 ,
-                            }
-                        }
+                        console.log(res)
                         this.balanceData = res.data;
                         var mom = this.fortMoney(this.roundAmt(res.data.balance), 2);  // 用户余额
                         this.setCookie("membalance", mom);  // 把登录余额放在cookie里面
