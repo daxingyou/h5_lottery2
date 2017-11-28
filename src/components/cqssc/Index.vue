@@ -319,7 +319,8 @@ export default {
     },
     //封盘倒计时结束后处理
     entertain:function(){
-        this.$refs.infoDialog.open('请至下期继续投注', 'title_end')
+        // this.$refs.infoDialog.open('请至下期继续投注', 'title_end')
+        this.$refs.infoDialog.open('请至下期继续投注', '本期投注已结束')
         this.entertainStatus = true;
         this.resetAction();
     },

@@ -267,7 +267,8 @@
                     this.dataResult = data.data;
                 }).bind(this),
                 error: function (data) {  // 错误提示
-                    this.$refs.infoDialog.open('您的登录已过期，请重新登录', 'title_tip')
+                    // this.$refs.infoDialog.open('您的登录已过期，请重新登录', 'title_tip')
+                    this.$refs.infoDialog.open('您的登录已过期，请重新登录', '提示')
                     // initPopEve(2,'您的登录已过期，请重新登录') ;
                     return false ;
 

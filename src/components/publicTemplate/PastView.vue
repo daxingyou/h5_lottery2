@@ -40,7 +40,7 @@
                         <li class="past_view" v-for="(list,index) in pastView" v-if="list.winNumber !=''"> <!--  没有开奖号码不显示  -->
                             <ul class="new_panel">
                                 <li class="prod" data-status="not_open" >
-                                    <div class="play_th">
+                                    <div class="new_panel_top play_th">
                                         <div class="prd_num">
                                             <!--<i class="prd"></i>-->
                                             <span>{{  ( (lotteryid == '8')||(lotteryid == '108') )? list.issueAlias:list.pcode}}</span>
@@ -68,13 +68,13 @@
                                     </div>
                                     <!-- 北京pk10  -->
                                   <!--  <ul class="lo_ball double-numbers" v-if="lotteryid == '8'"> -->
-                                    <ul  :class="ulclass[list.lotteryId]" v-if="(list.lotteryId == '8')||(list.lotteryId == '108') || (list.lotteryId == '6')||(list.lotteryId == '106') || (list.lotteryId == '20') || (list.lotteryId == '22')">
+                                    <ul  :class="'new_panel_center '+ulclass[list.lotteryId]" v-if="(list.lotteryId == '8')||(list.lotteryId == '108') || (list.lotteryId == '6')||(list.lotteryId == '106') || (list.lotteryId == '20') || (list.lotteryId == '22')">
                                         <li v-for="listnum in list.winNumber.split(',')" >
                                            <!-- <span class="pk10_ball" :class="'num_'+listnum"></span>-->
                                             <span :class="[spanclass[list.lotteryId],'num_'+listnum]"></span>
                                         </li>
                                     </ul>
-                                    <ul class="lo_ball double-numbers"  v-else>
+                                    <ul class="new_panel_center lo_ball double-numbers"  v-else>
                                         <li v-for="listnum in list.winNumber.split(',')" :class="'active round_ball num_'+listnum">{{listnum}}</li>
                                     </ul>
                                 </li>

@@ -1,11 +1,11 @@
 <template>
   <div v-if="show" class="modal m12 publicDialog" @click="close">
       <div class="m_content">
-          <h2 class="noclose"><a></a></h2>
+          <h2 class="noclose">{{typeStr}}<a></a></h2>
           <div class="content danger">
               <div>
-                  <img :src="'/static/frist/images/pop/'+ (typeStr || 'title_end') +'.png'">
-                  <img src="/static/frist/images/page/status03.svg">
+                  <!--<img :src="'/static/frist/images/pop/'+ (typeStr || 'title_end') +'.png'">-->
+                  <div class="tip_icon"><img src="/static/frist/images/page/status03.svg"></div>
               </div>
               {{content}}
           </div>

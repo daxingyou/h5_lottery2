@@ -37,7 +37,7 @@
                             <div class="so-m-t-right" v-show="ishwowpriod">
                                 <div class="last-open-num">
                                     <ul>
-                                        <li v-for="item in winNumber.split(',')">{{item}}</li>
+                                        <li :class="'active round_ball num_' + item" v-for="item in winNumber.split(',')">{{item}}</li>
                                     </ul>
                                 </div>
                                 <div class="last-open-dou">
@@ -427,7 +427,8 @@
             },
             //封盘倒计时结束后处理
             entertain:function(){
-                this.$refs.infoDialog.open('请至下期继续投注', 'title_end') ;
+                // this.$refs.infoDialog.open('请至下期继续投注', 'title_end') ;
+                this.$refs.infoDialog.open('请至下期继续投注', '本期投注已结束');
                 this.entertainStatus = true;
                 this.resetAction();
             },
@@ -561,7 +562,7 @@
                     }else{
                         callback(false);
                         // 请选择1个选项
-                        this.$refs.infoDialog.open('请选择'+max+'个选项', 'title_quantity');
+                        this.$refs.infoDialog.open('请选择'+max+'个选项', '投注项目超过规定数量');
                     }
                     this.combineCountCaculate(item);
                 }
