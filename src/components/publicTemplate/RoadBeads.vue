@@ -21,157 +21,159 @@
 
                     </ul>
                     <div>
-                        <div class="btn btn_two round btn_outline"><a href="javascript:;">取消</a></div>
-                        <div class="btn btn_two round btn_blue02 btn_submit"><a href="javascript:;">确定</a></div>
+                        <div class="btn_outline"><a class="new_btn cancel" href="javascript:;"><span>取消</span></a></div>
+                        <div class="btn_submit"><a class="new_btn ok" href="javascript:;"><span>确定</span></a></div>
                     </div>
                 </div>
             </div>
         </div>
         <div id="pa_content">
-            <div id="road01" class="tab_container tabBox">
-                <div class="hd">
-                    <ul class="tab tab01 tab_mid" :class="ulclass[lotteryid]">
+            <div class="page_box">
+                <div id="road01" class="new_road tab_container tabBox">
+                    <div class="hd">
+                        <ul class="tab tab01 tab_mid" :class="ulclass[lotteryid]">
+                            <!-- pk10 -->
+                            <li class="on" data-tab="road01_1" data-val="1" v-if=" (lotteryid=='8')|| (lotteryid=='108') "><a href="javascript:;">冠亚和大小</a></li>
+                            <li data-tab="road01_2" data-val="1" v-if=" (lotteryid=='8')||(lotteryid=='108') "><a href="javascript:;">冠亚和单双</a></li>
+                            <!-- pk10 赛车没有 -->
+                            <li class="on" data-tab="road01_1" data-val="1" v-if="(lotteryid =='2') || (lotteryid =='4') || (lotteryid =='6')||(lotteryid =='12')||(lotteryid =='14')||(lotteryid =='16')||(lotteryid =='18')||(lotteryid =='20') ||(lotteryid =='22')|| (lotteryid =='102') || (lotteryid =='104')|| (lotteryid =='106') ">
+                                <a href="javascript:;">
+                                    总和大小</a>
+                            </li>
+                            <!-- 快3 pk10 没有 -->
+                            <li data-tab="road01_2" data-val="1" v-if="(lotteryid =='2') ||(lotteryid =='102')|| (lotteryid =='4') || (lotteryid =='104')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18')">
+                                <a href="javascript:;">总和单双</a>
+                            </li>
+                            <!-- 11 选5才有-->
+                            <li data-tab="road01_4" data-val="1" class="jxsyxw_tab"  v-if="(lotteryid =='4') ||(lotteryid =='104')|| (lotteryid =='16') || (lotteryid =='18')">
+                                <a href="javascript:;">总和尾大小</a>
+                            </li>
+                            <li data-tab="road01_3" data-val="1" v-if="(lotteryid =='2')||(lotteryid =='102') || (lotteryid =='4') || (lotteryid =='104')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18')">
+                                <a href="javascript:;" >龙 虎</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="bd">
+                        <!-- 总和大小 -->
+                        <RoadBeadItem id="road01_1" :dataResult="dataResult.top2_size" class="tab_content_out on" v-if="(lotteryid=='8')||(lotteryid=='108')"/>
+                        <RoadBeadItem id="road01_1" :dataResult="dataResult.total_size" class="tab_content_out on" v-else />
+
+                        <!-- 总和单双 v-if="!(['6','20','22'].includes(lotteryid))" -->
+                        <RoadBeadItem id="road01_2"  :dataResult="dataResult.top2_sd" class="tab_content_out" v-if="(lotteryid =='8')||(lotteryid =='108')"/>
+                        <RoadBeadItem id="road01_2" :dataResult="dataResult.total_sd" class="tab_content_out" v-else />
+
+                        <!-- 总和尾大小 11 选5 才有 -->
+                        <RoadBeadItem id="road01_4" v-if="!(['2', '102','6','106','20','22'].includes(lotteryid))" :dataResult="dataResult.totalEnd_size" class="tab_content_out" />
+
+                        <!-- 龙虎 -->
+                        <RoadBeadItem id="road01_3" v-if="!(['6','106','20','22'].includes(lotteryid))" :dataResult="dataResult.total_lhh" class="tab_content_out" />
+                    </div>
+                </div>
+                <div id="road02" class="new_road tab_container tabBox" v-if="(lotteryid =='2')||(lotteryid =='102') || (lotteryid =='4') ||(lotteryid =='104') || (lotteryid =='8')|| (lotteryid =='108')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18')">
+                    <div class="hd">
+                        <ul class="tab tab02 tab_mid tab_five" v-if="(lotteryid == '8')||(lotteryid == '108')">
+                            <li data-tab="road02_1" class="on" data-val="2"><a href="javascript:;">冠军</a></li>
+                            <li data-tab="road02_2" data-val="2"><a href="javascript:;">亚军</a></li>
+                            <li data-tab="road02_3" data-val="2"><a href="javascript:;">第三名</a></li>
+                            <li data-tab="road02_4" data-val="2"><a href="javascript:;">第四名</a></li>
+                            <li data-tab="road02_5" data-val="2"><a href="javascript:;">第五名</a></li>
+                            <li data-tab="road02_6" data-val="2"><a href="javascript:;">第六名</a></li>
+                            <li data-tab="road02_7" data-val="2"><a href="javascript:;">第七名</a></li>
+                            <li data-tab="road02_8" data-val="2"><a href="javascript:;">第八名</a></li>
+                            <li data-tab="road02_9" data-val="2"><a href="javascript:;">第九名</a></li>
+                            <li data-tab="road02_10" data-val="2"><a href="javascript:;">第十名</a></li>
+                        </ul>
+                        <ul class="tab tab02 tab_mid tab_five" v-else>
+                            <li data-tab="road02_1" class="on" data-val="2"><a href="javascript:;">第一球</a></li>
+                            <li data-tab="road02_2" data-val="2"><a href="javascript:;">第二球</a></li>
+                            <li data-tab="road02_3" data-val="2"><a href="javascript:;">第三球</a></li>
+                            <li data-tab="road02_4" data-val="2"><a href="javascript:;">第四球</a></li>
+                            <li data-tab="road02_5" data-val="2"><a href="javascript:;">第五球</a></li>
+                        </ul>
+                    </div>
+    <!-- 
+                        this.roadDomAction(data.data.size_1,'road02_1 .dx_size') ;  // 第一球大小 (pk10 冠军)
+                        this.roadDomAction(data.data.sd_1,'road02_1 .ds_dx') ;  // 第一球单双 (pk10 冠军)
+                        this.roadDomAction(data.data.size_2,'road02_2 .dx_size') ;  // 第二球大小 (pk10 亚军)
+                        this.roadDomAction(data.data.sd_2,'road02_2 .ds_dx') ;  // 第二球单双 (pk10 亚军)
+                        this.roadDomAction(data.data.size_3,'road02_3 .dx_size') ;  // 第三球大小 (pk10 第三名)
+                        this.roadDomAction(data.data.sd_3,'road02_3 .ds_dx') ;  // 第三球单双 (pk10 第三名)
+
+                        this.roadDomAction(data.data.size_4,'road02_4 .dx_size') ;  // 第四球大小
+                        this.roadDomAction(data.data.sd_4,'road02_4 .ds_dx') ;  // 第四球单双
+                        this.roadDomAction(data.data.size_5,'road02_5 .dx_size') ;  // 第五球大小
+                        this.roadDomAction(data.data.sd_5,'road02_5 .ds_dx') ;  // 第五球单双
+    -->
+
+                    <div class="bd">
+                        <div id="road02_1" class="tab_content_out on">
+                            <RoadBeadItem :dataResult="dataResult.size_1" class="dx_size" />
+                            <RoadBeadItem :dataResult="dataResult.sd_1" class="ds_dx" />
+                            <!-- <ul class="tab_content dx_size">
+                            </ul>
+                            <ul class="tab_content ds_dx">
+                            </ul> -->
+                        </div>
+                        <div id="road02_2" class="tab_content_out">
+                            <RoadBeadItem :dataResult="dataResult.size_2" class="dx_size" />
+                            <RoadBeadItem :dataResult="dataResult.sd_2" class="ds_dx" />
+
+    <!--                         <ul class="tab_content dx_size"></ul>
+                            <ul class="tab_content ds_dx"></ul> -->
+                        </div>
+                        <div id="road02_3" class="tab_content_out">
+                            <RoadBeadItem :dataResult="dataResult.size_3" class="dx_size" />
+                            <RoadBeadItem :dataResult="dataResult.sd_3" class="ds_dx" />
+
+                            <!-- <ul class="tab_content dx_size">
+                            </ul>
+                            <ul class="tab_content ds_dx">
+                            </ul> -->
+                        </div>
+                        <div id="road02_4" class="tab_content_out">
+                            <RoadBeadItem :dataResult="dataResult.size_4" class="dx_size" />
+                            <RoadBeadItem :dataResult="dataResult.sd_4" class="ds_dx" />
+    <!--                         <ul class="tab_content dx_size">
+                            </ul>
+                            <ul class="tab_content ds_dx">
+                            </ul> -->
+                        </div>
+                        <div id="road02_5" class="tab_content_out">
+                            <RoadBeadItem :dataResult="dataResult.size_5" class="dx_size" />
+                            <RoadBeadItem :dataResult="dataResult.sd_5" class="ds_dx" />
+                            <!-- <ul class="tab_content dx_size">
+                            
+                            </ul>
+                            <ul class="tab_content ds_dx">
+                            
+                            </ul> -->
+                        </div>
+
                         <!-- pk10 -->
-                        <li class="on" data-tab="road01_1" data-val="1" v-if=" (lotteryid=='8')|| (lotteryid=='108') "><a href="javascript:;">冠亚和大小</a></li>
-                        <li data-tab="road01_2" data-val="1" v-if=" (lotteryid=='8')||(lotteryid=='108') "><a href="javascript:;">冠亚和单双</a></li>
-                        <!-- pk10 赛车没有 -->
-                        <li class="on" data-tab="road01_1" data-val="1" v-if="(lotteryid =='2') || (lotteryid =='4') || (lotteryid =='6')||(lotteryid =='12')||(lotteryid =='14')||(lotteryid =='16')||(lotteryid =='18')||(lotteryid =='20') ||(lotteryid =='22')|| (lotteryid =='102') || (lotteryid =='104')|| (lotteryid =='106') ">
-                            <a href="javascript:;">
-                                总和大小</a>
-                        </li>
-                        <!-- 快3 pk10 没有 -->
-                        <li data-tab="road01_2" data-val="1" v-if="(lotteryid =='2') ||(lotteryid =='102')|| (lotteryid =='4') || (lotteryid =='104')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18')">
-                            <a href="javascript:;">总和单双</a>
-                        </li>
-                        <!-- 11 选5才有-->
-                        <li data-tab="road01_4" data-val="1" class="jxsyxw_tab"  v-if="(lotteryid =='4') ||(lotteryid =='104')|| (lotteryid =='16') || (lotteryid =='18')">
-                            <a href="javascript:;">总和尾大小</a>
-                        </li>
-                        <li data-tab="road01_3" data-val="1" v-if="(lotteryid =='2')||(lotteryid =='102') || (lotteryid =='4') || (lotteryid =='104')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18')">
-                            <a href="javascript:;" >龙 虎</a>
-                        </li>
+                        <div id="road02_6" class="tab_content_out" v-if="(lotteryid =='8')||(lotteryid =='108')">
+                            <RoadBeadItem :dataResult="dataResult.size_6" class="dx_size" />
+                            <RoadBeadItem :dataResult="dataResult.sd_6" class="ds_dx" />
+                        </div>
+                        <div id="road02_7" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108') ">
+                            <RoadBeadItem :dataResult="dataResult.size_7" class="dx_size" />
+                            <RoadBeadItem :dataResult="dataResult.sd_7" class="ds_dx" />
+                        </div>
+                        <div id="road02_8" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108') ">
+                            <RoadBeadItem :dataResult="dataResult.size_8" class="dx_size" />
+                            <RoadBeadItem :dataResult="dataResult.sd_8" class="ds_dx" />
+                        </div>
+                        <div id="road02_9" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108') ">
+                            <RoadBeadItem :dataResult="dataResult.size_9" class="dx_size" />
+                            <RoadBeadItem :dataResult="dataResult.sd_9" class="ds_dx" />
+                        </div>
+                        <div id="road02_10" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108') ">
+                            <RoadBeadItem :dataResult="dataResult.size_10" class="dx_size" />
+                            <RoadBeadItem :dataResult="dataResult.sd_10" class="ds_dx" />
+                        </div>
 
-                    </ul>
-                </div>
-                <div class="bd">
-                    <!-- 总和大小 -->
-                    <RoadBeadItem id="road01_1" :dataResult="dataResult.top2_size" class="tab_content_out on" v-if="(lotteryid=='8')||(lotteryid=='108')"/>
-                    <RoadBeadItem id="road01_1" :dataResult="dataResult.total_size" class="tab_content_out on" v-else />
 
-                    <!-- 总和单双 v-if="!(['6','20','22'].includes(lotteryid))" -->
-                    <RoadBeadItem id="road01_2"  :dataResult="dataResult.top2_sd" class="tab_content_out" v-if="(lotteryid =='8')||(lotteryid =='108')"/>
-                    <RoadBeadItem id="road01_2" :dataResult="dataResult.total_sd" class="tab_content_out" v-else />
-
-                    <!-- 总和尾大小 11 选5 才有 -->
-                    <RoadBeadItem id="road01_4" v-if="!(['2', '102','6','106','20','22'].includes(lotteryid))" :dataResult="dataResult.totalEnd_size" class="tab_content_out" />
-
-                    <!-- 龙虎 -->
-                    <RoadBeadItem id="road01_3" v-if="!(['6','106','20','22'].includes(lotteryid))" :dataResult="dataResult.total_lhh" class="tab_content_out" />
-                </div>
-            </div>
-            <div id="road02" class="tab_container tabBox" v-if="(lotteryid =='2')||(lotteryid =='102') || (lotteryid =='4') ||(lotteryid =='104') || (lotteryid =='8')|| (lotteryid =='108')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18')">
-                <div class="hd">
-                    <ul class="tab tab02 tab_mid tab_five" v-if="(lotteryid == '8')||(lotteryid == '108')">
-                        <li data-tab="road02_1" class="on" data-val="2"><a href="javascript:;">冠军</a></li>
-                        <li data-tab="road02_2" data-val="2"><a href="javascript:;">亚军</a></li>
-                        <li data-tab="road02_3" data-val="2"><a href="javascript:;">第三名</a></li>
-                        <li data-tab="road02_4" data-val="2"><a href="javascript:;">第四名</a></li>
-                        <li data-tab="road02_5" data-val="2"><a href="javascript:;">第五名</a></li>
-                        <li data-tab="road02_6" data-val="2"><a href="javascript:;">第六名</a></li>
-                        <li data-tab="road02_7" data-val="2"><a href="javascript:;">第七名</a></li>
-                        <li data-tab="road02_8" data-val="2"><a href="javascript:;">第八名</a></li>
-                        <li data-tab="road02_9" data-val="2"><a href="javascript:;">第九名</a></li>
-                        <li data-tab="road02_10" data-val="2"><a href="javascript:;">第十名</a></li>
-                    </ul>
-                    <ul class="tab tab02 tab_mid tab_five" v-else>
-                        <li data-tab="road02_1" class="on" data-val="2"><a href="javascript:;">第一球</a></li>
-                        <li data-tab="road02_2" data-val="2"><a href="javascript:;">第二球</a></li>
-                        <li data-tab="road02_3" data-val="2"><a href="javascript:;">第三球</a></li>
-                        <li data-tab="road02_4" data-val="2"><a href="javascript:;">第四球</a></li>
-                        <li data-tab="road02_5" data-val="2"><a href="javascript:;">第五球</a></li>
-                    </ul>
-                </div>
-<!-- 
-                    this.roadDomAction(data.data.size_1,'road02_1 .dx_size') ;  // 第一球大小 (pk10 冠军)
-                    this.roadDomAction(data.data.sd_1,'road02_1 .ds_dx') ;  // 第一球单双 (pk10 冠军)
-                    this.roadDomAction(data.data.size_2,'road02_2 .dx_size') ;  // 第二球大小 (pk10 亚军)
-                    this.roadDomAction(data.data.sd_2,'road02_2 .ds_dx') ;  // 第二球单双 (pk10 亚军)
-                    this.roadDomAction(data.data.size_3,'road02_3 .dx_size') ;  // 第三球大小 (pk10 第三名)
-                    this.roadDomAction(data.data.sd_3,'road02_3 .ds_dx') ;  // 第三球单双 (pk10 第三名)
-
-                    this.roadDomAction(data.data.size_4,'road02_4 .dx_size') ;  // 第四球大小
-                    this.roadDomAction(data.data.sd_4,'road02_4 .ds_dx') ;  // 第四球单双
-                    this.roadDomAction(data.data.size_5,'road02_5 .dx_size') ;  // 第五球大小
-                    this.roadDomAction(data.data.sd_5,'road02_5 .ds_dx') ;  // 第五球单双
- -->
-
-                <div class="bd">
-                    <div id="road02_1" class="tab_content_out on">
-                        <RoadBeadItem :dataResult="dataResult.size_1" class="dx_size" />
-                        <RoadBeadItem :dataResult="dataResult.sd_1" class="ds_dx" />
-                        <!-- <ul class="tab_content dx_size">
-                        </ul>
-                        <ul class="tab_content ds_dx">
-                        </ul> -->
                     </div>
-                    <div id="road02_2" class="tab_content_out">
-                        <RoadBeadItem :dataResult="dataResult.size_2" class="dx_size" />
-                        <RoadBeadItem :dataResult="dataResult.sd_2" class="ds_dx" />
-
-<!--                         <ul class="tab_content dx_size"></ul>
-                        <ul class="tab_content ds_dx"></ul> -->
-                    </div>
-                    <div id="road02_3" class="tab_content_out">
-                        <RoadBeadItem :dataResult="dataResult.size_3" class="dx_size" />
-                        <RoadBeadItem :dataResult="dataResult.sd_3" class="ds_dx" />
-
-                        <!-- <ul class="tab_content dx_size">
-                        </ul>
-                        <ul class="tab_content ds_dx">
-                        </ul> -->
-                    </div>
-                    <div id="road02_4" class="tab_content_out">
-                        <RoadBeadItem :dataResult="dataResult.size_4" class="dx_size" />
-                        <RoadBeadItem :dataResult="dataResult.sd_4" class="ds_dx" />
-<!--                         <ul class="tab_content dx_size">
-                        </ul>
-                        <ul class="tab_content ds_dx">
-                        </ul> -->
-                    </div>
-                    <div id="road02_5" class="tab_content_out">
-                        <RoadBeadItem :dataResult="dataResult.size_5" class="dx_size" />
-                        <RoadBeadItem :dataResult="dataResult.sd_5" class="ds_dx" />
-                        <!-- <ul class="tab_content dx_size">
-                           
-                        </ul>
-                        <ul class="tab_content ds_dx">
-                          
-                        </ul> -->
-                    </div>
-
-                    <!-- pk10 -->
-                    <div id="road02_6" class="tab_content_out" v-if="(lotteryid =='8')||(lotteryid =='108')">
-                        <RoadBeadItem :dataResult="dataResult.size_6" class="dx_size" />
-                        <RoadBeadItem :dataResult="dataResult.sd_6" class="ds_dx" />
-                    </div>
-                    <div id="road02_7" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108') ">
-                        <RoadBeadItem :dataResult="dataResult.size_7" class="dx_size" />
-                        <RoadBeadItem :dataResult="dataResult.sd_7" class="ds_dx" />
-                    </div>
-                    <div id="road02_8" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108') ">
-                        <RoadBeadItem :dataResult="dataResult.size_8" class="dx_size" />
-                        <RoadBeadItem :dataResult="dataResult.sd_8" class="ds_dx" />
-                    </div>
-                    <div id="road02_9" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108') ">
-                        <RoadBeadItem :dataResult="dataResult.size_9" class="dx_size" />
-                        <RoadBeadItem :dataResult="dataResult.sd_9" class="ds_dx" />
-                    </div>
-                    <div id="road02_10" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108') ">
-                        <RoadBeadItem :dataResult="dataResult.size_10" class="dx_size" />
-                        <RoadBeadItem :dataResult="dataResult.sd_10" class="ds_dx" />
-                    </div>
-
-
                 </div>
             </div>
         </div>

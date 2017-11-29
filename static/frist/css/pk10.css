@@ -1,29 +1,16 @@
 @charset "UTF-8";
 /* 用法 @include respond-to('尺寸(ex:sm,xs..)')*/
-.pk10_clear:after {
-  content: '';
-  display: table;
-  clear: both; }
 
-#pk10 .so-m-t-left {
-  width: 2.5rem; }
-  #pk10 .so-m-t-left div:first-child {
-    width: 2.3rem; }
-#pk10 .so-m-t-right {
-  width: 7.5rem; }
-#pk10 .pk10_top_number li {
-  background: none;
-  float: left;
-  width: 0.65rem;
-  height: auto;
-  margin-right: 0.07rem; }
-  #pk10 .pk10_top_number li:last-child {
-    margin-right: 0px; }
+
+#pk10 .so-m-t-left {width: 2.5rem; }
+#pk10 .so-m-t-left div:first-child {width: 2.3rem; }
+#pk10 .so-m-t-right {width: 7.5rem; }
+
 #pk10 .pk10_top_detail {
   margin-left: 0.1rem; }
   #pk10 .pk10_top_detail li {
     font-size: 0.3rem;
-    width: 0.64rem;
+    width: 0.7rem;
     margin-top: 0.07rem; }
 #pk10 .so-main-down li:first-child p {
   width: 3.3rem;
@@ -31,23 +18,9 @@
 #pk10 .select-li {
   height: auto;
   padding-top: 0.3rem; }
-#pk10 .play_th ul {
-  margin-top: 0.05rem; }
-  #pk10 .play_th ul li {
-    width: 0.5rem;
-    margin-right: 0.12rem;
-    font-size: 0.3rem;
-    line-height: 1.3em; }
-#pk10 .lo_ball {
-  margin-left: 0;
-  margin-top: 0.4rem; }
-  #pk10 .lo_ball li {
-    background: none;
-    width: 0.792rem;
-    height: 0.72rem; }
-    #pk10 .lo_ball li span {
-      display: block;
-      transform: scale(0.9); }
+
+#pk10 .play_th .double-count li {width: 0.65rem; margin-left: 0; font-size: 0.3rem; }
+
 #pk10 .ds_long .prod > div {
   width: 4rem; }
   #pk10 .ds_long .prod > div:last-child {
@@ -63,4 +36,8 @@
 #pk10 .tab_mid {
   white-space: nowrap;
   overflow-x: scroll; }
+
+
+#pk10 .pk10_top_number li{ margin-top: 0.3rem; margin-left: -3px; transform: scale(0.85)}
+
 

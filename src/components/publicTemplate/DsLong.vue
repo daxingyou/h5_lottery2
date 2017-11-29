@@ -20,8 +20,8 @@
 
                     </ul>
                     <div>
-                        <div class="btn btn_two round btn_outline"><a href="javascript:;">取消</a></div>
-                        <div class="btn btn_two round btn_blue02 btn_submit"><a href="javascript:;">确定</a></div>
+                        <div class="btn btn_outline"><a class="new_btn cancel" href="javascript:;"><span>取消</span></a></div>
+                        <div class="btn btn_submit"><a class="new_btn ok" href="javascript:;"><span>确定</span></a></div>
                     </div>
                 </div>
             </div>

@@ -138,7 +138,7 @@
                                                 <h2>
                                                     {{item.name}}
                                                 </h2>
-                                                <div class="bet_box">
+                                                <div class="bet_box num_box">
                                                     <p :data-id="itemChild.cid"  v-for="itemChild in item.childrens" @click="betSelect($event, itemChild, item)">
                                                         <span class="pk10_num_bg" :data-val="itemChild.name">
                                                             <span class="pk10_ball" :class="'num_0'+itemChild.name" v-if="itemChild.name<10"></span>
@@ -161,7 +161,7 @@
                                                 <h2>
                                                     {{item.name}}
                                                 </h2>
-                                                <div class="bet_box">
+                                                <div class="bet_box num_box">
                                                     <p :data-id="itemChild.cid"  v-for="itemChild in item.childrens" @click="betSelect($event, itemChild, item)">
                                                         <span class="pk10_num_bg" :data-val="itemChild.name">
                                                             <span class="pk10_ball" :class="'num_0'+itemChild.name" v-if="itemChild.name<10"></span>

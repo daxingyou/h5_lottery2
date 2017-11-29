@@ -9,182 +9,187 @@
                     <span class="icon icon_back"></span>
                 </a>
             </div>
-            <h2 class="center">注册</h2>
+            <h2 class="center title_name">注册</h2>
             <div class="right"></div>
         </header>
-        <div class="content">
-            <div class="login_area reg">
-                <div align="center">为了您的资金安全，请使用真实资料！</div>
-                <div class="before-add">
-                    <form>
-                       <!-- <fieldset>
-                            <div class="form_g account">
-                                <legend></legend>
-                                <input type="text" placeholder="请输入推荐人帐号" v-model="tjrusername" autocomplete="off" class="tjrusername" @input="checkUserName(tjrusername,'tjrusername')">
-                                <i class="close close1" @click="ClearInput('close1','tjrusername')"></i>
+        <div class="content pa_content">
+            <div class="reg page_box">
+                <div class="new_panel login_area">
+                    <div class="new_panel_top"></div>
+                    <div class="new_panel_center">
+                        <div align="center">为了您的资金安全，请使用真实资料！</div>
+                        <div class="before-add">
+                            <form>
+                            <!-- <fieldset>
+                                    <div class="form_g account">
+                                        <legend></legend>
+                                        <input type="text" placeholder="请输入推荐人帐号" v-model="tjrusername" autocomplete="off" class="tjrusername" @input="checkUserName(tjrusername,'tjrusername')">
+                                        <i class="close close1" @click="ClearInput('close1','tjrusername')"></i>
+                                    </div>
+                                    <label class="error-message "></label>
+                                </fieldset>-->
+                                <fieldset>
+                                    <div class="form_g account" >
+                                        <legend></legend>
+                                        <input type="text" placeholder="请输入帐号" v-model="username" autocomplete="off"
+                                            class="username" @input="checkUserName(username,'username')" @blur="CheckAccount()">
+                                        <i class="close close2" @click="ClearInput('close2','username')"></i>
+                                    </div>
+                                    <label class="error-message "></label>
+                                </fieldset>
+                                <fieldset  v-if="show">
+                                    <div class="form_g password">
+                                        <legend></legend>
+                                        <input type="password" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" @input="checkpassword(password,'password')" >
+                                        <i class="eye active eye1"  @click="showPassword('eye1')"></i>
+                                    </div>
+                                    <label class="error-message "></label>
+                                </fieldset>
+                                <fieldset v-if="!show">
+                                    <div class="form_g password">
+                                        <legend></legend>
+                                        <input type="text" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" @input="checkpassword(password,'password')">
+                                        <i class="eye act1" @click="showPassword('act1')"></i>
+                                    </div>
+                                    <label class="error-message "></label>
+                                </fieldset>
+                                <fieldset  v-if="showC">
+                                    <div class="form_g password">
+                                        <legend></legend>
+                                        <input type="password" placeholder="请输入确认密码" autocomplete="off" v-model="confirmpassword" class="confirmpassword" @input="checkIsEqual('.confirmpassword')">
+                                        <i class="eye active eye2" @click="showPassword('eye2')"></i>
+                                    </div>
+                                    <label class="error-message "></label>
+                                </fieldset>
+                                <fieldset  v-if="!showC">
+                                    <div class="form_g password">
+                                        <legend></legend>
+                                        <input type="text" placeholder="请输入确认密码" autocomplete="off"  v-model="confirmpassword" class="confirmpassword" @input="checkIsEqual('.confirmpassword')">
+                                        <i class="eye " @click="showPassword('act2')"></i>
+                                    </div>
+                                    <label class="error-message "></label>
+                                </fieldset>
+                            </form>
+                            <div class="">
+                                <a class="new_btn" href="javascript:;" @click="nextAction()"><span>下一步</span></a>
                             </div>
-                            <label class="error-message "></label>
-                        </fieldset>-->
-                        <fieldset>
-                            <div class="form_g account" >
-                                <legend></legend>
-                                <input type="text" placeholder="请输入帐号" v-model="username" autocomplete="off"
-                                       class="username" @input="checkUserName(username,'username')" @blur="CheckAccount()">
-                                <i class="close close2" @click="ClearInput('close2','username')"></i>
-                            </div>
-                            <label class="error-message "></label>
-                        </fieldset>
-                        <fieldset  v-if="show">
-                            <div class="form_g password">
-                                <legend></legend>
-                                <input type="password" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" @input="checkpassword(password,'password')" >
-                                <i class="eye active eye1"  @click="showPassword('eye1')"></i>
-                            </div>
-                            <label class="error-message "></label>
-                        </fieldset>
-                        <fieldset v-if="!show">
-                            <div class="form_g password">
-                                <legend></legend>
-                                <input type="text" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" @input="checkpassword(password,'password')">
-                                <i class="eye act1" @click="showPassword('act1')"></i>
-                            </div>
-                            <label class="error-message "></label>
-                        </fieldset>
-                        <fieldset  v-if="showC">
-                            <div class="form_g password">
-                                <legend></legend>
-                                <input type="password" placeholder="请输入确认密码" autocomplete="off" v-model="confirmpassword" class="confirmpassword" @input="checkIsEqual('.confirmpassword')">
-                                <i class="eye active eye2" @click="showPassword('eye2')"></i>
-                            </div>
-                            <label class="error-message "></label>
-                        </fieldset>
-                        <fieldset  v-if="!showC">
-                            <div class="form_g password">
-                                <legend></legend>
-                                <input type="text" placeholder="请输入确认密码" autocomplete="off"  v-model="confirmpassword" class="confirmpassword" @input="checkIsEqual('.confirmpassword')">
-                                <i class="eye " @click="showPassword('act2')"></i>
-                            </div>
-                            <label class="error-message "></label>
-                        </fieldset>
-                    </form>
-                    <div class="btn btn_blue">
-                        <a href="javascript:;" @click="nextAction()">下一步</a>
-                    </div>
-                </div>
-                <div class="after-add" style="display: none;">
-                    <fieldset>
-                        <div class="form_g account">
-                            <legend></legend>
-                            <input type="text" placeholder="请输入真实姓名" autocomplete="off" class="realyname" v-model="realyname" @input="checkrealyName(realyname,'realyname')">
-                            <i class="close close3" @click="ClearInput('close3','realyname')"></i>
                         </div>
-                        <label class="error-message "></label>
-                    </fieldset>
-                    <fieldset v-if="showB">
-                        <div class="form_g password">
-                            <legend></legend>
-                            <input type="password" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')">
-                            <i class="eye active eye3" @click="showPassword('eye3')"></i>
-                        </div>
-                        <label class="error-message "></label>
-                        <!--<div class="form_g password text pay_password">-->
-                            <!--<legend>取款密码</legend>-->
-                            <!--<div class="select_inline">-->
-                            <!--<select autocomplete="off" v-model="withpassword1" class="withpassword1">-->
-                                <!--<option>-</option>-->
-                                <!--<option>0</option>-->
-                                <!--<option>1</option>-->
-                                <!--<option>2</option>-->
-                                <!--<option>3</option>-->
-                                <!--<option>4</option>-->
-                                <!--<option>5</option>-->
-                                <!--<option>6</option>-->
-                                <!--<option>7</option>-->
-                                <!--<option>8</option>-->
-                                <!--<option>9</option>-->
-                            <!--</select>-->
-                            <!--</div>-->
-                            <!--<div class="select_inline">-->
-                            <!--<select  v-model="withpassword2" class="withpassword2">-->
-                                <!--<option>-</option>-->
-                                <!--<option>0</option>-->
-                                <!--<option>1</option>-->
-                                <!--<option>2</option>-->
-                                <!--<option>3</option>-->
-                                <!--<option>4</option>-->
-                                <!--<option>5</option>-->
-                                <!--<option>6</option>-->
-                                <!--<option>7</option>-->
-                                <!--<option>8</option>-->
-                                <!--<option>9</option>-->
-                            <!--</select>-->
-                            <!--</div>-->
-                            <!--<div class="select_inline">-->
-                            <!--<select v-model="withpassword3" class="withpassword3">-->
-                                <!--<option>-</option>-->
-                                <!--<option>0</option>-->
-                                <!--<option>1</option>-->
-                                <!--<option>2</option>-->
-                                <!--<option>3</option>-->
-                                <!--<option>4</option>-->
-                                <!--<option>5</option>-->
-                                <!--<option>6</option>-->
-                                <!--<option>7</option>-->
-                                <!--<option>8</option>-->
-                                <!--<option>9</option>-->
-                            <!--</select>-->
-                            <!--</div>-->
-                            <!--<div class="select_inline">-->
-                            <!--<select v-model="withpassword4" class="withpassword4">-->
-                                <!--<option>-</option>-->
-                                <!--<option>0</option>-->
-                                <!--<option>1</option>-->
-                                <!--<option>2</option>-->
-                                <!--<option>3</option>-->
-                                <!--<option>4</option>-->
-                                <!--<option>5</option>-->
-                                <!--<option>6</option>-->
-                                <!--<option>7</option>-->
-                                <!--<option>8</option>-->
-                                <!--<option>9</option>-->
-                            <!--</select>-->
-                            <!--</div>-->
-                             <!--<input type="number" maxlength="4" size="1" placeholder="请输入4位数字密码"> -->
-                        <!--</div>-->
-                        <!-- <label class="red">请输入4~15位帐号</label> -->
-                    </fieldset>
-                    <fieldset  v-if="!showB">
-                        <div class="form_g password">
-                            <legend></legend>
-                            <input type="text" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')">
-                            <i class="eye " @click="showPassword('act3')"></i>
-                        </div>
-                        <label class="error-message "></label>
-                    </fieldset>
-                    <fieldset>
-                        <div class="form_g phone">
-                            <legend></legend>
-                            <input type="text" autocomplete="off" maxlength="11" placeholder="请输入手机号码" class="telephone" v-model="telephone" @input="checktelphone(telephone,'telephone')">
-                            <i class="close close4" @click="ClearInput('close4','telephone')"></i>
-                        </div>
-                        <label class="error-message "></label>
-                    </fieldset>
-                    <fieldset>
-                        <div class="form_g password ">
-                            <legend></legend>
-                            <input type="text" placeholder="请输入验证码" autocomplete="off" maxlength="4"  v-model="yzmcode">
-                            <img :src="verImgCode" alt="" @click="switchYzmcode()">
-                        </div>
-                        <label class="error-message "></label>
-                    </fieldset>
+                        <div class="after-add" style="display: none;">
+                            <fieldset>
+                                <div class="form_g account">
+                                    <legend></legend>
+                                    <input type="text" placeholder="请输入真实姓名" autocomplete="off" class="realyname" v-model="realyname" @input="checkrealyName(realyname,'realyname')">
+                                    <i class="close close3" @click="ClearInput('close3','realyname')"></i>
+                                </div>
+                                <label class="error-message "></label>
+                            </fieldset>
+                            <fieldset v-if="showB">
+                                <div class="form_g password">
+                                    <legend></legend>
+                                    <input type="password" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')">
+                                    <i class="eye active eye3" @click="showPassword('eye3')"></i>
+                                </div>
+                                <label class="error-message "></label>
+                                <!--<div class="form_g password text pay_password">-->
+                                    <!--<legend>取款密码</legend>-->
+                                    <!--<div class="select_inline">-->
+                                    <!--<select autocomplete="off" v-model="withpassword1" class="withpassword1">-->
+                                        <!--<option>-</option>-->
+                                        <!--<option>0</option>-->
+                                        <!--<option>1</option>-->
+                                        <!--<option>2</option>-->
+                                        <!--<option>3</option>-->
+                                        <!--<option>4</option>-->
+                                        <!--<option>5</option>-->
+                                        <!--<option>6</option>-->
+                                        <!--<option>7</option>-->
+                                        <!--<option>8</option>-->
+                                        <!--<option>9</option>-->
+                                    <!--</select>-->
+                                    <!--</div>-->
+                                    <!--<div class="select_inline">-->
+                                    <!--<select  v-model="withpassword2" class="withpassword2">-->
+                                        <!--<option>-</option>-->
+                                        <!--<option>0</option>-->
+                                        <!--<option>1</option>-->
+                                        <!--<option>2</option>-->
+                                        <!--<option>3</option>-->
+                                        <!--<option>4</option>-->
+                                        <!--<option>5</option>-->
+                                        <!--<option>6</option>-->
+                                        <!--<option>7</option>-->
+                                        <!--<option>8</option>-->
+                                        <!--<option>9</option>-->
+                                    <!--</select>-->
+                                    <!--</div>-->
+                                    <!--<div class="select_inline">-->
+                                    <!--<select v-model="withpassword3" class="withpassword3">-->
+                                        <!--<option>-</option>-->
+                                        <!--<option>0</option>-->
+                                        <!--<option>1</option>-->
+                                        <!--<option>2</option>-->
+                                        <!--<option>3</option>-->
+                                        <!--<option>4</option>-->
+                                        <!--<option>5</option>-->
+                                        <!--<option>6</option>-->
+                                        <!--<option>7</option>-->
+                                        <!--<option>8</option>-->
+                                        <!--<option>9</option>-->
+                                    <!--</select>-->
+                                    <!--</div>-->
+                                    <!--<div class="select_inline">-->
+                                    <!--<select v-model="withpassword4" class="withpassword4">-->
+                                        <!--<option>-</option>-->
+                                        <!--<option>0</option>-->
+                                        <!--<option>1</option>-->
+                                        <!--<option>2</option>-->
+                                        <!--<option>3</option>-->
+                                        <!--<option>4</option>-->
+                                        <!--<option>5</option>-->
+                                        <!--<option>6</option>-->
+                                        <!--<option>7</option>-->
+                                        <!--<option>8</option>-->
+                                        <!--<option>9</option>-->
+                                    <!--</select>-->
+                                    <!--</div>-->
+                                    <!--<input type="number" maxlength="4" size="1" placeholder="请输入4位数字密码"> -->
+                                <!--</div>-->
+                                <!-- <label class="red">请输入4~15位帐号</label> -->
+                            </fieldset>
+                            <fieldset  v-if="!showB">
+                                <div class="form_g password">
+                                    <legend></legend>
+                                    <input type="text" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')">
+                                    <i class="eye " @click="showPassword('act3')"></i>
+                                </div>
+                                <label class="error-message "></label>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form_g phone">
+                                    <legend></legend>
+                                    <input type="text" autocomplete="off" maxlength="11" placeholder="请输入手机号码" class="telephone" v-model="telephone" @input="checktelphone(telephone,'telephone')">
+                                    <i class="close close4" @click="ClearInput('close4','telephone')"></i>
+                                </div>
+                                <label class="error-message "></label>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form_g password ">
+                                    <legend></legend>
+                                    <input type="text" placeholder="请输入验证码" autocomplete="off" maxlength="4"  v-model="yzmcode">
+                                    <img :src="verImgCode" alt="" @click="switchYzmcode()">
+                                </div>
+                                <label class="error-message "></label>
+                            </fieldset>
 
-                    <div class="btn btn_blue">
-                        <a href="javascript:;" @click="registerAction()">注册</a>
+                            <div class="">
+                                <a class="new_btn" href="javascript:;" @click="registerAction()"><span>注册</span></a>
+                            </div>
+                        </div>
+                        <div class="other_link">
+                            <span>已有帐号?</span>
+                            <a class="text-yellow" href="/login">马上登录</a>
+                        </div>
                     </div>
-                </div>
-                <div class="other_link">
-                    <span>已有帐号?</span>
-                    <a class="text-yellow" href="/login">马上登录</a>
                 </div>
             </div>
         </div>

@@ -27,10 +27,10 @@ input, select, button, a { outline: none; }
 .body_bg { position: absolute; top: 0; height: 100%;display: block; background: url("/static/frist/images/bg.jpg") repeat-y #fae6c7; width: 100%; background-size: 100%; }
 
 /* 卷轴颜色 */
-*::-webkit-scrollbar { width: .15rem;  height: .15rem; border-radius: .2rem; }
-*::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); border-radius: .2rem; }
-*::-webkit-scrollbar-thumb { background-color: #7e5c4c; outline: 1px solid #0e121d; border-radius: .2rem; }
-*::-webkit-scrollbar-corner { background-color: #0e121d; }
+.playtext::-webkit-scrollbar { width: .15rem;  height: .15rem; border-radius: .2rem; }
+.playtext::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); border-radius: .2rem; }
+.playtext::-webkit-scrollbar-thumb { background-color: #7e5c4c; outline: 1px solid #0e121d; border-radius: .2rem; }
+.playtext::-webkit-scrollbar-corner { background-color: #0e121d; }
 
 .clearfix::after { display: block; clear: both; content: ""; }
 
@@ -74,10 +74,11 @@ input, select, button, a { outline: none; }
 .new_header .center.logo { width: 3.2rem; padding-left: 1.36rem;  }
 .new_header .center.logo img { height:0.9867rem; margin:0.19rem auto; }
 .new_header .center.logo_left { padding-left: 0.5rem; }
-.new_header .center.lottery_name { width: calc(100% - 3.2rem); position: absolute; top:0; left:50%;  margin-left: calc(-50% + 1.6rem); background: -webkit-linear-gradient(top,#fbd4a9 0,#fdae40 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
+.new_header .center.lottery_name,.new_header .center.title_name { width: calc(100% - 3.2rem); line-height: 1.36rem; position: absolute; top:0; left:50%;  margin-left: calc(-50% + 1.6rem); background: -webkit-linear-gradient(top,#fbd4a9 0,#fdae40 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
 
 .new_header .left { position:absolute; top: 0; left: 0; z-index: 2; width: 1.36rem; height: 1.36rem; }
 .new_header .left a { display: inline-block; width: 1.36rem; height: 1.36rem; }
+.new_header .left a .icon_back { margin-top: 0.18rem;}
 
 .new_header .right { float: right; padding-right: .3rem; }
 .new_header .right > .so-top-zoushi { height: 1.48rem; width: 1.48rem; }
@@ -104,14 +105,13 @@ input, select, button, a { outline: none; }
 
 /* content */
 #pa_con { width: 10rem; height: 100%; text-align: center; margin: auto; background: url("/static/frist/images/bg.jpg") repeat #fae6c7; background-size: 100%; min-height: 18rem; }
-#pa_con .so-right > div:first-child img { right: 0.49rem; }
+#pa_content, .pa_content { margin-top: 1.36rem; position: relative; z-index: 2; }
+#pa_content .page_box, .pa_content .page_box{ padding: 0.3rem;}
 
-#pa_content { margin-top: 1.36rem; position: relative; z-index: 2; }
-
-
+/*
 .warp { position: relative; width: 100%; margin: 0 auto; height: auto;  z-index: 2; }
 
-.warp > .content {  position: relative; z-index: 2; }
+.warp > .content {  position: relative; z-index: 2; }*/
 
 .so-con { font-size: 0.34rem; width: 10rem; height: 100%; text-align: center; margin: auto; }
 
@@ -379,7 +379,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .icon.icon_r_today{ background-position: -4.48rem 0; }
 .icon.icon_back{ width: 1rem; height: 1rem; background-position: -5.12rem 0; }
 
-i.filter { background-image: url("/static/frist/images/filter.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; }
+/*i.filter { background-image: url("/static/frist/images/filter.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; }*/
 
 i.close { width: .57rem; display: block; position: relative; height: 1rem; right: 0; left: .2rem; }
 
@@ -495,33 +495,46 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }
 .pk10_ball.num_9, .pk10_ball.num_09 { background-position-x: -6.4rem; }
 .pk10_ball.num_10{ background-position-x: -7.2rem; }
 .pk10_ball.small_ball { transform: scale(0.6);-webkit-transform: scale(0.8); margin: -0.2rem -0.1rem; }
-.pk10_ball.active, p.active .pk10_ball { background-position-y: -0.85rem; }
+.pk10_ball.active, p.active .pk10_ball { background-position-y: bottom; }
 
 /* bet panel */
 .bet_panel {width: 7.3rem; margin: auto; border-bottom: 1px solid rgba(56,32,30,0.2); padding: 0.2rem; box-sizing: border-box;}
 .bet_panel h2 { text-align: left; line-height: 1rem; }
 .bet_panel .bet_box { }
 .bet_panel .bet_box:after{ content: ''; display: table; clear: both;}
-.bet_panel .bet_box p { float: left; width: 48%; margin-right: 4%; margin-bottom: 0.3rem; border: solid 1px #4b280c; cursor: pointer; box-sizing: border-box; padding: 0.15rem 0.2rem; border-radius: 0.1rem; }
+.bet_panel .bet_box p { float: left; width: 48%; margin-right: 4%; margin-bottom: 0.3rem; border: solid 1px #4b280c; cursor: pointer; box-sizing: border-box; padding: 0.15rem 0.25rem; border-radius: 0.16rem; }
 .bet_panel .bet_box p:nth-child(even){ margin-right: 0;}
 .bet_panel .bet_box p > span { float: left; line-height: 0.9rem; }
+.bet_panel .bet_box p > span:first-child { font-weight: bold; font-size: 0.4rem; }
 .bet_panel .bet_box p .bet-times { float: right; }
-.bet_panel .bet_box p.active {  border-color: #b41a17;background: url('/static/frist/images/bet_box_selected.png') repeat-x border-box left 99%; background-size: auto 200%; border-color: transparent; position: relative; box-shadow: 0px 1px 2px rgba(0, 0, 0,0.65); -webkit-box-shadow: 0px 2px 1px rgba(0, 0, 0,0.65);}
-.bet_panel .bet_box p.active:before{content: ''; position: absolute; top: -1px; bottom: -1px; left: -0.1rem; width: 0.16rem; background: url('/static/frist/images/bet_box_selected.png') no-repeat border-box left top; background-size: auto 200%; }
-.bet_panel .bet_box p.active:after{content: ''; position: absolute; top: -1px; bottom: -1px; right: -0.1rem; width: 0.16rem; background: url('/static/frist/images/bet_box_selected.png') no-repeat border-box right top; background-size: auto 200%; }
+.bet_panel .bet_box p.active { padding-top: 0.08rem; padding-bottom: 0.22rem; background: url('/static/frist/images/bet_box_selected.jpg') border-box left top; background-size: 100% 100%; border-color: transparent; position: relative; box-shadow: 0px 1px 2px rgba(0, 0, 0,0.65); -webkit-box-shadow: 0px 2px 1px rgba(0, 0, 0,0.65);}
+/*.bet_panel .bet_box p.active:before{content: ''; position: absolute; top: -1px; bottom: -1px; left: -0.1rem; width: 0.16rem; background: url('/static/frist/images/bet_box_selected.png') no-repeat border-box left top; background-size: auto 200%; }
+.bet_panel .bet_box p.active:after{content: ''; position: absolute; top: -1px; bottom: -1px; right: -0.1rem; width: 0.16rem; background: url('/static/frist/images/bet_box_selected.png') no-repeat border-box right top; background-size: auto 200%; }*/
 .bet_panel .bet_box p.active > span:first-child { color: #b41a17; }
-.bet_panel .bet_box.num_box p.active {  background:none; border-color: inherit; position: relative; box-shadow: none; -webkit-box-shadow: none;}
-.bet_panel .bet_box.num_box p.active:before,.bet_panel .bet_box.k3_box p.active:after{ display: none;}
+/*.bet_panel .bet_box.num_box p.active:before,.bet_panel .bet_box.num_box p.active:after{ display: none;}*/
 .bet_panel .bet_box p.so-con-span-short { width: 30.666%; margin-right: 4%;}
 .bet_panel .bet_box p.so-con-span-short:nth-child(even){ margin-right: 4%;}
 .bet_panel .bet_box p.so-con-span-short:last-child{ margin-right: 0;}
 .bet_panel .bet_ball:after{ content: ''; display: table; clear: both;}
 .bet_panel .bet_ball p { float: left; width: 20%; margin-bottom: 0.2rem; }
-/* 快3 三同号样式 */
-.bet_panel .bet_box .k3_3same > span { float: none; line-height: 0.7rem;  }
-.bet_panel .bet_box .k3_3same:last-child{ width: 100%;}
-.bet_panel .bet_box .k3_3same:last-child span{ float: left;}
-.bet_panel .bet_box .k3_3same:last-child span:last-child{ float: right;}
+/* 11x5 样式微调 */
+.jx11_tab.hd { display: none; position: absolute;right: 0.3rem; height: .9rem; width: 7.1rem; overflow: hidden; margin: 0 auto; border-radius: 0.5rem;  margin-top: 0.2rem; }
+.jx11_tab.hd ul { white-space: nowrap; width: 100% !important; overflow-y: auto; /* winphone8和android4+ */ -webkit-overflow-scrolling: touch; /* ios5+ */ position: relative; top: inherit; left: inherit; height: .9rem; }
+.jx11_tab.hd ul.tab_mid { background-color: #7e5c4c;  }
+.jx11_tab.hd ul.tab_mid > li { display: inline-block; height: .9rem; width: 2rem; padding-top: 0; }
+.jx11_tab.hd ul.tab_mid > li.on {width: 2rem;  margin-left: 0.03rem; background-color: #4b280c; border-radius: 0.5rem;}
+.jx11_tab.hd ul.tab_mid > li.on:after { display: none;}
+.jx11_tab.hd ul.tab_mid > li > a { height: .9rem; line-height: .9rem; color: #ffc388;}
+.jx11_tab.hd ul.tab_mid > li.on a{  color: #fea832; }
+.jc115 .bd .tab_content { padding: 0;}
+/* 快3 样式微调 */
+.bet_panel .bet_box .k3_3same.active { background-image: url('/static/frist/images/bet_box_selected-b.jpg'); background-size: 100% 100%;}
+.bet_panel .bet_box .k3_3same > span { float: none; display: block; line-height: 0.7rem;  }
+.bet_panel .bet_box.num_box p.active .k3_dice{ transform: translate(0,-0.05rem) scale(0.8); }
+.bet_panel .bet_box.num_box p.active .k3_dice.small_dice{ transform:  translate(0,-0.05rem) scale(0.6);}
+.bet_panel .bet_box.num_box p.k3_3same.active .k3_dice.small_dice{ transform: scale(0.6); }
+/* pk10 样式微调 */
+.bet_panel .bet_box.num_box p.active .pk10_ball{ transform: translate(0,-0.03rem) }
 
 /* 开奖资讯 */
 .so-top-all { width: 100%; position: fixed;  z-index: 10;}
@@ -689,17 +702,7 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 
 #so-item2.jc115 ul li > div > div p.active span:last-child { color: #fffbe2; }*/
 
-.jx11_tab.hd { display: none; position: absolute;right: 0.1rem; height: .9rem; width: 74%; background-size: 100%; overflow: hidden; margin: 0 auto; border-radius: 100px; border-left: 1px solid rgba(69, 109, 139, 0.6); border-right: 1px solid rgba(69, 109, 139, 0.6); border-bottom: 1px solid rgba(69, 109, 139, 0.4); -webkit-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.2); box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.2); margin-top: 0.2rem; background-color: rgba(15, 16, 18, 0.6); }
 
-.jx11_tab.hd ul { white-space: nowrap; width: 100% !important; overflow-y: auto; /* winphone8和android4+ */ -webkit-overflow-scrolling: touch; /* ios5+ */ position: relative; top: inherit; left: inherit; height: .9rem; }
-
-.jx11_tab.hd ul.tab_mid { background-color: transparent; border-radius: 100px; }
-
-.jx11_tab.hd ul > li { display: inline-block; height: .9rem; width: 2rem; padding-top: 0; }
-
-.jx11_tab.hd ul > li.on { background: url("/static/frist/images/withcode_select_tab.png") no-repeat; background-size: 100%; width: 2rem; background-position-y: 0.03rem; margin-left: 0.03rem; }
-
-.jx11_tab.hd ul > li > a { height: .9rem; line-height: .9rem; }
 
 /*#so-item2.jc115 .bd .tab_content { padding: 0; margin-top: .3rem; }
 
@@ -818,11 +821,17 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .play_th .prd_num:after{ content: ''; display: table; clear: both;  }
 .play_th .prd_num > span { font-size: .3rem; line-height: 0.9rem; height: 0.9rem; display: inline-block; }
 .play_th .double-count{ float: right; padding-right: 0.2rem; padding-top: 0.2rem; white-space: nowrap;}
-.play_th .double-count > li { display: inline-block; margin-left: 0.23rem; width: .8rem; background-color: #fff; -webkit-border-radius: .3rem; -moz-border-radius: .3rem; border-radius: .3rem; text-align: center;  font-size: 0.3rem;  color: #fea832;box-shadow: 0px 1px 2px rgba(0,0,0,0.7) inset;border-bottom: solid 1px rgba(255,255,255,0.25);background-color: #522f2c; }
+.play_th .double-count > li { display: inline-block; margin-left: 0.23rem; margin-top: 0.03rem; width: .8rem; background-color: #fff; -webkit-border-radius: .3rem; -moz-border-radius: .3rem; border-radius: .3rem; text-align: center;  font-size: 0.3rem;  color: #fea832;box-shadow: 0px 1px 2px rgba(0,0,0,0.7) inset;border-bottom: solid 1px rgba(255,255,255,0.25);background-color: #522f2c; }
 
+/* 往期开奖 */
 .past_view .lo_ball { text-align: left; }
-.past_view .lo_ball > li { text-indent: -2rem; overflow: hidden; text-align: center;  margin: 0.1rem .05rem 0; }
+.past_view .lo_ball > li { overflow: hidden; text-align: center;  margin: 0.1rem .05rem 0; }
 .past_view .no_open > li { background-image: url("/static/frist/images/content/duankaung.png"); background-repeat: no-repeat; background-size: 100%; color: #000; width: auto; font-size: 0.4rem; min-width: 2rem; height: 1rem; line-height: .95rem; }
+/* k3 往期开奖 */
+#k3 .past_view .lo_ball { text-align: center; }
+#k3 .past_view .lo_ball li { margin: 0.1rem; }
+/* pk10 往期开奖 */
+.past_view .lo_ball > li.pk10_ball {  margin: 0.1rem .032rem 0; }
 
 /*i.prd { background-image: url("/static/frist/images/page/icon_pn.png"); background-position-y: .15rem; background-repeat: no-repeat; background-size: 100%; height: .6rem; width: .5rem; display: inline-block; line-height: .3rem; vertical-align: inherit; }*/
 
@@ -846,49 +855,43 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 
 .ds_long > .panel > .prod > div { width: 3rem; margin: 0 auto; text-align: left; }
 
-#road01, #road02 { background-color: #191f2d; -webkit-border-radius: 0.15rem; -moz-border-radius: 0.15rem; -ms-border-radius: 0.15rem; border-radius: 0.15rem; border: 1px solid #679edf; -webkit-box-shadow: 0px 0px 15px rgba(103, 158, 223, 0.9); box-shadow: 0px 0px 15px rgba(103, 158, 223, 0.9); margin: .2rem; font-size: .4rem; overflow: hidden; }
+/* 路珠 */
+.new_road { background-color: rgba(20, 0, 0, 0.6); border-radius: 0.12rem;  margin-bottom: .3rem; font-size: .4rem; overflow: hidden; }
+.new_road .tab_mid{ background-color: rgba(0, 0, 0, 0.15); position: relative; top: inherit; left: inherit; }
+.new_road .hd { margin-bottom: .2rem; overflow-x: hidden; }
+.new_road .bd { width: 100% !important; padding-right: 5rem; }
+.new_road .tab_content { overflow: auto; /* winphone8和android4+ */ -webkit-overflow-scrolling: touch; /* ios5+ */ white-space: nowrap; width: 97.5% !important;  padding: 0; display: block; text-align: right; margin-top: 0; }
+.new_road .tab_content_out { display: none; }
+.new_road .tab_content_out.on { display: block; }
 
-#road01 .tab_mid, #road02 .tab_mid { background-color: rgba(0, 0, 0, 0.15); position: relative; top: inherit; left: inherit; }
+.new_road .road { -webkit-box-sizing: border-box; box-sizing: border-box; min-width: .85rem; width: auto; display: inline-block; vertical-align: top;}
+.new_road .road:last-child { margin-right: .5rem; }
+.new_road .road:last-child:before { content: ''; display: block; position: absolute; background: url("/static/frist/images/page/road.png") no-repeat; width: .85rem; top: -0.1rem; background-size: 100%; height: .6rem; }
+/*.new_road .road.road_left { width: auto; margin-right: 2px; }
+.new_road .road.road_left ul > li { margin-left: 0; }*/
 
-#road01 .hd, #road02 .hd { margin-bottom: .2rem; overflow-x: hidden; }
+.new_road .road > ul { background-color: rgba(20, 0, 0, 0.3);  border-radius: 0.1rem; margin-top: .5rem; margin-right: 0.1rem; padding-top: .2rem; }
 
-#road01 .bd, #road02 .bd { width: 100% !important; padding-right: 5rem; }
+.new_road .road > ul > li { background: url("/static/frist/images/page/road.png") no-repeat center top; background-size: 100%; width: .8rem; height: .8rem; margin: 0 auto; text-align: center; background-position-y: 0; color: #fff; font-size: 0.35rem; line-height: .6rem; }
 
-#road01 .tab_content, #road02 .tab_content { overflow: auto; /* winphone8和android4+ */ -webkit-overflow-scrolling: touch; /* ios5+ */ white-space: nowrap; width: 97.5% !important; height: 8.3rem; padding: 0; display: block; text-align: right; margin-top: 0; }
+.new_road .road > ul > li.tiger { background-position-y: 14%; }
 
-#road01 .tab_content_out, #road02 .tab_content_out { display: none; }
+.new_road .road > ul > li.dragon { background-position-y: 33.3%; }
 
-#road01 .tab_content_out.on, #road02 .tab_content_out.on { display: block; }
+.new_road .road > ul > li.mid { background-position-y: 53%; }
 
-.road { -webkit-box-sizing: border-box; box-sizing: border-box; min-width: .85rem; width: auto; display: inline-block; display: -webkit-inline-flex; }
+.new_road .road > ul > li.big { background-position-y: 72.5%; }
 
-.road:last-child { margin-right: .5rem; }
-
-.road:last-child:before { content: ''; display: block; position: absolute; background: url("/static/frist/images/page/road.png") no-repeat; width: .85rem; top: -0.1rem; background-size: 100%; height: .6rem; }
-
-.road.road_left { width: auto; margin-right: 2px; }
-
-.road.road_left ul > li { margin-left: 0; }
-
-.road > ul { background-color: #0d1522; -webkit-border-radius: 0.05rem; -moz-border-radius: 0.05rem; -ms-border-radius: 0.05rem; border-radius: 0.05rem; margin-top: .5rem; padding-top: .2rem; }
-
-.road > ul > li { background: url("/static/frist/images/page/road.png") no-repeat center top; background-size: 100%; width: .8rem; height: .8rem; margin: 0 auto; text-align: center; background-position-y: 0; color: #fff; font-size: 0.35rem; line-height: .6rem; }
-
-.road > ul > li.tiger { background-position-y: 14%; }
-
-.road > ul > li.dragon { background-position-y: 33.3%; }
-
-.road > ul > li.mid { background-position-y: 53%; }
-
-.road > ul > li.big { background-position-y: 72.5%; }
-
-.road > ul > li.small { background-position-y: 92.7%; }
+.new_road .road > ul > li.small { background-position-y: 92.7%; }
 
 #road02_1 > ul, #road02_2 > ul, #road02_3 > ul, #road02_4 > ul, #road02_5 > ul { position: relative; }
 
 #road02_1 > ul:first-child:before, #road02_2 > ul:first-child:before, #road02_3 > ul:first-child:before, #road02_4 > ul:first-child:before, #road02_5 > ul:first-child:before { content: '大 / 小'; display: block; position: absolute; color: #666; top: 0; left: 1%; font-size: .25rem; }
 
 #road02_1 > ul:last-child:before, #road02_2 > ul:last-child:before, #road02_3 > ul:last-child:before, #road02_4 > ul:last-child:before, #road02_5 > ul:last-child:before { content: '单 / 双'; display: block; position: absolute; color: #666; top: 0; left: 1%; font-size: .25rem; }
+
+
+
 
 .grey_text { padding: .1rem 0; }
 
@@ -928,9 +931,6 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 
 .function_btn > a.check > i { background-image: url("/static/frist/images/check_w.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; }
 
-.pk10_top_number li { background: none; display: inline-block; width: 0.65rem; height: auto; margin-right: 0.07rem; }
-
-.pk10_top_number li:last-child { margin-right: 0px; }
 
 
 
@@ -1061,7 +1061,7 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 /*.login_area, .deposit_area { margin: 0 auto; margin-top: -2.5rem; position: relative; z-index: 50; width: 90%; }
 .login_area.reg, .reg.deposit_area { margin-top: 2rem; }*/
 #pa_con.page_login{ background: url('/static/frist/images/login_bg.jpg') repeat-y; background-size: 10rem auto; overflow: hidden; min-height: 17.79rem;}
-.login_area{ margin: 0.3rem; margin-top: 4rem; }
+.page_login .login_area{ margin: 0.3rem; margin-top: 4rem; }
 .login_area .new_panel_center{ padding: 0 0.7rem;}
 .other_link { font-size: .35rem; }
 .other_link > a { color: #ffc388; margin: .2rem; display: inline-block; border-left: 1px solid #ffc388; padding-left: .5rem; }

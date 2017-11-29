@@ -14,7 +14,7 @@
         </header>
 
         <div id="pa_content">
-            <div id="road01" class="tab_container tabBox">
+            <div class="new_road tab_container tabBox">
                 <div class="hd">
                     <ul class="tab tab01 tab_mid tab_two">
                         <li class="on" data-tab="road01_1" data-val="1"><a href="javascript:;">冠亚和大小</a></li>
@@ -31,7 +31,7 @@
                     </ul>
                 </div>
             </div>
-            <div id="road02" class="tab_container tabBox">
+            <div class="new_road tab_container tabBox">
                 <div class="hd">
                     <ul class="tab tab02 tab_mid tab_five">
                         <li data-tab="road02_1" class="on" data-val="2"><a href="javascript:;">冠军</a></li>
