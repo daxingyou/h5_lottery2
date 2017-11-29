@@ -43,7 +43,7 @@
                             <div class="so-m-t-right" v-show="ishwowpriod">
                                 <div class="last-open-num">
                                     <ul class="pk10_top_number">
-                                        <li v-for="item in winNumber.split(',')"><span class="pk10_ball small_ball" :class="'ball num_'+item"> </span></li>
+                                        <li v-for="item in winNumber.split(',')"><span class="pk10_ball active" :class="'ball num_'+item"> </span></li>
                                         <!-- <li><span class="pk10_ball small_ball num_10"></span></li> -->
 
                                     </ul>

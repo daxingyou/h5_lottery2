@@ -18,7 +18,7 @@
                             <div class="so-m-t-right" v-show="ishwowpriod">
                                 <div class="last-open-num">
                                     <ul class="k3_top_number">
-                                        <li v-for="item in (winNumber || '20, 20, 20').split(',')"><span :class="'k3_dice num_'+ item"></span></li>
+                                        <li v-for="item in (winNumber || '20, 20, 20').split(',')"><span :class="'k3_dice active num_'+ item"></span></li>
                                     </ul>
                                 </div>
                                 <div class="last-open-k3dou last-open-dou">
@@ -61,7 +61,7 @@
                                         <h2>
                                             {{item.name}}
                                         </h2>
-                                        <div class="bet_box">
+                                        <div class="bet_box num_box">
                                             <p v-for="(itemChild,index) in item.childrens" @click="betSelect($event, itemChild, item)">
                                                 <span><span :class="'k3_dice num_' + (index+1)"></span></span>
                                                 <span class="bet-times">{{payoffFormat(itemChild.oddsData.payoff)}}</span>
@@ -79,7 +79,7 @@
                                         <h2>
                                             {{item.name}}
                                         </h2>
-                                        <div class="bet_box">
+                                        <div class="bet_box num_box">
                                             <p v-for="(itemChild,index) in item.childrens" @click="betSelect($event, itemChild, item)">
                                                 <span>
                                                     <span :class="'k3_dice small_dice num_'+ itemChild.name.split(',')[0]"></span>
@@ -100,8 +100,8 @@
                                         <h2>
                                             {{item.name}}
                                         </h2>
-                                        <div class="bet_box">
-                                            <p v-for="(itemChild,index) in item.childrens" @click="betSelect($event, itemChild, item)" :class="item.cid == 63100 && 'so-con-span-short'">
+                                        <div class="bet_box num_box">
+                                            <p v-for="(itemChild,index) in item.childrens" @click="betSelect($event, itemChild, item)" :class="item.cid == 63100 && 'k3_3same'">
                                                 <span v-if="itemChild.cid!=63107">
                                                     <span :class="'k3_dice small_dice num_'+ itemChild.name.split(',')[0]"></span>
                                                     <span :class="'k3_dice small_dice num_'+ itemChild.name.split(',')[1]"></span>
