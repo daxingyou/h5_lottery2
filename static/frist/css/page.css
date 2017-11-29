@@ -484,16 +484,16 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }
 
 /* pk10 ball */
 .pk10_ball { display: inline-block; vertical-align: middle; background: url(/static/frist/images/pk10.png) no-repeat; background-size: 8.8rem 1.7rem; width: 0.8rem; height: 0.85rem; }
-.pk10_ball.num_01 { background-position-x: 0; }
-.pk10_ball.num_02 { background-position-x: -0.8rem; }
-.pk10_ball.num_03 { background-position-x: -1.6rem; }
-.pk10_ball.num_04 { background-position-x: -2.4rem; }
-.pk10_ball.num_05 { background-position-x: -3.2rem; }
-.pk10_ball.num_06 { background-position-x: -4rem; }
-.pk10_ball.num_07 { background-position-x: -4.8rem; }
-.pk10_ball.num_08 { background-position-x: -5.6rem; }
-.pk10_ball.num_09 { background-position-x: -6.4rem; }
-.pk10_ball.num_10 { background-position-x: -7.2rem; }
+.pk10_ball.num_1, .pk10_ball.num_01 { background-position-x: 0; }
+.pk10_ball.num_2, .pk10_ball.num_02 { background-position-x: -0.8rem; }
+.pk10_ball.num_3, .pk10_ball.num_03 { background-position-x: -1.6rem; }
+.pk10_ball.num_4, .pk10_ball.num_04 { background-position-x: -2.4rem; }
+.pk10_ball.num_5, .pk10_ball.num_05 { background-position-x: -3.2rem; }
+.pk10_ball.num_6, .pk10_ball.num_06 { background-position-x: -4rem; }
+.pk10_ball.num_7, .pk10_ball.num_07 { background-position-x: -4.8rem; }
+.pk10_ball.num_8, .pk10_ball.num_08 { background-position-x: -5.6rem; }
+.pk10_ball.num_9, .pk10_ball.num_09 { background-position-x: -6.4rem; }
+.pk10_ball.num_10{ background-position-x: -7.2rem; }
 .pk10_ball.small_ball { transform: scale(0.6);-webkit-transform: scale(0.8); margin: -0.2rem -0.1rem; }
 .pk10_ball.active, p.active .pk10_ball { background-position-y: -0.85rem; }
 
