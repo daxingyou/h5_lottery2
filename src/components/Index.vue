@@ -223,9 +223,8 @@ export default {
             bulletins:'',
             banner:[
                 {'url':'http://img.will888.cn/photo/pic/T1HaETByYT1RCvBVdK/0'},
-                {'url':'http://img.will888.cn/photo/pic/T1HaETByYT1RCvBVdK/0'},
-              /*  {'url':'http://admin.baochiapi.com/photo/pic/T15tETByAT1RCvBVdK/0'},
-                {'url':'http://admin.baochiapi.com/photo/pic/T1kyhTByDT1RCvBVdK/0'},*/
+                {'url':'http://admin.baochiapi.com/photo/pic/T15tETByAT1RCvBVdK/0'},
+                {'url':'http://admin.baochiapi.com/photo/pic/T1kyhTByDT1RCvBVdK/0'},
             ] ,
 
         }
