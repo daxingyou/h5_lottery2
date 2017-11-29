@@ -1244,7 +1244,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; }
 
 .info_top .account .ui.header > .image:not(.icon):only-child, .info_top .account .ui.header > img:only-child { margin-right: 0; }
 
-.info_top .account .user_name { position: relative; text-align: left; margin-left: 0; line-height: 1.8em; float: left; margin-top: .2rem; }
+.info_top .account .user_name { position:absolute; text-align: left; margin-left: 1rem; line-height: 1.8em; float: left; margin-top: .2rem; }
 
 .info_top .account .user_name > strong { display: block; color: #fff; letter-spacing: 1px; font-weight: 500; font-size: .4rem; }
 
