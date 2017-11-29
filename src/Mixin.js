@@ -108,7 +108,8 @@ var MyMixin = {
             });
             this.conScroll = new iScroll("content-wrapper",{  // 投注区域
                 onScrollEnd: function(){
-                    this.refresh() ;
+                    this.refresh();
+                    console.log(this.conScroll.y)
                 },
                /* onBeforeScrollMove:function(e){
                     e.preventDefault();
@@ -118,14 +119,15 @@ var MyMixin = {
                 hScrollbar:false ,
                 vScrollbar:false ,
                 click: true ,
+
             });
            // $('.so-con-left').find('ul li:first-child').click() ; // 解决k3 滑动问题
 
         },
         // 初始化滚动高度
         setInitHeight:function (lotteryid) {
-            var conth = $('.so-con-right .item_one').height()-310 ;
-            if(lotteryid == '6'){
+              var conth = $('.so-con-right .item_one').height()-310 ;
+              if(lotteryid == '6'){
                 /* var div = document.getElementById("k3-item0");
                 div.ontouchmove = function(e){
                     //事件的touches属性是一个数组，其中一个元素代表同一时刻的一个触控点，从而可以通过touches获取多点触控的每个触控点
