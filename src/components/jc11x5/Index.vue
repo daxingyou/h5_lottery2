@@ -120,8 +120,8 @@
                                                    {{item.name}}
                                                </h2>
                                                <div class="bet_ball">
-                                                   <p :data-id="itemChild.cid" v-for="(itemChild,index) in item.childrens">
-                                                       <span :class="'round_ball num_' + (index+1)" @click="OFSelect($event, itemChild, item)">{{itemChild.name}}</span>
+                                                   <p :data-id="itemChild.cid" v-for="(itemChild,index) in item.childrens"  @click="OFSelect($event, itemChild, item)">
+                                                       <span :class="'round_ball num_' + (index+1)">{{itemChild.name}}</span>
                                                        <span class="bet-times">{{payoffFormat(itemChild.oddsData.payoff)}}</span>
                                                    </p>
                                                </div>
@@ -137,13 +137,13 @@
                                        <!-- 连码一中一 -->
                                        <ul class="tab_content tab_content_1 show" v-for="(item,key) in continuedNumberList" v-if="key=='0'">
                                            <li class="select-li" >
-                                               <div>
+                                               <div class="bet_panel">
                                                    <h2>
                                                        {{item.name}}
                                                    </h2>
-                                                   <div>
-                                                       <p :data-id="itemChild.cid" v-for="itemChild in item.childrens">
-                                                           <span  @click="OFSelect($event, itemChild, item)">{{itemChild.name}}</span>
+                                                   <div class="bet_box">
+                                                       <p :data-id="itemChild.cid" v-for="itemChild in item.childrens"  @click="OFSelect($event, itemChild, item)">
+                                                           <span >{{itemChild.name}}</span>
                                                            <span class="bet-times">{{payoffFormat(itemChild.oddsData.payoff)}}</span>
                                                        </p>
                                                    </div>
@@ -627,8 +627,8 @@
                   }
 
                   var $src = $(e.currentTarget);
-                  if ($src.parent('p').prop('class').indexOf('active') < 0){
-                      $src.parent('p').addClass('active');
+                  if ($src.prop('class').indexOf('active') < 0){
+                      $src.addClass('active');
                       item.parentItem = parentItem;
 
                       if(this.playType =='yzycombine'){ // 连码一中一
@@ -636,7 +636,7 @@
                               this.betSelectedList.push(item);
                           }else{
                               setTimeout(function(){
-                                  $src.parent('p').removeClass('active');
+                                  $src.removeClass('active');
                               },50)
                               this.$refs.infoDialog.open('请选择1个选项', 'title_quantity');
                           }
@@ -645,7 +645,7 @@
                       }
                       // console.log(this.betSelectedList) ;
                   }else{
-                      $src.parent('p').removeClass('active');
+                      $src.removeClass('active');
                       this.betSelectedList = this.betSelectedList.filter((selected)=>{ return selected.cid != item.cid; });
                   }
               }
