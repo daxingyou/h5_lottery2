@@ -44,7 +44,7 @@ export default {
             this.loginOut();
             setTimeout(function(){
                 window.location = '/reg' ;
-            },1000)
+            },500)
         },
         // 退出函数
         loginOut:function () {
@@ -55,13 +55,14 @@ export default {
                 url: this.action.uaa + 'oauth/logout',
                 data: {} ,
                 success: (res) => {
+                    _self.clearAllCookie() ; // 清除全部 cookie
                     if(res.err == 'SUCCESS'){
-                        _self.clearAllCookie() ; // 清除全部 cookie
-                        this.$refs.autoCloseDialog.open('用户已退出','','icon_check','d_check') ;
-                        setTimeout(function () {
+
+                       // this.$refs.autoCloseDialog.open('用户已退出','','icon_check','d_check') ;
+                      /*  setTimeout(function () {
                             window.location = '/' ;
                         },300)
-
+*/
                     }
                     this.$nextTick(function () {
 
