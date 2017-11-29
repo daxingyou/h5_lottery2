@@ -1,14 +1,15 @@
 <template>
-    <div id="pa_con" class="so-con warp ">
-        <header id="pa_head" class="login">
+    <div id="pa_con" class="so-con warp page_login">
+        <!--<header id="pa_head" class="login">
             <img src="static/frist/images/login_logo.png" alt="">
-        </header>
-        <div class="content">
-            <div class="login_area">
+        </header>-->
+        <div class="new_panel login_area">
+            <div class="new_panel_top"></div>
+            <div class="new_panel_center">
                 <form>
                     <fieldset>
                         <div class="form_g account">
-                            <legend></legend>
+                            <legend>帐号</legend>
                             <input type="text" placeholder="请输入帐号" v-model="username" autocomplete="off" class="user-name" @input="checkUserName(username,'user-name')" >
                             <i class="close close1" @click="ClearInput('close1','user-name')"></i>
                         </div>
@@ -16,7 +17,7 @@
                     </fieldset>
                     <fieldset>
                         <div class="form_g password">
-                            <legend></legend>
+                            <legend>密码</legend>
                             <input type="text" placeholder="请输入密码" v-model="password" onfocus="this.type='password'" autocomplete="off" class="pass-word"  @input="checkpassword(password,'pass-word')">
                             <i class="close close2" @click="ClearInput('close2','pass-word')"></i>
                         </div>
@@ -24,7 +25,7 @@
                     </fieldset>
                     <fieldset>
                         <div class="form_g password ">
-                            <legend></legend>
+                            <legend>验证码</legend>
                             <input type="text" placeholder="请输入验证码" autocomplete="off"  maxlength="4" v-model="yzmcode">
                             <img :src="verImgCode" alt="" @click="switchYzmcode()">
                         </div>
@@ -32,7 +33,7 @@
                     </fieldset>
                 </form>
                 <div class="btn btn_blue">
-                    <a href="javascript:;" @click="LoginAction()">登录</a>
+                    <a class="new_btn" href="javascript:;" @click="LoginAction()"><span>登录</span></a>
                 </div>
                 <div class="other_link">
                     <a href="/reg">马上注册</a>

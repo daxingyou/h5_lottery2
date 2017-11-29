@@ -3,7 +3,7 @@
         <header id="pa_head" class="new_header">
             <div class="left">
                 <router-link :to="'/lobbyTemplate/info'">
-                    <img src="../../../static/frist/images/back.png" alt="">
+                    <span class="icon icon_back"></span>
                 </router-link>
             </div>
             <h2 class="center">提款</h2>

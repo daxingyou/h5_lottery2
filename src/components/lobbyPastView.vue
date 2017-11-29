@@ -12,9 +12,9 @@
             <div id="betting_record" class="tab_container tabBox">
                 <ul class="tab_content">
                     <li class="past_view" v-for="(list,index) in pastView">
-                        <ul class="panel">
+                        <ul class="new_panel">
                             <li class="prod cqssc" >
-                                <div class="play_th">
+                                <div class="new_panel_top play_th">
                                     <div class="prd_num"><i class="prd"></i><span>{{list.lotteryName}}</span></div>
                                     <div class="prd_num02">第{{(list.lotteryId == '8' || list.lotteryId == '108')?list.issueAlias :list.pcode}}期</div>
                                    <!-- <div class="time timerset" :data-time=" (format(formatTimeUnlix(list.endTime)).getTime() - format(formatTimeUnlix(sys_time)).getTime()) / 1000 ">-->
@@ -28,21 +28,21 @@
                                     </div>
                                 </div>
                                 <!--  北京pk10  秒速赛车 江苏快3 -->
-                                <ul :class="ulclass[list.lotteryId]" v-if="(list.lotteryId == '8') || (list.lotteryId == '108') || (list.lotteryId == '6') || (list.lotteryId == '106') || (list.lotteryId == '20') || (list.lotteryId == '22')">
+                                <ul :class="'new_panel_center '+ulclass[list.lotteryId]" v-if="(list.lotteryId == '8') || (list.lotteryId == '108') || (list.lotteryId == '6') || (list.lotteryId == '106') || (list.lotteryId == '20') || (list.lotteryId == '22')">
                                     <li v-for="listnum in list.winNumber.split(',')" >
                                        <!-- <span class="pk10_ball small_ball" :class="'num_'+listnum"></span>-->
                                         <span :class="[spanclass[list.lotteryId],'num_'+listnum]"></span>
                                     </li>
                                 </ul>
 
-                                <ul class="lo_ball" v-else>
+                                <ul class="new_panel_center lo_ball" v-else>
                                     <li v-for="listnum in list.winNumber.split(',')">{{listnum}}</li>
                                 </ul>
 
                                 <div class="function_btn">
-                                    <router-link class="bell btn btn_outline" to="publicTemplate/pastView" @click.native="setActionToView(list.lotteryId,gameName[list.lotteryId])"><i></i>往期开奖</router-link>
+                                    <router-link class="bell new_btn cancel btn_outline" to="publicTemplate/pastView" @click.native="setActionToView(list.lotteryId,gameName[list.lotteryId])"><i></i><span>往期开奖</span></router-link>
                                    <!-- <a class="bell btn btn_outline" href="publicTemplate/pastView" @click="setActionToView(list.lotteryId,gameName[list.lotteryId])"><i></i>往期开奖</a>-->
-                                    <router-link class="check btn btn_blue" :to="'/'+gameHref[list.lotteryId]"><i></i>立即投注</router-link>
+                                    <router-link class="check new_btn ok btn_blue" :to="'/'+gameHref[list.lotteryId]"><i></i><span>立即投注</span></router-link>
                                 </div>
                             </li>
                         </ul>
@@ -105,7 +105,6 @@ export default {
 
             }, // 对应彩种的id
             gameName : {
-            
                 "2":"重庆时时彩",
                 "12":"天津时时彩",
                 "14":"新疆时时彩",
@@ -175,33 +174,38 @@ export default {
             timeout: 600000,
             data: senddata ,
             success: (data) => {
-                for(var i=0;i<data.data.length;i++){
-                    if(!data.data[i].winNumber || data.data[i].winNumber==''){
-                        switch (data.data[i].lotteryId.toString()){
-                            case '8': // 北京pk10
-                            case '108': // 秒速赛车
-                                data.data[i].winNumber ='20,20,20,20,20,20,20,20,20,20' ;
-                                break;
-                            case '6' :   // 江苏K3
-                            case '20' :  // 安徽K3
-                            case '22' :  // 湖北K3
-                            case '106' :  // 秒速k3
-                                data.data[i].winNumber ='20,20,20' ;
-                                break;
-                            default  :
-                                data.data[i].winNumber='-,-,-,-,-' ;
-                                break ;
+              /*  for(var i=0;i<data.data.length;i++){*/
+                    $.each(data.data,function (i,v) {
+                       // console.log(v) ;
+                        if(!v.winNumber || v.winNumber==''){
+                            switch (v.lotteryId.toString()){
+                                case '8': // 北京pk10
+                                case '108': // 秒速赛车
+                                    v.winNumber ='20,20,20,20,20,20,20,20,20,20' ;
+                                    break;
+                                case '6' :   // 江苏K3
+                                case '20' :  // 安徽K3
+                                case '22' :  // 湖北K3
+                                case '106' :  // 秒速k3
+                                    v.winNumber ='20,20,20' ;
+                                    break;
+                                default  :
+                                    v.winNumber='-,-,-,-,-' ;
+                                    break ;
+                            }
                         }
-                    }
-                    if(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() > _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime() ){ // 如果当前期结束时间大于系统时间
-                        console.log('结束时间大') ;
-                        $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000) ;
-                    }else{
-                        console.log('结束时间小') ;
-                        $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.nextEndTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000) ;
-                    }
+                       // console.log(v.endTime) ;
+                        if(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() > _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime() ){ // 如果当前期结束时间大于系统时间
+                            console.log('结束时间大') ;
+                            $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000) ;
+                        }else{
+                            console.log('结束时间小') ;
+                            $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.nextEndTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000) ;
+                        }
 
-                }
+                    }) ;
+
+               /* }*/
 
                 this.pastView = data.data ;
 
@@ -258,8 +262,5 @@ export default {
 }
 </script>
 <style scoped>
-    .play_th .prd_num{ width: 4.5rem; }
-    #pa_content.lobby_past_view .play_th .prd_num > i {
-        margin-left: -0.3rem;
-    }
+
 </style>

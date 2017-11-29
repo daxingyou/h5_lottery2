@@ -18,7 +18,7 @@
                             <div class="so-m-t-right" v-show="ishwowpriod">
                                 <div class="last-open-num">
                                     <ul class="k3_top_number">
-                                        <li v-for="item in (winNumber || '20, 20, 20').split(',')"><span :class="'k3_dice num_'+ item"></span></li>
+                                        <li v-for="item in (winNumber || '20, 20, 20').split(',')"><span :class="'k3_dice active num_'+ item"></span></li>
                                     </ul>
                                 </div>
                                 <div class="last-open-k3dou last-open-dou">
@@ -48,7 +48,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="bule_bg"></div>
+                <div class="body_bg"></div>
                 <div  id="content-wrapper">
                      <div class="so-con-right ">
                       <div id="scroller"  class="scroller" >
@@ -61,7 +61,7 @@
                                         <h2>
                                             {{item.name}}
                                         </h2>
-                                        <div class="bet_box">
+                                        <div class="bet_box num_box">
                                             <p v-for="(itemChild,index) in item.childrens" @click="betSelect($event, itemChild, item)">
                                                 <span><span :class="'k3_dice num_' + (index+1)"></span></span>
                                                 <span class="bet-times">{{payoffFormat(itemChild.oddsData.payoff)}}</span>
@@ -79,7 +79,7 @@
                                         <h2>
                                             {{item.name}}
                                         </h2>
-                                        <div class="bet_box">
+                                        <div class="bet_box num_box">
                                             <p v-for="(itemChild,index) in item.childrens" @click="betSelect($event, itemChild, item)">
                                                 <span>
                                                     <span :class="'k3_dice small_dice num_'+ itemChild.name.split(',')[0]"></span>
@@ -100,8 +100,8 @@
                                         <h2>
                                             {{item.name}}
                                         </h2>
-                                        <div class="bet_box">
-                                            <p v-for="(itemChild,index) in item.childrens" @click="betSelect($event, itemChild, item)" :class="item.cid == 63100 && 'so-con-span-short'">
+                                        <div class="bet_box num_box">
+                                            <p v-for="(itemChild,index) in item.childrens" @click="betSelect($event, itemChild, item)" :class="item.cid == 63100 && 'k3_3same'">
                                                 <span v-if="itemChild.cid!=63107">
                                                     <span :class="'k3_dice small_dice num_'+ itemChild.name.split(',')[0]"></span>
                                                     <span :class="'k3_dice small_dice num_'+ itemChild.name.split(',')[1]"></span>
@@ -309,7 +309,7 @@
                 $tabs.hide();
                 $tabs.eq(index).show();
                 $src.addClass('active').siblings().removeClass('active');
-                var conth = $tabs.eq(index).height()-300 ;
+                var conth = $tabs.eq(index).height()-310 ;
                 $('.so-con-right').css('height',conth+'px') ;
                 //  _self.setScroll() ;
                 _self.conScroll.refresh() ; _self.conScroll.scrollTo(0, 300)  ;
@@ -326,7 +326,8 @@
             },
             //封盘倒计时结束后处理
             entertain:function(){
-                this.$refs.infoDialog.open('请至下期继续投注', 'title_end') ;
+                // this.$refs.infoDialog.open('请至下期继续投注', 'title_end') ;
+                this.$refs.infoDialog.open('请至下期继续投注', '本期投注已结束');
                 this.entertainStatus = true;
                 this.resetAction();
             },

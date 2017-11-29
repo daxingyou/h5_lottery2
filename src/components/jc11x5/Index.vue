@@ -37,7 +37,7 @@
                             <div class="so-m-t-right" v-show="ishwowpriod">
                                 <div class="last-open-num">
                                     <ul>
-                                        <li v-for="item in winNumber.split(',')">{{item}}</li>
+                                        <li :class="'active round_ball num_' + item" v-for="item in winNumber.split(',')">{{item}}</li>
                                     </ul>
                                 </div>
                                 <div class="last-open-dou">
@@ -84,9 +84,9 @@
 
                         </ul>
                     </div>
-                <div class="bule_bg" > </div>
+                <div class="body_bg" > </div>
                 <div  id="content-wrapper">
-                    <div class="so-con-right " >  <!-- bule_bg -->
+                    <div class="so-con-right " >  <!-- body_bg -->
                          <div id="scroller"  class="scroller" >
                            <div class="content-all">
                               <!--以下为盘面不同样式，根据ID+class区分-->
@@ -396,7 +396,7 @@
                 if( this.lasttyple !=$src.data('type') ){
                     this.betSelectedList = [];
                 }
-                var conth = $tabs.eq(index).height()-300 ;
+                var conth = $tabs.eq(index).height()-310 ;
 //                console.log(conth) ;
                 $('.so-con-right').css('height',conth+'px') ;
                 //  _self.setScroll() ;
@@ -427,7 +427,8 @@
             },
             //封盘倒计时结束后处理
             entertain:function(){
-                this.$refs.infoDialog.open('请至下期继续投注', 'title_end') ;
+                // this.$refs.infoDialog.open('请至下期继续投注', 'title_end') ;
+                this.$refs.infoDialog.open('请至下期继续投注', '本期投注已结束');
                 this.entertainStatus = true;
                 this.resetAction();
             },
@@ -531,12 +532,8 @@
                     this.$refs.bet.betAmount = '' ;
                 }
                 this.getMemberBalance(this.lotteryID) ; // 更新余额
-<<<<<<< HEAD
                 this.$refs.bet.showList = false; // 关闭下注弹窗
                 this.combineCount=0
-=======
-                this.$refs.bet.showList = false ; // 关闭下注弹窗
->>>>>>> a4078b7186f5788a3bf751eac644ee6322874382
             },
             combineCountCaculate:function(item){
                 const rule = this.selectRules[item.parentItem.cid];
@@ -565,7 +562,7 @@
                     }else{
                         callback(false);
                         // 请选择1个选项
-                        this.$refs.infoDialog.open('请选择'+max+'个选项', 'title_quantity');
+                        this.$refs.infoDialog.open('请选择'+max+'个选项', '投注项目超过规定数量');
                     }
                     this.combineCountCaculate(item);
                 }

@@ -1,5 +1,5 @@
 <template>
-    <div id="pa_con" class="so-con warp cover_bg">
+    <div id="pa_con" class="so-con warp">
         <header id="pa_head" class="new_header">
             <div class="left">
                 <a href="javascript:;">

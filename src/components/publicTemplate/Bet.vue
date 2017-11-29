@@ -19,8 +19,9 @@
                 </div>
             </div>
         </div>
-        <div v-if="showList" class="so-shade"></div>
-        <div v-if="showList" class="so-pop">
+        <!--<div v-if="showList" class="so-shade"></div>-->
+        <div v-if="showList" class="modal so-pop">
+            <div class="m_content">
             <h2>下注清单<a @click="closeListDialog"></a></h2>
             <p class="grey_text">请核对您的下注信息</p>
             <div>
@@ -45,11 +46,12 @@
                 </div>
             </div>
             <p class="so-pop-sum">
-            【总计】总注数：<span class="total-bet-num">{{betCount}}</span> <br/>
+            【总计】总注数：<span class="total-bet-num">{{betCount}}</span>
             总金额：<span class="total-bet-mon">{{totalAmount}}</span>
             </p>
-            <a class="cancle" @click="closeListDialog">取消</a>
-            <a class="btn-submit ok" @click="submitAction(lotteryID)">确定</a>
+            <a class="new_btn cancle" @click="closeListDialog"><span>取消</span></a>
+            <a class="new_btn btn-submit ok" @click="submitAction(lotteryID)"><span>确定</span></a>
+            </div>
         </div>
         <!--封盘底部遮挡-->
          <!-- <div class="so-fengpan">
@@ -124,7 +126,8 @@ export default {
             // 余额不足提示充值
             // if (this.monAmt(total_mon) > this.monAmt(Number(returnMoney($('.so-in-top-sum').eq(0).text())))) {
             if (total_mon > this.balance) {
-                this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', 'title_bet_fail')
+                // this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', 'title_bet_fail')
+                this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', '下注失败')
                 this.showList = false;
                 return false;
             }
@@ -178,12 +181,14 @@ export default {
                     } else {  //购买失败提示
                         this.ajaxSubmitAllow = false ;
                         if(data.data =='' || data.data ==null){ // 平台商不存在
-                            this.parentRefs.autoCloseDialog.open(data.msg,'title_bet_fail')
+                            // this.parentRefs.autoCloseDialog.open(data.msg,'title_bet_fail')
+                            this.parentRefs.autoCloseDialog.open(data.msg, '下注失败')
                             // initTipPop05(false,3,data.msg) ;
                         }else{   // 各种错误提示
                             if(data.data.params.ErrInfo !=''){
                                 // initTipPop05(false,3,data.data.params.ErrInfo) ;
-                                this.parentRefs.autoCloseDialog.open(data.data.params.ErrInfo,'title_bet_fail') ;
+                                // this.parentRefs.autoCloseDialog.open(data.data.params.ErrInfo,'title_bet_fail') ;
+                                this.parentRefs.autoCloseDialog.open(data.data.params.ErrInfo, '下注失败');
 
                             }
                         }
@@ -194,7 +199,8 @@ export default {
                 },
                 error: function (e) {  // 错误提示
                     // initTipPop05(false,3,'投注失败，请稍后再试') ;
-                    this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试','title_bet_fail')
+                    // this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试','title_bet_fail')
+                    this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试', '下注失败')
                     this.ajaxSubmitAllow = false;
 
                 }
@@ -252,7 +258,8 @@ export default {
             }
 
             if(!amount || !this.isPositiveNum(amount) || amount =='0'){ // 投注金额不正确  .modal.m08
-                this.parentRefs.autoCloseDialog.open('请输入整数的投注金额，金额不能为0','title_bet_fail')
+                // this.parentRefs.autoCloseDialog.open('请输入整数的投注金额，金额不能为0','title_bet_fail')
+                this.parentRefs.autoCloseDialog.open('请输入整数的投注金额，金额不能为0', '下注失败')
                 return false;
             }
             // 注单金额正确

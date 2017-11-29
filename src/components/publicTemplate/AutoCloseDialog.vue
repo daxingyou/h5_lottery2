@@ -1,8 +1,9 @@
 <template>
-    <div v-if="show" class="popup so-tip-pop so-tip-pop-01 publicDialog" @click="close">
-        <div>
-            <img :src="'/static/frist/images/pop/'+ (typeStr ||'title_tip') +'.png'">
-            <img :src="'/static/frist/images/page/'+(typelogo || 'status03')+'.svg'">
+    <div v-if="show" class="modal publicDialog" @click="close">
+        <div class="m_content">
+            <!--<img :src="'/static/frist/images/pop/'+ (typeStr ||'title_tip') +'.png'">-->
+            <h2>提示</h2>
+            <div class="tip_icon"><img :src="'/static/frist/images/page/'+(typelogo || 'status03')+'.svg'"></div>
             <p :class="(contenclas || 'd_danger')">{{content}}</p>
         </div>
     </div>

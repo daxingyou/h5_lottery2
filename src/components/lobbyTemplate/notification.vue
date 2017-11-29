@@ -4,7 +4,7 @@
         <header id="pa_head" class="new_header">
             <div class="left">
                 <a href="javascript:;" onclick="history.go(-1)">
-                    <img src="/static/frist/images/back.png" alt="">
+                    <span class="icon icon_back"></span>
                 </a>
             </div>
             <h2 class="center">个人中心</h2>

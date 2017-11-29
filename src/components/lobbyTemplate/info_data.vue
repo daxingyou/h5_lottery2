@@ -1,9 +1,9 @@
 <template>
-    <div id="pa_con" class="so-con warp cover_bg">
+    <div id="pa_con" class="so-con warp">
         <header id="pa_head" class="new_header">
             <div class="left">
                 <a href="javascript:;" onclick="history.go(-1)" >
-                    <img src="../../../static/frist/images/back.png" alt="">
+                    <span class="icon icon_back"></span>
                 </a>
             </div>
             <h2 class="center">帐户管理</h2>
@@ -179,8 +179,8 @@
                         </fieldset>
                     </form>
                     <div>
-                        <div class="cancel-btn btn btn_two round btn_outlineb"><a href="javascript:;">取消</a></div>
-                        <div class="btn btn_two round btn_blue02"><a href="javascript:;"@click="submitChangePassword()" >确定</a></div>
+                        <div class="cancel-btn btn btn_two round btn_outlineb"><a href="javascript:;"><span>取消</span></a></div>
+                        <div class="btn btn_two round btn_blue02"><a href="javascript:;"@click="submitChangePassword()" ><span>确定</span></a></div>
                     </div>
                 </div>
             </div>

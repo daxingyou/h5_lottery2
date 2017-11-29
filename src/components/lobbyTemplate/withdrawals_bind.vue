@@ -1,9 +1,9 @@
 <template>
-    <div id="pa_con" class="so-con warp bule_bg">
+    <div id="pa_con" class="so-con warp body_bg">
         <header id="pa_head" class="new_header">
             <div class="left">
                 <router-link :to="'/lobbyTemplate/info'">
-                    <img src="../../../static/frist/images/back.png" alt="">
+                    <span class="icon icon_back"></span>
                 </router-link>
             </div>
             <h2 class="center">开户行</h2>

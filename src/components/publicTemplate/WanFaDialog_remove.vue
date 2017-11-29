@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="action">
-                <a class="ok">确定</a>
+                <a class="new_btn ok"><span>确定</span></a>
             </div>
         </div>
     </div>

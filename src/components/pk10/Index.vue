@@ -43,7 +43,7 @@
                             <div class="so-m-t-right" v-show="ishwowpriod">
                                 <div class="last-open-num">
                                     <ul class="pk10_top_number">
-                                        <li v-for="item in winNumber.split(',')"><span class="pk10_ball small_ball" :class="'ball num_'+item"> </span></li>
+                                        <li v-for="item in winNumber.split(',')"><span class="pk10_ball active" :class="'ball num_'+item"> </span></li>
                                         <!-- <li><span class="pk10_ball small_ball num_10"></span></li> -->
 
                                     </ul>
@@ -86,7 +86,7 @@
 
                     </ul>
                 </div>
-                <div class="bule_bg"></div>
+                <div class="body_bg"></div>
                 <div  id="content-wrapper">
                       <div class="so-con-right">
                           <div id="scroller"  class="scroller" >
@@ -342,7 +342,7 @@ export default {
             $tabs.eq(index).show();
             $src.addClass('active').siblings().removeClass('active') ;
 
-            var conth = $tabs.eq(index).height()-300 ;
+            var conth = $tabs.eq(index).height()-310 ;
             $('.so-con-right').css('height',conth+'px') ;
           //  _self.setScroll() ;
             _self.conScroll.refresh() ; _self.conScroll.scrollTo(0, 300)   ;
@@ -361,7 +361,8 @@ export default {
         },
         //封盘倒计时结束后处理
         entertain:function(){
-            this.$refs.infoDialog.open('请至下期继续投注', 'title_end')
+            // this.$refs.infoDialog.open('请至下期继续投注', 'title_end')
+            this.$refs.infoDialog.open('请至下期继续投注', '本期投注已结束')
             this.entertainStatus = true;
             this.resetAction();
         },
