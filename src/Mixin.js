@@ -118,13 +118,17 @@ var MyMixin = {
                 hScrollbar:false ,
                 vScrollbar:false ,
                 click: true ,
+               // momentum: false ,
+                useTransform: false , // 防止滑动多次卡死
+                useTransition: false ,  // 防止滑动多次卡死
             });
-           // $('.so-con-left').find('ul li:first-child').click() ; // 解决k3 滑动问题
+           $('.so-con-left').find('ul li:first-child').click() ; // 解决k3 滑动问题
 
         },
         // 初始化滚动高度
         setInitHeight:function (lotteryid) {
-            var conth = $('.so-con-right .item_one').height()-310 ;
+            var conth = $('.so-con-right .item_one').height() ;
+           this.setClickHeight(conth) ;
             if(lotteryid == '6'){
                 /* var div = document.getElementById("k3-item0");
                 div.ontouchmove = function(e){
@@ -141,9 +145,20 @@ var MyMixin = {
 
                 };*/
             }
-           $('.so-con-right').css('height',conth+'px') ;
+
             window.PointerEvent = undefined ;
 
+        },
+        // 点击切换 设置球区域高度
+        setClickHeight:function (val) {
+            var winw = window.screen.width || window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight; // 获取屏幕宽度
+            if(winw >413){ // 大屏幕
+                $('.so-con-right').css('height',(val-380)+'px') ;
+            }else if(winw>300 && winw<375){ // 小屏幕
+                $('.so-con-right').css('height',(val-270)+'px') ;
+            }else{
+                $('.so-con-right').css('height',(val-310)+'px') ;
+            }
         },
 
         ajax:function(userConfig){
@@ -197,7 +212,7 @@ var MyMixin = {
                      setTimeout(function () {
                          _self.setInitHeight(gameid) ;
                      },200) ;
-                    $('.so-con-left').find('ul li:first-child').click() ; // 解决k3 滑动问题
+                   // $('.so-con-left').find('ul li:first-child').click() ; // 解决k3 滑动问题
 
                         resolve(this.playTreeList);
                     },
@@ -399,7 +414,7 @@ var MyMixin = {
                 var s = parseInt(second % 60);
               //  var s = (second - (h * 60 * 60) - (f * 60));
               // second --;
-              bk = '0'+h + ":" + (f < 10 ? "0" + f : f) + ":" + (s < 10 ? "0" + s : s)
+              bk = (h < 10 ? "0" + h : h)+ ":" + (f < 10 ? "0" + f : f) + ":" + (s < 10 ? "0" + s : s)
               // bk = h + ":" + (f < 10 ? "0" + f : f) + ":" + (s < 10 ? "0" + s : s)
             } else {
                 bk = second.split(":");

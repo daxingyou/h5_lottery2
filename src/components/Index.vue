@@ -223,9 +223,8 @@ export default {
             bulletins:'',
             banner:[
                 {'url':'http://img.will888.cn/photo/pic/T1HaETByYT1RCvBVdK/0'},
-                {'url':'http://img.will888.cn/photo/pic/T1HaETByYT1RCvBVdK/0'},
-              /*  {'url':'http://admin.baochiapi.com/photo/pic/T15tETByAT1RCvBVdK/0'},
-                {'url':'http://admin.baochiapi.com/photo/pic/T1kyhTByDT1RCvBVdK/0'},*/
+                {'url':'http://admin.baochiapi.com/photo/pic/T15tETByAT1RCvBVdK/0'},
+                {'url':'http://admin.baochiapi.com/photo/pic/T1kyhTByDT1RCvBVdK/0'},
             ] ,
 
         }
@@ -267,8 +266,8 @@ export default {
               url: this.action.uaa + 'oauth/logout',
               data: {} ,
               success: (res) => {
+                  _self.clearAllCookie() ; // 清除全部 cookie
                   if(res.err == 'SUCCESS'){
-                      _self.clearAllCookie() ; // 清除全部 cookie
                       this.$refs.autoCloseDialog.open('用户已退出','','icon_check','d_check') ;
                       setTimeout(function () {
                           window.location = '/' ;
