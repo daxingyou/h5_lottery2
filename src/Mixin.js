@@ -119,10 +119,12 @@ var MyMixin = {
                 vScrollbar:false ,
                 click: true ,
                // momentum: false ,
-                useTransform: false , // 防止滑动多次卡死
-                useTransition: false ,  // 防止滑动多次卡死
+
+                useTransform: false ,
+                useTransition: false ,
+                // snapThreshold:0.5
             });
-           $('.so-con-left').find('ul li:first-child').click() ; // 解决k3 滑动问题
+           // $('.so-con-left').find('ul li:first-child').click() ; // 解决k3 滑动问题
 
         },
         // 初始化滚动高度
@@ -516,6 +518,10 @@ var MyMixin = {
         },
         //清除所有cookie函数
          clearAllCookie:function() {
+            console.log('清除cookie') ;
+             this.setCookie("access_token", '');  // 登录token
+             this.setCookie("username", '');  //  登录用户名
+             this.setCookie('acType','');   // 玩家类型
             var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
             if(keys) {
                 for(var i = keys.length; i--;)
