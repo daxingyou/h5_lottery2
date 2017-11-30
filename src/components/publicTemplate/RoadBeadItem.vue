@@ -20,7 +20,7 @@
         props:['dataResult'],
         data :function() {
             return {
-                type:{ '和':'mid', '龙':'big', '大':'big', '单':'big', '虎':'tiger', '小':'tiger', '双':'tiger' }, 
+                type:{ '和':'mid', '龙':'dragon', '大':'big', '单':'odd', '虎':'tiger', '小':'small', '双':'even' }, 
             }
         },
         mounted:function() {
