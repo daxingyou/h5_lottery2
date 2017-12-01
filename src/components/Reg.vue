@@ -71,7 +71,7 @@
                                 </fieldset>
                             </form>
                             <div class="">
-                                <a class="new_btn" href="javascript:;" @click="nextAction()"><span>下一步</span></a>
+                                <a class="new_btn" href="javascript:;" @click="nextAction()"><span class="big">下一步</span></a>
                             </div>
                         </div>
                         <div class="after-add" style="display: none;">
@@ -182,7 +182,7 @@
                             </fieldset>
 
                             <div class="">
-                                <a class="new_btn" href="javascript:;" @click="registerAction()"><span>注册</span></a>
+                                <a class="new_btn" href="javascript:;" @click="registerAction()"><span class="big">注册</span></a>
                             </div>
                         </div>
                         <div class="other_link">
