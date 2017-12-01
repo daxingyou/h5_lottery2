@@ -35,11 +35,11 @@ input, select, button, a { outline: none; }
 .clearfix::after { display: block; clear: both; content: ""; }
 
 /* font color */
-.text-red { color: #c93030; }
-.text-yellow { color: #ffbd00; }
+.text-red { color: #980110; }
+.text-yellow { color: #ab5900; }
 .text-default { color: #d7e8f0; }
 .text-l-yellow { color: #fdf19b; }
-.text-green { color: #71c341; }
+.text-green { color: #4c7a12; }
 
 /* 馀额 */
 .purse { position: relative; width: 4.133rem; height: 0.67rem; line-height: 0.67rem; box-sizing: border-box; background-color: rgba(0, 0, 0, 0.5); border-radius: 2rem; text-align: right; padding: 0 0.3rem 0 0.7rem; box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.8) inset;  }
@@ -49,7 +49,7 @@ input, select, button, a { outline: none; }
 /* btn */
 .new_btn{ margin: 0.1rem; display: inline-block; line-height: .7rem;  color: #ffc388; border-radius: 0.5rem; box-shadow: 0px 1px 1px rgba(20, 0, 0, 0.68); -webkit-box-shadow: 0px 1px 1px rgba(20, 0, 0, 0.68); background: rgb(235,178,124); /* Old browsers */background: -moz-linear-gradient(top, rgba(235,178,124,1) 0%, rgba(206,142,90,1) 100%); /* FF3.6-15 */background: -webkit-linear-gradient(top, rgba(235,178,124,1) 0%,rgba(206,142,90,1) 100%); /* Chrome10-25,Safari5.1-6 */background: linear-gradient(to bottom, rgba(235,178,124,1) 0%,rgba(206,142,90,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
 .new_btn span{ border:2px solid transparent; width: 3rem; background-color: #4b280c; background-clip: content-box; display: block; text-align: center; border-radius: 0.5rem; box-shadow: 0px 0px 3px rgba(47, 27, 15, 0.26) inset; -webkit-box-shadow: 0px 0px 3px rgba(47, 27, 15, 0.5) inset; }
-.new_btn.cancel span{ margin-left: .25rem;width: 2.2rem; background-color: #4b280c;}
+.new_btn.cancel span{ width: 2.2rem; background-color: #4b280c;}
 .new_btn.ok span{ width: 3rem; background: rgb(186,4,26); /* Old browsers */background: -moz-linear-gradient(top, rgba(186,4,26,1) 0%, rgba(225,26,51,1) 50%, rgba(186,4,26,1) 100%); /* FF3.6-15 */background: -webkit-linear-gradient(top, rgba(186,4,26,1) 0%,rgba(225,26,51,1) 50%,rgba(186,4,26,1) 100%); /* Chrome10-25,Safari5.1-6 */background: linear-gradient(to bottom, rgba(186,4,26,1) 0%,rgba(225,26,51,1) 50%,rgba(186,4,26,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */background-clip: content-box;}
 .new_btn_outline { color: #fbd4a9;  border: 1px solid #fbd4a9; border-radius: 0.5rem; display: inline-block; font-size: .34rem; padding: 0 0.2rem; line-height: 0.7rem; }
 
@@ -105,7 +105,7 @@ input, select, button, a { outline: none; }
 
 /* content */
 #pa_con { width: 10rem; height: 100%; text-align: center; margin: auto; background: url("/static/frist/images/bg.jpg") repeat #fae6c7; background-size: 100%; min-height: 18rem; }
-#pa_content, .pa_content { margin-top: 1.36rem; position: relative; z-index: 2; }
+#pa_content, .pa_content { margin-top: 1.36rem;padding-bottom: 1.36rem; position: relative; z-index: 2; }
 #pa_content .page_box, .pa_content .page_box{ padding: 0.3rem;}
 
 /*
@@ -166,6 +166,7 @@ footer.bot_nav ul li a span.Footer-font { display: block; }
 .modal .m_content .left { text-align: left; padding: .5rem; }
 .modal .m_content .action { text-align: center;}
 .modal .m_content .tip_icon { width: 0.8rem; height:0.8rem; margin: 0.5rem auto 0.3rem;}
+.modal .m_content .tip_icon img{ width: 100%;}
 /*.modal > .m_content > .content > div { margin: 0 auto; text-align: center; }*/
 
 .modal > .m_content > .content > div > img { height: 1rem; display: block; margin: 0 auto; }
@@ -194,10 +195,10 @@ footer.bot_nav ul li a span.Footer-font { display: block; }
 
 
 .slide_toggle { text-align: left; margin-bottom: 0.2rem;  cursor: pointer; }
-.slide_toggle .panel_title { padding: .32rem 0.7143rem .32rem 1rem; font-size: .4rem; height: .25rem; line-height: .25rem;  }
-.slide_toggle .panel_title span { background-image: url("/static/frist/images/arrow_up.png"); background-size: 0.7143rem 0.7143rem; width: 0.7rem; height: 0.7rem; position: relative; background-position: 0px 0; background-repeat: no-repeat; background-size: 100%; top: -.3rem; -webkit-transition: all .2s; -o-transition: all .2s; transition: all .2s; float: right; -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg); -ms-transform: rotate(180deg); transform: rotate(180deg); }
-.slide_toggle .panel { display: none; }
-.slide_toggle.active {  }
+.slide_toggle .panel_title { padding: 0 0.5rem 0 1rem; font-size: .4rem; line-height: 0.9rem; height: 0.9rem; }
+.slide_toggle .panel_title span { background: url("/static/frist/images/arrow_up.png") no-repeat 50% 40%; background-size: 0.7rem auto; width: 0.7rem; height: 0.8rem; -webkit-transition: all .2s; -o-transition: all .2s; transition: all .2s; float: right; -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg); -ms-transform: rotate(180deg); transform: rotate(180deg); }
+.slide_toggle .panel { display: none; color: #d59559; }
+.slide_toggle.active span{ -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg); }
 /*.slide_toggle.active .panel_title span { top: -.1rem; -webkit-transform: rotate(360deg); -moz-transform: rotate(360deg); -o-transform: rotate(360deg); -ms-transform: rotate(360deg); transform: rotate(360deg); }*/
 
 /*.badge { width: 2rem; height: 2rem; border-radius: 100%; margin-right: 0.5714rem; background-image: url("/static/frist/images/page/logo_bg.png"); background-size: 100%; overflow: hidden; margin: 0 auto; position: relative; line-height: 1.8rem; }
@@ -252,58 +253,39 @@ label.red { color: #d43939; text-align: left; display: block; margin-top: .2rem;
 
 
 
-.agent_area { margin-top: 2rem; }
-
+/* 代理申请 */
+.agent_area { padding-top: 0.3rem; }
 .agent p { line-height: 1.8em; margin-bottom: .3em; font-size: 0.35rem; }
-
 .agent section { margin: 1.5em 0; }
-
 .agent div { width: 90%; margin: 0 auto; }
-
 .agent .btn_blue { margin-bottom: .5rem; }
-
 .agent_check input[type="checkbox"] { font-size: 0.35rem !important; width: .3rem; height: .3rem; vertical-align: middle; }
-
 .agent_check > a { color: #ffbd00; }
-
 .data, .agent table { width: 100%; font-weight: 500; margin: 0 0 .8rem; font-size: 0.35rem; }
+.data thead, .agent table thead { background-color: #4b280c; }
+.data td, .agent table td, .data th, .agent table th { border: 1px solid #7e5c4c; padding: .2rem; text-align: center; vertical-align: middle; }
+.data th, .agent table th { color: #ffc388; }
 
-.data thead, .agent table thead { background-color: #0a1625; }
-
-.data td, .agent table td, .data th, .agent table th { border: 1px solid #277ca5; padding: .2rem; text-align: center; vertical-align: middle; }
-
-.data th, .agent table th { color: #66c3f2; }
-
-/* CSS for the main interaction */
 .tabset { text-align: center; }
-
 .tabset > input[type="radio"] { position: absolute; left: -200vw; }
-
 .tabset .tab-panel { display: none; }
-
-.tabset > label { position: relative; display: inline-block; padding: .27rem .8rem; border: 1px solid transparent; border-bottom: 0; cursor: pointer; font-weight: 300; color: #007ea9; border: .014rem solid #007ea9; font-size: 0.35rem; }
-
+.tabset > label { position: relative; display: inline-block;margin-left: -2px; padding: .27rem .8rem; cursor: pointer; color: #4b280c; border: 1px solid #7e5c4c; font-size: 0.34rem; }
 .tabset > label.tab1 { margin-right: -.1rem; border-top-left-radius: .2rem; border-bottom-left-radius: .2rem; }
-
 .tabset > label.tab2 { border-top-right-radius: .2rem; border-bottom-right-radius: .2rem; }
-
 .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child, .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2), .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3), .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4), .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5), .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) { display: block; }
-
 .tabset > label:hover, .tabset > input:focus + label { color: #fff; }
-
 .tabset > label:hover::after, .tabset > input:focus + label::after, .tabset > input:checked + label::after { background: #06c; color: #fff; }
-
-.tabset > input:checked + label { margin-bottom: -1px; background-color: #007ea9; color: #fff; }
+.tabset > input:checked + label { margin-bottom: -1px; background-color: #4b280c; color: #ffc388; }
 
 .tab-panel { text-align: justify; }
 
-.tab-panel h4 { color: #66c3f2; font-size: .4rem; margin: .2rem 0; }
+.tab-panel h4 { color: #4b280c; font-size: .4rem; margin: .2rem 0; }
 
 .formlist_area { width: 90%; margin: 0 auto; margin-top: 2rem; }
 
-.today_payoff.win_payoff { color: #71c341; }
+.today_payoff.win_payoff { color: #4c7a12; }
 
-.today_payoff.lose_payoff { color: #c93030; }
+.today_payoff.lose_payoff { color: #980110; }
 
 .notfound { text-align: center; margin: 0 auto; width: 100%; height: 100%; background-attachment: fixed; min-height: 18rem; padding-bottom: 2em; }
 
@@ -356,7 +338,9 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 
 .promo_area strong { color: #fdf19b; }
 
-/* icon */
+/* -----------------------------------------
+// icon
+-----------------------------------------*/
 .icon { width: 0.64rem; height: 0.64rem; margin-top: -0.05rem; display: inline-block; vertical-align: middle; background:url('/static/frist/images/icon_sprite.png') no-repeat; background-size: 6.4rem auto; }
 .icon.icon_nav{ background-position: 0 0; }
 .icon.icon_trend{ background-position: -0.64rem 0;}
@@ -373,6 +357,33 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .icon.icon_r_play { background-position: -3.84rem 0; }
 .icon.icon_r_today{ background-position: -4.48rem 0; }
 .icon.icon_back{ width: 1rem; height: 1rem; background-position: -5.12rem 0; }
+.icon.icon_arrow_dark{background-position: 0 -1.28rem; }
+.icon.icon_arrow_light{background-position: -0.64rem -1.28rem; }
+.icon.icon_info{background-position: -4.48rem -1.28rem; }
+.icon.icon_question{background-position: -5.12rem -1.28rem; }
+.icon.icon_copy{background-position: -5.76rem -1.28rem; }
+.icon.icon_edit{background-position: -1.28rem -1.28rem; }
+.icon.icon_arrow_down{background-position: 0 -1.92rem }
+.icon.icon_check{background-position: -0.64rem -1.92rem }
+
+.icon_account  { display: inline-block; vertical-align: middle; width: 1.5rem; height: 1.5rem; margin: 0 auto; background-image: url(/static/frist/images/icon_account.png); background-size: 6rem auto; }
+.icon_account.icon_deposit { background-position-x: 0rem; }
+.icon_account.icon_withdrawals { background-position-x: -1.5rem; }
+.icon_account.icon_promo { background-position-x: -3rem; }
+.icon_account.icon_service { background-position-x: -4.5rem; }
+.icon_account.icon_info_1 { background-position: 0rem -1.5rem; }
+.icon_account.icon_info_2 { background-position: -1.5rem -1.5rem; }
+.icon_account.icon_info_3 { background-position: -3rem -1.5rem; }
+.icon_account.icon_info_4 { background-position: -4.5rem -1.5rem; }
+.icon_account.icon_join_1 { background-position: 0rem -3rem; }
+.icon_account.icon_join_2 { background-position: -1.5rem -3rem; }
+.icon_account.icon_join_3 { background-position: -3rem -3rem; }
+.icon_account.icon_deposit_1 { background-position: 0rem -4.5rem; }
+.icon_account.icon_deposit_2 { background-position: -1.5rem -4.5rem; }
+.icon_account.icon_deposit_3 { background-position: -3rem -4.5rem; }
+.icon_account.icon_ac01 { background-position: 0rem -7.5rem; }
+.icon_account.icon_ac02 { background-position: -1.5rem -7.5rem; }
+.icon_account.icon_ac03 { background-position: -3rem -7.5rem; }
 
 /*i.filter { background-image: url("/static/frist/images/filter.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; }*/
 
@@ -390,9 +401,9 @@ div.icon > div { background-image: url("/static/frist/images/border_bg02.png"); 
 
 div.icon > div > i { line-height: 1.5rem; text-align: center; width: 1rem; height: 1rem; }*/
 
-i.i_webbank_pay, i.i_scan_qrcode, i.i_bank_transfer, i.i_help, i.icon_copy, .info_bot i { background: url("/static/frist/images/icon_member.png") no-repeat; background-size: 100%; background-position-y: 0rem; width: 100%; margin-top: .2rem; }
+/*i.i_webbank_pay, i.i_scan_qrcode, i.i_bank_transfer, i.i_help, i.icon_copy, .info_bot i { background: url("/static/frist/images/icon_member.png") no-repeat; background-size: 100%; background-position-y: 0rem; width: 100%; margin-top: .2rem; }*/
 
-i.i_scan_qrcode { background-position-y: -1rem; margin-top: .15rem; }
+/*i.i_scan_qrcode { background-position-y: -1rem; margin-top: .15rem; }
 
 i.i_bank_transfer { background-position-y: -2.15rem; }
 
@@ -400,9 +411,9 @@ i.i_help { background-size: 100%; background-position: 0 -10.79rem; width: 1rem;
 
 i.icon_copy { background-size: 100%; background-position: 0 -10.12rem; width: 1rem; height: .5rem; margin-top: 0; vertical-align: middle; }
 
-.info_bot i { background-size: 100%; width: 1rem; height: .5rem; }
+.info_bot i { background-size: 100%; width: 1rem; height: .5rem; }*/
 
-.info_bot i.info01 { background-position-y: -2.45rem; margin-top: 0; }
+/*.info_bot i.info01 { background-position-y: -2.45rem; margin-top: 0; }
 
 .info_bot i.info02 { background-position-y: -3.3rem; margin-top: .2rem; }
 
@@ -412,9 +423,9 @@ i.icon_copy { background-size: 100%; background-position: 0 -10.12rem; width: 1r
 
 .info_bot i.info05 { background-position-y: -5.83rem; }
 
-.info_bot i.info06 { background-position-y: -6.5rem; }
+.info_bot i.info06 { background-position-y: -6.5rem; }*/
 
-.info_bot i.info07 { background-image: url("/static/frist/images/icon_money.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; background-position-y: -4.7rem; }
+/*.info_bot i.info07 { background-image: url("/static/frist/images/icon_money.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; background-position-y: -4.7rem; }
 
 .info_bot i.info08 { background-image: url("/static/frist/images/icon_money.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; background-position-y: -5.55rem; }
 
@@ -423,9 +434,9 @@ i.icon_copy { background-size: 100%; background-position: 0 -10.12rem; width: 1r
 i.icon-notification { background: url("/static/frist/images/icon-notification.gif") no-repeat; width: .5rem; height: .5rem; background-size: 100%; margin: -1px 6px 0 0; padding: 0; vertical-align: middle; }
 
 i.i_mail_status { background: url("/static/frist/images/icon_money.png") no-repeat; background-size: 100%; background-position-y: -3.55rem; margin-top: .12rem; }
-
+*/
 i.write, i.i_save, i.triangle, i.ac { background-image: url("/static/frist/images/icon_money.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; background-position-y: -5.9rem; width: .65rem; height: .3rem; }
-
+/*
 i.i_save { background-position-y: -6.3rem; }
 
 i.triangle { background-position-y: -6.77rem; }
@@ -444,7 +455,7 @@ i.index_s.index_s02 { background-position-y: -1.1rem; height: 1.2rem; }
 
 i.index_s.index_s03, i.index_s.index_s04 { background-image: url("/static/frist/images/icon_member.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; background-position-y: -4.1rem; margin-top: .2rem; }
 
-i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }
+i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 
 /* -----------------------------------------
 // bet lottery
@@ -565,7 +576,7 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }
 .so-con-left ul li a { margin: 0.2rem auto; background: url("/static/frist/images/ball.png") no-repeat; background-size: auto 3.2rem; display: block; width: 1.6rem; height: 1.6rem; box-sizing: border-box; padding-top: 0.4rem; }
 .so-con-left ul li.active a { background-position-y: -1.6rem; }
 
-.so-con-right {  width: 7.7rem;  height: 100%; padding-bottom: .8rem;  position: fixed;  z-index: 5;left: 23% ; }
+.so-con-right {  width: 7.7rem;  height: 100%; padding-bottom: .8rem;  position: fixed;  z-index: 5; margin-left: 2.3rem ; }
 
 
 
@@ -731,7 +742,7 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .tab_mid > li { display: inline-block; width: 25%; text-align: center; vertical-align: middle; }
 .tab_mid > li > a { display: block; color: #d59559; height: 1rem; line-height: 1rem; font-size: .34rem; position: relative;}
 .tab_mid > li.on a { color: #ffc388; }
-.tab_mid > li.on:after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: #ffc388; box-shadow: 0px 0px 2px #d59559 inset; border: 1px solid #d59559; }
+.tab_mid > li.on:after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background-color: #ffc388; box-shadow: 0px 0px 2px #d59559 inset; border: 1px solid #d59559; box-sizing: border-box;}
 .tab_mid.tab_three > li { width: 33.333%; }
 .tab_mid.tab_two > li { width: 50%; }
 .tab_mid.tab_five > li { width: 20%; }
@@ -752,17 +763,17 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .bet_day .date { font-size: 1rem; }
 
 /* 列表 */
-.bet_data { border-bottom: 1px solid #90573e;  margin: 0 0.2rem;  }
+.bet_data { border-bottom: 1px solid #90573e; /* margin: 0 0.2rem; */ }
 .bet_data:last-child { border-bottom: none; }
 .bet_data > a { display: block; color: #ffc388; }
 .bet_data > a:after { content: ''; display: table; clear: both; }
-.bet_data > a > .item { padding: .3rem; overflow: hidden; width: 9rem; box-sizing: border-box;}
-.bet_data > a > .item > div { float: left; line-height: .6rem; }
+.bet_data > a > .item { padding: .3rem; overflow: hidden; /*width: 9rem;*/ box-sizing: border-box;}
+.bet_data > a > .item > div { display: inline-block; vertical-align: middle; line-height: .6rem; }
 .bet_data > a > .item > .status { float: right; max-width: 1.8rem; width: auto; }
 .bet_data > a > .item > .badge { background: url('/static/frist/images/logo_bg.png') no-repeat; background-size: 100% 100%; width: 1.5rem; height: 1.5rem; }
-.bet_data > a > .item > .badge > img { margin-left: 0.2rem; }
+.bet_data > a > .item > .badge > img { width: 1.1rem; margin: 0.3rem 0.2rem;}
 .bet_data strong { color: #ffbd00; font-size: .35rem; font-weight: 300; }
-.bet_data .prd_num { color: #d59559;}
+.bet_data .prd_num { color: #d59559; margin-right: 0.2rem;}
 .bet_data .status { min-width: 15%; width: 1.8rem; text-align: center; color: #d59559; }
 .bet_data .status > div { max-width: 100%; overflow: hidden; -o-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; }
 .bet_data .status00 { padding-top: .3rem; }
@@ -775,10 +786,10 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 
 
 
-.lottery_t { margin-left: .3rem; font-size: .35rem; }
+/*.lottery_t { margin-left: .3rem; font-size: .35rem; }*/
 
 .lottery_t > p { /* margin-top: .2rem;*/ font-size: .38rem; max-width: 5.1rem; word-break: break-all; }
-
+.lottery_t > p .sta{ margin-left: 0.2rem; }
 /* -----------------------------------------
 // 往期开奖
 -----------------------------------------*/
@@ -832,25 +843,25 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .ds_long .prod > div { width: 3rem; margin: 0 auto; text-align: left; }
 
 /* -----------------------------------------
-// 路珠 
+// 路珠
 -----------------------------------------*/
 
 .new_road { background-color: rgba(20, 0, 0, 0.6); border-radius: 0.12rem;  margin-bottom: .3rem; font-size: .4rem; overflow: hidden; }
-.new_road .tab_mid{ background-color: rgba(0, 0, 0, 0.15); position: relative; top: inherit; left: inherit; }
+.new_road .tab_mid{ width: 100%; background-color: rgba(0, 0, 0, 0.15); position: relative; top: inherit; left: inherit; }
 .new_road .hd { margin-bottom: .2rem; overflow-x: hidden; }
 .new_road .bd { width: 100% ;  }
-.new_road .tab_content { overflow: auto; /* winphone8和android4+ */ -webkit-overflow-scrolling: touch; /* ios5+ */ white-space: nowrap; padding: 0 0.2rem; display: block; text-align: right; margin-top: 0; height: 5rem; }
+.new_road .tab_content { overflow: auto; /* winphone8和android4+ */ -webkit-overflow-scrolling: touch; /* ios5+ */ white-space: nowrap; padding: 0 0.2rem 0.02rem; display: block; text-align: right; margin-top: 0; min-height: 5rem; }
 .new_road .tab_content_out { display: none; }
 .new_road .tab_content_out.on { display: block; }
 
 .new_road .road { -webkit-box-sizing: border-box; box-sizing: border-box; min-width: .85rem; width: auto; display: inline-block; vertical-align: top;}
-.new_road .road:last-child:before { content: ''; display: block; position: absolute; background: url("/static/frist/images/page/road.png") no-repeat; width: .85rem; top: -0.1rem; background-size: 100%; height: .6rem; }
+.new_road .road:last-child:before { content: ''; display: block; position: absolute; background: url("/static/frist/images/road.png") no-repeat bottom; width: .85rem; top: 0.1rem; background-size: 100%; height: .4rem; }
 /*.new_road .road.road_left { width: auto; margin-right: 2px; }
 .new_road .road.road_left ul > li { margin-left: 0; }*/
 
 .new_road .road > ul { background-color: rgba(20, 0, 0, 0.3);  border-radius: 0.1rem; margin-top: .5rem; margin-right: 0.1rem; padding-top: .2rem; }
 
-.new_road .road > ul > li { background: url("/static/frist/images/road.png") no-repeat center top; background-size: .8rem auto; width: .8rem; height: .8rem; margin: 0 auto; text-align: center; background-position-y: 0; color: #fff; font-size: 0.35rem; line-height: .6rem; }
+.new_road .road > ul > li { background: url("/static/frist/images/road.png") no-repeat center top; background-size: .8rem auto; width: .8rem; height: .8rem; margin: 0 auto; text-align: center; background-position-y: 0; color: #fff; font-size: 0.35rem; line-height: .6rem; color: transparent; }
 .new_road .road > ul > li.mid { background-position-y: 0; }
 .new_road .road > ul > li.dragon { background-position-y: -0.8rem; }
 .new_road .road > ul > li.tiger { background-position-y: -1.6rem; }
@@ -860,8 +871,8 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .new_road .road > ul > li.even { background-position-y: -4.8rem;; }
 
 #road02_1 > ul, #road02_2 > ul, #road02_3 > ul, #road02_4 > ul, #road02_5 > ul { position: relative; }
-#road02_1 > ul:first-child:before, #road02_2 > ul:first-child:before, #road02_3 > ul:first-child:before, #road02_4 > ul:first-child:before, #road02_5 > ul:first-child:before { content: '大 / 小'; display: block; position: absolute; color: #d59559; top: 0; left: 1%; font-size: .25rem; }
-#road02_1 > ul:last-child:before, #road02_2 > ul:last-child:before, #road02_3 > ul:last-child:before, #road02_4 > ul:last-child:before, #road02_5 > ul:last-child:before { content: '单 / 双'; display: block; position: absolute; color: #d59559; top: 0; left: 1%; font-size: .25rem; }
+#road02_1 > ul:first-child:before, #road02_2 > ul:first-child:before, #road02_3 > ul:first-child:before, #road02_4 > ul:first-child:before, #road02_5 > ul:first-child:before { content: '大 / 小'; display: block; position: absolute; color: #d59559; top: 0; left: 2%; font-size: .25rem; }
+#road02_1 > ul:last-child:before, #road02_2 > ul:last-child:before, #road02_3 > ul:last-child:before, #road02_4 > ul:last-child:before, #road02_5 > ul:last-child:before { content: '单 / 双'; display: block; position: absolute; color: #d59559; top: 0; left: 2%; font-size: .25rem; }
 
 
 
@@ -907,7 +918,7 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 
 
 
-ul.sixball > li { background-image: url("/static/frist/images/hksix.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; background-size: 300%; width: 1.1rem; height: 1.1rem; background-position-x: -1.05rem; }
+/*ul.sixball > li { background-image: url("/static/frist/images/hksix.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; background-size: 300%; width: 1.1rem; height: 1.1rem; background-position-x: -1.05rem; }
 
 ul.sixball > li:nth-child(3) { background-position-x: .1rem; }
 
@@ -915,7 +926,7 @@ ul.sixball > li:nth-child(5) { background-position-x: .1rem; }
 
 ul.sixball > li:last-child { background-position-x: -2.2rem; margin-left: .5rem; position: relative; }
 
-ul.sixball > li:last-child:before { background-image: url("/static/frist/images/plus.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; content: ''; position: absolute; display: block; top: 0; left: 0; width: .5rem; height: 1.1rem; right: 1.1rem; left: inherit; }
+ul.sixball > li:last-child:before { background-image: url("/static/frist/images/plus.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; content: ''; position: absolute; display: block; top: 0; left: 0; width: .5rem; height: 1.1rem; right: 1.1rem; left: inherit; }*/
 
 /* banner */
 .news { margin-top: 1.36rem; overflow-x: hidden; position: relative; }
@@ -957,11 +968,6 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 /* 快速连结 */
 .account_area { padding: 0.3rem 0; margin:0 0.3rem; border-bottom: 1px solid rgba(56,32,30,0.2); }
 .account_area ul a { display: block; margin: 0px auto; color:#4b280c; }
-.account_area .icon_account span { display: block; width: 1.5rem; height: 1.5rem; margin: 0 auto; background-image: url(/static/frist/images/icon_account.png); background-size: auto 1.5rem; }
-.account_area .icon_account span.icon_deposit { background-position-x: 0rem; }
-.account_area .icon_account span.icon_withdrawals { background-position-x: -1.5rem; }
-.account_area .icon_account span.icon_promo { background-position-x: -3rem; }
-.account_area .icon_account span.icon_service { background-position-x: -4.5rem; }
 .account_area ul li { width: 25%; float: left; }
 .account_area ul li p { margin-top: 0.1rem; }
 .account_area ul:after { content: ''; display: table; clear: both; }
@@ -1042,16 +1048,16 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 .other_link > a.text-yellow { color: #ffbd00; margin: 0; padding: 0; border-left: none; text-decoration: underline !important; }
 
 /* 表单 */
-fieldset { display: block; margin: .3rem 0; font-size: .34rem; }
+fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left; }
 
 .form_g { overflow: hidden; position: relative; background-color: rgba(0, 0, 0, 0.5); padding: 0 .3rem; -webkit-border-radius: 0.1rem; -moz-border-radius: 0.1rem; -ms-border-radius: 0.1rem; border-radius: 0.1rem;  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8) inset;}
 
 /*.form_g:focus { -webkit-box-shadow: 1px 2px 20px rgba(0, 183, 255, 0.9); box-shadow: 1px 2px 20px rgba(0, 183, 255, 0.9); border: 1px solid #256e93; }*/
 
 .form_g > * { vertical-align: middle; float: left; line-height: 1rem; height: 1rem; }
-.form_g > legend { display: inline-block; width: 1.5rem; height: .5rem; line-height: 0.5rem; margin-top: 0.25rem; margin-right: .3rem; text-align: left; color: #ffc388; border-right: 1px solid #ffc388; }
+.form_g > legend { display: inline-block; width: 1.5rem; height: .5rem; line-height: 0.5rem; margin-top: 0.25rem; margin-right: .3rem; text-align: left; color: #ffc388; border-right: 1px solid #90573e; }
 .form_g > input { background-color: transparent; width: calc(85% - 1.5rem); color: #fff; border: none; position: relative; font-size: .35rem; }
-
+.form_g .icon_arrow_down{ height: 0.64rem; margin-top: 0.18rem; transform: translate(0.15rem); -webkit-transform: translate(0.15rem)}
 /*.form_g > legend:after { content: ''; position: absolute; display: block; top: 0; left: 0; width: 1px; height: .5rem; background-color: #256e93; right: -.2rem; left: inherit; top: .25rem; }*/
 
 .form_g.text > legend { background-image: none; width: 1.8rem; }
@@ -1061,7 +1067,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; }
 .form_g.text select option { background-color: rgba(18, 21, 30, 0.9); font-size: 0.1rem; }
 
 .form_g.money input { color: #ffbd00; }
-.form_g ~ .error-message.red { color: #b41a17; margin-top: 0.1rem; margin-left: -0.2rem; display: inline-block;}
+.form_g ~ .error-message.red { color: #b41a17; margin-top: 0.1rem; margin-left: 2.4rem; display: inline-block;}
 
 /*.account > legend { background-image: url("/static/frist/images/account.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; }*/
 
@@ -1089,27 +1095,30 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; }
 
 .phone > legend { background-image: url("/static/frist/images/phone.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; }
 
-.deposit_area { margin-top: 2rem; padding-bottom: 3.5rem; z-index: 1; }
+/* -----------------------------------------
+// 充值
+-----------------------------------------*/
 
-.pay_content { line-height: 1; margin-top: 2rem; }
+.arrow_list_dark .badge{ background: url(/static/frist/images/logo_bg.png) no-repeat;background-size: 100% 100%;width: 1.5rem;height: 1.5rem; margin-right: 0.2rem; }
+.arrow_list_dark .icon{ float: right; margin-top: 0.45rem;}
 
-.pay_content .step03 { color: #fff; margin: 0 auto; background: rgba(17, 22, 28, 0.8); border: 1px solid #294262; }
+.deposit_area { padding: 0 0.3rem; }
+.pay_content {  }
+.pay_content .step03 { color: #ffc388; margin: 0 auto; text-align: left;}
 
-@media (max-width: 359px) { .pay_content .step03 { max-width: 85%; } }
+/*@media (max-width: 359px) { .pay_content .step03 { max-width: 85%; } }*/
 
 .pay_content .step03.pay_way { max-width: 100%; }
 
-.pay_content .step03 .bank_account { color: #fff; padding-left: .4rem; }
+.pay_content .step03 .bank_account { color: #ffc388; padding-left: .4rem; }
 
 .pay_content .step03 .bank_account .push-left-tiny { margin-left: 1em; }
 
-.pay_content .step03 > h5 { text-align: left; margin-left: .7rem; font-size: 0.35rem; margin-bottom: .2rem; }
+.pay_content .step03 > h5 { text-align: left; font-size: 0.34rem; margin-bottom: .2rem; }
 
-.pay_content .step03.scan_qrcoder { font-size: 0; padding: .5rem 0; }
+/*.pay_content .step03.scarcoder ul { overflow: hidden; width: 95%; margin: 0 auto; }*/
 
-.pay_content .step03.scan_qrcoder ul { overflow: hidden; width: 95%; margin: 0 auto; }
-
-.pay_content .step03.scan_qrcoder .btn_pay { -webkit-border-radius: 0.1rem; -moz-border-radius: 0.1rem; -ms-border-radius: 0.1rem; border-radius: 0.1rem; border: 1px solid #256e93; width: 40%; display: inline-block; margin: .5rem 0 .3rem; padding: 3% 2% 3% 0%; text-align: center; font-size: .35rem; }
+/*.pay_content .step03.scan_qrcoder .btn_pay { -webkit-border-radius: 0.1rem; -moz-border-radius: 0.1rem; -ms-border-radius: 0.1rem; border-radius: 0.1rem; border: 1px solid #256e93; width: 40%; display: inline-block; margin: .5rem 0 .3rem; padding: 3% 2% 3% 0%; text-align: center; font-size: .35rem; }
 
 .pay_content .step03.scan_qrcoder .btn_pay:first-child { margin-right: 4%; }
 
@@ -1119,15 +1128,15 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; }
 
 .pay_content .step03.scan_qrcoder .btn_pay a { position: relative; display: block; width: 100%; color: #d7e8f0; }
 
-.pay_content .step03.scan_qrcoder .btn_pay a > * { display: inline-block; font-size: .35rem; vertical-align: -webkit-baseline-middle; }
+.pay_content .step03.scan_qrcoder .btn_pay a > * { display: inline-block; font-size: .35rem; vertical-align: -webkit-baseline-middle; }*/
 
-@media (max-width: 359px) { .pay_content .step03.scan_qrcoder .btn_pay a > * { font-size: .35rem; } }
+/*@media (max-width: 359px) { .pay_content .step03.scan_qrcoder .btn_pay a > * { font-size: .35rem; } }*/
 
-.pay_content .step03.scan_qrcoder .btn_pay.wechat_q img, .pay_content .step03.scan_qrcoder .btn_pay.alipay_q img { width: 25%; margin: 0 5px; }
+/*.pay_content .step03.scan_qrcoder .btn_pay.wechat_q img, .pay_content .step03.scan_qrcoder .btn_pay.alipay_q img { width: 25%; margin: 0 5px; }
 
 .pay_content .step03.scan_qrcoder .btn_pay.alipay { margin-top: .1rem; }
 
-.pay_content .step03.scan_qrcoder .btn_pay.alipay img { max-width: 31.5%; margin: 0 10px; }
+.pay_content .step03.scan_qrcoder .btn_pay.alipay img { max-width: 31.5%; margin: 0 10px; }*/
 
 .pay_content .step03.webbank_pay { padding: .5rem 0; }
 
@@ -1135,55 +1144,51 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; }
 
 .pay_content .step03.webbank_pay > ul { width: 100%; margin: 0 auto; font-size: 0; overflow: hidden; }
 
-.pay_content .step03 .btn_bank { -webkit-border-radius: 0.1rem; -moz-border-radius: 0.1rem; -ms-border-radius: 0.1rem; border-radius: 0.1rem; border: 1px solid #256e93; margin: .2rem; background-size: 115%; width: 40%; display: inline-block; background-position-x: 0.1em; padding: 1em 0; font-size: .35rem; }
+/* 选择银行 */
+.pay_content .pay_list li {  border-radius: 0.1rem; padding: 0.05rem 0.2rem; background-color: #d59559; margin: .2rem 0; border: 1px solid #d59559; box-sizing: border-box;   width: 49%; margin-right: 2%; display: inline-block; font-size: .34rem; }
+.pay_content .pay_list li:nth-child(even){margin-right: 0;}
+.pay_content .pay_list li a { display: block; line-height: 3em; text-align: left; color: #4b280c;}
+.pay_content .pay_list li a img { width: .5rem; margin-right: 0.1rem; vertical-align: middle; display: inline-block; }
+/*@media (max-width: 480px) { .pay_content .step03 .btn_bank { padding: 0; } }*/
 
-@media (max-width: 480px) { .pay_content .step03 .btn_bank { padding: 0; } }
+/*.pay_content .step03 .btn_bank:active, .pay_content .step03 .btn_bank:focus { -webkit-box-shadow: 0 0 20px 10px rgba(37, 110, 147, 0.5); box-shadow: 0 0 20px 10px rgba(37, 110, 147, 0.5); border: 1px solid #00B7FF; }
 
-.pay_content .step03 .btn_bank:active, .pay_content .step03 .btn_bank:focus { -webkit-box-shadow: 0 0 20px 10px rgba(37, 110, 147, 0.5); box-shadow: 0 0 20px 10px rgba(37, 110, 147, 0.5); border: 1px solid #00B7FF; }
+.pay_content .step03 .btn_bank:active a, .pay_content .step03 .btn_bank:focus a { color: #fff; }*/
 
-.pay_content .step03 .btn_bank:active a, .pay_content .step03 .btn_bank:focus a { color: #fff; }
+/*.pay_content .step03 .btn_bank:last-child { float: left; margin-left: .7rem; }*/
 
-.pay_content .step03 .btn_bank:last-child { float: left; margin-left: .7rem; }
 
-.pay_content .step03 .btn_bank a { display: block; line-height: 3em; text-align: center; }
 
-@media (max-width: 480px) { .pay_content .step03 .btn_bank a { line-height: 3em; height: 3em; padding: .5em 0; } }
+/*@media (max-width: 480px) { .pay_content .step03 .btn_bank a { line-height: 3em; height: 3em; padding: .5em 0; } }*/
 
-.pay_content .step03 .btn_bank a img { width: .7rem; vertical-align: middle; display: inline-block; }
 
-.pay_way > ul > li { border-top: 1px solid #334364; border-bottom: 1px solid #25324c; position: relative; }
+
+.pay_way > ul > li {  border-top: 1px solid #90573e;   position: relative; }
 
 .pay_way > ul > li:nth-child(3) { border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
 
-.pay_way > ul > li > a { color: #fff; display: inline-block; width: 100%; padding: 1em 0; }
+.pay_way > ul > li > a { color: #ffc388; display: inline-block; width: 100%; padding: 1em 0;}
 
-.pay_way > ul > li > a:after { content: ''; background-image: url("/static/frist/images/btn_icon_right.png"); width: .2rem; height: 0.37rem; background-size: 100%; position: absolute; right: 3em; top: 3em; }
+/*.pay_way > ul > li > a:after { content: ''; background-image: url("/static/frist/images/btn_icon_right.png"); width: .2rem; height: 0.37rem; background-size: 100%; position: absolute; right: 3em; top: 3em; }*/
 
 .pay_way > ul > li > a > div.icon { display: inline-block; margin: 0 1em 0 2.2em; float: left; }
 
 .pay_way > ul > li > a span { vertical-align: -webkit-baseline-middle; vertical-align: -moz-middle-with-baseline; line-height: 1.5rem; float: left; font-size: 0.35rem; }
 
-.print_data { background: rgba(255, 255, 255, 0.08); -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; border-radius: 5px; margin: 1em auto; overflow: hidden; border-radius: .1rem; padding: .3rem 0; }
-
-.print_data table { margin: 0 .9em; min-width: 90%; }
-
-.print_data table tr { border-bottom: 1px solid rgba(39, 124, 165, 0.9); padding: .3rem; display: block; }
-
-.print_data table tr:last-child { border-bottom: none; }
-
-.print_data table tr th { text-align: left; width: 1.5rem; font-weight: normal; color: #dddddd; }
-
-.print_data table tr th li { list-style: none; margin-left: .5em; position: relative; width: 1.5rem; font-size: .35rem; color: #66c3f2; }
-
-.print_data table tr td { text-align: left; padding-left: 1em; color: #fff; word-break: break-all; line-height: 2em; width: 11rem; font-size: .35rem; }
-
-@media (max-width: 576px) { .print_data table tr td { line-height: normal; } }
-
-@media (max-width: 359px) { .print_data table tr td { width: 7rem; } }
-
+/* -----------------------------------------
+// 提现
+-----------------------------------------*/
+.withdrawals_area{ padding: 0 0.3rem;}
+.print_data { margin: 1em auto; overflow: hidden;  }
+.print_data table {  }
+.print_data table tr { border-bottom: 1px solid #90573e; padding: .3rem; display: block; }
+/*.print_data table tr:last-child { border-bottom: none; }*/
+.print_data table tr th { text-align: left; width: 1.5rem; font-weight: normal; color: #ffc388; }
+.print_data table tr th li { list-style: none; margin-left: .5em; position: relative; width: 1.5rem; font-size: .35rem;  }
+.print_data table tr td { text-align: left; padding-left: 1em; color: #d59559; word-break: break-all; line-height: 2em; width: 11rem; font-size: .35rem; }
 .print_data table tr td.text-yellow { color: #ffbd00; }
 
-.print_data .copy_link { color: #fff; text-align: center; display: block; border: 1px solid rgba(255, 255, 255, 0.5); max-width: 50%; margin: 0 auto; -webkit-border-radius: 60px; -moz-border-radius: 60px; -ms-border-radius: 60px; border-radius: 60px; padding: .2rem .5rem; margin-top: 10px; font-size: .35rem; vertical-align: middle; }
+.print_data .copy_link { color: #d59559; text-align: center; display: inline-block; border: 1px solid #90573e; margin: 0.3rem auto ;  border-radius: 0.5rem; padding: .15rem .5rem 0.1rem; font-size: .34rem; vertical-align: middle; }
 
 .bank_transfer { border-top: 1px solid transparent; border-bottom: 1px solid transparent; }
 
@@ -1191,41 +1196,27 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; }
 
 .bank_transfer input[type=date]::-webkit-calendar-picker-indicator { opacity: 0; }
 
-.bank_account { font-size: .35rem; }
+.bank_account { font-size: .34rem; position: relative; margin-top: 0.5rem; }
+.bank_account h5 { text-align: left;  margin-left: .2rem;color: #ffc388; }
+.bank_account .mini_tip { position: absolute; top: 0; right: 0; color: #d59559; }
 
-.bank_account h5 { text-align: left; margin-left: .2rem; }
-
-.mini_tip { float: right; margin-top: -.65rem; color: #66c3f2; }
-
-.info_area { background-image: url("/static/frist/images/info_topbg.jpg"); background-repeat: no-repeat; background-position: center top; background-color: transparent; background-size: 100%; width: 100%; padding-bottom: 1.5rem; margin-top: 1rem; }
-
+/* -----------------------------------------
+// 个人中心
+-----------------------------------------*/
+/* 个人中心 */
+.info_area { background: url("/static/frist/images/info_topbg.jpg") no-repeat center top; background-size: 100%; width: 100%; }
 .info_top { height: 3.3rem; position: relative; margin: 0 auto; }
-
-@media (max-width: 576px) { .info_top { width: 80%; } }
-
 .info_top .header { width: auto; }
-
-.info_top .account { width: 75%; margin: 0 auto; position: relative; height: 2rem; padding-top: 1rem; }
-
-.info_top .account .ui.header:first-child { margin-top: 0; }
-
-.info_top .account > a { display: block; height: 100%; }
-
-.info_top .account > a > h2, .info_top .account > a > .user_data, .info_top .account > h2, .info_top .account > .user_data { float: left; width: 63%; }
-
+.info_top .account { width: 4rem; margin: 0 1rem 0 5rem; padding-top: 0.7rem; position: relative; height: 2rem; }
+.info_top .account > a { display: block; }
+/*.info_top .account > a > h2, .info_top .account > a > .user_data, .info_top .account > h2, .info_top .account > .user_data { float: left; width: 63%; }
 .info_top .account > a > h2:first-child, .info_top .account > a > .user_data:first-child, .info_top .account > h2:first-child, .info_top .account > .user_data:first-child { width: 35%; }
-
-.info_top .account .ui.header > .image:not(.icon):only-child, .info_top .account .ui.header > img:only-child { margin-right: 0; }
-
-.info_top .account .user_name { position:absolute; text-align: left; margin-left: 1rem; line-height: 1.8em; float: left; margin-top: .2rem; }
-
-.info_top .account .user_name > strong { display: block; color: #fff; letter-spacing: 1px; font-weight: 500; font-size: .4rem; }
-
-
-
-.info_top:after { display: block; clear: both; content: ""; }
-
-.info_top.info_inner .account:after { background: none; }
+.info_top .account .ui.header > .image:not(.icon):only-child, .info_top .account .ui.header > img:only-child { margin-right: 0; }*/
+.info_top .account .user_name { position:absolute; text-align: left; line-height: 1.8em; float: left; margin-top: .2rem; }
+.info_top .account .user_name  strong { color: #4b280c; font-size: .4rem; }
+.info_top .account .user_name .purse{ margin-top: 0.2rem;}
+/*.info_top:after { display: block; clear: both; content: ""; }*/
+/*.info_top.info_inner .account:after { background: none; }*/
 
 .portrait { height: auto; position: relative; }
 
@@ -1239,9 +1230,12 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; }
 
 .user_data table tr td { word-break: break-all; }
 
-.info_account, .info_personal { width: 90%; margin: 0 auto; margin-top: 20px; }
-
-.info_account > div, .info_personal > div { margin: .5rem 0; text-align: left; font-size: .35rem; }
+/* 帐户管理 */
+.info_account{ margin-bottom: 0.3rem;}
+.info_account .new_panel_top, .info_personal .new_panel_top { text-align: left; line-height: 0.8rem; font-size: 0.4rem; padding: 0 0.7rem; }
+.info_personal a{ float: right; color: #d59559; font-size: 0.34rem; line-height: 0.4rem; padding: 0 0.2rem 0 0; margin-top: 0.15rem;border-radius: 0.5rem; background-color: #522f2c; box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8) inset;-webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8) inset; }
+.info_personal a span{ vertical-align: middle;}
+/*.info_account > div, .info_personal > div { margin: .5rem 0; text-align: left; font-size: .35rem; }
 
 .info_account > div > a, .info_personal > div > a { float: right; }
 
@@ -1251,47 +1245,36 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; }
 
 .info_account > div table tr, .info_personal > div table tr { padding: .3rem .1rem; }
 
-.info_account > .text-red { text-align: center; }
+.info_account > .text-red { text-align: center; }*/
 
-.info_personal input { margin: 0; outline: 0; -webkit-appearance: none; line-height: 1.21428571em; padding: .67857143em 1em; font-size: 0.35rem; background: #181e2a; border: 1px solid rgba(34, 36, 38, 0.15); color: #7b7b7b; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; border-radius: 5px; vertical-align: top; }
+.info_personal input { width: 100%; box-sizing: border-box; margin: 0; outline: 0; color: #fff; -webkit-appearance: none; line-height: 1.21428571em; padding: .67857143em 1em; font-size: 0.34rem; background-color: rgba(0, 0, 0, 0.5); border: 0;  border-radius: 0.1rem; vertical-align: top;box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8) inset;-webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8) inset; }
 
-.info_personal input[type=datetime-local], .info_personal input[type=email], .info_personal input[type=file], .info_personal input[type=number], .info_personal input[type=password], .info_personal input[type=search], .info_personal input[type=tel], .info_personal input[type=text], .info_personal input[type=time], .info_personal input[type=url] { outline: 0; -webkit-appearance: none; line-height: 1.21428571em; padding: .5em 1em; font-size: 0.35rem; background: #10061f; border: 1px solid transparent; color: #7b7b7b; -webkit-border-radius: 8px; -moz-border-radius: 8px; -ms-border-radius: 8px; border-radius: 8px; vertical-align: top; }
+/*.info_personal input[type=datetime-local], .info_personal input[type=email], .info_personal input[type=file], .info_personal input[type=number], .info_personal input[type=password], .info_personal input[type=search], .info_personal input[type=tel], .info_personal input[type=text], .info_personal input[type=time], .info_personal input[type=url] { outline: 0; -webkit-appearance: none; line-height: 1.21428571em; padding: .5em 1em; font-size: 0.35rem; background: #10061f; border: 1px solid transparent; color: #7b7b7b; -webkit-border-radius: 8px; -moz-border-radius: 8px; -ms-border-radius: 8px; border-radius: 8px; vertical-align: top; }*/
 
-.info_personal input[type=datetime-local]:focus, .info_personal input[type=email]:focus, .info_personal input[type=file]:focus, .info_personal input[type=number]:focus, .info_personal input[type=password]:focus, .info_personal input[type=search]:focus, .info_personal input[type=tel]:focus, .info_personal input[type=text]:focus, .info_personal input[type=time]:focus, .info_personal input[type=url]:focus { color: #7b7b7b; background: #121418; -webkit-box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.2); box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.2); border: 1px solid #70706C; }
+.info_personal input:focus {  }
 
-.info_personal span.erro_text { line-height: 2rem; margin-left: 0.5rem; }
+/*.info_personal span.erro_text { line-height: 2rem; margin-left: 0.5rem; }*/
 
-.info_personal .info_data_modify { color: #66c3f2; }
+/*.info_personal .info_data_modify { color: #66c3f2; }*/
 
-.info_mid { background: #105b7b; /* Old browsers */ background: -moz-linear-gradient(top, #105b7b 0%, #0e1b2a 52%); /* FF3.6-15 */ background: -webkit-linear-gradient(top, #105b7b 0%, #0e1b2a 52%); /* Chrome10-25,Safari5.1-6 */ background: -webkit-gradient(linear, left top, left bottom, from(#105b7b), color-stop(52%, #0e1b2a)); background: -o-linear-gradient(top, #105b7b 0%, #0e1b2a 52%); background: linear-gradient(to bottom, #105b7b 0%, #0e1b2a 52%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ background-size: 100%; width: 100%; text-align: center; height: 1.8rem; border-top: .014rem solid #5a899f; }
-
-.info_mid > div { width: 90%; margin: 0 auto; font-size: 0; }
-
-.info_mid .btn_blue { margin-top: .4rem; }
-
-.info_mid .btn_blue:last-child { margin-left: .5rem; }
+.info_mid { text-align: right; padding: 0.3rem;  }
+.info_mid > div { margin: 0 auto; font-size: 0; }
+.info_mid > div > div { display: inline-block; font-size: 0.34rem; }
 
 .info_bot { text-align: center; padding: 2em 0; }
-
-.info_bot > .btn_blue { width: 90%; margin: .5rem auto; }
-
-.info_bot > ul { overflow: hidden; padding: 0 5px; margin: 0 auto; width: 90%; background: rgba(17, 22, 28, 0.8); border: 1px solid #294262; }
-
-.info_bot > ul > li { width: 100%; border-bottom: 1px solid #294262; }
-
-.info_bot > ul > li > a { display: block; margin: .1rem; color: #d7e8f0; font-size: 0.35rem; overflow: hidden; height: 1.2rem; line-height: 1.2rem; vertical-align: middle; text-align: left; padding: .2rem; position: relative; }
-
-.info_bot > ul > li > a .icon { margin-bottom: 10px; float: left; margin-right: .5rem; width: 1.2rem; height: 1.2rem; }
-
+.info_bot > .btn_blue {  }
+.info_bot > ul { overflow: hidden;  }
+.info_bot > ul > li { padding: 0 0.3rem; border-top: 1px solid rgba(56,32,30,0.2); }
+.info_bot > ul > li:nth-child(odd){ background-color: rgba(225, 170, 95, 0.2); }
+.info_bot > ul > li > a { display: block; color: #4b280c; font-size: 0.4rem; overflow: hidden; line-height: 1.5rem; vertical-align: middle; text-align: left; padding: .1rem; position: relative; }
+.info_bot > ul > li > a .icon_account { margin-right: .5rem;  }
+.info_bot > ul > li > a .icon { float: right; margin-top: 0.4rem; }
 .info_bot > ul > li > a .icon div { width: 1.2rem; height: 1.2rem; }
-
 .info_bot > ul > li > a .icon div > i { width: .8rem; height: .8rem; }
+/*.info_bot > ul > li > a:after { content: ''; position: absolute; display: block; top: 0; left: 0; background-image: url("/static/frist/images/btn_icon_right.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: .2rem; height: 1.6rem; line-height: 1.2rem; left: initial; right: .5rem; }*/
+.info_bot > ul > li:last-child { border-bottom: 1px solid rgba(56,32,30,0.2); }
 
-.info_bot > ul > li > a:after { content: ''; position: absolute; display: block; top: 0; left: 0; background-image: url("/static/frist/images/btn_icon_right.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: .2rem; height: 1.6rem; line-height: 1.2rem; left: initial; right: .5rem; }
 
-.info_bot > ul > li:last-child { border-bottom: none; }
-
-.withdrawals_area { width: 90%; margin: 0 auto; margin-top: 2rem; }
 
 .message_area { margin-top: 1.4rem; }
 
@@ -1311,23 +1294,20 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; }
 
 .message_area > .item.read div.icon { border: 2px solid #49555e; }
 
-.password_area { width: 90%; margin: 0 auto; }
-
-.password_area > div { text-align: center; }
-
-.password_area > div > .btn:last-child { margin-left: .5rem; }
+.password_area { padding: 0.3rem; background-color: #6f3a23; box-shadow: 0px 0px 0.3rem rgba(0, 0, 0, 0.8);}
+.password_area > div {  text-align: center; }
+.password_area > div > div { display: inline-block; }
 
 .ac_detial .ac_data > a:after { background-image: url("/static/frist/images/btn_icon_right.png"); background-repeat: no-repeat; background-position: center top; background-color: transparent; background-size: 100%; content: ''; position: absolute; display: block; top: 0; left: 0; width: .2rem; height: .5rem; right: .5rem; left: initial; line-height: 1.5rem; top: 1.65rem; }
 
-.ac_detial .ac_data .lottery_t { margin-top: .2rem; }
+/*.ac_detial .ac_data .lottery_t { margin-top: .1rem; }*/
 
-.sta { display: inline-block; padding: 0 .2rem; -webkit-border-radius: 0.1rem; -moz-border-radius: 0.1rem; -ms-border-radius: 0.1rem; border-radius: 0.1rem; margin-left: .2rem; font-size: 0.29rem; height: .5rem; line-height: .5rem; vertical-align: text-bottom; }
 
-.sta.sta01 { border: 1px solid #66c3f2; color: #66c3f2; }
-
-.sta.sta02 { border: 1px solid #8b8b8b; color: #8b8b8b; }
-
-.sta.sta03 { border: 1px solid #c83e3e; color: #c83e3e; }
+/* 帐户明细 状态标签 */
+.sta { display: inline-block; padding: 0 .1rem;  border-radius: 0.1rem; font-size: 0.29rem; line-height: .4rem; vertical-align: text-bottom; }
+.sta.sta01 { border: 1px solid #71c341; color: #71c341; } /* 成功 */
+.sta.sta02 { border: 1px solid #8b8b8b; color: #8b8b8b; } /* 未处理 */
+.sta.sta03 { border: 1px solid #c83e3e; color: #c83e3e; } /* 失败 */
 
 .qrcode_step { width: 80%; margin: 0 auto; margin-top: 2rem; }
 

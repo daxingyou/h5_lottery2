@@ -6,7 +6,7 @@
                     <span class="icon icon_back"></span>
                 </a>
             </div>
-            <h2 class="center">代理注册</h2>
+            <h2 class="center title_name">代理注册</h2>
             <div class="right"></div>
         </header>
         <div class="content">
@@ -26,7 +26,7 @@
                             <select name="" >
                                 <option :value="banks.id" :data-code="banks.bankCode" v-for="banks in bankList">{{banks.bankName}}</option>
                             </select>
-                            <i class="input_select"></i>
+                            <span class="icon icon_arrow_down"></span>
                         </div>
                     </fieldset>
                     <fieldset>

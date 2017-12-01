@@ -80,34 +80,26 @@
         <ul>
             <li>
                 <a href="javascript:;" @click="CheckDemoPlay('CZ')">
-                    <div class="icon_account">
-                        <span class="icon_deposit"></span>
-                    </div>
+                    <span class="icon_account icon_deposit"></span>
                     <p>充值</p>
                 </a>
             </li>
             <li>
                 <a href="javascript:;" @click="CheckDemoPlay('TK')">
-                    <div class="icon_account">
-                        <span class="icon_withdrawals"></span>
-                    </div>
+                    <span class="icon_account icon_withdrawals"></span>
                     <p>提款</p>
                 </a>
             </li>
             <li>
               <!--  <router-link to="/lobbyTemplate/promo">-->
                 <a href="javascript:;"  @click="Continued()">
-                    <div class="icon_account">
-                        <span class="icon_promo"></span>
-                    </div>
+                    <span class="icon_account icon_promo"></span>
                     <p>优惠活动</p>
                 </a>
             </li>
             <li>
                 <a href="javascript:;"  @click="openGame('https://messenger.providesupport.com/messenger/1sppddzqo56sf08wzrnuxiv6yt.html')">
-                    <div class="icon_account">
-                        <span class="icon_service"></span>
-                    </div>
+                    <span class="icon_account icon_service"></span>
                     <p>在线客服</p>
                 </a>
             </li>
