@@ -9,7 +9,7 @@
             <h2 class="center title_name">优惠活动</h2>
             <div class="right"></div>
         </header>
-        <div class="content">
+        <div class="pa_content">
             <div class="promo_area">
                 <ul>
                     <li>

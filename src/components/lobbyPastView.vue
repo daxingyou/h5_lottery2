@@ -31,16 +31,16 @@
                                 <ul :class="'new_panel_center '+ulclass[list.lotteryId]" v-if="(list.lotteryId == '8') || (list.lotteryId == '108') || (list.lotteryId == '6') || (list.lotteryId == '106') || (list.lotteryId == '20') || (list.lotteryId == '22')">
                                     <li v-for="listnum in list.winNumber.split(',')" >
                                        <!-- <span class="pk10_ball small_ball" :class="'num_'+listnum"></span>-->
-                                        <span :class="[spanclass[list.lotteryId],'num_'+listnum]"></span>
+                                        <span :class="[spanclass[list.lotteryId],'active num_'+listnum]"></span>
                                     </li>
                                 </ul>
 
                                 <ul class="new_panel_center lo_ball" v-else>
-                                    <li v-for="listnum in list.winNumber.split(',')">{{listnum}}</li>
+                                    <li v-for="listnum in list.winNumber.split(',')" :class="'round_ball active num_'+ listnum ">{{listnum}}</li>
                                 </ul>
 
                                 <div class="function_btn">
-                                    <router-link class="bell new_btn cancel btn_outline" to="publicTemplate/pastView" @click.native="setActionToView(list.lotteryId,gameName[list.lotteryId])"><i></i><span>往期开奖</span></router-link>
+                                    <router-link class="bell new_btn btn_outline" to="publicTemplate/pastView" @click.native="setActionToView(list.lotteryId,gameName[list.lotteryId])"><i></i><span>往期开奖</span></router-link>
                                    <!-- <a class="bell btn btn_outline" href="publicTemplate/pastView" @click="setActionToView(list.lotteryId,gameName[list.lotteryId])"><i></i>往期开奖</a>-->
                                     <router-link class="check new_btn ok btn_blue" :to="'/'+gameHref[list.lotteryId]"><i></i><span>立即投注</span></router-link>
                                 </div>

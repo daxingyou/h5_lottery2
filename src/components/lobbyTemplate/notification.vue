@@ -10,42 +10,47 @@
             <h2 class="center title_name">个人中心</h2>
             <div class="right"></div>
         </header>
-        <div class="content">
-            <div class="message_area">
-                <div class="item">
-                    <div class="icon">
-                        <div>
-                            <i class="i_mail_status"></i>
+        <div class="pa_content">
+            <div class="page_box">
+                <div class="message_area new_panel">
+                    <div class="new_panel_top"></div>
+                    <div class="new_panel_center">
+                        <div class="item arrow_list_dark">
+                            <div class="badge">
+                                <!--icon_notice_1 未读，icon_notice_2 已读-->
+                                <span class="icon_account icon_notice_1"></span>
+                            </div>
+                            <div class="content msgc">
+                                <div class="description date">2017/07/21</div>
+                                <a class="text">亲爱的用户，您的取款审核已通过，请留 意银行账户余额变动！
+                                </a>
+                            </div>
+                            <span class="icon icon_arrow_light"></span>
                         </div>
-                    </div>
-                    <div class="content msgc">
-                        <div class="description date">2017/07/21</div>
-                        <a class="text">亲爱的用户，您的取款审核已通过，请留 意银行账户余额变动！
-                        </a>
-                    </div>
-                </div>
-                <div class="item read">
-                    <div class="icon">
-                        <div>
-                            <i class="i_mail_status"></i>
+                        <div class="item arrow_list_dark">
+                            <div class="badge">
+                                <!--icon_notice_1 未读，icon_notice_2 已读-->
+                                <span class="icon_account icon_notice_1"></span>
+                            </div>
+                            <div class="content msgc">
+                                <div class="description date">2017/07/21</div>
+                                <a class="text">亲爱的用户，您的取款审核已通过，请留 意银行账户余额变动！
+                                </a>
+                            </div>
+                            <span class="icon icon_arrow_light"></span>
                         </div>
-                    </div>
-                    <div class="content msgc">
-                        <div class="description date">2017/07/21</div>
-                        <a class="text">亲爱的用户，您的取款审核已通过，请留 意银行账户余额变动！
-                        </a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="icon">
-                        <div>
-                            <i class="i_mail_status"></i>
+                        <div class="item arrow_list_dark read">
+                            <div class="badge">
+                                <!--icon_notice_1 未读，icon_notice_2 已读-->
+                                <span class="icon_account icon_notice_2"></span>
+                            </div>
+                            <div class="content msgc">
+                                <div class="description date">2017/07/21</div>
+                                <a class="text">亲爱的用户，您的取款审核已通过，请留 意银行账户余额变动！
+                                </a>
+                            </div>
+                            <span class="icon icon_arrow_light"></span>
                         </div>
-                    </div>
-                    <div class="content msgc">
-                        <div class="description date">2017/07/21</div>
-                        <a class="text">亲爱的用户，您的取款审核已通过，请留 意银行账户余额变动！
-                        </a>
                     </div>
                 </div>
             </div>
