@@ -14,15 +14,18 @@
                 <div class="info_top">
                     <div class="account">
                         <a  href="javascript:;" @click="CheckDemoPlay('ZH')">
-                            <h2 class="ui header center aligned">
+                            <!--<h2 class="ui header center aligned">
                                 <div class="portrait">
-                                    <!-- <div class="portrait_outline"></div> -->
+                                     <div class="portrait_outline"></div> 
                                     <div class="user_portrait"></div>
                                 </div>
-                            </h2>
+                            </h2>-->
                             <div class="user_name">
-                                <strong v-if="!demoName">{{userLogin}}</strong>
-                                <strong v-if="demoName">{{getCookie('username')}}</strong>
+                                <div class="">
+                                    <span class="icon icon_user"></span>
+                                    <strong v-if="!demoName">{{userLogin}}</strong>
+                                    <strong v-if="demoName">{{getCookie('username')}}</strong>
+                                </div>
                                 <div class="purse">
                                     <span class="icon icon_money"></span>
                                     <div class="so-in-top-sum">

@@ -10,11 +10,12 @@
             <h2 class="center title_name">{{parentData.moneyType[model.chargeType] || '-'}}详情</h2>
             <div class="right"></div>
         </header>
-        <div class="content">
-            <div class="deposit_area">
+        <div class="pa_content">
+            <div class="deposit_area page_box">
                 <div class="pay_content">
-                    <div class="success">
-                        <div class="bank_account deposit_success">
+                    <div class="new_panel success">
+                        <div class="new_panel_top"></div>
+                        <div class="new_panel_center bank_account deposit_success">
                             <div class="print_data">
                                 <table>
                                     <thead>

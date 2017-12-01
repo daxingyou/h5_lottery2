@@ -18,25 +18,25 @@
                 </div>
                 <div class="bd">
                     <ul class="tab_content">
-                        <li :class="(day.active?'active ':'')+' slide_toggle bet_day ac_detial'" v-for="(day,index) in activeTab.days">
-                            <div class="panel_title" @click="selectDayTab($event, day)">
+                        <li :class="(day.active?'active ':'')+' slide_toggle bet_day ac_detial new_panel'" v-for="(day,index) in activeTab.days">
+                            <div class="panel_title new_panel_top" @click="selectDayTab($event, day)">
                                 <strong>{{day.pdate}}<!-- 09月14日 --></strong><span></span>
                             </div>
-                            <ul class="panel">
+                            <ul class="panel new_panel_center">
                                 <li class="bet_data ac_data" data-status="not_open" v-for="item in day.list">
                                     <router-link :to="{ name:'acDetailData', params:{ model:item, data:$data} }">
                                        <!-- <div class="prd_num"><span>{{dateFormat(item.createTime, 'yyyy/mm/dd HH:mm') || '1990/1/1 00:00'}}</span></div>-->
-                                        <div class="prd_num"><span>{{formatTimeUnlix(item.createTime,'0')}}</span></div>
-                                        <div class="item">
-                                            <div class="">
-                                                <div>
-                                                    <i :class="'ac ' + (tradeTypeConfigItemGet(item).class || 'ac01')"></i>
-                                                </div>
+                                        
+                                        <div class="item arrow_list_dark">
+                                            <div class="badge">
+                                                <span :class="'icon_account icon_' + (tradeTypeConfigItemGet(item).class || 'ac01')"></span>
                                             </div>
                                             <div class="lottery_t ssc">
                                                 <p>{{tradeTypeConfigItemGet(item).name || '-'}}<label :class="'sta '+ (statusConfig[item.state] && statusConfig[item.state].class)">{{(statusConfig[item.state] && statusConfig[item.state].name)}}</label></p>
+                                                <span class="prd_num"><span>{{formatTimeUnlix(item.createTime,'0')}}</span></span>
                                                 <strong>{{moneyType[item.chargeType] || '-'}}<!-- 充值 -->: {{(item && formatNumber(roundAmt(item.tradeAmount))) || '0.00'}}</strong>
                                             </div>
+                                            <div class="icon icon_arrow_light"></div>
                                         </div>
                                     </router-link>
                                 </li>

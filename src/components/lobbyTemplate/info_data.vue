@@ -14,13 +14,14 @@
                 <div class="info_top">
                     <div class="account">
                         <!--<a href="info_data.html">-->
-                            <h2 class="ui header center aligned">
+                            <!-- <h2 class="ui header center aligned">
                                 <div class="portrait">
-                                    <!-- <div class="portrait_outline"></div> -->
+                                    <div class="portrait_outline"></div>
                                     <div class="user_portrait"></div>
                                 </div>
-                            </h2>
+                            </h2> -->
                             <div class="user_name">
+                                <span class="icon icon_user"></span>
                                 <strong>{{loginName}}</strong>
                                 <div class="purse">
                                     <span class="icon icon_money"></span>
@@ -42,82 +43,84 @@
                         </div>
                     </div>
                 </div>
-                <div class="info_account">
-                    <div>帐号安全</div>
-                    <div class="print_data">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th class="bank_card_num">
-                                    <li>银行卡号</li>
-                                </th>
-                                <td>
-                                    {{bankName}}<br/>
-                                    {{bankCard}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <li>开户行</li>
-                                </th>
-                                <td>{{bankAdd}}</td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <li>真实姓名</li>
-                                </th>
-                                <td>{{realName}}</td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <li>手机号码</li>
-                                </th>
-                                <td>{{mobilePhone}}</td>
-                            </tr>
-                            </thead>
-                        </table>
+                <div class="page_box">
+                    <div class="new_panel info_account">
+                        <div class="new_panel_top">帐号安全</div>
+                        <div class="new_panel_center print_data">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th class="bank_card_num">
+                                        <li>银行卡号</li>
+                                    </th>
+                                    <td>
+                                        {{bankName}}<br/>
+                                        {{bankCard}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <li>开户行</li>
+                                    </th>
+                                    <td>{{bankAdd}}</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <li>真实姓名</li>
+                                    </th>
+                                    <td>{{realName}}</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <li>手机号码</li>
+                                    </th>
+                                    <td>{{mobilePhone}}</td>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <div class="info_personal">
-                    <div>个人信息
-                        <a class="info_data_modify edit-btn"  v-if="showDetail" @click="editDetails()"><i class="icon write"></i>修改</a>
-                        <a class="save save-btn"  v-if="!showDetail" @click="saveEdit()"><i class="i_save"></i><span>保存</span></a>
-                    </div>
-                    <div class="print_data">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>
-                                    <li>微信</li>
-                                </th>
-                                <td v-if="!showDetail" class="before-edit">
-                                    <input type="text" placeholder="请输入微信号" v-model="weChat">
-                                    <!--<span class=" erro_text" >微信格式错误</span>-->
-                                </td>
-                                <td  v-if="showDetail" class="after-edit">{{weChat}}</td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <li>QQ</li>
-                                </th>
-                                <td v-if="!showDetail" class="before-edit">
-                                    <input  type="text"  placeholder="请输入QQ号" v-model="qq">
-                                    <!--<span>qq格式错误</span>-->
-                                </td>
-                                <td v-if="showDetail" class="after-edit">{{qq}}</td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <li>电子邮箱</li>
-                                </th>
-                                <td class="before-edit" v-if="!showDetail">
-                                    <input  type="text"  placeholder="请输入邮箱地址" v-model="email">
-                                    <!--<span class="errormsg erro_text" v-show="changeDetail.emailVali">邮箱格式错误</span>-->
-                                </td>
-                                <td v-if="showDetail" class="after-edit">{{email}}</td>
-                            </tr>
-                            </thead>
-                        </table>
+                    <div class="new_panel info_personal">
+                        <div class="new_panel_top">个人信息
+                            <a class="info_data_modify edit-btn"  v-if="showDetail" @click="editDetails()"><span class="icon icon_edit"></span>修改</a>
+                            <a class="save save-btn"  v-if="!showDetail" @click="saveEdit()"><span class="icon icon_check"></span><span>保存</span></a>
+                        </div>
+                        <div class="new_panel_center print_data">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <li>微信</li>
+                                    </th>
+                                    <td v-if="!showDetail" class="before-edit">
+                                        <input type="text" placeholder="请输入微信号" v-model="weChat">
+                                        <!--<span class=" erro_text" >微信格式错误</span>-->
+                                    </td>
+                                    <td  v-if="showDetail" class="after-edit">{{weChat}}</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <li>QQ</li>
+                                    </th>
+                                    <td v-if="!showDetail" class="before-edit">
+                                        <input  type="text"  placeholder="请输入QQ号" v-model="qq">
+                                        <!--<span>qq格式错误</span>-->
+                                    </td>
+                                    <td v-if="showDetail" class="after-edit">{{qq}}</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <li>电子邮箱</li>
+                                    </th>
+                                    <td class="before-edit" v-if="!showDetail">
+                                        <input  type="text"  placeholder="请输入邮箱地址" v-model="email">
+                                        <!--<span class="errormsg erro_text" v-show="changeDetail.emailVali">邮箱格式错误</span>-->
+                                    </td>
+                                    <td v-if="showDetail" class="after-edit">{{email}}</td>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -179,8 +182,8 @@
                         </fieldset>
                     </form>
                     <div>
-                        <div class="cancel-btn btn btn_two round btn_outlineb"><a href="javascript:;"><span>取消</span></a></div>
-                        <div class="btn btn_two round btn_blue02"><a href="javascript:;"@click="submitChangePassword()" ><span>确定</span></a></div>
+                        <div class="cancel-btn btn_outlineb"><a class="new_btn" href="javascript:;"><span>取消</span></a></div>
+                        <div class="btn_blue02"><a class="new_btn ok" href="javascript:;"@click="submitChangePassword()" ><span>确定</span></a></div>
                     </div>
                 </div>
             </div>
@@ -440,8 +443,8 @@
                         <!--</fieldset>-->
                     <!--</form>-->
                     <div>
-                        <div class="btn btn_two round btn_outline cancel-btn"><a href="javascript:;">取消</a></div>
-                        <div class="btn btn_two round btn_blue02"><a href="javascript:;"@click="submitChangePayWord()">确定</a></div>
+                        <div class="btn_outline cancel-btn"><a class="new_btn" href="javascript:;"><span>取消</span></a></div>
+                        <div class="btn_blue02"><a class="new_btn ok" href="javascript:;"@click="submitChangePayWord()"><span>确定</span></a></div>
                     </div>
                 </div>
             </div>

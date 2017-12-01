@@ -30,7 +30,7 @@
                                     <select name="" v-model="bankId" class="bankselect">
                                         <option :value="bank.id" v-for="bank in bankList" :data-code="bank.bankCode" >{{bank.bankName}}</option>
                                     </select>
-                                    <i class="input_select"></i>
+                                    <span class="icon icon_arrow_down"></span>
                                 </div>
                             </fieldset>
                             <fieldset>
@@ -61,7 +61,7 @@
                                 <label class="error-message"></label>
                             </fieldset>
                             <div class="btn btn_blue bind">
-                                <a href="javascript:;" @click="ChangeInfo()">確定</a>
+                                <a class="new_btn" href="javascript:;" @click="ChangeInfo()"><span>確定</span></a>
                             </div>
                         </form>
                     </div>

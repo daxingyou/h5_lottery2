@@ -11,7 +11,7 @@
             <h2 class="center title_name">代理申请</h2>
             <div class="right"></div>
         </header>
-        <div class="content">
+        <div class="pa_content">
             <div class="agent_area">
                 <div class="agent">
                     <div class="tabset">

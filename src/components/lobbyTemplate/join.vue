@@ -14,13 +14,14 @@
                 <div class="info_top">
                     <div class="account">
                         <a href="javascript:;">
-                            <h2 class="ui header center aligned">
+                            <!-- <h2 class="ui header center aligned">
                                 <div class="portrait">
-                                    <!-- <div class="portrait_outline"></div> -->
+                                    <div class="portrait_outline"></div>
                                     <div class="user_portrait"></div>
                                 </div>
-                            </h2>
+                            </h2>-->
                             <div class="user_name">
+                                <span class="icon icon_user"></span>
                                 <strong>{{getCookie('username')}}</strong>
                                 <div class="purse">
                                     <span class="icon icon_money"></span>
@@ -53,14 +54,14 @@
                         </li>
                         <li>
                             <router-link class="btn_icon" to="/lobbyTemplate/tutorial">
-                                <span class="icon_account icon_join_1"></span>
+                                <span class="icon_account icon_join_2"></span>
                                 <span>新手教程</span>
                                 <span class="icon icon_arrow_dark"></span>
                             </router-link>
                         </li>
                         <li>
                             <router-link class="btn_icon" to="/lobbyTemplate/about">
-                                <span class="icon_account icon_join_1"></span>
+                                <span class="icon_account icon_join_3"></span>
                                 <span>关于我们</span>
                                 <span class="icon icon_arrow_dark"></span>
                             </router-link>

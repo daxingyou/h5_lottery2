@@ -29,32 +29,32 @@
                                     </form>
 
                                     <div class="step03 pay_way">
-                                        <ul>
+                                        <ul class="arrow_list_dark">
                                             <li>
                                                 <a class="item" href="javascript:;" data-type="1">
-                                                    <div class="icon">
-                                                        <div><i class="i_webbank_pay"></i></div>
-                                                    </div><span>网银支付</span>
+                                                    <span class="badge">
+                                                        <span class="icon_account icon_deposit_1"></span>
+                                                    </span>
+                                                    <span>网银支付</span>
+                                                    <span class="icon icon_arrow_light"></span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="item" href="javascript:;" data-type="2">
-                                                    <div class="icon">
-                                                        <div>
-                                                            <i class="i_scan_qrcode"></i>
-                                                        </div>
-                                                    </div>
+                                                    <span class="badge">
+                                                        <span class="icon_account icon_deposit_2"></span>
+                                                    </span>
                                                     <span>扫码支付</span>
+                                                    <span class="icon icon_arrow_light"></span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="item" href="javascript:;" data-type="3">
-                                                    <div class="icon">
-                                                        <div>
-                                                            <i class="i_bank_transfer"></i>
-                                                        </div>
-                                                    </div>
+                                                    <span class="badge">
+                                                        <span class="icon_account icon_deposit_3"></span>
+                                                    </span>
                                                     <span>银行转账</span>
+                                                    <span class="icon icon_arrow_light"></span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -73,7 +73,7 @@
                                             </div>
                                         </fieldset>
                                     </form>
-                                    <div class="step03 webbank_pay">
+                                    <div class="step03 pay_list webbank_pay">
                                         <h5>选择银行</h5>
                                         <ul>
                                             <li class="btn_bank bank01" v-for="list in banklist">
@@ -100,7 +100,7 @@
                                                 </div>
                                             </fieldset>
                                         </form>
-                                        <div class="step03 scan_qrcoder">
+                                        <div class="step03 pay_list scan_qrcoder">
                                             <h5>支付方式</h5>
                                             <ul>
                                                 <li class="btn_pay wechat_q" v-for="list in banklist">
@@ -154,15 +154,15 @@
                                                         <option value="" >请选择</option>
                                                         <option :value="bank.bankCode" v-for="bank in allbanklist">{{bank.bankName}}</option>
                                                     </select>
+                                                    <span class="icon icon_arrow_down"></span>
                                                 </div>
-                                                <i class="input_select"></i>
                                             </fieldset>
                                         </div>
 
                                         <div class="bank_account">
                                             <h5 class="push-left-tiny">收款账号</h5>
                                             <a class="mini_tip trans_step" href="javascript:;">
-                                                <i class="i_help"></i>转账步骤</a>
+                                                <span class="icon icon_question"></span>转账步骤</a>
                                             <div class="print_data">
                                                 <table class="js-copytextarea">
                                                     <thead>
@@ -195,7 +195,7 @@
                                                 <a class="copy_link js-textareacopybtn copy-text" href="javascript:;"  @click="copyText()"
                                                 :data-clipboard-text="'银行名称：'+userInfo.bankName+' 收款人：'+userInfo.cardOwnerName +' 开户行：'+userInfo.registerBankInfo +' 银行账号：'+userInfo.cardNo"
                                                 >
-                                                    <i class="icon_copy"></i>复制该信息</a>
+                                                    <span class="icon icon_copy"></span>复制该信息</a>
                                             </div>
                                         </div>
                                         <div class="before_pay">
@@ -215,7 +215,7 @@
                                             <fieldset>
                                                 <div class="form_g text">
                                                     <legend id="bank">存款方式</legend>
-                                                    <select class="transparent" name="" v-model="bankval">   1网银存款,2支付宝支付,3微信支付,4柜员机现金存款,5柜员机转账,6银行柜台存款,7其他支付
+                                                    <select class="transparent" name="" v-model="bankval">   <!--1网银存款,2支付宝支付,3微信支付,4柜员机现金存款,5柜员机转账,6银行柜台存款,7其他支付-->
                                                         <option value="">请选择</option>
                                                         <option value="1">网银存款</option>
                                                         <option value="2">支付宝电子支付</option>
@@ -225,11 +225,11 @@
                                                         <option value="6">银行柜台存款</option>
                                                         <option value="7">其他支付</option>
                                                     </select>
-                                                    <i class="input_select"></i>
+                                                    <span class="icon icon_arrow_down"></span>
                                                 </div>
                                             </fieldset>
                                             <div class="btn btn_blue">
-                                                <a class="bank-underline" href="javascript:;" @click="submitBankAction()">确定充值</a>
+                                                <a class="new_btn bank-underline" href="javascript:;" @click="submitBankAction()"><span>确定充值</span></a>
                                             </div>
                                         </div>
                                         <!-- 提交存款成功后 -->
@@ -292,7 +292,7 @@
                     <br/>
                 </p>
                 <div class="action">
-                    <a class="new_btn ok"><span>确定</span></a>
+                    <a class="new_btn"><span>确定</span></a>
                 </div>
             </div>
         </div>

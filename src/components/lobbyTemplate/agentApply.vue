@@ -26,7 +26,7 @@
                             <select name="" >
                                 <option :value="banks.id" :data-code="banks.bankCode" v-for="banks in bankList">{{banks.bankName}}</option>
                             </select>
-                            <i class="input_select"></i>
+                            <span class="icon icon_arrow_down"></span>
                         </div>
                     </fieldset>
                     <fieldset>
