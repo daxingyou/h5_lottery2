@@ -84,6 +84,37 @@ var MyMixin = {
     },
 
     methods:{
+        // 退出函数
+        loginOut:function (type) {
+            var _self = this ;
+            var actoken =  _self.getCookie('access_token') ; // token
+            $.ajax({
+                type: 'get',
+                headers: {
+                    "Authorization": "bearer  "+actoken ,
+                },
+                url: _self.action.uaa + 'oauth/logout',
+                data: {} ,
+                success: (res) => {
+                    if(res.err == 'SUCCESS'){
+                        _self.clearAllCookie() ; // 清除全部 cookie
+                        if(!type){ // 普通退出需要跳转
+                            _self.$refs.autoCloseDialog.open('用户已退出','','icon_check','d_check') ;
+                            setTimeout(function () {
+                                window.location = '/' ;
+                            },1000)
+                        }
+
+                    }
+                    _self.$nextTick(function () {
+
+                    })
+                },
+                error: function () {
+
+                }
+            });
+        },
         // 返回上一步
         goBack:function(){
             this.$router.back();
@@ -119,10 +150,12 @@ var MyMixin = {
                 vScrollbar:false ,
                 click: true ,
                // momentum: false ,
-                useTransform: false , // 防止滑动多次卡死
-                useTransition: false ,  // 防止滑动多次卡死
+
+                useTransform: false ,
+                useTransition: false ,
+                // snapThreshold:0.5
             });
-           $('.so-con-left').find('ul li:first-child').click() ; // 解决k3 滑动问题
+           // $('.so-con-left').find('ul li:first-child').click() ; // 解决k3 滑动问题
 
         },
         // 初始化滚动高度
@@ -480,12 +513,19 @@ var MyMixin = {
             return param;
         },
         // 打开新窗口
-        openGame: function(url) {
+       /* openGame: function(url) {
             if (url) {
                 return window.open(url,  "_blank", 'toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no, depended=no, width=600, height=800');
             }
           // return window.open('', 'game', 'width=1200, height=800');
             return window.open("",  "_blank", 'toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no, depended=no, width=600, height=800') ;
+        },*/
+        openGame: function(url) {
+            if (url) {
+                return window.open(url, 'game', 'width=800, height=1200') ;
+            }
+            // return window.open('', 'game', 'width=1200, height=800').document.write(loadStr);
+            return window.open('', 'game', 'width=800, height=1200') ;
         },
         // 设置cookie
         setCookie :function(name, value, expire, path) {
@@ -516,6 +556,10 @@ var MyMixin = {
         },
         //清除所有cookie函数
          clearAllCookie:function() {
+            console.log('清除cookie') ;
+             this.setCookie("access_token", '');  // 登录token
+             this.setCookie("username", '');  //  登录用户名
+             this.setCookie('acType','');   // 玩家类型
             var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
             if(keys) {
                 for(var i = keys.length; i--;)
