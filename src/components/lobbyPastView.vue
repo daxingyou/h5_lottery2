@@ -86,7 +86,7 @@ export default {
            // pastViewArray :{} ,
             cssid :{'8':'pk10','108':'pk10','6':'k3','106':'k3'} ,
             ulclass :{'8':'pk10_top_number','108':'pk10_top_number','6':'k3dice_top','106':'k3dice_top','20':'k3dice_top','22':'k3dice_top'} ,
-            spanclass :{'8':'pk10_ball small_ball','108':'pk10_ball small_ball','6':'k3_dice','106':'k3_dice','20':'k3_dice','22':'k3_dice'} ,
+            spanclass :{'8':'pk10_ball','108':'pk10_ball','6':'k3_dice','106':'k3_dice','20':'k3_dice','22':'k3_dice'} ,
             gameHref : {
                 "2":"cqssc",
                 "12":"cqssc/tianJinIndex",

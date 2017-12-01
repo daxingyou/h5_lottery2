@@ -22,12 +22,12 @@
                             </h2>-->
                             <div class="user_name">
                                 <div class="">
-                                    <span class="icon icon_user"></span>
+                                    <span class="icon icon_user2"></span>
                                     <strong v-if="!demoName">{{userLogin}}</strong>
                                     <strong v-if="demoName">{{getCookie('username')}}</strong>
                                 </div>
                                 <div class="purse">
-                                    <span class="icon icon_money"></span>
+                                    <span class="icon icon_money2"></span>
                                     <div class="so-in-top-sum">
                                        {{fortMoney(roundAmt(Money), 2)}}
                                     </div>

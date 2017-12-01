@@ -107,24 +107,15 @@ input, select, button, a { outline: none; }
 #pa_con { width: 10rem; height: 100%; text-align: center; margin: auto; background: url("/static/frist/images/bg.jpg") repeat #fae6c7; background-size: 100%; min-height: 18rem; overflow-y: auto;-webkit-overflow-scrolling: touch; }
 #pa_content, .pa_content { margin-top: 1.36rem;padding-bottom: 1.36rem; position: relative; z-index: 2; }
 #pa_content .page_box, .pa_content .page_box{ padding: 0.3rem;}
-
-/*
-.warp { position: relative; width: 100%; margin: 0 auto; height: auto;  z-index: 2; }
-
-.warp > .content {  position: relative; z-index: 2; }*/
-
 .so-con { font-size: 0.34rem; width: 10rem; height: 100%; text-align: center; margin: auto; }
 
 /* footer */
 footer{ background: url("/static/frist/images/bg_wood.jpg") no-repeat bottom; background-size: 100% auto; }
 footer.bot_nav { position: fixed; bottom: 0; width: 10rem;  height: 1.5rem; z-index: 51; }
-
 footer.bot_nav ul { text-align: center; overflow: hidden; margin: 0 auto; font-size: 0;  }
 footer.bot_nav ul li { display: inline-block; font-size: .34rem; text-align: center; width: 25%; height: 1.5rem; }
 footer.bot_nav ul li.active, footer.bot_nav > ul > li:hover, footer.bot_nav > ul > li:focus { background-color: rgba(0, 0, 0, 0.4); box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8) inset; -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8) inset; }
-
 footer.bot_nav ul li a { position: relative; display: inline-block; width: 100%; height: 100%; color:#fbd4a9; }
-
 footer.bot_nav ul li a span.icon { display: block; margin: 0.2rem auto 0.1rem;  }
 footer.bot_nav ul li a span.Footer-font { display: block; }
 
@@ -287,7 +278,7 @@ label.red { color: #d43939; text-align: left; display: block; margin-top: .2rem;
 
 .today_payoff.lose_payoff { color: #980110; }
 
-.notfound { text-align: center; margin: 0 auto; width: 100%; height: 100%; background-attachment: fixed; min-height: 18rem; padding-bottom: 2em; }
+/*.notfound { text-align: center; margin: 0 auto; width: 100%; height: 100%; background-attachment: fixed; min-height: 18rem; padding-bottom: 2em; }
 
 .notfound i { margin-left: 6px; }
 
@@ -297,7 +288,7 @@ label.red { color: #d43939; text-align: left; display: block; margin-top: .2rem;
 
 .notfound div { font-size: 0.4rem; color: #aaa; margin-top: 1.5em; }
 
-.notfound h3 { font-size: 0.45rem; color: #fff; font-weight: 300; line-height: 1.8em; margin-top: .5em; text-shadow: 1px 3px 0px #000; }
+.notfound h3 { font-size: 0.45rem; color: #fff; font-weight: 300; line-height: 1.8em; margin-top: .5em; text-shadow: 1px 3px 0px #000; }*/
 
 img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; margin-left: auto; }
 
@@ -335,7 +326,9 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .icon.icon_nav{ background-position: 0 0; }
 .icon.icon_trend{ background-position: -0.64rem 0;}
 .icon.icon_money{ background-position: 0 -0.64rem;}
+.icon.icon_money2{background-position: -2.56rem -1.92rem }
 .icon.icon_user{ background-position: -1.28rem -0.64rem;}
+.icon.icon_user2{background-position: -1.92rem -1.92rem }
 .icon.icon_index{ background-position: -1.92rem -0.64rem;}
 .icon.icon_history{ background-position: -2.56rem -0.64rem;}
 .icon.icon_record{ background-position: -3.2rem -0.64rem;}
@@ -380,11 +373,8 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 /*i.filter { background-image: url("/static/frist/images/filter.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; }*/
 
 i.close { width: .57rem; display: block; position: relative; height: 1rem; right: 0; left: .2rem; }
-
 i.close:after { content: ''; display: block; background-image: url("/static/frist/images/close.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: .25rem; height: .25rem; position: absolute; right: .15rem; top: .35rem; cursor: pointer; }
-
 i.eye { display: block; background-image: url("/static/frist/images/eye_view.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: .4rem; height: 1.1rem; position: absolute; right: .3rem; top: 0; cursor: pointer; }
-
 i.eye.active { background-image: url("/static/frist/images/eye_hide.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; }
 
 /*div.icon { width: 1.5rem; height: 1.5rem; margin: 0 auto; border-radius: 100%; color: #000; border: 1px solid #277ca5; background-position-x: 50%; background-size: 100% 100%; padding: 1px; }
@@ -427,7 +417,7 @@ i.icon-notification { background: url("/static/frist/images/icon-notification.gi
 
 i.i_mail_status { background: url("/static/frist/images/icon_money.png") no-repeat; background-size: 100%; background-position-y: -3.55rem; margin-top: .12rem; }
 */
-i.write, i.i_save, i.triangle, i.ac { background-image: url("/static/frist/images/icon_money.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; background-position-y: -5.9rem; width: .65rem; height: .3rem; }
+/*i.write, i.i_save, i.triangle, i.ac { background-image: url("/static/frist/images/icon_money.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; background-position-y: -5.9rem; width: .65rem; height: .3rem; }*/
 /*
 i.i_save { background-position-y: -6.3rem; }
 
@@ -610,18 +600,12 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 .so-shade { display: none; background-color: rgba(0, 0, 0, 0.6); width: 100%; height: 100%; position: fixed; z-index: 23; top: 0; left: 0; }
 
 .so-fengpan-pop { display: none; position: fixed; background-color: rgba(0, 0, 0, 0.6); top: 0; left: 0; width: 10rem; height: 100%; z-index: 13; }
-
 .so-fengpan-pop > div { background-size: 100%; width: 8.14rem; height: 4.53rem; position: relative; top: 25%; margin: auto; text-align: center; }
-
-.so-fengpan-pop > div:before { content: ''; position: absolute; display: block; top: 0; left: 0; background-image: url("/static/frist/images/m_top_noclose.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; height: .7rem; width: 100%; margin: 0 auto; left: 50%; margin-left: -50%; }
-
+/*.so-fengpan-pop > div:before { content: ''; position: absolute; display: block; top: 0; left: 0; background-image: url("/static/frist/images/m_top_noclose.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; height: .7rem; width: 100%; margin: 0 auto; left: 50%; margin-left: -50%; }
 .so-fengpan-pop > div:after { content: ''; position: absolute; display: block; top: 0; left: 0; background-image: url("/static/frist/images/m_bot.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; bottom: -.15rem; top: initial; height: .7rem; width: 100%; margin: 0 auto; left: 50%; margin-left: -50%; }
-
 .so-fengpan-pop img { width: 8.14rem; position: relative; top: 25%; text-align: center; margin: auto; margin-top: 1rem; }
-
 .so-fengpan-pop img:nth-child(2) { max-width: .8rem; margin-top: 0; }
-
-.so-fengpan-pop p { color: #c93030; margin-top: 0.2rem; font-size: 0.34rem; line-height: 1.5em; }
+.so-fengpan-pop p { color: #c93030; margin-top: 0.2rem; font-size: 0.34rem; line-height: 1.5em; }*/
 
 /*.so-tip-pop { display: none; position: fixed; background-color: rgba(0, 0, 0, 0.6); top: 0; left: 0; width: 10rem; height: 100%; z-index: 13; }
 
@@ -880,20 +864,22 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 /*.swiper-slide .tab_content { margin-top: 0; }*/
 
 
-/* 大厅往期开奖 */
+/* -----------------------------------------
+// 大厅往期开奖
+-----------------------------------------*/
+
 /*.lobby_past_view .prd_num { color: #fff; }*/
 .lobby_past_view .play_th{ text-align: right;padding-right: 0.3rem; }
 .lobby_past_view .prd_num > span { font-size: .35rem; float: left;}
-
 .lobby_past_view .prd_num02 { display: inline-block; padding-top: 0.1rem;  line-height: 0.79rem; font-size: .34rem;  text-align: right;  }
-
 .lobby_past_view .time { display: inline-block; background-color: #4b280c; width: 1.6rem; height: .45rem; border-radius: .19rem;  line-height: 0.45rem; margin: auto; font-size: 0.32rem; text-align: center; margin-top: 0.12rem; color: #d59559; }
-
-.lobby_past_view .panel ul { text-align: center; margin: .5rem auto .2rem; height: 1.1rem; }
-
+.lobby_past_view .pk10_top_number, .lobby_past_view .k3dice_top{ padding: 0.1rem 0; white-space: nowrap;}
+.lobby_past_view .pk10_top_number li{ display: inline-block; margin: 0 0.03rem; }
+.lobby_past_view .k3dice_top li{ display: inline-block; margin: 0 0.2rem; }
+/*.lobby_past_view .panel ul { text-align: center; margin: .5rem auto .2rem; height: 1.1rem; }
 .lobby_past_view .panel ul.k3dice_top li { width: 1rem; height: 1rem; display: inline-block; margin: 0 .1rem; }
-
-.lobby_past_view ul.pk10_top_number { margin: .7rem auto 0 !important; height: .8rem; }
+.lobby_past_view .panel ul li{ display: inline-block;}
+.lobby_past_view ul.pk10_top_number { margin: .7rem auto 0 !important; height: .8rem; }*/
 
 /*.function_btn { position: relative; }
 
@@ -922,6 +908,10 @@ ul.sixball > li:last-child { background-position-x: -2.2rem; margin-left: .5rem;
 
 ul.sixball > li:last-child:before { background-image: url("/static/frist/images/plus.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; content: ''; position: absolute; display: block; top: 0; left: 0; width: .5rem; height: 1.1rem; right: 1.1rem; left: inherit; }*/
 
+
+/* -----------------------------------------
+// 大厅
+-----------------------------------------*/
 /* banner */
 .news { margin-top: 1.36rem; overflow-x: hidden; position: relative; }
 .news img { width: 100%; display: block; }
@@ -938,25 +928,16 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 .tempWrap { width: 100% !important; }
 
 .sys-notice { height: .7rem; line-height: .7rem; overflow: hidden; position: relative; width: 100%; }
-
 .sys-notice .bd { line-height: .7rem; height: .7rem; width: 7.7rem; margin-left:2.3rem;}
-
 .sys-notice ul { margin: 0; line-height: .7rem; height: .7rem; }
-
 .sys-notice ul li { list-style: none; display: inline-block; line-height: .7rem; height: .7rem; }
-
 .sys-notice ul li .create-time { list-style: none; margin-left: 20px; }
 
 #index_content { -webkit-box-sizing: border-box; box-sizing: border-box; padding-bottom: 1.5rem; }
-
 #index_content.content { margin-top: 0;  }
-
 #index_content.content > section h3 { text-align: left; margin-left: .4rem; margin-top: .2rem; }
-
 #index_content.content > section h3 > img { width: 3.25rem; }
-
 #index_content.content ul { overflow: hidden; max-width: 95%; margin: 0 auto; font-size: 0; }
-
 #index_content.content ul > li { display: inline-block; font-size: .32rem; text-align: center; width: 30%; }
 
 /* 快速连结 */
@@ -1030,7 +1011,9 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 
 .last-open-num > ul { height: 1.3rem; width: 100%; display: block; }
 
-/* login */
+/* -----------------------------------------
+// 登入页
+-----------------------------------------*/
 /*.login_area, .deposit_area { margin: 0 auto; margin-top: -2.5rem; position: relative; z-index: 50; width: 90%; }
 .login_area.reg, .reg.deposit_area { margin-top: 2rem; }*/
 #pa_con.page_login{ background: url('/static/frist/images/login_bg.jpg') repeat-y; background-size: 10rem auto; overflow: hidden; min-height: 17.79rem; }
@@ -1041,7 +1024,9 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 .other_link > a:first-child { border-left: none; }
 .other_link > a.text-yellow { color: #ffbd00; margin: 0; padding: 0; border-left: none; text-decoration: underline !important; }
 
-/* 表单 */
+/* -----------------------------------------
+// 表单
+-----------------------------------------*/
 fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left; }
 
 .form_g { overflow: hidden; position: relative; background-color: rgba(0, 0, 0, 0.5); padding: 0 .3rem; -webkit-border-radius: 0.1rem; -moz-border-radius: 0.1rem; -ms-border-radius: 0.1rem; border-radius: 0.1rem;  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8) inset;}
@@ -1071,7 +1056,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 
 .password > img { margin-top: -.9rem; height: .8rem; position: absolute; top: 100%; right: 2%; z-index: 1000; }
 
-.password.pay_password { white-space: nowrap; }
+/*.password.pay_password { white-space: nowrap; }
 
 .password.pay_password > legend { background-image: none; width: 1.5rem; }
 
@@ -1085,7 +1070,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 
 .password.pay_password .select_inline:last-of-type { border-right: 0; margin-right: -0.3rem; }
 
-.password.pay_password .select_inline > select { display: block; width: auto; margin: 0px auto; text-align: center; text-align-last: center; padding: 0 .5rem; -webkit-box-sizing: border-box; box-sizing: border-box; height: .5rem; line-height: 0.5rem; border-radius: 0; appearance: none; -moz-appearance: none; -webkit-appearance: none; }
+.password.pay_password .select_inline > select { display: block; width: auto; margin: 0px auto; text-align: center; text-align-last: center; padding: 0 .5rem; -webkit-box-sizing: border-box; box-sizing: border-box; height: .5rem; line-height: 0.5rem; border-radius: 0; appearance: none; -moz-appearance: none; -webkit-appearance: none; }*/
 
 .phone > legend { background-image: url("/static/frist/images/phone.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; }
 
@@ -1208,8 +1193,8 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 .info_top .account .ui.header > .image:not(.icon):only-child, .info_top .account .ui.header > img:only-child { margin-right: 0; }*/
 .info_top .account .user_name { position:absolute; text-align: left; line-height: 1.8em; float: left; margin-top: .2rem; }
 .info_top .account .user_name  strong { color: #4b280c; font-size: .4rem; }
-.info_top .account .user_name .purse{ margin-top: 0.2rem; box-shadow: none; background:transparent; text-align: left; }
-.info_top .account .user_name .purse .so-in-top-sum{ color: #b41a17; font-size: 0.4rem; }
+.info_top .account .user_name .purse{ margin-top: 0.2rem; box-shadow: none; background:transparent; text-align: left; white-space: nowrap; padding:0; width: auto;}
+.info_top .account .user_name .purse .so-in-top-sum{ display: inline-block; vertical-align: middle; color: #b41a17; font-size: 0.4rem; }
 /*.info_top:after { display: block; clear: both; content: ""; }*/
 /*.info_top.info_inner .account:after { background: none; }*/
 
