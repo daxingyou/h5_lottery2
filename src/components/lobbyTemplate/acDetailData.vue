@@ -7,7 +7,7 @@
                     <span class="icon icon_back"></span>
                 </a>
             </div>
-            <h2 class="center">{{parentData.moneyType[model.chargeType] || '-'}}详情</h2>
+            <h2 class="center title_name">{{parentData.moneyType[model.chargeType] || '-'}}详情</h2>
             <div class="right"></div>
         </header>
         <div class="content">

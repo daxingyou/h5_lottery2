@@ -6,61 +6,67 @@
                     <span class="icon icon_back"></span>
                 </router-link>
             </div>
-            <h2 class="center">提款</h2>
+            <h2 class="center title_name">提款</h2>
             <div class="right"></div>
         </header>
-        <div class="content">
-            <form class="withdrawals_area">
-                <div class="print_data">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>
-                                <li>真实姓名</li>
-                            </th>
-                            <td>{{realName}}</td>
-                        </tr>
-                        <tr>
-                            <th class="bank_card_num">
-                                <li>银行卡号</li>
-                            </th>
-                            <td>
-                                {{bankName}}
-                                <br/> {{bankCard}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <li>余额</li>
-                            </th>
-                            <td>{{fortMoney(roundAmt(memBalance), 2)}}</td>
-                        </tr>
-                        </thead>
-                    </table>
-                </div>
-                <fieldset>
-                    <div class="form_g text">
-                        <legend>取款金额</legend>
-                        <input type="text" v-model="userMoney"  class="money" placeholder="1.00~9999.00" maxlength="4">
-                        <i class="close close1" @click="ClearInput('close1','money')"></i>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div class="form_g text">
-                        <legend>支付密码</legend>
-                        <input type="text" v-model="cashPassword" class="password" onfocus="this.type='password'" maxlength="4" placeholder="4位数字密码">
-                        <i class="close close2" @click="ClearInput('close1','password')"></i>
-                    </div>
-                </fieldset>
-                <div class="btn btn_blue">
-                    <a href="javascript:;" @click="WithdrawalsAction()" >确定</a>
-                </div>
+        <div class="pa_content">
+            <div class="page_box">
+                <div class="new_panel">
+                    <div class="new_panel_top"></div>
+                    <div class="new_panel_center">
+                        <form class="withdrawals_area">
+                            <div class="print_data">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <li>真实姓名</li>
+                                        </th>
+                                        <td>{{realName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bank_card_num">
+                                            <li>银行卡号</li>
+                                        </th>
+                                        <td>
+                                            {{bankName}}
+                                            <br/> {{bankCard}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <li>余额</li>
+                                        </th>
+                                        <td class="text-yellow">{{fortMoney(roundAmt(memBalance), 2)}}</td>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <fieldset>
+                                <div class="form_g text">
+                                    <legend>取款金额</legend>
+                                    <input type="text" v-model="userMoney"  class="money" placeholder="1.00~9999.00" maxlength="4">
+                                    <i class="close close1" @click="ClearInput('close1','money')"></i>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form_g text">
+                                    <legend>支付密码</legend>
+                                    <input type="text" v-model="cashPassword" class="password" onfocus="this.type='password'" maxlength="4" placeholder="4位数字密码">
+                                    <i class="close close2" @click="ClearInput('close1','password')"></i>
+                                </div>
+                            </fieldset>
+                            <div class="">
+                                <a class="new_btn" href="javascript:;" @click="WithdrawalsAction()" ><span>确定</span></a>
+                            </div>
 
-            </form>
-            <!-- <a href="javascript:void(0);" class="ui red label get_m_01">会员_取款-取款银行设定</a><br/><br/>
-            <a href="javascript:void(0);" class="ui green label get_m_02">会员_取款稽核-滿足</a><br/><br/>
-            <a href="javascript:void(0);" class="ui red label get_m_03">会员_取款-取款稽核-不滿足</a><br/><br/> -->
-
+                        </form>
+                    </div>
+                </div>
+                <!-- <a href="javascript:void(0);" class="ui red label get_m_01">会员_取款-取款银行设定</a><br/><br/>
+                <a href="javascript:void(0);" class="ui green label get_m_02">会员_取款稽核-滿足</a><br/><br/>
+                <a href="javascript:void(0);" class="ui red label get_m_03">会员_取款-取款稽核-不滿足</a><br/><br/> -->
+            </div>
         </div>
         <FooterNav></FooterNav>
         <AutoCloseDialog ref="autoCloseDialog" text=" " type="" />

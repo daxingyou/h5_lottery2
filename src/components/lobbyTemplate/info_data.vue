@@ -6,10 +6,10 @@
                     <span class="icon icon_back"></span>
                 </a>
             </div>
-            <h2 class="center">帐户管理</h2>
+            <h2 class="center title_name">帐户管理</h2>
             <div class="right"></div>
         </header>
-        <div class="content">
+        <div class="pa_content">
             <div class="info_area">
                 <div class="info_top">
                     <div class="account">
@@ -17,7 +17,7 @@
                             <h2 class="ui header center aligned">
                                 <div class="portrait">
                                     <!-- <div class="portrait_outline"></div> -->
-                                    <div class="user_portrait" style="background-image: url('../../../static/frist/images/left/user.png');"></div>
+                                    <div class="user_portrait"></div>
                                 </div>
                             </h2>
                             <div class="user_name">
@@ -34,11 +34,11 @@
                 </div>
                 <div class="info_mid">
                     <div>
-                        <div class="btn btn_blue btn_two lgps filter_1">
-                            <a>修改登录密码</a>
+                        <div class="lgps filter_1">
+                            <a class="new_btn"><span>修改登录密码</span></a>
                         </div>
-                        <div class="btn btn_blue btn_two pps filter_2">
-                            <a>修改支付密码</a>
+                        <div class="pps filter_2">
+                            <a class="new_btn"><span>修改支付密码</span></a>
                         </div>
                     </div>
                 </div>

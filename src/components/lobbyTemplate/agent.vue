@@ -8,7 +8,7 @@
 
                 </a>
             </div>
-            <h2 class="center">代理申请</h2>
+            <h2 class="center title_name">代理申请</h2>
             <div class="right"></div>
         </header>
         <div class="content">

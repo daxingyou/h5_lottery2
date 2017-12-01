@@ -6,10 +6,10 @@
 
                 </a>
             </div>
-            <h2 class="center">个人中心</h2>
+            <h2 class="center title_name">个人中心</h2>
             <div class="right"></div>
         </header>
-        <div class="content">
+        <div class="pa_content">
             <div class="info_area">
                 <div class="info_top">
                     <div class="account">
@@ -17,7 +17,7 @@
                             <h2 class="ui header center aligned">
                                 <div class="portrait">
                                     <!-- <div class="portrait_outline"></div> -->
-                                    <div class="user_portrait" style="background-image: url('../../../static/frist/images/left/user.png');"></div>
+                                    <div class="user_portrait"></div>
                                 </div>
                             </h2>
                             <div class="user_name">
@@ -35,11 +35,11 @@
                 </div>
                 <div class="info_mid">
                     <div>
-                        <div class="btn btn_blue btn_two">
-                            <a  href="javascript:;" @click="CheckDemoPlay('CZ')">充值</a>
+                        <div class="">
+                            <a class="new_btn" href="javascript:;" @click="CheckDemoPlay('TK')" ><span>提款</span></a>
                         </div>
-                        <div class="btn btn_blue btn_two">
-                            <a  href="javascript:;" @click="CheckDemoPlay('TK')" >提款</a>
+                        <div class="">
+                            <a class="new_btn ok" href="javascript:;" @click="CheckDemoPlay('CZ')"><span>充值</span></a>
                         </div>
                     </div>
                 </div>
@@ -57,18 +57,16 @@
                         </li>-->
                         <li>
                             <router-link to="/lobbyTemplate/acdetial" class="btn_icon">
-                                <div class="icon">
-                                    <div><i class="info02"></i></div>
-                                </div>
-                                帐户明细
+                                <span class="icon_account icon_info_1"></span>
+                                <span>帐户明细</span>
+                                <span class="icon icon_arrow_dark"></span>
                             </router-link>
                         </li>
                         <li>
                             <a class="btn_icon "  href="javascript:;" @click="CheckDemoPlay('ZH')">
-                                <div class="icon">
-                                    <div><i class="info03"></i></div>
-                                </div>
-                                帐户管理
+                                <span class="icon_account icon_info_2"></span>
+                                <span>帐户管理</span>
+                                <span class="icon icon_arrow_dark"></span>
                             </a>
                         </li>
                       <!--  <li>
@@ -81,18 +79,16 @@
                         </li>-->
                         <li>
                             <a class="btn_icon" href="javascript:;"  @click="openGame('https://messenger.providesupport.com/messenger/1sppddzqo56sf08wzrnuxiv6yt.html')">
-                                <div class="icon">
-                                    <div><i class="info05"></i></div>
-                                </div>
-                                在线客服
+                                <span class="icon_account icon_info_3"></span>
+                                <span>在线客服</span>
+                                <span class="icon icon_arrow_dark"></span>
                             </a>
                         </li>
                         <li>
                             <router-link class="btn_icon" :to="'/lobbyTemplate/join'">
-                                <div class="icon">
-                                    <div> <i class="info06"></i></div>
-                                </div>
-                                欢迎加入
+                                <div class="icon_account icon_info_4"></div>
+                                <span>欢迎加入</span>
+                                <span class="icon icon_arrow_dark"></span>
                             </router-link>
                         </li>
                     </ul>

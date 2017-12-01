@@ -6,7 +6,7 @@
                     <span class="icon icon_back"></span>
                 </a>
             </div>
-            <h2 class="center">个人中心</h2>
+            <h2 class="center title_name">个人中心</h2>
             <div class="right"></div>
         </header>
 

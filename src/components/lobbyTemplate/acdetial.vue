@@ -6,7 +6,7 @@
                     <span class="icon icon_back"></span>
                 </a>
             </div>
-            <h2 class="center">帐户明细</h2>
+            <h2 class="center title_name">帐户明细</h2>
             <div class="right"></div>
         </header>
         <div id="pa_content">
@@ -28,7 +28,7 @@
                                        <!-- <div class="prd_num"><span>{{dateFormat(item.createTime, 'yyyy/mm/dd HH:mm') || '1990/1/1 00:00'}}</span></div>-->
                                         <div class="prd_num"><span>{{formatTimeUnlix(item.createTime,'0')}}</span></div>
                                         <div class="item">
-                                            <div class="icon">
+                                            <div class="">
                                                 <div>
                                                     <i :class="'ac ' + (tradeTypeConfigItemGet(item).class || 'ac01')"></i>
                                                 </div>
