@@ -638,7 +638,7 @@
                               setTimeout(function(){
                                   $src.removeClass('active');
                               },50)
-                              this.$refs.infoDialog.open('请选择1个选项', 'title_quantity');
+                              this.$refs.infoDialog.open('请选择1个选项', '投注项目超过规定数量');
                           }
                       }else{
                           this.betSelectedList.push(item);
