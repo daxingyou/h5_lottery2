@@ -21,7 +21,7 @@
 
                     </ul>
                     <div>
-                        <div class="btn_outline"><a class="new_btn cancel" href="javascript:;"><span>取消</span></a></div>
+                        <div class="btn_outline"><a class="new_btn" href="javascript:;"><span>取消</span></a></div>
                         <div class="btn_submit"><a class="new_btn ok" href="javascript:;"><span>确定</span></a></div>
                     </div>
                 </div>

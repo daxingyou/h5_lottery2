@@ -6,21 +6,22 @@
                     <span class="icon icon_back"></span>
                 </a>
             </div>
-            <h2 class="center">欢迎加入</h2>
+            <h2 class="center title_name">欢迎加入</h2>
             <div class="right"></div>
         </header>
-        <div class="content">
+        <div class="pa_content">
             <div class="info_area">
                 <div class="info_top">
                     <div class="account">
                         <a href="javascript:;">
-                            <h2 class="ui header center aligned">
+                            <!-- <h2 class="ui header center aligned">
                                 <div class="portrait">
-                                    <!-- <div class="portrait_outline"></div> -->
-                                    <div class="user_portrait" style="background-image: url('../../../static/frist/images/left/user.png');"></div>
+                                    <div class="portrait_outline"></div>
+                                    <div class="user_portrait"></div>
                                 </div>
-                            </h2>
+                            </h2>-->
                             <div class="user_name">
+                                <span class="icon icon_user"></span>
                                 <strong>{{getCookie('username')}}</strong>
                                 <div class="purse">
                                     <span class="icon icon_money"></span>
@@ -34,11 +35,11 @@
                 </div>
                 <div class="info_mid">
                     <div>
-                        <div class="btn btn_blue btn_two">
-                            <a href="javascript:;" @click="CheckDemoPlay('CZ')">充值</a>
+                        <div class="">
+                            <a class="new_btn" href="javascript:;" @click="CheckDemoPlay('CZ')"><span>充值</span></a>
                         </div>
-                        <div class="btn btn_blue btn_two">
-                            <a href="javascript:;" @click="CheckDemoPlay('TK')">提款</a>
+                        <div class="">
+                            <a class="new_btn" href="javascript:;" @click="CheckDemoPlay('TK')"><span>提款</span></a>
                         </div>
                     </div>
                 </div>
@@ -46,28 +47,23 @@
                     <ul>
                         <li>
                             <router-link class="btn_icon" to="/lobbyTemplate/agent">
-                                <div class="icon">
-                                    <div>
-                                        <i class="info07"></i>
-                                    </div>
-                                </div>
-                                代理加盟
+                                <span class="icon_account icon_join_1"></span>
+                                <span>代理加盟</span>
+                                <span class="icon icon_arrow_dark"></span>
                             </router-link>
                         </li>
                         <li>
                             <router-link class="btn_icon" to="/lobbyTemplate/tutorial">
-                                <div class="icon">
-                                    <div><i class="info08"></i></div>
-                                </div>
-                                新手教程
+                                <span class="icon_account icon_join_2"></span>
+                                <span>新手教程</span>
+                                <span class="icon icon_arrow_dark"></span>
                             </router-link>
                         </li>
                         <li>
                             <router-link class="btn_icon" to="/lobbyTemplate/about">
-                                <div class="icon">
-                                    <div><i class="info09"></i></div>
-                                </div>
-                                关于我们
+                                <span class="icon_account icon_join_3"></span>
+                                <span>关于我们</span>
+                                <span class="icon icon_arrow_dark"></span>
                             </router-link>
                         </li>
                     </ul>

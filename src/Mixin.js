@@ -84,6 +84,37 @@ var MyMixin = {
     },
 
     methods:{
+        // 退出函数
+        loginOut:function (type) {
+            var _self = this ;
+            var actoken =  _self.getCookie('access_token') ; // token
+            $.ajax({
+                type: 'get',
+                headers: {
+                    "Authorization": "bearer  "+actoken ,
+                },
+                url: _self.action.uaa + 'oauth/logout',
+                data: {} ,
+                success: (res) => {
+                    if(res.err == 'SUCCESS'){
+                        _self.clearAllCookie() ; // 清除全部 cookie
+                        if(!type){ // 普通退出需要跳转
+                            _self.$refs.autoCloseDialog.open('用户已退出','','icon_check','d_check') ;
+                            setTimeout(function () {
+                                window.location = '/' ;
+                            },1000)
+                        }
+
+                    }
+                    _self.$nextTick(function () {
+
+                    })
+                },
+                error: function () {
+
+                }
+            });
+        },
         // 返回上一步
         goBack:function(){
             this.$router.back();
@@ -118,6 +149,11 @@ var MyMixin = {
                 hScrollbar:false ,
                 vScrollbar:false ,
                 click: true ,
+               // momentum: false ,
+
+                useTransform: false ,
+                useTransition: false ,
+                // snapThreshold:0.5
             });
            // $('.so-con-left').find('ul li:first-child').click() ; // 解决k3 滑动问题
 
@@ -149,8 +185,10 @@ var MyMixin = {
         // 点击切换 设置球区域高度
         setClickHeight:function (val) {
             var winw = window.screen.width || window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight; // 获取屏幕宽度
-            if(winw >413){
+            if(winw >413){ // 大屏幕
                 $('.so-con-right').css('height',(val-380)+'px') ;
+            }else if(winw>300 && winw<375){ // 小屏幕
+                $('.so-con-right').css('height',(val-270)+'px') ;
             }else{
                 $('.so-con-right').css('height',(val-310)+'px') ;
             }
@@ -207,7 +245,7 @@ var MyMixin = {
                      setTimeout(function () {
                          _self.setInitHeight(gameid) ;
                      },200) ;
-                    $('.so-con-left').find('ul li:first-child').click() ; // 解决k3 滑动问题
+                   // $('.so-con-left').find('ul li:first-child').click() ; // 解决k3 滑动问题
 
                         resolve(this.playTreeList);
                     },
@@ -409,7 +447,7 @@ var MyMixin = {
                 var s = parseInt(second % 60);
               //  var s = (second - (h * 60 * 60) - (f * 60));
               // second --;
-              bk = '0'+h + ":" + (f < 10 ? "0" + f : f) + ":" + (s < 10 ? "0" + s : s)
+              bk = (h < 10 ? "0" + h : h)+ ":" + (f < 10 ? "0" + f : f) + ":" + (s < 10 ? "0" + s : s)
               // bk = h + ":" + (f < 10 ? "0" + f : f) + ":" + (s < 10 ? "0" + s : s)
             } else {
                 bk = second.split(":");
@@ -475,12 +513,19 @@ var MyMixin = {
             return param;
         },
         // 打开新窗口
-        openGame: function(url) {
+       /* openGame: function(url) {
             if (url) {
                 return window.open(url,  "_blank", 'toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no, depended=no, width=600, height=800');
             }
           // return window.open('', 'game', 'width=1200, height=800');
             return window.open("",  "_blank", 'toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no, depended=no, width=600, height=800') ;
+        },*/
+        openGame: function(url) {
+            if (url) {
+                return window.open(url, 'game', 'width=800, height=1200') ;
+            }
+            // return window.open('', 'game', 'width=1200, height=800').document.write(loadStr);
+            return window.open('', 'game', 'width=800, height=1200') ;
         },
         // 设置cookie
         setCookie :function(name, value, expire, path) {
@@ -511,6 +556,10 @@ var MyMixin = {
         },
         //清除所有cookie函数
          clearAllCookie:function() {
+            console.log('清除cookie') ;
+             this.setCookie("access_token", '');  // 登录token
+             this.setCookie("username", '');  //  登录用户名
+             this.setCookie('acType','');   // 玩家类型
             var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
             if(keys) {
                 for(var i = keys.length; i--;)

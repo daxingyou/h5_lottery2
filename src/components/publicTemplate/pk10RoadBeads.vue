@@ -726,14 +726,22 @@
                             color = 'mid' ;
                             break;
                         case '龙':
+                            color = 'dragon' ;
+                            break;
                         case '大':
+                            color = 'big' ;
+                            break;
                         case '单':
                             color = 'big' ;
                             break;
                         case '虎':
-                        case '小':
-                        case '双':
                             color = 'tiger' ;
+                            break;
+                        case '小':
+                            color = 'small' ;
+                            break;
+                        case '双':
+                            color = 'even' ;
                             break;
                         default :
                             color = 'mid' ;

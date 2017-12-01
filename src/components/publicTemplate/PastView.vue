@@ -20,7 +20,7 @@
 
                     </ul>
                     <div>
-                        <div class="btn_outline"><a class="new_btn cancel" href="javascript:;"><span>取消</span></a></div>
+                        <div class="btn_outline"><a class="new_btn" href="javascript:;"><span>取消</span></a></div>
                         <div class="btn_submit"><a class="new_btn ok" href="javascript:;"><span>确定</span></a></div>
                     </div>
                 </div>
@@ -60,9 +60,9 @@
                                         <ul class="double-count" v-else>
                                             <li>{{list.doubleData.total}}</li>
                                             <li>{{list.doubleData.sizer}}</li>
-                                            <li>{{list.doubleData.doubler}}</li>
-                                            <li v-if="(lotteryid == '4'|| lotteryid == '104'|| lotteryid == '16') || (lotteryid == '18')">{{list.doubleData.sizerEnd}}</li>
-                                            <li>{{list.doubleData.longer}}</li>
+                                            <li v-if="(  lotteryid == '2' || lotteryid == '4' ||  lotteryid == '12'|| lotteryid == '14' || lotteryid == '16' || lotteryid == '18'|| lotteryid == '102' || lotteryid == '104'  )">{{list.doubleData.doubler}}</li> <!-- 快三没有 -->
+                                            <li v-if="(  lotteryid == '4' || lotteryid == '104'  || lotteryid == '16') || (lotteryid == '18')">{{list.doubleData.sizerEnd}}</li>
+                                            <li v-if="(  lotteryid == '2' || lotteryid == '4' ||  lotteryid == '12'|| lotteryid == '14' || lotteryid == '16' || lotteryid == '18'|| lotteryid == '102' || lotteryid == '104'  )">{{list.doubleData.longer}}</li> <!-- 快三没有 -->
 
                                         </ul>
                                     </div>

@@ -19,7 +19,7 @@
                         <li :class="{'active':lotteryid== list.id}" :data-val="list.id" v-for="list in gamechoose"><a href="javascript:void(0);"> {{list.name}} </a></li>
                     </ul>
                     <div>
-                        <div class="btn_outline"><a class="new_btn cancel" href="javascript:;"><span>取消</span></a></div>
+                        <div class="btn_outline"><a class="new_btn" href="javascript:;"><span>取消</span></a></div>
                         <div class="btn_submit"><a class="new_btn ok" href="javascript:;"><span>确定</span></a></div>
                     </div>
                 </div>
@@ -508,8 +508,8 @@
                     if (i === 0) {
                         first_li = 'first_li';
                     }
-                    restr += '<li class="slide_toggle bet_day new_bet_day ' + first_li + '" data-page="1" data-val="' + (this.nowDate.getYear() + 1900).toString().padStart(4, '0') + (this.nowDate.getMonth() + 1).toString().padStart(2, '0') + this.nowDate.getDate().toString().padStart(2, '0') + '">' +
-                        '<div class="panel_title"> <strong class="title-data">' + pdate + '</strong><span></span> </div>' +
+                    restr += '<li class="slide_toggle bet_day new_bet_day new_panel ' + first_li + '" data-page="1" data-val="' + (this.nowDate.getYear() + 1900).toString().padStart(4, '0') + (this.nowDate.getMonth() + 1).toString().padStart(2, '0') + this.nowDate.getDate().toString().padStart(2, '0') + '">' +
+                        '<div class="panel_title new_panel_top"> <strong class="title-data">' + pdate + '</strong><span></span> </div>' +
                         '<ul class="panel bet-recode-all"></ul></li>';
                     this.nowDate.setDate(this.nowDate.getDate() - 1);
                 }
@@ -606,9 +606,9 @@
                                         if (_self.seadata.searchType === 1) {
                                             li_html = '<li class="bet_data" data-status="not_open" >' +
                                                 '<a href="javascript:;"  data-val="' + encodeURI(JSON.stringify(v)) + '">' +  // 暂时不显示详情 onclick="showBetDetails(this,0)"
-                                                '<div class="prd_num"><span>' + pcode + '</span>期</div>' +
+                                                // '<div class="prd_num"><span>' + pcode + '</span>期</div>' +
                                                 '<div class="item"> ' +
-                                                '<div class="badge ssc_badge lottery_logo_' + v.lotteryId + '"></div>' +
+                                                '<div class="badge ssc_badge"><img src="/static/frist/images/lotterylogo/logo_' + v.lotteryId + '.svg"></div>' +
                                                 '<div class="lottery_t ssc">' +
                                                 // '<p>' + v.lotteryName + ' - <span>' + v.playName + '</span></p> <strong>' + this.fortMoney(this.roundAmt(v.betAmount), 2) + '</strong> </div>' +
                                                 '<p>'+ v.orderId +'</p>'+
@@ -618,7 +618,7 @@
                                             }else{
                                                 li_html += '<span>' + v.playName + '</span>' ;
                                             }
-                                            li_html +=  '</p> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
+                                            li_html +=  '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
                                                 '<div class="status ' + className + '" >' +
                                                 '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div></div>' +
                                                 '</div>' +

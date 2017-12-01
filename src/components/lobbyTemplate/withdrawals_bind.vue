@@ -6,60 +6,67 @@
                     <span class="icon icon_back"></span>
                 </router-link>
             </div>
-            <h2 class="center">开户行</h2>
+            <h2 class="center title_name">开户行</h2>
             <div class="right"></div>
         </header>
-        <div class="content">
-            <form class="withdrawals_area">
-                <fieldset>
-                    <div class="form_g text">
-                        <legend>真实姓名</legend>
-                        <input type="text" name="real-name" v-model="realName" class="realName"   placeholder="请输入您的真实姓名"
-                               @input="checkrealyName(realName,'realName')">
-                        <i class="close close1" ></i>
+        <div class="pa_content">
+            <div class="page_box">
+                <div class="new_panel">
+                    <div class="new_panel_top"></div>
+                    <div class="new_panel_center">
+                        <form class="withdrawals_area">
+                            <fieldset>
+                                <div class="form_g text">
+                                    <legend>真实姓名</legend>
+                                    <input type="text" name="real-name" v-model="realName" class="realName"   placeholder="请输入您的真实姓名"
+                                        @input="checkrealyName(realName,'realName')">
+                                    <i class="close close1" ></i>
+                                </div>
+                                <label class=" error-message"></label>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form_g text">
+                                    <legend>选择银行</legend>
+                                    <select name="" v-model="bankId" class="bankselect">
+                                        <option :value="bank.id" v-for="bank in bankList" :data-code="bank.bankCode" >{{bank.bankName}}</option>
+                                    </select>
+                                    <span class="icon icon_arrow_down"></span>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form_g text">
+                                    <legend>开户行</legend>
+                                    <input type="text" name="phone-number" v-model="bankAdd"  class="bankAdd" placeholder="如:北京市海淀区中关村支行"
+                                    @input="checkBankAdd(bankAdd,'bankAdd')">
+                                    <i class="close close1" @click="ClearInput('close2','bankAdd')"></i>
+                                </div>
+                                <label class="error-message"></label>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form_g text">
+                                    <legend>银行卡号</legend>
+                                    <input type="text" name="phone-number" v-model="bankNum" class="bankNum" placeholder="请输入取款银行卡号"
+                                    @input="checkBankNum(bankNum,'bankNum')">
+                                    <i class="close close3" @click="ClearInput('close3','bankNum')"></i>
+                                </div>
+                                <label class="error-message"></label>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form_g text">
+                                    <legend>手机号</legend>
+                                    <input type="text" name="phone-number" v-model="phoneNumber" class="phoneNumber"  placeholder="请输入11位手机号码" maxlength="11"
+                                    @input="checktelphone(phoneNumber,'phoneNumber')">
+                                    <i class="close close4" @click="ClearInput('close4','phoneNumber')"></i>
+                                </div>
+                                <label class="error-message"></label>
+                            </fieldset>
+                            <div class="btn btn_blue bind">
+                                <a class="new_btn" href="javascript:;" @click="ChangeInfo()"><span>確定</span></a>
+                            </div>
+                        </form>
                     </div>
-                    <label class=" error-message"></label>
-                </fieldset>
-                <fieldset>
-                    <div class="form_g text">
-                        <legend>选择银行</legend>
-                        <select name="" v-model="bankId" class="bankselect">
-                            <option :value="bank.id" v-for="bank in bankList" :data-code="bank.bankCode" >{{bank.bankName}}</option>
-                        </select>
-                        <i class="input_select"></i>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div class="form_g text">
-                        <legend>开户行</legend>
-                        <input type="text" name="phone-number" v-model="bankAdd"  class="bankAdd" placeholder="如:北京市海淀区中关村支行"
-                        @input="checkBankAdd(bankAdd,'bankAdd')">
-                        <i class="close close1" @click="ClearInput('close2','bankAdd')"></i>
-                    </div>
-                    <label class="error-message"></label>
-                </fieldset>
-                <fieldset>
-                    <div class="form_g text">
-                        <legend>银行卡号</legend>
-                        <input type="text" name="phone-number" v-model="bankNum" class="bankNum" placeholder="请输入取款银行卡号"
-                        @input="checkBankNum(bankNum,'bankNum')">
-                        <i class="close close3" @click="ClearInput('close3','bankNum')"></i>
-                    </div>
-                    <label class="error-message"></label>
-                </fieldset>
-                <fieldset>
-                    <div class="form_g text">
-                        <legend>手机号</legend>
-                        <input type="text" name="phone-number" v-model="phoneNumber" class="phoneNumber"  placeholder="请输入11位手机号码" maxlength="11"
-                        @input="checktelphone(phoneNumber,'phoneNumber')">
-                        <i class="close close4" @click="ClearInput('close4','phoneNumber')"></i>
-                    </div>
-                    <label class="error-message"></label>
-                </fieldset>
-                <div class="btn btn_blue bind">
-                    <a href="javascript:;" @click="ChangeInfo()">確定</a>
                 </div>
-            </form>
+            </div>
         </div>
         <FooterNav></FooterNav>
         <AutoCloseDialog ref="autoCloseDialog" text=" " type="" />

@@ -37,7 +37,7 @@
                 <div class="bd">
                     <ul class="tab_content">
                         <li class="ds_long">
-                            <ul class="panel clong_open">
+                            <ul class="clong_open">
                                <!-- <li class="prod" data-status="not_open">
                                     <i class="prd"></i>
                                     <div>1-5球_第二球</div>
@@ -107,7 +107,7 @@
                     </ul>
                     <ul class="tab_content">
                         <li class="ds_long">
-                            <ul class="panel clong_notopen">
+                            <ul class="clong_notopen">
                                 <!--<li class="prod" data-status="not_open"> <i class="prd"></i>
                                     <div>两面_总和&龙虎</div>
                                     <ul class="lo_ball no_open">
