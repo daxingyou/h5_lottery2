@@ -742,14 +742,14 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .bet_day .date { font-size: 1rem; }
 
 /* 列表 */
-.bet_data { border-bottom: 1px solid #90573e; /* margin: 0 0.2rem; */ }
+.bet_data { border-bottom: 1px solid #90573e;  margin: 0 0.2rem;  }
 .bet_data:last-child { border-bottom: none; }
 .bet_data > a { display: block; color: #ffc388; }
 .bet_data > a:after { content: ''; display: table; clear: both; }
 .bet_data > a > .item { padding: .3rem; overflow: hidden; /*width: 9rem;*/ box-sizing: border-box;}
 .bet_data > a > .item > div { display: inline-block; vertical-align: middle; line-height: .6rem; }
 .bet_data > a > .item > .status { float: right; max-width: 1.8rem; width: auto; }
-.bet_data > a > .item > .badge { background: url('/static/frist/images/logo_bg.png') no-repeat; background-size: 100% 100%; width: 1.5rem; height: 1.5rem; }
+.bet_data > a > .item > .badge { background: url('/static/frist/images/logo_bg.png') no-repeat; background-size: 100% 100%; width: 1.5rem; height: 1.5rem; margin-right:0.15rem; }
 .bet_data > a > .item > .badge > img { width: 1.1rem; margin: 0.3rem 0.2rem;}
 .bet_data strong { color: #ffbd00; font-size: .35rem; font-weight: 300; }
 .bet_data .prd_num { color: #d59559; margin-right: 0.2rem;}
