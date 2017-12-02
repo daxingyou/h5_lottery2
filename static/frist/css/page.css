@@ -547,7 +547,7 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 .so-in-main .so-main-down ul li:nth-child(2) { margin-right: 0.5rem;width: 20%; text-align: center}
 .so-in-main .so-main-down ul li:nth-child(3) { margin-right: 0.3rem;width: 20%; text-align: center}
 .so-in-main .so-main-down ul li:after{ content:''; display: table; clear:both;}
-.so-in-main .so-main-down ul li > p { line-height: 0.8rem; margin-left: 0.24rem; text-align: left; }
+.so-in-main .so-main-down ul li > p { line-height:0.8rem; text-align:right; width:3.3rem; font-size:.34rem; }
 .so-in-main .so-main-down ul li > i { display: none; }
 .so-in-main .so-main-down ul li > span {float:left;line-height: 0.8rem; display: inline-block; vertical-align: middle;}
 .so-in-main .so-main-down ul li > a { line-height: 0.8rem;display: inline-block; vertical-align: middle;}

@@ -13,8 +13,9 @@
     width: 0.7rem;
     margin-top: 0.07rem; }
 #pk10 .so-main-down li:first-child p {
-  width: 3.3rem;
-  margin-right: 0.12rem; }
+  width: 2.3rem;
+  margin-right: 0.12rem;
+  white-space: nowrap}
 #pk10 .select-li {
   height: auto;
   padding-top: 0.3rem; }
