@@ -75,7 +75,7 @@ input, select, button, a { outline: none; }
 
 .new_header .center { text-align: center;  width: calc(100% - 3rem); color: #fff; font-size: 0.44rem; font-weight: bold; float: left; }
 .new_header .center.logo { width: 3.2rem; padding-left: 1.36rem;  }
-.new_header .center.logo img { height:0.9867rem; margin:0.19rem auto; }
+.new_header .center.logo img { height:0.845411rem; margin:0.338164rem auto; }
 .new_header .center.logo_left { padding-left: 0.5rem; }
 .new_header .center.lottery_name,.new_header .center.title_name { width: calc(100% - 3.2rem); line-height: 1.36rem; position: absolute; top:0; left:50%;  margin-left: calc(-50% + 1.6rem); background: -webkit-linear-gradient(top,#fbd4a9 0,#fdae40 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
 
