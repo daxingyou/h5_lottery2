@@ -131,7 +131,7 @@ export default {
             type: 'post',
             headers: {clientId:this.client,Authorization: 'Basic d2ViX2FwcDo='},
            // url: this.action.uaa + 'oauth/token',
-            url: this.action.uaa + 'apis/member/login',
+            url: this.action.uaa + 'apid/member/login',
             data: logindata ,
             success: (res) => {
                 if(res.err == 'SUCCESS'){ // 登录成功

@@ -81,7 +81,7 @@
                     <ul>
                         <li :class="(index == 0 && 'active')" v-for="(kind,index) in kinds" @click="switchTab">
                             <!--<a :href="'#pk10-item'+index">{{kind}}</a>-->
-                            <a >{{kind}}</a>
+                            <a style="font-size: .3rem">{{kind}}</a>
                         </li>
 
                     </ul>

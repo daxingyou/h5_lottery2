@@ -573,7 +573,7 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 .so-con-left { width: 2.3rem; float: left; height: 100%; padding-bottom: .8rem; position: fixed; z-index: 5; border-right: 1px solid rgba(56,32,30,0.2); }
 .so-con-left ul { overflow-y: auto; -webkit-overflow-scrolling: touch; cursor: pointer; }
 .so-con-left ul li { display: block; width: 100%; font-size: 0.4rem; text-align: center; background-position-y: -1.5rem; cursor: pointer; }
-.so-con-left ul li a { margin: 0.2rem auto; background: url("/static/frist/images/ball.png") no-repeat; background-size: auto 3.2rem; display: block; width: 1.6rem; height: 1.6rem; box-sizing: border-box; padding-top: 0.4rem; }
+.so-con-left ul li a { margin: 0.2rem auto; background: url("/static/frist/images/ball.png") no-repeat; background-size: auto 3.2rem; display: block; width: 1.6rem; height: 1.6rem; box-sizing: border-box; padding-top: 0.4rem;line-height: 0.6rem; }
 .so-con-left ul li.active a { background-position-y: -1.6rem; }
 
 .so-con-right {  width: 7.7rem;  height: 100%; padding-bottom: .8rem;  position: fixed;  z-index: 5; margin-left: 2.3rem ; }
@@ -588,7 +588,7 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 .so-foot .bet_selected p span { color: #fea832; padding: 0.05rem;}
 
 .so-foot .bet_count { margin: 0.2rem 0 0 0.3rem; background: url('/static/frist/images/bet_info_bg.png') no-repeat; background-size: 100% 100%; width: 3.653rem; padding: 0 0.5rem; height: 1.187rem; }
-.so-foot .bet_count input { display: block; margin-top: 0.2rem; margin-right: 0.15rem; float: right; width: 2rem; height: .65rem; background-color: transparent; border: none;color: #fea832; font-size: 0.44rem;  text-align: right;}
+.so-foot .bet_count input { display: block; margin-top: 0.2rem; margin-right: 0.15rem; float: right; width: 2rem; height: .65rem; background-color: transparent; border: none;color: #fea832; font-size: .34rem;  text-align: right;}
 /*.so-foot .bet_count input::-webkit-input-placeholder { color: #FFF; opacity: 0.5; }*/
 .so-foot .bet_count a.submit{ position: fixed; bottom: 0.37rem; right:0.2rem; width: 1.5rem; border-radius: 0.1rem; display: block; line-height: 0.68rem; text-align: center; border: 1px solid #fff;  color: white; opacity: 0.5; }
 

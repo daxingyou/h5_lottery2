@@ -91,4 +91,8 @@ export default {
 <style scoped>
   .so-shade { display: block; z-index: 0; height: 100% !important; }
   .so-right > div:last-child > div { display: block; }
+  .right_menu a{
+      display: inline-block;
+      width: 100%;
+  }
 </style>
