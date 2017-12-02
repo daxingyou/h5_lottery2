@@ -2,7 +2,7 @@
 <template>
     <div v-if="show" class="modal m09 publicDialog" @click="close">
         <div class="m_content">
-            <img class="bet_ok" src="/static/frist/images/pop/ok_light.png">
+            <!-- <img class="bet_ok" src="/static/frist/images/pop/ok_light.png"> -->
             <h2 class="noclose">下注成功<a></a></h2>
             <div class="content check">
                 <div>
@@ -30,7 +30,7 @@ export default {
     //打开弹窗
     open:function(){
       this.show = true;
-      setTimeout(() => this.show = false, 3000);
+      setTimeout(() => this.show = false, 300000);
     },
     //关闭弹窗
     close:function(e){
