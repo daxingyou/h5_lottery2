@@ -21,10 +21,10 @@
                                 </div>
                             </h2> -->
                             <div class="user_name">
-                                <span class="icon icon_user"></span>
+                                <span class="icon icon_user2"></span>
                                 <strong>{{loginName}}</strong>
                                 <div class="purse">
-                                    <span class="icon icon_money"></span>
+                                    <span class="icon icon_money2"></span>
                                     <div class="so-in-top-sum">
 
                                     </div>

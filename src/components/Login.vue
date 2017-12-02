@@ -33,7 +33,7 @@
                     </fieldset>
                 </form>
                 <div class="btn btn_blue">
-                    <a class="new_btn" href="javascript:;" @click="LoginAction()"><span>登录</span></a>
+                    <a class="new_btn" href="javascript:;" @click="LoginAction()"><span class="big">登录</span></a>
                 </div>
                 <div class="other_link">
                     <a href="/reg">马上注册</a>

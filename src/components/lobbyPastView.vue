@@ -31,16 +31,16 @@
                                 <ul :class="'new_panel_center '+ulclass[list.lotteryId]" v-if="(list.lotteryId == '8') || (list.lotteryId == '108') || (list.lotteryId == '6') || (list.lotteryId == '106') || (list.lotteryId == '20') || (list.lotteryId == '22')">
                                     <li v-for="listnum in list.winNumber.split(',')" >
                                        <!-- <span class="pk10_ball small_ball" :class="'num_'+listnum"></span>-->
-                                        <span :class="[spanclass[list.lotteryId],'num_'+listnum]"></span>
+                                        <span :class="[spanclass[list.lotteryId],'active num_'+listnum]"></span>
                                     </li>
                                 </ul>
 
                                 <ul class="new_panel_center lo_ball" v-else>
-                                    <li v-for="listnum in list.winNumber.split(',')">{{listnum}}</li>
+                                    <li v-for="listnum in list.winNumber.split(',')" :class="'round_ball active num_'+ listnum ">{{listnum}}</li>
                                 </ul>
 
                                 <div class="function_btn">
-                                    <router-link class="bell new_btn cancel btn_outline" to="publicTemplate/pastView" @click.native="setActionToView(list.lotteryId,gameName[list.lotteryId])"><i></i><span>往期开奖</span></router-link>
+                                    <router-link class="bell new_btn btn_outline" to="publicTemplate/pastView" @click.native="setActionToView(list.lotteryId,gameName[list.lotteryId])"><i></i><span>往期开奖</span></router-link>
                                    <!-- <a class="bell btn btn_outline" href="publicTemplate/pastView" @click="setActionToView(list.lotteryId,gameName[list.lotteryId])"><i></i>往期开奖</a>-->
                                     <router-link class="check new_btn ok btn_blue" :to="'/'+gameHref[list.lotteryId]"><i></i><span>立即投注</span></router-link>
                                 </div>
@@ -86,7 +86,7 @@ export default {
            // pastViewArray :{} ,
             cssid :{'8':'pk10','108':'pk10','6':'k3','106':'k3'} ,
             ulclass :{'8':'pk10_top_number','108':'pk10_top_number','6':'k3dice_top','106':'k3dice_top','20':'k3dice_top','22':'k3dice_top'} ,
-            spanclass :{'8':'pk10_ball small_ball','108':'pk10_ball small_ball','6':'k3_dice','106':'k3_dice','20':'k3_dice','22':'k3_dice'} ,
+            spanclass :{'8':'pk10_ball','108':'pk10_ball','6':'k3_dice','106':'k3_dice','20':'k3_dice','22':'k3_dice'} ,
             gameHref : {
                 "2":"cqssc",
                 "12":"cqssc/tianJinIndex",
