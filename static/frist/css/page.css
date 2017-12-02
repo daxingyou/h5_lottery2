@@ -1244,7 +1244,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 .info_mid > div { margin: 0 auto; font-size: 0; }
 .info_mid > div > div { display: inline-block; font-size: 0.34rem; }
 
-.info_bot { text-align: center; padding: 2em 0; }
+.info_bot { text-align: center; padding: 2em 0; padding-top: 0;}
 .info_bot > .btn_blue {  }
 .info_bot > ul { overflow: hidden;  }
 .info_bot > ul > li { padding: 0 0.3rem; border-top: 1px solid rgba(56,32,30,0.2); }
