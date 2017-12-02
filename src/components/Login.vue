@@ -3,6 +3,10 @@
         <!--<header id="pa_head" class="login">
             <img src="static/frist/images/login_logo.png" alt="">
         </header>-->
+        <div class="login_title">
+          <!-- <img   src="static/frist/images/login_logo.png">              -->
+        </div>
+
         <div class="new_panel login_area">
             <div class="new_panel_top"></div>
             <div class="new_panel_center">
@@ -186,3 +190,7 @@ export default {
 
 }
 </script>
+<style type="text/css">
+  
+
+</style>
