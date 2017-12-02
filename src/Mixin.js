@@ -8,8 +8,6 @@
 var MyMixin = {
     data:function(){
         return {
-            URL:{
-            },
             action:{
                 forseti: 'http://121.58.234.210:19091/forseti/',  // 测试环境
                 uaa: 'http://121.58.234.210:19091/uaa/',   // 测试环境
