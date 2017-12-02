@@ -6,14 +6,18 @@
 var MyMixin = {
     data:function(){
         return {
+             AP_FORSETI :'http://121.58.234.210:19091',
+             AP_UAA:'http://121.58.234.210:19091' ,
+             AP_HERMES:'http://121.58.234.210:19091',
+             AP_PICURL:'http://admin.baochiapi.com/photo',
             action:{
-               forseti: 'http://121.58.234.210:19091/forseti/',  // 测试环境
-               uaa: 'http://121.58.234.210:19091/uaa/',   // 测试环境
-               hermes: 'http://121.58.234.210:19091/hermes/',   // 测试环境
-                // forseti: 'http://api.88bccp.com/forseti/',   // 线上环境
-                // uaa: 'http://api.88bccp.com/uaa/' ,  // 线上环境
-                // hermes: 'http://api.88bccp.com/hermes/',   // 线上环境
-                picurl: 'http://admin.baochiapi.com/photo/pic/',  // 图片地址
+               // forseti:this.AP_FORSETI+'/forseti/',  // 测试环境
+               // uaa: this.AP_UAA+'/uaa/',   // 测试环境
+               // hermes:this. AP_HERMES+'/hermes/',   // 测试环境
+                forseti: 'http://api.88bccp.com/forseti/',   // 线上环境
+                uaa: 'http://api.88bccp.com/uaa/' ,  // 线上环境
+                hermes: 'http://api.88bccp.com/hermes/',   // 线上环境
+                picurl:this. AP_PICURL+'/pic/',  // 图片地址
             },
             playTreeList:[], //玩法树
             testPriodDataNewlyData:{
