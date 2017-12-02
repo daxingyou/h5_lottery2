@@ -544,12 +544,12 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 .so-in-main .so-main-down ul { text-align: right;}
 .so-in-main .so-main-down ul li { display: inline-block;}
 .so-in-main .so-main-down ul li:first-child{ width: 3.42rem; float: left; }
-.so-in-main .so-main-down ul li:nth-child(2) { margin-right: 0.5rem;}
-.so-in-main .so-main-down ul li:nth-child(3) { margin-right: 0.3rem;}
+.so-in-main .so-main-down ul li:nth-child(2) { margin-right: 0.5rem;width: 20%; text-align: center}
+.so-in-main .so-main-down ul li:nth-child(3) { margin-right: 0.3rem;width: 20%; text-align: center}
 .so-in-main .so-main-down ul li:after{ content:''; display: table; clear:both;}
 .so-in-main .so-main-down ul li > p { line-height: 0.8rem; margin-right: 0.1rem; text-align: right; }
 .so-in-main .so-main-down ul li > i { display: none; }
-.so-in-main .so-main-down ul li > span {line-height: 0.8rem; display: inline-block; vertical-align: middle;}
+.so-in-main .so-main-down ul li > span {float:left;line-height: 0.8rem; display: inline-block; vertical-align: middle;}
 .so-in-main .so-main-down ul li > a { line-height: 0.8rem;display: inline-block; vertical-align: middle;}
 
 .so-con .so-in-con { width: 100%; position: fixed; cursor: pointer; top: calc( 1.36rem + 2.3rem + 0.8rem );bottom: 1.48rem; }

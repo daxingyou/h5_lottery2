@@ -81,7 +81,7 @@
                     <ul>
                         <li :class="(index == 0 && 'active')" v-for="(kind,index) in kinds" @click="switchTab">
                             <!--<a :href="'#pk10-item'+index">{{kind}}</a>-->
-                            <a style="font-size: .3rem">{{kind}}</a>
+                            <a>{{kind}}</a>
                         </li>
 
                     </ul>
@@ -507,5 +507,8 @@ export default {
 <style scoped>
     .pk10_item ul li .pk10_panel > div p> .pk10_num_bg:first-child, .pk10_item ul li .pk10_panel > div p.active> .pk10_num_bg:first-child  {
         color: transparent;
+    }
+    #nav-wrapper ul>li:nth-child(2) a{
+        font-size: .33rem;
     }
 </style>

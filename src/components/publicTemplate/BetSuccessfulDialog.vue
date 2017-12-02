@@ -30,7 +30,7 @@ export default {
     //打开弹窗
     open:function(){
       this.show = true;
-      setTimeout(() => this.show = false, 300000);
+      setTimeout(() => this.show = false, 3000);
     },
     //关闭弹窗
     close:function(e){
