@@ -68,7 +68,7 @@ input, select, button, a { outline: none; }
 
 
 /* header */
-.new_header { overflow: hidden; height: 1.36rem; background: url('/static/frist/images/bg_wood.jpg') no-repeat top; background-size: 100% auto; color: #d7e8f0; font-size: .4rem; position: fixed; z-index: 51; width: 10rem; top: 0; }
+.new_header { overflow: hidden; height: 1.36rem; background: url('/static/frist/images/bg_wood.jpg') no-repeat top; background-size: 100% auto; color: #d7e8f0; font-size: .4rem; position: fixed; z-index: 60; width: 10rem; top: 0; }
 .new_header:after { display: block; clear: both; content: ""; }
 
 .new_header.index_nav_top { position: fixed; top: 0; z-index: 50; width: 10rem; }
@@ -114,7 +114,7 @@ input, select, button, a { outline: none; }
 
 /* footer */
 footer{ background: url("/static/frist/images/bg_wood.jpg") no-repeat bottom; background-size: 100% auto; }
-footer.bot_nav { position: fixed; bottom: 0; width: 10rem;  height: 1.5rem; z-index: 51; }
+footer.bot_nav { position: fixed; bottom: 0; width: 10rem;  height: 1.5rem; z-index: 60; }
 footer.bot_nav ul { text-align: center; overflow: hidden; margin: 0 auto; font-size: 0;  }
 footer.bot_nav ul li { display: inline-block; font-size: .34rem; text-align: center; width: 25%; height: 1.5rem; }
 footer.bot_nav ul li.active, footer.bot_nav > ul > li:hover, footer.bot_nav > ul > li:focus { background-color: rgba(0, 0, 0, 0.4); box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8) inset; -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8) inset; }
@@ -1039,12 +1039,12 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 .form_g > * { vertical-align: middle; float: left; line-height: 1rem; height: 1rem; }
 .form_g > legend { display: inline-block; width: 1.6rem; height: .5rem; line-height: 0.5rem; margin-top: 0.25rem; margin-right: .3rem; text-align: left; color: #ffc388; border-right: 1px solid #90573e; }
 .form_g > input { background-color: transparent; width: calc(85% - 1.5rem); color: #fff; border: none; position: relative; font-size: .35rem; }
-.form_g .icon_arrow_down{ height: 0.64rem; margin-top: 0.18rem; transform: translate(0.15rem); -webkit-transform: translate(0.15rem)}
+.form_g .icon_arrow_down{ height: 0.64rem; margin-top: 0.18rem; transform: translate(0.15rem); -webkit-transform: translate(0.15rem) ; position: absolute;right: 0.5rem}
 /*.form_g > legend:after { content: ''; position: absolute; display: block; top: 0; left: 0; width: 1px; height: .5rem; background-color: #256e93; right: -.2rem; left: inherit; top: .25rem; }*/
 
 .form_g.text > legend { background-image: none; width: 1.8rem; }
 
-.form_g.text input, .form_g.text select { width: calc(70% - .5rem); background-color: transparent; color: #fff; border: none; }
+.form_g.text input, .form_g.text select { width: calc(70% - .5rem); background-color: transparent; color: #fff; border: none;appearance:none;  -moz-appearance:none; /* Firefox */  -webkit-appearance:none; /* Safari 和 Chrome */ }
 
 .form_g.text select option { background-color: rgba(18, 21, 30, 0.9); font-size: 0.1rem; }
 
