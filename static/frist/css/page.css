@@ -20,6 +20,17 @@ input, select, button, a { outline: none; }
 :-ms-input-placeholder {color: #7e5c4c;}
 :-moz-placeholder {color: #7e5c4c;}
 
+
+.login_title{
+  position: absolute;
+  left: 2.36715rem;
+  top: 1.400966rem;
+  width: 5.31401rem;
+  height: 1.980676rem;
+  background: url(../images/LOGO3.png);
+  background-size: contain;
+}
+
 /* -----------------------------------------
 // common
 -----------------------------------------*/
