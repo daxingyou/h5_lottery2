@@ -1208,7 +1208,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 .info_top .account .user_name { position:absolute; text-align: left; line-height: 1.8em; float: left; margin-top: .2rem; }
 .info_top .account .user_name  strong { color: #4b280c; font-size: .4rem; }
 .info_top .account .user_name .purse{ margin-top: 0.2rem; box-shadow: none; background:transparent; text-align: left; white-space: nowrap; padding:0; width: auto;}
-.info_top .account .user_name .purse .so-in-top-sum{ display: inline-block; vertical-align: middle; color: #b41a17; font-size: 0.4rem;margin-left: .7rem }
+.info_top .account .user_name .purse .so-in-top-sum{ display: inline-block; vertical-align: middle; color: #b41a17; font-size: 0.4rem;/*margin-left: .7rem */} 
 /*.info_top:after { display: block; clear: both; content: ""; }*/
 /*.info_top.info_inner .account:after { background: none; }*/
 
