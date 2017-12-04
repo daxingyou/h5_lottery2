@@ -214,7 +214,7 @@ export default {
             gameHref:{} ,
             bulletins:'',
             banner:[
-                {'url':'../../static/frist/images/baner_crrol2.jpg'},
+                {'url':'../../static/frist/images/baner_crrol22.jpg'},
                 {'url':'../../static/frist/images/baner_crrol3.jpg'},
                 {'url':'../../static/frist/images/baner_crrol4.jpg'},                
             ] ,
