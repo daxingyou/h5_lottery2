@@ -32,6 +32,7 @@
                       </li>
                   </ul>
 
+
               </div>
               <div class="hd">
                   <ul>
@@ -214,9 +215,9 @@ export default {
             gameHref:{} ,
             bulletins:'',
             banner:[
-                {'url':'http://img.will888.cn/photo/pic/T1HaETByYT1RCvBVdK/0'},
+                {'url':'../../static/frist/images/baner_crrol1.jpg'},
+                {'url':'../../static/frist/images/baner_crrol2.jpg'},
                 {'url':'http://admin.baochiapi.com/photo/pic/T15tETByAT1RCvBVdK/0'},
-                {'url':'http://admin.baochiapi.com/photo/pic/T1kyhTByDT1RCvBVdK/0'},
             ] ,
 
         }
