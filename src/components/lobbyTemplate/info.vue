@@ -81,7 +81,7 @@
                             </router-link>
                         </li>-->
                         <li>
-                            <a class="btn_icon" href="javascript:;"  @click="openGame('https://messenger.providesupport.com/messenger/1sppddzqo56sf08wzrnuxiv6yt.html')">
+                            <a class="btn_icon" href="javascript:;"  @click="openGame('http://www.providesupport.com?messenger=0bxg1rx3vv8lc036lt4a265vdi')">
                                 <span class="icon_account icon_info_3"></span>
                                 <span>在线客服</span>
                                 <span class="icon icon_arrow_dark"></span>
