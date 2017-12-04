@@ -62,7 +62,7 @@ input, select, button, a { outline: none; }
 .new_btn span{ border:2px solid transparent; width: 3rem; background-color: #4b280c; background-clip: content-box; display: block; text-align: center; border-radius: 0.5rem; box-shadow: 0px 0px 3px rgba(47, 27, 15, 0.26) inset; -webkit-box-shadow: 0px 0px 3px rgba(47, 27, 15, 0.5) inset; }
 .new_btn.cancel span{ width: 2.2rem; background-color: #4b280c;}
 .new_btn.ok span{ width: 3rem; background: rgb(186,4,26); /* Old browsers */background: -moz-linear-gradient(top, rgba(186,4,26,1) 0%, rgba(225,26,51,1) 50%, rgba(186,4,26,1) 100%); /* FF3.6-15 */background: -webkit-linear-gradient(top, rgba(186,4,26,1) 0%,rgba(225,26,51,1) 50%,rgba(186,4,26,1) 100%); /* Chrome10-25,Safari5.1-6 */background: linear-gradient(to bottom, rgba(186,4,26,1) 0%,rgba(225,26,51,1) 50%,rgba(186,4,26,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */background-clip: content-box;}
-.new_btn span.midunm { width: 4rem; line-height: 0.8rem; }
+.new_btn span.midunm { width: 4.35rem; line-height: 0.8rem; }
 .new_btn span.big { width: 6rem; line-height: 0.8rem; }
 .new_btn_outline { color: #fbd4a9;  border: 1px solid #fbd4a9; border-radius: 0.5rem; display: inline-block; font-size: .34rem; padding: 0 0.2rem; line-height: 0.7rem; }
 
@@ -278,7 +278,7 @@ label.red { color: #d43939; text-align: left; display: block; margin-top: .2rem;
 .tabset > label.tab1 { margin-right: -.1rem; border-top-left-radius: .2rem; border-bottom-left-radius: .2rem; }
 .tabset > label.tab2 { border-top-right-radius: .2rem; border-bottom-right-radius: .2rem; }
 .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child, .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2), .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3), .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4), .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5), .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) { display: block; }
-.tabset > label:hover, .tabset > input:focus + label { color: #fff; }
+.tabset > label:hover, .tabset > input:focus + label { color: #4b280c; }
 .tabset > label:hover::after, .tabset > input:focus + label::after, .tabset > input:checked + label::after { background: #06c; color: #fff; }
 .tabset > input:checked + label { margin-bottom: -1px; background-color: #4b280c; color: #ffc388; }
 
@@ -766,10 +766,10 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .bet_data .prd_num { color: #d59559; margin-right: 0.2rem;}
 .bet_data .status { min-width: 15%; width: 1.8rem; text-align: center; color: #d59559; }
 .bet_data .status > div { max-width: 100%; overflow: hidden; -o-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; }
-.bet_data .status00 { padding-top: .3rem; }
+.bet_data .status00 { padding-top: .2rem; }
 .bet_data .status00 > span { position: relative; top: 0.5rem; }
 .bet_data .status00 > div { display: block; background-image: url("/static/frist/images/page/status00.svg"); background-position: center center; background-repeat: no-repeat; background-size: 100%; text-align: center; margin: 0 auto; width: .5rem; height: .5rem; position: relative; top: -0.6rem; }
-.bet_data .status02 { padding-top: .3rem; color: #71c341; }
+.bet_data .status02 { padding-top: .2rem; color: #71c341; }
 .bet_data .status03, .bet_data .status04 { color: #b41a17; padding-top: .3rem; }
 .bet_data .status03 > span, .bet_data .status04 > span { position: relative; top: 0.5rem; }
 .bet_data .status03 > div, .bet_data .status04 > div { display: block; background-image: url("/static/frist/images/page/status03.svg"); background-position: center center; background-repeat: no-repeat; background-size: 100%; text-align: center; margin: 0 auto; width: .5rem; height: .5rem; position: relative; top: -0.6rem; }
@@ -793,8 +793,8 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .play_area ul { margin: 0 auto; }
 .play_area ul li { display: inline-block; overflow: hidden; margin: .1rem 0.2rem 0.1rem 0; text-align: center; width: 2.85rem; }
 .play_area ul li:nth-child(3n){ margin-right: 0;}
-.play_area ul li a { color: #ffc388; padding: .2rem .3rem; display: block; font-size: .34rem;  border: 1px solid #d59559;}
-.play_area ul li.active a { background-color: #ffc388; color: #4b280c; }
+.play_area ul li a { color: #ffc388; padding: .2rem .3rem; display: block; font-size: .34rem;  border: 1px solid #d59559; border-radius: 0.1rem;}
+.play_area ul li.active a { background-color: #ffc388; color: #4b280c;  border-color: #ffc388;}
 
 /* 列表 */
 .past_view { margin:0 0 .3rem 0;  }
