@@ -8,7 +8,7 @@
             </div>
             <h2 class="center lottery_name">{{lotteryname}}</h2>
             <div class="right">
-                <div class="dropdown_icon"><i class="icon filter"></i>筛选</div>
+                <div class="dropdown_icon"><span class="icon icon_filter"></span>筛选</div>
             </div>
         </header>
         <div class="dropdown" style="display:none;">
