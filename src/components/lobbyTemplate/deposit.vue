@@ -229,7 +229,7 @@
                                                 </div>
                                             </fieldset>
                                             <div class="btn btn_blue">
-                                                <a class="new_btn bank-underline" href="javascript:;" @click="submitBankAction()"><span>确定充值</span></a>
+                                                <a class="new_btn bank-underline" href="javascript:;" @click="submitBankAction()"><span class="big">确定充值</span></a>
                                             </div>
                                         </div>
                                         <!-- 提交存款成功后 -->
