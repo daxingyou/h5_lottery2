@@ -42,7 +42,7 @@
                 <div class="other_link">
                     <a href="/reg">马上注册</a>
                     <a href="javascript:;" @click="demoPlay()">免费试玩</a>
-                    <a href="javascript:;" @click="openGame('https://messenger.providesupport.com/messenger/1sppddzqo56sf08wzrnuxiv6yt.html')">在线客服</a>
+                    <a href="javascript:;" @click="openGame('http://www.providesupport.com?messenger=0bxg1rx3vv8lc036lt4a265vdi')">在线客服</a>
                 </div>
             </div>
         </div>
