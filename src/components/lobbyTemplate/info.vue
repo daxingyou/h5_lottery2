@@ -191,6 +191,9 @@ export default {
                       }
                   }
                   _self.Money = res.data.balance;
+                  _self.setCookie('membalance',  this.fortMoney(this.roundAmt(_self.Money), 2) )
+
+
               },
               error: (e) => {
               _self.errorAction(e) ;
