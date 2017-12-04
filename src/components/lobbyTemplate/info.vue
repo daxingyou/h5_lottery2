@@ -39,10 +39,10 @@
                 <div class="info_mid">
                     <div>
                         <div class="">
-                            <a class="new_btn" href="javascript:;" @click="CheckDemoPlay('TK')" ><span>提款</span></a>
+                            <a class="new_btn" href="javascript:;" @click="CheckDemoPlay('TK')" ><span class="midunm">提款</span></a>
                         </div>
                         <div class="">
-                            <a class="new_btn ok" href="javascript:;" @click="CheckDemoPlay('CZ')"><span>充值</span></a>
+                            <a class="new_btn ok" href="javascript:;" @click="CheckDemoPlay('CZ')"><span class="midunm">充值</span></a>
                         </div>
                     </div>
                 </div>
