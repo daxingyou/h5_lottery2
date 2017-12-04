@@ -10,7 +10,7 @@
                      <span class="icon icon_nav"></span>
                  </a>
              </div>
-             <h2 class="center logo" v-bind:class="[haslogin ? '' : 'logo_left']"><img src="static/frist/images/logo.png" alt="宝池彩票"></h2>
+             <h2 class="center logo" v-bind:class="[haslogin ? '' : 'logo_left']"><img src="static/frist/images/logo.png" alt="百乐彩"></h2>
              <div class="right">
                  <router-link to="/login" class="new_btn_outline" v-show="!haslogin">登录</router-link>
                  <router-link to="/reg" class="new_btn_outline" v-show="!haslogin" >注册</router-link>
