@@ -1252,7 +1252,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 /*.info_personal .info_data_modify { color: #66c3f2; }*/
 
 .info_mid { text-align: right; padding: 0.3rem;  }
-.info_mid > div { margin: 0 auto; font-size: 0; }
+.info_mid > div { margin: 0 auto; font-size: 0;text-align: center; }
 .info_mid > div > div { display: inline-block; font-size: 0.34rem; }
 
 .info_bot { text-align: center; padding: 2em 0; padding-top: 0;}
