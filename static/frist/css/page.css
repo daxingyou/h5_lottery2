@@ -54,7 +54,7 @@ input, select, button, a { outline: none; }
 
 /* 馀额 */
 .purse { position: relative; width: 4.133rem; height: 0.67rem; line-height: 0.67rem; box-sizing: border-box; background-color: rgba(0, 0, 0, 0.5); border-radius: 2rem; text-align: right; padding: 0 0.3rem 0 0.7rem; box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.8) inset;  }
-.purse .icon_money{ position: absolute; top: 0.07rem; left: 0.05rem; }
+.purse .icon_money{ position: absolute; top: 0.1rem; left: 0.05rem; }
 .purse .so-in-top-sum { color: #fea832; overflow: hidden; white-space: nowrap; -o-text-overflow: ellipsis; text-overflow: ellipsis; }
 
 /* btn */
@@ -1208,7 +1208,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 .info_top .account .user_name { position:absolute; text-align: left; line-height: 1.8em; float: left; margin-top: .2rem; }
 .info_top .account .user_name  strong { color: #4b280c; font-size: .4rem; }
 .info_top .account .user_name .purse{ margin-top: 0.2rem; box-shadow: none; background:transparent; text-align: left; white-space: nowrap; padding:0; width: auto;}
-.info_top .account .user_name .purse .so-in-top-sum{ display: inline-block; vertical-align: middle; color: #b41a17; font-size: 0.4rem; }
+.info_top .account .user_name .purse .so-in-top-sum{ display: inline-block; vertical-align: middle; color: #b41a17; font-size: 0.4rem;margin-left: .7rem }
 /*.info_top:after { display: block; clear: both; content: ""; }*/
 /*.info_top.info_inner .account:after { background: none; }*/
 
