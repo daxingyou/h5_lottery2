@@ -87,13 +87,13 @@
                                 <span class="icon icon_arrow_dark"></span>
                             </a>
                         </li>
-                        <li>
-                            <router-link class="btn_icon" :to="'/lobbyTemplate/join'">
-                                <div class="icon_account icon_info_4"></div>
-                                <span>欢迎加入</span>
-                                <span class="icon icon_arrow_dark"></span>
-                            </router-link>
-                        </li>
+                        <!--<li>-->
+                            <!--<router-link class="btn_icon" :to="'/lobbyTemplate/join'">-->
+                                <!--<div class="icon_account icon_info_4"></div>-->
+                                <!--<span>欢迎加入</span>-->
+                                <!--<span class="icon icon_arrow_dark"></span>-->
+                            <!--</router-link>-->
+                        <!--</li>-->
                     </ul>
 
                 </div>
