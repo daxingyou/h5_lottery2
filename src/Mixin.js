@@ -514,6 +514,10 @@ var MyMixin = {
             }
             return param;
         },
+         openGameOnline: function(url) {
+           
+            this.openGame('http://messenger.providesupport.net/messenger/0bxg1rx3vv8lc036lt4a265vdi.html')
+        },
         // 打开新窗口
        /* openGame: function(url) {
             if (url) {
