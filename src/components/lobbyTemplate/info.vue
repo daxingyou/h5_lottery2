@@ -81,7 +81,11 @@
                             </router-link>
                         </li>-->
                         <li>
+<<<<<<< HEAD
                             <a class="btn_icon" href="javascript:;"  @click="openGame('http://www.providesupport.com?messenger=0bxg1rx3vv8lc036lt4a265vdi')">
+=======
+                            <a class="btn_icon" href="javascript:;"  @click="openGameOnline()">
+>>>>>>> daae31d957871531e7bf700fef51ecfc470720e4
                                 <span class="icon_account icon_info_3"></span>
                                 <span>在线客服</span>
                                 <span class="icon icon_arrow_dark"></span>
@@ -191,6 +195,9 @@ export default {
                       }
                   }
                   _self.Money = res.data.balance;
+                  _self.setCookie('membalance',  this.fortMoney(this.roundAmt(_self.Money), 2) )
+
+
               },
               error: (e) => {
               _self.errorAction(e) ;

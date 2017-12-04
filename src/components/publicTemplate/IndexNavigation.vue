@@ -55,7 +55,11 @@
                             </router-link>
                         </li>
                         <li>
+<<<<<<< HEAD
                             <a href="javascript:;" @click="openGame('http://www.providesupport.com?messenger=0bxg1rx3vv8lc036lt4a265vdi')">
+=======
+                            <a href="javascript:;" @click="openGameOnline()">
+>>>>>>> daae31d957871531e7bf700fef51ecfc470720e4
                                 <div class="">
                                     <div>
                                         <i class="index_s index_s04"></i>

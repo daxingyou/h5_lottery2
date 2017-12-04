@@ -57,7 +57,7 @@
                                 </div>
                             </fieldset>
                             <div class="">
-                                <a class="new_btn" href="javascript:;" @click="WithdrawalsAction()" ><span>确定</span></a>
+                                <a class="new_btn" href="javascript:;" @click="WithdrawalsAction()" ><span class="big">确定</span></a>
                             </div>
 
                         </form>

@@ -27,12 +27,10 @@
                   <ul v-for="list in banner">
                       <li>
                           <a href="javascript:;">
-                          <img :src="list.url" />
+                            <img :src="list.url" />
                           </a>
                       </li>
                   </ul>
-
-
               </div>
               <div class="hd">
                   <ul>
@@ -99,8 +97,7 @@
                 </a>
             </li>
             <li>
-                <!-- <a href="javascript:;"  @click="openGame('https://messenger.providesupport.com/messenger/1sppddzqo56sf08wzrnuxiv6yt.html')"> --> 
-                <a href="javascript:;"  @click="openGame('http://www.providesupport.com?messenger=0bxg1rx3vv8lc036lt4a265vdi')">
+                <a href="javascript:;"  @click="openGameOnline()">
                     <span class="icon_account icon_service"></span>
                     <p>在线客服</p>
                 </a>
@@ -216,9 +213,9 @@ export default {
             gameHref:{} ,
             bulletins:'',
             banner:[
-                {'url':'../../static/frist/images/baner_crrol1.jpg'},
-                {'url':'../../static/frist/images/baner_crrol2.jpg'},
-                {'url':'http://admin.baochiapi.com/photo/pic/T15tETByAT1RCvBVdK/0'},
+                {'url':'../../static/frist/images/baner_crrol22.jpg'},
+                {'url':'../../static/frist/images/baner_crrol3.jpg'},
+                {'url':'../../static/frist/images/baner_crrol4.jpg'},                
             ] ,
 
         }

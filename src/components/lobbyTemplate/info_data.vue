@@ -25,7 +25,7 @@
                                 <strong>{{loginName}}</strong>
                                 <div class="purse">
                                     <span class="icon icon_money2"></span>
-                                    <div class="so-in-top-sum">
+                                    <div class="so-in-top-sum">{{memberbalance}}
 
                                     </div>
                                 </div>
@@ -493,7 +493,8 @@ export default {
             showDetail:true,
             show:true,
             showC:true,
-            showB:true
+            showB:true,
+            memberbalance:this.getCookie('membalance')
         }
     },
     created:function() {
@@ -501,10 +502,13 @@ export default {
 //        _self.hasLogin = _self.ifLanded();
         _self.getUserBankInfo();
         _self.getUserInfo();
+
+
     },
     mounted:function() {
       $('html,body').css('overflow-y','scroll' );
-        $('.purse').hide() ;
+
+
         $('.filter_1').on('click',function () {
             $('.filter_dropdown_1 ').show() ;
         });
@@ -514,6 +518,7 @@ export default {
         $('.cancel-btn').on('click',function () { /* .confirm-btn */
             $('.filter_dropdown ').hide() ;
         }) ;
+
   },
     methods: {
         // 获取用户银行信息
@@ -532,6 +537,7 @@ export default {
                    _self.bankName=res.data.bankName;
                    _self.bankAdd =res.data.bankAddress;
                    _self.mobilePhone =res.data.mobile
+
               },
               error: (err) =>{
               }
