@@ -21,10 +21,10 @@
                                 </div>
                             </h2>-->
                             <div class="user_name">
-                                <span class="icon icon_user"></span>
+                                <span class="icon icon_user2"></span>
                                 <strong>{{getCookie('username')}}</strong>
                                 <div class="purse">
-                                    <span class="icon icon_money"></span>
+                                    <span class="icon icon_money2"></span>
                                     <div class="so-in-top-sum">
                                         {{getCookie('membalance')}}
                                     </div>
@@ -36,10 +36,10 @@
                 <div class="info_mid">
                     <div>
                         <div class="">
-                            <a class="new_btn" href="javascript:;" @click="CheckDemoPlay('CZ')"><span>充值</span></a>
+                            <a class="new_btn" href="javascript:;" @click="CheckDemoPlay('TK')"><span class="midunm">提款</span></a>
                         </div>
                         <div class="">
-                            <a class="new_btn" href="javascript:;" @click="CheckDemoPlay('TK')"><span>提款</span></a>
+                            <a class="new_btn ok" href="javascript:;" @click="CheckDemoPlay('CZ')"><span class="midunm">充值</span></a>
                         </div>
                     </div>
                 </div>
