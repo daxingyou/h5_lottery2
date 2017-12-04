@@ -2,9 +2,6 @@
     <Index v-bind:moduleLotteryID="lotteryID" :moduleName="moduleName" :moduleplay="moduleplay"/>
 </template>
 
-<style>
-
-</style>
 <script>
     import Index from '@/components/pk10/Index'
 
