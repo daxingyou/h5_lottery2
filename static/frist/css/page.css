@@ -765,6 +765,8 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .bet_data strong { color: #ffbd00; font-size: .35rem; font-weight: 300; }
 .bet_data .prd_num { color: #d59559; margin-right: 0.2rem;}
 .bet_data .status { min-width: 15%; width: 1.8rem; text-align: center; color: #d59559; }
+.bet_data .status>div{ max-width: 100%;   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
 .bet_data .status > div { max-width: 100%; overflow: hidden; -o-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; }
 .bet_data .status00 { padding-top: .2rem; }
 .bet_data .status00 > span { position: relative; top: 0.5rem; }
