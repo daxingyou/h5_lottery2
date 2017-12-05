@@ -16,7 +16,7 @@
 
         <div class="so-index">
             <div class="so-top-all">
-                <MenuBar :moduleName="moduleName || '重庆时时彩'" :balance="balanceData.balance" />
+                <MenuBar :moduleName="moduleName || '重庆时时彩'" :balance="balancePublic" />
                 <div class="so-in-main">
                     <div>
                         <div class="so-main-top">
@@ -46,7 +46,6 @@
                             @visibility="timerBegin"
                             :now_pcode="now_pcode" :lotteryID="lotteryID"
                             :start="sys_time" :end="now_time" :overend="nowover_time" />
-
                     </div>
                 </div>
             </div>
@@ -245,8 +244,8 @@ export default {
         lotteryID: 2 ,
         allLottery:{} ,
         gameHref:{} ,
-        kinds:['两面', '1-5球', '前中后']
-
+        kinds:['两面', '1-5球', '前中后'],
+        balancePublic:'',
     }
   },
   created:function(){
@@ -278,6 +277,8 @@ export default {
 
     }, 500) ;
       _self.setScroll() ; // 下拉回弹
+
+
 
   },
   computed:{
@@ -331,6 +332,11 @@ export default {
             that.getSystemTime().then(sys_time=>{
                 that.sys_time = that.formatTimeUnlix(sys_time) ;
                 that.priodDataNewly(that.lotteryID, sys_time).then(res=>{
+                        // console.log(res)
+                        // console.log(res.msg)
+                        that.balancePublic = res.msg;
+                        that.setCookie("balancePublic",that.balancePublic)
+
                     that.ishwowpriod = true ;
                     that.next_pcode = res.data[0].pcode;  // 下期期数
 

@@ -30,6 +30,9 @@
         data: function() {
             return {
             }
+        },
+        mounted:function(){
+            // console.log( this.balance )
         }
 
     }

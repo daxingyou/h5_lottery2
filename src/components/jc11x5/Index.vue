@@ -21,7 +21,7 @@
                         <li class="purse">
                             <span class="icon icon_money"></span>
                             <div class="so-in-top-sum">
-                                {{ fortMoney(roundAmt(balanceData.balance), 2)}}
+                                {{ fortMoney(roundAmt(balancePublic), 2)}}
                             </div>
                         </li>
                         <li class="so-top-zoushi">
@@ -303,6 +303,7 @@
             sys_time:'',  // 当前系统时间
             now_day:'',  // 当前日期
             balanceData:{},
+            balancePublic:'',
 
             betSelectedList:[],   //用户选中的注数
             playTreeList:[], //玩法树
@@ -465,6 +466,10 @@
                         // sys_time = '2017-10-30 19:39:16';   //封盘状态所需时间，5秒后开奖 
                         that.sys_time = that.formatTimeUnlix(sys_time) ;
                         that.priodDataNewly(that.lotteryID, sys_time).then(res=>{
+                            console.log(res.msg)
+                        that.balancePublic = res.msg;
+                        that.setCookie("balancePublic",res.msg)
+                        
                             that.ishwowpriod = true ;
                             that.next_pcode = res.data[0].pcode;  // 下期期数
                             let code = res.data[2].winNumber;

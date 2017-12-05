@@ -8,7 +8,7 @@
         
         <div class="so-index">
             <div class="so-top-all">
-                <MenuBar :moduleName="moduleName" :balance="balanceData.balance" />
+                <MenuBar :moduleName="moduleName" :balance="balancePublic" />
 
                 <div class="so-in-main">
                     <div>
@@ -248,6 +248,7 @@
             sys_time:'',  // 当前系统时间
             now_day:'',  // 当前日期
             balanceData:{},
+            balancePublic:'',
 
             betSelectedList:[],   //用户选中的注数
             playTreeList:[], //玩法树
@@ -263,6 +264,7 @@
             this.lotteryID = this.moduleLotteryID;
         }
         this.getMemberBalance(this.lotteryID).then(()=>{
+
             this.loadPlayTree(this.lotteryID);  // 玩法树，彩种id 为2
         });
       },
@@ -339,6 +341,11 @@
                         // sys_time = '2017-10-30 19:39:16';   //封盘状态所需时间，5秒后开奖 
                         that.sys_time = that.formatTimeUnlix(sys_time) ;
                         that.priodDataNewly(that.lotteryID, sys_time).then(res=>{
+                            // 将余额放入cookie
+                              // console.log(res.msg)
+                            that.balancePublic = res.msg;
+                            that.setCookie("balancePublic",res.msg)
+
                             that.ishwowpriod = true ;
                             that.next_pcode = res.data[0].pcode;  // 下期期数
                             let code = res.data[2].winNumber;

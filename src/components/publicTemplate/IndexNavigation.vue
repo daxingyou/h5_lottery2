@@ -97,11 +97,11 @@
                 haslogin :false ,
                 showNavigation:false ,
                 allLottery:{},
+                mainIndexBalance:'',
             }
         },
         created:function () {
             this.haslogin = this.ifLogined() ;
-
         } ,
         mounted:function() {
             var that = this;
@@ -109,9 +109,12 @@
             $(this.el).on('click', ()=>{
                 this.showNavigation = true;
 
+                that.mainIndexBalance = that.getCookie('balancePublic');
+                console.log(  this.mainIndexBalance )
                 // 调接口获取数据 添加到用户余额   
 
-                console.log(that.lotteryID) 
+                // console.log(that.lotteryID) 
+                // console.log(that.sys_time) 
   //               that.priodDataNewly(that.lotteryID, sys_time).then(res=>{
   // 334                      that.ishwowpriod = true ;           
 

@@ -27,7 +27,7 @@
                         <li class="purse">
                             <span class="icon icon_money"></span>
                             <div class="so-in-top-sum">
-                                {{ fortMoney(roundAmt(balanceData.balance), 2)}}
+                                {{ fortMoney(roundAmt(balancePublic), 2)}}
                             </div>
                         </li>
                         <li class="so-top-zoushi">
@@ -285,6 +285,8 @@ export default {
             sys_time :'',  // 当前系统时间
             now_day:'',  // 当前日期
             balanceData:{},
+            balancePublic:'',
+
             entertainStatus:false,
             notopen:false,
             ishwowpriod:false,
@@ -373,6 +375,10 @@ export default {
 
                     that.sys_time = that.formatTimeUnlix(sys_time) ;
                     that.priodDataNewly(that.lotteryID, sys_time).then(res=>{
+                          console.log(res.msg)
+                        that.balancePublic = res.msg;
+                        that.setCookie("balancePublic",res.msg)
+                        
                         that.ishwowpriod = true ;
                         that.next_pcode = res.data[0].pcode;  // 下期期数
                         let code = res.data[2].winNumber;
