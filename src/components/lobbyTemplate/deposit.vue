@@ -29,7 +29,7 @@
                                     </form>
                                     <!-- 网络支付 -->
 
-                                    <div class="step03 pay_way  payWayNet">
+                              <!--       <div class="step03 pay_way  payWayNet">
                                         <ul class="arrow_list_dark">
                                             <li v-for = '(payWay,key) in payWays' >
                                                 <a class="item" href="javascript:;" :data-type= 'payWay.rsNameId' >
@@ -41,11 +41,13 @@
                                                 </a>
                                             </li>    
                                         </ul>
-                                    </div>
+                                    </div> -->
+
+                                    <!-- 下面是银行转账和在线支付 -->
 
                                     <div class="step03 pay_way  payWayTranster">
                                         <ul class="arrow_list_dark">
-                                         <!--    <li>
+                                            <li>
                                                 <a class="item" href="javascript:;" data-type="2">
                                                     <span class="badge">
                                                         <span class="icon_account icon_deposit_2"></span>
@@ -53,7 +55,7 @@
                                                     <span>扫码支付</span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>    
-                                            </li> -->   
+                                            </li>   
 
                                             <li>
                                                 <a class="item" href="javascript:;" data-type="1">
@@ -109,6 +111,7 @@
                                     </div>
                                 </div>
                                 <!-- 网银支付结束 -->
+
                                 <!-- 扫码支付开始  -->
                                 <div class="webbank_scan_all" style="display: none ;">
                                     <div class="before-scan">
@@ -150,6 +153,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 <!-- 扫码支付结束  -->
 
@@ -373,7 +377,7 @@ export default {
     },
   mounted:function() {
 
-    this.getPayWayList()
+    // this.getPayWayList()
 
       var _self = this ;
         $('html,body').css('overflow-y','scroll' )  ;
@@ -432,20 +436,20 @@ export default {
 
 
         // 扫码
-        $('.payWayNet').on('click','.item',function (e){
-             if(_self.paymount =='' || !_self.isPositiveNum(_self.paymount)){
-                  _self.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
-                  return false ;
-              }
-              var $src = $(e.currentTarget);
-              var val = $src.data('type');
+        // $('.payWayNet').on('click','.item',function (e){
+        //      if(_self.paymount =='' || !_self.isPositiveNum(_self.paymount)){
+        //           _self.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
+        //           return false ;
+        //       }
+        //       var $src = $(e.currentTarget);
+        //       var val = $src.data('type');
+
+
+        // })
 
               // alert(val)
 
               // _self.openGame()
-
-        })
-
 
           // 转账
           $('.payWayTranster').on('click','.item',function (e) {
@@ -462,12 +466,13 @@ export default {
                   $('.webbank_pay_all').show() ;
               }
 
-              // else if(val =='2'){ 
+              else if(val =='2'){ 
                // 扫码支付
-                  // _self.getBankList('1') ;
-                  // $('.paymethods_all').hide() ;
-                  // $('.webbank_scan_all').show() ;
-              // }
+                  _self.getBankList('1') ;
+                  $('.paymethods_all').hide() ;
+                  $('.webbank_scan_all').show() ;
+              }
+
               else{  // 银行转账
                   _self.getAllBankList() ;
                   _self.getBankInfo() ;
@@ -513,11 +518,10 @@ export default {
               url: _self.action.forseti + '/api/pay/receiptClient',
               // data: { type: type},  // 查询类型：1 扫码支付，2 银行卡支付
               success: function(res){
-                // alert(1)
 
-                res.data = res.data.splice(0,4)
+               
+                res.data = res.data.splice(0,4)                
                 console.log( res.data )
-
                 _self.payWays = res.data;
 
                 // console.log( _self.payWays  )
@@ -552,7 +556,6 @@ export default {
               data: { },
               success: function(res){
                   _self.allbanklist = res.data ;
-                  alert(res.data[0].id)
               },
               error: function (e) {
                   _self.errorAction(e) ;
@@ -608,9 +611,11 @@ export default {
                               },300)
                               return false ;
                           }else{
+
                               setTimeout(function () {
                                   _self.submitpayflag = false ;
                               },1000) ;
+                              
                               if(res.data.dataType == '3'){ // 返回的是二维码
                                   _self.scanImg = _self.action.forseti+res.data.imageUrl ;
                                   _self.scanid = res.data.orderId ;
@@ -619,7 +624,8 @@ export default {
                                   },10000) ;
                                   $('.after-scan').show() ;
                                   $('.before-scan').hide() ;
-                              }else if(res.data.dataType == '5'){  // 直接返回的是图片
+                              }else if(res.data.dataType == '5'){ 
+                               // 直接返回的是图片
                                   _self.scanImg = res.data.url ;
                                   _self.scanid = res.data.orderId ;
                                   _self.scanint = setInterval(function () {
