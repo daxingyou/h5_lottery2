@@ -51,6 +51,7 @@
                                 </div>
                                 <label class="error-message"></label>
                             </fieldset>
+
                              <fieldset  v-if="true">
                                 <div class="form_g password">
                                     <legend>支付密码</legend>
@@ -59,6 +60,8 @@
                                 </div>
                                 <label class="error-message "></label>
                             </fieldset>
+
+
                             <fieldset>
                                 <div class="form_g text">
                                     <legend>手机号</legend>
@@ -105,6 +108,7 @@ export default {
            phoneNumber:'',
            bankList:{},
            bankCode:'',
+          withPassword: '',
         }
     },
     created:function (){
@@ -191,7 +195,8 @@ export default {
               bankCard:_self.bankNum,
               bankAddress:_self.bankAdd,
               mobile:_self.phoneNumber,
-              realName:_self.realName
+              realName:_self.realName,
+              tradePassword: this.withPassword ,   //取款密码
           };
           var falg = $('.error-message').hasClass('red') ;  // 验证不通过，不允许提交
           if(falg){
@@ -204,6 +209,7 @@ export default {
               url: _self.action.forseti + 'api/payment/memberBank',
               data: bankData,
               success: function(res){
+                alert(2)
                   if(res.err=='SUCCESS'){
                       _self.$refs.autoCloseDialog.open('修改成功','','icon_check','d_check') ;
                       setTimeout(function(){
