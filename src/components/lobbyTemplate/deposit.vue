@@ -27,24 +27,43 @@
                                             </div>
                                         </fieldset>
                                     </form>
+                                    <!-- 网络支付 -->
 
-                                    <div class="step03 pay_way">
+                                    <div class="step03 pay_way  payWayNet">
                                         <ul class="arrow_list_dark">
+                                            <li v-for = '(payWay,key) in payWays' >
+                                                <a class="item" href="javascript:;" :data-type= 'payWay.rsNameId' >
+                                                    <span class="badge">
+                                                        <span class="icon_account " :class="'icon_deposit_net'+payWay.rsNameId"></span>
+                                                    </span>
+                                                    <span>{{ payWay.rsName}}</span>
+                                                    <span class="icon icon_arrow_light"></span>
+                                                </a>
+                                            </li>    
+                                        </ul>
+                                    </div>
+
+                                    <div class="step03 pay_way  payWayTranster">
+                                        <ul class="arrow_list_dark">
+                                         <!--    <li>
+                                                <a class="item" href="javascript:;" data-type="2">
+                                                    <span class="badge">
+                                                        <span class="icon_account icon_deposit_2"></span>
+                                                    </span>
+                                                    <span>扫码支付</span>
+                                                    <span class="icon icon_arrow_light"></span>
+                                                </a>    
+                                            </li> -->                                  
+
+
+
+
                                             <li>
                                                 <a class="item" href="javascript:;" data-type="1">
                                                     <span class="badge">
                                                         <span class="icon_account icon_deposit_1"></span>
                                                     </span>
                                                     <span>网银支付</span>
-                                                    <span class="icon icon_arrow_light"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="item" href="javascript:;" data-type="2">
-                                                    <span class="badge">
-                                                        <span class="icon_account icon_deposit_2"></span>
-                                                    </span>
-                                                    <span>扫码支付</span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
                                             </li>
@@ -57,12 +76,18 @@
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
                                             </li>
+
                                         </ul>
                                     </div>
+
+
+
+
                                 </div>
                                 <!-- 支付方式 结束-->
 
                                 <!-- 网银支付开始 -->
+
                                 <div class="webbank_pay_all" style="display: none ;">
                                     <form class="form_deposit">
                                         <fieldset>
@@ -112,6 +137,7 @@
                                             </ul>
                                         </div>
                                     </div>
+
                                     <div class="after-scan" style="display: none;">
                                         <div class="scan_code">
                                             <div class="qrcode_step">
@@ -336,6 +362,7 @@ export default {
             scanImg: '' ,  // 扫码支付二维码
             scanid: '' ,  // 扫码支付订单二维码
             scanint: {} ,  // 扫码支付定时器
+            payWays: {} ,  // 支付方式列表
             bankval: '' ,  // 银行转账方式
             submitpayflag: false ,  // 表单重复提交问题
             submitpayunflag: false ,  // 线下存款表单重复提交问题
@@ -344,11 +371,14 @@ export default {
             },
         }
     },
-    creeted:function () {
+    created:function () {
 
 
     },
   mounted:function() {
+
+    this.getPayWayList()
+
       var _self = this ;
         $('html,body').css('overflow-y','scroll' )  ;
       _self.choosePayMoth() ;
@@ -371,6 +401,8 @@ export default {
               endYear:2020 //结束年份
           });
           $("#paydate").mobiscroll().datetime({ });
+
+
 
 
       },500)
@@ -401,22 +433,46 @@ export default {
       // 选择支付方式
       choosePayMoth:function () {
           var _self = this ;
-          $('.pay_way').on('click','.item',function (e) {
+
+
+        // 扫码
+        $('.payWayNet').on('click','.item',function (e){
+             if(_self.paymount =='' || !_self.isPositiveNum(_self.paymount)){
+                  _self.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
+                  return false ;
+              }
+              var $src = $(e.currentTarget);
+              var val = $src.data('type');
+
+              // alert(val)
+
+              // _self.openGame()
+
+        })
+
+
+          // 转账
+          $('.payWayTranster').on('click','.item',function (e) {
               if(_self.paymount =='' || !_self.isPositiveNum(_self.paymount)){
                   _self.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
                   return false ;
               }
               var $src = $(e.currentTarget);
               var val = $src.data('type');
+
               if(val == '1'){  // 网银支付
                   _self.getBankList('2') ;
                   $('.paymethods_all').hide() ;
                   $('.webbank_pay_all').show() ;
-              }else if(val =='2'){  // 扫码支付
-                  _self.getBankList('1') ;
-                  $('.paymethods_all').hide() ;
-                  $('.webbank_scan_all').show() ;
-              }else{  // 银行转账
+              }
+
+              // else if(val =='2'){ 
+               // 扫码支付
+                  // _self.getBankList('1') ;
+                  // $('.paymethods_all').hide() ;
+                  // $('.webbank_scan_all').show() ;
+              // }
+              else{  // 银行转账
                   _self.getAllBankList() ;
                   _self.getBankInfo() ;
                   $('.paymethods_all').hide() ;
@@ -434,6 +490,7 @@ export default {
               headers: {
                   "Authorization": "bearer  " + this.getAccessToken ,
               },
+
               url: _self.action.forseti + 'api/payment/thirdBanks',
               data: { type: type},  // 查询类型：1 扫码支付，2 银行卡支付
               success: function(res){
@@ -447,6 +504,46 @@ export default {
               }
           });
       },
+
+
+      // 获取支付方式列表
+        getPayWayList:function (type) {
+          var _self = this ;
+          $.ajax({
+              type: 'get',
+              headers: {
+                  "Authorization": "bearer  " + this.getAccessToken ,
+              },
+              url: _self.action.forseti + '/api/pay/receiptClient',
+              // data: { type: type},  // 查询类型：1 扫码支付，2 银行卡支付
+              success: function(res){
+                // alert(1)
+
+                res.data = res.data.splice(0,4)
+                console.log( res.data )
+
+                _self.payWays = res.data;
+
+                // console.log( _self.payWays  )
+
+                //   for(var i=0;i<res.data.length;i++){
+                //       res.data[i].img = _self.action.picurl+res.data[i].img+'/0' ;
+                //   }
+                // _self.banklist = res.data ;
+              },
+              error: function (e) {
+                // alert(4)
+                  _self.errorAction(e) ;
+              }
+          });
+      },
+
+
+
+
+
+
+
       // 获取所有银行列表
       getAllBankList:function () {
           var _self = this ;

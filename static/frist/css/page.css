@@ -67,7 +67,7 @@ input, select, button, a { outline: none; }
 .new_btn_outline { color: #fbd4a9;  border: 1px solid #fbd4a9; border-radius: 0.5rem; display: inline-block; font-size: .34rem; padding: 0 0.2rem; line-height: 0.7rem; }
 
 /* panel */
-.new_panel{ border-radius: 0.15rem; overflow: hidden; box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3); background:url('/static/frist/images/new_panel_center.jpg') no-repeat; background-size:100% 100%;}
+.new_panel{ border-radius: 0.15rem; overflow: hidden; box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3); 	background:url('/static/frist/images/new_panel_center.jpg') no-repeat; background-size:100% 100%;}
 .new_panel .new_panel_top{ background:url('/static/frist/images/new_panel_top.jpg') no-repeat; background-size:100% 1rem; height: 1rem;}
 .new_panel .new_panel_center{ padding:0 0.3rem; color: #d59559;}
 .new_panel .new_panel_tip{ margin-top: 0.2rem; color: #fffbbe;}
@@ -363,7 +363,19 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .icon.icon_filter{background-position: -1.28rem -1.92rem }
 .icon.icon_check{background-position: -0.64rem -1.92rem }
 
-.icon_account  { display: inline-block; vertical-align: middle; width: 1.5rem; height: 1.5rem; margin: 0 auto; background-image: url(/static/frist/images/icon_account.png); background-size: 6rem auto; }
+.icon_account  { display: inline-block; vertical-align: middle; width: 1.5rem; 
+	height: 1.5rem; margin: 0 auto; background-image: url(/static/frist/images/icon_account.png);
+	 background-size: 6rem auto; }
+
+
+.icon_deposit_net1 {background-image: url(../images/icon_deposit_1.png); background-size: 0.722222rem auto;  background-repeat: no-repeat; 	background-position: center center;	}
+.icon_deposit_net2 {background-image: url(../images/icon_deposit_2.png); background-size: 0.722222rem auto;  background-repeat: no-repeat; 	background-position: center center;	}
+.icon_deposit_net3 {background-image: url(../images/icon_deposit_3.png); background-size: 0.722222rem auto;  background-repeat: no-repeat; 	background-position: center center;	}
+.icon_deposit_net4 {background-image: url(../images/icon_deposit_4.png); background-size: 0.722222rem auto;  background-repeat: no-repeat; 	background-position: center center;	}
+
+
+
+
 .icon_account.icon_deposit { background-position-x: 0rem; }
 .icon_account.icon_withdrawals { background-position-x: -1.5rem; }
 .icon_account.icon_promo { background-position-x: -3rem; }
