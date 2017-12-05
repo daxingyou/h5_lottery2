@@ -177,7 +177,7 @@ footer.bot_nav ul li a span.Footer-font { display: block; }
 
 .modal > .m_content > .content > div > img:last-child { height: 0.8rem; margin: .2rem auto; }
 
-.playtext { padding: .1rem 0.3rem; color: #373737; height: 8rem; overflow-y: auto;-webkit-overflow-scrolling: touch; text-align: left; }
+.playtext { padding: .1rem 0.3rem; color: #373737; height: 8rem; overflow-y: auto;text-align: left; }
 .playtext h3 { font-size: .43rem; color: #b41a17; line-height: .43rem; margin-top: .5rem; margin-bottom: .1rem; text-align: left; }
 .playtext h4 { font-size: .34rem; color: #d59559; margin-top: .4rem; margin-bottom: .1rem; text-align: left; }
 .playtext p { margin-top: 0.15rem; text-align: justify; }
