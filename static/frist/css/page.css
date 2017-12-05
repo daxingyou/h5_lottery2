@@ -555,8 +555,8 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 .so-in-main .so-main-down ul { text-align: right;}
 .so-in-main .so-main-down ul li { display: inline-block;}
 .so-in-main .so-main-down ul li:first-child{ width: 3.42rem; float: left; }
-.so-in-main .so-main-down ul li:nth-child(2) { margin-right: 0.5rem;width: 20%; text-align: center}
-.so-in-main .so-main-down ul li:nth-child(3) { margin-right: 0.3rem;width: 20%; text-align: center}
+.so-in-main .so-main-down ul li:nth-child(2) { margin-right: 0.2rem;width: 20%; text-align: center}
+.so-in-main .so-main-down ul li:nth-child(3) { margin-right: 0.2rem;width: 20%; text-align: center}
 .so-in-main .so-main-down ul li:after{ content:''; display: table; clear:both;}
 .so-in-main .so-main-down ul li > p { line-height:0.8rem; text-align:right; width:3.3rem; font-size:.34rem; }
 .so-in-main .so-main-down ul li > i { display: none; }
@@ -1142,7 +1142,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 /* 选择银行 */
 .pay_content .pay_list li {  border-radius: 0.1rem; padding: 0.05rem 0.2rem; background-color: #d59559; margin: .2rem 0; border: 1px solid #d59559; box-sizing: border-box;   width: 49%; margin-right: 2%; display: inline-block; font-size: .34rem; }
 .pay_content .pay_list li:nth-child(even){margin-right: 0;}
-.pay_content .pay_list li a { display: block; line-height: 3em; text-align: left; color: #4b280c;}
+.pay_content .pay_list li a { display: block; line-height: 3em; text-align: center; color: #4b280c;}
 .pay_content .pay_list li a img { width: .5rem; margin-right: 0.1rem; vertical-align: middle; display: inline-block; }
 /*@media (max-width: 480px) { .pay_content .step03 .btn_bank { padding: 0; } }*/
 
