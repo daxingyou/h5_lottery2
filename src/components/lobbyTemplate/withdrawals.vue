@@ -45,7 +45,7 @@
                             <fieldset>
                                 <div class="form_g text">
                                     <legend>取款金额</legend>
-                                    <input type="text" v-model="userMoney"  class="money" placeholder="1.00~9999.00" maxlength="4">
+                                    <input type="text" v-model="userMoney"  class="money" placeholder="取款金额最低100元" >
                                     <i class="close close1" @click="ClearInput('close1','money')"></i>
                                 </div>
                             </fieldset>
@@ -207,6 +207,11 @@ export default {
                       _self.$refs.autoCloseDialog.open('提款余额不足');
                       return
                   }
+                  if(_self.userMoney<100){
+                      _self.$refs.autoCloseDialog.open('提款最低金额为100元');
+                      return
+                  }
+
                   if (_self.userMoney == '' || !_self.positiveNum(_self.userMoney)||_self.userMoney == 0) {
                       _self.$refs.autoCloseDialog.open('请输入正确金额');
                       return false
