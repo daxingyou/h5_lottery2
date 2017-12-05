@@ -7,8 +7,8 @@ ol, ul { list-style: none; }
 li { position: relative; }
 a { color: #b41a17; text-decoration: none; cursor: pointer; }
 a:hover, a:focus, a:active {  text-decoration: none;}
-html { -webkit-text-size-adjust: none;  background-color: #fae6c7;}
-body { width: 100%; font-family: 'Microsoft YaHei', Helvetica,sans-serif; font-size: .37rem; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none; color: #4b280c; background-color: #fae6c7; }
+html { -webkit-text-size-adjust: none;  background-color: #383838;}
+body { width: 100%; font-family: 'Microsoft YaHei', Helvetica,sans-serif; font-size: .37rem; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none; color: #4b280c; background-color: #383838; }
 input, select, option { font-family: 'Microsoft YaHei', Helvetica,sans-serif; }
 body::-webkit-scrollbar, .warp::-webkit-scrollbar { width: 0px; }
 *, :after, :before { -webkit-box-sizing: inherit; box-sizing: inherit; }
@@ -375,11 +375,15 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .icon_account.icon_join_1 { background-position: 0rem -3rem; }
 .icon_account.icon_join_2 { background-position: -1.5rem -3rem; }
 .icon_account.icon_join_3 { background-position: -3rem -3rem; }
-.icon_account.icon_deposit_1 { background-position: 0rem -4.5rem; }
-.icon_account.icon_deposit_2 { background-position: -1.5rem -4.5rem; }
-.icon_account.icon_deposit_3 { background-position: -3rem -4.5rem; }
-.icon_account.icon_notice_1 { background-position: 0rem -6rem; }
-.icon_account.icon_notice_2 { background-position: -1.5rem -6rem; }
+.icon_account.icon_deposit_1 { background-position: 0rem -4.5rem; } /* 网银支付 */
+.icon_account.icon_deposit_2 { background-position: -1.5rem -4.5rem; } /* 扫码支付 */
+.icon_account.icon_deposit_3 { background-position: -3rem -4.5rem; } /* 银行支付 */
+.icon_account.icon_deposit_4 { background-position: -4.5rem -4.5rem; }
+.icon_account.icon_deposit_5 { background-position: -3rem -6rem; }
+.icon_account.icon_deposit_6 { background-position: -4.5rem -6rem; }
+.icon_account.icon_deposit_7 { background-position: -4.5rem -3rem; }
+.icon_account.icon_notice_1 { background-position: 0rem -6rem; } /* 个人消息(未读) */
+.icon_account.icon_notice_2 { background-position: -1.5rem -6rem; } /* 个人消息(已读) */
 .icon_account.icon_ac01 { background-position: 0rem -7.5rem; }
 .icon_account.icon_ac02 { background-position: -1.5rem -7.5rem; }
 .icon_account.icon_ac03 { background-position: -3rem -7.5rem; }
