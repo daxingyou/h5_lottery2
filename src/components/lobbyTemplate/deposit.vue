@@ -552,6 +552,7 @@ export default {
               data: { },
               success: function(res){
                   _self.allbanklist = res.data ;
+                  alert(res.data[0].id)
               },
               error: function (e) {
                   _self.errorAction(e) ;
