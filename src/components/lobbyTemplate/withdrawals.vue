@@ -63,9 +63,7 @@
                         </form>
                     </div>
                 </div>
-                <!-- <a href="javascript:void(0);" class="ui red label get_m_01">会员_取款-取款银行设定</a><br/><br/>
-                <a href="javascript:void(0);" class="ui green label get_m_02">会员_取款稽核-滿足</a><br/><br/>
-                <a href="javascript:void(0);" class="ui red label get_m_03">会员_取款-取款稽核-不滿足</a><br/><br/> -->
+              
             </div>
         </div>
         <FooterNav></FooterNav>
