@@ -69,27 +69,45 @@
                                     </div>
                                     <label class="error-message "></label>
                                 </fieldset>
+
+
+                                <fieldset>
+                                    <div class="form_g password ">
+                                        <legend>验证码</legend>
+                                        <input type="text" placeholder="请输入验证码" autocomplete="off" maxlength="4"  v-model="yzmcode">
+                                        <img :src="verImgCode" alt="" @click="switchYzmcode()">
+                                    </div>
+                                    <label class="error-message "></label>
+                                </fieldset>
+
+                                <div class="">
+                                    <a class="new_btn" href="javascript:;" @click="registerAction()"><span class="big">注册</span></a>
+                                </div>
+
                             </form>
-                            <div class="">
+                          <!--   <div class="">
                                 <a class="new_btn" href="javascript:;" @click="nextAction()"><span class="big">下一步</span></a>
-                            </div>
+                            </div> -->
                         </div>
+
                         <div class="after-add" style="display: none;">
                             <fieldset>
-                                <div class="form_g account">
+                              <!--   <div class="form_g account">
                                     <legend>真实姓名</legend>
                                     <input type="text" placeholder="请输入真实姓名" autocomplete="off" class="realyname" v-model="realyname" @input="checkrealyName(realyname,'realyname')">
                                     <i class="close close3" @click="ClearInput('close3','realyname')"></i>
                                 </div>
-                                <label class="error-message "></label>
+                                <label class="error-message "></label> -->
+
+
                             </fieldset>
                             <fieldset v-if="showB">
-                                <div class="form_g password">
+                              <!--   <div class="form_g password">
                                     <legend>支付密码</legend>
                                     <input type="password" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')">
                                     <i class="eye active eye3" @click="showPassword('eye3')"></i>
                                 </div>
-                                <label class="error-message "></label>
+                                <label class="error-message "></label> -->
                                 <!--<div class="form_g password text pay_password">-->
                                     <!--<legend>取款密码</legend>-->
                                     <!--<div class="select_inline">-->
@@ -172,6 +190,8 @@
                                 </div>
                                 <label class="error-message "></label>
                             </fieldset>
+
+<!-- 
                             <fieldset>
                                 <div class="form_g password ">
                                     <legend>验证码</legend>
@@ -183,7 +203,10 @@
 
                             <div class="">
                                 <a class="new_btn" href="javascript:;" @click="registerAction()"><span class="big">注册</span></a>
-                            </div>
+                            </div> -->
+
+
+
                         </div>
                         <div class="other_link">
                             <span>已有帐号?</span>
@@ -271,6 +294,7 @@
             },
             // 下一步
             nextAction:function () {
+
                 document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
                 if(this.username ==''){
                     this.$refs.autoCloseDialog.open('请输入帐号') ;
@@ -291,12 +315,17 @@
                     this.$refs.autoCloseDialog.open('两次密码输入不一致');
                     return false ;
                 }
-                var falg = $('.error-message').hasClass('red') ;  // 验证不通过，不允许提交
-                if(falg){
-                    return false ;
-                }
-                $('.before-add').hide() ;
-                $('.after-add').show() ;
+
+                // var falg = $('.error-message').hasClass('red') ;  // 验证不通过，不允许提交
+                // if(falg){
+                //     return false ;
+                // }
+
+                // $('.before-add').hide() ;
+                // $('.after-add').show() ;
+
+                // this.registerAction()
+
 
             },
 
@@ -309,30 +338,41 @@
             },
             // 注册接口 ，除了推荐人，其他必填
             registerAction:function() {
+
+                this.nextAction()
+
                 var _self=this;
                 if(_self.regsubmitflage){
                     return false ;
                 }
-                if(this.realyname ==''){
-                    this.$refs.autoCloseDialog.open('请输入真实姓名') ;
-                    return false ;
-                }
-                if(this.withPassword ==''|| !this.positiveNum(this.withPassword)){
-                    this.$refs.autoCloseDialog.open('请输入4位数字支付密码') ;
-                    return false ;
-                }
-                if(this.telephone ==''){
-                    this.$refs.autoCloseDialog.open('请输入手机号码') ;
-                    return false ;
-                }
+
+                // if(this.realyname ==''){
+                //     this.$refs.autoCloseDialog.open('请输入真实姓名') ;
+                //     return false ;
+                // }
+
+
+                // if(this.withPassword ==''|| !this.positiveNum(this.withPassword)){
+                //     this.$refs.autoCloseDialog.open('请输入4位数字支付密码') ;
+                //     return false ;
+                // }
+
+                // if(this.telephone ==''){
+                //     this.$refs.autoCloseDialog.open('请输入手机号码') ;
+                //     return false ;
+                // }
+
                if(this.yzmcode ==''){
                     this.$refs.autoCloseDialog.open('请输入验证码') ;
                     return false ;
                 }
+
                 var falg = $('.error-message').hasClass('red') ;  // 验证不通过，不允许提交
                 if(falg){
                     return false ;
                 }
+
+
                 _self.regsubmitflage = true ;
                 var logindata = {
                     acType: '1',   //1真钱玩家，2试玩玩家
@@ -359,6 +399,8 @@
                     url: this.action.uaa + 'apid/data/member/checkOrCreateMemberBcbaochi',
                     data: JSON.stringify(logindata) ,
                     success: (res) => {
+                        // alert(1)
+                        console.log(res)
                         if(res.err =='SUCCESS'){ // 注册成功
                             _self.regsubmitflage = false ;
                             _self.$refs.autoCloseDialog.open('注册成功','','icon_check','d_check') ;
@@ -369,10 +411,10 @@
                                 window.location = '/' ;
                             },1000) ;
                         }else{ //code 105 验证码无效
+                            // alert(2)
                             _self.regsubmitflage = false ;
                               this.switchYzmcode() ; // 更新验证码
                               this.$refs.autoCloseDialog.open(res.cnMsg) ;
-
                          }
 
                     },

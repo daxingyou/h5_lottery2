@@ -51,6 +51,14 @@
                                 </div>
                                 <label class="error-message"></label>
                             </fieldset>
+                             <fieldset  v-if="true">
+                                <div class="form_g password">
+                                    <legend>支付密码</legend>
+                                    <input type="text" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')">
+                                    <i class="eye " @click="showPassword('act3')"></i>
+                                </div>
+                                <label class="error-message "></label>
+                            </fieldset>
                             <fieldset>
                                 <div class="form_g text">
                                     <legend>手机号</legend>
