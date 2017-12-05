@@ -53,10 +53,7 @@
                                                     <span>扫码支付</span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>    
-                                            </li> -->                                  
-
-
-
+                                            </li> -->   
 
                                             <li>
                                                 <a class="item" href="javascript:;" data-type="1">
@@ -108,7 +105,6 @@
                                                     <span>{{list.bankName}}</span>
                                                 </a>
                                             </li>
-
                                         </ul>
                                     </div>
                                 </div>
