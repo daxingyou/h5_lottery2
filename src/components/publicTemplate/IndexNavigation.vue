@@ -104,9 +104,19 @@
 
         } ,
         mounted:function() {
+            var that = this;
 
             $(this.el).on('click', ()=>{
                 this.showNavigation = true;
+
+                // 调接口获取数据 添加到用户余额   
+
+                console.log(that.lotteryID) 
+  //               that.priodDataNewly(that.lotteryID, sys_time).then(res=>{
+  // 334                      that.ishwowpriod = true ;           
+
+
+
                 $('html,body').css({'height':'100%','overflow-y':'hidden'}) ; // 禁止页面滚动
             }) ;
 
