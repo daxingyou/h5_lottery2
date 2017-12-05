@@ -571,8 +571,8 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 .so-in-main .so-main-down ul { text-align: right;}
 .so-in-main .so-main-down ul li { display: inline-block;}
 .so-in-main .so-main-down ul li:first-child{ width: 3.42rem; float: left; }
-.so-in-main .so-main-down ul li:nth-child(2) { margin-right: 0.2rem;width: 20%; text-align: center}
-.so-in-main .so-main-down ul li:nth-child(3) { margin-right: 0.2rem;width: 20%; text-align: center}
+.so-in-main .so-main-down ul li:nth-child(2) { margin-right: 0.2rem;width: 24%; text-align: center}
+.so-in-main .so-main-down ul li:nth-child(3) { margin-right: 0.2rem;width: 24%; text-align: center}
 .so-in-main .so-main-down ul li:after{ content:''; display: table; clear:both;}
 .so-in-main .so-main-down ul li > p { line-height:0.8rem; text-align:right; width:3.3rem; font-size:.34rem; }
 .so-in-main .so-main-down ul li > i { display: none; }

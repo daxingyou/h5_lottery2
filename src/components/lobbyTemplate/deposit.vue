@@ -302,7 +302,6 @@
             </div>
         </div>
        <!-- <deposit_bank_transfer v-if="false"></deposit_bank_transfer>-->
-
         <!--银行转账使用步骤-->
         <div class="modal">
             <div class="m_content">
