@@ -354,12 +354,18 @@ export default {
               url:  _self.action.forseti + 'apis/cms/popText',
               data:{},
               success:(res)=>{
-                  //console.log(res.data)
-                 this.popMsgTitle=res.data[0].title;
-                  //console.log(this.popMsgTitle)
-                  this.popMsgContent=res.data[0].content;
-                  this.popMsgCid.push(res.data[0].cid);
-                  this.currPopMsgCid=res.data[0].cid;
+                  if(!res.data ||!res.data[0]||!res.data[0].title){
+                      _self.offFlag=false
+                }
+                else{
+                      //console.log(res.data)
+                      _self.popMsgTitle=res.data[0].title;
+                      //console.log(this.popMsgTitle)
+                      _self.popMsgContent=res.data[0].content;
+                      _self.popMsgCid.push(res.data[0].cid);
+                      _self.currPopMsgCid=res.data[0].cid;
+                  }
+
 
                   if(localStorage.getItem('cid')==null){
                       return
@@ -392,9 +398,9 @@ export default {
           var flag=cid.some(function (el) {
               return el == self.currPopMsgCid
           });
-          console.log(flag);
-          console.log(cid);
-          console.log("aaa"+self.currPopMsgCid);
+          //console.log(flag);
+          //console.log(cid);
+          //console.log("aaa"+self.currPopMsgCid);
           flag ? self.offFlag=false :self.offFlag=true
 
 
