@@ -295,17 +295,18 @@
         </div>
        <!-- <deposit_bank_transfer v-if="false"></deposit_bank_transfer>-->
         <!--银行转账使用步骤-->
-        <div class="modal">
+        <div class="modal" style="display: block">
             <div class="m_content">
-                <h2 class="title">银行转账使用步骤
+                <h2 class="title">★【充值提示】※
                     <a></a>
                 </h2>
                 <p class="content left">
-                    1. 选择您使用的存款银行，底部会出现对应的收款银行卡号；
-                    <br/> 2. 记录或复制该收款信息到手机上；
-                    <br/> 3. 填写您的存款时间、金额等信息，以及选择您的存款方式；
-                    <br/> 4. 前去银行或网银等转账到收款账号，完成后保留凭证；
-                    <br/> 5. 等待客服处理您的订单，完成支付；
+                    尊贵的会员您好！
+                    <br/>公司将陆续接入多项支付通道，
+                    <br/>WAP微信扫码、QQ扫码、网银支付、
+                    <br/>银行转账进行支付，大额无忧！
+                    <br/>首选银行转账，可获得1%存款优惠
+                    <br/>(存1000赠10，次次存次次送）。
                     <br/>
                 </p>
                 <div class="action">
@@ -313,7 +314,6 @@
                 </div>
             </div>
         </div>
-
         <FooterNav />
 
         <AutoCloseDialog ref="autoCloseDialog" text=" " type="" />
@@ -423,7 +423,6 @@ export default {
       choosePayMoth:function () {
           var _self = this ;
 
-
         // 扫码
         // $('.payWayNet').on('click','.item',function (e){
         //      if(_self.paymount =='' || !_self.isPositiveNum(_self.paymount)){
@@ -432,7 +431,6 @@ export default {
         //       }
         //       var $src = $(e.currentTarget);
         //       var val = $src.data('type');
-
 
         // })
 
