@@ -123,6 +123,8 @@ export default {
         * */
 
         submitAction:function(lotteryid) {
+
+
             // var total_mon = Number($('.total-bet-mon').text()) ; // 总投注金额
             const total_mon = this.monAmt(this.totalAmount);
             // 余额不足提示充值
@@ -135,6 +137,8 @@ export default {
                 return false;
             }
 
+            // 调用父组件方法刷新余额
+            // this.$emit('refreshBalance')
 
             var that = this;
             if(this.ajaxSubmitAllow){
@@ -170,12 +174,11 @@ export default {
                 //  data:  $(form).serialize() + "&randomNum=" + randomNum ,
                 data: JSON.stringify(resdata),
                 success: (data) => {
-
                     if (data.length <= 0) {
                         return false;
-                    }
-
+                    }        
                     if (data.err == 'SUCCESS') {  //购买成功
+                       
                         this.ajaxSubmitAllow = false ;     //解决瞬间提交2次的问题
                         // initTipPop05(true,3) ;
                         // this.parentRefs.autoCloseDialog.open('购买成功')
@@ -186,16 +189,10 @@ export default {
                         that.getCookie( 'balancePublic' )
                         // console.log(that.getCookie( 'balancePublic' ) )
                         var x = Number(that.getCookie( 'balancePublic' ) )  - Number(total_mon)
-
-                        // console.log( x )
-                         that.setCookie("balancePublic",x)
-
-                        // console.log(that.balancePublic)
-
-                         // that.setCookie("balancePublic",that.balancePublic)
-
-                        // console.log(that.rootBalance.rootBalance) 
-                        // console.log( that.totalAmount ) 
+                         console.log( x+ 'ch') ;
+                         that.setCookie("balancePublic",x);
+                         this.$emit('refreshBalance') ;
+                        // console.log(that.balancePublic)                        
 
                         return false;
                     } else {  //购买失败提示
@@ -222,7 +219,6 @@ export default {
                     // this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试','title_bet_fail')
                     this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试', '下注失败')
                     this.ajaxSubmitAllow = false;
-
                 }
             });
 
