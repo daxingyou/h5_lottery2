@@ -71,7 +71,7 @@
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
                                             </li>
-
+<!---->
                                         </ul>
                                     </div>
 
@@ -363,8 +363,7 @@ export default {
         }
     },
     created:function () {
-
-
+        this.getPayWayList()
     },
   mounted:function() {
     // this.getPayWayList()
@@ -395,7 +394,6 @@ export default {
 
 
       },500)
-     _self. getPayWayList()
   },
   methods: {
       // 清空输入金额
@@ -514,7 +512,7 @@ export default {
 
                
                 res.data = res.data.splice(0,4)                
-                console.log( res.data )
+//                console.log( res.data )
                 _self.payWays = res.data;
 
                 // console.log( _self.payWays  )
@@ -617,12 +615,14 @@ export default {
                                   _self.scanint = setInterval(function () {
                                       _self.getScanStatus(_self.scanid) ;
                                   },10000) ;
-                                  $('.after-scan').show() ;
                                   $('.before-scan').hide() ;
+                                  $('.after-scan').show() ;
+
                               }else if(res.data.dataType == '2'){ // 返回链接跳转
                                   var sanurl = res.data.url ;
                                   // window.location.href = sanurl ;
-                                  window.open(sanurl) ;
+                                  _self.openGame(sanurl) ;
+                                  console.log('还打回访')
                               }
 
                               document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
@@ -636,6 +636,10 @@ export default {
                           win.close() ;
                       }
                       _self.$refs.autoCloseDialog.open(res.msg) ;
+                      setTimeout(function () {
+                          window.location = '/lobbyTemplate/deposit' ;
+                      },300)
+
                   }
 
               },
