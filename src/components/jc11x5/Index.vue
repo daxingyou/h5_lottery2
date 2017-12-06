@@ -220,9 +220,9 @@
             :parentRefs="$refs"
             :playType="playType"
             :combineCount="combineCount"             
-            :balance="balanceData.balance"
+            :balance="balancePublic"
              @refreshBalance = 'refreshBalance'
-            
+
              :now_pcode="now_pcode" :next_pcode="next_pcode" :now_day="now_day" />
 
         <!--封盘底部遮挡-->

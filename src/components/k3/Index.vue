@@ -163,7 +163,7 @@
             :betSelectedList="betSelectedList"
             :parentRefs="$refs"
              @refreshBalance = 'refreshBalance'            
-            :balance="balanceData.balance" :now_pcode="now_pcode" :next_pcode="next_pcode" :now_day="now_day" />
+            :balance="balancePublic" :now_pcode="now_pcode" :next_pcode="next_pcode" :now_day="now_day" />
 
         <!--封盘底部遮挡-->
         <div v-if="entertainStatus" class="so-fengpan">

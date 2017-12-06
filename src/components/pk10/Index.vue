@@ -198,7 +198,7 @@
         <Bet :lotteryID="lotteryID" @betSuccess="resetAction('1')" ref="bet"
              :betSelectedList="betSelectedList"
              :parentRefs="$refs"
-             :balance="balanceData.balance"
+             :balance="balancePublic"
              :now_pcode="now_pcode"
              :pk10_now_pcode="pk10_now_pcode"
              @refreshBalance = 'refreshBalance'             
