@@ -2,9 +2,9 @@
     <div id="pa_con" class="so-con warp ">
         <header id="pa_head" class="new_header">
             <div class="left">
-                <a href="javascript:;" onclick="history.go(-1)">
+                <router-link :to="'/lobbyTemplate/info'">
                     <span class="icon icon_back"></span>
-                </a>
+                </router-link>
             </div>
             <h2 class="center title_name">充值</h2>
             <div class="right"></div>
@@ -451,19 +451,16 @@ export default {
                   $('.webbank_pay_all').show() ;
               }
 
-              else if(val =='2'){ 
-               // 扫码支付
+              else if(val =='2'){ // 扫码支付
                   _self.getBankList('1') ;
                   $('.paymethods_all').hide() ;
                   $('.webbank_scan_all').show() ;
-              }
-
-//              else if(val =='6'){
+              } else if(val =='6'){
 //                  // 扫码支付
 ////                  _self.getBankList() ;
 ////                  $('.paymethods_all').hide() ;
 ////                  $('.webbank_scan_all').show()
-//              }
+              }
               else{  // 银行转账
                   _self.getAllBankList() ;
                   _self.getBankInfo() ;
@@ -847,8 +844,8 @@ export default {
                               }else if(res.data.dataType == '2'){ // 返回链接跳转
                                   var sanurl = res.data.url ;
                                   // window.location.href = sanurl ;
-                                  _self.paymount='';
                                   _self.openGame(sanurl) ;
+                                  _self.paymount='';
                               }
 
                               document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
