@@ -510,7 +510,6 @@ export default {
               // data: { type: type},  // 查询类型：1 扫码支付，2 银行卡支付
               success: function(res){
 
-               
                 res.data = res.data.splice(0,4)                
 //                console.log( res.data )
                 _self.payWays = res.data;
@@ -622,7 +621,6 @@ export default {
                                   var sanurl = res.data.url ;
                                   // window.location.href = sanurl ;
                                   _self.openGame(sanurl) ;
-                                  console.log('还打回访')
                               }
 
                               document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
@@ -800,6 +798,7 @@ export default {
                   "Authorization": "bearer  " + this.getAccessToken ,
               },
               url: _self.action.forseti + 'api/pay/rapidOrder',
+              async: false,
               data: senddata,
               success: function(res){ // dataType 1 线上入款 , 3 二维码
                   if(res.err == 'SUCCESS'){
@@ -847,7 +846,6 @@ export default {
                               }else if(res.data.dataType == '2'){ // 返回链接跳转
                                   var sanurl = res.data.url ;
                                   // window.location.href = sanurl ;
-                                  console.log('你麻痹')
                                   _self.openGame(sanurl) ;
                               }
 
