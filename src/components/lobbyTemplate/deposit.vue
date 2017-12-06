@@ -847,7 +847,7 @@ export default {
                               }else if(res.data.dataType == '2'){ // 返回链接跳转
                                   var sanurl = res.data.url ;
                                   // window.location.href = sanurl ;
-                                  window.open(sanurl) ;
+                                  _self.openGame(sanurl) ;
                               }
 
                               document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
@@ -858,7 +858,7 @@ export default {
                   }else{
                       _self.submitpayflag = false ;
                       if(type == '1'){  // 线上入款失败
-                          window.close() ;
+                          win.close() ;
                       }
                       _self.$refs.autoCloseDialog.open(res.msg) ;
                   }
