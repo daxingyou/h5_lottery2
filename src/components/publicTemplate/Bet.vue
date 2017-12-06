@@ -106,6 +106,9 @@ export default {
             }
         }
     },
+    mounted:function(){
+        console.log( this.balance )
+    },
     methods:{
         /*
         * 重置投注页，提交表单后调用 success 1 投注成功
@@ -123,10 +126,16 @@ export default {
         * */
 
         submitAction:function(lotteryid) {
+        // console.log( this.balance )
+
 
 
             // var total_mon = Number($('.total-bet-mon').text()) ; // 总投注金额
             const total_mon = this.monAmt(this.totalAmount);
+
+            // console.log( total_mon )
+            // console.log( this.balance )
+
             // 余额不足提示充值
             // if (this.monAmt(total_mon) > this.monAmt(Number(returnMoney($('.so-in-top-sum').eq(0).text())))) {
 
@@ -189,9 +198,10 @@ export default {
                         that.getCookie( 'balancePublic' )
                         // console.log(that.getCookie( 'balancePublic' ) )
                         var x = Number(that.getCookie( 'balancePublic' ) )  - Number(total_mon)
-                         console.log( x+ 'ch') ;
+                         // console.log( x+ 'ch') ;
                          that.setCookie("balancePublic",x);
                          this.$emit('refreshBalance') ;
+                         console.log('abstract')
                         // console.log(that.balancePublic)                        
 
                         return false;

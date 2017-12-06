@@ -306,7 +306,7 @@ export default {
     refreshBalance:function(){
         var afterBetCookie = this.getCookie( 'balancePublic' )
         this.balancePublic = afterBetCookie
-        console.log(afterBetCookie)      
+        // console.log(afterBetCookie)      
     },
     switchTab:function(e){
         var _self = this ;
