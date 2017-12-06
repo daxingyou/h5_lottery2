@@ -127,6 +127,7 @@ export default {
             const total_mon = this.monAmt(this.totalAmount);
             // 余额不足提示充值
             // if (this.monAmt(total_mon) > this.monAmt(Number(returnMoney($('.so-in-top-sum').eq(0).text())))) {
+
             if (total_mon > this.balance) {
                 // this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', 'title_bet_fail')
                 this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', '下注失败')
@@ -134,6 +135,8 @@ export default {
                 return false;
             }
 
+
+            var that = this;
             if(this.ajaxSubmitAllow){
                 return false ;
             }      
@@ -179,6 +182,21 @@ export default {
                         this.parentRefs.betSuccessfulDialog.open('购买成功')
                         this.resetAction('1') ;  // 下注成功不清空金额
                         // getMemberBalance() ; // 更新余额
+                        // console.log(total_mon)
+                        that.getCookie( 'balancePublic' )
+                        // console.log(that.getCookie( 'balancePublic' ) )
+                        var x = Number(that.getCookie( 'balancePublic' ) )  - Number(total_mon)
+
+                        // console.log( x )
+                         that.setCookie("balancePublic",x)
+
+                        // console.log(that.balancePublic)
+
+                         // that.setCookie("balancePublic",that.balancePublic)
+
+                        // console.log(that.rootBalance.rootBalance) 
+                        // console.log( that.totalAmount ) 
+
                         return false;
                     } else {  //购买失败提示
                         this.ajaxSubmitAllow = false ;

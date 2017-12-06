@@ -16,7 +16,7 @@
 
         <div class="so-index">
             <div class="so-top-all">
-                <MenuBar :moduleName="moduleName || '重庆时时彩'" :balance="balancePublic" />
+                <MenuBar :moduleName="moduleName || '重庆时时彩'" :balance="balancePublic"  @refreshBalance = 'refreshBalance'/>
                 <div class="so-in-main">
                     <div>
                         <div class="so-main-top">
@@ -155,7 +155,8 @@
         <Bet :lotteryID="lotteryID" @betSuccess="resetAction('1')" ref="bet"
             :betSelectedList="betSelectedList"
             :parentRefs="$refs"
-            :balance="balanceData.balance" :now_pcode="now_pcode" :next_pcode="next_pcode" :now_day="now_day" />
+            :balance="balanceData.balance" 
+            :now_pcode="now_pcode" :next_pcode="next_pcode" :now_day="now_day" />
 
         <!--封盘底部遮挡-->
         <div v-if="entertainStatus" class="so-fengpan">
@@ -290,10 +291,14 @@ export default {
     },
     frontCenterBackList:function(){
         return this.getListByParentID(23000);
-    }
+    },
+
   },
   methods:{
 
+    refreshBalance:function(){
+        console.log('refresh')
+    },
     switchTab:function(e){
         var _self = this ;
         const $src = $(e.currentTarget);
@@ -335,6 +340,9 @@ export default {
                         // console.log(res)
                         // console.log(res.msg)
                         that.balancePublic = res.msg;
+                        that.rootBalance = res.msg;
+                        // console.log( that.rootBalance )
+                        // console.log( res.msg )
                         that.setCookie("balancePublic",that.balancePublic)
 
                     that.ishwowpriod = true ;

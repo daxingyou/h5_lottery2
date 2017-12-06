@@ -29,7 +29,7 @@
                                     </form>
                                     <!-- 网络支付 -->
 
-                              <div class="step03 pay_way  payWayNet payWayTranster">
+                                    <div class="step03 pay_way  payWayNet payWayTranster">
                                         <ul class="arrow_list_dark">
                                             <li v-for = '(payWay,key) in payWays' >
                                                 <a class="item" href="javascript:;" data-type='6'   @click="onlinePay(payWay.rsNameId)" >
