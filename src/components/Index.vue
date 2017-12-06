@@ -97,7 +97,7 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:;"  @click="openGameOnline()">
+                <a href="http://messenger.providesupport.net/messenger/0bxg1rx3vv8lc036lt4a265vdi.html"  target="_blank">
                     <span class="icon_account icon_service"></span>
                     <p>在线客服</p>
                 </a>
@@ -175,6 +175,20 @@
                   </ul>
               </div>
           </section>-->
+          <!--银行转账使用步骤-->
+
+          <div class="modal" v-if="offFlag">
+              <div class="m_content">
+                  <h2 class="title">{{popMsgTitle}}
+                      <a @click="shutDownPop"></a>
+                  </h2>
+                  <p class="content left">
+                      {{popMsgContent}}
+
+                  </p>
+
+              </div>
+          </div>
 
       </div>
       <Confirm ref="confirm" />
@@ -217,13 +231,23 @@ export default {
                 {'url':'../../static/frist/images/baner_crrol3.jpg'},
                 {'url':'../../static/frist/images/baner_crrol4.jpg'},                
             ] ,
+            popMsgTitle:'',
+            popMsgContent:"",
+            offFlag:true,
+            popMsgCid:[],
+            currPopMsgCid:""
 
         }
     },
+    computed:{
+
+    },
     created:function () {
+      //this.changeOffFlag ();
 
     },
   mounted:function() {
+
       $('html,body').css('overflow-y','scroll' )  ;
       this.allLottery = this.$refs.navone.getLotterys() ;
       this.gameHref = this.$refs.navone.gameHref ; // 拿子组件的值
@@ -236,7 +260,8 @@ export default {
       slideCell: "#focus",
       autoPlay:true,
     });
-     this.getBulletinsContent ();
+      this.getBulletinsContent ();
+      this.getPopMsg();
       /* $("#marquee_snp").slide({ // 文本滚动
            mainCell: ".bd ul",
            autoPage: true,
@@ -245,7 +270,7 @@ export default {
            vis: 1,
            interTime: 50
        });*/
-
+      //this.changeOffFlag();
   },
   methods:{
       getBulletinsContent :function () {
@@ -317,7 +342,71 @@ export default {
       // 敬请期待
         Continued:function () {
             this.$refs.autoCloseDialog.open('敬请期待！') ;
-        }
+        },
+      //获取首页弹框信息
+      isequal(element ) {
+          return element == this.currPopMsgCid;
+      },
+      getPopMsg (){
+          var _self=this;
+          $.ajax({
+              type: 'GET',
+              url:  _self.action.forseti + 'apis/cms/popText',
+              data:{},
+              success:(res)=>{
+                  //console.log(res.data)
+                 this.popMsgTitle=res.data[0].title;
+                  //console.log(this.popMsgTitle)
+                  this.popMsgContent=res.data[0].content;
+                  this.popMsgCid.push(res.data[0].cid);
+                  this.currPopMsgCid=res.data[0].cid;
+
+                  if(localStorage.getItem('cid')==null){
+                      return
+                  }else {
+                     this. changeOffFlag ()
+                  }
+
+
+
+              }
+          })
+      },
+      //关闭弹框
+      shutDownPop () {
+          this.offFlag=!this.offFlag;
+          localStorage.setItem('cid',this.popMsgCid)
+      },
+          //更改弹框显示的标志
+
+
+      changeOffFlag () {
+           var self=this
+          var cid=[];
+
+          if(localStorage.getItem('cid').length>1){
+              cid=localStorage.getItem('cid').split(",")
+          }else {
+              cid.push(localStorage.getItem('cid'))
+          }
+          var flag=cid.some(function (el) {
+              return el == self.currPopMsgCid
+          });
+          console.log(flag);
+          console.log(cid);
+          console.log("aaa"+self.currPopMsgCid);
+          flag ? self.offFlag=false :self.offFlag=true
+
+
+          /*for(var i=0;i<cid.length;i++){
+                if(cid[i]==this.currPopMsgCid){
+                 this.offFlag=false;
+                 return false
+                }
+          }*/
+      }
+
+
 
   },
 
