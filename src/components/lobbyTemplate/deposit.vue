@@ -107,16 +107,16 @@
 
                                 <!-- 扫码支付开始  -->
                                 <div class="webbank_scan_all" style="display: none ;">
-                                    <div class="before-scan">
-                                        <form class="form_deposit">
-                                            <fieldset>
-                                                <div class="form_g text money">
-                                                    <legend>充值金额</legend>
-                                                    <input type="tel" placeholder=" " v-model="paymount" readonly>
-                                                    <!--  <i class="close"></i>-->
-                                                </div>
-                                            </fieldset>
-                                        </form>
+                                    <!--<div class="before-scan">-->
+                                        <!--<form class="form_deposit">-->
+                                            <!--<fieldset>-->
+                                                <!--<div class="form_g text money">-->
+                                                    <!--<legend>充值金额</legend>-->
+                                                    <!--<input type="tel" placeholder=" " v-model="paymount" readonly>-->
+                                                    <!--&lt;!&ndash;  <i class="close"></i>&ndash;&gt;-->
+                                                <!--</div>-->
+                                            <!--</fieldset>-->
+                                        <!--</form>-->
                                         <!--<div class="step03 pay_list scan_qrcoder">-->
                                             <!--<h5>支付方式</h5>-->
                                             <!--<ul>-->
@@ -128,7 +128,7 @@
                                                 <!--</li>-->
                                             <!--</ul>-->
                                         <!--</div>-->
-                                    </div>
+                                    <!--</div>-->
                                     <div class="after-scan" style="display: none;">
                                         <div class="scan_code">
                                             <div class="qrcode_step">
@@ -458,13 +458,12 @@ export default {
                   $('.webbank_scan_all').show() ;
               }
 
-              else if(val =='6'){
-                  // 扫码支付
-//                  _self.getBankList() ;
-                  $('.paymethods_all').hide() ;
-//                  $('.after-scan').show() ;
-                  $('.webbank_scan_all').show()
-              }
+//              else if(val =='6'){
+//                  // 扫码支付
+////                  _self.getBankList() ;
+////                  $('.paymethods_all').hide() ;
+////                  $('.webbank_scan_all').show()
+//              }
               else{  // 银行转账
                   _self.getAllBankList() ;
                   _self.getBankInfo() ;
@@ -832,8 +831,9 @@ export default {
                                   _self.scanint = setInterval(function () {
                                       _self.getScanStatus(_self.scanid) ;
                                   },1000) ;
+                                  $('.paymethods_all').hide();
+                                  $('.webbank_scan_all').show() ;
                                   $('.after-scan').show() ;
-                                  $('.before-scan').hide() ;
                               }else if(res.data.dataType == '5'){
                                   // 直接返回的是图片
                                   _self.scanImg = res.data.url ;
@@ -841,11 +841,13 @@ export default {
                                   _self.scanint = setInterval(function () {
                                       _self.getScanStatus(_self.scanid) ;
                                   },10000) ;
+                                  $('.paymethods_all').hide() ;
+                                  $('.webbank_scan_all').show() ;
                                   $('.after-scan').show() ;
-                                  $('.before-scan').hide() ;
                               }else if(res.data.dataType == '2'){ // 返回链接跳转
                                   var sanurl = res.data.url ;
                                   // window.location.href = sanurl ;
+                                  _self.paymount='';
                                   _self.openGame(sanurl) ;
                               }
 
