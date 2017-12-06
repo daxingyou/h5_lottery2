@@ -128,6 +128,9 @@
                                                 <!--</li>-->
                                             <!--</ul>-->
                                         <!--</div>-->
+                                        <div class="step03 pay_list scan_qrcoder">
+                                            <h5>请稍等...</h5>
+                                        </div>
                                     </div>
                                     <div class="after-scan" style="display: none;">
                                         <div class="scan_code">
