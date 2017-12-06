@@ -12,7 +12,7 @@
                     <ul>
                         <li class="so-menu">
                             
-    <span class="icon icon_nav"></span>
+                          <span class="icon icon_nav"></span>
 
                         </li>
                         <li class="left_top_logo">
@@ -219,9 +219,11 @@
             :betSelectedList="betSelectedList"
             :parentRefs="$refs"
             :playType="playType"
-            :combineCount="combineCount" 
-            
-            :balance="balanceData.balance" :now_pcode="now_pcode" :next_pcode="next_pcode" :now_day="now_day" />
+            :combineCount="combineCount"             
+            :balance="balancePublic"
+             @refreshBalance = 'refreshBalance'
+
+             :now_pcode="now_pcode" :next_pcode="next_pcode" :now_day="now_day" />
 
         <!--封盘底部遮挡-->
         <div v-if="entertainStatus" class="so-fengpan">
@@ -380,7 +382,11 @@
             },
           },
           methods:{
-
+             refreshBalance:function(){
+                var afterBetCookie = this.getCookie( 'balancePublic' )
+                this.balancePublic = afterBetCookie
+                console.log(afterBetCookie)      
+            },
             betCountStat:function(xslen, xlen){
                 return  xslen*((xslen-1)/xlen);
             },
@@ -467,8 +473,10 @@
                         that.sys_time = that.formatTimeUnlix(sys_time) ;
                         that.priodDataNewly(that.lotteryID, sys_time).then(res=>{
                             console.log(res.msg)
+
                         that.balancePublic = res.msg;
                         that.setCookie("balancePublic",res.msg)
+
                         
                             that.ishwowpriod = true ;
                             that.next_pcode = res.data[0].pcode;  // 下期期数

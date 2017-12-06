@@ -146,7 +146,6 @@
                                                         </span>
                                                         <span class="bet-times"> {{payoffFormat(itemChild.oddsData.payoff)}}</span>
                                                     </p>
-
                                                 </div>
                                             </div>
                                         </li>
@@ -199,9 +198,10 @@
         <Bet :lotteryID="lotteryID" @betSuccess="resetAction('1')" ref="bet"
              :betSelectedList="betSelectedList"
              :parentRefs="$refs"
-             :balance="balanceData.balance"
+             :balance="balancePublic"
              :now_pcode="now_pcode"
              :pk10_now_pcode="pk10_now_pcode"
+             @refreshBalance = 'refreshBalance'             
              :next_pcode="next_pcode" :now_day="now_day" />
 
         <!--封盘底部遮挡-->
@@ -335,6 +335,11 @@ export default {
         },
     },
     methods:{
+         refreshBalance:function(){
+                var afterBetCookie = this.getCookie( 'balancePublic' )
+                this.balancePublic = afterBetCookie
+                console.log(afterBetCookie)      
+        },
         switchTab:function(e){
             var _self = this ;
             const $src = $(e.currentTarget);

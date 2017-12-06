@@ -27,7 +27,7 @@ input, select, button, a { outline: none; }
   top: 1.400966rem;
   width: 5.31401rem;
   height: 1.980676rem;
-  background: url(../images/LOGO3.png);
+  background: url(/static/frist/images/LOGO3.png) no-repeat center center;
   background-size: contain;
 }
 
@@ -40,7 +40,7 @@ input, select, button, a { outline: none; }
 /* 卷轴颜色 */
 .playtext::-webkit-scrollbar { width: .15rem;  height: .15rem; border-radius: .2rem; }
 .playtext::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); border-radius: .2rem; }
-.playtext::-webkit-scrollbar-thumb { background-color: #7e5c4c; outline: 1px solid #0e121d; border-radius: .2rem; }
+.playtext::-webkit-scrollbar-thumb { background-color: #7e5c4c; outline: 1px solid transparent; border-radius: .2rem; }
 .playtext::-webkit-scrollbar-corner { background-color: #0e121d; }
 
 .clearfix::after { display: block; clear: both; content: ""; }
@@ -86,7 +86,7 @@ input, select, button, a { outline: none; }
 
 .new_header .center { text-align: center;  width: calc(100% - 3rem); color: #fff; font-size: 0.44rem; font-weight: bold; float: left; }
 .new_header .center.logo { width: auto; padding-left: 1.36rem;  }
-.new_header .center.logo img { height:0.845411rem; margin:0.338164rem auto; }
+.new_header .center.logo img { height:1.09rem; margin:0.18rem auto 0.09rem; }
 .new_header .center.logo_left { padding-left: 0.5rem; }
 .new_header .center.lottery_name,.new_header .center.title_name { width: calc(100% - 3.2rem); line-height: 1.36rem; position: absolute; top:0; left:50%;  margin-left: calc(-50% + 1.6rem); background: -webkit-linear-gradient(top,#fbd4a9 0,#fdae40 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
 
@@ -177,7 +177,7 @@ footer.bot_nav ul li a span.Footer-font { display: block; }
 
 .modal > .m_content > .content > div > img:last-child { height: 0.8rem; margin: .2rem auto; }
 
-.playtext { padding: .1rem 0.3rem; color: #373737; height: 8rem; overflow-y: auto;-webkit-overflow-scrolling: touch; text-align: left; }
+.playtext { padding: .1rem 0.3rem; color: #373737; height: 8rem; overflow-y: auto;text-align: left; }
 .playtext h3 { font-size: .43rem; color: #b41a17; line-height: .43rem; margin-top: .5rem; margin-bottom: .1rem; text-align: left; }
 .playtext h4 { font-size: .34rem; color: #d59559; margin-top: .4rem; margin-bottom: .1rem; text-align: left; }
 .playtext p { margin-top: 0.15rem; text-align: justify; }
@@ -571,8 +571,8 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 .so-in-main .so-main-down ul { text-align: right;}
 .so-in-main .so-main-down ul li { display: inline-block;}
 .so-in-main .so-main-down ul li:first-child{ width: 3.42rem; float: left; }
-.so-in-main .so-main-down ul li:nth-child(2) { margin-right: 0.2rem;width: 20%; text-align: center}
-.so-in-main .so-main-down ul li:nth-child(3) { margin-right: 0.2rem;width: 20%; text-align: center}
+.so-in-main .so-main-down ul li:nth-child(2) { margin-right: 0.2rem;width: 24%; text-align: center}
+.so-in-main .so-main-down ul li:nth-child(3) { margin-right: 0.2rem;width: 24%; text-align: center}
 .so-in-main .so-main-down ul li:after{ content:''; display: table; clear:both;}
 .so-in-main .so-main-down ul li > p { line-height:0.8rem; text-align:right; width:3.3rem; font-size:.34rem; }
 .so-in-main .so-main-down ul li > i { display: none; }
@@ -665,7 +665,7 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .so-pop  h2 a { width: 0.7467rem; height: 0.7467rem; position: absolute; right: -0.85rem; top: -0.7rem; background: url("/static/frist/images/pop/close.png") no-repeat; background-size: 100%; }*/
 .so-pop .grey_text { color: #7e5c4c; }
 .bet_list { height: 2.4rem; margin: 0.3rem auto 0;}
-.boxlist { padding: 0 0.2rem; overflow-y: auto; -webkit-overflow-scrolling: touch; height: 2.4rem; color: #373737; text-align: left; }
+.boxlist { padding: 0 0.2rem; overflow-y: auto; /*-webkit-overflow-scrolling: touch;*/ height: 2.4rem; color: #373737; text-align: left; }
 .boxlist p { line-height: 0.8rem;}
 
 .so-pop-sum { padding: 0 0.2rem; margin: 0.3rem auto; color: #b41a17; line-height: 1rem;  text-align: left; position: relative;}

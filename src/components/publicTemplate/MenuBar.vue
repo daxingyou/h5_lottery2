@@ -29,11 +29,21 @@
         props:['moduleName', 'balance'],
         data: function() {
             return {
+                // menuBarBlance:
+                pbalance:this.balance,
+
             }
         },
         mounted:function(){
             // console.log( this.balance )
-        }
+            console.log(this.pbalance )
+        },
+       watch:{
+             pbalance:function(){
+                // alert()
+                // this.refreshBalance()
+                 },
+          },
 
     }
 </script>
