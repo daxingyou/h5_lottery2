@@ -233,7 +233,7 @@ export default {
             ] ,
             popMsgTitle:'',
             popMsgContent:"",
-            offFlag:true,
+            offFlag:false,
             popMsgCid:[],
             currPopMsgCid:""
 
@@ -355,9 +355,13 @@ export default {
               data:{},
               success:(res)=>{
                   if(!res.data ||!res.data[0]||!res.data[0].title){
-                      _self.offFlag=false
+                      _self.offFlag=false;
+                      return false
                 }
                 else{
+                      if(res.data ||res.data[0]||res.data[0].title){
+                          _self.offFlag=true;
+                      }
                       //console.log(res.data)
                       _self.popMsgTitle=res.data[0].title;
                       //console.log(this.popMsgTitle)
