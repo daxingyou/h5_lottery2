@@ -162,6 +162,7 @@
         <Bet :lotteryID="lotteryID" @betSuccess="resetAction('1')" ref="bet"
             :betSelectedList="betSelectedList"
             :parentRefs="$refs"
+             @refreshBalance = 'refreshBalance'            
             :balance="balanceData.balance" :now_pcode="now_pcode" :next_pcode="next_pcode" :now_day="now_day" />
 
         <!--封盘底部遮挡-->
@@ -298,6 +299,11 @@
             },
           },
           methods:{
+             refreshBalance:function(){
+                var afterBetCookie = this.getCookie( 'balancePublic' )
+                this.balancePublic = afterBetCookie
+                console.log(afterBetCookie)      
+            },
 
             betCountStat:function(xslen, xlen){
                 return  xslen*((xslen-1)/xlen);
