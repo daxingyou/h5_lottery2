@@ -847,6 +847,7 @@ export default {
                               }else if(res.data.dataType == '2'){ // 返回链接跳转
                                   var sanurl = res.data.url ;
                                   // window.location.href = sanurl ;
+                                  console.log('你麻痹')
                                   _self.openGame(sanurl) ;
                               }
 
