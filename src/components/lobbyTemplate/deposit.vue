@@ -27,6 +27,41 @@
                                             </div>
                                         </fieldset>
                                     </form>
+
+                                     <div class="step03 pay_way  payWayTranster">
+                                        <ul class="arrow_list_dark">
+                                            <!--<li>-->
+                                                <!--<a class="item" href="javascript:;" data-type="2">-->
+                                                    <!--<span class="badge">-->
+                                                        <!--<span class="icon_account icon_deposit_2"></span>-->
+                                                    <!--</span>-->
+                                                    <!--<span>扫码支付</span>-->
+                                                    <!--<span class="icon icon_arrow_light"></span>-->
+                                                <!--</a>-->
+                                            <!--</li>-->
+                                          <!--   <li>
+                                                <a class="item" href="javascript:;" data-type="1">
+                                                    <span class="badge">
+                                                        <span class="icon_account icon_deposit_1"></span>
+                                                    </span>
+                                                    <span>网银支付</span>
+                                                    <span class="icon icon_arrow_light"></span>
+                                                </a>
+                                            </li> -->
+                                            <li>
+                                                <a class="item" href="javascript:;" data-type="3">
+                                                    <span class="badge">
+                                                        <span class="icon_account icon_deposit_3"></span>
+                                                    </span>
+                                                    <span>银行转账</span>
+                                                    <span class="icon icon_arrow_light"></span>
+                                                </a>
+                                            </li>
+<!---->
+                                        </ul>
+                                    </div>
+
+                                    
                                     <!-- 网络支付 -->
                                     <div class="step03 pay_way  payWayNet payWayTranster">
                                         <ul class="arrow_list_dark">
@@ -62,7 +97,7 @@
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
                                             </li>
-                                            <li>
+                                           <!--  <li>
                                                 <a class="item" href="javascript:;" data-type="3">
                                                     <span class="badge">
                                                         <span class="icon_account icon_deposit_3"></span>
@@ -70,7 +105,7 @@
                                                     <span>银行转账</span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
-                                            </li>
+                                            </li> -->
 <!---->
                                         </ul>
                                     </div>
@@ -661,11 +696,8 @@ export default {
                            // window.location.reload() ;
                             _self.$router.go('/lobbyTemplate/deposit') ;
                         },2000)
-
                     }
-
                   }
-
               },
               error: function (res) {
 
