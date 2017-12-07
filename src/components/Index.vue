@@ -27,16 +27,17 @@
                   <ul v-for="list in banner">
                       <li>
                           <a href="javascript:;">
-                            <img :src="list.titlePic" />
+                            <img :src="list.url" />
                           </a>
                       </li>
                   </ul>
               </div>
               <div class="hd">
                   <ul>
-                      <li  v-for="(item,index) in banner" :data-val="index"></li>
-                    <!--  <li></li>
-                      <li></li>-->
+                      <!-- <li  v-for="(item,index) in banner" :data-val="index"></li> -->
+                      <li ></li>
+                      <li></li>
+                      <li></li>
                   </ul>
               </div>
           </div>
@@ -226,9 +227,9 @@ export default {
             gameHref:{} ,
             bulletins:'',
             banner:[
-//                {'url':'../../static/frist/images/baner_crrol22.jpg'},
-//                {'url':'../../static/frist/images/baner_crrol3.jpg'},
-//                {'url':'../../static/frist/images/baner_crrol4.jpg'},
+               {'url':'../../static/frist/images/baner_crrol22.jpg'},
+               {'url':'../../static/frist/images/baner_crrol3.jpg'},
+               {'url':'../../static/frist/images/baner_crrol4.jpg'},
             ] ,
             popMsgTitle:'',
             popMsgContent:"",
@@ -255,6 +256,13 @@ export default {
       }
       this.getBulletinsContent ();
       this.getPopMsg();
+
+      TouchSlide({
+                  slideCell: "#focus",
+                  autoPlay:true,
+              });
+
+
       /* $("#marquee_snp").slide({ // 文本滚动
            mainCell: ".bd ul",
            autoPage: true,
@@ -406,33 +414,32 @@ export default {
           }*/
       },
       //轮播图接口
-      carouselImg:function () {
-          var _self=this;
-          $.ajax({
-              type:'get',
-              url: _self.action.forseti + 'apid/cms/carousel',
-              data:{},
-              success:(res)=>{
-                  if(res.data.itemPO){
-                      var len= res.data.itemPO.length;
-                      for(var i=0;i<len;i++){
-                          res.data.itemPO[i].titlePic = _self.action.picurl+ res.data.itemPO[i].titlePic+'/0' ;
-                      }
-                      _self.banner =  res.data.itemPO ;
-                      _self.$nextTick(function (){
-                          TouchSlide({
-                              slideCell: "#focus",
-                              autoPlay:true,
-                          });
-                      });
-                  }
-//                  console.log(_self.banner)
-              },
-              err:(res)=>{
+      // carouselImg:function () {
+      //     var _self=this;
+      //     $.ajax({
+      //         type:'get',
+      //         url: _self.action.forseti + 'apid/cms/carousel',
+      //         data:{},
+      //         success:(res)=>{
+      //             if(res.data.itemPO){
+      //                 var len= res.data.itemPO.length;
+      //                 for(var i=0;i<len;i++){
+      //                     res.data.itemPO[i].titlePic = _self.action.picurl+ res.data.itemPO[i].titlePic+'/0' ;
+      //                 }
+      //                 _self.banner =  res.data.itemPO ;
+      //                 _self.$nextTick(function (){
+      //                     TouchSlide({
+      //                         slideCell: "#focus",
+      //                         autoPlay:true,
+      //                     });
+      //                 });
+      //             }
+      //         },
+      //         err:(res)=>{
 
-              }
-          })
-      }
+      //         }
+      //     })
+      // }
 
 
   },
