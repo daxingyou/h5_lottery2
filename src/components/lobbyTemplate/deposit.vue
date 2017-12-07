@@ -424,10 +424,6 @@ export default {
               endYear:2020 //结束年份
           });
           $("#paydate").mobiscroll().datetime({ });
-
-
-
-
       },500)
   },
   methods: {
@@ -540,8 +536,12 @@ export default {
               url: _self.action.forseti + '/api/pay/receiptClient',
               // data: { type: type},  // 查询类型：1 扫码支付，2 银行卡支付
               success: function(res){
-                console.log(res)
-//                console.log( res.data )
+               //  console.log(res)
+               // console.log( res.data.splice(0,4) )
+
+               res.data = res.data.splice(0,4) ;
+                console.log(res.data)
+
                 _self.payWays = res.data;
 
                 // console.log( _self.payWays  )
