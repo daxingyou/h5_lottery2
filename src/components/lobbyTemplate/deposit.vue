@@ -589,7 +589,6 @@ export default {
                               },300)
                               return false ;
                           }else{
-
                               setTimeout(function () {
                                   _self.submitpayflag = false ;
                               },1000) ;
@@ -617,7 +616,6 @@ export default {
                                   // window.location.href = sanurl ;
                                   _self.openGame(sanurl) ;
                               }
-
                               document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
                           }
 
