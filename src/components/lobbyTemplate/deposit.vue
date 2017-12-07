@@ -539,7 +539,8 @@ export default {
                //  console.log(res)
                // console.log( res.data.splice(0,4) )
 
-               res.data = res.data.splice(0,4) ;
+               res.data = res.data;
+
                 console.log(res.data)
 
                 _self.payWays = res.data;
