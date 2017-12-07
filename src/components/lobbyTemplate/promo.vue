@@ -74,9 +74,25 @@ export default {
               $(this).toggleClass('active').siblings().removeClass('active');
           })
       })
+      this.getActivity();
   },
   methods: {
+      //获得优惠活动接口
+      getActivity : function () {
+          var _self=this;
+          $.ajax({
+              type:'get',
+              url: _self.action.forseti + 'apid/cms/activity',
+              data:{},
+              success:(res)=>{
 
+                  console.log(len)
+              },
+              err:(res)=>{
+
+              }
+          })
+      }
 
 
   }
