@@ -272,7 +272,7 @@ export default {
            interTime: 50
        });*/
       //this.changeOffFlag();
-      this.carouselImg()
+      // this.carouselImg()
   },
   methods:{
       getBulletinsContent :function () {
