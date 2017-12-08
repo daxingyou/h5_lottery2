@@ -21,6 +21,7 @@
                  <a class="new_btn_outline" href="javascript:;" v-show="haslogin" @click="loginOut()">退出</a>
              </div>
          </header>
+
       <div class="news">
           <div id="focus" class="focus" >
               <div class="bd">
