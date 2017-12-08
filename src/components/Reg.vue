@@ -665,8 +665,10 @@
                     url:  _self.action.forseti + 'apid/config/registerConfig?regType=1',
                     data:{},
                     success:(res)=>{
-                       console.log(res)
-
+                       //console.log(res)
+                        if(!res.data.length){
+                           return false
+                        }
                       for(let i=0;i<res.data.length;i++){
                            switch (res.data[i].item) {
                                case "帐号" :
