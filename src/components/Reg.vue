@@ -666,7 +666,7 @@
                     data:{},
                     success:(res)=>{
                        //console.log(res)
-                        if(!res.data.length){
+                        if(!res.data){
                            return false
                         }
                       for(let i=0;i<res.data.length;i++){
