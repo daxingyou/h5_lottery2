@@ -372,20 +372,17 @@
                       this.$refs.autoCloseDialog.open('请输入确认密码') ;
                       return false ;
                   }
-                  if(this.confirmpassword !== this.password){
-                      this.$refs.autoCloseDialog.open('两次密码输入不一致');
-                      return false ;
-                  }
+
               }
 
 
-               /* if(this.username==this.tjrusername){
+                if(this.username==this.tjrusername){
                     this.$refs.autoCloseDialog.open('账号不能与推荐人账号相同') ;
                     return false ;
                 }else if(this.confirmpassword !== this.password){
                     this.$refs.autoCloseDialog.open('两次密码输入不一致');
                     return false ;
-                }*/
+                }
 
                 // var falg = $('.error-message').hasClass('red') ;  // 验证不通过，不允许提交
                 // if(falg){
@@ -410,9 +407,42 @@
             // 注册接口 ，除了推荐人，其他必填
             registerAction:function() {
 
-                this.nextAction()
+                /*this.nextAction()*/
 
                 var _self=this;
+                if(!!this.accountObj.ifRequired){
+                    if(this.username ==''){
+                        this.$refs.autoCloseDialog.open('请输入帐号') ;
+                        return false ;
+                    }
+
+                }
+                if(!!this.passwordObj.ifRequired){
+                    if(this.password ==''){
+                        this.$refs.autoCloseDialog.open('请输入用户密码') ;
+                        return false ;
+                    }
+                }
+                if(!!this.confirmpasswordObj.ifRequired){
+                    if(this.confirmpassword ==''){
+                        this.$refs.autoCloseDialog.open('请输入确认密码') ;
+                        return false ;
+                    }
+                    if(this.confirmpassword !== this.password){
+                        this.$refs.autoCloseDialog.open('两次密码输入不一致');
+                        return false ;
+                    }
+
+                }
+
+
+               /* if(this.username==this.tjrusername){
+                    this.$refs.autoCloseDialog.open('账号不能与推荐人账号相同') ;
+                    return false ;
+                }else if(this.confirmpassword !== this.password){
+                    this.$refs.autoCloseDialog.open('两次密码输入不一致');
+                    return false ;
+                }*/
                 if(_self.regsubmitflage){
                     return false ;
                 }
