@@ -27,7 +27,7 @@
               <div class="bd">
                   <ul v-for="list in banner">
                       <li>
-                          <a href="javascript:;">
+                          <a :href="list.link" target="_blank">
                             <img :src="list.titlePic" />
                           </a>
                       </li>

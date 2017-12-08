@@ -110,7 +110,33 @@
                                     </div>
                                     <label class="error-message "></label>
                                 </fieldset>
-
+                                <fieldset v-if="!!bankselectObj.ifView">
+                                    <div class="form_g text">
+                                        <legend>选择银行</legend>
+                                        <select name="" v-model="bankId" class="bankselect">
+                                            <option :value="bank.id" v-for="bank in bankList" :data-code="bank.bankCode" >{{bank.bankName}}</option>
+                                        </select>
+                                        <span class="icon icon_arrow_down"></span>
+                                    </div>
+                                </fieldset>
+                                <fieldset v-if="!!bankAddObj.ifView">
+                                    <div class="form_g text">
+                                        <legend>开户行</legend>
+                                        <input type="text" name="phone-number" v-model="bankAdd"  class="bankAdd" placeholder="如:北京市海淀区中关村支行"
+                                               @input="checkBankAdd(bankAdd,'bankAdd')">
+                                        <i class="close close1" @click="ClearInput('close2','bankAdd')"></i>
+                                    </div>
+                                    <label class="error-message"></label>
+                                </fieldset>
+                                <fieldset v-if="!!bankNumObj.ifView">
+                                    <div class="form_g text">
+                                        <legend>银行卡号</legend>
+                                        <input type="text" name="phone-number" v-model="bankNum" class="bankNum" placeholder="请输入取款银行卡号"
+                                               @input="checkBankNum(bankNum,'bankNum')">
+                                        <i class="close close3" @click="ClearInput('close3','bankNum')"></i>
+                                    </div>
+                                    <label class="error-message"></label>
+                                </fieldset>
                                 <fieldset>
                                     <div class="form_g password ">
                                         <legend>验证码</legend>
@@ -279,6 +305,9 @@
                 realyname :'',
                 telephone :'',
                 yzmcode :'',
+                bankId:'',
+                bankAdd:"",
+                bankNum:'',
                 withPassword: '',
                 show:true,
                 showC:true,
@@ -291,7 +320,11 @@
                 phoneObj:{},
                 realynameObj:{},
                 withPasswordObj:{},
-                confirmpasswordObj:{}
+                confirmpasswordObj:{},
+                bankList:{},
+                bankselectObj:{},
+                bankAddObj:{},
+                bankNumObj:{}
 
 
             }
@@ -302,6 +335,7 @@
         mounted:function(){
             document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
            this.getReglist();
+            this.getBankList()
         },
         methods:{
             //点击显示密码
@@ -399,6 +433,8 @@
             registerAction:function() {
 
                 /*this.nextAction()*/
+
+                var _self=this;
                 if(!!this.accountObj.ifRequired){
                     if(this.username ==''){
                         this.$refs.autoCloseDialog.open('请输入帐号') ;
@@ -609,22 +645,31 @@
                       for(let i=0;i<res.data.length;i++){
                            switch (res.data[i].item) {
                                case "帐号" :
-                                this.accountObj=res.data[i];
+                                   _self.accountObj=res.data[i];
                                 break;
                                case "登录密码" :
-                                   this.passwordObj=res.data[i];
+                                   _self.passwordObj=res.data[i];
                                    break;
                                case "确认密码" :
-                                   this.confirmpasswordObj=res.data[i];
+                                   _self.confirmpasswordObj=res.data[i];
                                    break;
                                case "真实名称" :
-                                   this.realynameObj=res.data[i];
+                                   _self.realynameObj=res.data[i];
                                    break;
                                case "支付密码" :
-                                   this.withPasswordObj=res.data[i];
-                                   break;
+                                   _self.withPasswordObj=res.data[i];
+                                                            break;
                                case "手机号码" :
-                                   this.phoneObj=res.data[i];
+                                   _self.phoneObj=res.data[i];
+                                   break;
+                               case "选择银行" :
+                                   _self.bankselectObj=res.data[i];
+                                   break;
+                               case "开户行" :
+                                   _self.bankAddObj=res.data[i];
+                                   break;
+                               case "银行卡号" :
+                                   _self.bankNumObj=res.data[i];
                                    break;
 
                            }
