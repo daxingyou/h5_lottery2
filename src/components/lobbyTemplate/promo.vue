@@ -11,33 +11,40 @@
         </header>
         <div class="pa_content">
             <div class="promo_area">
-                <ul class="promo_list">
+                <ul class="promo_list" v-for="list in banner">
                     <li>
-                        <img src="../../../static/frist/images/banner/promo-1.jpg">
-                        <h3>更多热门彩种 即将上线</h3>
-                        <p><a href="promo_content" class="new_btn"><span>查看详情</span></a></p>
-                    </li>
-                    <li>
-                        <img src="../../../static/frist/images/banner/promo-2.jpg">
-                        <h3>支付系统 火爆升级</h3>
-                        <p><a href="promo_content" class="new_btn"><span>查看详情</span></a></p>
-                    </li>
-                    <li>
-                        <img src="../../../static/frist/images/banner/promo-3.jpg">
-                        <h3>权威信誉担保 公平公正公开</h3>
-                        <p><a href="promo_content" class="new_btn"><span>查看详情</span></a></p>
-                    </li>
-                    <li>
-                        <img src="../../../static/frist/images/banner/promo-4.jpg">
-                        <h3>彩球掉线 领取补偿金</h3>
-                        <p><a href="promo_content" class="new_btn"><span>查看详情</span></a></p>
-                    </li>
-                    <li>
-                        <img src="../../../static/frist/images/banner/promo-5.jpg">
-                        <h3>完成有效投注 存款赠送100%</h3>
-                        <p><a href="promo_content" class="new_btn"><span>查看详情</span></a></p>
+                        <img :src="list.titlePic">
+                        <h3>{{list.title}}</h3>
+                        <p><a href="javascript:;" @click="setCid($event)" class="new_btn" :data-val="list.cid" ><span>查看详情</span></a></p>
                     </li>
                 </ul>
+                <!--<ul class="promo_list">-->
+                    <!--<li>-->
+                        <!--<img src="../../../static/frist/images/banner/promo-1.jpg">-->
+                        <!--<h3>更多热门彩种 即将上线</h3>-->
+                        <!--<p><a href="promo_content" class="new_btn"><span>查看详情</span></a></p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="../../../static/frist/images/banner/promo-2.jpg">-->
+                        <!--<h3>支付系统 火爆升级</h3>-->
+                        <!--<p><a href="promo_content" class="new_btn"><span>查看详情</span></a></p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="../../../static/frist/images/banner/promo-3.jpg">-->
+                        <!--<h3>权威信誉担保 公平公正公开</h3>-->
+                        <!--<p><a href="promo_content" class="new_btn"><span>查看详情</span></a></p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="../../../static/frist/images/banner/promo-4.jpg">-->
+                        <!--<h3>彩球掉线 领取补偿金</h3>-->
+                        <!--<p><a href="promo_content" class="new_btn"><span>查看详情</span></a></p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<img src="../../../static/frist/images/banner/promo-5.jpg">-->
+                        <!--<h3>完成有效投注 存款赠送100%</h3>-->
+                        <!--<p><a href="promo_content" class="new_btn"><span>查看详情</span></a></p>-->
+                    <!--</li>-->
+                <!--</ul>-->
             </div>
 
 
@@ -61,7 +68,8 @@ export default {
   },
   data: function() {
         return {
-
+          banner:[],
+            cid:''
         }
     },
   created: function() {
@@ -75,6 +83,7 @@ export default {
           })
       })
       this.getActivity();
+     // this.setCid();
   },
   methods: {
       //获得优惠活动接口
@@ -85,16 +94,27 @@ export default {
               url: _self.action.forseti + 'apid/cms/activity',
               data:{},
               success:(res)=>{
-
-                  console.log(len)
+                 if(res.data.rows){
+                     var len=res.data.rows.length;
+                     for(var i=0;i<len;i++){
+                         res.data.rows[i].titlePic=_self.action.picurl+ res.data.rows[i].titlePic+'/0';
+                     }
+                     _self.banner=res.data.rows;
+                     console.log(_self.banner)
+                 }
               },
               err:(res)=>{
 
               }
           })
+      },
+      //选取详情传递cid;
+      setCid:function (e) {
+              var $src = $(e.currentTarget);
+              var val = $src.data('val');
+              this.setCookie('Cid',val);
+              window.location = '/lobbyTemplate/promo_content' ;
       }
-
-
   }
 }
 </script>
