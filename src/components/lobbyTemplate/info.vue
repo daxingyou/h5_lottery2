@@ -81,7 +81,7 @@
                             </router-link>
                         </li>-->
                         <li>
-                            <a class="btn_icon" href="http://messenger.providesupport.net/messenger/0bxg1rx3vv8lc036lt4a265vdi.html" target="_blank" >
+                            <a class="btn_icon" href="https://messenger.providesupport.net/messenger/0bxg1rx3vv8lc036lt4a265vdi.html" target="_blank" >
                                 <span class="icon_account icon_info_3"></span>
                                 <span>在线客服</span>
                                 <span class="icon icon_arrow_dark"></span>
