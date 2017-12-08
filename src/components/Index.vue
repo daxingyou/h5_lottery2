@@ -257,10 +257,10 @@ export default {
       this.getBulletinsContent ();
       this.getPopMsg();
 
-      TouchSlide({
-                  slideCell: "#focus",
-                  autoPlay:true,
-              });
+//      TouchSlide({
+//                  slideCell: "#focus",
+//                  autoPlay:true,
+//              });
 
 
       /* $("#marquee_snp").slide({ // 文本滚动
@@ -272,7 +272,7 @@ export default {
            interTime: 50
        });*/
       //this.changeOffFlag();
-      // this.carouselImg()
+       this.carouselImg()
   },
   methods:{
       getBulletinsContent :function () {
