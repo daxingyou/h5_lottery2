@@ -31,9 +31,8 @@
                                 <fieldset v-if="!!accountObj.ifView">
                                     <div class="form_g account" >
                                         <legend>帐号 </legend>
-                                        <input type="text" placeholder="请输入帐号" v-model="username" autocomplete="off"  @blur="CheckAccount()" v-if="!accountObj.ifRequired">
                                         <input type="text" placeholder="请输入帐号" v-model="username" autocomplete="off"
-                                            class="username" @input="checkUserName(username,'username')" @blur="CheckAccount()" v-if="!!accountObj.ifRequired">
+                                            class="username" @input="checkUserName(username,'username')" @blur="CheckAccount()" >
                                         <i class="close close2" @click="ClearInput('close2','username')"></i>
                                     </div>
                                     <label class="error-message "></label>
@@ -42,8 +41,7 @@
                                     <fieldset  v-if="show">
                                         <div class="form_g password">
                                             <legend>登录密码</legend>
-                                            <input type="password" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" v-if="!passwordObj.ifRequired" >
-                                            <input type="password" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" @input="checkpassword(password,'password')" v-if="!!passwordObj.ifRequired">
+                                            <input type="password" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" @input="checkpassword(password,'password')" >
                                             <i class="eye active eye1"  @click="showPassword('eye1')"></i>
                                         </div>
                                         <label class="error-message "></label>
@@ -51,8 +49,7 @@
                                     <fieldset v-if="!show">
                                         <div class="form_g password">
                                             <legend>登录密码 </legend>
-                                            <input type="text" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" v-if="!passwordObj.ifRequired">
-                                            <input type="text" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" @input="checkpassword(password,'password')" v-if="!!passwordObj.ifRequired">
+                                            <input type="text" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" @input="checkpassword(password,'password')" >
                                             <i class="eye act1" @click="showPassword('act1')"></i>
                                         </div>
                                         <label class="error-message "></label>
@@ -62,8 +59,7 @@
                                      <fieldset  v-if="showC">
                                          <div class="form_g password">
                                              <legend>确认密码</legend>
-                                             <input type="password" placeholder="请输入确认密码" autocomplete="off" v-model="confirmpassword" class="confirmpassword" v-if="!confirmpasswordObj.ifRequired">
-                                             <input type="password" placeholder="请输入确认密码" autocomplete="off" v-model="confirmpassword" class="confirmpassword" @input="checkIsEqual('.confirmpassword')" v-if="!!confirmpasswordObj.ifRequired">
+                                             <input type="password" placeholder="请输入确认密码" autocomplete="off" v-model="confirmpassword" class="confirmpassword" @input="checkIsEqual('.confirmpassword')" >
                                              <i class="eye active eye2" @click="showPassword('eye2')"></i>
                                          </div>
                                          <label class="error-message "></label>
@@ -71,8 +67,7 @@
                                      <fieldset  v-if="!showC">
                                          <div class="form_g password">
                                              <legend>确认密码</legend>
-                                             <input type="text" placeholder="请输入确认密码" autocomplete="off"  v-model="confirmpassword" class="confirmpassword" v-if="!confirmpasswordObj.ifRequired">
-                                             <input type="text" placeholder="请输入确认密码" autocomplete="off"  v-model="confirmpassword" class="confirmpassword" @input="checkIsEqual('.confirmpassword')" v-if="!!confirmpasswordObj.ifRequired">
+                                             <input type="text" placeholder="请输入确认密码" autocomplete="off"  v-model="confirmpassword" class="confirmpassword" @input="checkIsEqual('.confirmpassword')" >
                                              <i class="eye " @click="showPassword('act2')"></i>
                                          </div>
                                          <label class="error-message "></label>
@@ -82,8 +77,7 @@
                                <fieldset v-if="!!realynameObj.ifView">
                                     <div class="form_g account">
                                         <legend>真实姓名</legend>
-                                        <input type="text" placeholder="请输入真实姓名" autocomplete="off" class="realyname" v-model="realyname" v-if="!realynameObj.ifRequired">
-                                        <input type="text" placeholder="请输入真实姓名" autocomplete="off" class="realyname" v-model="realyname" @input="checkrealyName(realyname,'realyname')" v-if="!!realynameObj.ifRequired">
+                                        <input type="text" placeholder="请输入真实姓名" autocomplete="off" class="realyname" v-model="realyname" @input="checkrealyName(realyname,'realyname')" >
                                         <i class="close close3" @click="ClearInput('close3','realyname')"></i>
                                     </div>
                                     <label class="error-message "></label>
@@ -93,8 +87,7 @@
                                     <fieldset  v-if="showB">
                                         <div class="form_g password">
                                             <legend>支付密码</legend>
-                                            <input type="password" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" v-if="!withPasswordObj.ifRequired">
-                                            <input type="password" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')" v-if="!!withPasswordObj.ifRequired">
+                                            <input type="password" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')" >
                                             <i class="eye active eye3" @click="showPassword('eye3')"></i>
                                         </div>
                                         <label class="error-message "></label>
@@ -102,8 +95,7 @@
                                     <fieldset  v-if="!showB">
                                         <div class="form_g password">
                                             <legend>支付密码</legend>
-                                            <input type="text" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" v-if="!withPasswordObj.ifRequired">
-                                            <input type="text" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')" v-if="!!withPasswordObj.ifRequired">
+                                            <input type="text" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')" >
                                             <i class="eye " @click="showPassword('act3')"></i>
                                         </div>
                                         <label class="error-message "></label>
@@ -113,8 +105,7 @@
                                 <fieldset v-if="!!phoneObj.ifView">
                                     <div class="form_g phone">
                                         <legend>手机号码 </legend>
-                                        <input type="text" autocomplete="off" maxlength="11" placeholder="请输入手机号码" class="telephone" v-model="telephone" v-if="!phoneObj.ifRequired">
-                                        <input type="text" autocomplete="off" maxlength="11" placeholder="请输入手机号码" class="telephone" v-model="telephone" @input="checktelphone(telephone,'telephone')" v-if="!!phoneObj.ifRequired">
+                                        <input type="text" autocomplete="off" maxlength="11" placeholder="请输入手机号码" class="telephone" v-model="telephone" @input="checktelphone(telephone,'telephone')" >
                                         <i class="close close4" @click="ClearInput('close4','telephone')"></i>
                                     </div>
                                     <label class="error-message "></label>
@@ -408,8 +399,6 @@
             registerAction:function() {
 
                 /*this.nextAction()*/
-
-                var _self=this;
                 if(!!this.accountObj.ifRequired){
                     if(this.username ==''){
                         this.$refs.autoCloseDialog.open('请输入帐号') ;
