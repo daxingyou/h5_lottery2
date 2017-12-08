@@ -55,7 +55,7 @@
                                         <label class="error-message "></label>
                                     </fieldset>
                                 </div>
-                                 <div class="confirmpasswordObj.ifView">
+                                 <div class="" v-if="!!confirmpasswordObj.ifView">
                                      <fieldset  v-if="showC">
                                          <div class="form_g password">
                                              <legend>确认密码</legend>
