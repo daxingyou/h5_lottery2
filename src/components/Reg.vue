@@ -545,6 +545,7 @@
                     realName: _self.realyname ,  // 用户真实姓名
                     mobile: _self.telephone , // 手机号码
                     passwordPay: _self.withPassword ,   //取款密码
+                    bankId:_self.bankId,
                     code: _self.yzmcode ,   // 验证码
                     bankCode:_self.bankCode, //银行卡code
                     bankAddress:_self.bankAdd,//银行卡地址
