@@ -123,16 +123,16 @@
                                 <fieldset v-if="!!bankAddObj.ifView">
                                     <div class="form_g text">
                                         <legend>开户行</legend>
-                                        <input type="text" name="phone-number" v-model="bankAdd"  class="bankAdd" placeholder="如:北京市海淀区中关村支行"
+                                        <input type="text" name="bankAdd" v-model="bankAdd"  class="bankAdd" placeholder="如:北京市海淀区中关村支行"
                                                @input="checkBankAdd(bankAdd,'bankAdd')">
-                                        <i class="close close1" @click="ClearInput('close2','bankAdd')"></i>
+                                        <i class="close close1" @click="ClearInput('close1','bankAdd')"></i>
                                     </div>
                                     <label class="error-message"></label>
                                 </fieldset>
                                 <fieldset v-if="!!bankNumObj.ifView">
                                     <div class="form_g text">
                                         <legend>银行卡号</legend>
-                                        <input type="text" name="phone-number" v-model="bankNum" class="bankNum" placeholder="请输入取款银行卡号"
+                                        <input type="text" name="bankNum" v-model="bankNum" class="bankNum" placeholder="请输入取款银行卡号"
                                                @input="checkBankNum(bankNum,'bankNum')">
                                         <i class="close close3" @click="ClearInput('close3','bankNum')"></i>
                                     </div>
@@ -363,6 +363,12 @@
                     this.tjrusername ='';}
                 if(cl=='username'){
                     this.username ='';
+                }
+                if(cl=='bankNum'){
+                    this.bankNum='';
+                }
+                if(cl=='bankAdd'){
+                    this.bankAdd='';
                 }
 
                 if(cl=='confirmpassword '){
