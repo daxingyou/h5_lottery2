@@ -532,7 +532,7 @@ export default {
               headers: {
                   "Authorization": "bearer  " + this.getAccessToken ,
               },
-              url: _self.action.forseti + '/api/pay/receiptClient',
+              url: _self.action.forseti + 'api/pay/receiptClient',
               // data: { type: type},  // 查询类型：1 扫码支付，2 银行卡支付
               success: function(res){
                //  console.log(res)
@@ -540,7 +540,7 @@ export default {
 
                res.data = res.data;
 
-                console.log(res.data)
+//                console.log(res.data)
 
                 _self.payWays = res.data;
 
