@@ -91,10 +91,10 @@
             </li>
             <li>
               <!--  <router-link to="/lobbyTemplate/promo">-->
-                <a href="javascript:;"  @click="Continued()">
+                <router-link :to="'/lobbyTemplate/promo_content'">
                     <span class="icon_account icon_promo"></span>
                     <p>优惠活动</p>
-                </a>
+                </router-link>
             </li>
             <li>
                 <a href="https://messenger.providesupport.net/messenger/0bxg1rx3vv8lc036lt4a265vdi.html"  target="_blank">
