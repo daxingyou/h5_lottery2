@@ -92,10 +92,10 @@
             </li>
             <li>
               <!--  <router-link to="/lobbyTemplate/promo">-->
-                <a href="javascript:;"  @click="Continued()">
+                <router-link :to="'/lobbyTemplate/promo'">
                     <span class="icon_account icon_promo"></span>
                     <p>优惠活动</p>
-                </a>
+                </router-link>
             </li>
             <li>
                 <a href="https://messenger.providesupport.net/messenger/0bxg1rx3vv8lc036lt4a265vdi.html"  target="_blank">
@@ -258,10 +258,10 @@ export default {
       this.getBulletinsContent ();
       this.getPopMsg();
 
-      TouchSlide({
-                  slideCell: "#focus",
-                  autoPlay:true,
-              });
+//      TouchSlide({
+//                  slideCell: "#focus",
+//                  autoPlay:true,
+//              });
 
 
       /* $("#marquee_snp").slide({ // 文本滚动
@@ -273,7 +273,7 @@ export default {
            interTime: 50
        });*/
       //this.changeOffFlag();
-      // this.carouselImg()
+       this.carouselImg()
   },
   methods:{
       getBulletinsContent :function () {
