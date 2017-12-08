@@ -2,9 +2,9 @@
     <div id="pa_con" class="so-con warp body_bg">
         <header id="pa_head" class="new_header">
             <div class="left">
-                <a href="/">
+                <router-link :to="'/'">
                     <span class="icon icon_back"></span>
-                </a>
+                </router-link>
             </div>
             <h2 class="center title_name">优惠活动</h2>
             <div class="right"></div>
@@ -100,7 +100,7 @@ export default {
                          res.data.rows[i].titlePic=_self.action.picurl+ res.data.rows[i].titlePic+'/0';
                      }
                      _self.banner=res.data.rows;
-                     console.log(_self.banner)
+//                     console.log(_self.banner)
                  }
               },
               err:(res)=>{
