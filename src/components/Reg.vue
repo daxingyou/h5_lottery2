@@ -28,48 +28,97 @@
                                     </div>
                                     <label class="error-message "></label>
                                 </fieldset>-->
-                                <fieldset>
+                                <fieldset v-if="!!accountObj.ifView">
                                     <div class="form_g account" >
-                                        <legend>帐号</legend>
+                                        <legend>帐号 </legend>
+                                        <input type="text" placeholder="请输入帐号" v-model="username" autocomplete="off"  @blur="CheckAccount()" v-if="!accountObj.ifRequired">
                                         <input type="text" placeholder="请输入帐号" v-model="username" autocomplete="off"
-                                            class="username" @input="checkUserName(username,'username')" @blur="CheckAccount()">
+                                            class="username" @input="checkUserName(username,'username')" @blur="CheckAccount()" v-if="!!accountObj.ifRequired">
                                         <i class="close close2" @click="ClearInput('close2','username')"></i>
                                     </div>
                                     <label class="error-message "></label>
                                 </fieldset>
-                                <fieldset  v-if="show">
-                                    <div class="form_g password">
-                                        <legend>密码</legend>
-                                        <input type="password" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" @input="checkpassword(password,'password')" >
-                                        <i class="eye active eye1"  @click="showPassword('eye1')"></i>
-                                    </div>
-                                    <label class="error-message "></label>
-                                </fieldset>
-                                <fieldset v-if="!show">
-                                    <div class="form_g password">
-                                        <legend>密码</legend>
-                                        <input type="text" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" @input="checkpassword(password,'password')">
-                                        <i class="eye act1" @click="showPassword('act1')"></i>
-                                    </div>
-                                    <label class="error-message "></label>
-                                </fieldset>
-                                <fieldset  v-if="showC">
-                                    <div class="form_g password">
-                                        <legend>确认密码</legend>
-                                        <input type="password" placeholder="请输入确认密码" autocomplete="off" v-model="confirmpassword" class="confirmpassword" @input="checkIsEqual('.confirmpassword')">
-                                        <i class="eye active eye2" @click="showPassword('eye2')"></i>
-                                    </div>
-                                    <label class="error-message "></label>
-                                </fieldset>
-                                <fieldset  v-if="!showC">
-                                    <div class="form_g password">
-                                        <legend>确认密码</legend>
-                                        <input type="text" placeholder="请输入确认密码" autocomplete="off"  v-model="confirmpassword" class="confirmpassword" @input="checkIsEqual('.confirmpassword')">
-                                        <i class="eye " @click="showPassword('act2')"></i>
-                                    </div>
-                                    <label class="error-message "></label>
-                                </fieldset>
+                                <div class="" v-if="!!passwordObj.ifView">
+                                    <fieldset  v-if="show">
+                                        <div class="form_g password">
+                                            <legend>登录密码</legend>
+                                            <input type="password" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" v-if="!passwordObj.ifRequired" >
+                                            <input type="password" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" @input="checkpassword(password,'password')" v-if="!!passwordObj.ifRequired">
+                                            <i class="eye active eye1"  @click="showPassword('eye1')"></i>
+                                        </div>
+                                        <label class="error-message "></label>
+                                    </fieldset>
+                                    <fieldset v-if="!show">
+                                        <div class="form_g password">
+                                            <legend>登录密码 </legend>
+                                            <input type="text" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" v-if="!passwordObj.ifRequired">
+                                            <input type="text" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" @input="checkpassword(password,'password')" v-if="!!passwordObj.ifRequired">
+                                            <i class="eye act1" @click="showPassword('act1')"></i>
+                                        </div>
+                                        <label class="error-message "></label>
+                                    </fieldset>
+                                </div>
+                                 <div class="confirmpasswordObj.ifView">
+                                     <fieldset  v-if="showC">
+                                         <div class="form_g password">
+                                             <legend>确认密码</legend>
+                                             <input type="password" placeholder="请输入确认密码" autocomplete="off" v-model="confirmpassword" class="confirmpassword" v-if="!confirmpasswordObj.ifRequired">
+                                             <input type="password" placeholder="请输入确认密码" autocomplete="off" v-model="confirmpassword" class="confirmpassword" @input="checkIsEqual('.confirmpassword')" v-if="!!confirmpasswordObj.ifRequired">
+                                             <i class="eye active eye2" @click="showPassword('eye2')"></i>
+                                         </div>
+                                         <label class="error-message "></label>
+                                     </fieldset>
+                                     <fieldset  v-if="!showC">
+                                         <div class="form_g password">
+                                             <legend>确认密码</legend>
+                                             <input type="text" placeholder="请输入确认密码" autocomplete="off"  v-model="confirmpassword" class="confirmpassword" v-if="!confirmpasswordObj.ifRequired">
+                                             <input type="text" placeholder="请输入确认密码" autocomplete="off"  v-model="confirmpassword" class="confirmpassword" @input="checkIsEqual('.confirmpassword')" v-if="!!confirmpasswordObj.ifRequired">
+                                             <i class="eye " @click="showPassword('act2')"></i>
+                                         </div>
+                                         <label class="error-message "></label>
+                                     </fieldset>
+                                 </div>
 
+                               <fieldset v-if="!!realynameObj.ifView">
+                                    <div class="form_g account">
+                                        <legend>真实姓名</legend>
+                                        <input type="text" placeholder="请输入真实姓名" autocomplete="off" class="realyname" v-model="realyname" v-if="!realynameObj.ifRequired">
+                                        <input type="text" placeholder="请输入真实姓名" autocomplete="off" class="realyname" v-model="realyname" @input="checkrealyName(realyname,'realyname')" v-if="!!realynameObj.ifRequired">
+                                        <i class="close close3" @click="ClearInput('close3','realyname')"></i>
+                                    </div>
+                                    <label class="error-message "></label>
+
+                                </fieldset>
+                               <div class="" v-if="withPasswordObj.ifView">
+                                    <fieldset  v-if="showB">
+                                        <div class="form_g password">
+                                            <legend>支付密码</legend>
+                                            <input type="password" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" v-if="!withPasswordObj.ifRequired">
+                                            <input type="password" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')" v-if="!!withPasswordObj.ifRequired">
+                                            <i class="eye active eye3" @click="showPassword('eye3')"></i>
+                                        </div>
+                                        <label class="error-message "></label>
+                                    </fieldset>
+                                    <fieldset  v-if="!showB">
+                                        <div class="form_g password">
+                                            <legend>支付密码</legend>
+                                            <input type="text" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" v-if="!withPasswordObj.ifRequired">
+                                            <input type="text" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')" v-if="!!withPasswordObj.ifRequired">
+                                            <i class="eye " @click="showPassword('act3')"></i>
+                                        </div>
+                                        <label class="error-message "></label>
+                                    </fieldset>
+                                </div>
+
+                                <fieldset v-if="!!phoneObj.ifView">
+                                    <div class="form_g phone">
+                                        <legend>手机号码 </legend>
+                                        <input type="text" autocomplete="off" maxlength="11" placeholder="请输入手机号码" class="telephone" v-model="telephone" v-if="!phoneObj.ifRequired">
+                                        <input type="text" autocomplete="off" maxlength="11" placeholder="请输入手机号码" class="telephone" v-model="telephone" @input="checktelphone(telephone,'telephone')" v-if="!!phoneObj.ifRequired">
+                                        <i class="close close4" @click="ClearInput('close4','telephone')"></i>
+                                    </div>
+                                    <label class="error-message "></label>
+                                </fieldset>
 
                                 <fieldset>
                                     <div class="form_g password ">
@@ -92,13 +141,12 @@
 
                         <div class="after-add" style="display: none;">
                             <fieldset>
-                              <!--   <div class="form_g account">
+                               <div class="form_g account">
                                     <legend>真实姓名</legend>
                                     <input type="text" placeholder="请输入真实姓名" autocomplete="off" class="realyname" v-model="realyname" @input="checkrealyName(realyname,'realyname')">
                                     <i class="close close3" @click="ClearInput('close3','realyname')"></i>
                                 </div>
-                                <label class="error-message "></label> -->
-
+                                <label class="error-message "></label>
 
                             </fieldset>
                             <fieldset v-if="showB">
@@ -247,6 +295,14 @@
                 verImgCode:'',
                 client:'',
                 regsubmitflage:false ,
+                accountObj:{},
+                passwordObj:{},
+                phoneObj:{},
+                realynameObj:{},
+                withPasswordObj:{},
+                confirmpasswordObj:{}
+
+
             }
         },
         created:function(){
@@ -254,6 +310,7 @@
         },
         mounted:function(){
             document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
+           this.getReglist();
         },
         methods:{
             //点击显示密码
@@ -296,25 +353,39 @@
             nextAction:function () {
 
                 document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
-                if(this.username ==''){
-                    this.$refs.autoCloseDialog.open('请输入帐号') ;
-                    return false ;
+
+                if(!!this.accountObj.ifRequired){
+                    if(this.username ==''){
+                        this.$refs.autoCloseDialog.open('请输入帐号') ;
+                        return false ;
+                    }
+
                 }
-                if(this.password ==''){
-                    this.$refs.autoCloseDialog.open('请输入用户密码') ;
-                    return false ;
-                }
-                if(this.confirmpassword ==''){
-                    this.$refs.autoCloseDialog.open('请输入确认密码') ;
-                    return false ;
-                }
-                if(this.username==this.tjrusername){
+              if(!!this.passwordObj.ifRequired){
+                  if(this.password ==''){
+                      this.$refs.autoCloseDialog.open('请输入用户密码') ;
+                      return false ;
+                  }
+              }
+              if(!!this.confirmpasswordObj.ifRequired){
+                  if(this.confirmpassword ==''){
+                      this.$refs.autoCloseDialog.open('请输入确认密码') ;
+                      return false ;
+                  }
+                  if(this.confirmpassword !== this.password){
+                      this.$refs.autoCloseDialog.open('两次密码输入不一致');
+                      return false ;
+                  }
+              }
+
+
+               /* if(this.username==this.tjrusername){
                     this.$refs.autoCloseDialog.open('账号不能与推荐人账号相同') ;
                     return false ;
                 }else if(this.confirmpassword !== this.password){
                     this.$refs.autoCloseDialog.open('两次密码输入不一致');
                     return false ;
-                }
+                }*/
 
                 // var falg = $('.error-message').hasClass('red') ;  // 验证不通过，不允许提交
                 // if(falg){
@@ -345,22 +416,28 @@
                 if(_self.regsubmitflage){
                     return false ;
                 }
+                 /* console.log(!this.phoneObj.ifRequired)*/
+                if(!!this.realynameObj.ifRequired){
+                    if(this.realyname ==''){
+                        this.$refs.autoCloseDialog.open('请输入真实姓名') ;
+                        return false ;
+                    }
+                }
+                if(!!this.withPasswordObj.ifRequired){
+                    if(this.withPassword ==''|| !this.positiveNum(this.withPassword)){
+                        this.$refs.autoCloseDialog.open('请输入4位数字支付密码') ;
+                        return false ;
+                    }
+                }
 
-                // if(this.realyname ==''){
-                //     this.$refs.autoCloseDialog.open('请输入真实姓名') ;
-                //     return false ;
-                // }
+                 if(!!this.phoneObj.ifRequired){
+                     if(this.telephone ==''){
+                         this.$refs.autoCloseDialog.open('请输入手机号码') ;
+                         return false ;
+                     }
+                 }
 
 
-                // if(this.withPassword ==''|| !this.positiveNum(this.withPassword)){
-                //     this.$refs.autoCloseDialog.open('请输入4位数字支付密码') ;
-                //     return false ;
-                // }
-
-                // if(this.telephone ==''){
-                //     this.$refs.autoCloseDialog.open('请输入手机号码') ;
-                //     return false ;
-                // }
 
                if(this.yzmcode ==''){
                     this.$refs.autoCloseDialog.open('请输入验证码') ;
@@ -500,6 +577,45 @@
                         }
                     }
                 })
+            },
+            getReglist () {
+                var _self=this;
+                $.ajax({
+                    type: 'GET',
+                    url:  _self.action.forseti + 'apid/config/registerConfig?regType=1',
+                    data:{},
+                    success:(res)=>{
+                       console.log(res)
+
+                      for(let i=0;i<res.data.length;i++){
+                           switch (res.data[i].item) {
+                               case "帐号" :
+                                this.accountObj=res.data[i];
+                                break;
+                               case "登录密码" :
+                                   this.passwordObj=res.data[i];
+                                   break;
+                               case "确认密码" :
+                                   this.confirmpasswordObj=res.data[i];
+                                   break;
+                               case "真实名称" :
+                                   this.realynameObj=res.data[i];
+                                   break;
+                               case "支付密码" :
+                                   this.withPasswordObj=res.data[i];
+                                   break;
+                               case "手机号码" :
+                                   this.phoneObj=res.data[i];
+                                   break;
+
+                           }
+                      }
+
+
+                    }
+                })
+
+
             }
 
         }
