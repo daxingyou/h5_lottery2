@@ -99,12 +99,10 @@ export default {
                      var listWe=[];
                      for(var i=0;i<len;i++){
                          res.data.rows[i].titlePic=_self.action.picurl+ res.data.rows[i].titlePic+'/0';
-//                         listWe.push(data.rows[i].weight)
 
                      }
                      _self.banner=res.data.rows;
-//                     console.log(_self.banner)
-//                     console.log(listWe)
+
                  }
               },
               err:(res)=>{
