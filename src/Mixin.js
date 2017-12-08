@@ -729,7 +729,7 @@ var MyMixin = {
         //验证支付密码
         checkNum: function (val,el) {
             var content = '请输入4位数字支付密码' ;
-            if(val &&!this.positiveNum(val)){
+            if(val &&!this.positiveNum(val) ||val.length<4){
                 $('.'+el).parent('.form_g').next('.error-message').addClass('red').text(content) ;
             }
             else{
