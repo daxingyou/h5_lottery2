@@ -744,7 +744,23 @@ var MyMixin = {
              $('.'+el).prev().val('');
               $('.'+el).parent('.form_g').next('.error-message').removeClass('red').text('') ;
               this.clearVal(cl) ;
-        }
+        },
+        //获取银行列表
+        getBankList:function(){
+            var _self=this;
+            $.ajax({
+                type:'get',
+//              headers: {"Authorization": "bearer  " + this.getAccessToken },
+                url: _self.action.forseti + 'apid/payment/banks',
+                data:{},
+                success: function(res){
+                    _self.bankList=res.data;
+                },
+                error: function (err) {
+
+                }
+            })
+        },
 
 
     }
