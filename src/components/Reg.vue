@@ -324,7 +324,8 @@
                 bankList:{},
                 bankselectObj:{},
                 bankAddObj:{},
-                bankNumObj:{}
+                bankNumObj:{},
+                bankCode:""
 
 
             }
@@ -492,6 +493,24 @@
                      }
                  }
 
+                 if(!!this.bankselectObj.ifRequired){
+                     if(_self.bankId==""){
+                         _self.$refs.autoCloseDialog.open('请选择银行') ;
+                         return false
+                     }
+                 }
+                if (!!this.bankAddObj.ifRequired){
+                    if(_self.bankAdd==""){
+                        _self.$refs.autoCloseDialog.open('请输入开户行地址') ;
+                        return false
+                    }
+                }
+                if(!!this.bankNumObj.ifRequired){
+                    if(_self.bankNum==""){
+                        _self.$refs.autoCloseDialog.open('请输入银行卡号') ;
+                        return false
+                    }
+                }
 
 
                if(this.yzmcode ==''){
@@ -506,6 +525,7 @@
 
 
                 _self.regsubmitflage = true ;
+                _self.bankCode=$('.bankselect').find("option:selected").data('code') ;
                 var logindata = {
                     acType: '1',   //1真钱玩家，2试玩玩家
                     appid: 'bcappid02',    //平台商id，bcappid01 或 bcappid02
@@ -514,11 +534,15 @@
                     login: _self.username ,   // 帐号
                     method: 'mc',   //方法：mc创建会员
                     oddType: 'a',  //盘口，1位字符，预留
-                    password: this.password ,  // 用户登录密码
-                    realName: this.realyname ,  // 用户真实姓名
-                    mobile: this.telephone , // 手机号码
-                    passwordPay: this.withPassword ,   //取款密码
-                    code: this.yzmcode ,   // 验证码
+                    password: _self.password ,  // 用户登录密码
+                    realName: _self.realyname ,  // 用户真实姓名
+                    mobile: _self.telephone , // 手机号码
+                    passwordPay: _self.withPassword ,   //取款密码
+                    code: _self.yzmcode ,   // 验证码
+                    bankCode:_self.bankCode, //银行卡code
+                    bankAddress:_self.bankAdd,//银行卡地址
+                    bankCard:_self.bankNum //银行卡号码
+
                 }
                 $.ajax({
                     type: 'post',
