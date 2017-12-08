@@ -525,7 +525,7 @@ var MyMixin = {
         },
          openGameOnline: function(url) {
            
-            this.openGame('http://messenger.providesupport.net/messenger/0bxg1rx3vv8lc036lt4a265vdi.html')
+            this.openGame('https://static.meiqia.com/dist/standalone.html?_=t&eid=89999')
         },
         // 打开新窗口
        /* openGame: function(url) {
