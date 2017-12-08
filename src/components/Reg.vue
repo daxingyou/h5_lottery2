@@ -691,7 +691,7 @@
                                    break;
                                case "支付密码" :
                                    _self.withPasswordObj=res.data[i];
-                                                            break;
+                                    break;
                                case "手机号码" :
                                    _self.phoneObj=res.data[i];
                                    break;
