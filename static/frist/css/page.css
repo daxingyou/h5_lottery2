@@ -21,6 +21,10 @@ input, select, button, a { outline: none; }
 :-moz-placeholder {color: #7e5c4c;}
 
 
+body{
+	background-color: white;
+}
+
 .login_title{
   position: absolute;
   left: 2.36715rem;
