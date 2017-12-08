@@ -55,7 +55,7 @@
                                         <label class="error-message "></label>
                                     </fieldset>
                                 </div>
-                                 <div class="confirmpasswordObj.ifView">
+                                 <div class="" v-if="!!confirmpasswordObj.ifView">
                                      <fieldset  v-if="showC">
                                          <div class="form_g password">
                                              <legend>确认密码</legend>
@@ -73,17 +73,7 @@
                                          <label class="error-message "></label>
                                      </fieldset>
                                  </div>
-
-                               <fieldset v-if="!!realynameObj.ifView">
-                                    <div class="form_g account">
-                                        <legend>真实姓名</legend>
-                                        <input type="text" placeholder="请输入真实姓名" autocomplete="off" class="realyname" v-model="realyname" @input="checkrealyName(realyname,'realyname')" >
-                                        <i class="close close3" @click="ClearInput('close3','realyname')"></i>
-                                    </div>
-                                    <label class="error-message "></label>
-
-                                </fieldset>
-                               <div class="" v-if="withPasswordObj.ifView">
+                                <div class="" v-if="withPasswordObj.ifView">
                                     <fieldset  v-if="showB">
                                         <div class="form_g password">
                                             <legend>支付密码</legend>
@@ -101,6 +91,17 @@
                                         <label class="error-message "></label>
                                     </fieldset>
                                 </div>
+
+                               <fieldset v-if="!!realynameObj.ifView">
+                                    <div class="form_g account">
+                                        <legend>真实姓名</legend>
+                                        <input type="text" placeholder="请输入真实姓名" autocomplete="off" class="realyname" v-model="realyname" @input="checkrealyName(realyname,'realyname')" >
+                                        <i class="close close3" @click="ClearInput('close3','realyname')"></i>
+                                    </div>
+                                    <label class="error-message "></label>
+
+                                </fieldset>
+
 
                                 <fieldset v-if="!!phoneObj.ifView">
                                     <div class="form_g phone">
@@ -664,8 +665,10 @@
                     url:  _self.action.forseti + 'apid/config/registerConfig?regType=1',
                     data:{},
                     success:(res)=>{
-                       console.log(res)
-
+                       //console.log(res)
+                        if(!res.data){
+                           return false
+                        }
                       for(let i=0;i<res.data.length;i++){
                            switch (res.data[i].item) {
                                case "帐号" :

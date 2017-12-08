@@ -140,8 +140,13 @@ export default {
             url: _self.action.forseti + 'api/payment/memberBank',
             data:{},
             success: function(res){
-                _self.phoneNumber=res.data.mobile;
-                _self.realName=res.data.realName
+                if(res.data){
+                    _self.phoneNumber=res.data.mobile;
+                    _self.realName=res.data.realName;
+                    _self.bankAdd=res.data.bankAddress;
+                    _self.bankNum=res.data.bankCard;
+                    _self.bankName=res.data.bankName;
+                }
             },
             error: function (err) {
 
@@ -149,6 +154,22 @@ export default {
         })
       },
 
+      //获取银行列表
+      getBankList:function() {
+          var _self = this;
+          $.ajax({
+              type: 'get',
+//              headers: {"Authorization": "bearer  " + this.getAccessToken },
+              url: _self.action.forseti + 'apid/payment/banks',
+              data: {},
+              success: function (res) {
+                  _self.bankList = res.data;
+
+              },
+              error: function (err) {
+              }
+          })
+      },
       //修改银行账户信息
       ChangeInfo : function () {
           var _self=this;

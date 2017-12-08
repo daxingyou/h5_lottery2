@@ -44,7 +44,7 @@
                     <a href="javascript:;" @click="demoPlay()">免费试玩</a>
                     <!-- <a href="javascript:;" @click="openGame('http://www.providesupport.com?messenger=0bxg1rx3vv8lc036lt4a265vdi')">在线客服</a> -->
                     <!--<a href="javascript:;" @click="openGameOnline()">在线客服</a>-->
-                    <a href="https://messenger.providesupport.net/messenger/0bxg1rx3vv8lc036lt4a265vdi.html" target="_blank">在线客服</a>
+                    <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=89999" target="_blank">在线客服</a>
                 </div>
             </div>
         </div>

@@ -98,7 +98,7 @@
                 </router-link>
             </li>
             <li>
-                <a href="https://messenger.providesupport.net/messenger/0bxg1rx3vv8lc036lt4a265vdi.html"  target="_blank">
+                <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=89999"  target="_blank">
                     <span class="icon_account icon_service"></span>
                     <p>在线客服</p>
                 </a>
