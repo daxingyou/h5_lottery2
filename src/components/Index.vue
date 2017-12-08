@@ -91,7 +91,7 @@
             </li>
             <li>
               <!--  <router-link to="/lobbyTemplate/promo">-->
-                <router-link :to="'/lobbyTemplate/promo_content'">
+                <router-link :to="'/lobbyTemplate/promo'">
                     <span class="icon_account icon_promo"></span>
                     <p>优惠活动</p>
                 </router-link>
