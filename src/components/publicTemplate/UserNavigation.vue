@@ -113,7 +113,7 @@ export default {
          var _self = this ;
          var resdata  ;
           _self.gamelist = sessionStorage.gamelist ;
-          if(!_self.gamelist){
+          if(true){
                   $.ajax({
                       type: 'GET',
                       async:false,

@@ -165,7 +165,6 @@ export default {
                 'remark': '无',//备注，可用于测试
                 'source': 'h5', //来源：h5
                 'sourceType':'2', // 1是pc端，2是h5
-
             };
             this.ajaxSubmitAllow = true ;
             this.doSubmitAction(resdata.list) ;
@@ -193,7 +192,7 @@ export default {
                         // this.parentRefs.autoCloseDialog.open('购买成功')
                         this.parentRefs.betSuccessfulDialog.open('购买成功')
                         this.resetAction('1') ;  // 下注成功不清空金额
-                        // getMemberBalance() ; // 更新余额
+                        that.getMemberBalance() ; // 更新余额
                         // console.log(total_mon)
                         that.getCookie( 'balancePublic' )
                         // console.log(that.getCookie( 'balancePublic' ) )
