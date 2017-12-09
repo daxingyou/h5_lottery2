@@ -331,7 +331,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 /*.promo_area .promo_list li a { padding: 0.1rem 0.3rem; }*/
 .promo_area li { margin-bottom: 0.3rem; }
 .promo_area .promo_detail { padding: 0.3rem; }
-.promo_area img { display: block; width: calc( 100% - 2px); border: 1px solid transparent;border-radius: .1rem }
+.promo_area img { display: block; width: calc( 100% - 2px); border: 1px solid transparent;border-radius: .2rem }
 .promo_area p { margin: .2rem 0;}
 .promo_area h3 { margin: .2rem 0 0.3rem; color: #4b280c; font-size: 0.43rem; }
 .promo_area strong { color: #980110; }

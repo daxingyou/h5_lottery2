@@ -451,7 +451,7 @@ export default {
               url: _self.action.forseti + 'apid/cms/activity',
               data:{},
               success:(res)=>{
-                  if(res.data.rows){
+                  if(res.data.rows.length!=0){
                    _self.picture=_self.action.picurl+ res.data.rows[0].titlePic+'/0';
                    _self.cid=res.data.rows[0].cid
                   }

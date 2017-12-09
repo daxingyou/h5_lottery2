@@ -761,7 +761,6 @@ var MyMixin = {
                 }
             })
         },
-
         //客服接口
         getCustom:function () {
             var _self=this;
