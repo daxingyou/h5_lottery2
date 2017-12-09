@@ -44,7 +44,7 @@
                     <a href="javascript:;" @click="demoPlay()">免费试玩</a>
                     <!-- <a href="javascript:;" @click="openGame('http://www.providesupport.com?messenger=0bxg1rx3vv8lc036lt4a265vdi')">在线客服</a> -->
                     <!--<a href="javascript:;" @click="openGameOnline()">在线客服</a>-->
-                    <a  href="javascript:;" @click= 'openGameOnline()'  target="_blank">在线客服</a>
+                    <a :href="custUrl" target="_blank">在线客服</a>
                 </div>
             </div>
         </div>
@@ -71,6 +71,7 @@ export default {
             yzmcode:'',
             client:'',
             submitflage: false ,
+            custUrl:''
         }
     },
   created:function () {
@@ -79,7 +80,7 @@ export default {
   mounted:function() {
        // this.username = 'admin' ;
       document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
-
+      this.getCustom()
 
   },
   methods: {

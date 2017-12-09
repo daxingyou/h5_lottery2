@@ -98,7 +98,7 @@
                 </router-link>
             </li>
             <li>
-                <a  href="javascript:;" @click= 'openGameOnline()'  target="_blank">
+                <a :href="custUrl"  target="_blank">
                     <span class="icon_account icon_service"></span>
                     <p>在线客服</p>
                 </a>
@@ -239,7 +239,7 @@ export default {
             currPopMsgCid:"",
             picture:'',
             cid:'',
-
+            custUrl:''
         }
     },
     computed:{
@@ -259,7 +259,6 @@ export default {
       }
       this.getBulletinsContent ();
       this.getPopMsg();
-
 //      TouchSlide({
 //                  slideCell: "#focus",
 //                  autoPlay:true,
@@ -276,7 +275,8 @@ export default {
        });*/
       //this.changeOffFlag();
        this.carouselImg();
-       this.getActivity()
+       this.getActivity();
+       this.getCustom()
   },
     methods:{
       getBulletinsContent :function () {
@@ -470,23 +470,6 @@ export default {
               window.location = '/lobbyTemplate/promo_content' ;
           }
       },
-
-        //客服接口
-        getCustom:function () {
-            $.ajax({
-                type:'get',
-                url: _self.action.forseti + 'apid/config/custConfig',
-                data:{},
-                success:(res)=>{
-                    if(res.data.rows){
-
-                    }
-                },
-                err:(res)=>{
-
-                }
-            })
-        }
   },
 
 }

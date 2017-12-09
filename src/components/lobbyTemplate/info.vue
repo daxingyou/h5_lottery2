@@ -81,7 +81,7 @@
                             </router-link>
                         </li>-->
                         <li>
-                            <a class="btn_icon"  href="javascript:;" @click= 'openGameOnline()'  target="_blank" >
+                            <a class="btn_icon" :href="custUrl" target="_blank" >
                                 <span class="icon_account icon_info_3"></span>
                                 <span>在线客服</span>
                                 <span class="icon icon_arrow_dark"></span>
@@ -132,7 +132,8 @@ export default {
             Money:'',
             acType:'',
             memberId:'',
-            userLogin:''
+            userLogin:'',
+            custUrl:''
         }
     },
     created:function () {
@@ -147,7 +148,7 @@ export default {
     },
     mounted:function() {
       $('html,body').css('overflow-y','scroll' )  ;
-
+        this.getCustom()
   },
     methods: {
       //获取用户信息
