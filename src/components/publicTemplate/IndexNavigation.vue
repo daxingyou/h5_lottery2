@@ -55,7 +55,7 @@
                             </router-link>
                         </li>
                         <li>
-                            <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=89999" target="_blank" >
+                            <a :href="custUrl" target="_blank" >
                                 <div class="">
                                     <div>
                                         <i class="index_s index_s04"></i>
@@ -98,6 +98,7 @@
                 showNavigation:false ,
                 allLottery:{},
                 mainIndexBalance:'',
+                custUrl:''
             }
         },
         created:function () {
@@ -122,6 +123,7 @@
 
                 $('html,body').css({'height':'100%','overflow-y':'hidden'}) ; // 禁止页面滚动
             }) ;
+             this.getCustom()
 
         },
         methods:{
