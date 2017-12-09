@@ -148,7 +148,7 @@ export default {
     },
     mounted:function() {
       $('html,body').css('overflow-y','scroll' )  ;
-        this.getCustom()
+        this.custUrl=localStorage.getItem('Url');
   },
     methods: {
       //获取用户信息

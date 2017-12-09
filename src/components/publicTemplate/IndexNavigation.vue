@@ -84,7 +84,7 @@
     export default {
         name: 'IndexNavigation',
         mixins:[Mixin],
-        props:['el'],
+        props:['el',],
         components: {
 //            deposit,
         AutoCloseDialog,
@@ -102,7 +102,8 @@
             }
         },
         created:function () {
-            this.haslogin = this.ifLogined() ;
+            this.haslogin = this.ifLogined();
+            this.getCustom();
         } ,
         mounted:function() {
             var that = this;
@@ -123,7 +124,7 @@
 
                 $('html,body').css({'height':'100%','overflow-y':'hidden'}) ; // 禁止页面滚动
             }) ;
-             this.getCustom()
+//             this.getCustom()
 
         },
         methods:{
