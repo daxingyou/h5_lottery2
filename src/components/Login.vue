@@ -80,7 +80,7 @@ export default {
   mounted:function() {
        // this.username = 'admin' ;
       document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
-      this.custUrl=localStorage.getItem('Url');
+      this.getCustom()
 
   },
   methods: {

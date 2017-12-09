@@ -84,7 +84,7 @@
     export default {
         name: 'IndexNavigation',
         mixins:[Mixin],
-        props:['el',],
+        props:['el'],
         components: {
 //            deposit,
         AutoCloseDialog,
@@ -102,8 +102,7 @@
             }
         },
         created:function () {
-            this.haslogin = this.ifLogined();
-            this.custUrl=localStorage.getItem('Url');
+            this.haslogin = this.ifLogined() ;
         } ,
         mounted:function() {
             var that = this;
@@ -112,7 +111,7 @@
                 this.showNavigation = true;
 
                 that.mainIndexBalance = that.getCookie('balancePublic');
-                // console.log(  this.mainIndexBalance )
+                console.log(  this.mainIndexBalance )
                 // 调接口获取数据 添加到用户余额   
 
                 // console.log(that.lotteryID) 
@@ -124,7 +123,7 @@
 
                 $('html,body').css({'height':'100%','overflow-y':'hidden'}) ; // 禁止页面滚动
             }) ;
-//             this.getCustom()
+             this.getCustom()
 
         },
         methods:{

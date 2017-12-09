@@ -150,32 +150,32 @@
               </ul>
           </section>
           <!--20171116 新增優惠活動-->
-        <!--<section class="promoindex_area">-->
-              <!--<h3>-->
-                  <!--<img src="../../static/frist/images/sale/yhhd_04_07.png" alt="优惠活动">-->
-                  <!--<router-link :to="'/lobbyTemplate/promo'" style="float: right;">更多>></router-link>-->
-              <!--</h3>-->
-              <!--<a href="javascript:;" @click="setCid($event)" :data-val="cid">-->
-                  <!--<img :src="picture">-->
-              <!--</a>-->
-          <!--</section>-->
+        <section class="promoindex_area">
+              <h3>
+                  <img src="../../static/frist/images/sale/yhhd_04_07.png" alt="优惠活动">
+                  <router-link :to="'/lobbyTemplate/promo'" style="float: right;">更多>></router-link>
+              </h3>
+              <a href="javascript:;" @click="setCid($event)" :data-val="cid">
+                  <img :src="picture">
+              </a>
+          </section>
           <!--end 20171116 新增優惠活動-->
-          <!--<section class="cooper_area">-->
-              <!--<div class="cooper">-->
-                  <!--<h3><img src="../../static/frist/images/sale/hzjm_03.png" alt="合作加盟"></h3>-->
-                  <!--<ul>-->
-                      <!--<li>-->
-                          <!--<router-link class="icon_intro" :to="'/lobbyTemplate/tutorial'"></router-link>-->
-                      <!--</li>-->
-                      <!--<li>-->
-                          <!--<a class="icon_agent" href="javascript:;" @click="Continued()"></a>-->
-                      <!--</li>-->
-                      <!--<li>-->
-                          <!--<a class="icon_about" href="javascript:;" @click="Continued()" ></a>-->
-                      <!--</li>-->
-                  <!--</ul>-->
-              <!--</div>-->
-          <!--</section>-->
+          <section class="cooper_area">
+              <div class="cooper">
+                  <h3><img src="../../static/frist/images/sale/hzjm_03.png" alt="合作加盟"></h3>
+                  <ul>
+                      <li>
+                          <router-link class="icon_intro" :to="'/lobbyTemplate/tutorial'"></router-link>
+                      </li>
+                      <li>
+                          <a class="icon_agent" href="javascript:;" @click="Continued()"></a>
+                      </li>
+                      <li>
+                          <a class="icon_about" href="javascript:;" @click="Continued()" ></a>
+                      </li>
+                  </ul>
+              </div>
+          </section>
           <!--银行转账使用步骤-->
 
           <div class="modal" v-if="offFlag">
@@ -254,7 +254,6 @@ export default {
       this.allLottery = this.$refs.navone.getLotterys() ;
       this.gameHref = this.$refs.navone.gameHref ; // 拿子组件的值
       this.haslogin = this.$refs.navone.haslogin ; // 拿子组件的值
-
       if(this.haslogin){  // 只有登录状态才需要调余额
           this.getMemberBalance() ;
       }
@@ -446,31 +445,31 @@ export default {
            })
        },
       //获得优惠活动接口
-//      getActivity : function () {
-//          var _self=this;
-//          $.ajax({
-//              type:'get',
-//              url: _self.action.forseti + 'apid/cms/activity',
-//              data:{},
-//              success:(res)=>{
-//                  if(res.data.rows.length!=0){
-//                   _self.picture=_self.action.picurl+ res.data.rows[0].titlePic+'/0';
-//                   _self.cid=res.data.rows[0].cid
-//                  }
-//              },
-//              err:(res)=>{
-//
-//              }
-//          })
-//      },
-//      setCid:function (e) {
-//          var $src = $(e.currentTarget);
-//          var val = $src.data('val');
-//          if(val){
-//              localStorage.setItem('Cid',val);
-//              window.location = '/lobbyTemplate/promo_content' ;
-//          }
-//      },
+      getActivity : function () {
+          var _self=this;
+          $.ajax({
+              type:'get',
+              url: _self.action.forseti + 'apid/cms/activity',
+              data:{},
+              success:(res)=>{
+                  if(res.data.rows){
+                   _self.picture=_self.action.picurl+ res.data.rows[0].titlePic+'/0';
+                   _self.cid=res.data.rows[0].cid
+                  }
+              },
+              err:(res)=>{
+
+              }
+          })
+      },
+      setCid:function (e) {
+          var $src = $(e.currentTarget);
+          var val = $src.data('val');
+          if(val){
+              localStorage.setItem('Cid',val);
+              window.location = '/lobbyTemplate/promo_content' ;
+          }
+      },
   },
 
 }

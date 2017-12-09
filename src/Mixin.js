@@ -9,12 +9,12 @@ var MyMixin = {
     data:function(){
         return {
             action:{
-                forseti: 'http://121.58.234.210:19093/forseti/',  // 测试环境
-                uaa: 'http://121.58.234.210:19093/uaa/',   // 测试环境
-                hermes: 'http://121.58.234.210:19093/hermes/',   // 测试环境
-                // forseti: 'http://api.88bccp.com/forseti/',   // 线上环境
-                // uaa: 'http://api.88bccp.com/uaa/' ,  // 线上环境
-                // hermes: 'http://api.88bccp.com/hermes/',   // 线上环境
+                //forseti: 'http://121.58.234.210:19093/forseti/',  // 测试环境
+                //uaa: 'http://121.58.234.210:19093/uaa/',   // 测试环境
+                //hermes: 'http://121.58.234.210:19093/hermes/',   // 测试环境
+                 forseti: 'http://api.88bccp.com/forseti/',   // 线上环境
+                 uaa: 'http://api.88bccp.com/uaa/' ,  // 线上环境
+                 hermes: 'http://api.88bccp.com/hermes/',   // 线上环境
                 picurl: 'http://admin.baochiapi.com/photo/pic/',  // 图片地址
             },
 
@@ -761,6 +761,7 @@ var MyMixin = {
                 }
             })
         },
+
         //客服接口
         getCustom:function () {
             var _self=this;
@@ -771,7 +772,6 @@ var MyMixin = {
                 success:(res)=>{
                     if(res.data){
                         _self.custUrl=res.data.h5CustUrl
-                        localStorage.setItem('Url',_self.custUrl)
                     }
                 },
                 err:(res)=>{

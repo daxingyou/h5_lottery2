@@ -123,7 +123,7 @@ export default {
                       success:(res)=> {
                       _self.allLottery = res && res.data ;  // 全部彩种,通过 v.cid 跳转到每个彩种
                   resdata = res.data ;
-                  // console.log(res.data)
+                  console.log(res.data)
                   sessionStorage.gamelist= JSON.stringify(res.data) ; // 把彩种放在session 里
 
               },
