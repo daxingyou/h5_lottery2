@@ -103,7 +103,7 @@
         },
         created:function () {
             this.haslogin = this.ifLogined();
-            this.getCustom();
+            this.custUrl=localStorage.getItem('Url');
         } ,
         mounted:function() {
             var that = this;
