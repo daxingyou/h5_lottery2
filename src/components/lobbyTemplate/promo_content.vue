@@ -70,7 +70,7 @@ export default {
     //获得内容
     getContent:function () {
         var _self=this;
-        var cid=_self.getCookie('Cid')
+        var cid=localStorage.getItem('Cid');
         $.ajax({
             type:'get',
             url: _self.action.forseti + 'apid/cms/activityInfo',
