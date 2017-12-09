@@ -762,7 +762,22 @@ var MyMixin = {
             })
         },
 
+        //客服接口
+        getCustom:function () {
+            $.ajax({
+                type:'get',
+                url: _self.action.forseti + 'apid/config/custConfig',
+                data:{},
+                success:(res)=>{
+                    if(res.data.rows){
 
+                    }
+                },
+                err:(res)=>{
+
+                }
+            })
+        }
     }
 };
 export default MyMixin;
