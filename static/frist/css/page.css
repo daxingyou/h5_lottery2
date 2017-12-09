@@ -1000,11 +1000,11 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 .cooper_area .cooper > ul > li div.icon { width: 1.8rem; height: 1.8rem; background-image: url("/static/frist/images/border_bg02.png"); color: #fff; background-position-x: 50%; background-size: 150% 100%; -webkit-box-shadow: inset 0px 2px 1px 0px rgba(0, 0, 0, 0.4); box-shadow: inset 0px 2px 1px 0px rgba(0, 0, 0, 0.4); }
 .cooper_area .cooper > ul > li a {  background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width:2rem; height: 1.5rem; display: inline-block; vertical-align: middle; line-height: 1.5rem; margin-top: -.6rem; }
 .cooper_area .cooper > ul > li a::after { content: ''; position: absolute; display: block; top: 0; left: 0; left: .3rem; bottom: -.4rem; top: inherit; }
-.cooper_area .cooper > ul > li a.icon_intro {background-image: url("/static/frist/images/sale/xsjc_07.png");}
+.cooper_area .cooper > ul > li a.icon_intro {background-image: url("../images/sale/xsjc_07.png");}
 /*.cooper_area .cooper > ul > li a.icon_intro::after { content: '新手教程'; }*/
-.cooper_area .cooper > ul > li a.icon_agent {background-image: url("/static/frist/images/sale/dljm_07.png");  }
+.cooper_area .cooper > ul > li a.icon_agent {background-image: url("../images/sale/dljm_07.png"); }
 /*.cooper_area .cooper > ul > li a.icon_agent::after { content: '代理加盟'; }*/
-.cooper_area .cooper > ul > li a.icon_about {background-image: url("/static/frist/images/sale/gywm_07.png");}
+.cooper_area .cooper > ul > li a.icon_about {background-image: url("../images/sale/gywm_07.png");}
 /*.cooper_area .cooper > ul > li a.icon_about::after { content: '关于我们'; }*/
 
 /* 优惠活动 */
