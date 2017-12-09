@@ -151,7 +151,7 @@
           <!--20171116 新增優惠活動-->
         <section class="promoindex_area">
               <h3>
-                  <img src="static/frist/images//sale/yhhd_04_07.png" alt="优惠活动">
+                  <img src="../../static/frist/images/sale/yhhd_04_07.png" alt="优惠活动">
                   <router-link :to="'/lobbyTemplate/promo'" style="float: right;">更多>></router-link>
               </h3>
               <a href="javascript:;" @click="setCid($event)" :data-val="cid">
@@ -161,7 +161,7 @@
           <!--end 20171116 新增優惠活動-->
           <section class="cooper_area">
               <div class="cooper">
-                  <h3><img src="static/frist/images/sale/hzjm_03.png" alt="合作加盟"></h3>
+                  <h3><img src="../../static/frist/images/sale/hzjm_03.png" alt="合作加盟"></h3>
                   <ul>
                       <li>
                           <router-link class="icon_intro" :to="'/lobbyTemplate/tutorial'"></router-link>
@@ -248,7 +248,7 @@ export default {
       //this.changeOffFlag ();
 
     },
-  mounted:function() {
+    mounted:function() {
       $('html,body').css('overflow-y','scroll' )  ;
       this.allLottery = this.$refs.navone.getLotterys() ;
       this.gameHref = this.$refs.navone.gameHref ; // 拿子组件的值
@@ -277,7 +277,7 @@ export default {
        this.carouselImg();
        this.getActivity()
   },
-  methods:{
+    methods:{
       getBulletinsContent :function () {
           let  self=this ;
           let bulletinsArr=[];
@@ -468,8 +468,24 @@ export default {
               localStorage.setItem('Cid',val);
               window.location = '/lobbyTemplate/promo_content' ;
           }
-      }
+      },
 
+        //客服接口
+        getCustom:function () {
+            $.ajax({
+                type:'get',
+                url: _self.action.forseti + 'apid/config/custConfig',
+                data:{},
+                success:(res)=>{
+                    if(res.data.rows){
+
+                    }
+                },
+                err:(res)=>{
+
+                }
+            })
+        }
   },
 
 }
