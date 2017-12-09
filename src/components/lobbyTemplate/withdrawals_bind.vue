@@ -145,7 +145,7 @@ export default {
                     _self.realName=res.data.realName;
                     _self.bankAdd=res.data.bankAddress;
                     _self.bankNum=res.data.bankCard;
-                    _self.bankName=res.data.bankName;
+                    _self.bankId=res.data.bankId;
                 }
             },
             error: function (err) {
