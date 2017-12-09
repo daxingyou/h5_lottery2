@@ -275,7 +275,7 @@ export default {
        });*/
       //this.changeOffFlag();
        this.carouselImg();
-       this.getActivity();
+//       this.getActivity();
        this.getCustom()
   },
     methods:{
