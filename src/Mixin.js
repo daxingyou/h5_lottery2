@@ -764,13 +764,14 @@ var MyMixin = {
 
         //客服接口
         getCustom:function () {
+            var _self=this;
             $.ajax({
                 type:'get',
                 url: _self.action.forseti + 'apid/config/custConfig',
                 data:{},
                 success:(res)=>{
-                    if(res.data.rows){
-
+                    if(res.data){
+                        _self.custUrl=res.data.h5CustUrl
                     }
                 },
                 err:(res)=>{
