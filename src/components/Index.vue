@@ -253,6 +253,7 @@ export default {
       this.allLottery = this.$refs.navone.getLotterys() ;
       this.gameHref = this.$refs.navone.gameHref ; // 拿子组件的值
       this.haslogin = this.$refs.navone.haslogin ; // 拿子组件的值
+        this.custUrl=localStorage.getItem('Url');
       if(this.haslogin){  // 只有登录状态才需要调余额
           this.getMemberBalance() ;
       }
@@ -275,7 +276,7 @@ export default {
       //this.changeOffFlag();
        this.carouselImg();
        this.getActivity();
-       this.getCustom()
+//       this.getCustom()
   },
     methods:{
       getBulletinsContent :function () {
