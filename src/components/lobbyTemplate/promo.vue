@@ -114,7 +114,7 @@ export default {
       setCid:function (e) {
               var $src = $(e.currentTarget);
               var val = $src.data('val');
-              this.setCookie('Cid',val);
+              localStorage.setItem('Cid',val);
               window.location = '/lobbyTemplate/promo_content' ;
       }
   }
