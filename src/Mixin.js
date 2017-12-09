@@ -761,7 +761,6 @@ var MyMixin = {
                 }
             })
         },
-
         //客服接口
         getCustom:function () {
             var _self=this;
@@ -772,6 +771,7 @@ var MyMixin = {
                 success:(res)=>{
                     if(res.data){
                         _self.custUrl=res.data.h5CustUrl
+                        localStorage.setItem('Url',_self.custUrl)
                     }
                 },
                 err:(res)=>{
