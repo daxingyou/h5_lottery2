@@ -331,7 +331,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 /*.promo_area .promo_list li a { padding: 0.1rem 0.3rem; }*/
 .promo_area li { margin-bottom: 0.3rem; }
 .promo_area .promo_detail { padding: 0.3rem; }
-.promo_area img { display: block; width: calc( 100% - 2px); border: 1px solid transparent; }
+.promo_area img { display: block; width: calc( 100% - 2px); border: 1px solid transparent;border-radius: .1rem }
 .promo_area p { margin: .2rem 0;}
 .promo_area h3 { margin: .2rem 0 0.3rem; color: #4b280c; font-size: 0.43rem; }
 .promo_area strong { color: #980110; }
@@ -957,7 +957,7 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 .marquee > .news_title > span { display: inline-block; line-height: .7rem; height: .7rem; vertical-align: middle; }
 .marquee > .news_marque { line-height: .7rem; height: .7rem; overflow: hidden; }
 
-.tempWrap { width: 100% !important; }
+.tempWrap { width: 100% !important;min-height: 3.8rem; }
 
 .sys-notice { height: .7rem; line-height: .7rem; overflow: hidden; position: relative; width: 100%; }
 .sys-notice .bd { line-height: .7rem; height: .7rem; width: 7.7rem; margin-left:2.3rem;}
@@ -967,10 +967,10 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 
 #index_content { -webkit-box-sizing: border-box; box-sizing: border-box; padding-bottom: 1.5rem; }
 #index_content.content { margin-top: 0;  }
-#index_content.content > section h3 { text-align: left; margin-left: .4rem; margin-top: .2rem; }
-#index_content.content > section h3 > img { width: 3.25rem; }
-#index_content.content ul { overflow: hidden; max-width: 95%; margin: 0 auto; font-size: 0; }
-#index_content.content ul > li { display: inline-block; font-size: .32rem; text-align: center; width: 30%; }
+#index_content.content > section h3 { text-align: left; margin-left: .8rem; margin-top: .2rem; }
+#index_content.content > section h3 > img { width: 2.2rem; }
+#index_content.content ul { overflow: hidden; max-width: 95%; margin: .2rem auto; font-size: 0; }
+#index_content.content .hotgame_area ul > li { display: inline-block; font-size: .32rem; text-align: center; width: 30%; }
 
 /* 快速连结 */
 .account_area { padding: 0.3rem 0; margin:0 0.3rem; border-bottom: 1px solid rgba(56,32,30,0.2); }
@@ -992,25 +992,25 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 
 
 /* 合作加盟 */
-.cooper_area .cooper { width: 100%; margin: 0 auto; height: 4.5rem; padding: .2rem 0; position: relative; }
+.cooper_area .cooper { width: 100%; margin: 0 auto; height: 2.5rem; padding: .2rem 0; position: relative; }
 /*#index_content.content .cooper:before { content: ''; position: absolute; display: block; top: 0; left: 0; background-image: url("/static/frist/images/bottom_line.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; height: .5rem; width: 100%; -ms-transform: rotate(-180deg); -webkit-transform: rotate(-180deg); transform: rotate(-180deg); top: -.15rem; left: -30%; }*/
 .cooper_area .cooper > h3 { margin-top: .1rem; }
 .cooper_area .cooper > ul { text-align: center; margin: 0 auto; width: 100%; margin-top: .5rem; }
-.cooper_area .cooper > ul > li { width: 20%; height: 2.5rem; margin: 0 .5rem; line-height: 2.5rem; }
+.cooper_area .cooper > ul > li { width: 20%; height: 1.5rem; margin: 0 .5rem; line-height: 1.5rem; display: inline-block;}
 .cooper_area .cooper > ul > li div.icon { width: 1.8rem; height: 1.8rem; background-image: url("/static/frist/images/border_bg02.png"); color: #fff; background-position-x: 50%; background-size: 150% 100%; -webkit-box-shadow: inset 0px 2px 1px 0px rgba(0, 0, 0, 0.4); box-shadow: inset 0px 2px 1px 0px rgba(0, 0, 0, 0.4); }
-.cooper_area .cooper > ul > li a { background-image: url("/static/frist/images/other_link.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: 1.5rem; height: 1.5rem; display: inline-block; vertical-align: middle; line-height: 1.5rem; margin-top: -.6rem; }
+.cooper_area .cooper > ul > li a {  background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width:2rem; height: 1.5rem; display: inline-block; vertical-align: middle; line-height: 1.5rem; margin-top: -.6rem; }
 .cooper_area .cooper > ul > li a::after { content: ''; position: absolute; display: block; top: 0; left: 0; left: .3rem; bottom: -.4rem; top: inherit; }
-.cooper_area .cooper > ul > li a.icon_intro { background-position-y: top; }
-.cooper_area .cooper > ul > li a.icon_intro::after { content: '新手教程'; }
-.cooper_area .cooper > ul > li a.icon_agent { background-position-y: middle; }
-.cooper_area .cooper > ul > li a.icon_agent::after { content: '代理加盟'; }
-.cooper_area .cooper > ul > li a.icon_about { background-position-y: -2.98rem; }
-.cooper_area .cooper > ul > li a.icon_about::after { content: '关于我们'; }
+.cooper_area .cooper > ul > li a.icon_intro {background-image: url("/static/frist/images/sale/xsjc_07.png");}
+/*.cooper_area .cooper > ul > li a.icon_intro::after { content: '新手教程'; }*/
+.cooper_area .cooper > ul > li a.icon_agent {background-image: url("/static/frist/images/sale/dljm_07.png");  }
+/*.cooper_area .cooper > ul > li a.icon_agent::after { content: '代理加盟'; }*/
+.cooper_area .cooper > ul > li a.icon_about {background-image: url("/static/frist/images/sale/gywm_07.png");}
+/*.cooper_area .cooper > ul > li a.icon_about::after { content: '关于我们'; }*/
 
 /* 优惠活动 */
 .promoindex_area { position: relative; padding: 0.1rem 0 0.2rem; }
-.promoindex_area h3 { text-align: left; padding-right: 0.4rem; line-height: 0.6rem;  }
-.promoindex_area h3 a { float: right; text-decoration: underline !important; }
+.promoindex_area h3 { text-align: left; padding-right: 0.4rem; line-height: 0.6rem;    }
+.promoindex_area h3 a { float: right; text-decoration: none; color: #000;font-size: .3rem }
 .promoindex_area > a { margin: 0.2rem 0.4rem; display: block; border: 1px solid rgba(39, 64, 92, 0.65); }
 .promoindex_area > a img { display: block; width: 100%; }
 

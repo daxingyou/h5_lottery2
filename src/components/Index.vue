@@ -149,32 +149,32 @@
               </ul>
           </section>
           <!--20171116 新增優惠活動-->
-          <!--<section class="promoindex_area">
+        <section class="promoindex_area">
               <h3>
-                  <img src="static/frist/images/title_promos.png" alt="优惠活动">
-                  <a  @click="Continued()" style="float: right;">更多</a>
+                  <img src="static/frist/images//sale/yhhd_04_07.png" alt="优惠活动">
+                  <router-link :to="'/lobbyTemplate/promo'" style="float: right;">更多>></router-link>
               </h3>
               <a  @click="Continued()">
                   <img src="/static/frist/images/banner/promo-1.jpg">
               </a>
-          </section>-->
+          </section>
           <!--end 20171116 新增優惠活動-->
-          <!--<section class="cooper_area">
+          <section class="cooper_area">
               <div class="cooper">
-                  <h3><img src="static/frist/images/title_cooperation.png" alt="合作加盟"></h3>
+                  <h3><img src="static/frist/images/sale/hzjm_03.png" alt="合作加盟"></h3>
                   <ul>
                       <li>
-                          <div class="icon">
                           <router-link class="icon_intro" to="/lobbyTemplate/tutorial"></router-link>
-                      </div>
                       </li>
-                      <li><div class="icon"><router-link class="icon_agent" v-bind:to="'/lobbyTemplate/agent'"></router-link></div></li>
-                      <li><div class="icon">
-                          <router-link class="icon_about" to="/lobbyTemplate/about"></router-link></div>
+                      <li>
+                          <router-link class="icon_agent" v-bind:to="'/lobbyTemplate/agent'"></router-link>
+                      </li>
+                      <li>
+                          <router-link class="icon_about" to="/lobbyTemplate/about"></router-link>
                       </li>
                   </ul>
               </div>
-          </section>-->
+          </section>
           <!--银行转账使用步骤-->
 
           <div class="modal" v-if="offFlag">
@@ -449,4 +449,5 @@ export default {
 
 <style scoped>
   .to_lottery { display: block; position: relative; z-index: 7; }
+
 </style>
