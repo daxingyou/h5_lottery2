@@ -13,9 +13,9 @@
             <div class="promo_area">
                 <ul class="promo_list" v-for="list in banner">
                     <li>
-                        <img :src="list.titlePic">
                         <h3>{{list.title}}</h3>
-                        <p><a href="javascript:;" @click="setCid($event)" class="new_btn" :data-val="list.cid" ><span>查看详情</span></a></p>
+                        <img :src="list.titlePic">
+                        <p><a href="javascript:;" @click="setCid($event)" class="" :data-val="list.cid" ><span>查看详情</span></a></p>
                     </li>
                 </ul>
                 <!--<ul class="promo_list">-->
