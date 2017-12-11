@@ -904,7 +904,7 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .lobby_past_view .play_th{ text-align: right;padding-right: 0.3rem; }
 .lobby_past_view .prd_num > span { font-size: .35rem; float: left;}
 .lobby_past_view .prd_num02 { display: inline-block; padding-top: 0.1rem;  line-height: 0.79rem; font-size: .34rem;  text-align: right;  }
-.lobby_past_view .time { display: inline-block; background-color: #4b280c; width: 1.6rem; height: .45rem; border-radius: .19rem;  line-height: 0.45rem; margin: auto; font-size: 0.32rem; text-align: center; margin-top: 0.12rem; color: #d59559; }
+.lobby_past_view .time { display: inline-block; background-color: #4b280c; /*width: 1.6rem;*/ padding: 0 0.1rem; height: .45rem; border-radius: .19rem;  line-height: 0.45rem; margin: auto; font-size: 0.32rem; text-align: center; margin-top: 0.12rem; color: #d59559; }
 .lobby_past_view .pk10_top_number, .lobby_past_view .k3dice_top{ padding: 0.1rem 0; white-space: nowrap;}
 .lobby_past_view .pk10_top_number li{ display: inline-block; margin: 0 0.03rem; }
 .lobby_past_view .k3dice_top li{ display: inline-block; margin: 0 0.2rem; }
