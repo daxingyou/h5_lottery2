@@ -16,10 +16,10 @@
                 <div class="agent">
                     <div class="tabset">
                         <!-- Tab 1 -->
-                        <input type="radio" name="tabset" id="tab1" aria-controls="agent" checked @click="gotoTop">
+                        <input type="radio" name="tabset" id="tab1" aria-controls="agent" checked @click="gotoTop('dljm')">
                         <label for="tab1" class="tab1">代理加盟</label>
                         <!-- Tab 2 -->
-                        <input type="radio" name="tabset" id="tab2" aria-controls="commission" @click="gotoTop">
+                        <input type="radio" name="tabset" id="tab2" aria-controls="commission" @click="gotoTop('yjfa')">
                         <label for="tab2" class="tab2">佣金方案</label>
 
                         <div class="tab-panels">
@@ -136,22 +136,29 @@ export default {
   },
     data: function() {
         return {
-
+            copyTitle:'',
+            copyContent:''
         }
     },
   mounted:function() {
       $('html,body').css('overflow-y','scroll' )  ;
       //scrollTo(0,0); // 回到顶部
      document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
-
+      this.getCopyright('1','BT02')
 
   },
   methods: {
   // 回到顶部
-      gotoTop:function () {
+      gotoTop:function (name) {
           //scrollTo(0,0);
+          if(name=='dljm'){
+              this.getCopyright('1','BT02')
+          }
+          if(name=='yjfa'){
+              this.getCopyright('1','BT03')
+          }
           document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
-      }
+      },
 }
 
 }
