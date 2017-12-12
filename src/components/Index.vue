@@ -122,8 +122,8 @@
                     </a>
                       <a class="to_lottery" @click="gotoGame(haslogin)"  v-else>
                           <div :class="'badge'">
-                            <!--  <img v-lazy="lottery.imgUrl">-->
-                              <img v-lazy="'static/frist/images/lotteryicon/cp'+lottery.cid+'.png'">
+                              <img v-lazy="lottery.imgUrl">
+                              <!-- <img v-lazy="'static/frist/images/lotteryicon/cp'+lottery.cid+'.png'"> -->
                           </div>
                       </a>
                     <p>{{lottery.name}}</p>
@@ -150,7 +150,7 @@
               </ul>
           </section>
           <!--20171116 新增優惠活動-->
-        <!--<section class="promoindex_area">-->
+          <!--<section class="promoindex_area">-->
               <!--<h3>-->
                   <!--<img src="../../static/frist/images/sale/yhhd_04_07.png" alt="优惠活动">-->
                   <!--<router-link :to="'/lobbyTemplate/promo'" style="float: right;">更多>></router-link>-->

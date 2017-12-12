@@ -15,7 +15,7 @@ var MyMixin = {
                 // forseti: 'https://api.88bccp.com/forseti/',   // 线上环境
                 // uaa: 'https://api.88bccp.com/uaa/' ,  // 线上环境
                 // hermes: 'https://api.88bccp.com/hermes/',   // 线上环境
-                picurl: 'http://img.will888.cn/photo/pic/',  // 图片地址
+                picurl: 'https://img.will888.cn/photo/pic/',  // 图片地址
             },
 
             rootBalance:{

@@ -332,17 +332,18 @@
         <!--银行转账使用步骤-->
         <div class="modal" style="display: block">
             <div class="m_content">
-                <h2 class="title">★【充值提示】※
+                <h2 class="title">★【{{copyTitle}}】※
                     <a></a>
                 </h2>
-                <p class="content left">
-                    尊贵的会员您好！
-                    <br/>公司将陆续接入多项支付通道，
-                    <br/>WAP微信扫码、QQ扫码、网银支付、
-                    <br/>（银行转账进行支付，大额无忧！
-                    <br/>首选银行转账，可获得1%存款优惠
-                    <br/>（存1000赠10，次次存次次送）。
-                </p>
+                <div v-html="copyContent"></div>
+                <!--<p class="content left">-->
+                    <!--尊贵的会员您好！-->
+                    <!--<br/>公司将陆续接入多项支付通道，-->
+                    <!--<br/>WAP微信扫码、QQ扫码、网银支付、-->
+                    <!--<br/>（银行转账进行支付，大额无忧！-->
+                    <!--<br/>首选银行转账，可获得1%存款优惠-->
+                    <!--<br/>（存1000赠10，次次存次次送）。-->
+                <!--</p>-->
                 <div class="action">
                     <a class="new_btn"><span>确定</span></a>
                 </div>
@@ -394,6 +395,8 @@ export default {
             bankInfo: {
                 bankCode: '', // 默认工商银行
             },
+            copyTitle:'',
+            copyContent:''
         }
     },
     created:function () {
@@ -424,6 +427,7 @@ export default {
           });
           $("#paydate").mobiscroll().datetime({ });
       },500)
+      _self.getCopyright()
   },
   methods: {
       // 清空输入金额
@@ -896,6 +900,28 @@ export default {
                   _self.$refs.autoCloseDialog.open('支付失败') ;
               }
           })
+      },
+      //优惠弹窗
+      getCopyright:function () {
+           var _self=this;
+           var senddata={
+                type:'3',
+                code:'AT01'};
+           $.ajax({
+               type: 'get',
+               url: _self.action.forseti + 'apid/cms/copyright',
+               data: senddata ,
+               success: function(res){
+                   if(res.err=="SUCCESS"){
+                        _self.copyTitle=res.data[0].clientTitle;
+                        _self.copyContent=res.data[0].content;
+                   }
+
+               },
+               error: function (res) {
+
+               }
+           })
       }
 }
 
