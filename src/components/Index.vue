@@ -116,8 +116,8 @@
                   <li v-for="(lottery,index) in allLottery" v-if="index<7"> <!-- 只展示前面7个 -->
                     <a class="to_lottery" :href="'/'+gameHref[lottery.cid]" v-if="haslogin">
                       <div :class="'badge'">
-                       <!-- <img v-lazy="lottery.imgUrl">-->
-                          <img v-lazy="'static/frist/images/lotteryicon/cp'+lottery.cid+'.png'">
+                        <img v-lazy="lottery.imgUrl">
+                          <!-- <img v-lazy="'static/frist/images/lotteryicon/cp'+lottery.cid+'.png'"> -->
                       </div>
                     </a>
                       <a class="to_lottery" @click="gotoGame(haslogin)"  v-else>
@@ -133,7 +133,8 @@
                     <li>
                         <a href="javascript:;" class="more-games">
                             <div class="badge">
-                                <img src="/static/frist/images/lotteryicon/logo_more.png" lazy="loaded">
+                                <!-- <img src="/static/frist/images/lotteryicon/logo_more.png" lazy="loaded"> -->
+                                <img src="http://img.will888.cn/photo/pic/T1hRJTByDT1RCvBVdK/0" lazy="loaded">
                             </div>
                         </a>
                         <p>更多游戏</p>
@@ -141,7 +142,7 @@
                     <li >
                         <a href="javascript:;" @click="Continued()">
                             <div class="badge">
-                                <img src="/static/frist/images/lotteryicon/logo_app.png" lazy="loaded">
+                                <img src="http://img.will888.cn/photo/pic/T1haJTByDT1RCvBVdK/0" lazy="loaded">
                             </div>
                         </a>
                         <p>APP下载</p>
