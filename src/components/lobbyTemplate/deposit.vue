@@ -427,7 +427,7 @@ export default {
           });
           $("#paydate").mobiscroll().datetime({ });
       },500)
-      _self.getCopyright()
+      _self.getCopyright('3','AT01')
   },
   methods: {
       // 清空输入金额
@@ -901,28 +901,6 @@ export default {
               }
           })
       },
-      //存款弹窗
-      getCopyright:function () {
-           var _self=this;
-           var senddata={
-                type:'3',
-                code:'AT01'};
-           $.ajax({
-               type: 'get',
-               url: _self.action.forseti + 'apid/cms/copyright',
-               data: senddata ,
-               success: function(res){
-                   if(res.err=="SUCCESS"){
-                        _self.copyTitle=res.data[0].clientTitle;
-                        _self.copyContent=res.data[0].content;
-                   }
-
-               },
-               error: function (res) {
-
-               }
-           })
-      }
 }
 
 }

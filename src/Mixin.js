@@ -779,6 +779,28 @@ var MyMixin = {
 
                 }
             })
+        },
+        //网站说明文案
+        getCopyright:function (type,code) {
+            var _self=this;
+            var senddata={
+                type:type,
+                code:code};
+            $.ajax({
+                type: 'get',
+                url: _self.action.forseti + 'apid/cms/copyright',
+                data: senddata ,
+                success: function(res){
+                    if(res.err=="SUCCESS"){
+                        _self.copyTitle=res.data[0].title;
+                        _self.copyContent=res.data[0].content;
+                    }
+
+                },
+                error: function (res) {
+
+                }
+            })
         }
     }
 };

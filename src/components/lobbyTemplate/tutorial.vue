@@ -66,13 +66,15 @@ export default {
   },
     data: function() {
         return {
-
+            copyTitle:'',
+            copyContent:''
         }
     },
   mounted:function() {
       $('html,body').css('overflow-y','scroll' )  ;
       //scrollTo(0,0); // 回到顶部
       document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
+      this. getCopyright('1','BT01')
   },
   methods: {
 
