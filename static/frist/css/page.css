@@ -257,7 +257,7 @@ footer.bot_nav ul li a span.Footer-font { display: block; }
 
 .btn.round { -webkit-border-radius: 0.5rem; -moz-border-radius: 0.5rem; -ms-border-radius: 0.5rem; border-radius: 0.5rem; }*/*/
 
-label.red { color: #d43939; text-align: left; display: block; margin-top: .2rem; }
+label.red { color: #e41616; text-align: left; display: block; margin-top: .2rem; }
 
 
 
@@ -1079,7 +1079,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 .form_g.text select option { background-color: rgba(18, 21, 30, 0.9); font-size: 0.1rem; }
 
 .form_g.money input { color: #ffbd00; }
-.form_g ~ .error-message.red { color: #b41a17; margin-top: 0.1rem; margin-left: 2.4rem; display: inline-block;}
+.form_g ~ .error-message.red { color: #e41616; margin-top: 0.1rem; margin-left: 2.4rem; display: inline-block;}
 
 /*.account > legend { background-image: url("/static/frist/images/account.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; }*/
 
