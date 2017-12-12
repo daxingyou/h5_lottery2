@@ -901,7 +901,7 @@ export default {
               }
           })
       },
-      //优惠弹窗
+      //存款弹窗
       getCopyright:function () {
            var _self=this;
            var senddata={
