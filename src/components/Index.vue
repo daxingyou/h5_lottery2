@@ -122,8 +122,8 @@
                     </a>
                       <a class="to_lottery" @click="gotoGame(haslogin)"  v-else>
                           <div :class="'badge'">
-                            <!--  <img v-lazy="lottery.imgUrl">-->
-                              <img v-lazy="'static/frist/images/lotteryicon/cp'+lottery.cid+'.png'">
+                              <img v-lazy="lottery.imgUrl">
+                              <!-- <img v-lazy="'static/frist/images/lotteryicon/cp'+lottery.cid+'.png'"> -->
                           </div>
                       </a>
                     <p>{{lottery.name}}</p>
