@@ -352,6 +352,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .icon.icon_record{ background-position: -3.2rem -0.64rem;}
 .icon.icon_member{ background-position: -3.84rem -0.64rem;}
 .icon.icon_r_record{ background-position: -1.28rem 0; }
+.icon.icon_w_record{ background-position: -4.45rem 0;}
 .icon.icon_r_pastview{ background-position: -1.92rem 0; }
 .icon.icon_r_roadbeads{ background-position: -2.56rem 0; }
 .icon.icon_r_long { background-position: -3.2rem 0; }

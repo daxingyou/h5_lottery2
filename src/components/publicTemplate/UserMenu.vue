@@ -41,7 +41,7 @@
                     </li>
                     <li class="r_today">
                         <!-- <img src="/static/frist/images/right/6.png"> -->
-                        <p><span class="icon icon_r_record"></span>今日输赢</p>
+                        <p><span class="icon icon_w_record"></span>今日输赢</p>
                        <!-- <div :class="'today_payoff '+ (payoff>=0?' win_payoff':'lose_payoff')">({{(payoff>=0?'+':'')}}{{fortMoney(roundAmt(payoff))}})</div>-->
                         <div class="today_payoff win_payoff" v-if="payoff>=0">+{{fortMoney(roundAmt(payoff))}}</div>
                         <div class="today_payoff lose_payoff" v-else>-{{fortMoney(roundAmt(payoff).toString().replace(/-/g,''))}}</div>
