@@ -102,6 +102,8 @@ export default {
              memberId:'',
              showHint:false,
              hintWord:'',
+             drawMinMoney:'',
+             drawMaxMoney:'',
              PaySubmit:false //重复提交
 
         }
@@ -122,7 +124,8 @@ export default {
 
           var ifInCorrect = this.isPositiveNum( userMoney )
           var defi = ( userMoney<100  ||  userMoney>10000)
-          var notEnough = (userMoney > 3000 )
+          // var notEnough = (userMoney > 3000 )
+          var notEnough = (userMoney > this.memBalance )
 
           if(!ifInCorrect){
              this.hintWord = "请输入正确的存款金额"
@@ -304,12 +307,12 @@ export default {
 </script>
 <style type="text/css">
   .withdrawlHint{
-    display: block;
-    padding-left: 132px;
-    color: red;
-    height: 50px;
-    line-height: 50px;
-    /*background-color: rgba(0, 0, 0, 0.5);*/
-    margin-top: 10px;
+        display: block;
+        padding-left: 2.444rem;
+        color: red;
+        height: 1rem;
+        line-height: 1rem;
+        /*background-color: rgba(0, 0, 0, 0.5);*/
+        margin-top: 0.185rem;
   }
 </style>

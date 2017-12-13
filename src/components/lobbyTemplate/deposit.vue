@@ -395,6 +395,8 @@ export default {
                 bankCode: '', // 默认工商银行
             },
             copyTitle:'',
+            depositMinMoney:'',
+            depositMaxMoney:'',
             copyContent:'',
             showDepositHint:false,
             hintContent:'',
@@ -942,11 +944,11 @@ export default {
 <style type="text/css">
     #depositHint{
         display: block;
-        padding-left: 132px;
+        padding-left: 2.444rem;
         color: red;
-        height: 50px;
-        line-height: 50px;
+        height: 1rem;
+        line-height: 1rem;
         /*background-color: rgba(0, 0, 0, 0.5);*/
-        margin-top: 10px;
+        margin-top: 0.185rem;
     }
 </style>
