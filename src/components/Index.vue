@@ -133,16 +133,16 @@
                     <li>
                         <a href="javascript:;" class="more-games">
                             <div class="badge">
-                                <!-- <img src="/static/frist/images/lotteryicon/logo_more.png" lazy="loaded"> -->
-                                <img src="http://img.will888.cn/photo/pic/T1hRJTByDT1RCvBVdK/0" lazy="loaded">
+                                <img src="/static/frist/images/lotteryicon/logo_more.png" lazy="loaded">
+                                <!-- <img src="http://img.will888.cn/photo/pic/T1hRJTByDT1RCvBVdK/0" lazy="loaded"> -->
                             </div>
                         </a>
                         <p>更多游戏</p>
                     </li>
                     <li >
                         <a href="javascript:;" @click="Continued()">
-                            <div class="badge">
-                                <img src="http://img.will888.cn/photo/pic/T1haJTByDT1RCvBVdK/0" lazy="loaded">
+                            <div class="badge"> 
+                                <img src="/static/frist/images/lotteryicon/logo_app.png" lazy="loaded">
                             </div>
                         </a>
                         <p>APP下载</p>
@@ -358,7 +358,7 @@ export default {
           var _self=this;
           $.ajax({
               type: 'GET',
-              url:  _self.action.forseti + 'apis/cms/popText',
+              url:  _self.action.forseti + 'apid/cms/popText',
               data:{},
               success:(res)=>{
                   if(!res.data ||!res.data[0]||!res.data[0].title){
