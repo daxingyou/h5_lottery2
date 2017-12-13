@@ -22,9 +22,10 @@
                                         <fieldset>
                                             <div class="form_g text money">
                                                 <legend>充值金额</legend>
-                                                <input type="tel" placeholder="请输入充值金额" v-model="paymount">
+                                                <input type="tel" placeholder="请输入充值金额" v-model="paymount"  @input = 'checkDepositMoney(paymount)'>
                                                 <i class="close" @click="clearMoney()"></i>
                                             </div>
+                                            <div  v-if = 'showDepositHint' class="depositHint" id="depositHint"> {{ hintContent }}</div>
                                         </fieldset>
                                     </form>
 
@@ -120,9 +121,10 @@
                                         <fieldset>
                                             <div class="form_g text money">
                                                 <legend>充值金额</legend>
-                                                <input type="tel" placeholder=" " v-model="paymount" readonly>
+                                                <input type="tel" placeholder=" " class="depositmount"  v-model="paymount"    readonly>
                                             <!--  <i class="close"></i>-->
                                             </div>
+                                            <!-- <div  v-if = 'showDepositHint' class="depositHint" id="depositHint" > 请输入正确金额</div>  -->
                                         </fieldset>
                                     </form>
                                     <div class="step03 pay_list webbank_pay">
@@ -180,7 +182,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                                 <!-- 扫码支付结束  -->
 
@@ -354,10 +355,8 @@
         <AutoCloseDialog ref="autoCloseDialog" text=" " type="" />
 
     </div>
-
-
-
 </template>
+
 
 <script>
 
@@ -396,7 +395,9 @@ export default {
                 bankCode: '', // 默认工商银行
             },
             copyTitle:'',
-            copyContent:''
+            copyContent:'',
+            showDepositHint:false,
+            hintContent:'',
         }
     },
     created:function () {
@@ -430,6 +431,30 @@ export default {
       _self.getCopyright('3','AT01')
   },
   methods: {
+
+    checkDepositMoney:function(paymount){
+
+        var ifInCorrect = this.isPositiveNum( paymount )
+        if(!ifInCorrect){
+           // $('#depositHint').text('请输入正确的存款金额')
+           this.hintContent = "请输入正确的存款金额"
+           this.showDepositHint = true;
+        }else{
+           this.showDepositHint = false;
+            if(   (paymount>=10000 ||paymount<100)&&( Number(paymount)!= 0  ) ){
+               // $('#depositHint').text('存款金额必须在范围内')
+               this.hintContent = "存款金额必须在范围内"
+               this.showDepositHint = true;
+            }else{
+                this.showDepositHint = false;
+            }
+
+        }
+
+        this.paymount = paymount;
+
+    },
+
       // 清空输入金额
       clearMoney:function () {
         this.paymount = ''  ;
@@ -471,11 +496,19 @@ export default {
               // _self.openGame()
 
           // 转账
-          $('.payWayTranster').on('click','.item',function (e) {
+            $('.payWayTranster').on('click','.item',function (e) {
               if(_self.paymount =='' || !_self.isPositiveNum(_self.paymount)){
                   _self.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
                   return false ;
-              }
+            }
+
+
+            if( ( _self.paymount>=10000 ||_self.paymount<100)&&( Number(_self.paymount)!= 0  ) ){
+                  _self.$refs.autoCloseDialog.open('存款金额必须在范围内') ;
+                  return false ;
+            }
+
+
               var $src = $(e.currentTarget);
               var val = $src.data('type');
 
@@ -905,3 +938,15 @@ export default {
 
 }
 </script>
+
+<style type="text/css">
+    #depositHint{
+        display: block;
+        padding-left: 132px;
+        color: red;
+        height: 50px;
+        line-height: 50px;
+        /*background-color: rgba(0, 0, 0, 0.5);*/
+        margin-top: 10px;
+    }
+</style>
