@@ -116,8 +116,8 @@
                   <li v-for="(lottery,index) in allLottery" v-if="index<7"> <!-- 只展示前面7个 -->
                     <a class="to_lottery" :href="'/'+gameHref[lottery.cid]" v-if="haslogin">
                       <div :class="'badge'">
-                        <img v-lazy="lottery.imgUrl">
-                          <!-- <img v-lazy="'static/frist/images/lotteryicon/cp'+lottery.cid+'.png'"> -->
+                        <!--<img v-lazy="lottery.imgUrl">-->
+                           <img v-lazy="'static/frist/images/lotteryicon/cp'+lottery.cid+'.png'">
                       </div>
                     </a>
                       <a class="to_lottery" @click="gotoGame(haslogin)"  v-else>
@@ -301,29 +301,7 @@ export default {
               }
           })
       },
-     //试玩
-      demoPlay :function () {
-           var _self=this;
-           $.ajax({
-               type: 'post',
-               headers: {Authorization: 'Basic d2ViX2FwcDo='},
-               url: _self.action.uaa + 'apis/member/testLogin',
-               data:{},
-               success:(res)=>{
-                   if(res.err == 'SUCCESS'){ // 登录成功
-                       _self.setCookie("access_token", res.data.access_token);  // 把登录token放在cookie里面
-                       _self.setCookie("username", res.data.username);  // 把登录用户名放在cookie里面
-                       _self.setCookie('acType',res.data.acType);   //把玩家类型放在cookie里面
-                       _self.$refs.autoCloseDialog.open('登录成功','','icon_check','d_check') ;
-                       setTimeout(function () {
-                           window.location = '/' ;
-                       },1000)
-                   }else{
-                       this.$refs.autoCloseDialog.open(res.cnMsg) ;
-                   }
-               }
-            })
-       },
+
       //判断是否为游客,
       CheckDemoPlay:function (cla) {
           var _self =this;
