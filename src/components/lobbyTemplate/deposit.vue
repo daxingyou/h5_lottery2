@@ -22,14 +22,14 @@
                                         <fieldset>
                                             <div class="form_g text money">
                                                 <legend>充值金额</legend>
-                                                <input type="tel" placeholder="请输入充值金额" v-model="paymount"  @input = 'checkDepositMoney(paymount)'>
+                                                <input type="tel" placeholder="请输入充值金额" v-model="paymount"   >
                                                 <i class="close" @click="clearMoney()"></i>
                                             </div>
                                             <div  v-if = 'showDepositHint' class="depositHint" id="depositHint"> {{ hintContent }}</div>
                                         </fieldset>
                                     </form>
 
-                                     <div class="step03 pay_way  payWayTranster">
+                                     <div class="step03 pay_way  payWayTranster"  v-if = 'notNetPayShow' >
                                         <ul class="arrow_list_dark">
                                             <!--<li>-->
                                                 <!--<a class="item" href="javascript:;" data-type="2">-->
@@ -64,7 +64,7 @@
 
                                     
                                     <!-- 网络支付 -->
-                                    <div class="step03 pay_way  payWayNet payWayTranster">
+                                    <div class="step03 pay_way  payWayNet payWayTranster"  v-if = 'netPayShow'>
                                         <ul class="arrow_list_dark">
                                             <li v-for = '(payWay,key) in payWays' >
                                                 <a class="item" href="javascript:;" data-type='6'   @click="onlinePay(payWay.rsNameId,'3')" >
@@ -78,7 +78,7 @@
                                         </ul>
                                     </div>
                                     <!-- 下面是银行转账和在线支付 -->
-                                    <div class="step03 pay_way  payWayTranster">
+                                    <div class="step03 pay_way  payWayTranster"  v-if = 'notNetPayShow'>
                                         <ul class="arrow_list_dark">
                                             <!--<li>-->
                                                 <!--<a class="item" href="javascript:;" data-type="2">-->
@@ -400,13 +400,19 @@ export default {
             copyContent:'',
             showDepositHint:false,
             hintContent:'',
+
+            notNetPayShow:true,
+            netPayShow:true,
+
         }
     },
     created:function () {
         this.getPayWayList()
     },
   mounted:function() {
-    // this.getPayWayList()
+
+    // this.getLimit()
+
       var _self = this ;
         $('html,body').css('overflow-y','scroll' )  ;
       _self.choosePayMoth() ;
@@ -434,28 +440,30 @@ export default {
   },
   methods: {
 
-    checkDepositMoney:function(paymount){
+    // 存款检测暂时取消
+    // checkDepositMoney:function(paymount){
 
-        var ifInCorrect = this.isPositiveNum( paymount )
-        if(!ifInCorrect){
-           // $('#depositHint').text('请输入正确的存款金额')
-           this.hintContent = "请输入正确的存款金额"
-           this.showDepositHint = true;
-        }else{
-           this.showDepositHint = false;
-            if(   (paymount>=10000 ||paymount<100)&&( Number(paymount)!= 0  ) ){
-               // $('#depositHint').text('存款金额必须在范围内')
-               this.hintContent = "存款金额必须在范围内"
-               this.showDepositHint = true;
-            }else{
-                this.showDepositHint = false;
-            }
+    //     var ifInCorrect = this.isPositiveNum( paymount )
+    //     if(!ifInCorrect){
+    //        // $('#depositHint').text('请输入正确的存款金额')
+    //        this.hintContent = "请输入正确的存款金额"
+    //        this.showDepositHint = true;
+    //     }else{
+    //        this.showDepositHint = false;
+    //         if(   (paymount>=10000 ||paymount<100)&&( Number(paymount)!= 0  ) ){
+    //            // $('#depositHint').text('存款金额必须在范围内')
+    //            this.hintContent = "存款金额必须在范围内"
+    //            this.showDepositHint = true;
+    //         }else{
+    //             this.showDepositHint = false;             
 
-        }
+    //         }
 
-        this.paymount = paymount;
+    //     }
 
-    },
+    //     this.paymount = paymount;
+
+    // },
 
       // 清空输入金额
       clearMoney:function () {
@@ -471,13 +479,6 @@ export default {
           });
       },
 
-   // 金额验证
-    /*  checkAmount:function () {
-        if(this.paymount =='' || !this.isPositiveNum(this.paymount)){
-            this.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
-            return false ;
-        }
-      },*/
       // 选择支付方式
       choosePayMoth:function () {
           var _self = this ;
@@ -493,24 +494,22 @@ export default {
 
         // })
 
-              // alert(val)
-
-              // _self.openGame()
-
           // 转账
             $('.payWayTranster').on('click','.item',function (e) {
               if(_self.paymount =='' || !_self.isPositiveNum(_self.paymount)){
                   _self.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
                   return false ;
-            }
+                }
+                    // if( ( _self.paymount>=10000 ||_self.paymount<100)&&( Number(_self.paymount)!= 0  ) ){
+                    //       _self.$refs.autoCloseDialog.open('存款金额必须在范围内') ;
+                    //       return false ;
+                    // }
+                    // 范围暂时取消，只是将限额确定在大于100
 
-
-            if( ( _self.paymount>=10000 ||_self.paymount<100)&&( Number(_self.paymount)!= 0  ) ){
-                  _self.$refs.autoCloseDialog.open('存款金额必须在范围内') ;
-                  return false ;
-            }
-
-
+                    // if( (_self.paymount<100)||( Number(_self.paymount)!= 0  ) ){
+                    //       _self.$refs.autoCloseDialog.open('存款最低金额100元') ;
+                    //       return false ;
+                    // }
               var $src = $(e.currentTarget);
               var val = $src.data('type');
 
@@ -576,11 +575,8 @@ export default {
               success: function(res){
                //  console.log(res)
                // console.log( res.data.splice(0,4) )
-
                res.data = res.data;
-
 //                console.log(res.data)
-
                 _self.payWays = res.data;
 
                 // console.log( _self.payWays  )
@@ -591,7 +587,6 @@ export default {
                 // _self.banklist = res.data ;
               },
               error: function (e) {
-                // alert(4)
                   _self.errorAction(e) ;
               }
           });

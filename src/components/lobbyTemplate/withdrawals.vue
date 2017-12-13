@@ -104,7 +104,8 @@ export default {
              hintWord:'',
              drawMinMoney:'',
              drawMaxMoney:'',
-             PaySubmit:false //重复提交
+             PaySubmit:false ,//重复提交
+             inCorrectMessage:'提款金额必须在范围内',
 
         }
     },
@@ -113,9 +114,9 @@ export default {
         this.getUserInfo();
     },
   mounted:function() {
+
       $('html,body').css('overflow-y','scroll' )  ;
-
-
+      // this.getLimit()
   },
   methods: {
       // 检查提款数据并提示
@@ -124,8 +125,8 @@ export default {
 
           var ifInCorrect = this.isPositiveNum( userMoney )
           var defi = ( userMoney<100  ||  userMoney>10000)
-          // var notEnough = (userMoney > 3000 )
-          var notEnough = (userMoney > this.memBalance )
+          var notEnough = (userMoney > 300000 )
+          // var notEnough = (userMoney > this.memBalance )
 
           if(!ifInCorrect){
              this.hintWord = "请输入正确的存款金额"
@@ -139,7 +140,7 @@ export default {
                 this.showHint = false;
                 if(defi){
                   this.showHint = true;
-                  this.hintWord = '提款金额必须在范围内';
+                  this.hintWord = this.inCorrectMessage;
                 }else{
                   this.showHint = false;
                 }
@@ -149,7 +150,6 @@ export default {
             this.showHint = false;
           }
       },
-
 
       //获取限额
     // getLimit:function () {
@@ -169,8 +169,6 @@ export default {
     //           }
     //       });
     //   },
-
-
 
       //清除model数据,cl元素class
       clearVal :function (cl) {
@@ -268,7 +266,7 @@ export default {
                   }
 
                   if(_self.userMoney>10000){
-                      _self.$refs.autoCloseDialog.open('款金额必须在范围内');
+                      _self.$refs.autoCloseDialog.open('提款金额必须在范围内');
                       return
                   }
 
@@ -281,6 +279,7 @@ export default {
                       _self.$refs.autoCloseDialog.open('请输入正确金额');
                       return false
                   }
+
                   if(_self.cashPassword==''||! _self.positiveNum(_self.cashPassword)||_self.cashPassword.length!=4){
                       _self.$refs.autoCloseDialog.open('请输入4位数字密码');
                       return false
