@@ -761,6 +761,28 @@ export default {
               }
           });
       },
+
+      //获取限额
+    // getLimit:function () {
+    //       var _self = this ;
+    //       $.ajax({
+    //           type: 'get',
+    //           headers: {
+    //               "Authorization": "bearer  " + this.getAccessToken ,
+    //           },
+    //           url: _self.action.forseti + 'api/payment/incomeBank',
+    //           data: { },
+    //           success: function(res){
+    //             _self.userInfo = res.data ;
+    //           },
+    //           error: function (e) {
+    //               _self.errorAction(e) ;
+    //           }
+    //       });
+    //   },
+
+
+
       // 银行转账提交
       submitBankAction:function () {
           var _self = this ;
@@ -946,8 +968,9 @@ export default {
         display: block;
         padding-left: 2.444rem;
         color: red;
-        height: 1rem;
-        line-height: 1rem;
+        font-size: 0.34rem;
+        height: 0.6rem;
+        line-height: 0.6rem;
         /*background-color: rgba(0, 0, 0, 0.5);*/
         margin-top: 0.185rem;
     }
