@@ -358,7 +358,7 @@ export default {
           var _self=this;
           $.ajax({
               type: 'GET',
-              url:  _self.action.forseti + 'apis/cms/popText',
+              url:  _self.action.forseti + 'apis/cmd/popText',
               data:{},
               success:(res)=>{
                   if(!res.data ||!res.data[0]||!res.data[0].title){
