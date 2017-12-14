@@ -45,9 +45,11 @@
                             <fieldset>
                                 <div class="form_g text">
                                     <legend>取款金额</legend>
-                                    <input type="text" v-model="userMoney"  class="money" placeholder="取款金额最低100元" >
+                                    <input type="text" v-model="userMoney"  class="money" placeholder="取款金额最低100元" @input = 'checkWithdrawMoneyNow(userMoney,"money")' >
                                     <i class="close close1" @click="ClearInput('close1','money')"></i>
                                 </div>
+                                <div  v-if = 'showHint' class="withdrawlHint" id="withdrawlHint"> {{hintWord}} </div>
+
                             </fieldset>
                             <fieldset>
                                 <div class="form_g text">
@@ -98,7 +100,12 @@ export default {
              bankId:'',
              acType:'',
              memberId:'',
-             PaySubmit:false //重复提交
+             showHint:false,
+             hintWord:'',
+             drawMinMoney:'',
+             drawMaxMoney:'',
+             PaySubmit:false ,//重复提交
+             inCorrectMessage:'提款金额必须在范围内',
 
         }
     },
@@ -107,11 +114,67 @@ export default {
         this.getUserInfo();
     },
   mounted:function() {
+
       $('html,body').css('overflow-y','scroll' )  ;
-
-
+      this.getLimit()
   },
   methods: {
+      // 检查提款数据并提示
+
+      checkWithdrawMoneyNow:function(userMoney,el){
+
+          var ifInCorrect = this.isPositiveNum( userMoney )
+          var defi = ( userMoney<this.drawMinMoney  ||  userMoney> this.drawMaxMoney)
+          // var notEnough = (userMoney > 3000000 )
+          var notEnough = (userMoney > this.memBalance )
+
+          if(!ifInCorrect){
+             this.hintWord = "请输入正确的存款金额"
+             this.showHint = true;
+          }else{
+            this.showHint = false;
+            if( notEnough){
+                this.showHint = true;
+                this.hintWord = '余额不足,请重新输入';
+            }else{
+                this.showHint = false;
+                if(defi){
+                  this.showHint = true;
+                  this.hintWord = this.inCorrectMessage;
+                }else{
+                  this.showHint = false;
+                }
+            }
+          }
+          if( userMoney == ''  ){
+            this.showHint = false;
+          }
+      },
+
+      //获取限额
+    getLimit:function () {
+          var _self = this ;
+          $.ajax({
+              type: 'get',
+              headers: {
+                  "Authorization": "bearer  " + this.getAccessToken ,
+              },
+              url: _self.action.uaa + 'api/data/member/discount',
+              data: { },
+              success: function(res){
+                console.log(res.data.dispCapped)
+                console.log(res.data.dispLower)
+                _self.drawMaxMoney = res.data.dispCapped;
+                _self.drawMinMoney = res.data.dispLower;
+
+
+              },
+              error: function (e) {
+                  _self.errorAction(e) ;
+              }
+          });
+      },
+
       //清除model数据,cl元素class
       clearVal :function (cl) {
 
@@ -197,6 +260,7 @@ export default {
       //提款接口
       WithdrawalsAction: function () {
                   var _self=this;
+
                   if(_self.PaySubmit){
                        return  false;
                   }
@@ -205,6 +269,12 @@ export default {
                       _self.$refs.autoCloseDialog.open('提款余额不足');
                       return
                   }
+
+                  if(_self.userMoney>10000){
+                      _self.$refs.autoCloseDialog.open('提款金额必须在范围内');
+                      return
+                  }
+
                   if(_self.userMoney<100){
                       _self.$refs.autoCloseDialog.open('提款最低金额为100元');
                       return
@@ -214,6 +284,7 @@ export default {
                       _self.$refs.autoCloseDialog.open('请输入正确金额');
                       return false
                   }
+
                   if(_self.cashPassword==''||! _self.positiveNum(_self.cashPassword)||_self.cashPassword.length!=4){
                       _self.$refs.autoCloseDialog.open('请输入4位数字密码');
                       return false
@@ -260,3 +331,14 @@ export default {
   }
 }
 </script>
+<style type="text/css">
+  .withdrawlHint{
+        display: block;
+        padding-left: 2.444rem;
+        color: red;
+        height: 1rem;
+        line-height: 1rem;
+        /*background-color: rgba(0, 0, 0, 0.5);*/
+        margin-top: 0.185rem;
+  }
+</style>
