@@ -159,7 +159,7 @@ footer.bot_nav ul li a span.Footer-font { display: block; }
 .so-left.close { left: -100%; }
 
 /* 弹窗样式 */
-.modal { display: none; position: fixed; top: 0; left: 50%; width: 10rem; margin-left: -5rem; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 53; }
+.modal { display: none; position: fixed; top: 0; left: 50%; width: 10rem; margin-left: -5rem; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 1000; }
 .modal .m_content { position: fixed; z-index: 33; width: 8rem; top: 25%; left: 50%; margin-left: -4rem; padding: 0.3rem 0.5rem 0.7rem; box-sizing: border-box; color: #4b280c; background: url("/static/frist/images/pop/bg_center.png") repeat-y;  background-size: 100%; word-wrap: break-word;}
 .modal .m_content:before { content: ''; position: absolute; display: block; top: -0.3rem; left: 0; z-index: 33; height: 1.173rem; width: 100%; background: url("/static/frist/images/pop/bg_top.png") no-repeat;  background-size: 100%; }
 .modal .m_content:after { content: ''; position: absolute; display: block; bottom: -0.3rem; left: 0; z-index: 33; height: 1.173rem; width: 100%; background: url("/static/frist/images/pop/bg_bottom.png") no-repeat;  background-size: 100%; }
@@ -261,11 +261,13 @@ label.red { color: #e41616; text-align: left; display: block; margin-top: .2rem;
 
 
 
-/* 代理申请 */
+/*-------------------------------------------------
+// 代理申请
+------------------------------------------------- */
 .agent_area { padding-top: 0.3rem; }
 .agent p { line-height: 1.8em; margin-bottom: .3em; font-size: 0.35rem; }
 .agent section { margin: 1.5em 0; }
-.agent div { width: 90%; margin: 0 auto; }
+/*.agent div { width: 90%; margin: 0 auto; }*/
 .agent .btn_blue { margin-bottom: .5rem; }
 .agent_check input[type="checkbox"] { font-size: 0.35rem !important; width: .3rem; height: .3rem; vertical-align: middle; }
 .agent_check > a { color: #ffbd00; }
@@ -277,24 +279,26 @@ label.red { color: #e41616; text-align: left; display: block; margin-top: .2rem;
 .tabset { text-align: center; }
 .tabset > input[type="radio"] { position: absolute; left: -200vw; }
 .tabset .tab-panel { display: none; }
-.tabset > label { position: relative; display: inline-block;margin-left: -2px; padding: .27rem .8rem; cursor: pointer; color: #4b280c; border: 1px solid #7e5c4c; font-size: 0.34rem; }
-.tabset > label.tab1 { margin-right: -.1rem; border-top-left-radius: .2rem; border-bottom-left-radius: .2rem; }
-.tabset > label.tab2 { border-top-right-radius: .2rem; border-bottom-right-radius: .2rem; }
+.tabset > label { position: relative; display: inline-block;margin-left: -5px; padding: .27rem 0rem; cursor: pointer; color: #4b280c; border: 1px solid #7e5c4c; font-size: 0.34rem; width: 33%; }
+.tabset > label:first-of-type { border-top-left-radius: .2rem; border-bottom-left-radius: .2rem; }
+.tabset > label:last-of-type { border-top-right-radius: .2rem; border-bottom-right-radius: .2rem; }
 .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child, .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2), .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3), .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4), .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5), .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) { display: block; }
 .tabset > label:hover, .tabset > input:focus + label { color: #4b280c; }
 .tabset > label:hover::after, .tabset > input:focus + label::after, .tabset > input:checked + label::after { background: #06c; color: #fff; }
-.tabset > input:checked + label { margin-bottom: -1px; background-color: #4b280c; color: #ffc388; }
+.tabset > input:checked + label {  background-color: #4b280c; color: #ffc388; }
 
 .tab-panel { text-align: justify; }
+.tab-panel h4 { color: #bc0000; font-size: .4rem; margin: .4rem 0 0.2rem; }
 
-.tab-panel h4 { color: #4b280c; font-size: .4rem; margin: .2rem 0; }
-
-.formlist_area { width: 90%; margin: 0 auto; margin-top: 2rem; }
 
 .today_payoff.win_payoff { color: #4c7a12; }
-
 .today_payoff.lose_payoff { color: #980110; }
 
+/* 代理注册 */
+.new_panel.formlist_area .new_panel_center{ padding: 0 0.5rem;}
+.formlist_area .form_g > legend{ width: 1.9rem; }
+.formlist_area .form_g > input { width: calc(85% - 1.9rem);}
+.formlist_area .btn_blue{ text-align: center;}
 /*.notfound { text-align: center; margin: 0 auto; width: 100%; height: 100%; background-attachment: fixed; min-height: 18rem; padding-bottom: 2em; }
 
 .notfound i { margin-left: 6px; }
@@ -404,8 +408,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 
 /*i.filter { background-image: url("/static/frist/images/filter.png"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; }*/
 
-i.close { width: .57rem; display: block; position: relative; height: 1rem; right: 0; left: .2rem; }
-i.close:after { content: ''; display: block; background-image: url("/static/frist/images/close.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: .25rem; height: .25rem; position: absolute; right: .15rem; top: .35rem; cursor: pointer; }
+i.close { display: block; background-image: url("/static/frist/images/close.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: .25rem; height: .25rem; position: absolute; right: .37rem; top: .35rem; cursor: pointer; }
 i.eye { display: block; background-image: url("/static/frist/images/eye_view.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: .4rem; height: 1.1rem; position: absolute; right: .3rem; top: 0; cursor: pointer; }
 i.eye.active { background-image: url("/static/frist/images/eye_hide.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; }
 
@@ -1073,7 +1076,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 .form_g .icon_arrow_down{ height: 0.64rem; margin-top: 0.18rem; transform: translate(0.15rem); -webkit-transform: translate(0.15rem) ; position: absolute;right: 0.5rem}
 /*.form_g > legend:after { content: ''; position: absolute; display: block; top: 0; left: 0; width: 1px; height: .5rem; background-color: #256e93; right: -.2rem; left: inherit; top: .25rem; }*/
 
-.form_g.text > legend { background-image: none; width: 1.8rem; }
+.form_g.text > legend { background-image: none; }
 
 .form_g.text input, .form_g.text select { width: calc(70% - .5rem); background-color: transparent; color: #fff; border: none;appearance:none;  -moz-appearance:none; /* Firefox */  -webkit-appearance:none; /* Safari 和 Chrome */ }
 
@@ -1323,7 +1326,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 
 .qrcode_step > .step { width: 80%; margin: 0 auto; text-align: left; margin-top: .5rem; line-height: 1.8em; font-size: 0.35rem; }
 
-#agent_modal { margin-top: 15%; }
+/*#agent_modal { margin-top: 15%; }*/
 
 input.date:after { content: ''; position: absolute; display: block; top: 0; left: 0; background: url("/static/frist/images/icon_member.png") no-repeat; background-position: -.17rem 83.5%; background-size: 145%; width: 2em; height: 1rem; position: absolute; right: 0; left: inherit; top: .1rem; cursor: pointer; }
 

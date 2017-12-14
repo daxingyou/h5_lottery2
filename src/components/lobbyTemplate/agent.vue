@@ -12,7 +12,7 @@
             <div class="right"></div>
         </header>
         <div class="pa_content">
-            <div class="agent_area">
+            <div class="agent_area page_box">
                 <div class="agent">
                     <div class="tabset">
                         <!-- Tab 1 -->
@@ -21,6 +21,9 @@
                         <!-- Tab 2 -->
                         <input type="radio" name="tabset" id="tab2" aria-controls="commission" @click="gotoTop('yjfa')">
                         <label for="tab2" class="tab2">佣金方案</label>
+                        <!-- Tab 3 -->
+                        <input type="radio" name="tabset" id="tab3" aria-controls="commission" @click="gotoTop('dlzc')">
+                        <label for="tab3" class="tab3">代理注册</label>
 
                         <div class="tab-panels">
                             <section id="agent" class="tab-panel">
@@ -35,6 +38,7 @@
                                 <p>·营运多年，深受百万玩家信赖</p>
                                 <p>·拥有线上赌场执照，信誉保证</p>
                                 <p>·多年大力推广，品牌热度十足，代理可坐享广告品牌效应</p>
+                                <p><br />还等什么？马上加盟吧。点击这里注册加入，开始推广，赚取佣金，简单三步开始成就梦想之旅。</p>
                             </section>
                             <section id="commission" class="tab-panel">
                                 <table class="data">
@@ -109,11 +113,141 @@
                                     例如： 联盟体系当月最低活动会员达6人，当月派彩：真人视讯￥200000，电子游艺￥20000。如联盟体系当月产生相应费用统计为￥100000，则当月佣金计算方式为：（￥200000+￥20000）X30%-（相应产生的费用￥100000*30%）=￥36000总退佣金额
                                 </p>
                             </section>
+                            <section id="agentApply" class="tab-panel">
+                                <div class="new_panel formlist_area">
+                                    <div class="new_panel_top"></div>
+                                    <div class="new_panel_center">
+                                        <form>
+                                            <!-- <fieldset>
+                                                <div class="form_g account">
+                                                    <legend></legend>
+                                                    <input type="text" v-model="refereeNum"  placeholder="请输入推荐人帐号">
+                                                    <i class="close cs1" @click=" ClearInput('cs1','reNum')"></i>
+                                                </div>
+                                            </fieldset> -->
+                                            <fieldset>
+                                                <div class="form_g account">
+                                                    <legend>帐号</legend>
+                                                    <input type="text" v-model="userNumber" placeholder="请输入4~15位帐号">
+                                                    <i class="close cs2" @click=" ClearInput('cs2','userNum')"></i>
+                                                </div>
+                                                <label class="red"></label>
+                                            </fieldset>
+                                            <fieldset v-if="showPd">
+                                                <div class="form_g password">
+                                                    <legend>密码</legend>
+                                                    <input type="password" v-model="userPd" placeholder="请输入6~20位密码">
+                                                    <i class="eye active eye1" @click="show('eye1')"></i>
+                                                </div>
+                                                <label class="red"></label>
+                                            </fieldset>
+                                            <fieldset v-if="!showPd">
+                                                <div class="form_g password">
+                                                    <legend>密码</legend>
+                                                    <input type="text" v-model="userPd" placeholder="请输入6~20位密码">
+                                                    <i class="eye " @click="show('act')"></i>
+                                                </div>
+                                                <label class="red"></label>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form_g password">
+                                                    <legend>确认密码</legend>
+                                                    <input type="password" v-model="confirmPd" placeholder="请输入6~20位密码">
+                                                    <i class="eye active eye2"></i>
+                                                </div>
+                                                <label class="red"></label>
+                                            </fieldset>
+                                            <!--<fieldset>
+                                                <div class="form_g password">
+                                                    <legend>确认密码</legend>
+                                                    <input type="text" placeholder="请输入6~20位密码">
+                                                    <i class="eye"></i>
+                                                </div>
+                                                <label class="red"></label>
+                                            </fieldset>-->
+                                            <fieldset>
+                                                <div class="form_g account">
+                                                    <legend>真实姓名</legend>
+                                                    <input type="text" placeholder="请输入您的真实姓名">
+                                                    <i class="close"></i>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form_g account">
+                                                    <legend>银行卡号</legend>
+                                                    <input type="tel" placeholder="请输入取款银行卡号">
+                                                    <i class="close"></i>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form_g text">
+                                                    <legend>银行名称</legend>
+                                                    <select name="" >
+                                                        <option :value="banks.id" :data-code="banks.bankCode" v-for="banks in bankList">{{banks.bankName}}</option>
+                                                    </select>
+                                                    <span class="icon icon_arrow_down"></span>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form_g account">
+                                                    <legend>开户行地址</legend>
+                                                    <input type="text" placeholder="请输入开户行地址（如:北京市海淀区xx分行）">
+                                                    <i class="close"></i>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form_g account">
+                                                    <legend>手机号</legend>
+                                                    <input type="tel" placeholder="请输入11位手机号码">
+                                                    <i class="close"></i>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form_g password">
+                                                    <legend>验证码</legend>
+                                                    <input type="text" v-model="identifyCode" class="identifyCode" placeholder="请输入验证码" maxlength="4">
+                                                    <img :src="verImgCode" alt="" @click="switchYzmcode()">
+                                                </div>
+                                                <label class="red"></label>
+                                            </fieldset>
+                                        </form>
+                                        <div class="agent_check">
+                                            <input type="checkbox" id="cbox1" value="first_checkbox" checked>
+                                            <label for="cbox1">我已届满合法博彩年龄，且已阅读并同意<a class="agent_modal" href="javascript:;" @click="show('ag')">《代理注册协议》</a></label>
+                                        </div>
+                                        <div class="btn btn_blue">
+                                            <a class="new_btn" href="javascript:;"><span class="big">立即申请</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </section>
                         </div>
                     </div>
                   <!--  <div class="btn btn_blue">
                         <router-link to="/lobbyTemplate/agentApply">立即申请</router-link>
                     </div>-->
+                </div>
+            </div>
+        </div>
+
+        <div id="agent_modal"  class="so-pop-wanfa modal" v-if="!showModel">
+            <div class="m_content">
+                <h2>代理注册协议<a href="javascript:;" @click="show('h2')"></a></h2>
+                <div class="content">
+                    <div class="playtext">
+                        <h3>一. 注册规约</h3>
+                        <p>1. 为有效防止非诚信合作商滥用本网站所提供的代理优惠制度，公司审查部门将严格审核每位代理商注册时提供的个人资料（包括姓名，邮件及电话等）若经审核发现代理商有任何不良营利企图，或与其他代理商、会员进行合谋套利等不诚信行为，本网站将关闭该合作代理商之账户并收回该代理商的所有佣金与优惠。</p>
+                        <p>2. 同一IP/同一姓名/同一收款账号的会员只能是一个合作商的下线，合作商自已不能成为自已及其他合作商的下线会员。同一IP/同一姓名/同一收款账号只能申请一个合作伙伴账号。</p>
+                        <h3>二、权责条款</h3>
+                        <strong>1.合作伙伴的权利和义务</strong>
+                        <p>1.1. 合作伙伴需尽其责任积极销售及推广本网站以求双方利润最大化。合作伙伴必须在不违反法律的前提下，进行正面宣传、销售及推广本网站。由此产生的宣传、销售及推广时所产生的费用需由合作伙伴自行承担。</p>
+                        <p>1.2. 合作伙伴不得私自转载、公开、分发包括主页、域名、logo、报表、游戏画面、图文等在内的相关资料。另外，在推广时，合作伙伴要保障本网站的利益，任何有损公司声誉的行为，一经发现立即终止合作关系。</p>
+                        <strong>2.本网站对合作伙伴的权利与义务</strong>
+                        <p> 2.1. 本网站的客服代表将会协助合作伙伴给下线办理开户业务并观察其投注状况。代理商及会员皆须同意并遵守本网站的会员条例、政策及操作进程。合作伙伴可随时登录管理后台了解其下线会员的账户报表。</p>
+                        <p>2.2. 本网站保留所有对合作代理商或会员之账户加以拒绝或冻结的权利。</p>
+                        <p>2.3. 在某些情况下经过认真审查本网站保留单方面修改合作协议上的任何条款的权利，本网站会在网站刊登修改情况告知合作伙伴。修改内容可能包括：佣金范围、付款进程、及其它条例。如合作伙伴对于修改表示反对，合作伙伴可终止合约。修改后合作伙伴不作任何异议，便视作默认接受和对新协议表示认可。</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -128,38 +262,108 @@ import Mixin from '@/Mixin'
 import FooterNav from '@/components/Footer'
 
 export default {
-  name: 'agent',
-  mixins:[Mixin],
-  components: {
-   // AutoCloseDialog,
-      FooterNav ,
-  },
+    name: 'agent',
+    mixins:[Mixin],
+    components: {
+    // AutoCloseDialog,
+        FooterNav ,
+    },
     data: function() {
         return {
             copyTitle:'',
-            copyContent:''
+            copyContent:'',
+            showModel :  true,
+            showPd:true,
+            bankList:'',
+            refereeNum:'',//推荐人账号
+            userNumber:'',//用户帐号
+            userPd:'',//用户密码
+            identifyCode:'',//验证码;
+            verImgCode  :'',
+            client:''
         }
     },
-  mounted:function() {
-      $('html,body').css('overflow-y','scroll' )  ;
-      //scrollTo(0,0); // 回到顶部
-     document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
-      this.getCopyright('1','BT02')
+    created:function () {
+        var _self=this;
+        _self.getBankList();
+        _self.switchYzmcode();
+    },
+    mounted:function() {
+        $('html,body').css('overflow-y','scroll' )  ;
+        //scrollTo(0,0); // 回到顶部
+        document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
+        this.getCopyright('1','BT02')
 
-  },
-  methods: {
-  // 回到顶部
-      gotoTop:function (name) {
-          //scrollTo(0,0);
-          if(name=='dljm'){
-              this.getCopyright('1','BT02')
-          }
-          if(name=='yjfa'){
-              this.getCopyright('1','BT03')
-          }
-          document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
-      },
-}
+    },
+    methods: {
+        // 回到顶部
+        gotoTop:function (name) {
+            //scrollTo(0,0);
+            if(name=='dljm'){
+                this.getCopyright('1','BT02')
+            }
+            if(name=='yjfa'){
+                this.getCopyright('1','BT03')
+            }
+            document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
+        },
+        //清除model数据,cl元素class
+        clearVal :function (cl) {
+            if(cl=='reNum'){
+                this.refereeNum='';
+            }
+            if(cl=='userNum'){
+                this. userNumber='';
+            }
+        },
+        //点击显示隐藏
+        show:function(cla){
+            var _self=this
+            if(cla=='eye1'){
+                _self.showPd=false
+            }else if(cla=='act'){
+                _self.showPd=true
+            }else if(cla=='ag'){
+                _self.showModel=false
+            }else if(cla=='h2'){
+                _self.showModel=true
+            }
+        },
+        //获取银行列表
+        getBankList:function(){
+            var _self=this;
+            $.ajax({
+                type:'get',
+    //              headers: {"Authorization": "bearer  " + this.getAccessToken },
+                url: _self.action.forseti + 'apid/payment/banks',
+                data:{},
+                success: function(res){
+                    _self.bankList=res.data;
+                },
+                error: function (err) {
+
+                }
+            })
+        },
+        //获取验证码
+        switchYzmcode:function () {
+            let _self =this ;
+            let url= _self.action.uaa + 'apid/member/code/get?time='+ Math.random();
+            $.ajax({
+                type:"GET",
+                url:url,
+                success: (data) => {
+                    _self.verImgCode = data.data && 'data:image/png;base64,' + data.data.code || '';
+                    _self.client = data.data && data.data.clientId || '';
+                }
+            })
+        },
+    }
 
 }
 </script>
+
+
+<style scope>
+    .so-pop-wanfa { display: block;}
+</style>
