@@ -124,9 +124,9 @@ export default {
       checkWithdrawMoneyNow:function(userMoney,el){
 
           var ifInCorrect = this.isPositiveNum( userMoney )
-          var defi = ( userMoney<100  ||  userMoney>10000)
-          var notEnough = (userMoney > 300000 )
-          // var notEnough = (userMoney > this.memBalance )
+          var defi = ( userMoney<this.drawMinMoney  ||  userMoney> this.drawMaxMoney)
+          // var notEnough = (userMoney > 3000000 )
+          var notEnough = (userMoney > this.memBalance )
 
           if(!ifInCorrect){
              this.hintWord = "请输入正确的存款金额"
@@ -159,10 +159,15 @@ export default {
               headers: {
                   "Authorization": "bearer  " + this.getAccessToken ,
               },
-              url: _self.action.forseti + 'api/payment/darwLimit',
+              url: _self.action.uaa + 'api/data/member/discount',
               data: { },
               success: function(res){
-                _self.userInfo = res.data ;
+                console.log(res.data.dispCapped)
+                console.log(res.data.dispLower)
+                _self.drawMaxMoney = res.data.dispCapped;
+                _self.drawMinMoney = res.data.dispLower;
+
+
               },
               error: function (e) {
                   _self.errorAction(e) ;

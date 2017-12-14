@@ -483,16 +483,7 @@ export default {
       choosePayMoth:function () {
           var _self = this ;
 
-        // 扫码
-        // $('.payWayNet').on('click','.item',function (e){
-        //      if(_self.paymount =='' || !_self.isPositiveNum(_self.paymount)){
-        //           _self.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
-        //           return false ;
-        //       }
-        //       var $src = $(e.currentTarget);
-        //       var val = $src.data('type');
-
-        // })
+       
 
           // 转账
             $('.payWayTranster').on('click','.item',function (e) {

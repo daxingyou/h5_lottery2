@@ -74,15 +74,15 @@ export default {
             tradeTypeConfig:{ 
                 '1':{ name:'公司入款', class:'ac03' }, 
                 '3':{ name:'线上入款', class:''}, 
-                '5':{ name:'人工入款', class:'ac01'}, 
+                '5':{ name:'系统入款', class:'ac01'}, 
                 '7':{ name:'会员出款', class:'ac03'}, 
-                '8':{ name:'人工提款', class:'ac02'} 
+                '8':{ name:'系统提款', class:'ac02'} 
             }, 
             actionTypeConfig:{
                 '1':{ class:'ac03', name:'派奖' }, 
-                '2':{ class:'ac01', name:'人工入款' }, 
+                '2':{ class:'ac01', name:'系统入款' }, 
                 '3':{ class:'ac03', name:'公司入款' }, 
-                '4':{ class:'ac02', name:'人工提款' }, 
+                '4':{ class:'ac02', name:'系统提款' }, 
                 '5':{ class:'ac03', name:'会员出款' }, 
             },
             activeTab:{ value:1, days:[] }, //当前选项卡
@@ -154,9 +154,9 @@ export default {
             });
         },
         selectTab:function(e, tab){
-            // if (tab.active || tab.value == 4){
-            //     return false;
-            // }
+            if (tab.active || tab.value == 4){
+                return false;
+            }
             this.tabs.forEach(item=>{item.active=false});
             tab.active = true;
             this.loadTab(tab);
