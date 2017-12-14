@@ -116,7 +116,7 @@ export default {
   mounted:function() {
 
       $('html,body').css('overflow-y','scroll' )  ;
-      // this.getLimit()
+      this.getLimit()
   },
   methods: {
       // 检查提款数据并提示
@@ -152,23 +152,23 @@ export default {
       },
 
       //获取限额
-    // getLimit:function () {
-    //       var _self = this ;
-    //       $.ajax({
-    //           type: 'get',
-    //           headers: {
-    //               "Authorization": "bearer  " + this.getAccessToken ,
-    //           },
-    //           url: _self.action.forseti + 'api/payment/incomeBank',
-    //           data: { },
-    //           success: function(res){
-    //             _self.userInfo = res.data ;
-    //           },
-    //           error: function (e) {
-    //               _self.errorAction(e) ;
-    //           }
-    //       });
-    //   },
+    getLimit:function () {
+          var _self = this ;
+          $.ajax({
+              type: 'get',
+              headers: {
+                  "Authorization": "bearer  " + this.getAccessToken ,
+              },
+              url: _self.action.forseti + 'api/payment/darwLimit',
+              data: { },
+              success: function(res){
+                _self.userInfo = res.data ;
+              },
+              error: function (e) {
+                  _self.errorAction(e) ;
+              }
+          });
+      },
 
       //清除model数据,cl元素class
       clearVal :function (cl) {
