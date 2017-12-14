@@ -45,7 +45,7 @@
                             <fieldset>
                                 <div class="form_g text">
                                     <legend>取款金额</legend>
-                                    <input type="text" v-model="userMoney"  class="money" placeholder="取款金额最低100元" @input = 'checkWithdrawMoneyNow(userMoney,"money")' >
+                                    <input type="text" v-model="userMoney"  class="money" :placeholder = 'placeholderLimit' @input = 'checkWithdrawMoneyNow(userMoney,"money")' >
                                     <i class="close close1" @click="ClearInput('close1','money')"></i>
                                 </div>
                                 <div  v-if = 'showHint' class="withdrawlHint" id="withdrawlHint"> {{hintWord}} </div>
@@ -106,6 +106,7 @@ export default {
              drawMaxMoney:'',
              PaySubmit:false ,//重复提交
              inCorrectMessage:'提款金额必须在范围内',
+             placeholderLimit:'',
 
         }
     },
@@ -164,8 +165,12 @@ export default {
               success: function(res){
                 console.log(res.data.dispCapped)
                 console.log(res.data.dispLower)
+                console.log(res)
                 _self.drawMaxMoney = res.data.dispCapped;
                 _self.drawMinMoney = res.data.dispLower;
+                 _self.placeholderLimit = "取款范围"+_self.drawMinMoney+"元~"+_self.drawMaxMoney+"元"
+                console.log(_self.placeholderLimit)
+
 
 
               },
