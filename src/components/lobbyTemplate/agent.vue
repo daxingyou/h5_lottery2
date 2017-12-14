@@ -22,7 +22,7 @@
                         <input type="radio" name="tabset" id="tab2" aria-controls="commission" @click="gotoTop('yjfa')">
                         <label for="tab2" class="tab2">佣金方案</label>
                         <!-- Tab 3 -->
-                        <input type="radio" name="tabset" id="tab3" aria-controls="commission" @click="gotoTop('dlzc')">
+                        <input type="radio" name="tabset" id="tab3" aria-controls="commission" @click="gotoTop()">
                         <label for="tab3" class="tab3">代理注册</label>
 
                         <div class="tab-panels">
@@ -137,7 +137,7 @@
                                                 <div class="form_g password">
                                                     <legend>密码</legend>
                                                     <input type="password" v-model="userPd" placeholder="请输入6~20位密码">
-                                                    <i class="eye active eye1" @click="show('eye1')"></i>
+                                                    <i class="eye " @click="show('eye1')"></i>
                                                 </div>
                                                 <label class="red"></label>
                                             </fieldset>
@@ -145,7 +145,7 @@
                                                 <div class="form_g password">
                                                     <legend>密码</legend>
                                                     <input type="text" v-model="userPd" placeholder="请输入6~20位密码">
-                                                    <i class="eye " @click="show('act')"></i>
+                                                    <i class="eye active" @click="show('act')"></i>
                                                 </div>
                                                 <label class="red"></label>
                                             </fieldset>
