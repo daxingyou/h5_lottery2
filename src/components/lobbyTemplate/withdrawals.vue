@@ -106,7 +106,7 @@ export default {
              drawMaxMoney:'',
              PaySubmit:false ,//重复提交
              inCorrectMessage:'提款金额必须在范围内',
-             placeholderLimit:'',
+             placeholderLimit:'提款金额必须在范围内',
 
         }
     },
@@ -163,15 +163,13 @@ export default {
               url: _self.action.uaa + 'api/data/member/discount',
               data: { },
               success: function(res){
-                console.log(res.data.dispCapped)
-                console.log(res.data.dispLower)
-                console.log(res)
-                _self.drawMaxMoney = res.data.dispCapped;
-                _self.drawMinMoney = res.data.dispLower;
+                // console.log(res.data.dispCapped)
+                // console.log(res.data.dispLower)
+                // console.log(!!res)
+                _self.drawMaxMoney = Number(res.data.dispCapped)/100;
+                _self.drawMinMoney = Number(res.data.dispLower)/100;
+
                  _self.placeholderLimit = "取款范围"+_self.drawMinMoney+"元~"+_self.drawMaxMoney+"元"
-                console.log(_self.placeholderLimit)
-
-
 
               },
               error: function (e) {
@@ -275,13 +273,13 @@ export default {
                       return
                   }
 
-                  if(_self.userMoney>10000){
+                  if(_self.userMoney>_self.drawMaxMoney){
                       _self.$refs.autoCloseDialog.open('提款金额必须在范围内');
                       return
                   }
 
-                  if(_self.userMoney<100){
-                      _self.$refs.autoCloseDialog.open('提款最低金额为100元');
+                  if(_self.userMoney< _self.drawMinMoney){
+                      _self.$refs.autoCloseDialog.open('提款最低金额为'+_self.drawMinMoney+'元');
                       return
                   }
 
