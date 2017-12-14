@@ -152,7 +152,7 @@
                                             <fieldset>
                                                 <div class="form_g password">
                                                     <legend>确认密码</legend>
-                                                    <input type="password" v-model="confirmPd" placeholder="请输入6~20位密码">
+                                                    <input type="password" placeholder="请输入6~20位密码">
                                                     <i class="eye active eye2"></i>
                                                 </div>
                                                 <label class="red"></label>
@@ -178,6 +178,7 @@
                                                     <input type="tel" placeholder="请输入取款银行卡号">
                                                     <i class="close"></i>
                                                 </div>
+                                                <label class="red"></label>
                                             </fieldset>
                                             <fieldset>
                                                 <div class="form_g text">
@@ -187,6 +188,7 @@
                                                     </select>
                                                     <span class="icon icon_arrow_down"></span>
                                                 </div>
+                                                <label class="red"></label>
                                             </fieldset>
                                             <fieldset>
                                                 <div class="form_g account">
@@ -194,6 +196,7 @@
                                                     <input type="text" placeholder="请输入开户行地址（如:北京市海淀区xx分行）">
                                                     <i class="close"></i>
                                                 </div>
+                                                <label class="red"></label>
                                             </fieldset>
                                             <fieldset>
                                                 <div class="form_g account">
@@ -201,6 +204,7 @@
                                                     <input type="tel" placeholder="请输入11位手机号码">
                                                     <i class="close"></i>
                                                 </div>
+                                                <label class="red"></label>
                                             </fieldset>
                                             <fieldset>
                                                 <div class="form_g password">
