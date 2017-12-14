@@ -333,11 +333,12 @@ export default {
 </script>
 <style type="text/css">
   .withdrawlHint{
-        display: block;
+      display: block;
         padding-left: 2.444rem;
         color: red;
-        height: 1rem;
-        line-height: 1rem;
+        font-size: 0.34rem;
+        height: 0.6rem;
+        line-height: 0.6rem;
         /*background-color: rgba(0, 0, 0, 0.5);*/
         margin-top: 0.185rem;
   }
