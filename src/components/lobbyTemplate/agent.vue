@@ -297,7 +297,7 @@ export default {
         //scrollTo(0,0); // 回到顶部
         document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
         this.getCopyright('1','BT02')
-
+        this.getBankList()
     },
     methods: {
         // 回到顶部
@@ -332,22 +332,6 @@ export default {
             }else if(cla=='h2'){
                 _self.showModel=true
             }
-        },
-        //获取银行列表
-        getBankList:function(){
-            var _self=this;
-            $.ajax({
-                type:'get',
-    //              headers: {"Authorization": "bearer  " + this.getAccessToken },
-                url: _self.action.forseti + 'apid/payment/banks',
-                data:{},
-                success: function(res){
-                    _self.bankList=res.data;
-                },
-                error: function (err) {
-
-                }
-            })
         },
         //获取验证码
         switchYzmcode:function () {

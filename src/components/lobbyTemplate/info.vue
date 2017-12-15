@@ -162,10 +162,12 @@ export default {
               url: _self.action.uaa + 'api/data/member/info',
               data: {},
               success: (res) => {
-                  _self.memberId = res.data.memberId;
-                  _self.acType = res.data.acType;
-                  _self.userLogin=res.data.login;
-                  _self.getBalance(_self.memberId, _self.acType)
+                  if(res.data){
+                      _self.memberId = res.data.memberId;
+                      _self.acType = res.data.acType;
+                      _self.userLogin=res.data.login;
+                      _self.getBalance(_self.memberId, _self.acType)
+                  }
               },
               error: (e) => {
                   _self.errorAction(e) ;
