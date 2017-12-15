@@ -774,7 +774,8 @@ var MyMixin = {
                 data:{},
                 success:(res)=>{
                     if(res.data){
-                        _self.custUrl=res.data.h5CustUrl
+                        _self.custUrl=res.data.h5CustUrl;
+                        localStorage.setItem('Url',_self.custUrl)
                     }
                 },
                 err:(res)=>{
