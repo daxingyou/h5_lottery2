@@ -40,15 +40,15 @@
                                                     <!--<span class="icon icon_arrow_light"></span>-->
                                                 <!--</a>-->
                                             <!--</li>-->
-                                          <!--   <li>
-                                                <a class="item" href="javascript:;" data-type="1">
+                                               <li>
+                                                <a class="item" href="https://www.baidu.com" target="_blank" data-type="6">
                                                     <span class="badge">
-                                                        <span class="icon_account icon_deposit_1"></span>
+                                                        <span class="icon_account icon_deposit_13"></span>
                                                     </span>
-                                                    <span>网银支付</span>
+                                                    <span>快速充值</span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
-                                            </li> -->
+                                            </li>
                                             <li>
                                                 <a class="item" href="javascript:;" data-type="3">
                                                     <span class="badge">
@@ -514,7 +514,8 @@ export default {
                   _self.getBankList('1') ;
                   $('.paymethods_all').hide() ;
                   $('.webbank_scan_all').show() ;
-              } else if(val =='6'){
+              }
+              else if(val =='6'){
 //                  // 扫码支付
 ////                  _self.getBankList() ;
 ////                  $('.paymethods_all').hide() ;

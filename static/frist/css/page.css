@@ -394,6 +394,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .icon_account.icon_join_2 { background-position: -1.5rem -3rem; }
 .icon_account.icon_join_3 { background-position: -3rem -3rem; }
 .icon_account.icon_deposit_1 { background-position: 0rem -4.5rem; } /* 网银支付 */
+.icon_account.icon_deposit_13 { background-position: 3rem 1.5rem; }
 .icon_account.icon_deposit_2 { background-position: -1.5rem -4.5rem; } /* 扫码支付 */
 .icon_account.icon_deposit_3 { background-position: -3rem -4.5rem; } /* 银行支付 */
 .icon_account.icon_deposit_4 { background-position: -4.5rem -4.5rem; }
