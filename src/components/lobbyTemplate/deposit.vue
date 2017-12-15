@@ -700,7 +700,7 @@
                                 win.close() ;
                             }
 
-                            _self.$refs.autoCloseDialog.open('线上入款失败');
+                            _self.$refs.autoCloseDialog.open(res.msg);
 
                             setTimeout(function () {
                                 window.location = '/lobbyTemplate/deposit' ;
