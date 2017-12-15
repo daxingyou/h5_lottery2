@@ -172,7 +172,7 @@
                           <a class="icon_agent" href="javascript:;" @click="Continued()"></a>
                       </li>
                       <li>
-                          <router-link class="icon_intro" :to="'/lobbyTemplate/about'" ></router-link>
+                          <router-link class="icon_about"  :to="'/lobbyTemplate/about'"></router-link>
                       </li>
                   </ul>
               </div>
