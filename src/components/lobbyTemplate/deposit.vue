@@ -630,6 +630,12 @@ export default {
               async: false,
               data: senddata ,
               success: function(res){ // dataType 1 线上入款 , 3 二维码
+
+                  if (!res.data) {
+                      _self.$refs.autoCloseDialog.open(res.msg);
+
+                  }
+
                   if(res.err == 'SUCCESS'){
                       if(type == '1'){ // 线上付款
                           _self.submitpayflag = false ;
@@ -643,6 +649,8 @@ export default {
                           }
 
                       }else if(type == '3'){  // 扫码支付
+
+
                           if(!res.data){
                               _self.$refs.autoCloseDialog.open('请重试！') ;
                               setTimeout(function () {
@@ -687,7 +695,9 @@ export default {
                       if(type == '1'){  // 线上入款失败
                           win.close() ;
                       }
-                      _self.$refs.autoCloseDialog.open(res.msg) ;
+
+                      _self.$refs.autoCloseDialog.open('线上入款失败');
+
                       setTimeout(function () {
                           window.location = '/lobbyTemplate/deposit' ;
                       },300)
@@ -819,12 +829,13 @@ export default {
               url: _self.action.forseti + 'api/pay/offlineOrder',
               data: senddata ,
               success: function(res){
+                  console.log(res)
 
                   if(!res.data){
-                        this.wrongMessage = res.msg;                    
                         _self.$refs.autoCloseDialog.open(res.msg) ;
 
                     }   
+
                   if(res.err == 'SUCCESS'){
                       _self.submitpayunflag = false ;
                       _self.$refs.autoCloseDialog.open('存款申请已提交，请牢记以下信息','','icon_check','d_check') ;
@@ -884,12 +895,16 @@ export default {
               async: false,
               data: senddata,
               success: function(res){ // dataType 1 线上入款 , 3 二维码
-                if(!res.data){
-                        this.wrongMessage = res.msg;                    
+                  console.log(res.data == '')
+                  console.log('xianshangzhifu')
+                  console.log(res)
+                  if (res.data = '') {
                         _self.$refs.autoCloseDialog.open(res.msg) ;
+                      return
 
-                }   
+                  }
                   if(res.err == 'SUCCESS'){
+                      console.log('seccess')
                       if(type == '1'){ // 线上付款
                           _self.submitpayflag = false ;
                           if(res.data.dataType=='1'){ // 页面html
@@ -902,6 +917,7 @@ export default {
                               win.location.href = loadurl ;
                           }
                       }else if(type == '3'){  // 扫码支付
+                          console.log(!res.data + 'chongshi')
                           if(!res.data){
                               _self.$refs.autoCloseDialog.open('请重试！') ;
                               setTimeout(function () {
