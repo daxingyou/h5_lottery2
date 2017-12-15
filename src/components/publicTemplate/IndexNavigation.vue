@@ -123,7 +123,7 @@
 
                 $('html,body').css({'height':'100%','overflow-y':'hidden'}) ; // 禁止页面滚动
             }) ;
-             this.getCustom()
+            this.custUrl=localStorage.getItem('Url');
 
         },
         methods:{
