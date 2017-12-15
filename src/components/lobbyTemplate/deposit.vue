@@ -814,6 +814,12 @@ export default {
               url: _self.action.forseti + 'api/pay/offlineOrder',
               data: senddata ,
               success: function(res){
+
+                  if(!res.data){
+                        this.wrongMessage = res.msg;                    
+                        _self.$refs.autoCloseDialog.open(res.msg) ;
+
+                    }   
                   if(res.err == 'SUCCESS'){
                       _self.submitpayunflag = false ;
                       _self.$refs.autoCloseDialog.open('存款申请已提交，请牢记以下信息','','icon_check','d_check') ;
@@ -873,6 +879,11 @@ export default {
               async: false,
               data: senddata,
               success: function(res){ // dataType 1 线上入款 , 3 二维码
+                if(!res.data){
+                        this.wrongMessage = res.msg;                    
+                        _self.$refs.autoCloseDialog.open(res.msg) ;
+
+                }   
                   if(res.err == 'SUCCESS'){
                       if(type == '1'){ // 线上付款
                           _self.submitpayflag = false ;
