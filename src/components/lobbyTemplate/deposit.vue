@@ -706,6 +706,10 @@ export default {
       // 扫码支付轮询接口
       getScanStatus:function (id) {
           var _self = this ;
+          var pageUrl=window.location.href
+          if(pageUrl.indexOf('deposit')==-1){
+                  return false
+          }
           $.ajax({
               type: 'get',
               headers: {
