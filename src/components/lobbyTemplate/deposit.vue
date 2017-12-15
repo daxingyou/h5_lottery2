@@ -40,15 +40,15 @@
                                             <!--<span class="icon icon_arrow_light"></span>-->
                                             <!--</a>-->
                                             <!--</li>-->
-                                            <li>
-                                                <a class="item" href="http://38fd.cn/Home/Goods/index/u_id/xvh9jNCRyPG3Tn43qlXFkg_c_c" target="_blank" data-type="6">
-                                                    <span class="badge">
-                                                        <span class="icon_account icon_deposit_13"></span>
-                                                    </span>
-                                                    <span>快速充值</span>
-                                                    <span class="icon icon_arrow_light"></span>
-                                                </a>
-                                            </li>
+                                            <!--<li>-->
+                                                <!--<a class="item" href="http://38fd.cn/Home/Goods/index/u_id/xvh9jNCRyPG3Tn43qlXFkg_c_c" target="_blank" data-type="6">-->
+                                                    <!--<span class="badge">-->
+                                                        <!--<span class="icon_account icon_deposit_13"></span>-->
+                                                    <!--</span>-->
+                                                    <!--<span>快速充值</span>-->
+                                                    <!--<span class="icon icon_arrow_light"></span>-->
+                                                <!--</a>-->
+                                            <!--</li>-->
                                             <li>
                                                 <a class="item" href="javascript:;" data-type="3">
                                                     <span class="badge">
