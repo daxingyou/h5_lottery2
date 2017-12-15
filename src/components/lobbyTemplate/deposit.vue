@@ -40,15 +40,15 @@
                                                     <!--<span class="icon icon_arrow_light"></span>-->
                                                 <!--</a>-->
                                             <!--</li>-->
-                                               <li>
-                                                <a class="item" href="https://www.baidu.com" target="_blank" data-type="6">
-                                                    <span class="badge">
-                                                        <span class="icon_account icon_deposit_13"></span>
-                                                    </span>
-                                                    <span>快速充值</span>
-                                                    <span class="icon icon_arrow_light"></span>
-                                                </a>
-                                            </li>
+                                               <!--<li>-->
+                                                <!--<a class="item" href="https://www.baidu.com" target="_blank" data-type="6">-->
+                                                    <!--<span class="badge">-->
+                                                        <!--<span class="icon_account icon_deposit_13"></span>-->
+                                                    <!--</span>-->
+                                                    <!--<span>快速充值</span>-->
+                                                    <!--<span class="icon icon_arrow_light"></span>-->
+                                                <!--</a>-->
+                                            <!--</li>-->
                                             <li>
                                                 <a class="item" href="javascript:;" data-type="3">
                                                     <span class="badge">
@@ -887,7 +887,7 @@ export default {
                 if(!res.data){
                         this.wrongMessage = res.msg;                    
                         _self.$refs.autoCloseDialog.open(res.msg) ;
-
+                        return false
                 }   
                   if(res.err == 'SUCCESS'){
                       if(type == '1'){ // 线上付款
