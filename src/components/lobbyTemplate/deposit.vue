@@ -895,14 +895,6 @@ export default {
               async: false,
               data: senddata,
               success: function(res){ // dataType 1 线上入款 , 3 二维码
-                  console.log(res.data == '')
-                  console.log('xianshangzhifu')
-                  console.log(res)
-                  if (res.data = '') {
-                        _self.$refs.autoCloseDialog.open(res.msg) ;
-                      return
-
-                  }
                   if(res.err == 'SUCCESS'){
                       console.log('seccess')
                       if(type == '1'){ // 线上付款
@@ -952,7 +944,7 @@ export default {
                                   var sanurl = res.data.url ;
                                   // window.location.href = sanurl ;
                                   _self.openGame(sanurl) ;
-                                  _self.paymount='';
+//                                  _self.paymount='';
                               }
 
                               document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
