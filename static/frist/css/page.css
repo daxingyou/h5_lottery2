@@ -950,7 +950,7 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 // 大厅
 -----------------------------------------*/
 /* banner */
-.news { margin-top: 1.36rem; overflow-x: hidden; position: relative; }
+.news { margin-top: 1.36rem; overflow-x: hidden; position: relative;min-height: 3.8rem; }
 .news img { width: 100%; display: block; }
 .news .focus { position: relative; }
 .news .hd { display: none;  }
@@ -962,7 +962,7 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 .marquee > .news_title > span { display: inline-block; line-height: .7rem; height: .7rem; vertical-align: middle; }
 .marquee > .news_marque { line-height: .7rem; height: .7rem; overflow: hidden; }
 
-.tempWrap { width: 100% !important;min-height: 3.8rem; }
+.tempWrap { width: 100% !important; }
 
 .sys-notice { height: .7rem; line-height: .7rem; overflow: hidden; position: relative; width: 100%; }
 .sys-notice .bd { line-height: .7rem; height: .7rem; width: 7.7rem; margin-left:2.3rem;}
