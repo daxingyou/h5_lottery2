@@ -149,34 +149,34 @@
                                                 </div>
                                                 <label class="red"></label>
                                             </fieldset>
-                                            <fieldset>
+                                            <fieldset  v-if="showC">
                                                 <div class="form_g password">
                                                     <legend>确认密码</legend>
                                                     <input type="password" placeholder="请输入6~20位密码">
-                                                    <i class="eye active eye2"></i>
+                                                    <i class="eye  " @click="show('eye2')"></i>
                                                 </div>
                                                 <label class="red"></label>
                                             </fieldset>
-                                            <!--<fieldset>
+                                          <fieldset  v-if="!showC">
                                                 <div class="form_g password">
                                                     <legend>确认密码</legend>
                                                     <input type="text" placeholder="请输入6~20位密码">
-                                                    <i class="eye"></i>
+                                                    <i class="eye active" @click="show('act2')"></i>
                                                 </div>
                                                 <label class="red"></label>
-                                            </fieldset>-->
+                                            </fieldset>
                                             <fieldset>
                                                 <div class="form_g account">
                                                     <legend>真实姓名</legend>
-                                                    <input type="text" placeholder="请输入您的真实姓名">
-                                                    <i class="close"></i>
+                                                    <input type="text" placeholder="请输入您的真实姓名" v-model="relName">
+                                                    <i class="close cs3" @click="ClearInput('cs3','relName')"></i>
                                                 </div>
                                             </fieldset>
                                             <fieldset>
                                                 <div class="form_g account">
                                                     <legend>银行卡号</legend>
-                                                    <input type="tel" placeholder="请输入取款银行卡号">
-                                                    <i class="close"></i>
+                                                    <input type="tel" placeholder="请输入取款银行卡号" v-model="bankNum">
+                                                    <i class="close cs4" @click="ClearInput('cs4','bankNum')"></i>
                                                 </div>
                                                 <label class="red"></label>
                                             </fieldset>
@@ -193,16 +193,16 @@
                                             <fieldset>
                                                 <div class="form_g account">
                                                     <legend>开户行地址</legend>
-                                                    <input type="text" placeholder="请输入开户行地址（如:北京市海淀区xx分行）">
-                                                    <i class="close"></i>
+                                                    <input type="text" placeholder="如:北京市海淀区中关村支行" v-model="bankAdd">
+                                                    <i class="close cs5" @click="ClearInput('cs5','bankAdd')"></i>
                                                 </div>
                                                 <label class="red"></label>
                                             </fieldset>
                                             <fieldset>
                                                 <div class="form_g account">
                                                     <legend>手机号</legend>
-                                                    <input type="tel" placeholder="请输入11位手机号码">
-                                                    <i class="close"></i>
+                                                    <input type="tel" placeholder="请输入11位手机号码" v-model="phoneNumber">
+                                                    <i class="close cs6" @click="ClearInput('cs6','phoneNumber')"></i>
                                                 </div>
                                                 <label class="red"></label>
                                             </fieldset>
@@ -278,13 +278,18 @@ export default {
             copyContent:'',
             showModel :  true,
             showPd:true,
+            showC:true,
             bankList:'',
             refereeNum:'',//推荐人账号
             userNumber:'',//用户帐号
             userPd:'',//用户密码
             identifyCode:'',//验证码;
             verImgCode  :'',
-            client:''
+            client:'',
+            relName:'',
+            bankNum:'',
+            bankAdd:'',
+            phoneNumber:''
         }
     },
     created:function () {
@@ -317,7 +322,19 @@ export default {
                 this.refereeNum='';
             }
             if(cl=='userNum'){
-                this. userNumber='';
+                this.userNumber='';
+            }
+            if(cl=='relName'){
+                this.relName=''
+            }
+            if(cl=='bankNum'){
+                this.bankNum=''
+            }
+            if(cl=='bankAdd'){
+                this.bankAdd=''
+            }
+            if(cl=='phoneNumber'){
+                this.phoneNumber=''
             }
         },
         //点击显示隐藏
@@ -325,11 +342,20 @@ export default {
             var _self=this
             if(cla=='eye1'){
                 _self.showPd=false
-            }else if(cla=='act'){
+            }
+            if(cla=='act'){
                 _self.showPd=true
-            }else if(cla=='ag'){
+            }
+            if(cla=='eye2'){
+                _self.showC=false
+            }
+            if(cla=='act2'){
+                _self.showC=true
+            }
+            if(cla=='ag'){
                 _self.showModel=false
-            }else if(cla=='h2'){
+            }
+            if(cla=='h2'){
                 _self.showModel=true
             }
         },
