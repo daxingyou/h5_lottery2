@@ -634,7 +634,12 @@
                     success: function(res){ // dataType 1 线上入款 , 3 二维码
 
                         if (!res.data) {
-                            _self.$refs.autoCloseDialog.open(res.msg);
+                            if (res.msg == 'SUCCESS') {
+                                _self.$refs.autoCloseDialog.open('充值失败，请联系客服');
+                            } else {
+                                _self.$refs.autoCloseDialog.open(res.msg);
+
+                            }
 
                         }
 
