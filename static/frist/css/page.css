@@ -1017,7 +1017,7 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 
 /* 优惠活动 */
 .promoindex_area { position: relative; margin: 0 0.3rem ; padding: 0.2rem 0; border-bottom: 1px solid rgba(56,32,30,0.2); border-top: 1px solid rgba(56,32,30,0.2); }
-.promoindex_area h3 { text-align: left; padding-right: 0.4rem; line-height: 0.6rem;    }
+.promoindex_area h3 { text-align: left;  line-height: 0.6rem;    }
 .promoindex_area h3 a { float: right;margin-top:.05rem; text-decoration: none; color: #000;font-size: .3rem }
 .promoindex_area > a { margin: 0.2rem 0; display: block; /*border: 1px solid rgba(39, 64, 92, 0.65);*/min-height: 1.7rem }
 .promoindex_area > a img { display: block; width: 100%; }
