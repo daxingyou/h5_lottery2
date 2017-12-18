@@ -64,12 +64,13 @@
                                 :start="sys_time" :end="now_time" :overend="nowover_time"
                         -->
                         <CountdownTimer ref="countdownTimer"
-                            @countdownOver="playLottery"
-                            @entertainCountdownOver="entertain"
-                            @spanArrived="lotteryDataFetch"
-                            @visibility="timerBegin"
-                            :now_pcode="now_pcode" :lotteryID="lotteryID"
-                            :start="sys_time" :end="now_time" :overend="nowover_time" />
+                                        @countdownOver="playLottery"
+                                        @entertainCountdownOver="entertain"
+                                        @entertainCountdownBreak="entertainBreak"
+                                        @spanArrived="lotteryDataFetch"
+                                        @visibility="timerBegin"
+                                        :now_pcode="now_pcode" :lotteryID="lotteryID"
+                                        :start="sys_time" :end="now_time" :overend="nowover_time"/>
 
                     </div>
                 </div>
@@ -463,6 +464,13 @@
                 this.entertainStatus = true;
                 this.resetAction();
             },
+
+              entertainBreak: function () {
+                  // this.$refs.infoDialog.open('请至下期继续投注', 'title_end')
+                  // this.$refs.infoDialog.open('请至下期继续投注', '本期投注已结束')
+                  this.entertainStatus = true;
+                  this.resetAction();
+              },
             //获取开奖更据
             lotteryDataFetch:function(needIn){
                 const that = this;
@@ -559,7 +567,13 @@
                /* this.lotteryDataFetch().then(()=>{
                     that.$refs.countdownTimer && that.$refs.countdownTimer.timerInit(that.sys_time, that.now_time, that.nowover_time);
                 })*/
-                that.entertainStatus = false;
+                // that.entertainStatus = false;
+
+                if (that.$refs.countdownTimer.wrongFlag) {
+                    that.entertainStatus = true;
+                } else {
+                    that.entertainStatus = false;
+                }
                 that.notopen = false;
             },
             resetAction:function(success){
