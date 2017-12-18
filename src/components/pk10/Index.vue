@@ -67,6 +67,7 @@
                         <CountdownTimer ref="countdownTimer"
                                         @countdownOver="playLottery"
                                         @entertainCountdownOver="entertain"
+                                        @entertainCountdownBreak="entertainBreak"
                                         @spanArrived="lotteryDataFetch"
                                         @visibility="timerBegin"
                                         :lotteryID="lotteryID"
@@ -373,6 +374,14 @@ export default {
             this.entertainStatus = true;
             this.resetAction();
         },
+
+        entertainBreak: function () {
+            // this.$refs.infoDialog.open('请至下期继续投注', 'title_end')
+            // this.$refs.infoDialog.open('请至下期继续投注', '本期投注已结束')
+            this.entertainStatus = true;
+            this.resetAction();
+        },
+
         lotteryDataFetch:function(needIn){
             const that = this;
             return new Promise((resolve)=>{
@@ -476,7 +485,13 @@ export default {
 
                 that.$refs.countdownTimer && that.$refs.countdownTimer.timerInit(that.sys_time, that.now_time, that.nowover_time);
             })*/
-            that.entertainStatus = false;
+            // that.entertainStatus = false;
+
+            if (that.$refs.countdownTimer.wrongFlag) {
+                that.entertainStatus = true;
+            } else {
+                that.entertainStatus = false;
+            }
             that.notopen = false;
         },
         resetAction:function(success){
