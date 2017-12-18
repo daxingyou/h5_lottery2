@@ -327,8 +327,6 @@
                 bankAddObj:{},
                 bankNumObj:{},
                 bankCode:""
-
-
             }
         },
         created:function(){
@@ -599,16 +597,6 @@
                 }
                 })  
             },
-            checkIsEqual:function (el) {
-                if(this.confirmpassword == this.password){
-                    $(el).parent('.form_g').next('.error-message').removeClass('red').text('');
-                    return
-                }else if((this.confirmpassword && !this.positiveEngNum(this.confirmpassword) ) || this.confirmpassword.length<6 || this.confirmpassword.length>20){
-                    $(el).parent('.form_g').next('.error-message').addClass('red').text('请输入6~20位英数密码') ;
-                }else{
-                    $(el).parent('.form_g').next('.error-message').addClass('red').text('两次密码输入不一致') ;
-                }
-            },
             //自动登录
 //            autoLogin :function () {
 //                var _self = this ;
@@ -665,6 +653,7 @@
                     }
                 })
             },
+
 
         }
 
