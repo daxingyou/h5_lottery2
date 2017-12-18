@@ -754,6 +754,43 @@ var MyMixin = {
             }
         },
         // 输入框清除数据,el当前元素class,cl是input的class
+        //验证邮箱
+        checkeMail:function (val,el) {
+            var content = '请输入正确邮箱地址' ;
+            if(val &&!this.checkEmail(val)){
+                $('.'+el).parent('.form_g').next('.error-message').addClass('red').text(content) ;
+            }
+            else{
+                $('.'+el).parent('.form_g').next('.error-message').removeClass('red').text('') ;
+            }
+            if(val ==''){
+                $('.'+el).parent('.form_g').next('.error-message').removeClass('red').text('') ;
+            }
+        },
+        checkQQ:function (val,el) {
+            var content = '请输入正确QQ号' ;
+            if(val &&!this.checkqq(val)){
+                $('.'+el).parent('.form_g').next('.error-message').addClass('red').text(content) ;
+            }
+            else{
+                $('.'+el).parent('.form_g').next('.error-message').removeClass('red').text('') ;
+            }
+            if(val ==''){
+                $('.'+el).parent('.form_g').next('.error-message').removeClass('red').text('') ;
+            }
+        },
+        checkWx:function (val,el) {
+            var content = '请输入正确微信账号' ;
+             if(val &&!this. checkWechat(val)){
+                $('.'+el).parent('.form_g').next('.error-message').addClass('red').text(content) ;
+              }
+            else{
+               $('.'+el).parent('.form_g').next('.error-message').removeClass('red').text('') ;
+             }
+             if(val ==''){
+              $('.'+el).parent('.form_g').next('.error-message').removeClass('red').text('') ;
+               }
+        },
         ClearInput:function(el,cl){
              $('.'+el).prev().val('');
               $('.'+el).parent('.form_g').next('.error-message').removeClass('red').text('') ;
@@ -879,6 +916,15 @@ var MyMixin = {
                                 break;
                             case "银行卡号" :
                                 _self.bankNumObj=res.data[i];
+                                break;
+                            case "电子邮箱" :
+                                _self.eMailObj=res.data[i];
+                                break;
+                            case "QQ" :
+                                _self.QQObj=res.data[i];
+                                break;
+                            case "微信" :
+                                _self.weiChatObj=res.data[i];
                                 break;
 
                         }

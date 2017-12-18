@@ -125,7 +125,7 @@
                                                     <i class="close cs1" @click=" ClearInput('cs1','reNum')"></i>
                                                 </div>
                                             </fieldset> -->
-                                            <fieldset>
+                                            <fieldset v-if="!!accountObj.ifView">
                                                 <div class="form_g account">
                                                     <legend>帐号</legend>
                                                     <input type="text" v-model="userNumber" class="username" autocomplete="off" @input="checkUserName(userNumber,'username')" placeholder="请输入4~15位帐号">
@@ -133,55 +133,60 @@
                                                 </div>
                                                 <label class="error-message"></label>
                                             </fieldset>
-                                            <fieldset v-if="showPd">
-                                                <div class="form_g password">
-                                                    <legend>密码</legend>
-                                                    <input type="password" v-model="userPd" placeholder="请输入6~20位密码"  autocomplete="off" class="password" @input="checkpassword(userPd,'password')" >
-                                                    <i class="eye " @click="show('eye1')"></i>
-                                                </div>
-                                                <label class="error-message"></label>
-                                            </fieldset>
-                                            <fieldset v-if="!showPd">
-                                                <div class="form_g password">
-                                                    <legend>密码</legend>
-                                                    <input type="text" v-model="userPd" placeholder="请输入6~20位密码" autocomplete="off" class="password" @input="checkpassword(userPd,'password')">
-                                                    <i class="eye active" @click="show('act')"></i>
-                                                </div>
-                                                <label class="error-message"></label>
-                                            </fieldset>
-                                            <fieldset  v-if="showC">
-                                                <div class="form_g password">
-                                                    <legend>确认密码</legend>
-                                                    <input type="password" placeholder="请输入6~20位密码" v-model="confirmpassword"  autocomplete="off" class="confirmpassword" @input="checkIsEqual('.confirmpassword')">
-                                                    <i class="eye " @click="show('eye2')"></i>
-                                                </div>
-                                                <label class="error-message"></label>
-                                            </fieldset>
-                                          <fieldset  v-if="!showC">
-                                                <div class="form_g password">
-                                                    <legend>确认密码</legend>
-                                                    <input type="text" placeholder="请输入6~20位密码" v-model="confirmpassword"  autocomplete="off" class="confirmpassword" @input="checkIsEqual('.confirmpassword')">
-                                                    <i class="eye active" @click="show('act2')"></i>
-                                                </div>
-                                                <label class="error-message"></label>
-                                            </fieldset>
+                                            <div v-if="!!passwordObj.ifView">
+                                                <fieldset v-if="showPd">
+                                                    <div class="form_g password">
+                                                        <legend>密码</legend>
+                                                        <input type="password" v-model="userPd" placeholder="请输入6~20位密码"  autocomplete="off" class="password" @input="checkpassword(userPd,'password')" >
+                                                        <i class="eye " @click="show('eye1')"></i>
+                                                    </div>
+                                                    <label class="error-message"></label>
+                                                </fieldset>
+                                                <fieldset v-if="!showPd">
+                                                    <div class="form_g password">
+                                                        <legend>密码</legend>
+                                                        <input type="text" v-model="userPd" placeholder="请输入6~20位密码" autocomplete="off" class="password" @input="checkpassword(userPd,'password')">
+                                                        <i class="eye active" @click="show('act')"></i>
+                                                    </div>
+                                                    <label class="error-message"></label>
+                                                </fieldset>
+                                            </div>
+                                            <div v-if="!!confirmpasswordObj.ifView">
+                                                <fieldset  v-if="showC">
+                                                    <div class="form_g password">
+                                                        <legend>确认密码</legend>
+                                                        <input type="password" placeholder="请输入6~20位密码" v-model="confirmpassword"  autocomplete="off" class="confirmpassword" @input="checkIsEqual('.confirmpassword')">
+                                                        <i class="eye " @click="show('eye2')"></i>
+                                                    </div>
+                                                    <label class="error-message"></label>
+                                                </fieldset>
+                                                <fieldset  v-if="!showC">
+                                                    <div class="form_g password">
+                                                        <legend>确认密码</legend>
+                                                        <input type="text" placeholder="请输入6~20位密码" v-model="confirmpassword"  autocomplete="off" class="confirmpassword" @input="checkIsEqual('.confirmpassword')">
+                                                        <i class="eye active" @click="show('act2')"></i>
+                                                    </div>
+                                                    <label class="error-message"></label>
+                                                </fieldset>
+                                            </div>
+
                                             <fieldset>
-                                                <div class="form_g account">
+                                                <div class="form_g account" v-if="!!realynameObj.ifView">
                                                     <legend>真实姓名</legend>
                                                     <input type="text" placeholder="请输入您的真实姓名" v-model="relName" class="relName"  @input="checkrealyName(relName,'relName')">
                                                     <i class="close cs3" @click="ClearInput('cs3','relName')"></i>
                                                 </div>
                                                 <label class="error-message"></label>
                                             </fieldset>
-                                            <fieldset>
+                                            <fieldset  v-if="!!phoneObj.ifView">
                                                 <div class="form_g account">
-                                                    <legend>银行卡号</legend>
-                                                    <input type="tel" placeholder="请输入取款银行卡号" v-model="bankNum" class="bankNum" @input="checkBankNum(bankNum,'bankNum')">
-                                                    <i class="close cs4" @click="ClearInput('cs4','bankNum')"></i>
+                                                    <legend>手机号码</legend>
+                                                    <input type="tel" placeholder="请输入11位手机号码" v-model="phoneNumber"  class="telephone"  @input="checktelphone(phoneNumber,'telephone')"  maxlength="11">
+                                                    <i class="close cs6" @click="ClearInput('cs6','phoneNumber')"></i>
                                                 </div>
                                                 <label class="error-message"></label>
                                             </fieldset>
-                                            <fieldset>
+                                            <fieldset v-if="!!bankselectObj.ifView">
                                                 <div class="form_g text">
                                                     <legend>银行名称</legend>
                                                     <select name="" >
@@ -191,19 +196,43 @@
                                                 </div>
                                                 <label class="error-message"></label>
                                             </fieldset>
-                                            <fieldset>
+                                            <fieldset v-if="!!bankAddObj.ifView">
                                                 <div class="form_g account">
-                                                    <legend>开户行地址</legend>
+                                                    <legend>开户行</legend>
                                                     <input type="text" placeholder="如:北京市海淀区中关村支行" v-model="bankAdd" class="bankAdd" @input="checkBankAdd(bankAdd,'bankAdd')">
                                                     <i class="close cs5" @click="ClearInput('cs5','bankAdd')"></i>
                                                 </div>
                                                 <label class="error-message"></label>
                                             </fieldset>
-                                            <fieldset>
+                                            <fieldset v-if="!!bankNumObj.ifView">
                                                 <div class="form_g account">
-                                                    <legend>手机号</legend>
-                                                    <input type="tel" placeholder="请输入11位手机号码" v-model="phoneNumber"  class="telephone"  @input="checktelphone(phoneNumber,'telephone')"  maxlength="11">
-                                                    <i class="close cs6" @click="ClearInput('cs6','phoneNumber')"></i>
+                                                    <legend>银行卡号</legend>
+                                                    <input type="tel" placeholder="请输入取款银行卡号" v-model="bankNum" class="bankNum" @input="checkBankNum(bankNum,'bankNum')">
+                                                    <i class="close cs4" @click="ClearInput('cs4','bankNum')"></i>
+                                                </div>
+                                                <label class="error-message"></label>
+                                            </fieldset>
+                                            <fieldset v-if="!!eMailObj.ifView">
+                                                <div class="form_g account">
+                                                    <legend>电子邮箱</legend>
+                                                    <input type="tel" placeholder="请输入电子邮箱" v-model="eMail" class="eMail" @input="checkeMail(eMail,'eMail')">
+                                                    <i class="close cs5" @click="ClearInput('cs5','eMail')"></i>
+                                                </div>
+                                                <label class="error-message"></label>
+                                            </fieldset>
+                                            <fieldset v-if="!!QQObj.ifView">
+                                                <div class="form_g account">
+                                                    <legend>QQ</legend>
+                                                    <input type="tel" placeholder="请输入QQ号" v-model="QQ" class="QQ" @input="checkQQ(QQ,'QQ')">
+                                                    <i class="close cs6" @click="ClearInput('cs6','QQ')"></i>
+                                                </div>
+                                                <label class="error-message"></label>
+                                            </fieldset>
+                                            <fieldset v-if="!!weiChatObj.ifView">
+                                                <div class="form_g account">
+                                                    <legend>微信</legend>
+                                                    <input type="tel" placeholder="请输入微信号" v-model="weiChat" class="weiChat" @input="checkWx(weiChat,'weiChat')">
+                                                    <i class="close cs7" @click="ClearInput('cs7','weiChat')"></i>
                                                 </div>
                                                 <label class="error-message"></label>
                                             </fieldset>
@@ -291,7 +320,23 @@ export default {
             bankNum:'',
             bankAdd:'',
             phoneNumber:'',
-            confirmpassword:''
+            confirmpassword:'',
+            withPassword:'',
+            weiChat:'',
+            QQ:'',
+            eMail:'',
+            accountObj:{},
+            passwordObj:{},
+            phoneObj:{},
+            realynameObj:{},
+            confirmpasswordObj:{},
+            bankselectObj:{},
+            bankAddObj:{},
+            bankNumObj:{},
+            eMailObj:{},
+            QQObj:{},
+            weiChatObj:{},
+            bankCode:""
         }
     },
     created:function () {
@@ -337,6 +382,15 @@ export default {
             }
             if(cl=='phoneNumber'){
                 this.phoneNumber=''
+            }
+            if(cl=='weiChat'){
+                this.weiChat=''
+            }
+            if(cl=='QQ'){
+                this.QQ=''
+            }
+            if(cl=='eMail'){
+                this.eMail=''
             }
         },
         //点击显示隐藏
