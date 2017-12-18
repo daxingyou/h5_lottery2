@@ -828,6 +828,57 @@ var MyMixin = {
                 }
             })
         },
+        //注册配置
+        getReglist (type) {
+            var _self=this;
+            $.ajax({
+                type: 'GET',
+                url:  _self.action.forseti + 'apid/config/registerConfig?regType='+type,
+                data:{},
+                success:(res)=>{
+                    //console.log(res)
+                    if(!res.data){
+                        return false
+                    }
+                    for(let i=0;i<res.data.length;i++){
+                        switch (res.data[i].item) {
+                            case "帐号" :
+                                _self.accountObj=res.data[i];
+                                break;
+                            case "登录密码" :
+                                _self.passwordObj=res.data[i];
+                                break;
+                            case "确认密码" :
+                                _self.confirmpasswordObj=res.data[i];
+                                break;
+                            case "真实名称" :
+                                _self.realynameObj=res.data[i];
+                                break;
+                            case "支付密码" :
+                                _self.withPasswordObj=res.data[i];
+                                break;
+                            case "手机号码" :
+                                _self.phoneObj=res.data[i];
+                                break;
+                            case "选择银行" :
+                                _self.bankselectObj=res.data[i];
+                                break;
+                            case "开户行" :
+                                _self.bankAddObj=res.data[i];
+                                break;
+                            case "银行卡号" :
+                                _self.bankNumObj=res.data[i];
+                                break;
+
+                        }
+                    }
+
+
+                }
+            })
+
+
+        }
     }
 };
 export default MyMixin;

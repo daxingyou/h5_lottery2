@@ -294,7 +294,6 @@ export default {
     },
     created:function () {
         var _self=this;
-        _self.getBankList();
         _self.switchYzmcode();
     },
     mounted:function() {
@@ -303,6 +302,7 @@ export default {
         document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
         this.getCopyright('1','BT02')
         this.getBankList()
+        this.getReglist('2');
     },
     methods: {
         // 回到顶部
