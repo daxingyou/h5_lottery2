@@ -166,13 +166,13 @@
                   <h3><img src="../../static/frist/images/sale/hzjm_03.png" alt="合作加盟"></h3>
                   <ul>
                       <li>
-                          <router-link class="icon_intro" :to="'/lobbyTemplate/tutorial'"></router-link>
+                          <router-link class="icon_intro" :to="'/lobbyTemplate/tutorial'"><span class="icon_account icon_join_1"></span><span>新手教程</span></router-link>
                       </li>
                       <li>
-                          <a class="icon_agent" href="javascript:;" @click="Continued()"></a>
+                          <a class="icon_agent" href="javascript:;" @click="Continued()"><span class="icon_account icon_join_2"></span><span>代理加盟</span></a>
                       </li>
                       <li>
-                          <router-link class="icon_about"  :to="'/lobbyTemplate/about'"></router-link>
+                          <router-link class="icon_about"  :to="'/lobbyTemplate/about'"><span class="icon_account icon_join_3"></span><span>关於我们</span></router-link>
                       </li>
                   </ul>
               </div>
