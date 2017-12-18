@@ -116,8 +116,9 @@
                   <li v-for="(lottery,index) in allLottery" v-if="index<7"> <!-- 只展示前面7个 -->
                     <a class="to_lottery" :href="'/'+gameHref[lottery.cid]" v-if="haslogin">
                       <div :class="'badge'">
-                        <!--<img v-lazy="lottery.imgUrl">-->
-                           <img v-lazy="'static/frist/images/lotteryicon/cp'+lottery.cid+'.png'">
+                          <img v-lazy="lottery.imgUrl">
+                          <!-- <img v-lazy="'static/frist/images/lotteryicon/cp'+lottery.cid+'.png'"> -->
+
                       </div>
                     </a>
                       <a class="to_lottery" @click="gotoGame(haslogin)"  v-else>
