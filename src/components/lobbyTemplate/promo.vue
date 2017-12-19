@@ -15,7 +15,17 @@
                     <li>
                         <h3>{{list.title}}</h3>
                         <img :src="list.titlePic">
-                        <p><a href="javascript:;" @click="setCid($event)" class="" :data-val="list.cid" ><span>查看详情</span></a></p>
+                        <!--20171220 新增优惠详情-->
+                        <div class="promo_detail">
+
+                            <p>静态测试文字</p>
+                            <p>银行转账充值100元起，可获1%存款优惠。</p>
+                            <p>存1000元赠10元，次次存次次送。</p>
+
+                        </div>
+                        <p class="btn_detail"><a href="javascript:;"><span>查看详情</span></a></p>
+                        <!--<p class="btn_detail"><a href="javascript:;" @click="setCid($event)" class="" :data-val="list.cid" ><span>查看详情</span></a></p>-->
+                        <!--end 20171220 新增优惠详情-->
                     </li>
                 </ul>
                 <!--<ul class="promo_list">-->
