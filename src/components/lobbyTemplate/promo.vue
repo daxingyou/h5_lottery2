@@ -3,7 +3,7 @@
         <header id="pa_head" class="new_header">
             <div class="left">
                 <router-link :to="'/'">
-                    <span class="icon icon_back"></span>
+                    <span class="icon icon_back" id='propBack'></span>
                 </router-link>
             </div>
             <h2 class="center title_name">优惠活动</h2>
@@ -153,3 +153,12 @@ export default {
   }
 }
 </script>
+<style scoped>
+
+    #propBack {
+        display: inline-block;
+        padding-right: 1rem;
+    }
+
+
+</style>
