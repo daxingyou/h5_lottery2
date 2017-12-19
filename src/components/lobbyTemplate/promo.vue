@@ -11,16 +11,16 @@
         </header>
         <div class="pa_content">
             <div class="promo_area">
-                <ul class="promo_list" v-for="list in banner" @click="setClass($event)">
+                <ul class="promo_list" v-for="list in banner" @click="setClass($event,list.cid)" >
                     <li>
                         <h3>{{list.title}}</h3>
                         <img :src="list.titlePic">
                         <!--20171220 新增优惠详情-->
-                        <div class="promo_detail">
+                        <div class="promo_detail" v-html="content">
 
-                            <p>静态测试文字</p>
-                            <p>银行转账充值100元起，可获1%存款优惠。</p>
-                            <p>存1000元赠10元，次次存次次送。</p>
+                            <!--<p>静态测试文字</p>-->
+                            <!--<p>银行转账充值100元起，可获1%存款优惠。</p>-->
+                            <!--<p>存1000元赠10元，次次存次次送。</p>-->
 
                         </div>
                         <p class="btn_detail"><a href="javascript:;"><span>查看详情</span></a></p>
@@ -78,8 +78,11 @@ export default {
   },
   data: function() {
         return {
-          banner:[],
-            cid:''
+            banner:[],
+            cid:'',
+            content:'',
+            title:'' ,
+            titlePic:''
         }
     },
   created: function() {
@@ -108,7 +111,6 @@ export default {
 
                      }
                      _self.banner=res.data.rows;
-
                  }
               },
               err:(res)=>{
@@ -117,19 +119,36 @@ export default {
           })
       },
       //选取详情传递cid;
-      setCid:function (e) {
-              var $src = $(e.currentTarget);
-              var val = $src.data('val');
-              if(val){
-              localStorage.setItem('Cid',val);
-              window.location = '/lobbyTemplate/promo_content' ;
-             }
-      },
-      setClass:function (e) {
+//      setCid:function (e) {
+//              var $src = $(e.currentTarget);
+//              var val = $src.data('val');
+//              if(val){
+//              localStorage.setItem('Cid',val);
+//              window.location = '/lobbyTemplate/promo_content' ;
+//             }
+//      },
+      setClass:function (e,cid) {
           var $src = $(e.currentTarget);
           $src.toggleClass('active')
               .siblings()
               .removeClass('active');
+          this.getContent(cid)
+      },
+      getContent:function (cid) {
+          var _self=this;
+          $.ajax({
+              type:'get',
+              url: _self.action.forseti + 'apid/cms/activityInfo',
+              data:{cid:cid},
+              success:(res)=>{
+                  if(res){
+                      _self.titlePic=_self.action.picurl+ res.data.titlePic+'/0';
+                      _self.title=res.data.title;
+                      _self.content=res.data.content;
+                  }
+              }
+          })
+
       }
   }
 }
