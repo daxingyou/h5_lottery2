@@ -113,17 +113,21 @@
               <ul>
 
                  <!-- <li v-for="lottery in allLottery" v-if="lottery.ifHot==1">-->
-                  <li v-for="(lottery,index) in allLottery" v-if="index<7"> <!-- 只展示前面7个 -->
+                  <li v-for="(lottery,index) in allLottery" v-if="index<10"> <!-- 只展示前面10个 -->
                     <a class="to_lottery" :href="'/'+gameHref[lottery.cid]" v-if="haslogin">
                       <div :class="'badge'">
-                          <img v-lazy="lottery.imgUrl">
+                          <img v-lazy=" action.picurl+lottery.imgUrl+'/0' ">
                           <!-- <img v-lazy="'static/frist/images/lotteryicon/cp'+lottery.cid+'.png'"> -->
 
                       </div>
                     </a>
                       <a class="to_lottery" @click="gotoGame(haslogin)"  v-else>
                           <div :class="'badge'">
-                              <img v-lazy="lottery.imgUrl">
+                              <!-- <img v-lazy="lottery.imgUrl"> -->
+                              <!-- <img v-lazy=" picurl+lottery.imgUrl+'/0' "> -->
+                              <img v-lazy=" action.picurl+lottery.imgUrl+'/0' ">
+
+
                               <!-- <img v-lazy="'static/frist/images/lotteryicon/cp'+lottery.cid+'.png'"> -->
                           </div>
                       </a>
@@ -241,7 +245,7 @@ export default {
             currPopMsgCid:"",
             picture:'',
             cid:'',
-            custUrl:''
+            custUrl: '',
         }
     },
     computed:{
@@ -261,6 +265,7 @@ export default {
       }
       this.getBulletinsContent ();
       this.getPopMsg();
+
 //      TouchSlide({
 //                  slideCell: "#focus",
 //                  autoPlay:true,
