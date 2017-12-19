@@ -452,7 +452,7 @@ export default {
           var val = $src.data('val');
           if(val){
               localStorage.setItem('Cid',val);
-              window.location = '/lobbyTemplate/promo_content' ;
+              window.location = '/lobbyTemplate/promo' ;
           }
       },
   },
