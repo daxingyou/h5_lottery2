@@ -41,7 +41,7 @@
                                     <fieldset  v-if="show">
                                         <div class="form_g password">
                                             <legend>登录密码</legend>
-                                            <input type="password" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" @input="checkpassword(password,'password')" >
+                                            <input type="password" placeholder="请输入密码" v-model="userPd" autocomplete="off" class="password" @input="checkpassword(userPd,'password')" >
                                             <i class="eye active eye1"  @click="showPassword('eye1')"></i>
                                         </div>
                                         <label class="error-message "></label>
@@ -49,7 +49,7 @@
                                     <fieldset v-if="!show">
                                         <div class="form_g password">
                                             <legend>登录密码 </legend>
-                                            <input type="text" placeholder="请输入密码" v-model="password" autocomplete="off" class="password" @input="checkpassword(password,'password')" >
+                                            <input type="text" placeholder="请输入密码" v-model="userPd" autocomplete="off" class="password" @input="checkpassword(userPd,'password')" >
                                             <i class="eye act1" @click="showPassword('act1')"></i>
                                         </div>
                                         <label class="error-message "></label>
@@ -301,7 +301,7 @@
             return {
                 tjrusername :'',
                 username :'',
-                password :'',
+                userPd :'',
                 confirmpassword :'',
                 realyname :'',
                 telephone :'',
