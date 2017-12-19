@@ -11,7 +11,7 @@
         </header>
         <div class="pa_content">
             <div class="promo_area">
-                <ul class="promo_list" v-for="list in banner">
+                <ul class="promo_list" v-for="list in banner" @click="setClass($event)">
                     <li>
                         <h3>{{list.title}}</h3>
                         <img :src="list.titlePic">
@@ -77,11 +77,7 @@ export default {
   mounted:function() {
       $('html,body').css('overflow-y','scroll' );
       document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
-      $(function(){
-          $('.promo_area > ul > li').on('click',function(){
-              $(this).toggleClass('active').siblings().removeClass('active');
-          })
-      })
+
       this.getActivity();
      // this.setCid();
   },
@@ -118,6 +114,12 @@ export default {
               localStorage.setItem('Cid',val);
               window.location = '/lobbyTemplate/promo_content' ;
              }
+      },
+      setClass:function (e) {
+              var $src = $(e.currentTarget);
+               $src.addClass('active')
+                  .siblings()
+                  .removeClass('active');
       }
   }
 }
