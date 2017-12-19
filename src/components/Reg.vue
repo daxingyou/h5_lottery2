@@ -77,15 +77,15 @@
                                     <fieldset  v-if="showB">
                                         <div class="form_g password">
                                             <legend>取款密码</legend>
-                                            <input type="password" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')" >
+                                            <input type="password" placeholder="请输入4位数字取款密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')" >
                                             <i class="eye active eye3" @click="showPassword('eye3')"></i>
                                         </div>
                                         <label class="error-message "></label>
                                     </fieldset>
                                     <fieldset  v-if="!showB">
                                         <div class="form_g password">
-                                            <legend>支付密码</legend>
-                                            <input type="text" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')" >
+                                            <legend>取款密码</legend>
+                                            <input type="text" placeholder="请输入4位数字取款密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')" >
                                             <i class="eye " @click="showPassword('act3')"></i>
                                         </div>
                                         <label class="error-message "></label>
@@ -242,8 +242,8 @@
                             </fieldset>
                             <fieldset  v-if="!showB">
                                 <div class="form_g password">
-                                    <legend>支付密码</legend>
-                                    <input type="text" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')">
+                                    <legend>取款密码</legend>
+                                    <input type="text" placeholder="请输入4位数字取款密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')">
                                     <i class="eye " @click="showPassword('act3')"></i>
                                 </div>
                                 <label class="error-message "></label>
@@ -486,7 +486,7 @@
                 }
                 if(!!this.withPasswordObj.ifRequired){
                     if(this.withPassword ==''|| !this.positiveNum(this.withPassword)){
-                        this.$refs.autoCloseDialog.open('请输入4位数字支付密码') ;
+                        this.$refs.autoCloseDialog.open('请输入4位数字取款密码') ;
                         return false ;
                     }
                 }
