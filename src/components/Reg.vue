@@ -393,7 +393,7 @@
 
                 }
               if(!!this.passwordObj.ifRequired){
-                  if(this.password ==''){
+                  if(this.userPd ==''){
                       this.$refs.autoCloseDialog.open('请输入用户密码') ;
                       return false ;
                   }
@@ -410,7 +410,7 @@
                 if(this.username==this.tjrusername){
                     this.$refs.autoCloseDialog.open('账号不能与推荐人账号相同') ;
                     return false ;
-                }else if(this.confirmpassword !== this.password){
+                }else if(this.confirmpassword != this.userPd){
                     this.$refs.autoCloseDialog.open('两次密码输入不一致');
                     return false ;
                 }
@@ -449,7 +449,7 @@
 
                 }
                 if(!!this.passwordObj.ifRequired){
-                    if(this.password ==''){
+                    if(this.userPd ==''){
                         this.$refs.autoCloseDialog.open('请输入用户密码') ;
                         return false ;
                     }
@@ -459,7 +459,7 @@
                         this.$refs.autoCloseDialog.open('请输入确认密码') ;
                         return false ;
                     }
-                    if(this.confirmpassword !== this.password){
+                    if(this.confirmpassword !== this.userPd){
                         this.$refs.autoCloseDialog.open('两次密码输入不一致');
                         return false ;
                     }
@@ -539,7 +539,7 @@
                     login: _self.username ,   // 帐号
                     method: 'mc',   //方法：mc创建会员
                     oddType: 'a',  //盘口，1位字符，预留
-                    password: _self.password ,  // 用户登录密码
+                    password: _self.userPd ,  // 用户登录密码
                     realName: _self.realyname ,  // 用户真实姓名
                     mobile: _self.telephone , // 手机号码
                     passwordPay: _self.withPassword ,   //取款密码
