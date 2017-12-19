@@ -362,8 +362,7 @@
             this.setCookie('lottery_name',lotteryname) ; // 彩种名称
             this.allLottery = this.$refs.navone.getLotterys() ;
             this.gameHref = this.$refs.navone.gameHref ; // 拿子组件的值
-
-
+            this.refreshBalance();
 
             setTimeout(() => {
                 this.timerBegin();
@@ -386,7 +385,7 @@
              refreshBalance:function(){
                 var afterBetCookie = this.getCookie( 'balancePublic' )
                 this.balancePublic = afterBetCookie
-                console.log(afterBetCookie)      
+                 // console.log(afterBetCookie)
             },
             betCountStat:function(xslen, xlen){
                 return  xslen*((xslen-1)/xlen);
