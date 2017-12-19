@@ -76,7 +76,7 @@
                                 <div class="" v-if="withPasswordObj.ifView">
                                     <fieldset  v-if="showB">
                                         <div class="form_g password">
-                                            <legend>支付密码</legend>
+                                            <legend>取款密码</legend>
                                             <input type="password" placeholder="请输入4位数字支付密码" maxlength="4" v-model="withPassword" class="withPassword" @input="checkNum(withPassword,'withPassword')" >
                                             <i class="eye active eye3" @click="showPassword('eye3')"></i>
                                         </div>
