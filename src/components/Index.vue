@@ -320,18 +320,18 @@ export default {
           if(!this.haslogin){
               this.$refs.autoCloseDialog.open('登录后才可以操作')
               setTimeout(function () {
-                  window.location = '/Login' ;
-                  // _self.$router.push('/login')
+                  // window.location = '/Login' ;
+                  _self.$router.push('/login')
               },1000)
               return
           }
           if(cla=='CZ'){
-              window.location = '/lobbyTemplate/deposit' ;
-              // _self.$router.push('/lobbyTemplate/deposit')
+              // window.location = '/lobbyTemplate/deposit' ;
+              _self.$router.push('/lobbyTemplate/deposit')
           }
           if(cla=='TK'){
-              window.location = '/lobbyTemplate/Withdrawals' ;
-              // _self.$router.push('/lobbyTemplate/Withdrawals')
+              // window.location = '/lobbyTemplate/Withdrawals' ;
+              _self.$router.push('/lobbyTemplate/Withdrawals')
 
           }
       },
@@ -453,12 +453,12 @@ export default {
           })
       },
       setCid:function (e) {
+          var _self = this;
           var $src = $(e.currentTarget);
           var val = $src.data('val');
           if(val){
               localStorage.setItem('Cid',val);
-              window.location = '/lobbyTemplate/promo' ;
-              // _self.$router.push('/lobbyTemplate/promo')
+              _self.$router.push('/lobbyTemplate/promo')
 
           }
       },

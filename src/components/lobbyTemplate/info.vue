@@ -213,13 +213,15 @@ export default {
               return
           }
           if(cla=='CZ'){
-              window.location = '/lobbyTemplate/deposit' ;
+              _self.$router.push('/lobbyTemplate/deposit')
           }
           if(cla=='TK'){
-              window.location = '/lobbyTemplate/Withdrawals' ;
+              _self.$router.push('/lobbyTemplate/Withdrawals')
+
           }
           if(cla=='ZH'){
-              window.location = '/lobbyTemplate/info_data' ;
+              _self.$router.push('/lobbyTemplate/Withdrawals')
+
           }
       },
       //游客显示
