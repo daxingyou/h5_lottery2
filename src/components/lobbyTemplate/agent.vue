@@ -459,7 +459,7 @@ export default {
             if(_self.regsubmitflage){
                 return false ;
             }
-       console.log(!this.phoneObj.ifRequired)
+//       console.log(!this.phoneObj.ifRequired)
             if(!!this.realynameObj.ifRequired){
                 if(this.relName ==''){
                     this.$refs.autoCloseDialog.open('请输入真实姓名') ;
@@ -523,6 +523,7 @@ export default {
                 this.$refs.autoCloseDialog.open('请阅读并同意注册协议') ;
                  return false ;
             }
+            _self.regsubmitflage = true ;
 //            _self.bankCode=$('.bankselect').find("option:selected").data('code') ;
             var logindata = {
                 agentAccount: _self.userNumber ,   // 帐号
@@ -567,7 +568,7 @@ export default {
                           // alert(2)
                           _self.regsubmitflage = false ;
                           this.switchYzmcode() ; // 更新验证码
-                          this.$refs.autoCloseDialog.open(res.cnMsg) ;
+                          this.$refs.autoCloseDialog.open(res.cnMsg);
                       }
 
                   },
@@ -580,7 +581,6 @@ export default {
         CheckAccount:function () {
             let _self=this;
             let AccData={
-//                appid:'bcappid02',
                 agentAccount:_self.userNumber
             }
             $.ajax({
