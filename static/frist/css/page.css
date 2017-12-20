@@ -795,7 +795,7 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .bet_data > a > .item > .status { float: right; max-width: 1.8rem; width: auto; }
 .bet_data > a > .item > .badge { background: url('/static/frist/images/logo_bg.png') no-repeat; background-size: 100% 100%; width: 1.5rem; height: 1.5rem; margin-right:0.15rem; }
 .bet_data > a > .item > .badge > img { width: 1.1rem; margin: 0.3rem 0.2rem;}
-.bet_data strong { color: #ffbd00; font-size: .35rem; font-weight: 300; }
+.bet_data strong { color: #ffbd00; font-size: .35rem; font-weight: 300; max-width: 3rem; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: top;}
 .bet_data .prd_num { color: #d59559; margin-right: 0.2rem;}
 .bet_data .status { min-width: 15%; width: 1.8rem; text-align: center; color: #d59559; }
 .bet_data .status>div{ max-width: 100%;   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -1128,10 +1128,11 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 /* -----------------------------------------
 // 充值
 -----------------------------------------*/
+.arrow_list_dark { position: relative;}
 .arrow_list_dark li{ float: left; width: 50%; }
 .arrow_list_dark::after{ content: ''; display: table; clear: both;}
 .arrow_list_dark .badge{ background: url(/static/frist/images/logo_bg.png) no-repeat;background-size: 100% 100%;width: 1.5rem;height: 1.5rem; margin-right: 0.2rem; }
-.arrow_list_dark .icon{ float: right; margin-top: 0.45rem; display: none;}
+.arrow_list_dark .icon{ /*float: right;*/ margin-top: 0.45rem; display: none; position: absolute; top: 50%; margin-top: -0.32rem; right: 0;}
 
 .deposit_area { padding: 0 0.3rem; }
 .pay_content {  }
@@ -1324,8 +1325,9 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 .password_area > div {  text-align: center; }
 .password_area > div > div { display: inline-block; }
 
-.ac_detial .ac_data > a:after { background-image: url("/static/frist/images/btn_icon_right.png"); background-repeat: no-repeat; background-position: center top; background-color: transparent; background-size: 100%; content: ''; position: absolute; display: block; top: 0; left: 0; width: .2rem; height: .5rem; right: .5rem; left: initial; line-height: 1.5rem; top: 1.65rem; }
+/*.ac_detial .ac_data > a:after { background-image: url("/static/frist/images/btn_icon_right.png"); background-repeat: no-repeat; background-position: center top; background-color: transparent; background-size: 100%; content: ''; position: absolute; display: block; top: 0; left: 0; width: .2rem; height: .5rem; right: .5rem; left: initial; line-height: 1.5rem; top: 1.65rem; }*/
 
+.ac_detial .bet_data > a > .item { padding: 0.3rem 0;}
 /*.ac_detial .ac_data .lottery_t { margin-top: .1rem; }*/
 
 
