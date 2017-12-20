@@ -218,7 +218,8 @@ export default {
                   if(res.err=='SUCCESS'){
                       _self.$refs.autoCloseDialog.open('修改成功','','icon_check','d_check') ;
                       setTimeout(function(){
-                          window.location = '/lobbyTemplate/withdrawals' ;
+                          _self.$router.push('/lobbyTemplate/withdrawals')
+                          
                       },2000)
                   }else {
                       _self.$refs.autoCloseDialog.open(res.msg) ;
