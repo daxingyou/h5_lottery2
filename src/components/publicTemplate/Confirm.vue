@@ -42,9 +42,10 @@ export default {
             this.show = false;
         },
         goReg:function () {
+            var _self = this;
             this.loginOut('test');
             setTimeout(function(){
-                window.location = '/reg' ;
+                _self.$router.push('/reg')
             },500)
         },
 

@@ -440,7 +440,7 @@
 
                 /*this.nextAction()*/
 
-                var _self=this;
+                var _self = this;
                 if(!!this.accountObj.ifRequired){
                     if(this.username ==''){
                         this.$refs.autoCloseDialog.open('请输入帐号') ;
@@ -570,7 +570,8 @@
                             _self.setCookie("acType", res.data.acType);  // 把登录 acType 放在cookie里面
                             _self.setCookie("username", _self.username);  // 把登录用户名放在cookie里面
                             setTimeout(function () {
-                                window.location = '/' ;
+                                _self.$router.push('/')
+
                             },1000) ;
                         }else{ //code 105 验证码无效
                             // alert(2)
