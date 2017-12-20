@@ -2,11 +2,11 @@
     <div id="pa_con" class="so-con warp ">
         <header id="pa_head" class="new_header">
             <div class="left">
-                <a href="javascript:;" onclick="history.go(-1)">
+                <router-link :to="'/'">
                     
     <span class="icon icon_back"></span>
 
-                </a>
+                </router-link>
             </div>
             <h2 class="center title_name">代理申请</h2>
             <div class="right"></div>
@@ -128,7 +128,7 @@
                                             <fieldset v-if="!!accountObj.ifView">
                                                 <div class="form_g account">
                                                     <legend>帐号</legend>
-                                                    <input type="text" v-model="userNumber" class="username" autocomplete="off" @input="checkUserName(userNumber,'username')" placeholder="请输入4~15位帐号">
+                                                    <input type="text" v-model="userNumber" class="username" autocomplete="off" @input="checkUserName(userNumber,'username')" placeholder="请输入4~15位帐号" @blur="CheckAccount()">
                                                     <i class="close cs2" @click=" ClearInput('cs2','userNum')"></i>
                                                 </div>
                                                 <label class="error-message"></label>
@@ -189,7 +189,7 @@
                                             <fieldset v-if="!!bankselectObj.ifView">
                                                 <div class="form_g text">
                                                     <legend>银行名称</legend>
-                                                    <select name="" >
+                                                    <select  name=""  v-model="bankName">
                                                         <option :value="banks.id" :data-code="banks.bankCode" v-for="banks in bankList">{{banks.bankName}}</option>
                                                     </select>
                                                     <span class="icon icon_arrow_down"></span>
@@ -246,11 +246,11 @@
                                             </fieldset>
                                         </form>
                                         <div class="agent_check">
-                                            <input type="checkbox" id="cbox1" value="first_checkbox" checked>
+                                            <input type="checkbox" id="cbox1" value="first_checkbox" checked v-model="checked">
                                             <label for="cbox1">我已届满合法博彩年龄，且已阅读并同意<a class="agent_modal" href="javascript:;" @click="show('ag')">《代理注册协议》</a></label>
                                         </div>
                                         <div class="btn btn_blue">
-                                            <a class="new_btn" href="javascript:;"><span class="big">立即申请</span></a>
+                                            <a class="new_btn" href="javascript:;" @click="agentReg()"><span class="big">立即申请</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -285,21 +285,21 @@
                 </div>
             </div>
         </div>
-
+        <AutoCloseDialog ref="autoCloseDialog" text=" " type="" />
     </div>
 </template>
 
 <script>
 // import $ from "jquery";
 import Mixin from '@/Mixin'
-// import AutoCloseDialog from '@/components/publicTemplate/AutoCloseDialog'
+ import AutoCloseDialog from '@/components/publicTemplate/AutoCloseDialog'
 import FooterNav from '@/components/Footer'
 
 export default {
     name: 'agent',
     mixins:[Mixin],
     components: {
-    // AutoCloseDialog,
+     AutoCloseDialog,
         FooterNav ,
     },
     data: function() {
@@ -319,12 +319,14 @@ export default {
             relName:'',
             bankNum:'',
             bankAdd:'',
+            bankName:'',
             phoneNumber:'',
             confirmpassword:'',
-            withPassword:'',
             weiChat:'',
             QQ:'',
             eMail:'',
+            regsubmitflage:false ,
+            checked:true,
             accountObj:{},
             passwordObj:{},
             phoneObj:{},
@@ -425,6 +427,172 @@ export default {
                 success: (data) => {
                     _self.verImgCode = data.data && 'data:image/png;base64,' + data.data.code || '';
                     _self.client = data.data && data.data.clientId || '';
+                }
+            })
+        },
+        //代理注册接口
+        agentReg:function () {
+            var _self=this;
+            if(!!this.accountObj.ifRequired){
+                if(this.userNumber ==''){
+                    this.$refs.autoCloseDialog.open('请输入帐号') ;
+                    return false ;
+                }
+            }
+            if(!!this.passwordObj.ifRequired){
+                if(this.userPd ==''){
+                    this.$refs.autoCloseDialog.open('请输入用户密码') ;
+                    return false ;
+                }
+            }
+            if(!!this.confirmpasswordObj.ifRequired){
+                if(this.confirmpassword ==''){
+                    this.$refs.autoCloseDialog.open('请输入确认密码') ;
+                    return false ;
+                }
+                if(this.confirmpassword !== this.userPd){
+                    this.$refs.autoCloseDialog.open('两次密码输入不一致');
+                    return false ;
+                }
+
+            }
+            if(_self.regsubmitflage){
+                return false ;
+            }
+       console.log(!this.phoneObj.ifRequired)
+            if(!!this.realynameObj.ifRequired){
+                if(this.relName ==''){
+                    this.$refs.autoCloseDialog.open('请输入真实姓名') ;
+                    return false ;
+                }
+            }
+            if(!!this.phoneObj.ifRequired){
+                if(this.phoneNumber ==''){
+                    this.$refs.autoCloseDialog.open('请输入手机号码') ;
+                    return false ;
+                }
+            }
+
+            if(!!this.bankselectObj.ifRequired){
+                if(_self.bankName==""){
+                    _self.$refs.autoCloseDialog.open('请选择银行') ;
+                    return false
+                }
+            }
+            if (!!this.bankAddObj.ifRequired){
+                if(_self.bankAdd==""){
+                    _self.$refs.autoCloseDialog.open('请输入开户行地址') ;
+                    return false
+                }
+            }
+            if(!!this.bankNumObj.ifRequired){
+                if(_self.bankNum==""){
+                    _self.$refs.autoCloseDialog.open('请输入银行卡号') ;
+                    return false
+                }
+            }
+            if(!!this.eMailObj.ifRequired){
+                if(_self.eMail==""){
+                    _self.$refs.autoCloseDialog.open('请输入电子邮箱') ;
+                    return false
+                }
+            }
+            if(!!this.QQObj.ifRequired){
+                if(_self.QQ==""){
+                    _self.$refs.autoCloseDialog.open('请输入QQ号') ;
+                    return false
+                }
+            }
+            if(!!this.weiChatObj.ifRequired){
+                if(_self.weiChat==""){
+                    _self.$refs.autoCloseDialog.open('请输入微信号') ;
+                    return false
+                }
+            }
+
+            if(this.identifyCode ==''){
+                this.$refs.autoCloseDialog.open('请输入验证码') ;
+                return false ;
+            }
+
+            var falg = $('.error-message').hasClass('red') ;  // 验证不通过，不允许提交
+            if(falg){
+                return false ;
+            }
+            if(!_self.checked){
+                this.$refs.autoCloseDialog.open('请阅读并同意注册协议') ;
+                 return false ;
+            }
+//            _self.bankCode=$('.bankselect').find("option:selected").data('code') ;
+            var logindata = {
+                agentAccount: _self.userNumber ,   // 帐号
+//                method: 'mc',   //方法：mc创建会员
+//                oddType: 'a',  //盘口，1位字符，预留
+                loginPwd: _self.userPd ,  // 用户登录密码
+                reLoginPwd:_self. confirmpassword, //确认密码
+                agentName: _self.relName ,  // 用户真实姓名
+                phone: _self.phoneNumber , // 手机号码
+                bankName:_self.bankName, //银行名称
+                bank:_self.bankAdd,//开户地址
+                bankNo:_self.bankNum, //银行卡号码
+                wechat:_self.weChat,  //微信
+                qq:_self.QQ,
+                email:_self.eMail,
+                sourceType:'2',//来源
+                code: _self.identifyCode ,   // 验证码
+            }
+              $.ajax({
+                  type: 'post',
+                  headers: {
+                      Authorization: 'Basic d2ViX2FwcDo=',
+                      clientId: this.client
+                  },
+                  dataType: 'json',
+                  contentType: 'application/json; charset=utf-8',
+                  url: this.action.uaa + 'apid/plat/agent/registerAgent',
+                  data: JSON.stringify(logindata) ,
+                  success: (res) => {
+                      // alert(1)
+                      console.log(res)
+                      if(res.err =='SUCCESS'){ // 注册成功
+                          _self.regsubmitflage = false ;
+                          _self.$refs.autoCloseDialog.open('注册成功','','icon_check','d_check') ;
+                          _self.setCookie("access_token", res.data.access_token);  // 把登录token放在cookie里面
+//                          _self.setCookie("acType", res.data.acType);  // 把登录 acType 放在cookie里面
+//                          _self.setCookie("username", _self.username);  // 把登录用户名放在cookie里面
+                          setTimeout(function () {
+                              window.location = '/' ;
+                          },1000) ;
+                      }else{ //code 105 验证码无效
+                          // alert(2)
+                          _self.regsubmitflage = false ;
+                          this.switchYzmcode() ; // 更新验证码
+                          this.$refs.autoCloseDialog.open(res.cnMsg) ;
+                      }
+
+                  },
+                  error: function () {
+                      _self.regsubmitflage = false ;
+                  }
+              })
+        },
+        //验证账户是否存在
+        CheckAccount:function () {
+            let _self=this;
+            let AccData={
+//                appid:'bcappid02',
+                agentAccount:_self.userNumber
+            }
+            $.ajax({
+                type: 'get',
+//                headers: {Authorization: 'Basic d2ViX2FwcDo='},
+                url: this.action.uaa + 'apid/plat/agent/check_account',
+                data: AccData ,
+                success:(res)=>{
+                    if(res.data){
+                        _self.$refs.autoCloseDialog.open('用户名重复') ;
+                        return false
+                    }
                 }
             })
         },
