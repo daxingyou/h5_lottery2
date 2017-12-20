@@ -2,9 +2,9 @@
     <div id="pa_con" class="so-con warp ">
         <header id="pa_head" class="new_header">
             <div class="left">
-                <a href="javascript:;" onclick="history.go(-1)" >
+                <router-link  :to="'/'" >
                     <span class="icon icon_back"></span>
-                </a>
+                </router-link>
             </div>
             <h2 class="center title_name">{{copyTitle}}</h2>
             <div class="right"></div>
