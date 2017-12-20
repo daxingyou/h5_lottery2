@@ -456,7 +456,6 @@ export default {
           var _self = this;
           var $src = $(e.currentTarget);
           var val = $src.data('val');
-          alert(val)
           if(val){
               localStorage.setItem('Cid',val);
               _self.$router.push('/lobbyTemplate/promo')
