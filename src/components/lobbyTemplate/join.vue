@@ -113,10 +113,14 @@ export default {
               return
           }
           if(cla=='CZ'){
-              window.location = '/lobbyTemplate/deposit' ;
+              // window.location = '/lobbyTemplate/deposit' ;
+              _self.$router.push('/lobbyTemplate/deposit')
           }
           if(cla=='TK'){
-              window.location = '/lobbyTemplate/Withdrawals' ;
+
+              _self.$router.push('/lobbyTemplate/Withdrawals')
+
+              // window.location = '/lobbyTemplate/Withdrawals' ;
           }
       },
 }

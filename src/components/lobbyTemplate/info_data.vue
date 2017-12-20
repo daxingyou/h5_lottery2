@@ -596,7 +596,9 @@ export default {
                      if(res.err == 'SUCCESS'){
                          _self.$refs.autoCloseDialog.open('修改成功','','icon_check','d_check') ;
                          setTimeout(function(){
-                             window.location = '/lobbyTemplate/info_data' ;
+                             // window.location = '/lobbyTemplate/info_data' ;
+                             _self.$router.push('/lobbyTemplate/info_data')
+                             
                          },2000)
                      }else{
                          _self.$refs.autoCloseDialog.open(res.msg) ;
@@ -644,7 +646,9 @@ export default {
                   if(res.err == 'SUCCESS'){
                       _self.$refs.autoCloseDialog.open('修改成功','','icon_check','d_check') ;
                       setTimeout(function(){
-                          window.location = '/lobbyTemplate/info_data' ;
+                          // window.location = '/lobbyTemplate/info_data' ;
+                          _self.$router.push('/lobbyTemplate/info_data')
+
                       },2000)
                   }else{
                       _self.$refs.autoCloseDialog.open(res.msg) ;
@@ -695,7 +699,9 @@ export default {
                    }
                   _self.$refs.autoCloseDialog.open('修改成功','','icon_check','d_check') ;
                   setTimeout(function(){
-                      window.location = '/lobbyTemplate/info_data' ;
+                      // window.location = '/lobbyTemplate/info_data' ;
+                      _self.$router.push('/lobbyTemplate/info_data')
+
                   },1000)
 
               },

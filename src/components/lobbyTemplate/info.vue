@@ -220,7 +220,8 @@ export default {
 
           }
           if(cla=='ZH'){
-              _self.$router.push('/lobbyTemplate/Withdrawals')
+
+              _self.$router.push('/lobbyTemplate/info_data')
 
           }
       },
