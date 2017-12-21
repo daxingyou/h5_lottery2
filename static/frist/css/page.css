@@ -1332,10 +1332,10 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 
 
 /* 帐户明细 状态标签 */
-.sta { display: inline-block; padding: 0 .1rem;  border-radius: 0.1rem; font-size: 0.29rem; line-height: .4rem; vertical-align: text-bottom; }
+.sta { display: inline-block; padding: 0 .1rem;  border-radius: 0.1rem; font-size: 0.29rem; line-height: .4rem; vertical-align: text-bottom; font-weight: bold; }
 .sta.sta01 { border: 1px solid #71c341; color: #71c341; } /* 成功 */
 .sta.sta02 { border: 1px solid #fff; color: #fff; } /* 未处理 */
-.sta.sta03 { border: 1px solid #fff; color: #fff; } /* 失败 */
+.sta.sta03 { border: 1px solid #820000; color: #820000; } /* 失败 */
 
 .qrcode_step { width: 80%; margin: 0 auto; margin-top: 2rem; }
 
