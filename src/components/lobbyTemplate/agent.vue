@@ -529,18 +529,18 @@ export default {
                 agentAccount: _self.userNumber ,   // 帐号
 //                method: 'mc',   //方法：mc创建会员
 //                oddType: 'a',  //盘口，1位字符，预留
-                loginPwd: _self.userPd ,  // 用户登录密码
-                reLoginPwd:_self. confirmpassword, //确认密码
-                agentName: _self.relName ,  // 用户真实姓名
-                phone: _self.phoneNumber , // 手机号码
-                bankName:_self.bankName, //银行名称
-                bank:_self.bankAdd,//开户地址
-                bankNo:_self.bankNum, //银行卡号码
-                wechat:_self.weChat,  //微信
-                qq:_self.QQ,
-                email:_self.eMail,
-                sourceType:'2',//来源
-                code: _self.identifyCode ,   // 验证码
+                 loginPwd: _self.userPd ,  // 用户登录密码
+                 reLoginPwd:_self. confirmpassword, //确认密码
+                 agentName: _self.relName ,  // 用户真实姓名
+                 phone: _self.phoneNumber , // 手机号码
+                 bankName:_self.bankName, //银行名称
+                 bank:_self.bankAdd,//开户地址
+                 bankNo:_self.bankNum, //银行卡号码
+                 wechat:_self.weChat,  //微信
+                 qq:_self.QQ,
+                 email:_self.eMail,
+                 sourceType:'2',//来源
+                 code: _self.identifyCode ,   // 验证码
             }
               $.ajax({
                   type: 'post',
@@ -553,22 +553,24 @@ export default {
                   url: this.action.uaa + 'apid/plat/agent/registerAgent',
                   data: JSON.stringify(logindata) ,
                   success: (res) => {
-                      // alert(1)
-                      console.log(res)
                       if(res.err =='SUCCESS'){ // 注册成功
                           _self.regsubmitflage = false ;
                           _self.$refs.autoCloseDialog.open('注册成功','','icon_check','d_check') ;
-                          _self.setCookie("access_token", res.data.access_token);  // 把登录token放在cookie里面
+//                          _self.setCookie("access_token", res.data.access_token);  // 把登录token放在cookie里面
 //                          _self.setCookie("acType", res.data.acType);  // 把登录 acType 放在cookie里面
 //                          _self.setCookie("username", _self.username);  // 把登录用户名放在cookie里面
                           setTimeout(function () {
-                              window.location = '/' ;
+                              _self.$router.push('/')
                           },1000) ;
-                      }else{ //code 105 验证码无效
-                          // alert(2)
+                      }else if(res.cnMsg){
+                          _self.regsubmitflage = false ;
+                          this.$refs.autoCloseDialog.open(res.cnMsg);
+
+                      }
+                      else{ //code 105 验证码无效
                           _self.regsubmitflage = false ;
                           this.switchYzmcode() ; // 更新验证码
-                          this.$refs.autoCloseDialog.open(res.cnMsg);
+                          this.$refs.autoCloseDialog.open(res.msg);
                       }
 
                   },
