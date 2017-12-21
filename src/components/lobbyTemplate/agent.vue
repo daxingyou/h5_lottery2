@@ -564,7 +564,8 @@ export default {
                           },1000) ;
                       }else if(res.cnMsg){
                           _self.regsubmitflage = false ;
-                          this.$refs.autoCloseDialog.open(res.cnMsg);
+                          _self.$refs.autoCloseDialog.open(res.cnMsg);
+                          _self.switchYzmcode() ;
 
                       }
                       else{ //code 105 验证码无效
@@ -591,7 +592,7 @@ export default {
                 url: this.action.uaa + 'apid/plat/agent/check_account',
                 data: AccData ,
                 success:(res)=>{
-                    if(res.data){
+                    if(res.data=='-1'){
                         _self.$refs.autoCloseDialog.open('用户名重复') ;
                         return false
                     }
