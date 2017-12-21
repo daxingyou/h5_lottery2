@@ -330,7 +330,7 @@
             </div>
         </div>
         <!-- <deposit_bank_transfer v-if="false"></deposit_bank_transfer>-->
-        <!--银行转账使用步骤-->
+        <!--充值弹框-->
         <div class="modal" style="display: block">
             <div class="m_content">
                 <h2 class="title">★【{{copyTitle}}】※
@@ -345,6 +345,24 @@
                 <!--<br/>首选银行转账，可获得1%存款优惠-->
                 <!--<br/>（存1000赠10，次次存次次送）。-->
                 <!--</p>-->
+                <div class="action">
+                    <a class="new_btn"><span>确定</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="bModal">
+            <div class="m_content">
+                <h2 class="title">银行转账使用步骤
+                    <a></a>
+                </h2>
+                <p class="content left">
+                    1. 选择您使用的存款银行，底部会出现对应的收款银行卡号；
+                    <br/> 2. 记录或复制该收款信息到手机上；
+                    <br/> 3. 填写您的存款时间、金额等信息，以及选择您的存款方式；
+                    <br/> 4. 前去银行或网银等转账到收款账号，完成后保留凭证；
+                    <br/> 5. 等待客服处理您的订单，完成支付；
+                    <br/>
+                </p>
                 <div class="action">
                     <a class="new_btn"><span>确定</span></a>
                 </div>
@@ -470,11 +488,14 @@
             },
             // 银行转账步骤提示框
             bankTipShow:function () {
-                $('.trans_step').click(function () {
-                    $('.modal').toggle();
-                });
                 $('.modal').click(function () {
                     $('.modal').toggle();
+                });
+                $('.mini_tip').click(function () {
+                    $('.bModal').toggle();
+                });
+                $('.bModal').click(function () {
+                    $('.bModal').toggle();
                 });
             },
             // 选择支付方式
@@ -978,4 +999,25 @@
         /*background-color: rgba(0, 0, 0, 0.5);*/
         margin-top: 0.185rem;
     }
+    .bModal { display: none; position: fixed; top: 0; left: 50%; width: 10rem; margin-left: -5rem; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 1000; }
+    .bModal .m_content { position: fixed; z-index: 33; width: 8rem; top: 25%; left: 50%; margin-left: -4rem; padding: 0.3rem 0.5rem 0.7rem; box-sizing: border-box; color: #4b280c; background: url("/static/frist/images/pop/bg_center.png") repeat-y;  background-size: 100%; word-wrap: break-word;}
+    .bModal .m_content:before { content: ''; position: absolute; display: block; top: -0.3rem; left: 0; z-index: 33; height: 1.173rem; width: 100%; background: url("/static/frist/images/pop/bg_top.png") no-repeat;  background-size: 100%; }
+    .bModal .m_content:after { content: ''; position: absolute; display: block; bottom: -0.3rem; left: 0; z-index: 33; height: 1.173rem; width: 100%; background: url("/static/frist/images/pop/bg_bottom.png") no-repeat;  background-size: 100%; }
+    @media (max-width: 359px) {.bModal .m_content { width: 9rem; } }
+    .bModal .m_content > *{ position: relative; z-index: 35;}
+    .bModal .m_content h2 { background: url('/static/frist/images/pop/title_bg.jpg') no-repeat; background-size: 100% 0.8rem; height: 0.8rem; line-height: 0.8rem; font-size: 0.45rem; font-weight: bold; font-style: italic; text-align: center; color: #4b280c; }
+    .bModal .m_content h2 a { width: 0.7467rem; height: 0.7467rem; position: absolute; right: -0.65rem; top: -0.7rem; background: url("/static/frist/images/pop/close.png") no-repeat; background-size: 100%; }
+    .bModal .m_content h2.noclose a { display: none;}
+    .bModal .m_content .content { text-align: center; line-height: .6rem; font-size: 0.34rem; margin: .5rem auto; }
+    .bModal .m_content .danger { color: #b41a17; }
+    .bModal .m_content .check { color: #d59559; }
+    .bModal .m_content .left { text-align: left; padding: .5rem; }
+    .bModal .m_content .action { text-align: center;}
+    .bModal .m_content .tip_icon { width: 0.8rem; height:0.8rem; margin: 0.5rem auto 0.3rem;}
+    .bModal .m_content .tip_icon img{ width: 100%;}
+    /*.bModal > .m_content > .content > div { margin: 0 auto; text-align: center; }*/
+
+    .bModal > .m_content > .content > div > img { height: 1rem; display: block; margin: 0 auto; }
+
+    .bModal > .m_content > .content > div > img:last-child { height: 0.8rem; margin: .2rem auto; }
 </style>
