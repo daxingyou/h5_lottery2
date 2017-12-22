@@ -46,6 +46,8 @@ export default {
             this.loginOut('test');
             setTimeout(function(){
                 _self.$router.push('/reg')
+                // window.location = '/reg' 
+
             },500)
         },
 

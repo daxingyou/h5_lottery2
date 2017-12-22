@@ -570,7 +570,9 @@
                             _self.setCookie("acType", res.data.acType);  // 把登录 acType 放在cookie里面
                             _self.setCookie("username", _self.username);  // 把登录用户名放在cookie里面
                             setTimeout(function () {
-                                _self.$router.push('/')
+                                // _self.$router.push('/')    
+                                window.location = '/';
+                                                         
 
                             },1000) ;
                         }else{ //code 105 验证码无效
