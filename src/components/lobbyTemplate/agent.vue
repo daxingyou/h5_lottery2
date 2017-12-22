@@ -170,8 +170,8 @@
                                                 </fieldset>
                                             </div>
 
-                                            <fieldset>
-                                                <div class="form_g account" v-if="!!realynameObj.ifView">
+                                            <fieldset  v-if="!!realynameObj.ifView">
+                                                <div class="form_g account">
                                                     <legend>真实姓名</legend>
                                                     <input type="text" placeholder="请输入您的真实姓名" v-model="relName" class="relName"  @input="checkrealyName(relName,'relName')">
                                                     <i class="close cs3" @click="ClearInput('cs3','relName')"></i>
