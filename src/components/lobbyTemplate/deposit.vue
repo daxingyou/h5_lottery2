@@ -662,6 +662,7 @@
                 var _self = this ;
                 var pageUrl=window.location.href
                 if(pageUrl.indexOf('deposit')==-1){
+                    clearInterval(_self.scanint) ;
                     return false
                 }
                 $.ajax({
