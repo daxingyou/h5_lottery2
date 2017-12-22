@@ -149,8 +149,8 @@ export default {
                     this.setCookie('acType',res.data.acType);   //把玩家类型放在cookie里面
                     this.$refs.autoCloseDialog.open('登录成功','','icon_check','d_check') ;
                       setTimeout(function () {
-                          // window.location = '' ;
-                          _self.$router.push('/');
+                          window.location = '/';
+                          // _self.$router.push('');
                        },300)
                 }else{
                     _self.submitflage = false ;
