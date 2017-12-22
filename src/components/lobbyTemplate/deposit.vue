@@ -28,41 +28,6 @@
                                             <div  v-if = 'showDepositHint' class="depositHint" id="depositHint"> {{ hintContent }}</div>
                                         </fieldset>
                                     </form>
-
-                                    <!--<div class="step03 pay_way  payWayTranster"  v-if = 'notNetPayShow' >-->
-                                        <!--<ul class="arrow_list_dark">-->
-                                            <!--<li>-->
-                                            <!--<a class="item" href="javascript:;" data-type="2">-->
-                                            <!--<span class="badge">-->
-                                            <!--<span class="icon_account icon_deposit_2"></span>-->
-                                            <!--</span>-->
-                                            <!--<span>扫码支付</span>-->
-                                            <!--<span class="icon icon_arrow_light"></span>-->
-                                            <!--</a>-->
-                                            <!--</li>-->
-                                            <!--<li>-->
-                                                <!--<a class="item"-->
-                                                   <!--href="http://38fd.cn/Home/Goods/index/u_id/xvh9jNCRyPG3Tn43qlXFkg_c_c"-->
-                                                   <!--target="_blank" data-type="6">-->
-                                                    <!--<span class="badge">-->
-                                                        <!--<span class="icon_account icon_deposit_13"></span>-->
-                                                    <!--</span>-->
-                                                    <!--<span>快速充值</span>-->
-                                                    <!--<span class="icon icon_arrow_light"></span>-->
-                                                <!--</a>-->
-                                            <!--</li>-->
-                                            <!--<li>-->
-                                                <!--<a class="item" href="javascript:;" data-type="3">-->
-                                                    <!--<span class="badge">-->
-                                                        <!--<span class="icon_account icon_deposit_3"></span>-->
-                                                    <!--</span>-->
-                                                    <!--<span>银行转账</span>-->
-                                                    <!--<span class="icon icon_arrow_light"></span>-->
-                                                <!--</a>-->
-                                            <!--</li>-->
-                                            <!---->
-                                        <!--</ul>-->
-                                    <!--</div>-->
                                     <!--支付方式-->
                                     <div class="step03 pay_way  payWayNet payWayTranster"  v-if = 'netPayShow'>
                                         <ul class="arrow_list_dark">
@@ -77,40 +42,6 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <!-- 下面是银行转账和在线支付 -->
-                                    <!--<div class="step03 pay_way  payWayTranster"  v-if = 'notNetPayShow'>-->
-                                        <!--<ul class="arrow_list_dark">-->
-                                            <!--<li>-->
-                                            <!--<a class="item" href="javascript:;" data-type="2">-->
-                                            <!--<span class="badge">-->
-                                            <!--<span class="icon_account icon_deposit_2"></span>-->
-                                            <!--</span>-->
-                                            <!--<span>扫码支付</span>-->
-                                            <!--<span class="icon icon_arrow_light"></span>-->
-                                            <!--</a>-->
-                                            <!--</li>-->
-                                            <!--<li>-->
-                                                <!--<a class="item" href="javascript:;" data-type="1">-->
-                                                    <!--<span class="badge">-->
-                                                        <!--<span class="icon_account icon_deposit_1"></span>-->
-                                                    <!--</span>-->
-                                                    <!--<span>网银支付</span>-->
-                                                    <!--<span class="icon icon_arrow_light"></span>-->
-                                                <!--</a>-->
-                                            <!--</li>-->
-                                            <!--&lt;!&ndash;  <li>-->
-                                                 <!--<a class="item" href="javascript:;" data-type="3">-->
-                                                     <!--<span class="badge">-->
-                                                         <!--<span class="icon_account icon_deposit_3"></span>-->
-                                                     <!--</span>-->
-                                                     <!--<span>银行转账</span>-->
-                                                     <!--<span class="icon icon_arrow_light"></span>-->
-                                                 <!--</a>-->
-                                             <!--</li> &ndash;&gt;-->
-                                            <!---->
-                                        <!--</ul>-->
-                                    <!--</div>-->
-
                                 </div>
                                 <!-- 支付方式 结束-->
 
@@ -527,11 +458,7 @@
                            $('.paymethods_all').hide() ;
                            $('.webbank_pay_all').show() ;
                        }
-//                    else if(val =='2'){ // 扫码支付
-//                        _self.getBankList('1') ;
-//                        $('.paymethods_all').hide() ;
-//                        $('.webbank_scan_all').show() ;
-//                    }
+
                        if(type =='1'||type=='2'||type=='3'||type=='4'||type=='8'){
 //                  // 扫码支付
 //                    _self.getBankList() ;
