@@ -189,8 +189,8 @@
                                             <fieldset v-if="!!bankselectObj.ifView">
                                                 <div class="form_g text">
                                                     <legend>银行名称</legend>
-                                                    <select  name=""  v-model="bankName">
-                                                        <option :value="banks.id" :data-code="banks.bankCode" v-for="banks in bankList">{{banks.bankName}}</option>
+                                                    <select  class="bankselect"  v-model="bankName">
+                                                        <option :value="banks.id" :data-code="banks.bankName" v-for="banks in bankList">{{banks.bankName}}</option>
                                                     </select>
                                                     <span class="icon icon_arrow_down"></span>
                                                 </div>
@@ -524,7 +524,7 @@ export default {
                  return false ;
             }
             _self.regsubmitflage = true ;
-//            _self.bankCode=$('.bankselect').find("option:selected").data('code') ;
+            _self.bankCode=$('.bankselect').find("option:selected").data('code') ;
             var logindata = {
                 agentAccount: _self.userNumber ,   // 帐号
 //                method: 'mc',   //方法：mc创建会员
@@ -533,7 +533,7 @@ export default {
                  reLoginPwd:_self. confirmpassword, //确认密码
                  agentName: _self.relName ,  // 用户真实姓名
                  phone: _self.phoneNumber , // 手机号码
-                 bankName:_self.bankName, //银行名称
+                 bankName:_self.bankCode, //银行名称
                  bank:_self.bankAdd,//开户地址
                  bankNo:_self.bankNum, //银行卡号码
                  wechat:_self.weiChat,  //微信
@@ -583,6 +583,7 @@ export default {
         //验证账户是否存在
         CheckAccount:function () {
             let _self=this;
+            console.log($())
             let AccData={
                 agentAccount:_self.userNumber
             }
