@@ -536,7 +536,7 @@ export default {
                  bankName:_self.bankName, //银行名称
                  bank:_self.bankAdd,//开户地址
                  bankNo:_self.bankNum, //银行卡号码
-                 wechat:_self.weChat,  //微信
+                 wechat:_self.weiChat,  //微信
                  qq:_self.QQ,
                  email:_self.eMail,
                  sourceType:'2',//来源
