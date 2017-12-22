@@ -175,7 +175,7 @@
                           <router-link class="icon_intro" :to="'/lobbyTemplate/tutorial'"><span class="icon_account icon_join_1"></span><span>新手教程</span></router-link>
                       </li>
                       <li>
-                          <a class="icon_agent" href="javascript:;" @click="Continued()"><span class="icon_account icon_join_2"></span><span>代理加盟</span></a>
+                          <router-link class="icon_agent" :to="'/lobbyTemplate/agent'"><span class="icon_account icon_join_2"></span><span>代理加盟</span></router-link>
                       </li>
                       <li>
                           <router-link class="icon_about"  :to="'/lobbyTemplate/about'"><span class="icon_account icon_join_3"></span><span>关於我们</span></router-link>
