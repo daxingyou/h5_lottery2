@@ -44,7 +44,7 @@
                                             </th>
                                             <td>
                                                 <!-- class="sta sta03" -->
-                                                <label  :class="'sta '+ (parentData.statusConfig[model.state] && parentData.statusConfig[model.state].class)">{{parentData.statusConfig[model.state].name}}<!-- 失败 --></label>
+                                                <label  :class="'sta '+ (parentData.statusConfig[model.state] && parentData.statusConfig[model.state].class)">{{model.stateName}}<!-- 失败 --></label>
                                             </td>
                                         </tr>
                                         <tr>
