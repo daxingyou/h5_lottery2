@@ -732,11 +732,8 @@
             submitBankAction:function () {
                 var _self = this ;
                 if( _self.submitpayunflag){
-                    console.log('发货的')
                     return false ;
                 }
-                console.log('和积分抵扣')
-
                 if(!_self.bankInfo.bankCode){
                     _self.$refs.autoCloseDialog.open('请选择存款银行！') ;
                     return false ;
@@ -773,13 +770,9 @@
                     url: _self.action.forseti + 'api/pay/offlineOrder',
                     data: senddata ,
                     success: function(res){
-                        console.log(res)
-
                         if(!res.data){
                             _self.$refs.autoCloseDialog.open(res.msg) ;
-
                         }
-
                         if(res.err == 'SUCCESS'){
                             _self.submitpayunflag = false ;
                             _self.$refs.autoCloseDialog.open('存款申请已提交，请牢记以下信息','','icon_check','d_check') ;
