@@ -32,7 +32,7 @@
                                                 <span :class="'icon_account icon_' + (tradeTypeConfigItemGet(item).class || 'ac01')"></span>
                                             </div>
                                             <div class="lottery_t ssc">
-                                                <p>{{tradeTypeConfigItemGet(item).name || '-'}}<label :class="'sta '+ (statusConfig[item.state] && statusConfig[item.state].class)">{{(statusConfig[item.state] && statusConfig[item.state].name)}}</label></p>
+                                                <p>{{tradeTypeConfigItemGet(item).name || '-'}}<label :class="'sta '+ (statusConfig[item.state] && statusConfig[item.state].class)">{{item.stateName}}</label></p>
                                                 <span class="prd_num"><span>{{formatTimeUnlix(item.createTime,'0')}}</span></span>
                                                 <strong>{{moneyType[item.chargeType] || '-'}}<!-- 充值 -->: {{(item && formatNumber(roundAmt(item.tradeAmount))) || '0.00'}}</strong>
                                             </div>
