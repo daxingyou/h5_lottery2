@@ -251,7 +251,7 @@ this.setMenuAction() ;
                       lottery_name = $(this).find('li.active').find('a').text()
                   }
               }) ;
-              $('.lottery_name').html(lottery_name + ' 近期开奖'); // 彩种名称
+              $('.lottery_name').html(lottery_name + ' 往期开奖'); // 彩种名称
               this.doubleCount(this.lotteryid,this.count) ;
               $(".dropdown").slideToggle("fast", () => {
               });

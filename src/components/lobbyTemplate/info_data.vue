@@ -611,7 +611,11 @@ export default {
       },
         //修改交易密码
         submitChangePayWord : function(){
-          var _self=this;
+            var _self = this;
+            if (this.checkTradNum(_self.newPayPassword)) {
+                _self.$refs.autoCloseDialog.open('请输入正确新密码');
+                return false;
+            }
             if(_self.oldPayPassword==''){
                   _self.$refs.autoCloseDialog.open('请输入原密码') ;
                    return false ;
@@ -657,6 +661,12 @@ export default {
               }
           })
       },
+
+        checkTradNum: function (val) {
+            if (val && !this.positiveNum(val) || val.length < 4) {
+                return true
+            }
+        },
         //修改个人资料
         editDetails:function () {
             var _self=this;
