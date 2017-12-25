@@ -247,6 +247,7 @@ export default {
             picture:'',
             cid:'',
             custUrl: '',
+            corroleDataList: [],
         }
     },
     computed:{
@@ -344,7 +345,12 @@ export default {
           return element == this.currPopMsgCid;
       },
       getPopMsg (){
+
+
           var _self=this;
+
+          // _self.propList = sessionStorage.propList;
+
           $.ajax({
               type: 'GET',
               url:  _self.action.forseti + 'apid/cms/popText',
@@ -372,11 +378,10 @@ export default {
                   }else {
                      this. changeOffFlag ()
                   }
-
-
-
               }
           })
+
+
       },
       //关闭弹框
       shutDownPop () {
@@ -385,7 +390,7 @@ export default {
       },
       //更改弹框显示的标志
       changeOffFlag () {
-           var self=this
+          var self = this
           var cid=[];
 
           if(localStorage.getItem('cid').length>1){
@@ -410,29 +415,53 @@ export default {
       //轮播图接口
       carouselImg:function () {
            var _self=this;
-           $.ajax({
-               type:'get',
-               url: _self.action.forseti + 'apid/cms/carousel',
-               data:{},
-               success:(res)=>{
-                   if(res.data.itemPO){
-                       var len= res.data.itemPO.length;
-                       for(var i=0;i<len;i++){
-                           res.data.itemPO[i].titlePic = _self.action.picurl+ res.data.itemPO[i].titlePic+'/0' ;
-                       }
-                       _self.banner =  res.data.itemPO ;
-                       _self.$nextTick(function (){
-                           TouchSlide({
-                               slideCell: "#focus",
-                               autoPlay:true,
-                           });
-                       });
-                   }
-               },
-               err:(res)=>{
-//
-               }
-           })
+          if (!sessionStorage.carouselList) {
+              $.ajax({
+                  type: 'get',
+                  url: _self.action.forseti + 'apid/cms/carousel',
+                  data: {},
+                  success: (res) => {
+                      sessionStorage.carouselList = JSON.stringify(res.data.itemPO)
+
+                      // console.log( sessionStorage.gamelist ,'corrll' ) 
+                      // _self.corroleDataList = sessionStorage.carouselList;
+
+                      if (res.data.itemPO) {
+                          var len = res.data.itemPO.length;
+                          for (var i = 0; i < len; i++) {
+                              res.data.itemPO[i].titlePic = _self.action.picurl + res.data.itemPO[i].titlePic + '/0';
+                          }
+                          _self.banner = res.data.itemPO;
+                          _self.$nextTick(function () {
+                              TouchSlide({
+                                  slideCell: "#focus",
+                                  autoPlay: true,
+                              });
+                          });
+                      }
+
+                  },
+                  err: (res) => {
+                      //
+                  }
+              })
+
+          } else {
+              _self.corroleDataList = JSON.parse(sessionStorage.carouselList);
+              // console.log(  _self.corroleDataList , 'img')
+              var len = _self.corroleDataList.length;
+              for (var i = 0; i < len; i++) {
+                  _self.corroleDataList[i].titlePic = _self.action.picurl + _self.corroleDataList[i].titlePic + '/0';
+              }
+              _self.banner = _self.corroleDataList;
+              _self.$nextTick(function () {
+                  TouchSlide({
+                      slideCell: "#focus",
+                      autoPlay: true,
+                  });
+              });
+          }
+
        },
       //获得优惠活动接口
       getActivity : function () {
