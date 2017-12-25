@@ -291,23 +291,39 @@ export default {
       getBulletinsContent :function () {
           let  self=this ;
           let bulletinsArr=[];
-          $.ajax({
-              type:"GET",
-              url:this.action.forseti + 'apid/cms/notices',
-              data:{
-                  sideType:"2",
-                  appid:"bcappid02",
-              },
-              success: (result) => {
-                  for(let i=0;i<result.data.length;i++){
-                      bulletinsArr.push('&nbsp;&nbsp;'+result.data[i].content+'&nbsp;&nbsp;');
+          if (!sessionStorage.noticeList) {
+
+              $.ajax({
+                  type: "GET",
+                  url: this.action.forseti + 'apid/cms/notices',
+                  data: {
+                      sideType: "2",
+                      appid: "bcappid02",
+                  },
+                  success: (result) => {
+                      sessionStorage.noticeList = JSON.stringify(result.data)
+                      for (let i = 0; i < result.data.length; i++) {
+                          bulletinsArr.push('&nbsp;&nbsp;' + result.data[i].content + '&nbsp;&nbsp;');
+                      }
+                      self.bulletins = bulletinsArr.toString();
+                      var str = '<marquee align="left" behavior="scroll" direction="left" hspace="0" vspace="0" loop="-1" scrollamount="2" scrolldelay="30">' +
+                          self.bulletins + '</marquee>';
+                      $('.sys-notice>.bd').html(str)
                   }
-                  self.bulletins=bulletinsArr.toString();
-                  var str = '<marquee align="left" behavior="scroll" direction="left" hspace="0" vspace="0" loop="-1" scrollamount="2" scrolldelay="30">'+
-                            self.bulletins+ '</marquee>' ;
-                  $('.sys-notice>.bd').html(str)
+              })
+
+          } else {
+              var noticeListarr = JSON.parse(sessionStorage.noticeList)
+              for (let i = 0; i < noticeListarr.length; i++) {
+                  bulletinsArr.push('&nbsp;&nbsp;' + noticeListarr[i].content + '&nbsp;&nbsp;');
               }
-          })
+              self.bulletins = bulletinsArr.toString();
+              var str = '<marquee align="left" behavior="scroll" direction="left" hspace="0" vspace="0" loop="-1" scrollamount="2" scrolldelay="30">' +
+                  self.bulletins + '</marquee>';
+              $('.sys-notice>.bd').html(str)
+          }
+
+
       },
 
       //判断是否为游客,
@@ -465,21 +481,32 @@ export default {
        },
       //获得优惠活动接口
       getActivity : function () {
-          var _self=this;
-          $.ajax({
-              type:'get',
-              url: _self.action.forseti + 'apid/cms/activity',
-              data:{},
-              success:(res)=>{
-                  if(res.data.rows){
-                   _self.picture=_self.action.picurl+ res.data.rows[0].titlePic+'/0';
-                   _self.cid=res.data.rows[0].cid
-                  }
-              },
-              err:(res)=>{
 
+          var _self=this;
+          if (!sessionStorage.propActivityList) {
+              $.ajax({
+                  type: 'get',
+                  url: _self.action.forseti + 'apid/cms/activity',
+                  data: {},
+                  success: (res) => {
+                      sessionStorage.propActivityList = JSON.stringify(res.data.rows);
+                      if (res.data.rows) {
+                          _self.picture = _self.action.picurl + res.data.rows[0].titlePic + '/0';
+                          _self.cid = res.data.rows[0].cid
+                      }
+                  },
+                  err: (res) => {
+
+                  }
+              })
+
+          } else {
+              var activity_prop = JSON.parse(sessionStorage.propActivityList)
+              if (activity_prop) {
+                  _self.picture = _self.action.picurl + activity_prop[0].titlePic + '/0';
+                  _self.cid = activity_prop[0].cid
               }
-          })
+          }
       },
       setCid:function (e) {
           var _self = this;

@@ -816,20 +816,29 @@ var MyMixin = {
         //客服接口
         getCustom:function () {
             var _self=this;
-            $.ajax({
-                type:'get',
-                url: _self.action.forseti + 'apid/config/custConfig',
-                data:{},
-                success:(res)=>{
-                    if(res.data){
-                        _self.custUrl=res.data.h5CustUrl;
-                        localStorage.setItem('Url',_self.custUrl)
-                    }
-                },
-                err:(res)=>{
 
-                }
-            })
+
+            if (!sessionStorage.customLink) {
+                $.ajax({
+                    type: 'get',
+                    url: _self.action.forseti + 'apid/config/custConfig',
+                    data: {},
+                    success: (res) => {
+                        sessionStorage.customLink = res.data.h5CustUrl;
+                        if (res.data) {
+
+                            _self.custUrl = res.data.h5CustUrl;
+                            localStorage.setItem('Url', _self.custUrl)
+                        }
+                    },
+                    err: (res) => {
+
+                    }
+                })
+            } else {
+                _self.custUrl = sessionStorage.customLink;
+                localStorage.setItem('Url', _self.custUrl)
+            }
         },
         //网站说明文案
         getCopyright:function (type,code) {

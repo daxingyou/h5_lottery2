@@ -154,9 +154,9 @@ export default {
             });
         },
         selectTab:function(e, tab){
-            if (tab.active || tab.value == 4){
-                return false;
-            }
+            // if (tab.active || tab.value == 4){
+            //     return false;
+            // }
             this.tabs.forEach(item=>{item.active=false});
             tab.active = true;
             this.loadTab(tab);
