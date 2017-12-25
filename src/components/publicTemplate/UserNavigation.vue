@@ -113,7 +113,7 @@ export default {
          var _self = this ;
          var resdata  ;
           _self.gamelist = sessionStorage.gamelist ;
-          if(true){
+          if (!sessionStorage.gamelist) {
                   $.ajax({
                       type: 'GET',
                       async:false,
@@ -121,12 +121,10 @@ export default {
                       data: { sideType :2 }, // sideType， 1官彩，2双面彩，为空默认为1，即官彩
                       dataType: 'json',
                       success:(res)=> {
-                      _self.allLottery = res && res.data ;  // 全部彩种,通过 v.cid 跳转到每个彩种
-                  resdata = res.data ;
-//                  console.log(res.data)
-                  sessionStorage.gamelist= JSON.stringify(res.data) ; // 把彩种放在session 里
-
-              },
+                          _self.allLottery = res && res.data;  // 全部彩种,通过 v.cid 跳转到每个彩种
+                          resdata = res.data;
+                          sessionStorage.gamelist = JSON.stringify(res.data); // 把彩种放在session 里
+                      },
                   error: function () {
 
                   }
