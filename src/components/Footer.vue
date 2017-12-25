@@ -30,8 +30,8 @@
                 menus:[
                     { name:'首页大厅', className:'index', path:'/'},
                     { name:'往期开奖', className:'history', path:'/lobbyPastView'},
-                    { name:'投注纪录', className:'record', path:'/lobbyBetRecord'},
-                    { name:'个人中心', className:'member', path:'/lobbyTemplate/info'},
+                    { name:'投注纪录', className:'member', path:'/lobbyBetRecord'},
+                    { name:'个人中心', className:'record', path:'/lobbyTemplate/info'},
                 ]
             }
         },
