@@ -69,7 +69,8 @@ export default {
         return {
             moneyType:{
                 '0':'充值', 
-                '1':'提款'
+                '1':'提款',
+                '2':'优惠'
             },
             tradeTypeConfig:{ 
                 '1':{ name:'公司入款', class:'ac03' }, 
@@ -137,7 +138,7 @@ export default {
 
                         day.list = res.data;
                     });
-                    
+
                 }
             });
             this.activeTab = tab;
