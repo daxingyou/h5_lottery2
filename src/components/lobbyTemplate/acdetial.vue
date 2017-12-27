@@ -69,14 +69,13 @@ export default {
         return {
             moneyType:{
                 '0':'充值', 
-                '1':'提款',
-                '2':'优惠'
+                '1':'提款'
             },
             tradeTypeConfig:{ 
                 '1':{ name:'公司入款', class:'ac03' }, 
                 '3':{ name:'线上入款', class:''}, 
-                '5':{ name:'系统入款', class:'ac01'}, 
-                '7':{ name:'会员出款', class:'ac03'}, 
+                '5':{ name:'系统入款', class:'ac01'},
+                '7':{ name:'会员出款', class:'ac03'},
                 '8':{ name:'系统提款', class:'ac02'} 
             }, 
             actionTypeConfig:{
