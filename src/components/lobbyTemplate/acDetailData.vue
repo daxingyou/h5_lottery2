@@ -36,7 +36,7 @@
                                             <th>
                                                 <li>帐变方式</li>
                                             </th>
-                                            <td>{{(parentData.tradeTypeConfig[model.tradeType] && parentData.tradeTypeConfig[model.tradeType].name) || '-'}}<!-- 重庆时时彩 --></td>
+                                            <td>{{model.tradeTypeName}}<!-- 重庆时时彩 --></td>
                                         </tr>
                                         <tr>
                                             <th>
@@ -100,7 +100,7 @@ export default {
     created:function() {
         this.parentData = this.$route.params.data;
         this.model = this.$route.params.model;
-
+         console.log(this.model)
     }, 
     methods:{
 
