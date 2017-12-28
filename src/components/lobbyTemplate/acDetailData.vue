@@ -7,7 +7,7 @@
                     <span class="icon icon_back"></span>
                 </a>
             </div>
-            <h2 class="center title_name">{{parentData.moneyType[model.chargeType] || '-'}}详情</h2>
+            <h2 class="center title_name">{{moneyType[model.dealType] || '-'}}详情</h2>
             <div class="right"></div>
         </header>
         <div class="pa_content">
@@ -93,14 +93,18 @@ export default {
     data: function() {
         return {
             parentData:{},
-            model:{}, 
+            model:{},
+            moneyType:{
+                '0':'充值',
+                '1':'提款',
+                '2':'优惠'
+            },
         }
     },
 
     created:function() {
         this.parentData = this.$route.params.data;
         this.model = this.$route.params.model;
-         console.log(this.model)
     }, 
     methods:{
 
