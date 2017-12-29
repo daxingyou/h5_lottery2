@@ -146,7 +146,7 @@
                         <p>更多游戏</p>
                     </li>
                     <li >
-                        <a href="javascript:;" @click="Continued()">
+                        <a href="http://blcxz.com" target="_blank">
                             <div class="badge"> 
                                 <img src="/static/frist/images/lotteryicon/logo_app.png" lazy="loaded">
                             </div>
