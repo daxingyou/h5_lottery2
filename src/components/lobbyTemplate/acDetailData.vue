@@ -36,7 +36,7 @@
                                             <th>
                                                 <li>帐变方式</li>
                                             </th>
-                                            <td>{{model.tradeTypeName}}<!-- 重庆时时彩 --></td>
+                                            <td>{{model.dealType=='2'?model.actionTypeName:parentData.tradeTypeConfig[model.tradeType].name}}<!-- 重庆时时彩 --></td>
                                         </tr>
                                         <tr>
                                             <th>
