@@ -32,9 +32,9 @@
                                                 <span :class="'icon_account icon_' + (tradeTypeConfigItemGet(item).class || 'ac01')"></span>
                                             </div>
                                             <div class="lottery_t ssc">
-                                                <p>{{item.dealType=='2'?item.actionTypeName:item.tradeTypeName}}<label :class="'sta '+ (statusConfig[item.state] && statusConfig[item.state].class)">{{item.stateName}}</label></p>
+                                                <p>{{item.dealType=='2'?item.actionTypeName:tradeTypeConfigItemGet(item).name}}<label :class="'sta '+ (statusConfig[item.state] && statusConfig[item.state].class)">{{item.stateName}}</label></p>
                                                 <span class="prd_num"><span>{{formatTimeUnlix(item.createTime,'0')}}</span></span>
-                                                <strong>{{item.chargeTypeName || '-'}}<!-- 充值 -->: {{(item && formatNumber(roundAmt(item.tradeAmount))) || '0.00'}}</strong>
+                                                <strong>{{moneyType[item.dealType] || '-'}}<!-- 充值 -->: {{(item && formatNumber(roundAmt(item.tradeAmount))) || '0.00'}}</strong>
                                             </div>
                                             <div class="icon icon_arrow_light"></div>
                                         </div>
@@ -69,7 +69,8 @@ export default {
         return {
             moneyType:{
                 '0':'充值',
-                '1':'提款'
+                '1':'提款',
+                '2':'优惠'
             },
             tradeTypeConfig:{
                 '1':{ name:'公司入款', class:'ac03' },
@@ -77,7 +78,6 @@ export default {
                 '5':{ name:'系统入款', class:'ac01'},
                 '7':{ name:'会员出款', class:'ac03'},
                 '8':{ name:'系统提款', class:'ac02'},
-                '10':{name:'存款优惠', class:'ac03'}
             },
             actionTypeConfig:{
                 '1':{ class:'ac03', name:'派奖' },
