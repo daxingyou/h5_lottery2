@@ -66,7 +66,7 @@
             }
         },
         mounted() {
-            if ((playTreeIndexByCid.get()['1130000'])) {
+            if (playTreeIndexByCid.get('1130000')) {
                 this.handlePlayList()
             }
         },
@@ -84,7 +84,7 @@
         },
         watch: {
             playTreeIndexByCid() {
-                if ((playTreeIndexByCid.get()['1130000'])) {
+                if (playTreeIndexByCid.get('1130000')) {
                     this.handlePlayList()
                 }
             },
@@ -134,7 +134,7 @@
                         {cid: cid, name: shengXiao, oddsData:{payoff:0}}))
                 })
 
-				_.forEach(playTreeIndexByCid.get()['1131100'].childrens, (item, index) => {
+				_.forEach(playTreeIndexByCid.get('1131100').childrens, (item, index) => {
 				    let num = item.cid % 100
 
 				    this.$set(this.playGroup, index, _.extend({}, {number: (num + 1), item: item}))

@@ -64,7 +64,7 @@
                                     <li :class="showThisWeekClass(collapseCtrl[0])" data-val="本周" @click="getBetRecord('0')">
                                         <div class="panel_title new_panel_top"><strong class="title-data">本周</strong><span><!-- 此為箭頭，點按後展開或收合，預設第一個為展開（父層li的class有active） --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[0].length == 0">正在加载...</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[0] == 1 && betRecordList[0].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[0].length == 0 && collapseCtrl[0] == 1">没有数据了</li>
                                             <!-- data-val裡的 encodeURI(JSON.stringify(v))，他們寫暂时不显示详情 -->
                                             <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[0]" v-if="betRecordList[0].length > 0 && collapseCtrl[0] == 1">
@@ -103,7 +103,7 @@
                                     <li :class="showLastWeekClass(collapseCtrl[1])" data-val="上周" @click="getBetRecord('1')">
                                         <div class="panel_title new_panel_top" ><strong class="title-data">上周</strong><span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[1].length == 0">正在加载...</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[1] == 1 && betRecordList[1].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[1].length == 0 && collapseCtrl[1] == 1 && loading == 0">没有数据了</li>
                                             <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[1]" v-if="betRecordList[1].length > 0 && collapseCtrl[1] == 1">
                                                 <a href="javascript:;" data-val="">
@@ -141,7 +141,7 @@
                                     <li :class="showBeforeLastWeekClass(collapseCtrl[2])" data-val="上上周" @click="getBetRecord('2')">
                                         <div class="panel_title new_panel_top"><strong class="title-data">上上周</strong><span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[2].length == 0">正在加载...</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[2] == 1 && betRecordList[2].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[2].length == 0 && collapseCtrl[2] == 1">没有数据了</li>
                                             <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[2]" v-if="betRecordList[2].length > 0 && collapseCtrl[2] == 1">
                                                 <a href="javascript:;" data-val="">
@@ -187,7 +187,7 @@
                                     <li :class="showThisWeekClass(collapseCtrl[0])" data-val="本周" @click="getBetRecord('0')">
                                         <div class="panel_title new_panel_top"><strong class="title-data">本周</strong><span><!-- 此為箭頭，點按後展開或收合，預設第一個為展開（父層li的class有active） --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[0].length == 0">正在加载...</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[0] == 1 && betRecordList[0].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[0].length == 0 && collapseCtrl[0] == 1">没有数据了</li>
                                             <!-- data-val裡的 encodeURI(JSON.stringify(v))，他們寫暂时不显示详情 -->
                                             <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[0]" v-if="betRecordList[0].length > 0 && collapseCtrl[0] == 1">
@@ -226,7 +226,7 @@
                                     <li :class="showLastWeekClass(collapseCtrl[1])" data-val="上周" @click="getBetRecord('1')">
                                         <div class="panel_title new_panel_top" ><strong class="title-data">上周</strong><span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[1].length == 0">正在加载...</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[1] == 1 && betRecordList[1].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[1].length == 0 && collapseCtrl[1] == 1 && loading == 0">没有数据了</li>
                                             <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[1]" v-if="betRecordList[1].length > 0 && collapseCtrl[1] == 1">
                                                 <a href="javascript:;" data-val="">
@@ -264,7 +264,7 @@
                                     <li :class="showBeforeLastWeekClass(collapseCtrl[2])" data-val="上上周" @click="getBetRecord('2')">
                                         <div class="panel_title new_panel_top"><strong class="title-data">上上周</strong><span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[2].length == 0">正在加载...</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[2] == 1 && betRecordList[2].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[2].length == 0 && collapseCtrl[2] == 1">没有数据了</li>
                                             <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[2]" v-if="betRecordList[2].length > 0 && collapseCtrl[2] == 1">
                                                 <a href="javascript:;" data-val="">
@@ -310,7 +310,7 @@
                                     <li :class="showThisWeekClass(collapseCtrl[0])" data-val="本周" @click="getBetRecord('0')">
                                         <div class="panel_title new_panel_top"><strong class="title-data">本周</strong><span><!-- 此為箭頭，點按後展開或收合，預設第一個為展開（父層li的class有active） --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[0].length == 0">正在加载...</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[0] == 1 && betRecordList[0].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[0].length == 0 && collapseCtrl[0] == 1">没有数据了</li>
                                             <!-- data-val裡的 encodeURI(JSON.stringify(v))，他們寫暂时不显示详情 -->
                                             <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[0]" v-if="betRecordList[0].length > 0 && collapseCtrl[0] == 1">
@@ -349,7 +349,7 @@
                                     <li :class="showLastWeekClass(collapseCtrl[1])" data-val="上周" @click="getBetRecord('1')">
                                         <div class="panel_title new_panel_top" ><strong class="title-data">上周</strong><span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[1].length == 0">正在加载...</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[1] == 1 && betRecordList[1].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[1].length == 0 && collapseCtrl[1] == 1 && loading == 0">没有数据了</li>
                                             <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[1]" v-if="betRecordList[1].length > 0 && collapseCtrl[1] == 1">
                                                 <a href="javascript:;" data-val="">
@@ -387,7 +387,7 @@
                                     <li :class="showBeforeLastWeekClass(collapseCtrl[2])" data-val="上上周" @click="getBetRecord('2')">
                                         <div class="panel_title new_panel_top"><strong class="title-data">上上周</strong><span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[2].length == 0">正在加载...</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[2] == 1 && betRecordList[2].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[2].length == 0 && collapseCtrl[2] == 1">没有数据了</li>
                                             <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[2]" v-if="betRecordList[2].length > 0 && collapseCtrl[2] == 1">
                                                 <a href="javascript:;" data-val="">
@@ -433,7 +433,7 @@
                                     <li :class="showThisWeekClass(collapseCtrl[0])" data-val="本周" @click="getBetRecord('0')">
                                         <div class="panel_title new_panel_top"><strong class="title-data">本周</strong><span><!-- 此為箭頭，點按後展開或收合，預設第一個為展開（父層li的class有active） --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[0].length == 0">正在加载...</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[0] == 1 && betRecordList[0].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[0].length == 0 && collapseCtrl[0] == 1">没有数据了</li>
                                             <!-- data-val裡的 encodeURI(JSON.stringify(v))，他們寫暂时不显示详情 -->
                                             <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[0]" v-if="betRecordList[0].length > 0 && collapseCtrl[0] == 1">
@@ -472,7 +472,7 @@
                                     <li :class="showLastWeekClass(collapseCtrl[1])" data-val="上周" @click="getBetRecord('1')">
                                         <div class="panel_title new_panel_top" ><strong class="title-data">上周</strong><span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[1].length == 0">正在加载...</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[1] == 1 && betRecordList[1].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[1].length == 0 && collapseCtrl[1] == 1 && loading == 0">没有数据了</li>
                                             <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[1]" v-if="betRecordList[1].length > 0 && collapseCtrl[1] == 1">
                                                 <a href="javascript:;" data-val="">
@@ -510,7 +510,7 @@
                                     <li :class="showBeforeLastWeekClass(collapseCtrl[2])" data-val="上上周" @click="getBetRecord('2')">
                                         <div class="panel_title new_panel_top"><strong class="title-data">上上周</strong><span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[2].length == 0">正在加载...</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[2] == 1 && betRecordList[2].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[2].length == 0 && collapseCtrl[2] == 1">没有数据了</li>
                                             <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[2]" v-if="betRecordList[2].length > 0 && collapseCtrl[2] == 1">
                                                 <a href="javascript:;" data-val="">
@@ -576,7 +576,7 @@
 
                 seadata: {
                     page: 1, // 页数，从1开始
-                    pageSize: 2, // 每页行数
+                    pageSize: 10, // 每页行数
                     searchType: 1, // 查询类型，1为投注记录查询，2为追号查询
                     statusType: 1, // 状态：1全部，2未开奖，3已中奖，4未中奖,81异常处理中，5和局
                     lotteryId: this.lotteryid , // 彩种ID
@@ -612,7 +612,8 @@
                 collapseCtrl: [1, 0, 0],
                 loading: 0,
                 test: 1,
-                pageList: [1, 1, 1]
+                pageList: [1, 1, 1],
+                loadingList: [0, 0, 0]
             }
         },
         created() {
@@ -678,6 +679,7 @@
                 this.betRecordList = [[], [], []]
                 this.pageList = [1, 1, 1]
                 this.collapseCtrl = [1, 0, 0]
+                this.loadingList = [0, 0, 0]
                 document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
                 const $src = $(e.currentTarget);
                 let dateval = $('.tab_content').find('.slide_toggle:first-child').data('val') ;
@@ -859,7 +861,8 @@
                             this.betRecordList[index2] = []
                         }
                     })
-                    this.loading = 1
+                    this.$set(this.loadingList, pdate, 1)
+
                     _self.seadata.lotteryId = _self.lotteryid // 彩种ID
                     _self.seadata.pdate = pdate
                     _self.seadata.page = _self.pageList[pdate]
@@ -903,7 +906,8 @@
                                 _self.lastlotteryid = _self.lotteryid;
                                 if (_.size(dataList) > 0)
                                     _self.pageList[pdate]++;
-                                this.loading = 0
+                                this.$set(this.loadingList, pdate, 0)
+                                console.log("loading", this.loadingList)
                             }
                             error: () => {
                                 _self.ajaxSubmitAllow = false
