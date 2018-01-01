@@ -96,37 +96,7 @@
                                                     </div>
                                                 </a>
                                             </li>
-
-                                            <!-- data-val裡的 encodeURI(JSON.stringify(v))，他們寫暂时不显示详情 -->
-                                            <li onclick="return false" class="bet_data" data-status="not_open" v-if="test == 0">
-                                                <a href="javascript:;" data-val="">
-                                                    <div class="item">
-                                                        <div class="badge ssc_badge">
-                                                            <img src="/static/frist/images/lotterylogo/logo_10.svg">
-                                                        </div>
-                                                        <div class="lottery_t ssc">
-                                                            <p><!-- orderId: -->210a201715358fd0mon</p>
-                                                            <p><span><!-- playName: -->两面_特码两面-特大</span></p>
-                                                            <p><span><!-- betContent: -->特大</span></p>
-                                                            <span class="prd_num"><span><!-- pcode: -->2017153</span>期</span>
-                                                            <strong><!-- 倍率?multiple: -->127.000</strong>
-                                                        </div>
-                                                        <!-- 
-                                                        CSS 狀態說明
-                                                        status00
-                                                        未開獎、未中獎、和局
-                                                        status02
-                                                        己中獎(已派彩)
-                                                        status04
-                                                        用户撤单、系统撤单、中奖停追、存在异常、异常注单 
-                                                        -->
-                                                        <div class="status status00">
-                                                            <span><!-- orderStatus: -->未中獎</span>
-                                                            <div><!-- 若己派彩則顯示 payoff：XXXX.X元 --></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[0].length > 0 && collapseCtrl[0] == 1 && loading == 0">没有数据了</li>
                                         </ul>
                                     </li>
                                     <!-- 本周 -->
@@ -250,37 +220,6 @@
                                                     </div>
                                                 </a>
                                             </li>
-
-                                            <!-- data-val裡的 encodeURI(JSON.stringify(v))，他們寫暂时不显示详情 -->
-                                            <li onclick="return false" class="bet_data" data-status="not_open" v-if="test == 0">
-                                                <a href="javascript:;" data-val="">
-                                                    <div class="item">
-                                                        <div class="badge ssc_badge">
-                                                            <img src="/static/frist/images/lotterylogo/logo_10.svg">
-                                                        </div>
-                                                        <div class="lottery_t ssc">
-                                                            <p><!-- orderId: -->210a201715358fd0mon</p>
-                                                            <p><span><!-- playName: -->两面_特码两面-特大</span></p>
-                                                            <p><span><!-- betContent: -->特大</span></p>
-                                                            <span class="prd_num"><span><!-- pcode: -->2017153</span>期</span>
-                                                            <strong><!-- 倍率?multiple: -->127.000</strong>
-                                                        </div>
-                                                        <!--
-                                                        CSS 狀態說明
-                                                        status00
-                                                        未開獎、未中獎、和局
-                                                        status02
-                                                        己中獎(已派彩)
-                                                        status04
-                                                        用户撤单、系统撤单、中奖停追、存在异常、异常注单
-                                                        -->
-                                                        <div class="status status00">
-                                                            <span><!-- orderStatus: -->未中獎</span>
-                                                            <div><!-- 若己派彩則顯示 payoff：XXXX.X元 --></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
                                         </ul>
                                     </li>
                                     <!-- 本周 -->
@@ -404,37 +343,6 @@
                                                     </div>
                                                 </a>
                                             </li>
-
-                                            <!-- data-val裡的 encodeURI(JSON.stringify(v))，他們寫暂时不显示详情 -->
-                                            <li onclick="return false" class="bet_data" data-status="not_open" v-if="test == 0">
-                                                <a href="javascript:;" data-val="">
-                                                    <div class="item">
-                                                        <div class="badge ssc_badge">
-                                                            <img src="/static/frist/images/lotterylogo/logo_10.svg">
-                                                        </div>
-                                                        <div class="lottery_t ssc">
-                                                            <p><!-- orderId: -->210a201715358fd0mon</p>
-                                                            <p><span><!-- playName: -->两面_特码两面-特大</span></p>
-                                                            <p><span><!-- betContent: -->特大</span></p>
-                                                            <span class="prd_num"><span><!-- pcode: -->2017153</span>期</span>
-                                                            <strong><!-- 倍率?multiple: -->127.000</strong>
-                                                        </div>
-                                                        <!--
-                                                        CSS 狀態說明
-                                                        status00
-                                                        未開獎、未中獎、和局
-                                                        status02
-                                                        己中獎(已派彩)
-                                                        status04
-                                                        用户撤单、系统撤单、中奖停追、存在异常、异常注单
-                                                        -->
-                                                        <div class="status status00">
-                                                            <span><!-- orderStatus: -->未中獎</span>
-                                                            <div><!-- 若己派彩則顯示 payoff：XXXX.X元 --></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
                                         </ul>
                                     </li>
                                     <!-- 本周 -->
@@ -558,37 +466,7 @@
                                                     </div>
                                                 </a>
                                             </li>
-
-                                            <!-- data-val裡的 encodeURI(JSON.stringify(v))，他們寫暂时不显示详情 -->
-                                            <li onclick="return false" class="bet_data" data-status="not_open" v-if="test == 0">
-                                                <a href="javascript:;" data-val="">
-                                                    <div class="item">
-                                                        <div class="badge ssc_badge">
-                                                            <img src="/static/frist/images/lotterylogo/logo_10.svg">
-                                                        </div>
-                                                        <div class="lottery_t ssc">
-                                                            <p><!-- orderId: -->210a201715358fd0mon</p>
-                                                            <p><span><!-- playName: -->两面_特码两面-特大</span></p>
-                                                            <p><span><!-- betContent: -->特大</span></p>
-                                                            <span class="prd_num"><span><!-- pcode: -->2017153</span>期</span>
-                                                            <strong><!-- 倍率?multiple: -->127.000</strong>
-                                                        </div>
-                                                        <!--
-                                                        CSS 狀態說明
-                                                        status00
-                                                        未開獎、未中獎、和局
-                                                        status02
-                                                        己中獎(已派彩)
-                                                        status04
-                                                        用户撤单、系统撤单、中奖停追、存在异常、异常注单
-                                                        -->
-                                                        <div class="status status00">
-                                                            <span><!-- orderStatus: -->未中獎</span>
-                                                            <div><!-- 若己派彩則顯示 payoff：XXXX.X元 --></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[0].length > 0 && collapseCtrl[0] == 1 && loading == 0">没有数据了</li>
                                         </ul>
                                     </li>
                                     <!-- 本周 -->
@@ -627,6 +505,7 @@
                                                     </div>
                                                 </a>
                                             </li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[1].length > 0 && collapseCtrl[1] == 1 && loading == 0">没有数据了</li>
                                         </ul>
                                     </li>
                                     <!-- 上周 -->
@@ -665,6 +544,7 @@
                                                     </div>
                                                 </a>
                                             </li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[2].length > 0 && collapseCtrl[2] == 1 && loading == 0">没有数据了</li>
                                         </ul>
                                     </li>
                                     <!-- 上上周 -->
@@ -678,10 +558,7 @@
         </div>
         <footer id="pa_foot"></footer>
         <div class="so-shade"></div>
-
-
     </div>
-
 </template>
 
 
