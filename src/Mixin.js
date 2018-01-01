@@ -5,6 +5,9 @@
 //mixin.js
 // var  API_ROOT ='http://api.88bccp.com';
 
+import playTreeList from './PlayTreeList'
+import playTreeIndexByCid from './PlayTreeIndexByCid'
+
 var MyMixin = {
     data:function(){
         return {
@@ -25,6 +28,7 @@ var MyMixin = {
                 rootBalance:'',
             },
             playTreeList:[], //玩法树
+            playTreeIndexByCid: {},            
             testPriodDataNewlyData:{
               "data" : [ {
                 "version" : 0,
@@ -250,7 +254,15 @@ var MyMixin = {
                     url: this.action.forseti + 'api/playsTree',
                     data: {lotteryId: gameid,}, // 当前彩种id
                     success: (res) => {
-                        this.playTreeList = res.data ? res.data.childrens :[];
+
+                        // this.playTreeList = res.data ? res.data.childrens :[];
+
+                        let mydata = res.data ? res.data.childrens : []
+                        playTreeList.set(mydata)
+                        playTreeIndexByCid.set(mydata)
+                        this.$set(this, 'playTreeList', mydata)
+                        this.$set(this, 'playTreeIndexByCid', mydata)
+
                      setTimeout(function () {
                          _self.setInitHeight(gameid) ;
                      },200) ;
