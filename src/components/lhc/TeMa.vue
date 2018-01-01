@@ -1,0 +1,289 @@
+<template>
+<div id="content-wrapper" class="tema lhc-wrapper" ref="temalhcwrapper">
+	<div class="lhc-con-right" >
+		<div class="scroller"> <!-- style="min-height: 180%"  --><!--<div>-->
+			<div class="tab_panel">
+				<ul class="lhc_top_tab" >
+					<li :data-tab="index" :class="(currentGroupIndex == (Math.floor(group.cid/1000))  && 'active')"  v-for="(group, index) in groupName" @click="switchPlayGroup(Math.floor(group.cid/1000))">
+						<!-- <a :href="'#so-item'+index">{{kind}}</a>-->
+						<span>{{group.name}}</span>
+					</li>
+				</ul>
+
+				<div class="hd lhc_tab" >
+					<ul class="tab tab_mid tab_two">
+						<li :data-tab="index" :class="isXiaoBtnActived(index)" v-for="(shengXiao, index) in shengXiaoList"  @click="selectShengXiao(index, currentGroupIndex)"><a href="javascript:;">{{shengXiao}}</a></li>
+					</ul>
+				</div><!-- hd lhc_tab -->
+			</div><!-- tab_panel -->
+
+			<div class="tab_container">
+				<!--以下为盘面不同样式，根据ID区分-->
+				<!-- 特码B -->
+				<div id="so-item0" class="content-right active item_one"
+					 v-if="currentGroupIndex == 1012">
+					<ul>
+						<!-- 1-49 -->
+						<li class="select-li">
+							<div class="bet_panel">
+								<div class="bet_box">
+									<p :data-id="item.cid" class="so-con-span-short" :class="isBtnActived(item)" v-for="(item, index) in TeMaBList" @click="betSelect(item)">
+										<span :class="'lhc_ball num_'+ (item.name)">{{item.name}}</span>
+										<span class="bet-times">{{payoffFormat(item.oddsData.payoff)}}</span>
+									</p>
+								</div>
+							</div>
+						</li>
+
+						<!-- 两面玩法組 LiangMian -->
+						<li class="select-li bet_lm">
+							<div class="bet_panel">
+								<h2>
+									两面
+								</h2>
+								<div class="bet_box">
+									<p :data-id="item.cid" :class="isBtnActived(item)" v-for="(item, index) in LiangMianB" @click="betSelect(item)">
+										<span>{{item.name}}</span>
+										<span class="bet-times">{{payoffFormat(item.oddsData.payoff)}}</span>
+									</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+				<!-- 特码A -->
+				<div id="so-item1" class="content-right "
+					 v-if="currentGroupIndex == 1011"
+				>
+					<ul>
+						<!-- 1-49 -->
+						<li class="select-li" >
+							<div class="bet_panel">
+								<div class="bet_box">
+									<p :data-id="item.cid" class="so-con-span-short" :class="isBtnActived(item)" v-for="(item, index) in TeMaAList" @click="betSelect(item)">
+										<span :class="'lhc_ball num_' + item.name">{{item.name}}</span>
+										<span class="bet-times">{{payoffFormat(item.oddsData.payoff)}}</span>
+									</p>
+								</div>
+							</div>
+						</li>
+						<!-- 两面玩法組 LiangMian -->
+						<li class="select-li bet_lm" >
+							<div class="bet_panel">
+								<h2>
+									两面
+								</h2>
+								<div class="bet_box">
+									<p :data-id="item.cid" :class="isBtnActived(item)" v-for="(item, index) in LiangMianA" @click="betSelect(item)">
+										<span>{{item.name}}</span>
+										<span class="bet-times">{{payoffFormat(item.oddsData.payoff)}}</span>
+									</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div><!-- tab_container -->
+		</div><!-- scroller -->
+	</div><!-- so-con-right -->
+</div>
+</template>
+
+<script>
+    import playTreeIndexByCid from '@/PlayTreeIndexByCid'
+    import LhcMixin from '@/components/lhc/LhcMixin'
+
+    export default {
+        name: 'TeMa',
+		mixins: [LhcMixin],
+        props: {
+            playTreeList: {
+                type: Array,
+                default: [],
+			},
+			betSelectedList: {
+        		type: Array,
+				default: [],
+			},
+            currentBaseShengXiao: {
+                type: String,
+				default: "狗",
+			}
+		},
+		data() {
+            return {
+                groupName: [],
+                shengXiaoList: ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"],
+                shengXiaoMapNumber:[],
+				currentGroupIndex: 1012,
+                TeMaAList: [],
+                TeMaBList: [],
+                LiangMianB: [],
+				LiangMianA: [],
+            }
+        },
+        mounted(){
+            if (playTreeIndexByCid.get('1010000')) {
+                let item1 = playTreeIndexByCid.get('1012000')
+				let item2 = playTreeIndexByCid.get('1011000')
+                if (item1) {
+                    this.currentGroupIndex = 1012
+				}
+				else {
+                    this.currentGroupIndex = 1011
+				}
+
+                if (item1) {
+                    this.groupName.push(playTreeIndexByCid.get('1012000'))
+                    this.TeMaBList = playTreeIndexByCid.get('1012100').childrens
+                    this.LiangMianB = playTreeIndexByCid.get('1012200').childrens
+                    this.currentGroupIndex = 1012
+                }
+                if (item2) {
+                    this.groupName.push(playTreeIndexByCid.get('1011000'))
+                    this.TeMaAList = playTreeIndexByCid.get('1011100').childrens
+                    this.LiangMianA = playTreeIndexByCid.get('1011200').childrens
+                }
+            }
+        },
+		created() {
+		},
+        computed: {
+
+        },
+		watch: {
+            playTreeList() {
+                this.groupName = []
+                if (playTreeIndexByCid.get('1010000')) {
+                    let item1 = playTreeIndexByCid.get('1012000')
+                    let item2 = playTreeIndexByCid.get('1011000')
+                    if (item1) {
+                        this.currentGroupIndex = 1012
+                    }
+                    else {
+                        this.currentGroupIndex = 1011
+                    }
+
+                    if (item1) {
+                        this.groupName.push(playTreeIndexByCid.get('1012000'))
+                        this.TeMaBList = playTreeIndexByCid.get('1012100').childrens
+                        this.LiangMianB = playTreeIndexByCid.get('1012200').childrens
+                        this.currentGroupIndex = 1012
+                    }
+                    if (item2) {
+                        this.groupName.push(playTreeIndexByCid.get('1011000'))
+                        this.TeMaAList = playTreeIndexByCid.get('1011100').childrens
+                        this.LiangMianA = playTreeIndexByCid.get('1011200').childrens
+                    }
+                }
+            },
+		},
+      	methods: {
+            isXiaoBtnActived(xiao) {
+                if(!this) return ''
+
+				if (this.shengXiaoMapNumber.length > 0) {
+                    var intercount = _.intersection(this.shengXiaoMapNumber[xiao], this.betSelectedList).length
+                    return intercount == this.shengXiaoMapNumber[xiao].length ? 'on' : ''
+                }
+            },
+			switchPlayGroup(cid) {
+                this.currentGroupIndex = cid;
+                this.$emit('lhcclearbet')
+			},
+            computeShengXiao(baseIndex, teMaType) {
+                let res = [[], [], [], [], [], [], [], [], [], [], [], []]
+                let baseIndexList = [];
+                let cidPrefix = ''
+                let itemCnt
+
+                if (teMaType == 1012) {
+					itemCnt = this.TeMaBList.length
+            	}
+            	else {
+                    itemCnt = this.TeMaAList.length
+                }
+
+			    if (itemCnt > 0) {
+                    if (teMaType == 1012) {
+                        cidPrefix = this.TeMaBList[0].cid.toString().substr(0, 5)
+                    }
+                    else {
+                        cidPrefix = this.TeMaAList[0].cid.toString().substr(0, 5)
+                    }
+
+                    if (baseIndex == 1) {
+                        baseIndexList[0] = 0;
+                        for (var i = 11; i >= 1; i--) {
+                            baseIndexList[12 - i] = i
+                        }
+                    }
+                    else if (baseIndex == 1) {
+                        baseIndexList[0] = 1;
+                        baseIndexList[1] = 0;
+
+                        j = 11
+                        for (var i = 2; i < 12; i++) {
+                            baseIndexList[i] = j
+                            j--
+                        }
+                    }
+                    else {
+                        if (baseIndex + 1 <= 12) {
+                            var j = 1
+                            for (var i = baseIndex - 1; i >= 0; i--) {
+                                baseIndexList[i] = j
+                                j++
+                            }
+                            baseIndexList[baseIndex] = 0
+
+                            j = 11
+                            for (var i = baseIndex + 1; i < 12; i++) {
+                                baseIndexList[i] = j
+                                j--
+                            }
+                        }
+                    }
+
+                    for (var i = 1; i < 50; i++) {
+                        for (var j = 0; j < baseIndexList.length; j++) {
+                            if (i % 12 == baseIndexList[j]) {
+                                let dataId = ""
+                                let include
+                                if (i < 10) {
+                                    dataId = cidPrefix + "0" + i
+                                }
+                                else {
+                                    dataId = cidPrefix + i
+                                }
+
+                                if (teMaType == 1012) {
+                                    include = _.find(this.TeMaBList, {cid: parseInt(dataId)})
+                                }
+                                else {
+                                    include = _.find(this.TeMaAList, {cid: parseInt(dataId)})
+                                }
+                                if (include)
+                                	res[j].push(include)
+                            }
+                        }
+                    }
+                }
+                return res;
+            },
+			selectShengXiao(index, teMaType) {
+                let getIndex = (item) => {
+                    return item == this.currentBaseShengXiao
+                }
+
+                let index2 = _.findIndex(this.shengXiaoList, getIndex)
+                this.shengXiaoMapNumber = this.computeShengXiao(index2 + 1, teMaType)
+				this.$emit("lhcselectshengxiao", this.shengXiaoMapNumber[index])
+            },
+		  	betSelect(item) {
+				this.$emit('lhcselectbet', item);
+			}
+		}
+    }
+</script>
