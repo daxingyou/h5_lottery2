@@ -71,18 +71,18 @@
 
                                             
                                             <!-- data-val裡的 encodeURI(JSON.stringify(v))，他們寫暂时不显示详情 -->
-                                            <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in thisWeekList" v-if="betRecordList[0].length > 0 && collapseCtrl[0] == 1">
+                                            <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[0]" v-if="betRecordList[0].length > 0 && collapseCtrl[0] == 1">
                                                 <a href="javascript:;" data-val="">
                                                     <div class="item">
                                                         <div class="badge ssc_badge">
                                                             <img src="/static/frist/images/lotterylogo/logo_10.svg">
                                                         </div>
                                                         <div class="lottery_t ssc">
-                                                            <p><!-- orderId: -->210a20171533q950o2l</p>
-                                                            <p><span><!-- playName: -->自选不中_自选不中-五不中 </span></p>
-                                                            <p><span><!-- betContent: -->17,19,11,26,32</span></p>
-                                                            <span class="prd_num"><span><!-- pcode: -->2017153</span>期</span>
-                                                            <strong><!-- 倍率?multiple: -->127.000</strong>
+                                                            <p><!-- orderId: -->{{item.orderid}}</p>
+                                                            <p><span><!-- playName: -->{{item.playname}}</span></p>
+                                                            <p><span><!-- betContent: -->{{item.betcontent}}</span></p>
+                                                            <span class="prd_num"><span><!-- pcode: -->{{item.pcode}}</span>期</span>
+                                                            <strong><!-- 倍率?multiple: -->{{item.multiple}}</strong>
                                                         </div>
                                                         <!-- 
                                                         CSS 狀態說明
@@ -93,7 +93,7 @@
                                                         status04
                                                         用户撤单、系统撤单、中奖停追、存在异常、异常注单 
                                                         -->
-                                                        <div class="status status00">
+                                                        <div :class="showStatusClass(item.orderstatus)">
                                                             <span><!-- orderStatus: -->等待开奖</span>
                                                             <div><!-- 若己派彩則顯示 payoff：XXXX.X元 --></div>
                                                         </div>
@@ -265,9 +265,6 @@
 
 <script>
     import Mixin from '@/Mixin'
-   // import 'swiper'
-  //  import '../../../static/js/swiper-3.4.2.jquery.min.js'
-    // import $ from "jquery";
     
     export default {
         name: 'lhcBetRecord',
@@ -499,7 +496,6 @@
                 return classStr
             },
             showLastWeekClass(stat) {
-                console.log("test")
                 let classStr = "slide_toggle bet_day new_bet_day new_panel"
 
                 if (stat == 1) {
@@ -517,100 +513,134 @@
 
                 return classStr
             },
-            changeCollapseStat(index) {
-                if (this.collapseCtrl[index] == 1) {
-                    this.$set(this.collapseCtrl, index, 0)
-                }
-                else {
-                    console.log("index", index)
+            showStatusClass(statCode) {
+                classStr = "status"
 
-                    this.$set(this.collapseCtrl, index, 1)
-                    _.forEach(this.collapseCtrl, (val, index2) => {
-                        if (index != index2) {
-                            this.$set(this.collapseCtrl, index2, 0)
-                        }
-                    })
+                switch (parseInt(statCode)) {
+                    case 32:
+                        classStr += ' status02';
+                        break;
+                    case 4: // 用户撤单
+                    case 5:  // 系统撤单
+                    case 6:  // 中奖停追
+                    case 71: // 存在异常
+                    case 81: // 异常注单
+                        classStr += ' status04';
+                        break;
+                    case 33: // 和局
+                        classStr += ' status00';
+                        break;
                 }
+
+                return classStr
             },
             getBetRecord(pdate) {
-                this.changeCollapseStat(pdate)
                 var _self = this ;
                 if(_self.ajaxSubmitAllow){ // 解决重复提交问题
                     return false ;
                 }
 
-                this.loading = 1
-                _self.seadata.lotteryId = _self.lotteryid // 彩种ID
-                _self.seadata.pdate = pdate
-                _self.ajaxSubmitAllow = true ;
-                $.ajax({
-                    type: 'post',
-                    headers: {
-                        "Authorization": "bearer  " + _self.getAccessToken,
-                        // 'Authorization': 'bearer ' + access_token,
-                    },
-                    dataType: 'json',
-                    contentType: 'application/json; charset=utf-8', // json格式传给后端
-                    url: _self.action.forseti + 'api/orders/orderList',
-                    data: JSON.stringify(_self.seadata), // json格式
-                    success: (res) => {
-                        if(res.err =='SUCCESS') {
-                            _self.ajaxSubmitAllow = false;
-                            if (_self.lastlotteryid != _self.lotteryid) { // 是否切换，切换需要重置
-                            }
-
-                            const dataList = res.data.rows;
-                            if (dataList.length === 0) {
-                                _self.betRecordList[pdate] = []
-                            } else {
-                                _self.lock = 0;
-                            }
-
-                            _.forEach(dataList, (betData, index) => {
-
-                            })
-                            $('.new_bet_day').each((i, t) => {
-                                _self.touzhuXQ = dataList;
-                                $.each(dataList, (j, v) => {
-                                    if ($(t).data('val') === v.pdate) {
-                                        var jsonStr = '';
-                                        var li_html = '';
-                                        // var pcode = ('' + v.pcode).substring(8, 11);
-                                        var pname = v.playName.substring(0, 2); // 筛选连码
-                                        if ((_self.lotteryid == '8') || (_self.lotteryid == '108')) {  // 北京pk10
-                                            var pcode = ('' + v.issueAlias);
-                                        } else {
-                                            var pcode = ('' + v.pcode);
-                                        }
-
-                                        var className = 'status00';
-                                        var payoff = ''
-                                        switch (parseInt(v.orderStatus)) {
-                                            case 32:
-                                                className = 'status02';
-                                                payoff = _self.fortMoney(_self.roundAmt(v.payoff), 2) + '元'
-                                                break;
-                                            case 4: // 用户撤单
-                                            case 5:  // 系统撤单
-                                            case 6:  // 中奖停追
-                                            case 71: // 存在异常
-                                            case 81: // 异常注单
-                                                className = 'status04';
-                                                break;
-                                            case 33: // 和局
-                                                className = 'status00';
-                                                break;
-                                        }
-                                        if (_self.seadata.searchType === 1) {
-                                        }
-                                    }
-                                });
-                            });
-                            _self.lastlotteryid = _self.lotteryid;
-                            _self.seadata.page++;
+                if (this.collapseCtrl[pdate] == 1) {
+                    this.$set(this.collapseCtrl, pdate, 0)
+                    this.betRecordList[pdate] = []
+                }
+                else {
+                    this.$set(this.collapseCtrl, pdate, 1)
+                    _.forEach(this.collapseCtrl, (val, index2) => {
+                        if (pdate != index2) {
+                            this.$set(this.collapseCtrl, index2, 0)
                         }
-                    },
-                })
+                    })
+                    this.loading = 1
+                    _self.seadata.lotteryId = _self.lotteryid // 彩种ID
+                    _self.seadata.pdate = pdate
+                    _self.ajaxSubmitAllow = true;
+                    $.ajax({
+                        type: 'post',
+                        headers: {
+                            "Authorization": "bearer  " + _self.getCookie("access_token"),
+                        },
+                        dataType: 'json',
+                        contentType: 'application/json; charset=utf-8', // json格式传给后端
+                        url: _self.action.forseti + 'api/orders/orderList',
+                        data: JSON.stringify(_self.seadata), // json格式
+                        success: (res) => {
+                            console.log("ajax")
+                            if(res.err =='SUCCESS') {
+                                _self.ajaxSubmitAllow = false;
+                                if (_self.lastlotteryid != _self.lotteryid) { // 是否切换，切换需要重置
+                                }
+
+                                const dataList = res.data.rows;
+                                console.log("data List", dataList)
+
+                                if (dataList.length === 0) {
+                                    _self.betRecordList[pdate] = []
+                                } else {
+                                    _self.lock = 0;
+                                    let betRecordShowList = []
+                                    _.forEach(dataList, (betData, index) => {
+                                        let betDataObj = {}
+                                        betDataObj.pcode = betData.issueAlias
+                                        betDataObj.orderstatus = betData.orderStatus
+                                        if (betDataObj.orderstatus == 32) {
+                                            betDataObj.payoff = _self.fortMoney(_self.roundAmt(betData.payoff), 2) + '元'
+                                        }
+                                        betDataObj.orderid = betData.orderId
+                                        betDataObj.betcontent = betData.betContent
+                                        betDataObj.playname = betData.playName
+                                    })
+                                }
+
+
+                                $('.new_bet_day').each((i, t) => {
+                                    _self.touzhuXQ = dataList;
+                                    $.each(dataList, (j, v) => {
+                                        if ($(t).data('val') === v.pdate) {
+                                            var jsonStr = '';
+                                            var li_html = '';
+                                            // var pcode = ('' + v.pcode).substring(8, 11);
+                                            var pname = v.playName.substring(0, 2); // 筛选连码
+                                            if ((_self.lotteryid == '8') || (_self.lotteryid == '108')) {  // 北京pk10
+                                                var pcode = ('' + v.issueAlias);
+                                            } else {
+                                                var pcode = ('' + v.pcode);
+                                            }
+
+                                            var className = 'status00';
+                                            var payoff = ''
+                                            switch (parseInt(v.orderStatus)) {
+                                                case 32:
+                                                    className = 'status02';
+                                                    payoff = _self.fortMoney(_self.roundAmt(v.payoff), 2) + '元'
+                                                    break;
+                                                case 4: // 用户撤单
+                                                case 5:  // 系统撤单
+                                                case 6:  // 中奖停追
+                                                case 71: // 存在异常
+                                                case 81: // 异常注单
+                                                    className = 'status04';
+                                                    break;
+                                                case 33: // 和局
+                                                    className = 'status00';
+                                                    break;
+                                            }
+                                            if (_self.seadata.searchType === 1) {
+                                            }
+                                        }
+                                    });
+                                });
+                                _self.lastlotteryid = _self.lotteryid;
+                                _self.seadata.page++;
+                                this.loading = 0
+                            }
+                        },
+                    })
+
+                }
+
+
+
             },
             /**
              * 投注详情

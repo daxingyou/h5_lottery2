@@ -1,5 +1,5 @@
 var LhcMixin = {
-    data: function() {
+    data() {
         return {
 
         }
