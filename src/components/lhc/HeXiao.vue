@@ -39,6 +39,7 @@
 
     export default {
         name: 'HeXiao',
+		mixins: [LhcMixin],
         props: {
             playTreeList: {
                 type: Array,
