@@ -281,9 +281,6 @@
                 this.shengXiaoMapNumber = this.computeShengXiao(index2 + 1, teMaType)
 				this.$emit("lhcselectshengxiao", this.shengXiaoMapNumber[index])
             },
-		  	betSelect(item) {
-				this.$emit('lhcselectbet', item);
-			}
 		}
     }
 </script>

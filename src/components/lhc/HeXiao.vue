@@ -59,6 +59,7 @@
                 HeXiaoList: [],
                 shengXiaoList: ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"],
                 betRate: 0,
+				maxBallNum: 49,
 				maxHeXiaoItem: 11,
 				playGroup: [],
 				playType: 'group'
@@ -78,7 +79,7 @@
                 }
 
                 let index = _.findIndex(this.shengXiaoList, getIndex)
-                return this.computeShengXiaoNum(index + 1)
+                return this.computeShengXiaoNum(index + 1, this.maxBallNum)
             },
         },
         watch: {

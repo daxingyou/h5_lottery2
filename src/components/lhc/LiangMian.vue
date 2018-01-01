@@ -18,7 +18,7 @@
                                     {{item.name}}
                                 </h2>
                                 <div class="bet_box">
-                                    <p :data-id="itemChild.cid" :class="isBtnActived(itemChild)"  v-for="(itemChild,index) in item.childrens" @click="betSelect(itemChild, item)">
+                                    <p :data-id="itemChild.cid" :class="isBtnActived(itemChild)"  v-for="(itemChild,index) in item.childrens" @click="betSelect(itemChild)">
                                         <span>{{itemChild.name}}</span>
                                         <span class="bet-times">{{payoffFormat(itemChild.oddsData.payoff)}}</span>
                                     </p>

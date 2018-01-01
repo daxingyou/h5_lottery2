@@ -28,7 +28,7 @@
                     <div class="boxlist bet-go-list">
                         <template v-if="playType == 'group'">
                             <p :data-id="item.cid" data-type=""  v-for="(item,index) in betSelectedList"  v-show="index =='0'" >
-                                【<span class="each-title">{{item.parentItem && item.parentItem.name}}</span>-
+                                【<span class="each-title">{{item.playName}}</span>-
                                 <span class="each-content">{{betSelectedList.map((item)=>{ return item.name; }).join(',')}}</span>】 @
                                 <span class="each-times">{{payoffFormat(item.oddsData.payoff)}}</span> x
                                 <span class="each-mon">{{betAmount}}</span>
@@ -47,7 +47,7 @@
 
                         <template v-else-if="playType == 'combination'">
                             <p :data-id="item.cid" data-type="" v-for="(item,index) in showListRes">
-                                【<span class="each-title">{{item.parentItem && item.parentItem.name}}</span>-
+                                【<span class="each-title">{{item.parentItem && item.parentItem.name}}</span>
                                 <span class="each-content">{{item.name}}</span>】 @
                                 <span class="each-times">{{payoffFormat(item.oddsData.payoff)}}</span> x
                                 <span class="each-mon">{{betAmount}}</span>
@@ -56,8 +56,7 @@
 
                         <template v-else>
                             <p :data-id="item.cid" data-type="" v-for="item in betSelectedList">
-                                【<span class="each-title">{{item.parentItem && item.parentItem.name}}</span>-
-                                <span class="each-content">{{item.name}}</span>】 @
+                                【<span class="each-content">{{item.playName}}</span>】 @
                                 <span class="each-times">{{payoffFormat(item.oddsData.payoff)}}</span> x
                                 <span class="each-mon">{{betAmount}}</span>
                             </p>

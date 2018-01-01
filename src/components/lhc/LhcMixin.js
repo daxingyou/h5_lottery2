@@ -1,4 +1,4 @@
-var LhcMixin = {
+let LhcMixin = {
     data() {
         return {
 
@@ -15,17 +15,16 @@ var LhcMixin = {
             if(!this) return ''
             return _.find(this.betSelectedList, {cid: item.cid}) ? 'active' : '';
         },
-        betSelect(item, parentItem) {
-            item.parentItem = parentItem
+        betSelect(item) {
             this.$emit('lhcselectbet', item);
         },
-        computeShengXiaoNum(baseIndex) {
-            var res = [[], [], [], [], [], [], [], [], [], [], [], []]
-            var baseIndexList = [];
+        computeShengXiaoNum(baseIndex, maxBallNum = 50) {
+            let res = [[], [], [], [], [], [], [], [], [], [], [], []]
+            let baseIndexList = [];
 
             if (baseIndex == 12) {
                 baseIndexList[0] = 0;
-                for (var i = 11; i >= 1; i--) {
+                for (let i = 11; i >= 1; i--) {
                     baseIndexList[12 - i] = i
                 }
             }
@@ -34,30 +33,30 @@ var LhcMixin = {
                 baseIndexList[1] = 0;
 
                 j = 11
-                for (var i = 2; i < 12; i++) {
+                for (let i = 2; i < 12; i++) {
                     baseIndexList[i] = j
                     j--
                 }
             }
             else {
                 if (baseIndex + 1 <= 12) {
-                    var j = 1
-                    for (var i = baseIndex - 1; i >= 0; i--) {
+                    let j = 1
+                    for (let i = baseIndex - 1; i >= 0; i--) {
                         baseIndexList[i] = j
                         j++
                     }
                     baseIndexList[baseIndex] = 0
 
                     j = 11
-                    for (var i = baseIndex + 1; i < 12; i++) {
+                    for (let i = baseIndex + 1; i < 12; i++) {
                         baseIndexList[i] = j
                         j--
                     }
                 }
             }
 
-            for (var i = 1; i < 50; i++) {
-                for (var j = 0; j < baseIndexList.length; j++) {
+            for (let i = 1; i < maxBallNum; i++) {
+                for (let j = 0; j < baseIndexList.length; j++) {
                     if (i % 12 == baseIndexList[j]) {
                         if (i < 10) {
                             let item = "0" + i
