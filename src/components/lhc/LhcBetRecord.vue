@@ -96,7 +96,6 @@
                                                     </div>
                                                 </a>
                                             </li>
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[0].length > 0 && collapseCtrl[0] == 1 && loading == 0">没有数据了</li>
                                         </ul>
                                     </li>
                                     <!-- 本周 -->
@@ -466,7 +465,6 @@
                                                     </div>
                                                 </a>
                                             </li>
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[0].length > 0 && collapseCtrl[0] == 1 && loading == 0">没有数据了</li>
                                         </ul>
                                     </li>
                                     <!-- 本周 -->
@@ -505,7 +503,6 @@
                                                     </div>
                                                 </a>
                                             </li>
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[1].length > 0 && collapseCtrl[1] == 1 && loading == 0">没有数据了</li>
                                         </ul>
                                     </li>
                                     <!-- 上周 -->
@@ -544,7 +541,6 @@
                                                     </div>
                                                 </a>
                                             </li>
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[2].length > 0 && collapseCtrl[2] == 1 && loading == 0">没有数据了</li>
                                         </ul>
                                     </li>
                                     <!-- 上上周 -->
