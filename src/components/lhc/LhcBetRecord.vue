@@ -64,12 +64,8 @@
                                     <li :class="showThisWeekClass(collapseCtrl[0])" data-val="本周" @click="getBetRecord('0')">
                                         <div class="panel_title new_panel_top"><strong class="title-data">本周</strong><span><!-- 此為箭頭，點按後展開或收合，預設第一個為展開（父層li的class有active） --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-
-
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[0].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[0].length == 0 && collapseCtrl[0] == 1">没有数据了</li>
-
-                                            
                                             <!-- data-val裡的 encodeURI(JSON.stringify(v))，他們寫暂时不显示详情 -->
                                             <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[0]" v-if="betRecordList[0].length > 0 && collapseCtrl[0] == 1">
                                                 <a href="javascript:;" data-val="">
@@ -82,7 +78,7 @@
                                                             <p><span><!-- playName: -->{{item.playname}}</span></p>
                                                             <p><span><!-- betContent: -->{{item.betcontent}}</span></p>
                                                             <span class="prd_num"><span><!-- pcode: -->{{item.pcode}}</span>期</span>
-                                                            <strong><!-- 倍率?multiple: -->{{item.multiple}}</strong>
+                                                            <strong><!-- 倍率?multiple: -->{{item.betamount}}</strong>
                                                         </div>
                                                         <!-- 
                                                         CSS 狀態說明
@@ -94,8 +90,8 @@
                                                         用户撤单、系统撤单、中奖停追、存在异常、异常注单 
                                                         -->
                                                         <div :class="showStatusClass(item.orderstatus)">
-                                                            <span><!-- orderStatus: -->等待开奖</span>
-                                                            <div><!-- 若己派彩則顯示 payoff：XXXX.X元 --></div>
+                                                            <span><!-- orderStatus: -->{{item.orderstatusname}}</span>
+                                                            <div v-if="item.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item.payoff}}</div>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -131,72 +127,6 @@
                                                     </div>
                                                 </a>
                                             </li>
-
-                                            <!-- data-val裡的 encodeURI(JSON.stringify(v))，他們寫暂时不显示详情 -->
-                                            <li onclick="return false" class="bet_data" data-status="not_open" v-if="test == 0">
-                                                <a href="javascript:;" data-val="">
-                                                    <div class="item">
-                                                        <div class="badge ssc_badge">
-                                                            <img src="/static/frist/images/lotterylogo/logo_10.svg">
-                                                        </div>
-                                                        <div class="lottery_t ssc">
-                                                            <p><!-- orderId: -->210a20171533q6p0o2j</p>
-                                                            <p><span><!-- playName: -->合肖_合肖-二合肖</span></p>
-                                                            <p><span><!-- betContent: -->牛,虎</span></p>
-                                                            <span class="prd_num"><span><!-- pcode: -->2017153</span>期</span>
-                                                            <strong><!-- 倍率?multiple: -->127.000</strong>
-                                                        </div>
-                                                        <!-- 
-                                                        CSS 狀態說明
-                                                        status00
-                                                        未開獎、未中獎、和局
-                                                        status02
-                                                        己中獎(已派彩)
-                                                        status04
-                                                        用户撤单、系统撤单、中奖停追、存在异常、异常注单 
-                                                        -->
-                                                        <div class="status status02">
-                                                            <span><!-- orderStatus: -->已派彩</span>
-                                                            <div><!-- 若己派彩則顯示 payoff： -->XXXX.X元</div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <!-- data-val裡的 encodeURI(JSON.stringify(v))，他們寫暂时不显示详情 -->
-                                            <li onclick="return false" class="bet_data" data-status="not_open" v-if="test == 0">
-                                                <a href="javascript:;" data-val="">
-                                                    <div class="item">
-                                                        <div class="badge ssc_badge">
-                                                            <img src="/static/frist/images/lotterylogo/logo_10.svg">
-                                                        </div>
-                                                        <div class="lottery_t ssc">
-                                                            <p><!-- orderId: -->210a20171533q5j0o2c</p>
-                                                            <p><span><!-- playName: -->四全中_四全中-四全中</span></p>
-                                                            <p><span><!-- betContent: -->01,02,03,06</span></p>
-                                                            <span class="prd_num"><span><!-- pcode: -->2017153</span>期</span>
-                                                            <strong><!-- 倍率?multiple: -->127.000</strong>
-                                                        </div>
-                                                        <!-- 
-                                                        CSS 狀態說明
-                                                        status00
-                                                        未開獎、未中獎、和局
-                                                        status02
-                                                        己中獎(已派彩)
-                                                        status04
-                                                        用户撤单、系统撤单、中奖停追、存在异常、异常注单 
-                                                        -->
-                                                        <div class="status status04">
-                                                            <span><!-- orderStatus: -->用户撤单</span>
-                                                            <div><!-- 若己派彩則顯示 payoff： XXXX.X元--></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-
-                                            <!-- <li onclick="return false" class="bet_data" data-status="not_open"><a href="javascript:;" data-val="%7B%22cid%22:20183028,%22parentOrderId%22:%220%22,%22orderId%22:%22210i201712300243n860o1m%22,%22memberId%22:30767,%22lotteryId%22:18,%22playId%22:41608,%22pcode%22:20171230024,%22pdate%22:20171230,%22betTime%22:1514607677940,%22betMode%22:0,%22sideType%22:2,%22acType%22:1,%22betCount%22:1,%22betAmount%22:100,%22betContent%22:%22%E8%99%8E%22,%22multiple%22:1,%22moneyMode%22:%22y%22,%22ifChase%22:0,%22chaseSeq%22:0,%22chaseCount%22:1,%22payoff%22:196,%22orderStatus%22:32,%22modifyTime%22:1514608039629,%22winNumber%22:%2208,01,10,03,09%22,%22issueAlias%22:%2217123024%22,%22orderStatusName%22:%22%E5%B7%B2%E6%B4%BE%E5%BD%A9%22,%22lotteryName%22:%22%E5%B1%B1%E4%B8%9C11%E9%80%895%22,%22playName%22:%22%E4%B8%A4%E9%9D%A2_%E6%80%BB%E5%92%8C%EF%BC%86%E9%BE%99%E8%99%8E-%E8%99%8E%22%7D"><div class="item"> <div class="badge ssc_badge"><img src="/static/frist/images/lotterylogo/logo_18.svg"></div><div class="lottery_t ssc"><p>210i201712300243n860o1m</p><p> <span>两面_总和＆龙虎-虎</span></p> <span class="prd_num"><span>20171230024</span>期</span><strong>1.00</strong> </div><div class="status status02"><span>已派彩</span><div>1.96元</div></div></div></a></li>
-
-                                            <li onclick="return false" class="bet_data" data-status="not_open"><a href="javascript:;" data-val="%7B%22cid%22:20182979,%22parentOrderId%22:%220%22,%22orderId%22:%22210i201712300233m2n0o18%22,%22memberId%22:30767,%22lotteryId%22:18,%22playId%22:43501,%22pcode%22:20171230023,%22pdate%22:20171230,%22betTime%22:1514606960404,%22betMode%22:0,%22sideType%22:2,%22acType%22:1,%22betCount%22:1,%22betAmount%22:100,%22betContent%22:%222,3,6,4,5,7%22,%22multiple%22:1,%22moneyMode%22:%22y%22,%22ifChase%22:0,%22chaseSeq%22:0,%22chaseCount%22:1,%22payoff%22:0,%22orderStatus%22:31,%22modifyTime%22:1514607450011,%22winNumber%22:%2205,11,03,07,09%22,%22issueAlias%22:%2217123023%22,%22orderStatusName%22:%22%E6%9C%AA%E4%B8%AD%E5%A5%96%22,%22lotteryName%22:%22%E5%B1%B1%E4%B8%9C11%E9%80%895%22,%22playName%22:%22%E8%BF%9E%E7%A0%81_%E5%85%AD%E4%B8%AD%E4%BA%94%22%7D"><div class="item"> <div class="badge ssc_badge"><img src="/static/frist/images/lotterylogo/logo_18.svg"></div><div class="lottery_t ssc"><p>210i201712300233m2n0o18</p><p> <span>连码_六中五-2,3,6,4,5,7</span></p> <span class="prd_num"><span>20171230023</span>期</span><strong>1.00</strong> </div><div class="status status00"><span>未中奖</span><div></div></div></div></a></li> -->
-
                                         </ul>
                                     </li>
                                     <!-- 本周 -->
@@ -204,7 +134,37 @@
                                     <li :class="showLastWeekClass(collapseCtrl[1])" data-val="上周" @click="getBetRecord('1')">
                                         <div class="panel_title new_panel_top" ><strong class="title-data">上周</strong><span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[1].length == 0 && collapseCtrl[1] == 1 && loading == 0">没有数据了"></li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[1].length == 0">正在加载...</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[1].length == 0 && collapseCtrl[1] == 1 && loading == 0">没有数据了</li>
+                                            <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[1]" v-if="betRecordList[1].length > 0 && collapseCtrl[1] == 1">
+                                                <a href="javascript:;" data-val="">
+                                                    <div class="item">
+                                                        <div class="badge ssc_badge">
+                                                            <img src="/static/frist/images/lotterylogo/logo_10.svg">
+                                                        </div>
+                                                        <div class="lottery_t ssc">
+                                                            <p><!-- orderId: -->{{item.orderid}}</p>
+                                                            <p><span><!-- playName: -->{{item.playname}}</span></p>
+                                                            <p><span><!-- betContent: -->{{item.betcontent}}</span></p>
+                                                            <span class="prd_num"><span><!-- pcode: -->{{item.pcode}}</span>期</span>
+                                                            <strong><!-- 倍率?multiple: -->{{item.betamount}}</strong>
+                                                        </div>
+                                                        <!--
+                                                        CSS 狀態說明
+                                                        status00
+                                                        未開獎、未中獎、和局
+                                                        status02
+                                                        己中獎(已派彩)
+                                                        status04
+                                                        用户撤单、系统撤单、中奖停追、存在异常、异常注单
+                                                        -->
+                                                        <div :class="showStatusClass(item.orderstatus)">
+                                                            <span><!-- orderStatus: -->{{item.orderstatusname}}</span>
+                                                            <div v-if="item.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item.payoff}}</div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <!-- 上周 -->
@@ -212,7 +172,37 @@
                                     <li :class="showBeforeLastWeekClass(collapseCtrl[2])" data-val="上上周" @click="getBetRecord('2')">
                                         <div class="panel_title new_panel_top"><strong class="title-data">上上周</strong><span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loading == 1 && betRecordList[2].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[2].length == 0 && collapseCtrl[2] == 1">没有数据了</li>
+                                            <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[2]" v-if="betRecordList[2].length > 0 && collapseCtrl[2] == 1">
+                                                <a href="javascript:;" data-val="">
+                                                    <div class="item">
+                                                        <div class="badge ssc_badge">
+                                                            <img src="/static/frist/images/lotterylogo/logo_10.svg">
+                                                        </div>
+                                                        <div class="lottery_t ssc">
+                                                            <p><!-- orderId: -->{{item.orderid}}</p>
+                                                            <p><span><!-- playName: -->{{item.playname}}</span></p>
+                                                            <p><span><!-- betContent: -->{{item.betcontent}}</span></p>
+                                                            <span class="prd_num"><span><!-- pcode: -->{{item.pcode}}</span>期</span>
+                                                            <strong><!-- 倍率?multiple: -->{{item.betamount}}</strong>
+                                                        </div>
+                                                        <!--
+                                                        CSS 狀態說明
+                                                        status00
+                                                        未開獎、未中獎、和局
+                                                        status02
+                                                        己中獎(已派彩)
+                                                        status04
+                                                        用户撤单、系统撤单、中奖停追、存在异常、异常注单
+                                                        -->
+                                                        <div :class="showStatusClass(item.orderstatus)">
+                                                            <span><!-- orderStatus: -->{{item.orderstatusname}}</span>
+                                                            <div v-if="item.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item.payoff}}</div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <!-- 上上周 -->
@@ -249,9 +239,6 @@
                         <!-- 未中奖 -->
                     </div><!-- swiper-wrapper -->
                 </div>
-
-
-
             </div>
         </div>
         <footer id="pa_foot"></footer>
@@ -317,6 +304,7 @@
                 collapseCtrl: [1, 0, 0],
                 loading: 0,
                 test: 1,
+                pageList: [1, 1, 1]
             }
         },
         created() {
@@ -325,7 +313,7 @@
         computed:{
         },/*computed*/
         mounted() {
-            /*$('html,body').css('overflow-y','scroll' )  ;
+            $('html,body').css('overflow-y','scroll' )  ;
             this.seadata.pdate = this.newpdate;
             this.setMenuAction();
             this.initView();
@@ -347,7 +335,7 @@
                         }
                     })
                 },
-            })*/
+            })
 
             // 一级标签
             /* (function () {*/
@@ -378,11 +366,11 @@
 
             // 二级标签
             /*(function () {*/
-            /*$('.tab_mid > li').click((e) => {
+            $('.tab_mid > li').click((e) => {
                 document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
                 const $src = $(e.currentTarget);
                 var dateval = $('.tab_content').find('.slide_toggle:first-child').data('val') ;
-                this.seadata.pdate = dateval ;  // 切换时默认第一天
+                this.seadata.pdate = 0 ;  // 切换时默认第一天
                 $src.addClass('on').siblings().removeClass('on');
                 var num = parseInt($src.index(), 10);
                 switch (num) {
@@ -480,7 +468,7 @@
                     this.restr = '';
                     this.getBetRecord(); // 投注记录
                 }
-            });*/
+            });
             
         },/*mounted*/
         watch: {
@@ -514,7 +502,7 @@
                 return classStr
             },
             showStatusClass(statCode) {
-                classStr = "status"
+                let classStr = "status"
 
                 switch (parseInt(statCode)) {
                     case 32:
@@ -539,21 +527,26 @@
                 if(_self.ajaxSubmitAllow){ // 解决重复提交问题
                     return false ;
                 }
-
+                console.log("collapse", this.collapseCtrl)
                 if (this.collapseCtrl[pdate] == 1) {
                     this.$set(this.collapseCtrl, pdate, 0)
-                    this.betRecordList[pdate] = []
+                    this.pageList[pdate] =  1
+                    this.betRecordList[pdate] =  []
                 }
                 else {
                     this.$set(this.collapseCtrl, pdate, 1)
                     _.forEach(this.collapseCtrl, (val, index2) => {
                         if (pdate != index2) {
                             this.$set(this.collapseCtrl, index2, 0)
+                            this.pageList[index2] = 1
+                            this.betRecordList[index2] = []
                         }
                     })
                     this.loading = 1
+                    console.log("pageList", this.pageList)
                     _self.seadata.lotteryId = _self.lotteryid // 彩种ID
                     _self.seadata.pdate = pdate
+                    _self.seadata.page = _self.pageList[pdate]
                     _self.ajaxSubmitAllow = true;
                     $.ajax({
                         type: 'post',
@@ -583,64 +576,31 @@
                                         let betDataObj = {}
                                         betDataObj.pcode = betData.issueAlias
                                         betDataObj.orderstatus = betData.orderStatus
+                                        betDataObj.orderstatusname = betData.orderStatusName
+                                        betDataObj.betamount = (betData.betAmount/100)
                                         if (betDataObj.orderstatus == 32) {
                                             betDataObj.payoff = _self.fortMoney(_self.roundAmt(betData.payoff), 2) + '元'
                                         }
                                         betDataObj.orderid = betData.orderId
                                         betDataObj.betcontent = betData.betContent
                                         betDataObj.playname = betData.playName
+                                        betRecordShowList.push(betDataObj)
                                     })
+
+                                    _self.betRecordList[pdate] = betRecordShowList
+                                    console.log("betRecord List", _self.betRecordList[pdate])
                                 }
-
-
-                                $('.new_bet_day').each((i, t) => {
-                                    _self.touzhuXQ = dataList;
-                                    $.each(dataList, (j, v) => {
-                                        if ($(t).data('val') === v.pdate) {
-                                            var jsonStr = '';
-                                            var li_html = '';
-                                            // var pcode = ('' + v.pcode).substring(8, 11);
-                                            var pname = v.playName.substring(0, 2); // 筛选连码
-                                            if ((_self.lotteryid == '8') || (_self.lotteryid == '108')) {  // 北京pk10
-                                                var pcode = ('' + v.issueAlias);
-                                            } else {
-                                                var pcode = ('' + v.pcode);
-                                            }
-
-                                            var className = 'status00';
-                                            var payoff = ''
-                                            switch (parseInt(v.orderStatus)) {
-                                                case 32:
-                                                    className = 'status02';
-                                                    payoff = _self.fortMoney(_self.roundAmt(v.payoff), 2) + '元'
-                                                    break;
-                                                case 4: // 用户撤单
-                                                case 5:  // 系统撤单
-                                                case 6:  // 中奖停追
-                                                case 71: // 存在异常
-                                                case 81: // 异常注单
-                                                    className = 'status04';
-                                                    break;
-                                                case 33: // 和局
-                                                    className = 'status00';
-                                                    break;
-                                            }
-                                            if (_self.seadata.searchType === 1) {
-                                            }
-                                        }
-                                    });
-                                });
                                 _self.lastlotteryid = _self.lotteryid;
-                                _self.seadata.page++;
+                                _self.pageList[pdate]++;
                                 this.loading = 0
+                            }
+                            error: () => {
+                                _self.ajaxSubmitAllow = false
+                                _self.loading = 0
                             }
                         },
                     })
-
                 }
-
-
-
             },
             /**
              * 投注详情
