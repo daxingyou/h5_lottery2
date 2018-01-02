@@ -133,6 +133,7 @@
                             else {
                                 payoff = Number.MAX_SAFE_INTEGER
                             }
+                            console.log("payoff init", payoff)
                             _.forEach(combinationRes[index], (item2, index2) => {
                                 if (index2 + 1 == _.size(combinationRes[index])) {
                                     name += item2.name
@@ -142,17 +143,20 @@
                                 }
 
                                 if (selectMax) {
-                                    if (payoff < (item2.oddsData.payoff/1000)) {
+                                    if (payoff < (item2.oddsData.payoff)) {
                                         payoff = item2.oddsData.payoff
                                     }
                                 }
                                 else {
-                                    if (payoff > (item2.oddsData.payoff/1000)) {
+                                    if (payoff > (item2.oddsData.payoff)) {
                                         payoff = item2.oddsData.payoff
+                                        console.log("item name", item2.name)
+                                        console.log("item payoff", item2.oddsData.payoff)
                                     }
                                 }
                             })
 
+                            console.log("payoff update", payoff)
                             this.$set(lastRes, index, _.extend({}, item[0],
                                     {name:name, oddsData:{payoff:payoff}}))
                         })

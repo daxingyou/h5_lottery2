@@ -111,37 +111,37 @@
 						if (item.cid == 1111100) {
 					        cid = 1111190
                             if (shengXiao === this.currentBaseShengXiao) {
-                                payoff = (playTreeIndexByCid.get()['1111101']).oddsData.payoff
+                                payoff = playTreeIndexByCid.get('1111101').oddsData.payoff
                             }
                             else {
-                                payoff = (playTreeIndexByCid.get()['1111102']).oddsData.payoff
+                                payoff = playTreeIndexByCid.get('1111102').oddsData.payoff
                             }
                         }
                         else if (item.cid == 1111200) {
                             cid = 1111290
                             if (shengXiao === this.currentBaseShengXiao) {
-                                payoff = (playTreeIndexByCid.get()['1111201']).oddsData.payoff
+                                payoff = playTreeIndexByCid.get('1111201').oddsData.payoff
                             }
                             else {
-                                payoff = (playTreeIndexByCid.get()['1111202']).oddsData.payoff
+                                payoff = playTreeIndexByCid.get('1111202').oddsData.payoff
                             }
 						}
                         else if (item.cid == 1111300) {
                             cid = 1111390
                             if (shengXiao === this.currentBaseShengXiao) {
-                                payoff = (playTreeIndexByCid.get()['1111301']).oddsData.payoff
+                                payoff = playTreeIndexByCid.get('1111301').oddsData.payoff
                             }
                             else {
-                                payoff = (playTreeIndexByCid.get()['1111302']).oddsData.payoff
+                                payoff = playTreeIndexByCid.get('1111302').oddsData.payoff
                             }
                         }
                         else if (item.cid == 1111400) {
                             cid = 1111490
                             if (shengXiao === this.currentBaseShengXiao) {
-                                payoff = (playTreeIndexByCid.get()['1111401']).oddsData.payoff
+                                payoff = playTreeIndexByCid.get('1111401').oddsData.payoff
                             }
                             else {
-                                payoff = (playTreeIndexByCid.get()['1111402']).oddsData.payoff
+                                payoff = playTreeIndexByCid.get('1111402').oddsData.payoff
                             }
                         }
 
