@@ -116,8 +116,11 @@
 
                         if (itemCid == '1111') {
                             selectMax = false
-                            payoff = 999999
+                            payoff = Number.MAX_SAFE_INTEGER
                         }
+
+                        console.log("init payoff", payoff)
+                        console.log("select Max", selectMax)
 
                         _.forEach(combinationRes, (item, index) => {
                             name = ""
@@ -125,7 +128,7 @@
                                 payoff = -1
                             }
                             else {
-                                payoff = 999999
+                                payoff = Number.MAX_SAFE_INTEGER
                             }
                             _.forEach(combinationRes[index], (item2, index2) => {
                                 if (index2 + 1 == _.size(combinationRes[index])) {
@@ -136,12 +139,12 @@
                                 }
 
                                 if (selectMax) {
-                                    if (payoff < item2.oddsData.payoff) {
+                                    if (payoff < (item2.oddsData.payoff/1000)) {
                                         payoff = item2.oddsData.payoff
                                     }
                                 }
                                 else {
-                                    if (payoff > item2.oddsData.payoff) {
+                                    if (payoff > (item2.oddsData.payoff/1000)) {
                                         payoff = item2.oddsData.payoff
                                     }
                                 }
@@ -183,7 +186,7 @@
         watch:{
             betSelectedList() {
 
-            }
+            },
         },
         methods:{
             /*
@@ -201,7 +204,7 @@
             * 表单提交，下注接口,lotteryid 彩种id
             * */
 
-            submitAction:function(lotteryid) {
+            submitAction(lotteryid) {
                 // console.log( this.balance )
 
 
@@ -223,10 +226,6 @@
                 }
 
                 // 调用父组件方法刷新余额
-                var x = Number(this.getCookie( 'balancePublic' ) )  - Number(total_mon)
-
-                this.$emit('refreshBalance', x)
-
                 var that = this;
                 if(this.ajaxSubmitAllow){
                     return false ;
@@ -250,14 +249,11 @@
                     type: 'POST',
                     headers: {
                         "Authorization": "bearer  " + this.getAccessToken,
-                        // 'sourceType':'2', // 1是pc端，2是h5
-                        // 'sideType':'1',  // 1是传统盘，2是双面盘
                     },
                     dataType: 'json',
                     contentType: 'application/json; charset=utf-8',
                     url: this.action.forseti + 'api/orders/betOrder',
                     timeout: 600000,
-                    //  data:  $(form).serialize() + "&randomNum=" + randomNum ,
                     data: JSON.stringify(resdata),
                     success: (data) => {
                         if (data.length <= 0) {
@@ -266,24 +262,18 @@
                         if (data.err == 'SUCCESS') {  //购买成功
 
                             this.ajaxSubmitAllow = false ;     //解决瞬间提交2次的问题
-                            // initTipPop05(true,3) ;
-                            // this.parentRefs.autoCloseDialog.open('购买成功')
                             this.parentRefs.betSuccessfulDialog.open('购买成功')
                             this.resetAction('1') ;  // 下注成功不清空金额
                             that.getMemberBalance() ; // 更新余额
-                            // console.log(total_mon)
-                            // console.log(that.getCookie( 'balancePublic' ) )
+
                             var x = Number(that.getCookie( 'balancePublic' ) )  - Number(total_mon)
-                            // console.log( x+ 'ch') ;
-                            //that.setCookie("balancePublic", x);
+
                             this.$emit('refreshBalance', x) ;
                             console.log('abstract')
-                            // console.log(that.balancePublic)
 
                             return false;
                         } else {  //购买失败提示
                             this.ajaxSubmitAllow = false ;
-                            this.betAmount = ''
                             if(data.data =='' || data.data ==null){ // 平台商不存在
                                 // this.parentRefs.autoCloseDialog.open(data.msg,'title_bet_fail')
                                 this.parentRefs.autoCloseDialog.open(data.msg, '下注失败')
@@ -304,7 +294,6 @@
                     error: function (e) {  // 错误提示
                         // initTipPop05(false,3,'投注失败，请稍后再试') ;
                         // this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试','title_bet_fail')
-                        this.$emit('refreshBalance', that.getCookie( 'balancePublic' ))
                         this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试', '下注失败')
                         this.ajaxSubmitAllow = false;
                     }

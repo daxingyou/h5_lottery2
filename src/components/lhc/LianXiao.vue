@@ -171,6 +171,7 @@
                     itemInfo.num = 5
                 }
 
+                console.log("item cid", item.cid)
                 itemInfo.playType = this.playType
 
                 item.parentItem = parentItem
