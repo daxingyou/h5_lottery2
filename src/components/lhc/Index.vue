@@ -194,8 +194,9 @@
             }
         },
         methods:{
-            refreshBalance(newBalance) {
-                this.balancePublic = newBalance
+            refreshBalance() {
+                var afterBetCookie = this.getCookie( 'balancePublic' )
+                this.balancePublic = afterBetCookie
             },
             //切換左方玩法
             switchPlayMethod(method) {
