@@ -9,7 +9,7 @@
             </li>
 
             <!-- <li><a class="trend" href="/lobbyPastView">往期开奖</a></li>
-            <li><a class="record" href="publicTemplate/betRecord?type=index">投注纪录</a></li>
+            <li><a class="record" href="publicTemplate/betRecord?type=index">投注记录</a></li>
             <li><a class="member" href="javascript:;">个人中心</a></li> -->
         </ul>
       </footer>
@@ -30,7 +30,7 @@
                 menus:[
                     { name:'首页大厅', className:'index', path:'/'},
                     { name:'往期开奖', className:'history', path:'/lobbyPastView'},
-                    { name:'投注纪录', className:'member', path:'/lobbyBetRecord'},
+                    {name: '投注记录', className: 'member', path: '/lobbyBetRecord'},
                     { name:'个人中心', className:'record', path:'/lobbyTemplate/info'},
                 ]
             }
