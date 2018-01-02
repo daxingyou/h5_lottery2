@@ -87,7 +87,8 @@ export default {
             "6":"k3/",  //江苏快3
             "20":"k3/anHuiK3Index",  
             "22":"k3/huBeiK3Index",
-            "106":'k3/miaoSuK3Index'
+              "106": 'k3/miaoSuK3Index',
+              "10": 'lhc',
             
           }, // 对应彩种的id
         }
