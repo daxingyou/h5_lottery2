@@ -26,6 +26,7 @@
                 <p class="grey_text">请核对您的下注信息</p>
                 <div>
                     <div class="boxlist bet-go-list">
+                        <!-- For 合肖 and 自选不中 !-->
                         <template v-if="playType == 'group'">
                             <p :data-id="item.cid" data-type=""  v-for="(item,index) in betSelectedList"  v-show="index =='0'" >
                                 【<span class="each-title">{{item.playName}}</span>-
@@ -35,6 +36,7 @@
                             </p>
                         </template>
 
+                        <!-- For 连码 !-->
                         <template v-else-if="playType == 'combination' && (itemCidPrefix == '106')">
                             <p :data-id="item.cid" data-type="" v-for="(item,index) in betSelectedList" v-show="index =='0'" >
                                 【<span class="each-title">{{item.parentItem && item.parentItem.name}}</span>-
@@ -45,6 +47,7 @@
                             </p>
                         </template>
 
+                        <!-- For 连肖 and  连尾 !-->
                         <template v-else-if="playType == 'combination'">
                             <p :data-id="item.cid" data-type="" v-for="(item,index) in showListRes">
                                 【<span class="each-title">{{item.parentItem && item.parentItem.name}}</span>
@@ -205,18 +208,7 @@
             * */
 
             submitAction(lotteryid) {
-                // console.log( this.balance )
-
-
-
-                // var total_mon = Number($('.total-bet-mon').text()) ; // 总投注金额
                 const total_mon = this.monAmt(this.totalAmount);
-
-                // console.log( total_mon )
-                // console.log( this.balance )
-
-                // 余额不足提示充值
-                // if (this.monAmt(total_mon) > this.monAmt(Number(returnMoney($('.so-in-top-sum').eq(0).text())))) {
 
                 if (total_mon > this.balance) {
                     // this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', 'title_bet_fail')
@@ -260,17 +252,15 @@
                             return false;
                         }
                         if (data.err == 'SUCCESS') {  //购买成功
-
                             this.ajaxSubmitAllow = false ;     //解决瞬间提交2次的问题
                             this.parentRefs.betSuccessfulDialog.open('购买成功')
                             this.resetAction('1') ;  // 下注成功不清空金额
                             that.getMemberBalance() ; // 更新余额
 
-                            var x = Number(that.getCookie( 'balancePublic' ) )  - Number(total_mon)
+                            var x = Number(that.getCookie( 'balancePublic' )) - Number(total_mon)
 
+                            that.setCookie("balancePublic", x);
                             this.$emit('refreshBalance', x) ;
-                            console.log('abstract')
-
                             return false;
                         } else {  //购买失败提示
                             this.ajaxSubmitAllow = false ;

@@ -73,6 +73,16 @@
                                            <!-- <span class="pk10_ball" :class="'num_'+listnum"></span>-->
                                         </li>
                                     </ul>
+                                    <!-- 六合彩 -->
+                                    <ul class="new_panel_center lo_ball double-numbers lhc_winNumber_paner"  v-else-if="(list.lotteryId == '10')">
+                                        <li v-for="(listnum, index) in list.winNumber.split(',')" :class="'lhc_ball lhc_ball_b num_'+listnum" v-if="index < 6">{{listnum}}</li>
+                                        <li class="lhc_ball_plus lhc_ball_plus_w">
+                                            <span></span>
+                                            <span></span>
+                                        </li>
+                                        <li v-for="(listnum, index) in list.winNumber.split(',')" :class="'lhc_ball lhc_ball_b num_'+listnum" v-if="index == 6">{{listnum}}</li>
+                                    </ul>
+                                    <!-- 六合彩 -->
                                     <ul class="new_panel_center lo_ball double-numbers"  v-else>
                                         <li v-for="listnum in list.winNumber.split(',')" :class="'active round_ball num_'+listnum">{{listnum}}</li>
                                     </ul>
@@ -85,12 +95,8 @@
         </div>
         <footer id="pa_foot"></footer>
         <div class="so-shade"></div>
-
-
     </div>
 </template>
-
-
 
 <script>
 import Mixin from '@/Mixin'
