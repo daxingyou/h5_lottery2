@@ -1,5 +1,5 @@
 <template>
-    <div id="pa_con"  class="body">
+    <div id="pa_con"  class="body lhc">
         <header id="pa_head" class="new_header">
             <div class="left">
                 <a href="javascript:;" onclick="history.go(-1) ">
@@ -92,6 +92,7 @@
                                                         <div :class="showStatusClass(item.orderstatus)">
                                                             <span><!-- orderStatus: -->{{item.orderstatusname}}</span>
                                                             <div v-if="item.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item.payoff}}</div>
+                                                            <div v-else></div>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -130,6 +131,7 @@
                                                         <div :class="showStatusClass(item.orderstatus)">
                                                             <span><!-- orderStatus: -->{{item.orderstatusname}}</span>
                                                             <div v-if="item.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item.payoff}}</div>
+                                                            <div v-else></div>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -168,6 +170,7 @@
                                                         <div :class="showStatusClass(item.orderstatus)">
                                                             <span><!-- orderStatus: -->{{item.orderstatusname}}</span>
                                                             <div v-if="item.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item.payoff}}</div>
+                                                            <div v-else></div>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -337,9 +340,9 @@
                 document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
                 const $src = $(e.currentTarget);
                 let dateval = $('.tab_content').find('.slide_toggle:first-child').data('val') ;
-                if (this.lotteryid == 10) {
+                /*if (this.lotteryid == 10) {
                     this.seadata.pdate = 0;  // 切换时默认第一天
-                }
+                }*/
                 $src.addClass('on').siblings().removeClass('on');
                 let num = parseInt($src.index(), 10);
                 switch (num) {
@@ -477,27 +480,29 @@
             showStatusClass(statCode) {
                 let classStr = "status"
 
+                console.log("stat code", statCode)
                 switch (parseInt(statCode)) {
                     case 32:
-                        classStr += ' status02';
+                        classStr += ' status02'
                         break;
                     case 4: // 用户撤单
                     case 5:  // 系统撤单
                     case 6:  // 中奖停追
                     case 71: // 存在异常
                     case 81: // 异常注单
-                        classStr += ' status04';
+                        classStr += ' status04'
                         break;
                     case 33: // 和局
-                        classStr += ' status00';
+                        classStr += ' status00'
                         break;
+                    default:
+                        classStr += ' status00'
                 }
 
                 return classStr
             },
             getBetRecord(pdate) {
                 let _self = this ;
-                console.log("pdate", pdate)
 
                 if (pdate < 0) {
                     return false
@@ -525,10 +530,8 @@
                     this.$set(this.loadingList, pdate, 1)
 
                     _self.seadata.lotteryId = _self.lotteryid // 彩种ID
-                    if (this.lotteryid == 0) {
-                        _self.seadata.pdate = pdate
-                    }
                     _self.seadata.page = _self.pageList[pdate]
+                    _self.seadata.pdate = pdate
                     _self.ajaxSubmitAllow = true;
                     $.ajax({
                         type: 'post',

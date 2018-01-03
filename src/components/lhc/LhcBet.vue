@@ -233,12 +233,12 @@
                 }
 
                 // 调用父组件方法刷新余额
-                var that = this;
+                let that = this;
                 if(this.ajaxSubmitAllow){
                     return false ;
                 }
 
-                var resdata = {
+                let resdata = {
                     'list': [ ],
                     'amount': total_mon,  //总金额，此金额=所有注单总金额
                     'lotteryId': this.lotteryID ,  //彩种id
@@ -272,7 +272,7 @@
                             this.resetAction('1') ;  // 下注成功不清空金额
                             that.getMemberBalance() ; // 更新余额
 
-                            var x = Number(that.getCookie( 'balancePublic' )) - Number(total_mon)
+                            let x = Number(that.getCookie( 'balancePublic' )) - Number(total_mon)
 
                             if (x >= 0) {
                                 that.setCookie("balancePublic", x);
@@ -395,7 +395,7 @@
                 _.forEach(this.betSelectedList, getBetContent)
             },
             startBet(e) {
-                var amount = this.betAmount;  // 获取金额
+                let amount = this.betAmount;  // 获取金额
                 const closet = 4;
                 // if(nums<1){ // 没有选择投注项目
                 if(this.betCount<1){ // 没有选择投注项目
@@ -414,24 +414,24 @@
                 this.showList = true;
             },
             getCombination(arr, size) {
-                var allResult = [];
+                let allResult = [];
 
                 (function mapping(arr, size, result) {
-                        var arrLen = arr.length;
+                        let arrLen = arr.length;
                         if (size > arrLen) {
                             return;
                         }
                         if (size == arrLen) {
                             allResult.push([].concat(result, arr))
                         } else {
-                            for (var i = 0 ; i < arrLen; i++) {
-                                var newResult = [].concat(result);
+                            for (let i = 0 ; i < arrLen; i++) {
+                                let newResult = [].concat(result);
                                 newResult.push(arr[i]);
 
                                 if (size == 1) {
                                     allResult.push(newResult);
                                 } else {
-                                    var newArr = [].concat(arr);
+                                    let newArr = [].concat(arr);
                                     newArr.splice(0, i + 1);
                                     mapping(newArr, size - 1, newResult)
                                 }
