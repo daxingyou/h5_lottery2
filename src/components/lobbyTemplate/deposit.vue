@@ -194,8 +194,13 @@
                                             <fieldset>
                                                 <div class="form_g text">
                                                     <legend for="">存款人</legend>
-                                                    <input type="text" placeholder="请输入存款人姓名" v-model="banksavename">
+                                                    <input type="text" placeholder="请输入存款人姓名" v-model="banksavename"
+                                                           @input="depositPeopleInput(banksavename)">
                                                 </div>
+                                                <div v-if='depositPeopleHint' class="depositPeopleHint"
+                                                     id="depositPeopleHint"> {{depositPeoplehintWord}}
+                                                </div>
+
                                             </fieldset>
                                             <fieldset>
                                                 <div class="form_g text">
@@ -351,7 +356,9 @@
                 hintContent:'',
                 notNetPayShow:true,
                 netPayShow:true,
-                href:''
+                href: '',
+                depositPeoplehintWord: '请正确输入',
+                depositPeopleHint: false,
 
             }
         },
@@ -689,6 +696,13 @@
                     }
                 });
             },
+            depositPeopleInput: function (word) {
+                if (word.length < 2 || word.length > 13) {
+                    this.depositPeopleHint = true;
+                } else {
+                    this.depositPeopleHint = false;
+                }
+            },
             // 银行转账 个人信息
             getBankInfo:function () {
                 var _self = this ;
@@ -941,4 +955,15 @@
     .bModal > .m_content > .content > div > img { height: 1rem; display: block; margin: 0 auto; }
 
     .bModal > .m_content > .content > div > img:last-child { height: 0.8rem; margin: .2rem auto; }
+
+    .depositPeopleHint {
+        display: block;
+        padding-left: 2.444rem;
+        color: red;
+        font-size: 0.34rem;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        /*background-color: rgba(0, 0, 0, 0.5);*/
+        margin-top: 0.185rem;
+    }
 </style>
