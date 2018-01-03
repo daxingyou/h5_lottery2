@@ -21,7 +21,7 @@
 				<!--以下为盘面不同样式，根据ID区分-->
 				<!-- 特码B -->
 				<div id="so-item0" class="content-right active item_one"
-					 v-if="currentGroupIndex == 1012">
+					 v-if="currentGroupIndex == 1011">
 					<ul>
 						<!-- 1-49 -->
 						<li class="select-li">
@@ -54,7 +54,7 @@
 
 				<!-- 特码A -->
 				<div id="so-item1" class="content-right "
-					 v-if="currentGroupIndex == 1011"
+					 v-if="currentGroupIndex == 1012"
 				>
 					<ul>
 						<!-- 1-49 -->
@@ -116,7 +116,7 @@
                 groupName: [],
                 shengXiaoList: ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"],
                 shengXiaoMapNumber:[],
-				currentGroupIndex: 1012,
+				currentGroupIndex: 1011,
                 TeMaAList: [],
                 TeMaBList: [],
                 LiangMianB: [],
@@ -127,27 +127,28 @@
             if (playTreeIndexByCid.get('1010000')) {
                 let item1 = playTreeIndexByCid.get('1012000')
 				let item2 = playTreeIndexByCid.get('1011000')
-                if (item1) {
-                    this.currentGroupIndex = 1012
-				}
-				else {
+                if (item2) {
                     this.currentGroupIndex = 1011
 				}
+				else {
+                    this.currentGroupIndex = 1012
+				}
+
+                if (item2) {
+                    this.groupName.push(item2)
+                    this.TeMaBList = playTreeIndexByCid.get('1011100').childrens
+                    this.LiangMianB = playTreeIndexByCid.get('1011200').childrens
+                }
 
                 if (item1) {
-                    this.groupName.push(playTreeIndexByCid.get('1012000'))
-                    this.TeMaBList = playTreeIndexByCid.get('1012100').childrens
-                    this.LiangMianB = playTreeIndexByCid.get('1012200').childrens
-                    this.currentGroupIndex = 1012
-                }
-                if (item2) {
-                    this.groupName.push(playTreeIndexByCid.get('1011000'))
-                    this.TeMaAList = playTreeIndexByCid.get('1011100').childrens
-                    this.LiangMianA = playTreeIndexByCid.get('1011200').childrens
+                    this.groupName.push(item1)
+                    this.TeMaAList = playTreeIndexByCid.get('1012100').childrens
+                    this.LiangMianA = playTreeIndexByCid.get('1012200').childrens
                 }
             }
         },
 		created() {
+
 		},
         computed: {
 
@@ -158,23 +159,23 @@
                 if (playTreeIndexByCid.get('1010000')) {
                     let item1 = playTreeIndexByCid.get('1012000')
                     let item2 = playTreeIndexByCid.get('1011000')
-                    if (item1) {
-                        this.currentGroupIndex = 1012
+                    if (item2) {
+                        this.currentGroupIndex = 1011
                     }
                     else {
-                        this.currentGroupIndex = 1011
+                        this.currentGroupIndex = 1012
+                    }
+
+                    if (item2) {
+                        this.groupName.push(item2)
+                        this.TeMaBList = playTreeIndexByCid.get('1011100').childrens
+                        this.LiangMianB = playTreeIndexByCid.get('1011200').childrens
                     }
 
                     if (item1) {
                         this.groupName.push(item1)
                         this.TeMaAList = playTreeIndexByCid.get('1012100').childrens
                         this.LiangMianA = playTreeIndexByCid.get('1012200').childrens
-                        this.currentGroupIndex = 1012
-                    }
-                    if (item2) {
-                        this.groupName.push(item2)
-                        this.TeMaBList = playTreeIndexByCid.get('1011100').childrens
-                        this.LiangMianB = playTreeIndexByCid.get('1011200').childrens
                     }
                 }
             },
