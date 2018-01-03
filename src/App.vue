@@ -20,9 +20,9 @@ export default {
         acDetail:{ 
             tabs:[
                 { title:'全部', value:'1', days:[], active:true },
-                {title: '资金派送', value: '4', days: [], active: false},
                 { title:'充值', value:'2', days:[], active:false },
                 { title:'提款', value:'3', days:[], active:false },
+                { title: '优惠', value: '4', days: [], active: false},
             ] 
         },
         navScroll:{}, // 左侧选单

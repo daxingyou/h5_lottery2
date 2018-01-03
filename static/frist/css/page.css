@@ -66,7 +66,7 @@ body{
 .new_btn span{ border:2px solid transparent; width: 3rem; /*background-color: #d4a164;*/color:#7a4220;background-clip: content-box; display: block; text-align: center; border-radius: 0.5rem; box-shadow: 0px 0px 0px 1px rgba(121,64,32,0.64) inset; -webkit-box-shadow: 0px 0px 0px 1px rgba(121,64,32,0.64) inset; }
 .new_btn.cancel span{ width: 2.2rem; background-color: #d4a164;}
 .new_btn.ok span{ width: 3rem; color:#ffc388; background: rgb(186,4,26); /* Old browsers */background: -moz-linear-gradient(top, rgba(186,4,26,1) 0%, rgba(225,26,51,1) 50%, rgba(186,4,26,1) 100%); /* FF3.6-15 */background: -webkit-linear-gradient(top, rgba(186,4,26,1) 0%,rgba(225,26,51,1) 50%,rgba(186,4,26,1) 100%); /* Chrome10-25,Safari5.1-6 */background: linear-gradient(to bottom, rgba(186,4,26,1) 0%,rgba(225,26,51,1) 50%,rgba(186,4,26,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */background-clip: content-box;}
-.new_btn span.midunm { width: 4.35rem; line-height: 0.8rem; }
+.new_btn span.midunm { width: 4.35rem; line-height: 0.8rem; font-weight: bold;}
 .new_btn span.big { width: 6rem; line-height: 0.8rem; }
 .new_btn_outline { color: #fbd4a9;  border: 1px solid #fbd4a9; border-radius: 0.5rem; display: inline-block; font-size: .34rem; padding: 0 0.2rem; line-height: 0.7rem; }
 
@@ -217,7 +217,7 @@ footer.bot_nav ul li a span.Footer-font { display: block; }
 
 
 .slide_toggle { text-align: left; margin-bottom: 0.2rem;  cursor: pointer; font-size: 0.34rem; }
-.slide_toggle .panel_title { padding: 0 0.5rem 0 1rem; font-size: .4rem; line-height: 0.9rem; height: 0.9rem; }
+.slide_toggle .panel_title { padding: 0 0.5rem 0 1rem; font-size: .4rem; line-height: 0.9rem; height: 1rem; }
 .slide_toggle .panel_title span { background: url("/static/frist/images/arrow_up.png") no-repeat 50% 40%; background-size: 0.7rem auto; width: 0.7rem; height: 0.8rem; -webkit-transition: all .2s; -o-transition: all .2s; transition: all .2s; float: right; -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); -o-transform: rotate(180deg); -ms-transform: rotate(180deg); transform: rotate(180deg); }
 .slide_toggle .panel { display: none; color: #d59559; }
 .slide_toggle.active span{ -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg); }
@@ -986,14 +986,15 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 /* 跑马灯 */
 .marquee { overflow: hidden; background-color: rgba(0, 0, 0, 0.6); line-height: .7rem; height: .7rem;  position: absolute; bottom: 0; left:0; }
 .marquee > * { display: inline-block; color: #fff; }
-.marquee > .news_title { position: absolute; left: 0;  line-height: .6rem; height: .7rem; padding: 0 15px 0 10px; z-index: 1; }
+.marquee > .news_title { position: absolute; left: 0;  line-height: .6rem; height: .7rem; padding: 0 .4rem 0 .34rem; z-index: 1; }
+.marquee > .news_title > i.icon-notification {display:inline-block;margin-top: .04rem;  background: url("/static/frist/images/icon_lb.png") no-repeat; width: .5rem; height: .5rem; background-size: 94%; padding: 0; vertical-align: middle; }
 .marquee > .news_title > span { display: inline-block; line-height: .7rem; height: .7rem; vertical-align: middle; }
 .marquee > .news_marque { line-height: .7rem; height: .7rem; overflow: hidden; }
 
 .tempWrap { width: 100% !important; }
 
 .sys-notice { height: .7rem; line-height: .7rem; overflow: hidden; position: relative; width: 100%; }
-.sys-notice .bd { line-height: .7rem; height: .7rem; width: 7.7rem; margin-left:2.3rem;}
+.sys-notice .bd { line-height: .7rem; height: .7rem; width: 7.7rem; margin-left:2.6rem;}
 .sys-notice ul { margin: 0; line-height: .7rem; height: .7rem; }
 .sys-notice ul li { list-style: none; display: inline-block; line-height: .7rem; height: .7rem; }
 .sys-notice ul li .create-time { list-style: none; margin-left: 20px; }

@@ -7,7 +7,7 @@
                     <span class="icon icon_back"></span>
                 </a>
             </div>
-            <h2 class="center title_name">{{parentData.moneyType[model.chargeType] || '-'}}详情</h2>
+            <h2 class="center title_name">{{moneyType[model.dealType] || '-'}}详情</h2>
             <div class="right"></div>
         </header>
         <div class="pa_content">
@@ -36,7 +36,7 @@
                                             <th>
                                                 <li>帐变方式</li>
                                             </th>
-                                            <td>{{(parentData.tradeTypeConfig[model.tradeType] && parentData.tradeTypeConfig[model.tradeType].name) || '-'}}<!-- 重庆时时彩 --></td>
+                                            <td>{{model.dealType=='2'?model.actionTypeName:parentData.tradeTypeConfig[model.tradeType].name}}<!-- 重庆时时彩 --></td>
                                         </tr>
                                         <tr>
                                             <th>
@@ -93,14 +93,18 @@ export default {
     data: function() {
         return {
             parentData:{},
-            model:{}, 
+            model:{},
+            moneyType:{
+                '0':'充值',
+                '1':'提款',
+                '2':'优惠'
+            },
         }
     },
 
     created:function() {
         this.parentData = this.$route.params.data;
         this.model = this.$route.params.model;
-
     }, 
     methods:{
 
