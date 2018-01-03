@@ -107,9 +107,11 @@
 					_.forEach(this.shengXiaoList, (shengXiao, index2) => {
 					    let payoff = 0
 						let cid = 100000
+						let playName = ""
 
 						if (item.cid == 1111100) {
 					        cid = 1111190
+							playName = playTreeIndexByCid.get('1111190').playName
                             if (shengXiao === this.currentBaseShengXiao) {
                                 payoff = playTreeIndexByCid.get('1111101').oddsData.payoff
                             }
@@ -119,6 +121,7 @@
                         }
                         else if (item.cid == 1111200) {
                             cid = 1111290
+                            playName = playTreeIndexByCid.get('1111290').playName
                             if (shengXiao === this.currentBaseShengXiao) {
                                 payoff = playTreeIndexByCid.get('1111201').oddsData.payoff
                             }
@@ -128,6 +131,7 @@
 						}
                         else if (item.cid == 1111300) {
                             cid = 1111390
+                            playName = playTreeIndexByCid.get('1111390').playName
                             if (shengXiao === this.currentBaseShengXiao) {
                                 payoff = playTreeIndexByCid.get('1111301').oddsData.payoff
                             }
@@ -137,6 +141,7 @@
                         }
                         else if (item.cid == 1111400) {
                             cid = 1111490
+                            playName = playTreeIndexByCid.get('1111490').playName
                             if (shengXiao === this.currentBaseShengXiao) {
                                 payoff = playTreeIndexByCid.get('1111401').oddsData.payoff
                             }
@@ -146,7 +151,7 @@
                         }
 
 					    this.$set(children, index2, _.extend({},
-								{cid: cid, name: shengXiao, oddsData:{payoff:payoff}}))
+								{cid: cid, playName: playName, name: shengXiao, oddsData:{payoff:payoff}}))
 					})
 
                     this.$set(this.lianXiaoNList, index,
@@ -174,7 +179,6 @@
                 console.log("item cid", item.cid)
                 itemInfo.playType = this.playType
 
-                item.parentItem = parentItem
 				item.selectNum = itemInfo.num
 
 				itemInfo.item = item

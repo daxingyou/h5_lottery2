@@ -55,13 +55,14 @@
                 betRate: 0,
                 maxBallNum: 49,
                 maxItemNum: 12,
+				minItemNum: 5,
                 playGroup: [],
 				ballNumList:[],
                 playType: 'group'
             }
         },
         mounted(){
-            if ((playTreeIndexByCid.get()['1170000'])) {
+            if (playTreeIndexByCid.get('1170000')) {
                 this.handlePlayList()
             }
         },
@@ -71,14 +72,13 @@
         },
         watch: {
             playTreeIndexByCid() {
-                if ((playTreeIndexByCid.get()['1170000'])) {
+                if (playTreeIndexByCid.get('1170000')) {
                     this.handlePlayList()
                 }
             },
             betSelectedList() {
                 let nBetItem = _.size(this.betSelectedList)
-				console.log("num of bet", this.nBetItem)
-                if (nBetItem <= 1)
+                if (nBetItem < this.minItemNum)
                     this.betRate = 0
 
                 let matchItem = _.find(this.playGroup, {number: nBetItem})
@@ -88,7 +88,7 @@
 
                     _.forEach(this.betSelectedList, (item, index) => {
                         item.cid = matchItem.item.cid
-                        item.parentItem = matchItem.item
+                        item.playName = matchItem.item.playName
                         item.oddsData.payoff = this.betRate
                     })
                 }
@@ -137,7 +137,7 @@
                         {cid: cid, name: ballNum, oddsData:{payoff:0}}))
                 })
 
-                _.forEach(playTreeIndexByCid.get()['1171100'].childrens, (item, index) => {
+                _.forEach(playTreeIndexByCid.get('1171100').childrens, (item, index) => {
                     let num = item.cid % 100 + 4
 
 					this.$set(this.playGroup, index, _.extend({}, {number: (num), item: item}))

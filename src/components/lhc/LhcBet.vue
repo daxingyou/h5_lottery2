@@ -29,7 +29,7 @@
                         <!-- For 合肖 and 自选不中 !-->
                         <template v-if="playType == 'group'">
                             <p :data-id="item.cid" data-type=""  v-for="(item,index) in betSelectedList"  v-show="index =='0'" >
-                                【<span class="each-title">{{item.playName}}</span>-
+                                【<span class="each-title">{{item.playName}}</span>
                                 <span class="each-content">{{betSelectedList.map((item)=>{ return item.name; }).join(',')}}</span>】 @
                                 <span class="each-times">{{payoffFormat(item.oddsData.payoff)}}</span> x
                                 <span class="each-mon">{{betAmount}}</span>
@@ -39,7 +39,7 @@
                         <!-- For 连码 !-->
                         <template v-else-if="playType == 'combination' && (itemCidPrefix == '106')">
                             <p :data-id="item.cid" data-type="" v-for="(item,index) in betSelectedList" v-show="index =='0'" >
-                                【<span class="each-title">{{item.parentItem && item.parentItem.name}}</span>-
+                                【<span class="each-title">{{item.playName}}</span>
                                 <span class="each-content">{{betSelectedList.map((item)=>{ return item.name; }).join(',')}}</span>】 @
                                 <span class="each-times" v-if="item.cid.toString().substr(0, 5) == '10621' || item.cid.toString().substr(0, 5) == '10641'">({{item.oddsData.payoff}}) x</span>
                                 <span class="each-times" v-else>{{payoffFormat(item.oddsData.payoff)}} x</span>
@@ -50,7 +50,7 @@
                         <!-- For 连肖 and  连尾 !-->
                         <template v-else-if="playType == 'combination'">
                             <p :data-id="item.cid" data-type="" v-for="(item,index) in showListRes">
-                                【<span class="each-title">{{item.parentItem && item.parentItem.name}}</span>
+                                【<span class="each-title">{{item.playName}}</span>
                                 <span class="each-content">{{item.name}}</span>】 @
                                 <span class="each-times">{{payoffFormat(item.oddsData.payoff)}}</span> x
                                 <span class="each-mon">{{betAmount}}</span>
@@ -270,7 +270,7 @@
                             this.ajaxSubmitAllow = false ;     //解决瞬间提交2次的问题
                             this.parentRefs.betSuccessfulDialog.open('购买成功')
                             this.resetAction('1') ;  // 下注成功不清空金额
-                            //that.getMemberBalance() ; // 更新余额
+                            that.getMemberBalance() ; // 更新余额
 
                             var x = Number(that.getCookie( 'balancePublic' )) - Number(total_mon)
 

@@ -61,6 +61,7 @@
                 betRate: 0,
 				maxBallNum: 49,
 				maxHeXiaoItem: 11,
+				minHeXiaoItem: 2,
 				playGroup: [],
 				playType: 'group'
             }
@@ -91,7 +92,7 @@
 			betSelectedList() {
                 let nBetItem = _.size(this.betSelectedList)
 
-				if (nBetItem <= 1)
+				if (nBetItem < this.minHeXiaoItem)
 				    this.betRate = 0
 
                 let matchItem = _.find(this.playGroup, {number: nBetItem})
@@ -101,7 +102,7 @@
 
                     _.forEach(this.betSelectedList, (item, index) => {
 					    item.cid = matchItem.item.cid
-						item.parentItem = matchItem.item
+						item.playName = matchItem.item.playName
 						item.oddsData.payoff = this.betRate
 					})
 				}

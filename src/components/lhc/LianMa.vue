@@ -117,36 +117,43 @@
                     _.forEach(this.lianMaNumList, (lianMa, index) => {
                         let payoff = ""
 						let itemCid = item.cid
+						let playName = ""
                         let cid = 100000
 
 						if (itemCid == 1061000) {
                             cid = 1061101
 							payoff = playTreeIndexByCid.get('1061101').oddsData.payoff
+							playName = playTreeIndexByCid.get('1061101').playName
 						}
 						else if (itemCid == 1062000) {
 							cid = 1062101
 							payoff = this.payoffFormat(playTreeIndexByCid.get('1062101').oddsData.payoff) + "/"
 							payoff += this.payoffFormat(playTreeIndexByCid.get('1062102').oddsData.payoff)
+                            playName = playTreeIndexByCid.get('1062101').playName
                         }
                         else if (itemCid == 1063000) {
                             cid = 1063101
                             payoff = playTreeIndexByCid.get('1063101').oddsData.payoff
+                            playName = playTreeIndexByCid.get('1063101').playName
                         }
                         else if (itemCid == 1064000) {
                             cid = 1064101
-                            payoff = this.payoffFormat(playTreeIndexByCid.get('1062101').oddsData.payoff) + "/"
-                            payoff += this.payoffFormat(playTreeIndexByCid.get('1062102').oddsData.payoff)
-						}
+                            payoff = this.payoffFormat(playTreeIndexByCid.get('1064101').oddsData.payoff) + "/"
+                            payoff += this.payoffFormat(playTreeIndexByCid.get('1064102').oddsData.payoff)
+                            playName = playTreeIndexByCid.get('1064101').playName
+                        }
 						else if (itemCid == 1065000) {
                             cid = 1065101
                             payoff = playTreeIndexByCid.get('1065101').oddsData.payoff
-						}
+                            playName = playTreeIndexByCid.get('1065101').playName
+                        }
 						else if (itemCid == 1066000) {
                             cid = 1066101
                             payoff = playTreeIndexByCid.get('1066101').oddsData.payoff
-						}
+                            playName = playTreeIndexByCid.get('1066101').playName
+                        }
                         this.$set(children, index, _.extend({},
-                            {cid: cid, name: lianMa, oddsData: {payoff:payoff}}))
+                            {cid: cid, playName:playName, name: lianMa, oddsData: {payoff:payoff}}))
                     })
 
                     this.$set(this.lianMaNList, index,
@@ -180,8 +187,6 @@
                 }
 
                 itemInfo.playType = this.playType
-
-                item.parentItem = parentItem
 
                 itemInfo.item = item
                 this.$emit('lhcselectlian', itemInfo)

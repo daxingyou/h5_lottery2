@@ -115,9 +115,11 @@
                     _.forEach(this.lianWeiNameList, (lianWei, index2) => {
                         let payoff = 0
 						let cid
+						let playName = ""
 
                         if (item.cid == 1141100) {
                             cid = 1141190
+							playName = playTreeIndexByCid.get('1141190').playName
                             if (index2 === this.currentBaselianWei) {
                                 payoff = playTreeIndexByCid.get('1141101').oddsData.payoff
                             }
@@ -127,6 +129,7 @@
                         }
 						else if (item.cid == 1141200) {
                             cid = 1141290
+                            playName = playTreeIndexByCid.get('1141290').playName
                             if (index2 === this.currentBaselianWei) {
                                 payoff = playTreeIndexByCid.get('1141201').oddsData.payoff
                             }
@@ -136,6 +139,7 @@
 						}
 						else if (item.cid == 1141300) {
                             cid = 1141390
+                            playName = playTreeIndexByCid.get('1141390').playName
                             if (index2 === this.currentBaselianWei) {
                                 payoff = playTreeIndexByCid.get('1141301').oddsData.payoff
                             }
@@ -145,6 +149,7 @@
 						}
 						else if (item.cid == 1141400) {
                             cid = 1141490
+                            playName = playTreeIndexByCid.get('1141490').playName
                             if (index2 === this.currentBaselianWei) {
                                 payoff = playTreeIndexByCid.get('1141401').oddsData.payoff
                             }
@@ -154,7 +159,7 @@
 						}
 
                         this.$set(children, index2, _.extend({},
-                            {cid: cid, name: lianWei, oddsData:{payoff: payoff}}))
+                            {cid: cid, playName: playName, name: lianWei, oddsData:{payoff: payoff}}))
                     })
 
                     this.$set(this.lianWeiNList, index,
@@ -181,7 +186,6 @@
 
                 itemInfo.playType = this.playType
 
-                item.parentItem = parentItem
 				item.selectNum = itemInfo.num
 
                 itemInfo.item = item
