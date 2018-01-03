@@ -199,7 +199,7 @@
                 let cidPrefix = ''
                 let itemCnt
 
-                if (teMaType == 1012) {
+                if (teMaType == 1011) {
 					itemCnt = this.TeMaBList.length
             	}
             	else {
@@ -207,7 +207,7 @@
                 }
 
 			    if (itemCnt > 0) {
-                    if (teMaType == 1012) {
+                    if (teMaType == 1011) {
                         cidPrefix = this.TeMaBList[0].cid.toString().substr(0, 5)
                     }
                     else {
@@ -259,7 +259,7 @@
                                     dataId = cidPrefix + i
                                 }
 
-                                if (teMaType == 1012) {
+                                if (teMaType == 1011) {
                                     include = _.find(this.TeMaBList, {cid: parseInt(dataId)})
                                 }
                                 else {
