@@ -97,6 +97,7 @@ export default {
   } ,
   mounted:function() {
       this.haslogin = this.ifLogined() ;
+      this.setCookie('haslogin', this.haslogin)
      $(this.el).on('click', ()=>{
       this.showNavigation = true;
     }) ;
