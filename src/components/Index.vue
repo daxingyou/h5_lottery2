@@ -269,20 +269,6 @@ export default {
       this.getBulletinsContent ();
       this.getPopMsg();
 
-//      TouchSlide({
-//                  slideCell: "#focus",
-//                  autoPlay:true,
-//              });
-
-
-      /* $("#marquee_snp").slide({ // 文本滚动
-           mainCell: ".bd ul",
-           autoPage: true,
-           effect: "leftMarquee",
-           autoPlay: true,
-           vis: 1,
-           interTime: 50
-       });*/
       //this.changeOffFlag();
        this.carouselImg();
        this.getActivity();
