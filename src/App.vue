@@ -53,7 +53,7 @@ export default {
           },false)
       }
 
-      this.appService()
+      this.appService()//一分钟调一次的服务
       // $('html, body').height($(window).height()); // 防止浏览器全屏显示
 
   },

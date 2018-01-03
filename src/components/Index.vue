@@ -146,7 +146,7 @@
                         <p>更多游戏</p>
                     </li>
                     <li >
-                        <a href="http://blcxz.com" target="_blank">
+                        <a :href="appUrl" target="_blank">
                             <div class="badge"> 
                                 <img src="/static/frist/images/lotteryicon/logo_app.png" lazy="loaded">
                             </div>
@@ -248,6 +248,7 @@ export default {
             cid:'',
             custUrl: '',
             corroleDataList: [],
+            appUrl: ''
         }
     },
     computed:{
@@ -286,6 +287,8 @@ export default {
        this.carouselImg();
        this.getActivity();
        this.getCustom()
+        this.getAppUrl()
+
   },
     methods:{
       getBulletinsContent :function () {
@@ -518,6 +521,31 @@ export default {
 
           }
       },
+        getAppUrl: function () {
+            var _self = this;
+            console.log(_self.appUrl, 'url')
+
+            if (!sessionStorage.appUrl) {
+                $.ajax({
+                    type: 'get',
+                    url: _self.action.forseti + 'apid/config/appConfig',
+                    data: {},
+                    success: (res) => {
+                        _self.appUrl = res.data.h5CustUrl
+                        // console.log( _self.appUrl )
+                        sessionStorage.appUrl = res.data.h5CustUrl;
+                        console.log(_self.appUrl, 'url-in')
+                        // console.log( _self.appUrl )
+                    },
+                    err: (res) => {
+
+                    }
+                })
+            } else {
+                _self.appUrl = sessionStorage.appUrl
+                console.log(_self.appUrl, 'url-else')
+            }
+        },
   },
 
 }
