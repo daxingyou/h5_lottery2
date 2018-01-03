@@ -195,8 +195,8 @@
         },
         methods:{
             refreshBalance() {
-                var afterBetCookie = this.getCookie( 'balancePublic' )
-                this.balancePublic = afterBetCookie
+                let afterBetCookie = Number(this.getCookie( 'balancePublic' ))
+                this.balancePublic = this.fortMoney(this.roundAmt(afterBetCookie), 2);
             },
             //切換左方玩法
             switchPlayMethod(method) {

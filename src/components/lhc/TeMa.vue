@@ -166,15 +166,15 @@
                     }
 
                     if (item1) {
-                        this.groupName.push(playTreeIndexByCid.get('1012000'))
-                        this.TeMaBList = playTreeIndexByCid.get('1012100').childrens
-                        this.LiangMianB = playTreeIndexByCid.get('1012200').childrens
+                        this.groupName.push(item1)
+                        this.TeMaAList = playTreeIndexByCid.get('1012100').childrens
+                        this.LiangMianA = playTreeIndexByCid.get('1012200').childrens
                         this.currentGroupIndex = 1012
                     }
                     if (item2) {
-                        this.groupName.push(playTreeIndexByCid.get('1011000'))
-                        this.TeMaAList = playTreeIndexByCid.get('1011100').childrens
-                        this.LiangMianA = playTreeIndexByCid.get('1011200').childrens
+                        this.groupName.push(item2)
+                        this.TeMaBList = playTreeIndexByCid.get('1011100').childrens
+                        this.LiangMianB = playTreeIndexByCid.get('1011200').childrens
                     }
                 }
             },

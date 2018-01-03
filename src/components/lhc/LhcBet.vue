@@ -82,10 +82,9 @@
     </div>
 </template>
 
-
-
 <script>
     import Mixin from '@/Mixin'
+    import betContentList from '@/components/lhc/BetOrderContent.json'
 
     export default {
         name: 'Bet',
@@ -102,6 +101,7 @@
                 betGoList:[],
                 showList:false ,
                 ajaxSubmitAllow :false ,  // 解决重复提交的问题
+                betContentList
             }
         },
         computed:{
@@ -114,6 +114,7 @@
                         let baseNum = this.betSelectedList[0].selectNum
                         let combinationRes = this.getCombination(this.betSelectedList, baseNum)
                         let name = ""
+                        let betContent = ""
                         let payoff = -1
                         let selectMax = true
 
@@ -127,19 +128,31 @@
 
                         _.forEach(combinationRes, (item, index) => {
                             name = ""
+                            betContent = ""
                             if (selectMax) {
                                 payoff = -1
                             }
                             else {
                                 payoff = Number.MAX_SAFE_INTEGER
                             }
-                            console.log("payoff init", payoff)
                             _.forEach(combinationRes[index], (item2, index2) => {
                                 if (index2 + 1 == _.size(combinationRes[index])) {
                                     name += item2.name
+                                    if (item2.name[item2.name.length - 1] == "尾") {
+                                        betContent += (_.concat([], item2.name.split("尾"))[0])
+                                    }
+                                    else {
+                                        betContent += item2.name
+                                    }
                                 }
                                 else {
                                     name += item2.name + ','
+                                    if (item2.name[item2.name.length - 1] == "尾") {
+                                        betContent += (_.concat([], item2.name.split("尾"))[0]) + ','
+                                    }
+                                    else {
+                                        betContent += item2.name + ','
+                                    }
                                 }
 
                                 if (selectMax) {
@@ -150,15 +163,12 @@
                                 else {
                                     if (payoff > (item2.oddsData.payoff)) {
                                         payoff = item2.oddsData.payoff
-                                        console.log("item name", item2.name)
-                                        console.log("item payoff", item2.oddsData.payoff)
                                     }
                                 }
                             })
 
-                            console.log("payoff update", payoff)
                             this.$set(lastRes, index, _.extend({}, item[0],
-                                    {name:name, oddsData:{payoff:payoff}}))
+                                    {name:name, betContent: betContent, oddsData:{payoff:payoff}}))
                         })
                     }
                 }
@@ -213,6 +223,7 @@
 
             submitAction(lotteryid) {
                 const total_mon = this.monAmt(this.totalAmount);
+                //console.log("balance", this.getCookie('balancePublic'))
 
                 if (total_mon > this.balance) {
                     // this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', 'title_bet_fail')
@@ -251,7 +262,7 @@
                     url: this.action.forseti + 'api/orders/betOrder',
                     timeout: 600000,
                     data: JSON.stringify(resdata),
-                    success: (data) => {
+                    success:(data) => {
                         if (data.length <= 0) {
                             return false;
                         }
@@ -259,12 +270,18 @@
                             this.ajaxSubmitAllow = false ;     //解决瞬间提交2次的问题
                             this.parentRefs.betSuccessfulDialog.open('购买成功')
                             this.resetAction('1') ;  // 下注成功不清空金额
-                            that.getMemberBalance() ; // 更新余额
+                            //that.getMemberBalance() ; // 更新余额
 
                             var x = Number(that.getCookie( 'balancePublic' )) - Number(total_mon)
 
-                            that.setCookie("balancePublic", x);
-                            this.$emit('refreshBalance', x) ;
+                            if (x >= 0) {
+                                that.setCookie("balancePublic", x);
+                            }
+                            else {
+                                that.setCookie("balancePublic", 0);
+                                this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', '下注失败')
+                            }
+                            this.$emit('refreshBalance') ;
                             return false;
                         } else {  //购买失败提示
                             this.ajaxSubmitAllow = false ;
@@ -285,7 +302,7 @@
                             return false ;
                         }
                     },
-                    error: function (e) {  // 错误提示
+                    error: (e) => {  // 错误提示
                         // initTipPop05(false,3,'投注失败，请稍后再试') ;
                         // this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试','title_bet_fail')
                         this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试', '下注失败')
@@ -297,7 +314,7 @@
             /*
             * 表单提交数据处理
             * */
-            doSubmitAction:function(list) {
+            doSubmitAction(list) {
                 if (this.playType == 'group') {
                     list.push({  // 一条数据就是一个方案，一个方案可以有多条下注
                         'betAmount': this.monAmt(Number(this.totalAmount)), //下注金额，元的模式下需要 x100传值，角的模式下 x10
@@ -313,12 +330,11 @@
                         'remark': '无'//备注
                     });
                 }else if (this.playType == 'combination') {
-                    console.log("test")
                     if (this.itemCidPrefix == '111' || this.itemCidPrefix == '114') {
                         this.showListRes.forEach((item, i) => {
                             list.push({  // 一条数据就是一个方案，一个方案可以有多条下注
                                 'betAmount': this.monAmt(Number(this.totalAmount)), //下注金额，元的模式下需要 x100传值，角的模式下 x10
-                                'betContent': item.name,     //new_num.toString(),//下注内容，如1,5,8,3,7
+                                'betContent': item.betContent,     //new_num.toString(),//下注内容，如1,5,8,3,7
                                 'betCount': 1,         //Number(num_each), //注单数
                                 'betMode': 0, //下注模式(预留)
                                 'chaseCount': 1, //追号期数(含当期),默认1
@@ -347,10 +363,11 @@
                         });
                     }
                 }else {
+                    this.changeBetContent()
                     this.betSelectedList.forEach((item, i)=>{
                         list.push({  // 一条数据就是一个方案，一个方案可以有多条下注
                             'betAmount': this.monAmt(Number(this.betAmount)), //下注金额，元的模式下需要 x100传值，角的模式下 x10
-                            'betContent': item.name,     //new_num.toString(),//下注内容，如1,5,8,3,7
+                            'betContent': item.betContent,     //new_num.toString(),//下注内容，如1,5,8,3,7
                             'betCount':1,         //Number(num_each), //注单数
                             'betMode': 0, //下注模式(预留)
                             'chaseCount': 1, //追号期数(含当期),默认1
@@ -365,8 +382,19 @@
                 }
                 return false;
             },
+            changeBetContent() {
+                let getBetContent = (item, index) => {
+                    if (this.betContentList.data[item.cid]) {
+                        item.betContent = this.betContentList.data[item.cid]
+                    }
+                    else {
+                        item.betContent = item.name
+                    }
+                }
 
-            startBet:function(e){
+                _.forEach(this.betSelectedList, getBetContent)
+            },
+            startBet(e) {
                 var amount = this.betAmount;  // 获取金额
                 const closet = 4;
                 // if(nums<1){ // 没有选择投注项目
@@ -413,7 +441,7 @@
 
                 return allResult;
             },
-            closeListDialog:function(){
+            closeListDialog() {
                 this.showList = false;
             }
         }
