@@ -336,6 +336,11 @@
             document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
            this.getReglist('1');
             this.getBankList()
+
+
+            var u = navigator.userAgent;
+            console.log(u, 'uu');
+            
         },
         methods:{
             //点击显示密码
@@ -547,8 +552,8 @@
                     code: _self.yzmcode ,   // 验证码
                     bankCode:_self.bankCode, //银行卡code
                     bankAddress:_self.bankAdd,//银行卡地址
-                    bankCard:_self.bankNum //银行卡号码
-
+                    bankCard: _self.bankNum,//银行卡号码
+                    source: 2,
                 }
                 $.ajax({
                     type: 'post',
