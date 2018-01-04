@@ -268,9 +268,9 @@
                         if (data.err == 'SUCCESS') {  //购买成功
                             this.ajaxSubmitAllow = false ;     //解决瞬间提交2次的问题
 
+                            //newBalance 為數值 ex: 123456
                             let newBalance = Number(that.balance) - Number(total_mon)
 
-                            console.log("balance money", newBalance)
                             if (newBalance >= 0) {
                                 this.parentRefs.betSuccessfulDialog.open('购买成功')
                                 this.$emit('refreshBalance', newBalance);
