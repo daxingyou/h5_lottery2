@@ -146,6 +146,29 @@
                     this.LiangMianA = playTreeIndexByCid.get('1012200').childrens
                 }
             }
+            let d = document.getElementById('so-item0');
+
+            console.log("d", d)
+
+			if (d) {
+
+                d.addEventListener('drag', function (e) {
+                    console.log("drag:", e)
+                });
+
+                d.addEventListener('click', function (e) {
+                    console.log("click:", e)
+                });
+
+                d.addEventListener('hover', function (e) {
+                    console.log("click:", e)
+                });
+
+                d.addEventListener('dragstart', function (e) {
+                    e.dataTransfer.setData('application/node type', this);
+                    console.log("dragstart:", e)
+                });
+            }
         },
 		created() {
 
