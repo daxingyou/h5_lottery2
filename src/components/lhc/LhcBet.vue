@@ -101,7 +101,8 @@
                 betGoList:[],
                 showList:false ,
                 ajaxSubmitAllow :false ,  // 解决重复提交的问题
-                betContentList
+                betContentList,
+                beforeBetBalance: 0
             }
         },
         computed:{
@@ -122,9 +123,6 @@
                             selectMax = false
                             payoff = Number.MAX_SAFE_INTEGER
                         }
-
-                        console.log("init payoff", payoff)
-                        console.log("select Max", selectMax)
 
                         _.forEach(combinationRes, (item, index) => {
                             name = ""
@@ -225,6 +223,7 @@
                 const total_mon = this.monAmt(this.totalAmount);
                 //console.log("balance", this.getCookie('balancePublic'))
 
+                this.beforeBetBalance = this.balance
                 if (total_mon > this.balance) {
                     // this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', 'title_bet_fail')
                     this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', '下注失败')
@@ -268,20 +267,19 @@
                         }
                         if (data.err == 'SUCCESS') {  //购买成功
                             this.ajaxSubmitAllow = false ;     //解决瞬间提交2次的问题
-                            this.parentRefs.betSuccessfulDialog.open('购买成功')
-                            this.resetAction('1') ;  // 下注成功不清空金额
-                            that.getMemberBalance() ; // 更新余额
 
-                            let x = Number(that.getCookie( 'balancePublic' )) - Number(total_mon)
+                            let newBalance = Number(that.balance) - Number(total_mon)
 
-                            if (x >= 0) {
-                                that.setCookie("balancePublic", x);
+                            console.log("balance money", newBalance)
+                            if (newBalance >= 0) {
+                                this.parentRefs.betSuccessfulDialog.open('购买成功')
+                                this.$emit('refreshBalance', newBalance);
                             }
                             else {
-                                that.setCookie("balancePublic", 0);
+                                this.$emit('refreshBalance', that.beforeBetBalance)
                                 this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', '下注失败')
                             }
-                            this.$emit('refreshBalance') ;
+                            this.resetAction('1')
                             return false;
                         } else {  //购买失败提示
                             this.ajaxSubmitAllow = false ;
@@ -298,7 +296,7 @@
                                 }
                             }
 
-                            this.$emit('refreshBalance', that.getCookie( 'balancePublic' ))
+                            this.$emit('refreshBalance', that.beforeBetBalance)
                             return false ;
                         }
                     },
