@@ -146,7 +146,7 @@
                         <p>更多游戏</p>
                     </li>
                     <li >
-                        <a :href="appUrl" target="_blank">
+                        <a href="javascript:;" @click="Continued()">
                             <div class="badge"> 
                                 <img src="/static/frist/images/lotteryicon/logo_app.png" lazy="loaded">
                             </div>
