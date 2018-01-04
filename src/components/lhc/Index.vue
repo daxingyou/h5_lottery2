@@ -178,27 +178,6 @@
             this.gameHref = this.$refs.navone.gameHref ; // 拿子组件的值
             this.initViewHeight() ;
 
-            let d = document.getElementById('so-item0');
-
-            console.log("d", d)
-
-            d.addEventListener('drag', function(e){
-                console.log("drag:", e)
-            });
-
-            d.addEventListener('click', function(e){
-                console.log("click:", e)
-            });
-
-            d.addEventListener('hover', function(e){
-                console.log("click:", e)
-            });
-
-            d.addEventListener('dragstart', function(e){
-                e.dataTransfer.setData('application/node type', this);
-                console.log("dragstart:", e)
-            });
-
             setTimeout(() => {
                 this.timerBegin();
 

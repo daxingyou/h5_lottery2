@@ -62,7 +62,10 @@
                                     -->
                                     <!-- 本周 -->
                                     <li :class="showThisWeekClass(collapseCtrl[0])" data-val="本周" @click="getBetRecord('0')">
-                                        <div class="panel_title new_panel_top"><strong class="title-data">本周</strong><span><!-- 此為箭頭，點按後展開或收合，預設第一個為展開（父層li的class有active） --></span></div>
+                                        <div class="panel_title new_panel_top">
+                                            <strong class="title-data" v-if="lotteryid == 10">本周</strong>
+                                            <strong class="title-data" v-else>{{showDateList[0]}}</strong>
+                                            <span><!-- 此為箭頭，點按後展開或收合，預設第一個為展開（父層li的class有active） --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[0] == 1 && betRecordList[0].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[0].length == 0 && collapseCtrl[0] == 1 && loadingList[0] == 0">没有数据了</li>
@@ -102,7 +105,10 @@
                                     <!-- 本周 -->
                                     <!-- 上周 -->
                                     <li :class="showLastWeekClass(collapseCtrl[1])" data-val="上周" @click="getBetRecord('1')">
-                                        <div class="panel_title new_panel_top" ><strong class="title-data">上周</strong><span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
+                                        <div class="panel_title new_panel_top" >
+                                            <strong class="title-data" v-if="lotteryid == 10">上周</strong>
+                                            <strong class="title-data" v-else>{{ showDateList[1] }}</strong>
+                                            <span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[1] == 1 && betRecordList[1].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[1].length == 0 && collapseCtrl[1] == 1 && loadingList[1] == 0">没有数据了</li>
@@ -141,7 +147,10 @@
                                     <!-- 上周 -->
                                     <!-- 上上周 -->
                                     <li :class="showBeforeLastWeekClass(collapseCtrl[2])" data-val="上上周" @click="getBetRecord('2')">
-                                        <div class="panel_title new_panel_top"><strong class="title-data">上上周</strong><span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
+                                        <div class="panel_title new_panel_top">
+                                            <strong class="title-data" v-if="lotteryid == 10">上上周</strong>
+                                            <strong class="title-data" v-else>{{ showDateList[2] }}</strong>
+                                            <span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[2] == 1 && betRecordList[2].length == 0">正在加载...</li>
                                             <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[2].length == 0 && collapseCtrl[2] == 1 && loadingList[2] == 0">没有数据了</li>
@@ -246,12 +255,15 @@
                 ajaxSubmitAllow: false,
                 betRecordList: [[], [], []],
                 collapseCtrl: [0, 0, 0],
-                test: 1,
+                numOfDate: 3,
                 pageList: [1, 1, 1],
-                loadingList: [0, 0, 0]
+                loadingList: [0, 0, 0],
+                showDateList:[],
+                pDateList:[],
             }
         },
         created() {
+            this.setDateList()
             this.getBetRecord(0)
         },
         computed:{
@@ -501,6 +513,19 @@
 
                 return classStr
             },
+            setDateList() {
+                (this.nowDate.getMonth() + 1) + '月' + this.nowDate.getDate() + '日'
+                let nowDateData = this.nowDate
+
+                for (let i = 1; i <= this.numOfDate; i++) {
+                    this.showDateList.push((nowDateData.getMonth() + 1) + '月' + nowDateData.getDate() + '日')
+                    this.pDateList.push((nowDateData.getYear() + 1900).toString().padStart(4, '0') + (nowDateData.getMonth() + 1).toString().padStart(2, '0') + nowDateData.getDate().toString().padStart(2, '0'))
+                    nowDateData.setDate(nowDateData.getDate() - 1)
+                }
+
+                console.log("show date list", this.showDateList)
+                console.log("show date list", this.pDateList)
+            },
             getBetRecord(pdate) {
                 let _self = this ;
 
@@ -531,7 +556,12 @@
 
                     _self.seadata.lotteryId = _self.lotteryid // 彩种ID
                     _self.seadata.page = _self.pageList[pdate]
-                    _self.seadata.pdate = pdate
+                    if (this.lotteryid == 10) {
+                        _self.seadata.pdate = pdate
+                    }
+                    else {
+                        _self.seadata.pdate = _self.pDateList[pdate]
+                    }
                     _self.ajaxSubmitAllow = true;
                     $.ajax({
                         type: 'post',
@@ -640,17 +670,15 @@
                 });
                 //确定提交
                 $('.btn_submit').on('click', (e) => {
-                    /*this.betRecordList = [[], [], []]
+                    this.betRecordList = [[], [], []]
                     this.pageList = [1, 1, 1]
                     this.collapseCtrl = [0, 0, 0]
-                    this.loadingList = [0, 0, 0]*/
+                    this.loadingList = [0, 0, 0]
                     if(lotterychooseid || lotterychooseid == '0'){
                         this.lotteryid = lotterychooseid ;
                     }
                     this.seadata.page = 1; // 还原页码
-                    $('.bet-recode-all').find('li').remove(); // 清空原来的数据
-                    let $src = $(e.currentTarget);
-                    let lottery_name ;
+                    let lottery_name
 
                     $('.play_area').each(function () {
                         let flag = $(this).find('li').hasClass('active') ;

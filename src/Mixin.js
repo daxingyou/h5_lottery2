@@ -246,18 +246,37 @@ var MyMixin = {
         loadPlayTree:function(gameid) {
             var _self = this ;
             return new Promise((resolve, reject)=>{
+                let maxUpdateTime = ""
+                let playTree
+
+                /* if browser support localStorage */
+                if (typeof(Storage) !== "undefined") {
+                    // Code for localStorage/sessionStorage.
+                    playTree = JSON.parse(localStorage.getItem("playTree" + gameid))
+                    if (playTree) {
+                        if (localStorage.getItem("maxUpdateTime" + gameid))
+                            maxUpdateTime = localStorage.getItem("maxUpdateTime" + gameid)
+                    }
+                }
                 $.ajax({
                     type: 'get',
                     headers: {
                         "Authorization": "bearer  " + _self.getAccessToken,
                     },
                     url: this.action.forseti + 'api/playsTree',
-                    data: {lotteryId: gameid,}, // 当前彩种id
+                    data: {lotteryId: gameid, maxUpdateTime: maxUpdateTime}, // 当前彩种id
+                    dataType: 'json',
                     success: (res) => {
+                        let mydata
+                        if (res.data) {
+                            localStorage.setItem("playTree" + gameid, JSON.stringify(res.data.childrens))
+                            localStorage.setItem("maxUpdateTime" + gameid, res.maxUpdateTime)
+                            mydata = res.data.childrens
+                        }
+                        else {
+                            mydata = playTree
+                        }
 
-                        // this.playTreeList = res.data ? res.data.childrens :[];
-
-                        let mydata = res.data ? res.data.childrens : []
                         playTreeList.set(mydata)
                         playTreeIndexByCid.set(mydata)
                         this.$set(this, 'playTreeList', mydata)
