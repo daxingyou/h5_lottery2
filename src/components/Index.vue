@@ -146,7 +146,7 @@
                         <p>更多游戏</p>
                     </li>
                     <li >
-                        <a href="javascript:;" @click="Continued()">
+                        <a :href="appUrl">
                             <div class="badge"> 
                                 <img src="/static/frist/images/lotteryicon/logo_app.png" lazy="loaded">
                             </div>
@@ -351,9 +351,7 @@ export default {
       },
       getPopMsg (){
 
-
           var _self=this;
-
           // _self.propList = sessionStorage.propList;
 
           $.ajax({
@@ -406,16 +404,9 @@ export default {
           var flag=cid.some(function (el) {
               return el == self.currPopMsgCid
           });
-          //console.log(flag);
-          //console.log(cid);
-          //console.log("aaa"+self.currPopMsgCid);
+
           flag ? self.offFlag=false :self.offFlag=true
-          /*for(var i=0;i<cid.length;i++){
-                if(cid[i]==this.currPopMsgCid){
-                 this.offFlag=false;
-                 return false
-                }
-          }*/
+
       },
       //轮播图接口
       carouselImg:function () {
@@ -427,9 +418,6 @@ export default {
                   data: {},
                   success: (res) => {
                       sessionStorage.carouselList = JSON.stringify(res.data.itemPO)
-
-                      // console.log( sessionStorage.gamelist ,'corrll' ) 
-                      // _self.corroleDataList = sessionStorage.carouselList;
 
                       if (res.data.itemPO) {
                           var len = res.data.itemPO.length;
@@ -511,15 +499,16 @@ export default {
             var _self = this;
             console.log(_self.appUrl, 'url')
 
-            if (!sessionStorage.appUrl) {
+            if (true) {
                 $.ajax({
                     type: 'get',
                     url: _self.action.forseti + 'apid/config/appConfig',
                     data: {},
                     success: (res) => {
-                        _self.appUrl = res.data.h5CustUrl
+                        console.log(res)
+                        _self.appUrl = res.data.url
                         // console.log( _self.appUrl )
-                        sessionStorage.appUrl = res.data.h5CustUrl;
+                        sessionStorage.appUrl = res.data.url;
                         console.log(_self.appUrl, 'url-in')
                         // console.log( _self.appUrl )
                     },
