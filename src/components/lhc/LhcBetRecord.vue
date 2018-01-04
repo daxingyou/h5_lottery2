@@ -492,7 +492,6 @@
             showStatusClass(statCode) {
                 let classStr = "status"
 
-                console.log("stat code", statCode)
                 switch (parseInt(statCode)) {
                     case 32:
                         classStr += ' status02'
@@ -522,9 +521,6 @@
                     this.pDateList.push((nowDateData.getYear() + 1900).toString().padStart(4, '0') + (nowDateData.getMonth() + 1).toString().padStart(2, '0') + nowDateData.getDate().toString().padStart(2, '0'))
                     nowDateData.setDate(nowDateData.getDate() - 1)
                 }
-
-                console.log("show date list", this.showDateList)
-                console.log("show date list", this.pDateList)
             },
             getBetRecord(pdate) {
                 let _self = this ;
@@ -543,7 +539,6 @@
                     this.betRecordList[pdate] = []
                 }
                 else {
-                    console.log("send ajax")
                     this.$set(this.collapseCtrl, pdate, 1)
                     _.forEach(this.collapseCtrl, (val, index2) => {
                         if (pdate != index2 && index2 <= 2) {
@@ -603,7 +598,6 @@
                                 if (_.size(dataList) > 0)
                                     _self.pageList[pdate]++;
                                 this.$set(this.loadingList, pdate, 0)
-                                console.log("loading", this.loadingList)
                             }
                             error: () => {
                                 _self.ajaxSubmitAllow = false

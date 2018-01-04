@@ -257,8 +257,8 @@
                                     }
                                 })
 
-                                if (hasFind) {
-                                    console.log("find", hasFind)
+                                if (!hasFind) {
+                                    that.winNumber = code
                                 }
                             }
                             else {

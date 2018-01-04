@@ -194,9 +194,6 @@
             },
         },
         mounted() {
-            console.log( this.balance )
-            console.log('playType', this.playType)
-            console.log('combineCnt', this.combineCount)
         },
         watch:{
             betSelectedList() {
@@ -269,7 +266,7 @@
                             this.ajaxSubmitAllow = false ;     //解决瞬间提交2次的问题
 
                             //newBalance 為數值 ex: 123456
-                            let newBalance = Number(that.balance) - Number(total_mon)
+                            let newBalance = Number(data.msg)
 
                             if (newBalance >= 0) {
                                 this.parentRefs.betSuccessfulDialog.open('购买成功')
@@ -400,8 +397,6 @@
                     this.parentRefs.autoCloseDialog.open('请选择投注项目')
                     return false;
                 }
-
-                console.log("amount", amount)
 
                 if(!amount || !this.isPositiveNum(amount) || amount =='0'){ // 投注金额不正确  .modal.m08
                     // this.parentRefs.autoCloseDialog.open('请输入整数的投注金额，金额不能为0','title_bet_fail')
