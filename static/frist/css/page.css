@@ -779,6 +779,14 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 
 .tab_mid { background-color: #422623; position: fixed; z-index: 5; width: 10rem; left: inherit; }
 .tab_mid > li { display: inline-block; width: 25%; text-align: center; vertical-align: middle; }
+
+#betting_record .tab_mid > li {
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    vertical-align: middle;
+}
+
 .tab_mid > li > a { display: block; color: #d59559; height: 1rem; line-height: 1rem; font-size: .34rem; position: relative;}
 .tab_mid > li.on a { color: #ffc388; }
 .tab_mid > li.on:after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background-color: #ffc388; box-shadow: 0px 0px 2px #d59559 inset; border: 1px solid #d59559; box-sizing: border-box;}

@@ -139,10 +139,10 @@ export default {
                         day.list = res.data;
                         localStorage.setItem('model',JSON.stringify( day.list))
                     });
-
                 }
             });
             this.activeTab = tab;
+            console.log(tab)
         },
         selectDayTab:function(e, day){
             if (day.active){
