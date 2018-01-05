@@ -326,9 +326,10 @@
                     });
                 }else if (this.playType == 'combination') {
                     if (this.itemCidPrefix == '111' || this.itemCidPrefix == '114') {
+                        let size = _.size(this.showListRes)
                         this.showListRes.forEach((item, i) => {
                             list.push({  // 一条数据就是一个方案，一个方案可以有多条下注
-                                'betAmount': this.monAmt(Number(this.totalAmount)), //下注金额，元的模式下需要 x100传值，角的模式下 x10
+                                'betAmount': this.monAmt(Number(this.totalAmount)/size), //下注金额，元的模式下需要 x100传值，角的模式下 x10
                                 'betContent': item.betContent,     //new_num.toString(),//下注内容，如1,5,8,3,7
                                 'betCount': 1,         //Number(num_each), //注单数
                                 'betMode': 0, //下注模式(预留)
