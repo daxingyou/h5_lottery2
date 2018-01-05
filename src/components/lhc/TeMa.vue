@@ -17,7 +17,7 @@
 				</div><!-- hd lhc_tab -->
 			</div><!-- tab_panel -->
 
-			<div class="tab_container">
+			<div class="tab_container" ref="tab_container_test">
 				<!--以下为盘面不同样式，根据ID区分-->
 				<!-- 特码B -->
 				<div id="so-item0" class="content-right active item_one"
@@ -146,6 +146,9 @@
                     this.LiangMianA = playTreeIndexByCid.get('1012200').childrens
                 }
             }
+
+            $(this.$refs.tab_container_test).scrollTop(2)
+
         },
 		created() {
 
