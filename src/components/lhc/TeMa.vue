@@ -146,9 +146,6 @@
                     this.LiangMianA = playTreeIndexByCid.get('1012200').childrens
                 }
             }
-
-            $(this.$refs.tab_container_test).scrollTop(2)
-
         },
 		created() {
 

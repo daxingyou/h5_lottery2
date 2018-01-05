@@ -47,12 +47,12 @@
                         </div>
                 </div>
                 <div class="so-in-con">
-                    <!-- PlayMethodBar.vue 
+                    <!-- PlayMethodBar.vue
                         左側玩法選單
                     -->
                     <PlayMethodBar ref="PlayMethodBar" @lhcclearbet="clearBetList" @lhcclearcnt="clearCombineCnt" :kinds="kinds" v-on:switchPlayMethod="switchPlayMethod"/>
                     <div class="body_bg" > </div>
-                        <!-- Touzhu.vue 
+                        <!-- Touzhu.vue
                             右側投注區
                         -->
                     <Touzhu @lhcselectshengxiao="selectShengXiao" @lhcclearbet="clearBetList" @lhcselectbet="selectBet"
@@ -106,7 +106,7 @@
     import HistoryTerm from '@/components/publicTemplate/HistoryTerm'
     import MenuBar from '@/components/publicTemplate/MenuBar'
     import LhcBet from '@/components/lhc/LhcBet'
-    import PlayDialog from '@/components/cqssc/PlayDialog'
+    import PlayDialog from '@/components/lhc/PlayDialog'
     import Mixin from '@/Mixin'
     import PlayMethodBar from '@/components/lhc/PlayMethodBar'
     import Touzhu from '@/components/lhc/Touzhu'
@@ -128,7 +128,6 @@
             PlayMethodBar,
             Touzhu
         },
-        props: ['moduleName', 'moduleLotteryID', 'moduleplay'],
         data() {
             return {
                 now_time:'',  // 当前期数销售截止时间
@@ -152,7 +151,10 @@
                 gameHref:{},
                 kinds:[],
                 balancePublic:'',
-                currentMethod: '特码'
+                currentMethod: '特码',
+                moduleLotteryID: 10,
+                moduleName:'香港六合彩',
+                moduleplay: '根据香港赛马协会公布日期，六合彩每星期搅珠三次，通常於星期二丶星期四及非赛马日之星期六或日晚上举行。',
             }
         },
         created() {
