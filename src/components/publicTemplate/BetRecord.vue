@@ -476,9 +476,13 @@
                     if(lotterychooseid || lotterychooseid == '0'){
                         this.lotteryid = lotterychooseid ;
                     }
+                    console.log(this.lotteryid)
+
                     if (this.lotteryid == 10) {
-                        window.location = '/lhc/LhcBetRecord'
-                        // this.$router.push('/lhc/LhcBetRecord')
+                        this.setCookie('lt_lotteryid', 10)
+                        this.setCookie('lottery_name', '香港六合彩')
+                        // window.location = '/lhc/LhcBetRecord'
+                        this.$router.push('/lhc/LhcBetRecord')
                         // this.$router.push('/lhc')
                         return
                     }
