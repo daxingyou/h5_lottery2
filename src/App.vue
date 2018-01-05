@@ -26,7 +26,7 @@ export default {
                 { title:'充值', value:'2', days:[], active:false },
                 { title:'提款', value:'3', days:[], active:false },
                 { title: '优惠', value: '4', days: [], active: false},
-                {title: '返水', value: '5', days: [], active: false},
+                // {title: '返水', value: '5', days: [], active: false},
             ] 
         },
         navScroll:{}, // 左侧选单
