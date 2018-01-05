@@ -144,6 +144,7 @@
                     {id:'6','name':'江苏快3'} ,
                     {id:'22','name':'湖北快3'} ,
                     {id:'20','name':'安徽快3'} ,
+                    {id: '10', 'name': '香港六合彩'},
                 ],
                 ajaxSubmitAllow:false ,
             }
@@ -474,6 +475,12 @@
                 $('.btn_submit').on('click', (e) => {
                     if(lotterychooseid || lotterychooseid == '0'){
                         this.lotteryid = lotterychooseid ;
+                    }
+                    if (this.lotteryid == 10) {
+                        window.location = '/lhc/LhcBetRecord'
+                        // this.$router.push('/lhc/LhcBetRecord')
+                        // this.$router.push('/lhc')
+                        return
                     }
                     this.seadata.page = 1; // 还原页码
                     $('.bet-recode-all').find('li').remove(); // 清空原来的数据
