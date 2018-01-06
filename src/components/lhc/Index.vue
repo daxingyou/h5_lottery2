@@ -179,15 +179,10 @@
             this.gameHref = this.$refs.navone.gameHref ; // 拿子组件的值
             this.initViewHeight();
 
-
-            //wrapper.css("height", $(document).height())
-
-
             setTimeout(() => {
                 this.timerBegin();
 
             }, 500) ;
-            //_self.setScroll();
         },
         computed:{
         },
