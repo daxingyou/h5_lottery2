@@ -70,6 +70,17 @@ let LhcMixin = {
             }
             return res;
         },
+        setClickHeight(elem, height) {
+            let winw = window.screen.width || window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight; // 获取屏幕宽度
+
+            if(winw > 413){ // 大屏幕
+                elem.css('height', (height - 190) + 'px') ;
+            }else if(winw > 300 && winw < 375){ // 小屏幕
+                elem.css('height', (height - 270) + 'px') ;
+            }else{
+                elem.css('height', (height-310) + 'px') ;
+            }
+        }
     }
 };
 export default LhcMixin;

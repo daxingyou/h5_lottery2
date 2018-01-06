@@ -60,12 +60,26 @@
             return {
                 teXiaoList: [],
                 shengXiaoList: ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"],
+				myScroll: null
             }
         },
         mounted(){
             if (_.size(playTreeIndexByCid.get('1121000').childrens) > 0) {
                 this.teXiaoList = playTreeIndexByCid.get('1121000').childrens
             }
+
+            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+                onScrollEnd() {
+                    this.refresh() ;
+                },
+                vScroll:true,
+                mouseWheel: false ,
+                hScrollbar:false ,
+                vScrollbar:false ,
+                click: true ,
+                useTransform: false ,
+                useTransition: false ,
+            });
         },
         created() {
         },
@@ -78,6 +92,9 @@
                 let index = _.findIndex(this.shengXiaoList, getIndex)
 				return this.computeShengXiaoNum(index + 1)
 			},
+        },
+        updated() {
+            this.setClickHeight($('.so-con-right'), $('#so-item0').height())
         },
         watch: {
             playTreeList() {

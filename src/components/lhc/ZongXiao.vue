@@ -53,17 +53,35 @@
         data() {
             return {
                 zongXiaoList: [],
+                myScroll: null
             }
         },
         mounted(){
             if (playTreeIndexByCid.get('1090000')) {
                 this.zongXiaoList = playTreeIndexByCid.get('1091000').childrens
             }
+
+            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+                onScrollEnd() {
+                    this.refresh() ;
+                },
+                vScroll:true,
+                mouseWheel: true,
+                hScrollbar:false ,
+                vScrollbar:false ,
+                click: true ,
+
+                useTransform: false ,
+                useTransition: false ,
+            });
         },
         created() {
         },
         computed: {
 
+        },
+        updated() {
+            this.setClickHeight($('.so-con-right'), $('#so-item0').height())
         },
         watch: {
             playTreeList() {

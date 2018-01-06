@@ -63,13 +63,31 @@
 				maxHeXiaoItem: 11,
 				minHeXiaoItem: 2,
 				playGroup: [],
-				playType: 'group'
+				playType: 'group',
+				myScroll: null
             }
         },
         mounted() {
             if (playTreeIndexByCid.get('1130000')) {
                 this.handlePlayList()
             }
+            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+                onScrollEnd() {
+                    this.refresh() ;
+                    this.scrollTo(0, 300)
+                },
+                onScrollStart: function () {
+                    console.log('scrolling is started');
+                },
+
+                vScroll:true,
+                mouseWheel: false ,
+                hScrollbar:false ,
+                vScrollbar:false ,
+                click: true ,
+                useTransform: false ,
+                useTransition: false ,
+            });
         },
         created() {
         },
@@ -82,6 +100,9 @@
                 let index = _.findIndex(this.shengXiaoList, getIndex)
                 return this.computeShengXiaoNum(index + 1, this.maxBallNum)
             },
+        },
+        updated() {
+            this.setClickHeight($('.so-con-right'), $('#so-item0').height())
         },
         watch: {
             playTreeIndexByCid() {

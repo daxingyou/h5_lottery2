@@ -64,12 +64,33 @@
                 pingTeXiaoWeiList: [],
 				playType: 'normal',
                 shengXiaoList: ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"],
+				myScroll: null
             }
         },
         mounted() {
             if (playTreeIndexByCid.get('1100000')) {
                 this.pingTeXiaoWeiList = playTreeIndexByCid.get('1101000').childrens
             }
+
+            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+                onScrollEnd() {
+                    console.log("end")
+                    this.refresh() ;
+                },
+                /* onBeforeScrollMove:function(e){
+                     e.preventDefault();
+                 },*/
+                vScroll:true,
+                mouseWheel: false ,
+                hScrollbar:false ,
+                vScrollbar:false ,
+                click: true ,
+                // momentum: false ,
+
+                useTransform: false ,
+                useTransition: false ,
+                // snapThreshold:0.5
+            });
         },
         created() {
         },
@@ -85,6 +106,9 @@
 			weiNumList() {
                 return this.computeWeiNumList()
 			}
+        },
+		updated() {
+            this.setClickHeight($('.so-con-right'), $('#so-item0').height())
         },
         watch: {
             playTreeList() {

@@ -36,9 +36,11 @@
 
 <script>
     import playTreeIndexByCid from '@/PlayTreeIndexByCid'
+    import LhcMixin from '@/components/lhc/LhcMixin'
 
     export default {
         name: 'ZiXuanBuZhong',
+        mixins: [LhcMixin],
         props: {
             playTreeList: {
                 type: Array,
@@ -58,17 +60,34 @@
 				minItemNum: 5,
                 playGroup: [],
 				ballNumList:[],
-                playType: 'group'
+                playType: 'group',
+				myScroll: null
             }
         },
         mounted(){
             if (playTreeIndexByCid.get('1170000')) {
                 this.handlePlayList()
             }
+            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+                onScrollEnd() {
+                    this.refresh() ;
+                },
+                vScroll:true,
+                mouseWheel: true,
+                hScrollbar:false ,
+                vScrollbar:false ,
+                click: true ,
+
+                useTransform: false ,
+                useTransition: false ,
+            });
         },
         created() {
         },
         computed: {
+        },
+        updated() {
+            this.setClickHeight($('.so-con-right'), $('#so-item0').height())
         },
         watch: {
             playTreeIndexByCid() {

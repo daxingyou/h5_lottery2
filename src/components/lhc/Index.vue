@@ -1,5 +1,4 @@
 <template>
-    <div>
         <div class="so-con" id="lhc">
             <!--left siderbar  -->
 
@@ -61,38 +60,38 @@
                             :currentBaseShengXiao="currentBaseShengXiao"/>
 
                 </div><!-- so-in-con -->
-                <LhcBet :lotteryID="lotteryID" @betSuccess="resetAction('1')" ref="bet"
-                        :betSelectedList="betSelectedList" :combineCount="combineCount"
-                        :parentRefs="$refs" :balance="balancePublic" :playType="playType"
-                        :now_pcode="now_pcode" :next_pcode="next_pcode" :now_day="now_day"
-                        @refreshBalance = 'refreshBalance'
-                />
-                <!--封盘底部遮挡-->
-                <div v-if="entertainStatus" class="so-fengpan">
-                    <a>已封盘</a>
-                </div>
-                <!-- 未开盘 -->
-                <div v-if="notopen" class="so-fengpan">
-                    <a>未开盘</a>
-                </div>
-                <!-- 确认对话框API
-                    text  对话框提示内容
-                -->
-                <InfoDialog ref="infoDialog" text="请您继续投注" />
-                <!--自动关闭（闪屏）对话框API
-                    属性
-                        text  对话框提示内容
-                        type  对话框类型，可以是 static/frist/images/pop/ 目录下任意图片，像title_quantity、title_tip
-                    方法
-                        open(text, type)
-                -->
-                <AutoCloseDialog ref="autoCloseDialog" text="您的余额不足" type="" />
 
-                <BetSuccessfulDialog ref="betSuccessfulDialog" />
             </div><!-- so-index -->
+            <LhcBet :lotteryID="lotteryID" @betSuccess="resetAction('1')" ref="bet"
+                    :betSelectedList="betSelectedList" :combineCount="combineCount"
+                    :parentRefs="$refs" :balance="balancePublic" :playType="playType"
+                    :now_pcode="now_pcode" :next_pcode="next_pcode" :now_day="now_day"
+                    @refreshBalance = 'refreshBalance'
+            />
+            <!--封盘底部遮挡-->
+            <div v-if="entertainStatus" class="so-fengpan">
+                <a>已封盘</a>
+            </div>
+            <!-- 未开盘 -->
+            <div v-if="notopen" class="so-fengpan">
+                <a>未开盘</a>
+            </div>
+            <!-- 确认对话框API
+                text  对话框提示内容
+            -->
+            <InfoDialog ref="infoDialog" text="请您继续投注" />
+            <!--自动关闭（闪屏）对话框API
+                属性
+                    text  对话框提示内容
+                    type  对话框类型，可以是 static/frist/images/pop/ 目录下任意图片，像title_quantity、title_tip
+                方法
+                    open(text, type)
+            -->
+            <AutoCloseDialog ref="autoCloseDialog" text="您的余额不足" type="" />
+
+            <BetSuccessfulDialog ref="betSuccessfulDialog" />
+            <PlayDialog ref="playDialog" :moduleName="moduleName" :moduleplay="moduleplay" />
         </div><!-- so-con -->
-        <PlayDialog ref="playDialog" :moduleName="moduleName" :moduleplay="moduleplay" />
-    </div>
 </template>
 
 <script>
@@ -178,7 +177,11 @@
             this.setCookie('lottery_name', lotteryname) ; // 彩种名称
             this.allLottery = this.$refs.navone.getLotterys() ;
             this.gameHref = this.$refs.navone.gameHref ; // 拿子组件的值
-            this.initViewHeight() ;
+            this.initViewHeight();
+
+
+            //wrapper.css("height", $(document).height())
+
 
             setTimeout(() => {
                 this.timerBegin();
@@ -187,6 +190,9 @@
             //_self.setScroll();
         },
         computed:{
+        },
+        updated() {
+
         },
         watch:{
             playTreeList() {
@@ -206,6 +212,7 @@
                 if (method == "合肖" || method == "自选不中") {
                     this.playType = "group"
                 }
+
             },
             //开奖倒计时结束后处理
             playLottery() {

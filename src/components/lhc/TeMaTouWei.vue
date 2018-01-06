@@ -54,12 +54,25 @@
         data() {
             return {
                 teMaTouWeiList: [],
+				myScroll: null
             }
         },
         mounted(){
             if (_.size(playTreeIndexByCid.get('1081000').childrens) > 0) {
                 this.teMaTouWeiList = playTreeIndexByCid.get('1081000').childrens
             }
+            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+                onScrollEnd() {
+                    this.refresh() ;
+                },
+                vScroll:true,
+                mouseWheel: false ,
+                hScrollbar:false ,
+                vScrollbar:false ,
+                click: true ,
+                useTransform: false ,
+                useTransition: false ,
+            });
         },
         created() {
         },
@@ -67,6 +80,9 @@
             weiNumList() {
                 return this.computeWeiNumList()
             }
+        },
+        updated() {
+            this.setClickHeight($('.so-con-right'), $('#so-item0').height())
         },
         watch: {
             playTreeList() {

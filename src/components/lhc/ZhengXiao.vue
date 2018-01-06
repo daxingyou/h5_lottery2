@@ -1,14 +1,13 @@
 <template>
-<div  id="content-wrapper" class="zhengxiao">
-
+<div id="content-wrapper">
 	<div class="so-con-right" >
 		<div id="scroller"> <!-- style="min-height: 180%"  --><!--<div>-->
 			<div class="tab_container">
 				<!--以下为盘面不同样式，根据ID区分-->
-				<!-- 正肖 -->
+				<!-- 总肖 -->
 				<div id="so-item0" class="content-right active item_one" >
 					<ul>
-						<!-- 正肖 -->
+						<!-- 总肖 -->
 						<li class="select-li bet_lm" v-for="(item, index) in zhengXiaoList">
 							<div class="bet_panel">
 								<h2>
@@ -58,27 +57,60 @@
             return {
                 zhengXiaoList: [],
                 shengXiaoList: ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"],
-            }
-        },
-        mounted() {
-            if (_.size(playTreeIndexByCid.get()['1151100'].childrens) > 0) {
-                this.handlePlayList()
+				myScroll: null
             }
         },
         created() {
+            console.log("yes created")
+
         },
         computed: {
             shengXiaoMapNumber() {
                 let getIndex = (item) => {
                     return item == this.currentBaseShengXiao
-				}
+                }
 
                 let index = _.findIndex(this.shengXiaoList, getIndex)
                 return this.computeShengXiaoNum(index + 1)
             },
         },
+        mounted() {
+            if (_.size(playTreeIndexByCid.get('1151100').childrens) > 0) {
+                this.handlePlayList()
+            }
+
+            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+                onScrollEnd() {
+                    this.refresh() ;
+                },
+                vScroll:true,
+                mouseWheel: true,
+                hScrollbar:false ,
+                vScrollbar:false ,
+                click: true ,
+
+                useTransform: false ,
+                useTransition: false ,
+            });
+            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+                onScrollEnd() {
+                    this.refresh() ;
+                },
+                vScroll:true,
+                mouseWheel: true,
+                hScrollbar:false ,
+                vScrollbar:false ,
+                click: true ,
+
+                useTransform: false ,
+                useTransition: false ,
+            });
+        },
+        updated() {
+            this.setClickHeight($('.so-con-right'), $('#so-item0').height())
+        },
         watch: {
-            playTreeIndexByCid() {
+            playTreeList() {
                 this.handlePlayList()
             },
         },

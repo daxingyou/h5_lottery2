@@ -58,7 +58,6 @@
         created: function() {
 
         },
-
         watch: {
 
         },

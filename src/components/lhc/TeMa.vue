@@ -1,6 +1,6 @@
 <template>
 <div id="content-wrapper" class="tema lhc-wrapper" ref="temalhcwrapper">
-	<div class="lhc-con-right" >
+	<div class="so-con-right" >
 		<div class="scroller"> <!-- style="min-height: 180%"  --><!--<div>-->
 			<div class="tab_panel">
 				<ul class="lhc_top_tab" >
@@ -10,7 +10,7 @@
 					</li>
 				</ul>
 
-				<div class="hd lhc_tab" >
+				<div class="hd lhc_tab" id="lhc_tab_test">
 					<ul class="tab tab_mid tab_two">
 						<li :data-tab="index" :class="isXiaoBtnActived(index)" v-for="(shengXiao, index) in shengXiaoList"  @click="selectShengXiao(index, currentGroupIndex)"><a href="javascript:;">{{shengXiao}}</a></li>
 					</ul>
@@ -21,7 +21,7 @@
 				<!--以下为盘面不同样式，根据ID区分-->
 				<!-- 特码B -->
 				<div id="so-item0" class="content-right active item_one"
-					 v-if="currentGroupIndex == 1011">
+					 v-show="currentGroupIndex == 1011">
 					<ul>
 						<!-- 1-49 -->
 						<li class="select-li">
@@ -54,7 +54,7 @@
 
 				<!-- 特码A -->
 				<div id="so-item1" class="content-right "
-					 v-if="currentGroupIndex == 1012"
+					 v-show="currentGroupIndex == 1012"
 				>
 					<ul>
 						<!-- 1-49 -->
@@ -121,6 +121,7 @@
                 TeMaBList: [],
                 LiangMianB: [],
 				LiangMianA: [],
+                myScroll: null,
             }
         },
         mounted(){
@@ -146,6 +147,31 @@
                     this.LiangMianA = playTreeIndexByCid.get('1012200').childrens
                 }
             }
+
+            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+                onScrollEnd() {
+                    console.log("end")
+                    this.refresh() ;
+                },
+                /* onBeforeScrollMove:function(e){
+                     e.preventDefault();
+                 },*/
+                vScroll:true,
+                mouseWheel: true ,
+                hScrollbar:false ,
+                vScrollbar:false ,
+                click: true ,
+                // momentum: false ,
+
+                useTransform: false ,
+                useTransition: false ,
+                // snapThreshold:0.5
+            });
+
+
+
+            $('.so-con-right').css('height','1030px') ;
+
         },
 		created() {
 
@@ -153,6 +179,12 @@
         computed: {
 
         },
+		updated() {
+            /*let wrapper = $('#content-wrapper')
+			if (wrapper) {
+                let myScroll = new iScroll(wrapper)
+            }*/
+		},
 		watch: {
             playTreeList() {
                 this.groupName = []

@@ -52,17 +52,39 @@
         data() {
             return {
                 teMaWuXingList: [],
+                myScroll: null
             }
         },
         mounted(){
             if (_.size(playTreeIndexByCid.get('1161000').childrens) > 0) {
                 this.teMaWuXingList = playTreeIndexByCid.get('1161000').childrens
             }
+
+            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+                onScrollEnd() {
+                    this.refresh() ;
+                },
+                onScrollStart: function () {
+                    this.refresh()
+                    console.log('scrolling is started');
+                },
+
+                vScroll:true,
+                mouseWheel: false ,
+                hScrollbar:false ,
+                vScrollbar:false ,
+                click: true ,
+                useTransform: false ,
+                useTransition: false ,
+            });
         },
         created() {
         },
         computed: {
 
+        },
+        updated() {
+            this.setClickHeight($('.so-con-right'), $('#so-item0').height())
         },
         watch: {
             playTreeList() {
