@@ -92,19 +92,6 @@
                 useTransform: false ,
                 useTransition: false ,
             });
-            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
-                onScrollEnd() {
-                    this.refresh() ;
-                },
-                vScroll:true,
-                mouseWheel: true,
-                hScrollbar:false ,
-                vScrollbar:false ,
-                click: true ,
-
-                useTransform: false ,
-                useTransition: false ,
-            });
         },
         updated() {
             this.setClickHeight($('.so-con-right'), $('#so-item0').height())

@@ -74,12 +74,7 @@
             this.myScroll = new iScroll("content-wrapper",{  // 投注区域
                 onScrollEnd() {
                     this.refresh() ;
-                    this.scrollTo(0, 300)
                 },
-                onScrollStart: function () {
-                    console.log('scrolling is started');
-                },
-
                 vScroll:true,
                 mouseWheel: false ,
                 hScrollbar:false ,
