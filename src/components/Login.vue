@@ -133,6 +133,7 @@ export default {
             username: 'bcappid02|'+this.username ,
             password: this.password ,
             code: this.yzmcode ,  // 验证码
+            source: 2,
         }
         $.ajax({
             type: 'post',

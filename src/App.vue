@@ -10,10 +10,13 @@
 <script>
 // import FastClick from 'fastclick'
 import '../static/frist/css/page.css'
+import Mixin from '@/Mixin'
+
 const FastClick = require('fastclick');
 
 export default {
-  name: 'app', 
+  name: 'app',
+    mixins: [Mixin],
   data:function(){
     return {
         //帐户明细
@@ -23,6 +26,7 @@ export default {
                 { title:'充值', value:'2', days:[], active:false },
                 { title:'提款', value:'3', days:[], active:false },
                 { title: '优惠', value: '4', days: [], active: false},
+                // {title: '返水', value: '5', days: [], active: false},
             ] 
         },
         navScroll:{}, // 左侧选单
@@ -50,12 +54,37 @@ export default {
           },false)
       }
 
+      this.appService()//一分钟调一次的服务
       // $('html, body').height($(window).height()); // 防止浏览器全屏显示
 
   },
     methods: {
+        appService: function () {
+            // console.log( this.getCookie( 'haslogin' )  ,'all-getlogin'  )
+            var _self = this;
+            var actoken = _self.getCookie('access_token'); // token\
+            var appHaslogin = this.getCookie('haslogin', 'token');
+            if (appHaslogin == 'true') {
+                this.serviceTimer = setInterval(function () {
+                    $.ajax({
+                        type: 'GET',
+                        headers: {
+                            "Authorization": "bearer  " + actoken,
+                        },
+                        async: false,
+                        url: _self.action.uaa + 'api/server/ping',
+                        success: (res) => {
+                            // console.log(res,'sevice')
+                        },
+                        error: function () {
 
-
+                        }
+                    });
+                }, 60000)
+            } else {
+                // console.log('err')
+            }
+        }
     }
 
 }

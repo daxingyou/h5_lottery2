@@ -215,7 +215,8 @@
                                             <fieldset v-if="!!eMailObj.ifView">
                                                 <div class="form_g account">
                                                     <legend>电子邮箱</legend>
-                                                    <input type="tel" placeholder="请输入电子邮箱" v-model="eMail" class="eMail" @input="checkeMail(eMail,'eMail')">
+                                                    <input type="text" placeholder="请输入电子邮箱" v-model="eMail"
+                                                           class="eMail" @input="checkeMail(eMail,'eMail')">
                                                     <i class="close cs5" @click="ClearInput('cs5','eMail')"></i>
                                                 </div>
                                                 <label class="error-message"></label>

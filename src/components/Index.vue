@@ -146,7 +146,7 @@
                         <p>更多游戏</p>
                     </li>
                     <li >
-                        <a href="http://blcxz.com" target="_blank">
+                        <a :href="appUrl">
                             <div class="badge"> 
                                 <img src="/static/frist/images/lotteryicon/logo_app.png" lazy="loaded">
                             </div>
@@ -248,6 +248,7 @@ export default {
             cid:'',
             custUrl: '',
             corroleDataList: [],
+            appUrl: ''
         }
     },
     computed:{
@@ -268,24 +269,12 @@ export default {
       this.getBulletinsContent ();
       this.getPopMsg();
 
-//      TouchSlide({
-//                  slideCell: "#focus",
-//                  autoPlay:true,
-//              });
-
-
-      /* $("#marquee_snp").slide({ // 文本滚动
-           mainCell: ".bd ul",
-           autoPage: true,
-           effect: "leftMarquee",
-           autoPlay: true,
-           vis: 1,
-           interTime: 50
-       });*/
       //this.changeOffFlag();
        this.carouselImg();
        this.getActivity();
        this.getCustom()
+        this.getAppUrl()
+
   },
     methods:{
       getBulletinsContent :function () {
@@ -362,9 +351,7 @@ export default {
       },
       getPopMsg (){
 
-
           var _self=this;
-
           // _self.propList = sessionStorage.propList;
 
           $.ajax({
@@ -417,16 +404,9 @@ export default {
           var flag=cid.some(function (el) {
               return el == self.currPopMsgCid
           });
-          //console.log(flag);
-          //console.log(cid);
-          //console.log("aaa"+self.currPopMsgCid);
+
           flag ? self.offFlag=false :self.offFlag=true
-          /*for(var i=0;i<cid.length;i++){
-                if(cid[i]==this.currPopMsgCid){
-                 this.offFlag=false;
-                 return false
-                }
-          }*/
+
       },
       //轮播图接口
       carouselImg:function () {
@@ -438,9 +418,6 @@ export default {
                   data: {},
                   success: (res) => {
                       sessionStorage.carouselList = JSON.stringify(res.data.itemPO)
-
-                      // console.log( sessionStorage.gamelist ,'corrll' ) 
-                      // _self.corroleDataList = sessionStorage.carouselList;
 
                       if (res.data.itemPO) {
                           var len = res.data.itemPO.length;
@@ -518,6 +495,32 @@ export default {
 
           }
       },
+        getAppUrl: function () {
+            var _self = this;
+            console.log(_self.appUrl, 'url')
+
+            if (true) {
+                $.ajax({
+                    type: 'get',
+                    url: _self.action.forseti + 'apid/config/appConfig',
+                    data: {},
+                    success: (res) => {
+                        console.log(res)
+                        _self.appUrl = res.data.url
+                        // console.log( _self.appUrl )
+                        sessionStorage.appUrl = res.data.url;
+                        console.log(_self.appUrl, 'url-in')
+                        // console.log( _self.appUrl )
+                    },
+                    err: (res) => {
+
+                    }
+                })
+            } else {
+                _self.appUrl = sessionStorage.appUrl
+                console.log(_self.appUrl, 'url-else')
+            }
+        },
   },
 
 }

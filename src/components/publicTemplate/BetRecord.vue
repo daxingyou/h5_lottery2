@@ -156,7 +156,7 @@
                 return this.nowDate.getYear() + 1900;
             },
             mon: function(){
-                return (this.nowDate.getMonth() + 1) < 0 ? ('0' + (this.nowDate.getMonth() + 1)) : (this.nowDate.getMonth() + 1);
+                return (this.nowDate.getMonth() + 1) < 10 ? ('0' + (this.nowDate.getMonth() + 1)) : (this.nowDate.getMonth() + 1);
             },
             day: function(){
                 return this.nowDate.getDate() < 10 ? ('0' + this.nowDate.getDate()) : this.nowDate.getDate();
