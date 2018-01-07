@@ -60,7 +60,7 @@
             if (playTreeIndexByCid.get('1021000')) {
                 this.liangMianList = playTreeIndexByCid.get('1021000').childrens
             }
-            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+            this.myScroll = new iScroll("scroller",{  // 投注区域
                 onScrollEnd() {
                     console.log("end")
                     this.refresh() ;
@@ -79,6 +79,8 @@
                 useTransition: false ,
                 // snapThreshold:0.5
             });
+            this.myScroll.refresh()
+            this.myScroll.scrollTo(0, 100)
         },
         created() {
         },
@@ -86,8 +88,11 @@
 
         },
         updated() {
-            console.log("so-item height updated")
-            this.setClickHeight($('.so-con-right'), $('#so-item0').height())
+            /*console.log("so-item height updated")
+            this.setClickHeight($('.so-con-right'), $('#so-item0').height())*/
+            var _h =  window.innerHeight - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height() + $('.tab_panel').height())
+            $('#scroller').css('height',  _h )
+            $('.tab_container').height( $('#so-item0').height() + 40 )
         },
         watch: {
             playTreeList() {

@@ -1,21 +1,27 @@
 <template>
+
+    
+
 <div id="content-wrapper" class="tema lhc-wrapper" ref="temalhcwrapper">
 	<div class="so-con-right" >
-		<div class="scroller"> <!-- style="min-height: 180%"  --><!--<div>-->
-			<div class="tab_panel">
-				<ul class="lhc_top_tab" >
-					<li :data-tab="index" :class="(currentGroupIndex == (Math.floor(group.cid/1000))  && 'active')"  v-for="(group, index) in groupName" @click="switchPlayGroup(Math.floor(group.cid/1000))">
-						<!-- <a :href="'#so-item'+index">{{kind}}</a>-->
-						<span>{{group.name}}</span>
-					</li>
-				</ul>
 
-				<div class="hd lhc_tab" id="lhc_tab_test">
-					<ul class="tab tab_mid tab_two">
-						<li :data-tab="index" :class="isXiaoBtnActived(index)" v-for="(shengXiao, index) in shengXiaoList"  @click="selectShengXiao(index, currentGroupIndex)"><a href="javascript:;">{{shengXiao}}</a></li>
-					</ul>
-				</div><!-- hd lhc_tab -->
-			</div><!-- tab_panel -->
+        <div class="tab_panel">
+            <ul class="lhc_top_tab" >
+                <li :data-tab="index" :class="(currentGroupIndex == (Math.floor(group.cid/1000))  && 'active')"  v-for="(group, index) in groupName" @click="switchPlayGroup(Math.floor(group.cid/1000))">
+                    <!-- <a :href="'#so-item'+index">{{kind}}</a>-->
+                    <span>{{group.name}}</span>
+                </li>
+            </ul>
+
+            <div class="hd lhc_tab" id="lhc_tab_test">
+                <ul class="tab tab_mid tab_two">
+                    <li :data-tab="index" :class="isXiaoBtnActived(index)" v-for="(shengXiao, index) in shengXiaoList"  @click="selectShengXiao(index, currentGroupIndex)"><a href="javascript:;">{{shengXiao}}</a></li>
+                </ul>
+            </div><!-- hd lhc_tab -->
+        </div><!-- tab_panel -->
+
+		<div class="scrollerClass" id="scroller"> <!-- style="min-height: 180%"  --><!--<div>-->
+
 
 			<div class="tab_container" ref="tab_container_test">
 				<!--以下为盘面不同样式，根据ID区分-->
@@ -88,6 +94,7 @@
 		</div><!-- scroller -->
 	</div><!-- so-con-right -->
 </div>
+
 </template>
 
 <script>
@@ -148,7 +155,7 @@
                 }
             }
 
-            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+            this.myScroll = new iScroll("scroller",{  // 投注区域
                 onScrollEnd() {
                     console.log("end")
                     this.refresh() ;
@@ -168,9 +175,10 @@
                 // snapThreshold:0.5
             });
 
+            this.myScroll.refresh()
+            this.myScroll.scrollTo(0, 300)
 
-
-            $('.so-con-right').css('height','1030px') ;
+            
 
         },
 		created() {
@@ -184,6 +192,10 @@
 			if (wrapper) {
                 let myScroll = new iScroll(wrapper)
             }*/
+            var _h =  window.innerHeight - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height() + $('.tab_panel').height())
+            $('#scroller').css('height',  _h )
+            $('.tab_container').height( $('#so-item0').height() + 40 )
+            
 		},
 		watch: {
             playTreeList() {
@@ -224,6 +236,8 @@
 			switchPlayGroup(cid) {
                 this.currentGroupIndex = cid;
                 this.$emit('lhcclearbet')
+                this.myScroll.refresh()
+                this.myScroll.scrollTo(0, 300)
 			},
             computeShengXiao(baseIndex, teMaType) {
                 let res = [[], [], [], [], [], [], [], [], [], [], [], []]

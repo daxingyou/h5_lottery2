@@ -35,9 +35,12 @@
                 useTransform: false,
                 useTransition: false,
             });
+
+            this.myScroll.refresh()
+            this.myScroll.scrollTo(0, 300)
         },
         updated() {
-            $('#nav-wrapper ul').css('height', $('.so-con-left').height() + 'px')
+            
         },
         methods: {
             switchPlayMethod(index) {
