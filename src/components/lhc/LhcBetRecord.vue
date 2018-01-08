@@ -73,7 +73,7 @@
                                                 <a href="javascript:;" data-val="">
                                                     <div class="item">
                                                         <div class="badge ssc_badge">
-                                                            <img :src="'/static/frist/images/lotterylogo/logo_' + lotteryid + '.svg'">
+                                                            <img :src="'/static/frist/images/lotterylogo/logo_' + item2.lotteryid + '.svg'">
                                                         </div>
                                                         <div class="lottery_t ssc">
                                                             <p><!-- orderId: -->{{item2.orderid}}</p>
@@ -479,6 +479,7 @@
                                     _self.lock = 0;
                                     _.forEach(dataList, (betData, index) => {
                                         let betDataObj = {}
+                                        betDataObj.lotteryid = betData.lotteryId
                                         betDataObj.pcode = betData.issueAlias
                                         betDataObj.orderstatus = betData.orderStatus
                                         betDataObj.orderstatusname = betData.orderStatusName

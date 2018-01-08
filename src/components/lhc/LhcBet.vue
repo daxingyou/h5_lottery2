@@ -195,7 +195,7 @@
                     return this.betSelectedList.length * this.betAmount
                 }
             },
-            itemCidPrefix() { //用來決定是使用哪一種 template 主要是 combination 連碼顯示方式跟連肖連尾不一樣
+            itemCidPrefix() { //用來決定是使用哪一種 template 主要是 combination 連碼顯示方式跟連肖和連尾不一樣
                 return this.betSelectedList[0].cid.toString().substr(0, 3)
             },
         },
@@ -224,9 +224,8 @@
 
             submitAction(lotteryid) {
                 const total_mon = this.monAmt(this.totalAmount);
-                //console.log("balance", this.getCookie('balancePublic'))
 
-                this.beforeBetBalance = this.balance
+                this.beforeBetBalance = this.balance //先將目前的餘額存起來
                 if (total_mon > this.balance) {
                     // this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', 'title_bet_fail')
                     this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', '下注失败')
