@@ -281,6 +281,8 @@
             },
         },/*computed*/
         mounted() {
+            console.log(this.lotteryid, 'idlhc')
+            console.log(this.lotteryname, 'idlhc')
             $('html,body').css('overflow-y','scroll' )  ;
             if (this.lotteryid != 10) {
                 this.seadata.pdate = this.newpdate;
