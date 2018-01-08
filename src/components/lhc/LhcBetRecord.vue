@@ -60,8 +60,8 @@
                                         active 點擊後要加，才會展開
                                     -->
                                     <!-- 本周 -->
-                                    <li :class="showClass(collapseCtrl[index2])" :data-val="item" v-for="(item, index2) in showTitleList" @click="getBetRecord(index2)">
-                                        <div class="panel_title new_panel_top">
+                                    <li :class="showClass(collapseCtrl[index2])" :data-val="item" v-for="(item, index2) in showTitleList">
+                                        <div class="panel_title new_panel_top" @click="getBetRecord(index2)">
                                             <strong class="title-data" v-if="lotteryid == 10">{{item}}</strong>
                                             <strong class="title-data" v-else>{{showDateList[index2]}}</strong>
                                             <span><!-- 此為箭頭，點按後展開或收合，預設第一個為展開（父層li的class有active） --></span></div>
