@@ -78,7 +78,6 @@
                                                         <div class="lottery_t ssc">
                                                             <p><!-- orderId: -->{{item2.orderid}}</p>
                                                             <p><span><!-- playName: -->{{item2.playname}}</span></p>
-                                                            <p><span><!-- betContent: -->{{item2.betcontent}}</span></p>
                                                             <span class="prd_num"><span><!-- pcode: -->{{item2.pcode}}</span>期</span>
                                                             <strong><!-- 倍率?multiple: -->{{item2.betamount}}</strong>
                                                         </div>
@@ -93,7 +92,7 @@
                                                         -->
                                                         <div :class="showStatusClass(item2.orderstatus)">
                                                             <span><!-- orderStatus: -->{{item2.orderstatusname}}</span>
-                                                            <div v-if="item2.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item.payoff}}</div>
+                                                            <div v-if="item2.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item2.payoff}}</div>
                                                             <div v-else></div>
                                                         </div>
                                                     </div>

@@ -84,7 +84,7 @@
 
 <script>
     import Mixin from '@/Mixin'
-    import betContentList from '@/components/lhc/BetOrderContent.json'
+    import betContentList from '@/components/lhc/BetOrderContent.json' //此檔案內容是用來對下注內容調整給後端派彩
 
     export default {
         name: 'Bet',
@@ -101,16 +101,19 @@
                 betGoList:[],
                 showList:false ,
                 ajaxSubmitAllow :false ,  // 解决重复提交的问题
-                betContentList,
-                beforeBetBalance: 0
+                betContentList, //下注內容比對資料
+                beforeBetBalance: 0 //下注前的餘額
             }
         },
         computed:{
+            //因為連肖連尾要顯示全部的組合可能所以另外計算出一個 list，
+            //如果直接修改 betSelectedList 會影響到 UI 的顯示
             showListRes() { // for lianXiao and lianWei show the detail list
                 let lastRes = []
                 if (_.size(this.betSelectedList) >= 2) {
                     let itemCid = this.betSelectedList[0].cid.toString().substr(0, 4)
 
+                    //如果 item 是連肖或是連尾才做組合數的運算
                     if (itemCid == '1111' || itemCid == '1141') {
                         let baseNum = this.betSelectedList[0].selectNum
                         let combinationRes = this.getCombination(this.betSelectedList, baseNum)
@@ -119,6 +122,7 @@
                         let payoff = -1
                         let selectMax = true
 
+                        //如果是連肖取賠率小的顯示，連尾是取賠率
                         if (itemCid == '1111') {
                             selectMax = false
                             payoff = Number.MAX_SAFE_INTEGER
