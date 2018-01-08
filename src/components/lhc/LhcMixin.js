@@ -70,16 +70,19 @@ let LhcMixin = {
             }
             return res;
         },
-        setClickHeight(elem, height) {
-            let winw = window.screen.width || window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight; // 获取屏幕宽度
+        setScrollHeight(hasTabPanel, currentBarIndex) {
+            let scrolling_height =  window.innerHeight - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height())
 
-            if(winw > 413){ // 大屏幕
-                elem.css('height', (height - 190) + 'px') ;
-            }else if(winw > 300 && winw < 375){ // 小屏幕
-                elem.css('height', (height - 270) + 'px') ;
-            }else{
-                elem.css('height', (height-310) + 'px') ;
+            if (hasTabPanel) {
+                scrolling_height -= $('.tab_panel').height()
             }
+
+            this.setClickHeight($('#scroller'), scrolling_height)
+            this.setClickHeight($('.tab_container'), $('#so-item' + currentBarIndex).height() + 40)
+
+        },
+        setClickHeight(elem, height) {
+            elem.height(height)
         }
     }
 };

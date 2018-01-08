@@ -61,8 +61,6 @@
             }
         },
         created() {
-            console.log("yes created")
-
         },
         computed: {
             shengXiaoMapNumber() {
@@ -79,22 +77,24 @@
                 this.handlePlayList()
             }
 
-            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+            this.myScroll = new iScroll("scroller", {  // 投注区域
                 onScrollEnd() {
                     this.refresh() ;
                 },
-                vScroll:true,
+                vScroll: true,
                 mouseWheel: true,
-                hScrollbar:false ,
-                vScrollbar:false ,
+                hScrollbar: false,
+                vScrollbar: false,
                 click: true ,
-
-                useTransform: false ,
-                useTransition: false ,
+                useTransform: false,
+                useTransition: false,
             });
+
+            this.myScroll.refresh()
+            this.myScroll.scrollTo(0, 300)
         },
         updated() {
-            this.setClickHeight($('.so-con-right'), $('#so-item0').height())
+            this.setScrollHeight(false, 0)
         },
         watch: {
             playTreeList() {

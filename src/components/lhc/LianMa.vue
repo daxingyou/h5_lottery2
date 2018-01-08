@@ -1,6 +1,5 @@
 <template>
 <div  id="content-wrapper" class="lianma">
-
 	<div class="so-con-right" >
         <div class="tab_panel">
             <div class="hd lhc_tab" >
@@ -9,10 +8,7 @@
                 </ul>
             </div><!-- hd lhc_tab -->
         </div><!-- tab_panel -->
-
 		<div id="scroller"> <!-- style="min-height: 180%"  --><!--<div>-->
-			
-
 			<div class="tab_container">
 				<!--以下为盘面不同样式，根据ID区分-->
 				<!-- 三全中 -->
@@ -70,36 +66,22 @@
 
             this.myScroll = new iScroll("scroller",{  // 投注区域
                 onScrollEnd() {
-                    console.log("end")
                     this.refresh() ;
                 },
-                /* onBeforeScrollMove:function(e){
-                     e.preventDefault();
-                 },*/
                 vScroll:true,
                 mouseWheel: true ,
                 hScrollbar:false ,
                 vScrollbar:false ,
                 click: true ,
-                // momentum: false ,
-
                 useTransform: false ,
                 useTransition: false ,
-                // snapThreshold:0.5
             });
 
             this.myScroll.refresh()
             this.myScroll.scrollTo(0, 300)
         },
         updated() {
-            /*let wrapper = $('#content-wrapper')
-            if (wrapper) {
-                let myScroll = new iScroll(wrapper)
-            }*/
-            var _h =  window.innerHeight - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height() + $('.tab_panel').height())
-            $('#scroller').css('height',  _h )
-            $('.tab_container').height( $('#so-item'+this.currentBar).height() + 40 )
-            
+            this.setScrollHeight(true, this.currentBar)
         },
         watch: {
             playTreeList() {

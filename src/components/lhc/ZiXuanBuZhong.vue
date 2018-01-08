@@ -1,6 +1,5 @@
 <template>
 <div  id="content-wrapper" class="zixuanbuzhong">
-
 	<div class="so-con-right" >
 		<div id="scroller"> <!-- style="min-height: 180%"  --><!--<div>-->
 			<div class="tab_container">
@@ -68,26 +67,28 @@
             if (playTreeIndexByCid.get('1170000')) {
                 this.handlePlayList()
             }
-            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+            this.myScroll = new iScroll("scroller", {  // 投注区域
                 onScrollEnd() {
                     this.refresh() ;
                 },
-                vScroll:true,
+                vScroll: true,
                 mouseWheel: true,
-                hScrollbar:false ,
-                vScrollbar:false ,
+                hScrollbar: false,
+                vScrollbar: false,
                 click: true ,
-
-                useTransform: false ,
-                useTransition: false ,
+                useTransform: false,
+                useTransition: false,
             });
+
+            this.myScroll.refresh()
+            this.myScroll.scrollTo(0, 300)
         },
         created() {
         },
         computed: {
         },
         updated() {
-            this.setClickHeight($('.so-con-right'), $('#so-item0').height())
+            this.setScrollHeight(false, 0)
         },
         watch: {
             playTreeIndexByCid() {

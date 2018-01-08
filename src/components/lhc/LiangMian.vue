@@ -1,10 +1,7 @@
 <template>
 <div  id="content-wrapper">
-
 	<div class="so-con-right" >
 		<div id="scroller" > <!-- style="min-height: 180%"  --><!--<div>-->
-
-
 			<div class="tab_container">
 				<!--以下为盘面不同样式，根据ID区分-->
 				<!-- 两面 -->
@@ -62,22 +59,15 @@
             }
             this.myScroll = new iScroll("scroller",{  // 投注区域
                 onScrollEnd() {
-                    console.log("end")
                     this.refresh() ;
                 },
-                /* onBeforeScrollMove:function(e){
-                     e.preventDefault();
-                 },*/
                 vScroll:true,
                 mouseWheel: false ,
                 hScrollbar:false ,
                 vScrollbar:false ,
                 click: true ,
-                // momentum: false ,
-
                 useTransform: false ,
                 useTransition: false ,
-                // snapThreshold:0.5
             });
             this.myScroll.refresh()
             this.myScroll.scrollTo(0, 100)
@@ -88,11 +78,7 @@
 
         },
         updated() {
-            /*console.log("so-item height updated")
-            this.setClickHeight($('.so-con-right'), $('#so-item0').height())*/
-            var _h =  window.innerHeight - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height() + $('.tab_panel').height())
-            $('#scroller').css('height',  _h )
-            $('.tab_container').height( $('#so-item0').height() + 40 )
+            this.setScrollHeight(false, 0)
         },
         watch: {
             playTreeList() {

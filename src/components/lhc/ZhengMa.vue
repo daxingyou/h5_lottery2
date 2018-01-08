@@ -1,10 +1,7 @@
 <template>
 <div  id="content-wrapper">
-
 	<div class="so-con-right" >
 		<div id="scroller" > <!-- style="min-height: 180%"  --><!--<div>-->
-
-
 			<div class="tab_container">
 				<!--以下为盘面不同样式，根据ID区分-->
 				<!-- 正码 -->
@@ -61,25 +58,21 @@
                 this.zhengMaList = playTreeIndexByCid.get('1031000').childrens
             }
 
-            this.myScroll = new iScroll("content-wrapper",{  // 投注区域
+            this.myScroll = new iScroll("scroller",{  // 投注区域
                 onScrollEnd() {
-                    console.log("end")
                     this.refresh() ;
                 },
-                /* onBeforeScrollMove:function(e){
-                     e.preventDefault();
-                 },*/
                 vScroll:true,
-                mouseWheel: false ,
+                mouseWheel: true ,
                 hScrollbar:false ,
                 vScrollbar:false ,
                 click: true ,
-                // momentum: false ,
-
                 useTransform: false ,
                 useTransition: false ,
-                // snapThreshold:0.5
             });
+
+            this.myScroll.refresh()
+            this.myScroll.scrollTo(0, 300)
         },
         created() {
         },
@@ -87,7 +80,7 @@
 
         },
 		updated() {
-            this.setClickHeight($('.so-con-right'), $('#so-item0').height())
+            this.setScrollHeight(false, 0)
         },
         watch: {
             playTreeList() {
