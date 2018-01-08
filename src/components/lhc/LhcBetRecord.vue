@@ -47,7 +47,6 @@
                         <li><a href="javascript:;" data-filter="not_win" data-val="4">未中奖</a></li>
                     </ul>
                 </div>
-
                 <div class="swiper-container" id="swiper1" >
                     <div class="swiper-wrapper">
 
@@ -61,27 +60,27 @@
                                         active 點擊後要加，才會展開
                                     -->
                                     <!-- 本周 -->
-                                    <li :class="showThisWeekClass(collapseCtrl[0])" data-val="本周" @click="getBetRecord('0')">
+                                    <li :class="showClass(collapseCtrl[index2])" :data-val="item" v-for="(item, index2) in showTitleList" @click="getBetRecord(index2)">
                                         <div class="panel_title new_panel_top">
-                                            <strong class="title-data" v-if="lotteryid == 10">本周</strong>
-                                            <strong class="title-data" v-else>{{showDateList[0]}}</strong>
+                                            <strong class="title-data" v-if="lotteryid == 10">{{item}}</strong>
+                                            <strong class="title-data" v-else>{{showDateList[index2]}}</strong>
                                             <span><!-- 此為箭頭，點按後展開或收合，預設第一個為展開（父層li的class有active） --></span></div>
                                         <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[0] == 1 && betRecordList[0].length == 0">正在加载...</li>
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[0].length == 0 && collapseCtrl[0] == 1 && loadingList[0] == 0">没有数据了</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[index2] == 1 && betRecordList[index2].length == 0">正在加载...</li>
+                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[index2].length == 0 && collapseCtrl[index2] == 1 && loadingList[index2] == 0">没有数据了</li>
                                             <!-- data-val裡的 encodeURI(JSON.stringify(v))，他們寫暂时不显示详情 -->
-                                            <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[0]" v-if="betRecordList[0].length > 0 && collapseCtrl[0] == 1">
+                                            <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item2, index3) in betRecordList[index2]" v-if="betRecordList[index2].length > 0 && collapseCtrl[index2] == 1">
                                                 <a href="javascript:;" data-val="">
                                                     <div class="item">
                                                         <div class="badge ssc_badge">
                                                             <img src="/static/frist/images/lotterylogo/logo_10.svg">
                                                         </div>
                                                         <div class="lottery_t ssc">
-                                                            <p><!-- orderId: -->{{item.orderid}}</p>
-                                                            <p><span><!-- playName: -->{{item.playname}}</span></p>
-                                                            <p><span><!-- betContent: -->{{item.betcontent}}</span></p>
-                                                            <span class="prd_num"><span><!-- pcode: -->{{item.pcode}}</span>期</span>
-                                                            <strong><!-- 倍率?multiple: -->{{item.betamount}}</strong>
+                                                            <p><!-- orderId: -->{{item2.orderid}}</p>
+                                                            <p><span><!-- playName: -->{{item2.playname}}</span></p>
+                                                            <p><span><!-- betContent: -->{{item2.betcontent}}</span></p>
+                                                            <span class="prd_num"><span><!-- pcode: -->{{item2.pcode}}</span>期</span>
+                                                            <strong><!-- 倍率?multiple: -->{{item2.betamount}}</strong>
                                                         </div>
                                                         <!-- 
                                                         CSS 狀態說明
@@ -92,9 +91,9 @@
                                                         status04
                                                         用户撤单、系统撤单、中奖停追、存在异常、异常注单 
                                                         -->
-                                                        <div :class="showStatusClass(item.orderstatus)">
-                                                            <span><!-- orderStatus: -->{{item.orderstatusname}}</span>
-                                                            <div v-if="item.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item.payoff}}</div>
+                                                        <div :class="showStatusClass(item2.orderstatus)">
+                                                            <span><!-- orderStatus: -->{{item2.orderstatusname}}</span>
+                                                            <div v-if="item2.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item.payoff}}</div>
                                                             <div v-else></div>
                                                         </div>
                                                     </div>
@@ -103,96 +102,11 @@
                                         </ul>
                                     </li>
                                     <!-- 本周 -->
-                                    <!-- 上周 -->
-                                    <li :class="showLastWeekClass(collapseCtrl[1])" data-val="上周" @click="getBetRecord('1')">
-                                        <div class="panel_title new_panel_top" >
-                                            <strong class="title-data" v-if="lotteryid == 10">上周</strong>
-                                            <strong class="title-data" v-else>{{ showDateList[1] }}</strong>
-                                            <span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
-                                        <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[1] == 1 && betRecordList[1].length == 0">正在加载...</li>
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[1].length == 0 && collapseCtrl[1] == 1 && loadingList[1] == 0">没有数据了</li>
-                                            <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[1]" v-if="betRecordList[1].length > 0 && collapseCtrl[1] == 1">
-                                                <a href="javascript:;" data-val="">
-                                                    <div class="item">
-                                                        <div class="badge ssc_badge">
-                                                            <img src="/static/frist/images/lotterylogo/logo_10.svg">
-                                                        </div>
-                                                        <div class="lottery_t ssc">
-                                                            <p><!-- orderId: -->{{item.orderid}}</p>
-                                                            <p><span><!-- playName: -->{{item.playname}}</span></p>
-                                                            <p><span><!-- betContent: -->{{item.betcontent}}</span></p>
-                                                            <span class="prd_num"><span><!-- pcode: -->{{item.pcode}}</span>期</span>
-                                                            <strong><!-- 倍率?multiple: -->{{item.betamount}}</strong>
-                                                        </div>
-                                                        <!--
-                                                        CSS 狀態說明
-                                                        status00
-                                                        未開獎、未中獎、和局
-                                                        status02
-                                                        己中獎(已派彩)
-                                                        status04
-                                                        用户撤单、系统撤单、中奖停追、存在异常、异常注单
-                                                        -->
-                                                        <div :class="showStatusClass(item.orderstatus)">
-                                                            <span><!-- orderStatus: -->{{item.orderstatusname}}</span>
-                                                            <div v-if="item.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item.payoff}}</div>
-                                                            <div v-else></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <!-- 上周 -->
-                                    <!-- 上上周 -->
-                                    <li :class="showBeforeLastWeekClass(collapseCtrl[2])" data-val="上上周" @click="getBetRecord('2')">
-                                        <div class="panel_title new_panel_top">
-                                            <strong class="title-data" v-if="lotteryid == 10">上上周</strong>
-                                            <strong class="title-data" v-else>{{ showDateList[2] }}</strong>
-                                            <span><!-- 此為箭頭，點按後展開或收合，父層li的class無active，所以不展開 --></span></div>
-                                        <ul class="panel bet-recode-all" style="display: block;">
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="loadingList[2] == 1 && betRecordList[2].length == 0">正在加载...</li>
-                                            <li style="margin: auto;text-align: center;height: 2rem;display: block;line-height: 2rem;" class="so-zzjz" v-if="betRecordList[2].length == 0 && collapseCtrl[2] == 1 && loadingList[2] == 0">没有数据了</li>
-                                            <li onclick="return false" class="bet_data" data-status="not_open" v-for="(item, index) in betRecordList[2]" v-if="betRecordList[2].length > 0 && collapseCtrl[2] == 1">
-                                                <a href="javascript:;" data-val="">
-                                                    <div class="item">
-                                                        <div class="badge ssc_badge">
-                                                            <img src="/static/frist/images/lotterylogo/logo_10.svg">
-                                                        </div>
-                                                        <div class="lottery_t ssc">
-                                                            <p><!-- orderId: -->{{item.orderid}}</p>
-                                                            <p><span><!-- playName: -->{{item.playname}}</span></p>
-                                                            <p><span><!-- betContent: -->{{item.betcontent}}</span></p>
-                                                            <span class="prd_num"><span><!-- pcode: -->{{item.pcode}}</span>期</span>
-                                                            <strong><!-- 倍率?multiple: -->{{item.betamount}}</strong>
-                                                        </div>
-                                                        <!--
-                                                        CSS 狀態說明
-                                                        status00
-                                                        未開獎、未中獎、和局
-                                                        status02
-                                                        己中獎(已派彩)
-                                                        status04
-                                                        用户撤单、系统撤单、中奖停追、存在异常、异常注单
-                                                        -->
-                                                        <div :class="showStatusClass(item.orderstatus)">
-                                                            <span><!-- orderStatus: -->{{item.orderstatusname}}</span>
-                                                            <div v-if="item.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item.payoff}}</div>
-                                                            <div v-else></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <!-- 上上周 -->
                                 </ul>
                             </div>
                         </div>
                         <!-- 全部 -->
                         <!-- 未开奖 -->
-
                     </div><!-- swiper-wrapper -->
                 </div>
             </div>
@@ -259,6 +173,7 @@
                 pageList: [1, 1, 1],
                 loadingList: [0, 0, 0],
                 showDateList:[],
+                showTitleList:["本周", "上周", "上上周"],
                 pDateList:[],
             }
         },
@@ -464,25 +379,7 @@
         watch: {
         },
         methods: {
-            showThisWeekClass(stat) {
-                let classStr = "slide_toggle bet_day new_bet_day new_panel"
-
-                if (stat == 1) {
-                    classStr += ' active'
-                }
-
-                return classStr
-            },
-            showLastWeekClass(stat) {
-                let classStr = "slide_toggle bet_day new_bet_day new_panel"
-
-                if (stat == 1) {
-                    classStr += ' active'
-                }
-
-                return classStr
-            },
-            showBeforeLastWeekClass(stat) {
+            showClass(stat) {
                 let classStr = "slide_toggle bet_day new_bet_day new_panel"
 
                 if (stat == 1) {
