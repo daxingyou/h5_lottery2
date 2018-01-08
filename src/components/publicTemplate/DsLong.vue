@@ -35,7 +35,7 @@
                     </ul>
                 </div>
                 <div class="bd">
-                    <ul class="tab_content">
+                    <ul class="tab_content" id='ds_content'>
                         <li class="ds_long">
                             <ul class="clong_open">
                                <!-- <li class="prod" data-status="not_open">
@@ -329,3 +329,12 @@ export default {
 
 }
 </script>
+<style scoped>
+
+
+    #ds_content .ds_long .lo_ball {
+        width: 4rem;
+        text-align: left;
+    }
+
+</style>
