@@ -73,7 +73,7 @@
                                                 <a href="javascript:;" data-val="">
                                                     <div class="item">
                                                         <div class="badge ssc_badge">
-                                                            <img src="/static/frist/images/lotterylogo/logo_10.svg">
+                                                            <img :src="'/static/frist/images/lotterylogo/logo_' + lotteryid + '.svg'">
                                                         </div>
                                                         <div class="lottery_t ssc">
                                                             <p><!-- orderId: -->{{item2.orderid}}</p>

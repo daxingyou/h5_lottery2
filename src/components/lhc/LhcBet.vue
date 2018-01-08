@@ -122,7 +122,7 @@
                         let payoff = -1
                         let selectMax = true
 
-                        //如果是連肖取賠率小的顯示，連尾是取賠率
+                        //如果是連肖取賠率小的顯示，連尾是取賠率大的
                         if (itemCid == '1111') {
                             selectMax = false
                             payoff = Number.MAX_SAFE_INTEGER
@@ -178,6 +178,8 @@
                 return lastRes
             },
             betCount() {
+                //group: 合肖和自選不中
+                //combination: 連尾, 連肖, 連碼
                 if (this.playType == 'combination' || this.playType == 'group') {
                     return this.combineCount;
                 }else{
@@ -193,7 +195,7 @@
                     return this.betSelectedList.length * this.betAmount
                 }
             },
-            itemCidPrefix() {
+            itemCidPrefix() { //用來決定是使用哪一種 template 主要是 combination 連碼顯示方式跟連肖連尾不一樣
                 return this.betSelectedList[0].cid.toString().substr(0, 3)
             },
         },
