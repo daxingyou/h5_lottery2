@@ -42,7 +42,8 @@
                                     </li>
 
                                     <li v-if="(list.lotteryId == '10')" v-for="listnum in list.winNumber.split(',')"
-                                        :class="'lhc_ball lhc_ball_b num_'+listnum ">{{listnum}}
+                                        :class=" listnum < 10?'lhc_ball lhc_ball_b num_0'+ listnum : 'lhc_ball lhc_ball_b num_' + listnum  ">
+                                        {{listnum}}
                                     </li>
                                 </ul>
 
