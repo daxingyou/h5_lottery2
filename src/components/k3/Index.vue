@@ -49,7 +49,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="body_bg"></div>
+                <div class="body_bg" @click='bgFocus'></div>
                 <div  id="content-wrapper">
                      <div class="so-con-right ">
                       <div id="scroller"  class="scroller" >
@@ -305,6 +305,9 @@
                 this.balancePublic = afterBetCookie
                  // console.log(afterBetCookie)
             },
+              bgFocus: function () {
+                  this.$store.commit('Number')
+              },
 
             betCountStat:function(xslen, xlen){
                 return  xslen*((xslen-1)/xlen);

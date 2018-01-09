@@ -41,6 +41,8 @@
 
 
 <script>
+    import store from './../../_vuex/store'
+
 export default {
   name: 'InfoDialog',
   props:['moduleName', 'moduleplay'],
@@ -48,10 +50,13 @@ export default {
     //打开弹窗
     open:function(e){
         this.show = true;
+        this.$store.commit('Number') 
+
     },
     //关闭弹窗
     close:function(e){
       this.show = false;
+        this.$store.commit('Number')
     }
   },
   //程序加载完闭时

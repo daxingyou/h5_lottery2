@@ -58,7 +58,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="body_bg"></div>
+                <div class="body_bg" @click='bgFocus'></div>
                 <div  id="content-wrapper">
                      <div class="so-con-right  " >
                                <div id="scroller" > <!-- style="min-height: 180%"  -->
@@ -310,6 +310,9 @@ export default {
         this.balancePublic = afterBetCookie
         // console.log( this.balancePublic )      
     },
+      bgFocus: function () {
+          this.$store.commit('Number')
+      },
     switchTab:function(e){
         var _self = this ;
         const $src = $(e.currentTarget);

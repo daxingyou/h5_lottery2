@@ -53,6 +53,8 @@
 
 <script>
 import Mixin from '@/Mixin'
+import store from './../../_vuex/store'
+
 // import $ from "jquery";
 //  import AutoCloseDialog from '@/components/publicTemplate/AutoCloseDialog'
 
@@ -66,6 +68,7 @@ export default {
  data :function() {
         return {
           balanceData: '' ,
+            showFocus: false,
           haslogin :false ,
           showNavigation:false ,
           allLottery:{},
@@ -107,9 +110,11 @@ export default {
       // 关闭侧滑栏
     close:function(e){
       this.showNavigation = false;
+        this.showFocus = true;
+        this.$store.commit('Number')
     },
       // 获取彩种
-      getLotterys:function() {
+      getLotterys: function () {
          /* return new Promise((resolve)=>{*/
          var _self = this ;
          var resdata  ;

@@ -19,6 +19,9 @@
 
 
 <script>
+
+    import store from './../../_vuex/store'
+
 export default {
   name: 'BetSuccessfulDialog',
   data () {
@@ -30,11 +33,13 @@ export default {
     //打开弹窗
     open:function(){
       this.show = true;
-      setTimeout(() => this.show = false, 3000);
+        setTimeout(() => this.close(), 3000);
     },
     //关闭弹窗
     close:function(e){
       this.show = false;
+        this.$store.commit('Number')
+      
     }
   }
 }
