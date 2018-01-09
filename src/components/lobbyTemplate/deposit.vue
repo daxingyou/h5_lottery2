@@ -235,7 +235,8 @@
                                             </div>
                                         </div>
                                         <!-- 提交存款成功后 -->
-                                        <div class="after_pay bank_account" style="display: none ;">
+                                        <div class="after_pay bank_account" id='bankInforDeposit'
+                                             style="display: none ;">
                                             <h5>您的存款信息</h5>
                                             <div class="print_data">
                                                 <table>
