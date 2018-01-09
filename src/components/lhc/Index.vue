@@ -38,6 +38,7 @@
                                     <CountdownTimer ref="countdownTimer"
                                                     @countdownOver="playLottery"
                                                     @entertainCountdownOver="entertain"
+                                                    @entertainCountdownBreak="entertainBreak"
                                                     @spanArrived="lotteryDataFetch"
                                                     @visibility="timerBegin"
                                                     :now_pcode="now_pcode" :lotteryID="lotteryID"
@@ -218,6 +219,12 @@
             entertain() {
                 // this.$refs.infoDialog.open('请至下期继续投注', 'title_end')
                 this.$refs.infoDialog.open('请至下期继续投注', '本期投注已结束')
+                this.entertainStatus = true;
+                this.resetAction();
+            },
+            entertainBreak() {
+                // this.$refs.infoDialog.open('请至下期继续投注', 'title_end')
+                // this.$refs.infoDialog.open('请至下期继续投注', '本期投注已结束')
                 this.entertainStatus = true;
                 this.resetAction();
             },
