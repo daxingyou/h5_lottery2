@@ -23,7 +23,8 @@
                                 <strong>{{day.pdate}}<!-- 09月14日 --></strong><span></span>
                             </div>
                             <ul class="panel new_panel_center">
-                                <li class="bet_data ac_data" data-status="not_open" v-for="item in day.list">
+                                <li class="bet_data ac_data" data-status="not_open" v-for="item in day.list"
+                                    v-if="itemShow(item)">
                                     <router-link :to="{ name:'acDetailData', params:{ model:item, data:$data} }">
                                        <!-- <div class="prd_num"><span>{{dateFormat(item.createTime, 'yyyy/mm/dd HH:mm') || '1990/1/1 00:00'}}</span></div>-->
                                         
@@ -95,7 +96,9 @@ export default {
                 '4':{name:'成功',class:'sta01'},
                 '5':{name:'未处理',class:'sta02'}
             },
-            dealType:''
+            dealType: '',
+            itemShow1: true,
+
         }
     },
     computed:{
@@ -111,6 +114,10 @@ export default {
         document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
     },
     methods: {
+        itemShow: function (item) {
+            this.itemShow1 = ( item.dealType != '2' || item.dealType == '2' && item.stateName == '成功')
+            return this.itemShow1
+        },
         back1:function(){
             this.$router.back();
         },
