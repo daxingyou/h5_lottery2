@@ -138,8 +138,8 @@
                 sys_time :'',  // 当前系统时间
                 now_day:'',  // 当前日期
                 balanceData:{},
-                entertainStatus:false,
-                notopen:false,
+                entertainStatus: false,
+                notopen: false,
                 ishwowpriod:false,
                 betSelectedList:[],   //用户选中的注数
                 playType: 'normal',
@@ -294,14 +294,13 @@
                 that.entertainStatus = false;
                 that.notopen = false;
             },
-            resetAction(success) {
+            resetAction() {
                 this.clearBetList()
 
                 if (this.playType == 'combination' || this.playType == 'group') {
                     this.clearCombineCnt()
                 }
 
-                this.getMemberBalance(this.lotteryID) ; // 更新余额
                 this.$refs.bet.showList = false ; // 关闭下注弹窗
             },
             clearBetList() {
@@ -311,6 +310,9 @@
                 this.combineCount = 0
             },
             selectLianType(itemInfo) {
+                if (this.entertainStatus || this.notopen){
+                    return false;
+                }
                 let include = _.find(this.betSelectedList, {name: itemInfo.item.name})
 
                 this.playType = itemInfo.playType
@@ -332,6 +334,9 @@
                 this.combineCount = cnt
             },
             selectBet(item) {
+                if (this.entertainStatus || this.notopen){
+                    return false;
+                }
                 let include = ""
                 let idPrefix = item.cid.toString().substr(0, 5)
                 if (item.cid == 1151190 || idPrefix == '11711' || idPrefix == '11311')
@@ -362,6 +367,9 @@
                 }
             },
             selectShengXiao(itemList) {
+                if (this.entertainStatus || this.notopen){
+                    return false;
+                }
                 let intercount = _.intersection(itemList, this.betSelectedList).length
 
                 let addShengXiao = (item, index) => {
