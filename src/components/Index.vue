@@ -275,6 +275,8 @@ export default {
        this.getActivity();
        this.getCustom()
         this.getAppUrl()
+        this.getCopyright('1', 'BT01')
+        this.getCopyright('1', 'BT05')
 
   },
     methods:{
@@ -412,12 +414,12 @@ export default {
       //轮播图接口
       carouselImg:function () {
            var _self=this;
-          if (!sessionStorage.carouselList) {
               $.ajax({
                   type: 'get',
                   url: _self.action.forseti + 'apid/cms/carousel',
                   data: {},
                   success: (res) => {
+
                       sessionStorage.carouselList = JSON.stringify(res.data.itemPO)
 
                       if (res.data.itemPO) {
@@ -426,10 +428,13 @@ export default {
                               res.data.itemPO[i].titlePic = _self.action.picurl + res.data.itemPO[i].titlePic + '/0';
                           }
                           _self.banner = res.data.itemPO;
+                          var delay = res.data.delayTime * 1000
+                          console.log(delay, 'fff')
                           _self.$nextTick(function () {
                               TouchSlide({
                                   slideCell: "#focus",
                                   autoPlay: true,
+                                  interTime: delay,
                               });
                           });
                       }
@@ -440,21 +445,6 @@ export default {
                   }
               })
 
-          } else {
-              _self.corroleDataList = JSON.parse(sessionStorage.carouselList);
-              // console.log(  _self.corroleDataList , 'img')
-              var len = _self.corroleDataList.length;
-              for (var i = 0; i < len; i++) {
-                  _self.corroleDataList[i].titlePic = _self.action.picurl + _self.corroleDataList[i].titlePic + '/0';
-              }
-              _self.banner = _self.corroleDataList;
-              _self.$nextTick(function () {
-                  TouchSlide({
-                      slideCell: "#focus",
-                      autoPlay: true,
-                  });
-              });
-          }
 
        },
       //获得优惠活动接口
