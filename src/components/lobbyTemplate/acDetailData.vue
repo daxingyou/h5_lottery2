@@ -36,7 +36,10 @@
                                             <th>
                                                 <li>帐变方式</li>
                                             </th>
-                                            <td>{{model.dealType=='2'?model.actionTypeName:parentData.tradeTypeConfig[model.tradeType].name}}<!-- 重庆时时彩 --></td>
+                                            <td v-if="(model.dealType!='3')">
+                                                {{model.dealType == '2' ? model.actionTypeName : parentData.tradeTypeConfig[model.tradeType].name}}
+                                            </td>
+                                            <td v-if="(model.dealType=='3')">{{model.tradeTypeName}}</td>
                                         </tr>
                                         <tr>
                                             <th>
@@ -97,7 +100,8 @@ export default {
             moneyType:{
                 '0':'充值',
                 '1':'提款',
-                '2':'优惠'
+                '2': '优惠',
+                '3': '返水'
             },
         }
     },

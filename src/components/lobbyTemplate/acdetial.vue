@@ -31,10 +31,21 @@
                                             <div class="badge">
                                                 <span :class="'icon_account icon_' + (tradeTypeConfigItemGet(item).class || 'ac01')"></span>
                                             </div>
-                                            <div class="lottery_t ssc">
-                                                <p>{{item.dealType=='2'?item.actionTypeName:tradeTypeConfigItemGet(item).name}}<label :class="'sta '+ (statusConfig[item.state] && statusConfig[item.state].class)">{{item.stateName}}</label></p>
+                                            <div class="lottery_t ssc" v-if="(item.dealType!='3')">
+                                                <p>
+                                                    {{ (item.dealType == '2') ? item.actionTypeName : tradeTypeConfigItemGet(item).name}}<label
+                                                        :class="'sta '+ (statusConfig[item.state] && statusConfig[item.state].class)">{{item.stateName}}</label>
+                                                </p>
                                                 <span class="prd_num"><span>{{formatTimeUnlix(item.createTime,'0')}}</span></span>
                                                 <strong>{{moneyType[item.dealType] || '-'}}<!-- 充值 -->: {{(item && formatNumber(roundAmt(item.tradeAmount))) || '0.00'}}</strong>
+                                            </div>
+                                            <div class="lottery_t ssc" v-if="(item.dealType=='3')">
+                                                <p>{{ item.tradeTypeName}}<label
+                                                        :class="'sta '+ (statusConfig[item.state] && statusConfig[item.state].class)">{{item.stateName}}</label>
+                                                </p>
+                                                <span class="prd_num"><span>{{formatTimeUnlix(item.createTime, '0')}}</span></span>
+                                                <strong>{{item.dealTypeName}}<!-- 充值 -->
+                                                    : {{(item && formatNumber(roundAmt(item.tradeAmount))) || '0.00'}}</strong>
                                             </div>
                                             <div class="icon icon_arrow_light"></div>
                                         </div>
