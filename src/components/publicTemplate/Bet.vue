@@ -136,7 +136,8 @@ export default {
         focuFirst: function () {
             var betF = $('.bet-amount').html()
             if (!betF) {
-                $('.bet-amount').focus();
+                // $('.bet-amount').focus();
+                console.log('')
             }
 
         },

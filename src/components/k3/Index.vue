@@ -49,7 +49,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="body_bg" @click='bgFocus'></div>
+                <div class="body_bg"></div>
                 <div  id="content-wrapper">
                      <div class="so-con-right ">
                       <div id="scroller"  class="scroller" >
