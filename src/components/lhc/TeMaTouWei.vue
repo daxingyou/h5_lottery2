@@ -53,7 +53,8 @@
         data() {
             return {
                 teMaTouWeiList: [],
-				myScroll: null
+                maxBallNum: 50,
+                myScroll: null
             }
         },
         mounted(){
@@ -79,6 +80,7 @@
         created() {
         },
         computed: {
+            //計算尾數對應的號碼
             weiNumList() {
                 return this.computeWeiNumList()
             }
@@ -108,7 +110,7 @@
             },
             computeWeiNumList() {
                 var res = [[], [], [], [], [], [], [], [], [], []]
-                for (var i = 1; i < 50; i++) {
+                for (var i = 1; i < this.maxBallNum; i++) {
                     if (i < 10)
                         res[i % 10].push("0" + i)
                     else {

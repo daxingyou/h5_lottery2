@@ -89,6 +89,7 @@
             },
         },
         methods: {
+            //產生色波前面的一條線
             showItemClass(index) {
                 let classStr = "select-li bet_lm"
 

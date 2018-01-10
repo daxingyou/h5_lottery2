@@ -97,6 +97,7 @@
             }
         },
         methods: {
+            //二連尾，三連尾...切換
             barChange(index) {
                 this.currentBar = index;
                 this.$emit('lhcclearcnt')
@@ -113,17 +114,19 @@
 
                 return classStr
             },
+			//算出各尾數對應的號碼
             computeWeiNumList() {
-                var res = [[], [], [], [], [], [], [], [], [], []]
-                for (var i = 1; i < 50; i++) {
+                let res = [[], [], [], [], [], [], [], [], [], []]
+                for (let i = 1; i < 50; i++) {
                     if (i < 10)
                         res[i % 10].push("0" + i)
                     else {
-                        res[i%10].push("" + i)
+                        res[i % 10].push("" + i)
                     }
                 }
                 return res
             },
+			//根據不同玩法 (二連尾，三連尾...) 賠率分成了 0 尾和非 0 尾
             handlePlayList() {
                 _.forEach(playTreeIndexByCid.get('1141000').childrens, (item, index) => {
                     let children = []
@@ -183,6 +186,7 @@
                     )
                 })
             },
+            //設定選取號碼的上限，組合數計算的基底
             selectLianType(item, parentItem) {
                 let itemInfo = {}
                 itemInfo.limit = this.limitItemNum

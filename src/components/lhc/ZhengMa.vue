@@ -90,6 +90,7 @@
             },
         },
         methods: {
+            //處理正碼每個 item 的 class 顯示
             isBtnZhengMaActived(item, cid) {
                 if(!this) return ''
 

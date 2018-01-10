@@ -315,6 +315,7 @@
             * 表单提交数据处理
             * */
             doSubmitAction(list) {
+                //For 合肖和自選不中
                 if (this.playType == 'group') {
                     list.push({  // 一条数据就是一个方案，一个方案可以有多条下注
                         'betAmount': this.monAmt(Number(this.totalAmount)), //下注金额，元的模式下需要 x100传值，角的模式下 x10
@@ -330,6 +331,7 @@
                         'remark': '无'//备注
                     });
                 }else if (this.playType == 'combination') {
+                    //For  連肖和連尾
                     if (this.itemCidPrefix == '111' || this.itemCidPrefix == '114') {
                         let size = _.size(this.showListRes)
                         this.showListRes.forEach((item, i) => {
@@ -349,6 +351,7 @@
                         });
                     }
                     else {
+                        //For 連碼
                         list.push({  // 一条数据就是一个方案，一个方案可以有多条下注
                             'betAmount': this.monAmt(Number(this.totalAmount)), //下注金额，元的模式下需要 x100传值，角的模式下 x10
                             'betContent': this.betSelectedList.map((item)=>{ return item.name; }).join(','),      //zuArr.toString(),//下注内容，如1,5,8,3,7
@@ -364,6 +367,7 @@
                         });
                     }
                 }else {
+                    //更改下注內容, ex: 紅波 => 紅
                     this.changeBetContent()
                     this.betSelectedList.forEach((item, i)=>{
                         list.push({  // 一条数据就是一个方案，一个方案可以有多条下注
@@ -412,6 +416,7 @@
                 // 注单金额正确
                 this.showList = true;
             },
+            //算出連尾或連肖的全部組合可能，並顯示在下注清單以及送到後端的下注內容
             getCombination(arr, size) {
                 let allResult = [];
 

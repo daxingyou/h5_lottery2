@@ -139,7 +139,7 @@
                     statusType: 1, // 状态：1全部，2未开奖，3已中奖，4未中奖,81异常处理中，5和局
                     lotteryId: this.lotteryid , // 彩种ID
                     sideType: '2' , // 彩票类型：1 官彩，2 双面彩
-                    pdate: 0,
+                    pdate: 0, // 0: 本周，1: 上週，2:上上週
                 },
                 tableLock: 0,
                 // 投注详情
@@ -167,13 +167,13 @@
                 ],
                 ajaxSubmitAllow: false,
                 betRecordList: [[], [], []],
-                collapseCtrl: [0, 0, 0],
-                numOfDate: 3,
-                pageList: [1, 1, 1],
-                loadingList: [0, 0, 0],
-                showDateList:[],
+                collapseCtrl: [0, 0, 0], //控制本週，下週，下下週的選單是否展開，0 為不展開，1 為展開
+                numOfDate: 3, //控制其它彩種的顯示日期的天數，目前是今天日期，昨天日期跟前天日期，三天的資料
+                pageList: [1, 1, 1], //控制本周，下週，下下週的資料取得的頁數，起始跟後端從第一頁開始拿
+                loadingList: [0, 0, 0], //控制是否顯示加載數據，0 不顯示， 1 顯示
+                showDateList:[], //放置其他彩種的日期，用來顯示在 UI 上
                 showTitleList:["本周", "上周", "上上周"],
-                pDateList:[],
+                pDateList:[], //放置其他彩種用來傳給後端 API pdate 參數的值
             }
         },
         created() {
@@ -195,8 +195,6 @@
             },
         },/*computed*/
         mounted() {
-            console.log(this.lotteryid, 'idlhc')
-            console.log(this.lotteryname, 'idlhc')
             $('html,body').css('overflow-y','scroll' )  ;
             if (this.lotteryid != 10) {
                 this.seadata.pdate = this.newpdate;
@@ -423,6 +421,8 @@
             getBetRecord(pdate) {
                 let _self = this ;
 
+                console.log("lock", this.lock)
+
                 if (pdate < 0) {
                     return false
                 }
@@ -438,6 +438,7 @@
                 }
                 else {
                     this.$set(this.collapseCtrl, pdate, 1)
+                    //關掉其他展開的資料
                     _.forEach(this.collapseCtrl, (val, index2) => {
                         if (pdate != index2 && index2 <= 2) {
                             this.$set(this.collapseCtrl, index2, 0)
@@ -449,6 +450,7 @@
 
                     _self.seadata.lotteryId = _self.lotteryid // 彩种ID
                     _self.seadata.page = _self.pageList[pdate]
+                    //如果是六合彩 pdate 是 0,1,2
                     if (this.lotteryid == 10) {
                         _self.seadata.pdate = pdate
                     }
@@ -494,13 +496,16 @@
                                     })
                                 }
                                 _self.lastlotteryid = _self.lotteryid;
+                                //有多下載資料再把，page 參數加一
                                 if (_.size(dataList) > 0)
                                     _self.pageList[pdate]++;
+
+                                //關掉加載數據顯示
                                 this.$set(this.loadingList, pdate, 0)
                             }
                             error: () => {
                                 _self.ajaxSubmitAllow = false
-                                _self.loading = 0
+                                this.$set(this.loadingList, pdate, 0)
                             }
                         },
                     })

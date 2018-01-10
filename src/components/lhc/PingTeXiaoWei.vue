@@ -61,7 +61,8 @@
         data() {
             return {
                 pingTeXiaoWeiList: [],
-				playType: 'normal',
+                maxBallNum: 50,
+                playType: 'normal',
                 shengXiaoList: ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"],
 				myScroll: null
             }
@@ -90,6 +91,7 @@
         created() {
         },
         computed: {
+            //根據本命年算出對應生肖的號碼
             shengXiaoMapNumber() {
                 let getIndex = (item) => {
                     return item == this.currentBaseShengXiao
@@ -98,6 +100,7 @@
                 let index = _.findIndex(this.shengXiaoList, getIndex)
                 return this.computeShengXiaoNum(index + 1)
             },
+			//算出對應的尾數號碼
 			weiNumList() {
                 return this.computeWeiNumList()
 			}
@@ -124,7 +127,7 @@
             },
 			computeWeiNumList() {
                 var res = [[], [], [], [], [], [], [], [], [], []]
-				for (var i = 1; i < 50; i++) {
+				for (var i = 1; i < this.maxBallNum; i++) {
                     if (i < 10)
                     	res[i % 10].push("0" + i)
 					else {

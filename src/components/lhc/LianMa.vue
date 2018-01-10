@@ -92,6 +92,7 @@
             }
         },
         methods: {
+            //三全中，三中二切換
             barChange(index) {
                 this.currentBar = index;
                 this.$emit('lhcclearcnt')
@@ -117,6 +118,7 @@
 
                 return classStr
             },
+			//顯示球號
 			computeNumList() {
                 let res = []
 				for (let i = 1; i <= this.maxBallNum; i++) {
@@ -180,6 +182,7 @@
                     )
                 })
             },
+			//設定選取號碼的上限，組合數計算的基底
             selectLianType(item, parentItem) {
                 let itemInfo = {}
                 itemInfo.limit = this.limitItemNum

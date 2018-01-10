@@ -114,7 +114,7 @@
 		},
 		data() {
             return {
-                groupName: [],
+                groupName: [], //顯示特碼 A 跟 B
                 shengXiaoList: ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"],
                 shengXiaoMapNumber:[],
 				currentGroupIndex: 1011,
@@ -207,10 +207,11 @@
                 if(!this) return ''
 
 				if (this.shengXiaoMapNumber.length > 0) {
-                    var intercount = _.intersection(this.shengXiaoMapNumber[xiao], this.betSelectedList).length
+                    let intercount = _.intersection(this.shengXiaoMapNumber[xiao], this.betSelectedList).length
                     return intercount == this.shengXiaoMapNumber[xiao].length ? 'on' : ''
                 }
             },
+			//特碼 A 跟 B 切換
 			switchPlayGroup(cid) {
                 this.currentGroupIndex = cid;
                 if (cid == 1011)
@@ -245,7 +246,7 @@
 
                     if (baseIndex == 1) {
                         baseIndexList[0] = 0;
-                        for (var i = 11; i >= 1; i--) {
+                        for (let i = 11; i >= 1; i--) {
                             baseIndexList[12 - i] = i
                         }
                     }
@@ -254,30 +255,30 @@
                         baseIndexList[1] = 0;
 
                         j = 11
-                        for (var i = 2; i < 12; i++) {
+                        for (let i = 2; i < 12; i++) {
                             baseIndexList[i] = j
                             j--
                         }
                     }
                     else {
                         if (baseIndex + 1 <= 12) {
-                            var j = 1
-                            for (var i = baseIndex - 1; i >= 0; i--) {
+                            let j = 1
+                            for (let i = baseIndex - 1; i >= 0; i--) {
                                 baseIndexList[i] = j
                                 j++
                             }
                             baseIndexList[baseIndex] = 0
 
                             j = 11
-                            for (var i = baseIndex + 1; i < 12; i++) {
+                            for (let i = baseIndex + 1; i < 12; i++) {
                                 baseIndexList[i] = j
                                 j--
                             }
                         }
                     }
 
-                    for (var i = 1; i < 50; i++) {
-                        for (var j = 0; j < baseIndexList.length; j++) {
+                    for (let i = 1; i < 50; i++) {
+                        for (let j = 0; j < baseIndexList.length; j++) {
                             if (i % 12 == baseIndexList[j]) {
                                 let dataId = ""
                                 let include

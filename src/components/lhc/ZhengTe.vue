@@ -88,6 +88,7 @@
 			}
         },
         methods: {
+            //正一特，正二特切換
 			barChange(index) {
 			    this.currentBar = index;
                 this.$emit('lhcclearbet')

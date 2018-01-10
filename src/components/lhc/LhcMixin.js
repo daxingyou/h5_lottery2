@@ -18,6 +18,7 @@ let LhcMixin = {
         betSelect(item) {
             this.$emit('lhcselectbet', item);
         },
+        //根據本命生肖，算出各生肖對應的號碼
         computeShengXiaoNum(baseIndex, maxBallNum = 50) {
             let res = [[], [], [], [], [], [], [], [], [], [], [], []]
             let baseIndexList = [];

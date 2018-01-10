@@ -96,6 +96,7 @@
                     this.handlePlayList()
                 }
             },
+			//當 betSelectedList 內容變動，檢查是哪一種玩法(五不中，六不中...)，給定玩法 id 跟賠率
             betSelectedList() {
                 let nBetItem = _.size(this.betSelectedList)
                 if (nBetItem < this.minItemNum)

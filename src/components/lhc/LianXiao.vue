@@ -84,6 +84,7 @@
             this.setScrollHeight(true, this.currentBar)
         },
 		computed: {
+            //根據本命年算出對應生肖的號碼
             shengXiaoMapNumber() {
                 let getIndex = (item) => {
                     return item == this.currentBaseShengXiao
@@ -102,6 +103,7 @@
             }
         },
         methods: {
+            //二連肖，三連肖...切換
             barChange(index) {
                 this.currentBar = index;
                 this.$emit('lhcclearcnt')
@@ -118,6 +120,7 @@
 
                 return classStr
             },
+			//處理不同玩法(二連肖，三連肖...)分成本命非本命的賠率
             handlePlayList() {
                 _.forEach((playTreeIndexByCid.get('1111000')).childrens, (item, index) => {
                     let children = []
@@ -176,7 +179,8 @@
                     )
                 })
             },
-			selectLianType(item, parentItem) {
+            //設定選取號碼的上限，組合數計算的基底
+            selectLianType(item, parentItem) {
 				let itemInfo = {}
                 itemInfo.limit = this.limitItemNum
 
