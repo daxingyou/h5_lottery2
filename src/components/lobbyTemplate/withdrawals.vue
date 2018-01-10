@@ -130,7 +130,7 @@ export default {
           var notEnough = (userMoney > this.memBalance )
 
           if(!ifInCorrect){
-             this.hintWord = "请输入正确的存款金额"
+              this.hintWord = "请输入正确的提款金额"
              this.showHint = true;
           }else{
             this.showHint = false;
