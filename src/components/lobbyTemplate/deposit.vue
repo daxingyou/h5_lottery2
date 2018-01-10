@@ -371,6 +371,7 @@
                 href: '',
                 depositPeoplehintWord: '请正确输入',
                 depositPeopleHint: false,
+                bankSubmitAllow: true,
 
             }
         },
@@ -726,12 +727,18 @@
                     url: _self.action.forseti + 'api/payment/incomeBank',
                     data: { },
                     success: function(res){
+
                         if(res.data){
                             _self.userInfo = res.data ;
+                        } else {
+                            this.bankSubmitAllow = false;
+                            console.log(this.bankSubmitAllow, 'allow')
                         }
 
                     },
                     error: function (e) {
+                        this.bankSubmitAllow = false;
+                        console.log(this.bankSubmitAllow, 'allow')
                         _self.errorAction(e) ;
                     }
                 });
@@ -757,6 +764,11 @@
             // 银行转账提交
             submitBankAction:function () {
                 var _self = this ;
+
+                if (this.bankSubmitAllow) {
+                    _self.$refs.autoCloseDialog.open('未获取到您的个人信息');
+                    return false;
+                }
                 if( _self.submitpayunflag){
                     return false ;
                 }
