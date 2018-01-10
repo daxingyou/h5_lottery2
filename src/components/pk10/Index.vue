@@ -53,11 +53,11 @@
                                         <li>{{lastTermStatic.top2_total}}</li>
                                         <li>{{lastTermStatic.top2_sizer}}</li>
                                         <li>{{lastTermStatic.top2_doubler}}</li>
-                                        <li>{{lastTermStatic.lh_5}}</li>
-                                        <li>{{lastTermStatic.lh_4}}</li>
-                                        <li>{{lastTermStatic.lh_3}}</li>
-                                        <li>{{lastTermStatic.lh_2}}</li>
                                         <li>{{lastTermStatic.lh_1}}</li>
+                                        <li>{{lastTermStatic.lh_2}}</li>
+                                        <li>{{lastTermStatic.lh_3}}</li>
+                                        <li>{{lastTermStatic.lh_4}}</li>
+                                        <li>{{lastTermStatic.lh_5}}</li>
 
                                     </ul>
                                 </div>
