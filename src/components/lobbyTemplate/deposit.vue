@@ -144,7 +144,7 @@
                                             </fieldset>
                                         </div>
 
-                                        <div class="bank_account">
+                                        <div class="bank_account" id='bankInforDeposit'>
                                             <h5 class="push-left-tiny">收款账号</h5>
                                             <a class="mini_tip trans_step" href="javascript:;">
                                                 <span class="icon icon_question"></span>转账步骤</a>
@@ -235,8 +235,7 @@
                                             </div>
                                         </div>
                                         <!-- 提交存款成功后 -->
-                                        <div class="after_pay bank_account" id='bankInforDeposit'
-                                             style="display: none ;">
+                                        <div class="after_pay bank_account" style="display: none ;">
                                             <h5>您的存款信息</h5>
                                             <div class="print_data">
                                                 <table>

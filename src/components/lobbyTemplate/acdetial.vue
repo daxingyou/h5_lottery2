@@ -23,8 +23,7 @@
                                 <strong>{{day.pdate}}<!-- 09月14日 --></strong><span></span>
                             </div>
                             <ul class="panel new_panel_center">
-                                <li class="bet_data ac_data" data-status="not_open" v-for="item in day.list"
-                                    v-if="itemShow(item)">
+                                <li class="bet_data ac_data" data-status="not_open" v-for="item in day.list">
                                     <router-link :to="{ name:'acDetailData', params:{ model:item, data:$data} }">
                                        <!-- <div class="prd_num"><span>{{dateFormat(item.createTime, 'yyyy/mm/dd HH:mm') || '1990/1/1 00:00'}}</span></div>-->
                                         
