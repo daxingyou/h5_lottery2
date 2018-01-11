@@ -731,14 +731,14 @@
                         if(res.data){
                             _self.userInfo = res.data ;
                         } else {
-                            this.bankSubmitAllow = false;
-                            console.log(this.bankSubmitAllow, 'allow')
+                            _self.bankSubmitAllow = false;
+                            // console.log(_self.bankSubmitAllow, 'allow')
                         }
 
                     },
                     error: function (e) {
-                        this.bankSubmitAllow = false;
-                        console.log(this.bankSubmitAllow, 'allow')
+                        _self.bankSubmitAllow = false;
+                        // console.log(_self.bankSubmitAllow, 'allow')
                         _self.errorAction(e) ;
                     }
                 });
@@ -764,7 +764,8 @@
             // 银行转账提交
             submitBankAction:function () {
                 var _self = this ;
-                console.log(!(this.bankSubmitAllow), 'allowinfor')
+                // console.log(!(this.bankSubmitAllow), 'allowinfor')
+                // console.log((this.bankSubmitAllow), 'allowinfor2')
 
                 if (!(this.bankSubmitAllow)) {
                     _self.$refs.autoCloseDialog.open('未获取到收款人信息');
