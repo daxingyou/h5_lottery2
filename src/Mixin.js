@@ -852,11 +852,9 @@ var MyMixin = {
                 data: senddata ,
                 success: function(res){
                     console.log(!res.data)
-
                     if (res.data[0]) {
                         if(res.err=="SUCCESS"){
                             _self.copyContent=res.data[0].content;
-
                         }
                     } else {
                         _self.copyContent = res.data[0];
@@ -868,6 +866,8 @@ var MyMixin = {
                 }
             })
         },
+
+
         //试玩
         demoPlay :function () {
             var _self=this;

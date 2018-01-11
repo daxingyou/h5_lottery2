@@ -12,7 +12,7 @@
         <div class="content" id="freshContent">
             <div class="tabset">
                 <!-- Tab 1 -->
-                <input type="radio" name="tabset" id="tab1" aria-controls="agent" @click="gotoTop('xsjc')">
+                <input type="radio" name="tabset" id="tab1" aria-controls="agent" checked @click="gotoTop('xsjc')">
                 <label for="tab1" class="tab1">新手教程</label>
                 <!-- Tab 2 -->
                 <input type="radio" name="tabset" id="tab2" aria-controls="commission" @click="gotoTop('czjc')">
@@ -48,7 +48,7 @@ export default {
   },
     data: function() {
         return {
-            copyTitle:'',
+            copyTitle: '新手教程',
             copyContent: '',
             freshEdu: {},
             depositEdu: {}
