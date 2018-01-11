@@ -232,7 +232,8 @@
                                             <fieldset v-if="!!weiChatObj.ifView">
                                                 <div class="form_g account">
                                                     <legend>微信</legend>
-                                                    <input type="tel" placeholder="请输入微信号" v-model="weiChat" class="weiChat" @input="checkWx(weiChat,'weiChat')">
+                                                    <input type="text" placeholder="请输入微信号" v-model="weiChat"
+                                                           class="weiChat" @input="checkWx(weiChat,'weiChat')">
                                                     <i class="close cs7" @click="ClearInput('cs7','weiChat')"></i>
                                                 </div>
                                                 <label class="error-message"></label>
