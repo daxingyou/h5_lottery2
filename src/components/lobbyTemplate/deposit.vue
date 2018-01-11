@@ -766,7 +766,7 @@
                 var _self = this ;
 
                 if (this.bankSubmitAllow) {
-                    _self.$refs.autoCloseDialog.open('未获取到您的个人信息');
+                    _self.$refs.autoCloseDialog.open('未获取到收款人信息');
                     return false;
                 }
                 if( _self.submitpayunflag){
