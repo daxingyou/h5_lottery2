@@ -1001,7 +1001,6 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 
 .tempWrap {
     width: 100% !important;
-    height: 3.796296rem
 }
 
 .sys-notice { height: .7rem; line-height: .7rem; overflow: hidden; position: relative; width: 100%; }
