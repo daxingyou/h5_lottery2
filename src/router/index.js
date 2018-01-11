@@ -20,6 +20,10 @@ import TjsscIndex from '@/components/cqssc/TianJinIndex'  // 天津时时彩
 import XjsscIndex from '@/components/cqssc/XinJiangIndex'  // 新疆时时彩
 import SecondSsc from '@/components/cqssc/SecondSsc'  // 秒速时时彩
 import MiaoSuK3Index from '@/components/k3/MiaoSuIndex'  // 秒速快3
+import LhcIndex from '@/components/lhc/Index' // 六合彩
+import LhcBetRecord from '@/components/lhc/LhcBetRecord' // 六合彩投注紀錄
+
+
 
 import PastView from '@/components/publicTemplate/PastView'
 import lobbyPastView from '@/components/lobbyPastView'  // 大厅往期开奖
@@ -140,6 +144,11 @@ export default new Router({
         name: 'SecondSsc',
         component: SecondSsc
     },
+      {
+          path: '/lhc',
+          name: 'LhcIndex',
+          component: LhcIndex
+      },
 
 
 
@@ -155,6 +164,9 @@ export default new Router({
     { path: '/lobbyTemplate/acdetial', name:'acdetial', component: acdetial },
     { path: '/lobbyTemplate/about', name:'about', component: about },
     { path: '/lobbyTemplate/tutorial', name:'tutorial', component: tutorial },
+
+      {path: '/lhc/LhcBetRecord', name: 'lhcBetRecord', component: LhcBetRecord},
+
 
     // import acDetailData from '@/components/lobbyTemplate/acDetailData'  // 大厅个人中心 帐户明细
     { path: '/lobbyTemplate/acDetailData', name:'acDetailData', component: acDetailData, props: (route) => ({ 

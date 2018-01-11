@@ -131,6 +131,12 @@ export default {
                     this.timeSpanStr = this.fftime(oDate.hour)+':'+this.fftime(oDate.minute) + ':' + this.fftime(oDate.second); // 开奖倒计时
                     this.overTimeSpanStr = this.fftime(over_oDate.hour)+':'+this.fftime(over_oDate.minute) + ':' + this.fftime(over_oDate.second); // 封盘倒计时
                 }
+                // console.log( oDate.day ,'day')
+                if (oDate.day != 0) {
+                    console.log(22)
+                    this.timeSpanStr = this.fftime(oDate.day) + '天' + this.fftime(oDate.hour) + ':' + this.fftime(oDate.minute) + ':' + this.fftime(oDate.second); // 开奖倒计时
+                    this.overTimeSpanStr = this.fftime(oDate.day) + '天' + this.fftime(over_oDate.hour) + ':' + this.fftime(over_oDate.minute) + ':' + this.fftime(over_oDate.second); // 封盘倒计时
+                }
 
 
             }).bind(this), 1000);

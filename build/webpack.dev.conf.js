@@ -31,6 +31,9 @@ module.exports = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true
     }),
+      new webpack.ProvidePlugin({
+          _: 'lodash',
+      }),
     new FriendlyErrorsPlugin()
   ]
 })

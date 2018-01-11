@@ -1,0 +1,500 @@
+@charset "UTF-8";
+
+/* 上方開獎區 */
+#lhc .so-in-main .so-m-t-left{
+	width: 3.3rem;
+}
+#lhc .so-in-main .so-m-t-left div:first-child{
+	text-align: left;
+	margin-right: inherit;
+	margin-left: .4rem;
+}
+#lhc .so-in-main .so-main-down ul li > p{
+	text-align: left;
+	margin-right: inherit;
+	margin-left: .4rem;
+}
+#lhc .so-in-main .so-m-t-right{
+	width: 6.6rem;
+}
+#lhc .so-in-main .so-m-t-right div:first-child ul{
+	margin-top: .5rem;
+	margin-left: 0;
+}
+#lhc .so-in-main .so-m-t-right div:first-child ul li{
+	transform: scale(0.9);
+	margin-right: 0;
+	margin-top: 0;
+}
+#lhc .so-in-main .so-m-t-right div:last-child ul li{
+	box-shadow: none;
+	border: 0;
+	background-color: transparent;
+	width: .8rem;
+	height: .8rem;
+}
+#lhc .so-in-main .so-m-t-right div:last-child ul li.lhc_ball_plus,
+.past_view .lo_ball > li.lhc_ball_plus{
+	position: relative;
+	display: inline-block;
+	box-shadow: none;
+	border: 0;
+	background-color: transparent;
+	width: .8rem;
+	height: .8rem;
+}
+#lhc .so-in-main .so-m-t-right div:last-child ul li.lhc_ball_plus span,
+.past_view .lo_ball > li.lhc_ball_plus span{
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	display: block;
+	width: .1rem;
+	height: .45rem;
+	background-color: #000;
+}
+#lhc .so-in-main .so-m-t-right div:last-child ul li.lhc_ball_plus span:last-child,
+.past_view .lo_ball > li.lhc_ball_plus span:last-child{
+	width: .45rem;
+	height: .1rem;
+
+}
+/* 上方開獎區 */
+
+/* 特码 */
+#lhc .tab_panel{
+	/*position: fixed;*/
+	position: absolute;
+	width: calc(7.7rem - 1px);
+	margin: 0 auto;
+	/*top: calc( 1.36rem + 2.3rem + 0.8rem );*/
+	top: 0;
+	background-image: url(/static/frist/images/bg.jpg);
+    background-position: top right;
+    background-size: 10rem;
+	right: 0;
+}
+#lhc .bet_panel{
+	width: 7.1rem;
+	padding: inherit;
+}
+.bet_panel .bet_box p .bet-times{
+	/*font-size: .33rem;*/
+	letter-spacing: -.01rem;
+}
+#lhc .bet_panel h2{
+	font-size: .5rem;
+	text-align: center;
+	margin-bottom: .3rem;
+	border-bottom: 1px solid rgba(56,32,30,0.2);
+}
+#lhc ul.lhc_top_tab{
+	position: relative;
+	top: 0;
+	width: 100%; 
+	height: 1.1rem;
+	margin-bottom: .25rem;
+	border-bottom: 1px solid rgba(56,32,30,0.2); 
+	box-sizing: border-box;
+}
+#lhc ul.lhc_top_tab li{
+	float: left;
+	width: 49.9999999999%;
+	height: 1.1rem;
+	line-height: .8rem;
+	border-right: 1px solid rgba(56,32,30,0.2);
+	cursor: pointer; 
+	box-sizing: border-box; 
+	padding: 0.15rem 0.25rem; 
+}
+#lhc ul.lhc_top_tab li:nth-child(2){
+	border-right: 0;
+}
+#lhc ul.lhc_top_tab li.active{
+	position: relative; 
+	/*padding-top: 0.08rem; 
+	padding-bottom: 0.22rem; */
+	background: url('/static/frist/images/lhc_tm_bet_box_selected.jpg') border-box left top; 
+	background-size: 100% 100%; 
+	/*box-shadow: 0px 1px 2px rgba(0, 0, 0,0.65); 
+	-webkit-box-shadow: 0px 2px 1px rgba(0, 0, 0,0.65);*/
+}
+#lhc ul.lhc_top_tab li span{
+	font-size: .45rem;
+}
+
+/* 上方橫式選單 样式微调 */
+#lhc .lhc_tab.hd { position: relative;v/*right: 0.3rem;*/ height: .9rem; width: 7.1rem; overflow: hidden; margin: 0 auto; border-radius: 0.5rem; /*margin-bottom: 1.1rem;*/}
+#lhc .lhc_tab.hd ul.tab_mid { 
+	white-space: nowrap; 
+	width: 100% !important;
+	overflow-y: auto; 
+	/* winphone8和android4+ */ 
+	-webkit-overflow-scrolling: touch; 
+	/* ios5+ */ 
+	position: relative; 
+	top: inherit; 
+	left: inherit; 
+	height: .9rem; 
+}
+#lhc .lhc_tab.hd ul.tab_mid { background-color: #7e5c4c;  }
+#lhc .lhc_tab.hd ul.tab_mid > li { display: inline-block; height: .9rem; width: 1.6rem; padding-top: 0; }
+#lhc .lhc_tab.hd ul.tab_mid > li.on {width: 1.6rem;  margin-left: 0.03rem; background-color: #4b280c; border-radius: 0.5rem;}
+#lhc .lhc_tab.hd ul.tab_mid > li.on:after { display: none;}
+#lhc .lhc_tab.hd ul.tab_mid > li > a { height: .9rem; line-height: .9rem; color: #ffc388;}
+#lhc .lhc_tab.hd ul.tab_mid > li.on a{  color: #fea832; }
+
+#lhc .lhc_tab.tab_short{
+	width: 6.4rem;
+}
+/* 上方橫式選單 样式微调 */
+
+/* 號碼木框 样式微调 */
+#lhc .so-con-span-short{
+	padding: 0.25rem 0.1rem 0.1rem;
+	height: 1.3rem;
+}
+#lhc .so-con-span-short.active{
+	padding-top: .15rem;
+}
+#lhc .bet_box p.so-con-span-short:nth-child(3n){
+	margin-right: 0;
+}
+#lhc .bet_box p{
+	height: 1.3rem;
+}
+
+#lhc p.so-con-span-short-4x{
+	position: relative;
+	width: 23.333%;
+    margin-right: 2.2%;
+	padding: 0.25rem;
+	height: 1.1rem;
+}
+#lhc .so-con-span-short-4x.active{
+	padding-top: .15rem;
+	background: url('/static/frist/images/lhc_bet_box_4x_selected.png') border-box left top; 
+	background-size: 100% 100%; 
+}
+#lhc .so-con-span-short-4x.active > span{
+	bottom: .05rem;
+}
+#lhc .so-con-span-short-4x > span{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+#lhc .bet_box p.so-con-span-short-4x:nth-child(4n){
+	margin-right: 0;
+}
+/* 號碼木框 样式微调 */
+
+/* 特碼tema 样式微调 */
+#lhc .tema #scroller{
+	position: relative;
+	margin-top: 2.5rem;
+    overflow: hidden;
+}
+
+#lhc .tab_container{
+	/*padding-top: 2.3rem;*/
+}
+
+#lhc .so-con-right{
+	position: absolute;
+}
+
+.lhc_ball{
+	background: url(/static/frist/images/lhc_ball.png) no-repeat;
+    background-size: 8rem 4rem;
+    display: inline-block;
+    width: .8rem;
+    height: .8rem;
+    line-height: .8rem;
+    font-size: 0.6rem;
+    text-align: center;
+    overflow: hidden;
+    text-indent: -2rem;
+}
+.lhc_ball.num_01{}
+.lhc_ball.num_02{
+	background-position-x: -.8rem;
+}
+.lhc_ball.num_03{
+	background-position-x: -1.6rem;
+}
+.lhc_ball.num_04{
+	background-position-x: -2.4rem;
+}
+.lhc_ball.num_05{
+	background-position-x: -3.2rem;
+}
+.lhc_ball.num_06{
+	background-position-x: -4rem;
+}
+.lhc_ball.num_07{
+	background-position-x: -4.8rem;
+}
+.lhc_ball.num_08{
+	background-position-x: -5.6rem;
+}
+.lhc_ball.num_09{
+	background-position-x: -6.4rem;
+}
+.lhc_ball.num_10{
+	background-position-x: -7.2rem;
+}
+.lhc_ball.num_11{
+	background-position-y: -.8rem;
+}
+.lhc_ball.num_12{
+	background-position-x: -.8rem;
+	background-position-y: -.8rem;
+}
+.lhc_ball.num_13{
+	background-position-x: -1.6rem;
+	background-position-y: -.8rem;
+}
+.lhc_ball.num_14{
+	background-position-x: -2.4rem;
+	background-position-y: -.8rem;
+}
+.lhc_ball.num_15{
+	background-position-x: -3.2rem;
+	background-position-y: -.8rem;
+}
+.lhc_ball.num_16{
+	background-position-x: -4rem;
+	background-position-y: -.8rem;
+}
+.lhc_ball.num_17{
+	background-position-x: -4.8rem;
+	background-position-y: -.8rem;
+}
+.lhc_ball.num_18{
+	background-position-x: -5.6rem;
+	background-position-y: -.8rem;
+}
+.lhc_ball.num_19{
+	background-position-x: -6.4rem;
+	background-position-y: -.8rem;
+}
+.lhc_ball.num_20{
+	background-position-x: -7.2rem;
+	background-position-y: -.8rem;
+}
+.lhc_ball.num_21{
+	background-position-y: -1.6rem;
+}
+.lhc_ball.num_22{
+	background-position-x: -.8rem;
+	background-position-y: -1.6rem;
+}
+.lhc_ball.num_23{
+	background-position-x: -1.6rem;
+	background-position-y: -1.6rem;
+}
+.lhc_ball.num_24{
+	background-position-x: -2.4rem;
+	background-position-y: -1.6rem;
+}
+.lhc_ball.num_25{
+	background-position-x: -3.2rem;
+	background-position-y: -1.6rem;
+}
+.lhc_ball.num_26{
+	background-position-x: -4rem;
+	background-position-y: -1.6rem;
+}
+.lhc_ball.num_27{
+	background-position-x: -4.8rem;
+	background-position-y: -1.6rem;
+}
+.lhc_ball.num_28{
+	background-position-x: -5.6rem;
+	background-position-y: -1.6rem;
+}
+.lhc_ball.num_29{
+	background-position-x: -6.4rem;
+	background-position-y: -1.6rem;
+}
+.lhc_ball.num_30{
+	background-position-x: -7.2rem;
+	background-position-y: -1.6rem;
+}
+.lhc_ball.num_31{
+	background-position-y: -2.4rem;
+}
+.lhc_ball.num_32{
+	background-position-x: -.8rem;
+	background-position-y: -2.4rem;
+}
+.lhc_ball.num_33{
+	background-position-x: -1.6rem;
+	background-position-y: -2.4rem;
+}
+.lhc_ball.num_34{
+	background-position-x: -2.4rem;
+	background-position-y: -2.4rem;
+}
+.lhc_ball.num_35{
+	background-position-x: -3.2rem;
+	background-position-y: -2.4rem;
+}
+.lhc_ball.num_36{
+	background-position-x: -4rem;
+	background-position-y: -2.4rem;
+}
+.lhc_ball.num_37{
+	background-position-x: -4.8rem;
+	background-position-y: -2.4rem;
+}
+.lhc_ball.num_38{
+	background-position-x: -5.6rem;
+	background-position-y: -2.4rem;
+}
+.lhc_ball.num_39{
+	background-position-x: -6.4rem;
+	background-position-y: -2.4rem;
+}
+.lhc_ball.num_40{
+	background-position-x: -7.2rem;
+	background-position-y: -2.4rem;
+}
+.lhc_ball.num_41{
+	background-position-y: -3.2rem;
+}
+.lhc_ball.num_42{
+	background-position-x: -.8rem;
+	background-position-y: -3.2rem;
+}
+.lhc_ball.num_43{
+	background-position-x: -1.6rem;
+	background-position-y: -3.2rem;
+}
+.lhc_ball.num_44{
+	background-position-x: -2.4rem;
+	background-position-y: -3.2rem;
+}
+.lhc_ball.num_45{
+	background-position-x: -3.2rem;
+	background-position-y: -3.2rem;
+}
+.lhc_ball.num_46{
+	background-position-x: -4rem;
+	background-position-y: -3.2rem;
+}
+.lhc_ball.num_47{
+	background-position-x: -4.8rem;
+	background-position-y: -3.2rem;
+}
+.lhc_ball.num_48{
+	background-position-x: -5.6rem;
+	background-position-y: -3.2rem;
+}
+.lhc_ball.num_49{
+	background-position-x: -6.4rem;
+	background-position-y: -3.2rem;
+}
+/* 特码 */
+
+/* 正码1-6 样式微调 */
+#lhc .bet_lm_noname{
+	margin-top: .3rem;
+}
+/* 正码1-6 样式微调 */
+
+
+/*正特 ZhengTe 样式微调*/
+#lhc .zhengte .tab_panel{
+	padding-top: .2rem;
+
+}
+#lhc .zhengte #scroller{
+	position: relative;
+	margin-top: 1.3rem;
+    overflow: hidden;
+}
+/*正特 ZhengTe 样式微调*/
+
+/*正特 ZhengTe 样式微调*/
+#lhc .lianma .tab_panel{
+	padding-top: .2rem;
+
+}
+#lhc .lianma #scroller{
+	position: relative;
+	margin-top: 1.3rem;
+    overflow: hidden;
+}
+/*正特 ZhengTe 样式微调*/
+
+/*特码头尾 TeMaTouWei 样式微调*/
+#lhc .so-con-span-long{
+	padding: 0.25rem 0.1rem 0.1rem;
+	height: 1.3rem;
+
+	float: none;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 0.3rem;
+    border: solid 1px #4b280c;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 0.15rem 0.25rem;
+    border-radius: 0.16rem;
+}
+#lhc .so-con-span-long.active{
+	padding-top: .15rem;
+	background: url(/static/frist/images/lhc_bet_box_selected-l.png) border-box center center;
+    background-size: 100% 100%;
+    border-color: transparent;
+    position: relative;
+    border: 0;
+}
+#lhc .so-con-span-long .bet-times{
+	float: left;
+	margin-left: .2rem;
+}
+#lhc .so-con-span-long .num_group{
+	float: right;
+}
+/*特码头尾 TeMaTouWei 样式微调*/
+
+/*连肖 LianXiao 样式微调*/
+#lhc .lianxiao .tab_panel{
+	padding-top: .2rem;
+
+}
+#lhc .lianxiao #scroller{
+	position: relative;
+	margin-top: 1.3rem;
+    overflow: hidden;
+}
+/*连肖 LianXiao 样式微调*/
+
+/*连尾 LianWei 样式微调*/
+#lhc .lianwei .tab_panel{
+	padding-top: .2rem;
+
+}
+#lhc .lianwei #scroller{
+	position: relative;
+	margin-top: 1.3rem;
+    overflow: hidden;
+}
+/*连尾 LianWei 样式微调*/
+.bet_panel h2 .bet-times{
+	position: absolute;
+	font-size: .35rem;
+	left: .3rem;
+}
+.bet_panel h2 .bet-times span{
+	color: #b41a17;
+}

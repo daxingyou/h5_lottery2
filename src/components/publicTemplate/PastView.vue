@@ -57,6 +57,8 @@
                                             <li>{{list.doubleData.lh_5}}</li>
 
                                         </ul>
+                                        <ul class="double-count" v-else-if="(lotteryid == '10')"> <!-- 上面一排数据 -->
+                                        </ul>
                                         <ul class="double-count" v-else>
                                             <li>{{list.doubleData.total}}</li>
                                             <li>{{list.doubleData.sizer}}</li>
@@ -73,6 +75,16 @@
                                            <!-- <span class="pk10_ball" :class="'num_'+listnum"></span>-->
                                         </li>
                                     </ul>
+                                    <!-- 六合彩 -->
+                                    <ul class="new_panel_center lo_ball double-numbers lhc_winNumber_paner"  v-else-if="(list.lotteryId == '10')">
+                                        <li v-for="(listnum, index) in list.winNumber.split(',')" :class="listnum < 10?'lhc_ball lhc_ball_b num_0'+ listnum : 'lhc_ball lhc_ball_b num_' + listnum" v-if="index < 6">{{listnum}}</li>
+                                        <li class="lhc_ball_plus lhc_ball_plus_w">
+                                            <span></span>
+                                            <span></span>
+                                        </li>
+                                        <li v-for="(listnum, index) in list.winNumber.split(',')" :class="listnum < 10?'lhc_ball lhc_ball_b num_0'+ listnum : 'lhc_ball lhc_ball_b num_' + listnum" v-if="index == 6">{{listnum}}</li>
+                                    </ul>
+                                    <!-- 六合彩 -->
                                     <ul class="new_panel_center lo_ball double-numbers"  v-else>
                                         <li v-for="listnum in list.winNumber.split(',')" :class="'active round_ball num_'+listnum">{{listnum}}</li>
                                     </ul>
@@ -85,12 +97,8 @@
         </div>
         <footer id="pa_foot"></footer>
         <div class="so-shade"></div>
-
-
     </div>
 </template>
-
-
 
 <script>
 import Mixin from '@/Mixin'
@@ -129,9 +137,8 @@ export default {
               '20':'k3',
               '22':'k3'
               } ,
-            gamechoose :[
-               
-                 {id:'2','name':'重庆时时彩'} ,
+            gamechoose: [
+                {id: '2', 'name': '重庆时时彩'},
                 {id:'102','name':'秒速时时彩'} ,
                 {id:'14','name':'新疆时时彩'} ,
                 {id:'108','name':'秒速赛车'},
@@ -145,6 +152,7 @@ export default {
                 {id:'6','name':'江苏快3'} ,
                 {id:'22','name':'湖北快3'} ,
                 {id:'20','name':'安徽快3'} ,
+                {id: '10', 'name': '香港六合彩'},
             ],
         }
     },

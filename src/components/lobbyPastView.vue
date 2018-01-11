@@ -35,8 +35,16 @@
                                     </li>
                                 </ul>
 
+
                                 <ul class="new_panel_center lo_ball" v-else>
-                                    <li v-for="listnum in list.winNumber.split(',')" :class="'round_ball active num_'+ listnum ">{{listnum}}</li>
+                                    <li v-if="(list.lotteryId != '10')" v-for="listnum in list.winNumber.split(',')"
+                                        :class="'round_ball active num_'+ listnum ">{{listnum}}
+                                    </li>
+
+                                    <li v-if="(list.lotteryId == '10')" v-for="listnum in list.winNumber.split(',')"
+                                        :class=" listnum < 10?'lhc_ball lhc_ball_b num_0'+ listnum : 'lhc_ball lhc_ball_b num_' + listnum  ">
+                                        {{listnum}}
+                                    </li>
                                 </ul>
 
                                 <div class="function_btn">
@@ -102,6 +110,7 @@ export default {
                 "20":"k3/anHuiK3Index",
                 "22":"k3/huBeiK3Index",
                 "106":"k3/miaoSuK3Index",  // 秒速k3
+                "10": "lhc",  // 秒速k3
 
             }, // 对应彩种的id
             gameName : {
@@ -119,6 +128,7 @@ export default {
                 "20":"安徽快3",
                 "22":"湖北快3",
                 "106":"秒速快3",
+                "10": "香港六合彩",
 
             }, // 对应彩种的名称
 

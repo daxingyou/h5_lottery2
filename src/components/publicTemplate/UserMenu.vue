@@ -11,7 +11,7 @@
             <div class="right_menu_box" v-if="show">
                 <ul class="right_menu">
                     <li class="r_record">
-                        <router-link to="/publicTemplate/betRecord">
+                        <router-link :to="(lotteryid =='10') ? '/lhc/LhcBetRecord' : '/publicTemplate/betRecord'">
                             <p><span class="icon icon_r_record"></span>投注记录</p>
                         </router-link>
                     </li>
@@ -25,7 +25,7 @@
                             <p>路珠</p>
                         </router-link>
                     </li>-->
-                    <li class="r_roadbeads" >
+                    <li class="r_roadbeads" v-if="lotteryid != '10'">
                         <router-link to="/publicTemplate/roadBeads">
                             <p><span class="icon icon_r_roadbeads"></span>路珠</p>
                         </router-link>
@@ -41,19 +41,20 @@
                     </li>
                     <li class="r_today">
                         <!-- <img src="/static/frist/images/right/6.png"> -->
-                        <p><span class="icon icon_w_record"></span>今日输赢</p>
+                        <p v-if="lotteryid == 10">
+                            <span class="icon icon_w_record"></span>本周输赢
+                        </p>
+                        <p v-else>
+                            <span class="icon icon_w_record"></span>今日输赢
+                        </p>
                        <!-- <div :class="'today_payoff '+ (payoff>=0?' win_payoff':'lose_payoff')">({{(payoff>=0?'+':'')}}{{fortMoney(roundAmt(payoff))}})</div>-->
                         <div class="today_payoff win_payoff" v-if="payoff>=0">+{{fortMoney(roundAmt(payoff))}}</div>
                         <div class="today_payoff lose_payoff" v-else>-{{fortMoney(roundAmt(payoff).toString().replace(/-/g,''))}}</div>
-
                     </li>
                 </ul>
-
             </div>
         </div>
     </div>
-    
-
 </template>
 
 
