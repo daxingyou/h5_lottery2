@@ -55,20 +55,8 @@ export default {
         }
     },
   mounted:function() {
-      $('html,body').css('overflow-y','scroll' )  ;
-      //scrollTo(0,0); // 回到顶部
-      // document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
-      // this.getCopyright('1','BT01')
-      // this. getCopyright('1','BT05')
-      // console.log( localStorage.getItem( 'freshEducationBT01' ) ,'j1')
-      // console.log( localStorage.getItem( 'freshEducationBT05' ) ,'j5')
-      this.freshEdu = JSON.parse(localStorage.getItem('freshEducationBT01'))
-
-      this.depositEdu = JSON.parse(localStorage.getItem('freshEducationBT05'))
-      this.copyContent = this.freshEdu.copyContent
-      // console.log( this.freshEdu ,'obj1')
-      // console.log( this.depositEdu ,'obj5')
-
+      $('html,body').css('overflow-y', 'scroll');
+      this.getCopyright('1', 'BT01')
   },
     watch: {
         copyContent: function () {
@@ -79,15 +67,12 @@ export default {
       gotoTop: function (name) {
           //scrollTo(0,0);
           if (name == 'xsjc') {
-              this.copyContent = this.freshEdu.copyContent
-              // console.log( this.copyContent ,'copyContent99')
+              this.getCopyright('1', 'BT01')
           }
           if (name == 'czjc') {
-              this.copyContent = this.depositEdu.copyContent
-              // console.log( this.copyContent ,'copyContent98')
+              this.getCopyright('1', 'BT05')
 
           }
-          // document.documentElement.scrollTop = document.body.scrollTop = 0; // 回到顶部
       },
 }
 

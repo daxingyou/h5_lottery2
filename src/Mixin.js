@@ -851,19 +851,16 @@ var MyMixin = {
                 url: _self.action.forseti + 'apid/cms/copyright',
                 data: senddata ,
                 success: function(res){
-                    var wordObj = {}
-                    if(res.data){
-                        if(res.err=="SUCCESS"){
-                            _self.copyTitle=res.data[0].title;
-                            _self.copyContent=res.data[0].content;
-                            wordObj.copyTitle = _self.copyTitle;
-                            wordObj.copyContent = _self.copyContent;
+                    console.log(!res.data)
 
-                            var freshEducation = 'freshEducation' + code
-                            // console.log( wordObj ,'2')
-                            // console.log( freshEducation ,'name')
-                            localStorage.setItem(freshEducation, JSON.stringify(wordObj))
+                    if (res.data[0]) {
+                        if(res.err=="SUCCESS"){
+                            _self.copyContent=res.data[0].content;
+
                         }
+                    } else {
+                        _self.copyContent = res.data[0];
+
                     }
                 },
                 error: function (res) {
