@@ -999,7 +999,10 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 .marquee > .news_title > span { display: inline-block; line-height: .7rem; height: .7rem; vertical-align: middle; }
 .marquee > .news_marque { line-height: .7rem; height: .7rem; overflow: hidden; }
 
-.tempWrap { width: 100% !important; }
+.tempWrap {
+    width: 100% !important;
+    height: 3.796296rem
+}
 
 .sys-notice { height: .7rem; line-height: .7rem; overflow: hidden; position: relative; width: 100%; }
 .sys-notice .bd { line-height: .7rem; height: .7rem; width: 7.7rem; margin-left:2.6rem;}

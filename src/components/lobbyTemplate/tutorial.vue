@@ -172,9 +172,7 @@ export default {
 }
 </script>
 <style>
-    strong{
-        color:#b41a17;
-    }
+
 
     #freshContent {
         margin-top: 1.37rem;
@@ -183,9 +181,18 @@ export default {
     #freshContent .tab-panels {
         padding: 10px 5%;
     }
-
     #freshContent .tab-panels p {
         line-height: 30px;
+        margin: .5rem 0;
     }
 
+    #freshContent .tab-panels p strong {
+        display: block;
+        color: #b41a17;
+    }
+
+    #freshContent .tab-panels p span {
+        display: block;
+        text-indent: 0.5em;
+    }
 </style>
