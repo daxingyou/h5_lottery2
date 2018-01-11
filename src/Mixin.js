@@ -851,11 +851,14 @@ var MyMixin = {
                 url: _self.action.forseti + 'apid/cms/copyright',
                 data: senddata ,
                 success: function(res){
-                    if(res.data){
+                    console.log(!res.data)
+                    if (res.data[0]) {
                         if(res.err=="SUCCESS"){
-                            _self.copyTitle=res.data[0].title;
                             _self.copyContent=res.data[0].content;
                         }
+                    } else {
+                        _self.copyContent = res.data[0];
+
                     }
                 },
                 error: function (res) {
@@ -863,6 +866,8 @@ var MyMixin = {
                 }
             })
         },
+
+
         //试玩
         demoPlay :function () {
             var _self=this;

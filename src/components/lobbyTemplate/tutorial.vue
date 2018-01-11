@@ -9,40 +9,22 @@
             <h2 class="center title_name">{{copyTitle}}</h2>
             <div class="right"></div>
         </header>
-        <div class="content">
-            <div v-html="copyContent" class="about_area">
-                <!--<p><strong >一、注册与登陆</strong></p>-->
-                <!--<p> 为感谢广大玩家长期以来对《百乐彩》的支持，本平台特为-->
-                    <!--广大玩家举行网银、微信、支付宝冲10送10活动。</p>-->
-                <!--<p><strong>二、游戏玩法</strong></p>-->
-                <!--<p>为感谢广大玩家长期以来对《百乐彩》的支持，本平台特为-->
-                    <!--广大玩家举行移动、联通、电信充值卡、盛大卡冲10送3活-->
-                    <!--动。</p>-->
+        <div class="content" id="freshContent">
+            <div class="tabset">
+                <!-- Tab 1 -->
+                <input type="radio" name="tabset" id="tab1" aria-controls="agent" checked @click="gotoTop('xsjc')">
+                <label for="tab1" class="tab1">新手教程</label>
+                <!-- Tab 2 -->
+                <input type="radio" name="tabset" id="tab2" aria-controls="commission" @click="gotoTop('czjc')">
+                <label for="tab2" class="tab2">充值教程</label>
+                <!-- Tab 3 -->
 
-                <!--<p>  活动时间：2017.12.17【00:00】~2016.12.17【24:00】</p>-->
+                <div class="tab-box">
+                    <section class="tab-panels" v-html="copyContent">
 
-                <!--<p>  活动内容：活动期间使用移动、联通、电信充值卡、盛大卡-->
-                    <!--进行充值，充值成功后除了获得相应数量的金豆外，还会获-->
-                    <!--赠额外的银豆。赠送比例30%！例：充值10元可得10金豆-->
-                    <!--和额外赠送的30000银豆。</p>-->
+                    </section>
+                </div>
 
-                <!--<p>  注意：本平台为绿色休闲娱乐平台，严禁以各种方式倒卖游-->
-                    <!--戏币，一旦发现将做封号处理，希望广大玩家配合监督，谢-->
-                    <!--谢支持。</p>-->
-                <!--<p><strong>三、开奖方式</strong></p>-->
-                <!--<p>为感谢广大玩家长期以来对《百乐彩》的支持，本平台特为-->
-                    <!--广大玩家举行移动、联通、电信充值卡、盛大卡冲10送3活-->
-                    <!--动。</p>-->
-
-                <!--<p> 活动时间：2017.12.17【00:00】~2016.12.17【24:00】</p>-->
-
-                   <!--<p> 活动内容：活动期间使用移动、联通、电信充值卡、盛大卡-->
-                    <!--进行充值，充值成功后除了获得相应数量的金豆外，还会获-->
-                    <!--赠额外的银豆。赠送比例30%！例：充值10元可得10金豆-->
-                       <!--和额外赠送的30000银豆。</p>-->
-
-                    <!--<p>注意：本平台为绿色休闲娱乐平台，严禁以各种方式倒卖游-->
-                    <!--戏币，一旦发现将做封号处理，希望广大玩家配合监督，谢谢</p>-->
             </div>
         </div>
 
@@ -66,24 +48,63 @@ export default {
   },
     data: function() {
         return {
-            copyTitle:'',
-            copyContent:''
+            copyTitle: '新手教程',
+            copyContent: '',
+            freshEdu: {},
+            depositEdu: {}
         }
     },
   mounted:function() {
-      $('html,body').css('overflow-y','scroll' )  ;
-      //scrollTo(0,0); // 回到顶部
-      document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
-      this. getCopyright('1','BT01')
+      $('html,body').css('overflow-y', 'scroll');
+      this.getCopyright('1', 'BT01')
   },
+    watch: {
+        copyContent: function () {
+            console.log(0)
+        }
+    },
   methods: {
+      gotoTop: function (name) {
+          //scrollTo(0,0);
+          if (name == 'xsjc') {
+              this.getCopyright('1', 'BT01')
+          }
+          if (name == 'czjc') {
+              this.getCopyright('1', 'BT05')
 
+          }
+      },
 }
 
 }
 </script>
 <style>
-    strong{
-        color:#b41a17;
+
+
+    #freshContent {
+        margin-top: 1.37rem;
+    }
+
+    #freshContent .tab-panels {
+        padding: 10px 5%;
+    }
+    #freshContent .tab-panels p {
+        line-height: 30px;
+        margin: .5rem 0;
+        text-align: left;
+    }
+
+    #freshContent .tab-panels p strong {
+        display: block;
+        color: #b41a17;
+        text-align: left;
+
+    }
+
+    #freshContent .tab-panels p span {
+        display: block;
+        text-indent: 0.5em;
+        text-align: left;
+
     }
 </style>

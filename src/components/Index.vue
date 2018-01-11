@@ -178,7 +178,8 @@
                           <router-link class="icon_agent" :to="'/lobbyTemplate/agent'"><span class="icon_account icon_join_2"></span><span>代理加盟</span></router-link>
                       </li>
                       <li>
-                          <router-link class="icon_about"  :to="'/lobbyTemplate/about'"><span class="icon_account icon_join_3"></span><span>关於我们</span></router-link>
+                          <router-link class="icon_about" :to="'/lobbyTemplate/about'"><span
+                                  class="icon_account icon_join_3"></span><span>关于我们</span></router-link>
                       </li>
                   </ul>
               </div>
@@ -273,7 +274,7 @@ export default {
        this.carouselImg();
        this.getActivity();
        this.getCustom()
-        this.getAppUrl()
+        this.getAppUrl()      
 
   },
     methods:{
@@ -411,12 +412,12 @@ export default {
       //轮播图接口
       carouselImg:function () {
            var _self=this;
-          if (!sessionStorage.carouselList) {
               $.ajax({
                   type: 'get',
                   url: _self.action.forseti + 'apid/cms/carousel',
                   data: {},
                   success: (res) => {
+
                       sessionStorage.carouselList = JSON.stringify(res.data.itemPO)
 
                       if (res.data.itemPO) {
@@ -425,10 +426,12 @@ export default {
                               res.data.itemPO[i].titlePic = _self.action.picurl + res.data.itemPO[i].titlePic + '/0';
                           }
                           _self.banner = res.data.itemPO;
+                          var delay = res.data.delayTime * 1000
                           _self.$nextTick(function () {
                               TouchSlide({
                                   slideCell: "#focus",
                                   autoPlay: true,
+                                  interTime: delay,
                               });
                           });
                       }
@@ -439,21 +442,6 @@ export default {
                   }
               })
 
-          } else {
-              _self.corroleDataList = JSON.parse(sessionStorage.carouselList);
-              // console.log(  _self.corroleDataList , 'img')
-              var len = _self.corroleDataList.length;
-              for (var i = 0; i < len; i++) {
-                  _self.corroleDataList[i].titlePic = _self.action.picurl + _self.corroleDataList[i].titlePic + '/0';
-              }
-              _self.banner = _self.corroleDataList;
-              _self.$nextTick(function () {
-                  TouchSlide({
-                      slideCell: "#focus",
-                      autoPlay: true,
-                  });
-              });
-          }
 
        },
       //获得优惠活动接口

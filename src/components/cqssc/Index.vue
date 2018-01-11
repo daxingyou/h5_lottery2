@@ -310,6 +310,9 @@ export default {
         this.balancePublic = afterBetCookie
         // console.log( this.balancePublic )      
     },
+      bgFocus: function () {
+          this.$store.commit('Number')
+      },
     switchTab:function(e){
         var _self = this ;
         const $src = $(e.currentTarget);

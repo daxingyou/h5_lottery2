@@ -305,6 +305,9 @@
                 this.balancePublic = afterBetCookie
                  // console.log(afterBetCookie)
             },
+              bgFocus: function () {
+                  this.$store.commit('Number')
+              },
 
             betCountStat:function(xslen, xlen){
                 return  xslen*((xslen-1)/xlen);

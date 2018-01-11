@@ -999,7 +999,9 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 .marquee > .news_title > span { display: inline-block; line-height: .7rem; height: .7rem; vertical-align: middle; }
 .marquee > .news_marque { line-height: .7rem; height: .7rem; overflow: hidden; }
 
-.tempWrap { width: 100% !important; }
+.tempWrap {
+    width: 100% !important;
+}
 
 .sys-notice { height: .7rem; line-height: .7rem; overflow: hidden; position: relative; width: 100%; }
 .sys-notice .bd { line-height: .7rem; height: .7rem; width: 7.7rem; margin-left:2.6rem;}
@@ -1244,6 +1246,10 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 .print_data table tr th li { list-style: none; margin-left: .5em; position: relative; width: 1.5rem; font-size: .35rem;  }
 .print_data table tr td { text-align: left; padding-left: 1em; color: #d59559; word-break: break-all; line-height: 2em; width: 11rem; font-size: .35rem; }
 .print_data table tr td.text-yellow { color: #ffbd00; }
+
+#bankInforDeposit .print_data table tr td:last-of-type {
+    width: 2rem
+}
 
 .print_data .copy_link { color: #d59559; text-align: center; display: inline-block; border: 1px solid #90573e; margin: 0.3rem auto ;  border-radius: 0.5rem; padding: .15rem .5rem 0.1rem; font-size: .34rem; vertical-align: middle; }
 

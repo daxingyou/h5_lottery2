@@ -66,6 +66,9 @@
 <script>
 import Mixin from '@/Mixin'
 // import $ from "jquery";
+// import store from './../../_vuex/store'
+import {mapState, mapGetters} from 'vuex'
+
 
 export default {
     name: 'Bet',
@@ -95,7 +98,7 @@ export default {
             }
         },
         totalAmount:function(){
-            if (this.playType == 'grouped'){
+            if (this.playType == 'grouped') {
                 return this.betCount * this.betAmount
             }else if (this.playType == 'combine') {
                 return this.betAmount;
@@ -104,10 +107,19 @@ export default {
             }else{
                 return this.betSelectedList.length * this.betAmount
             }
+        },
+        foc: function () {
+            this.focuFirst()
+            return this.$store.state.foc
+        }
+    },
+
+    watch: {
+        foc: function () {
         }
     },
     mounted:function(){
-        console.log( this.balance )
+        this.focuFirst()
     },
     methods:{
         /*
@@ -121,12 +133,20 @@ export default {
             this.showList = false;
         },
 
+        focuFirst: function () {
+            var betF = $('.bet-amount').html()
+            if (!betF) {
+                // $('.bet-amount').focus();
+                console.log('')
+            }
+
+        },
+
         /*
         * 表单提交，下注接口,lotteryid 彩种id
         * */
 
         submitAction:function(lotteryid) {
-        // console.log( this.balance )
 
 
 
@@ -188,20 +208,14 @@ export default {
                     if (data.err == 'SUCCESS') {  //购买成功
                        
                         this.ajaxSubmitAllow = false ;     //解决瞬间提交2次的问题
-                        // initTipPop05(true,3) ;
                         // this.parentRefs.autoCloseDialog.open('购买成功')
                         this.parentRefs.betSuccessfulDialog.open('购买成功')
                         this.resetAction('1') ;  // 下注成功不清空金额
                         that.getMemberBalance() ; // 更新余额
-                        // console.log(total_mon)
                         that.getCookie( 'balancePublic' )
-                        // console.log(that.getCookie( 'balancePublic' ) )
                         var x = Number(that.getCookie( 'balancePublic' ) )  - Number(total_mon)
-                         // console.log( x+ 'ch') ;
                          that.setCookie("balancePublic",x);
                          this.$emit('refreshBalance') ;
-                         console.log('abstract')
-                        // console.log(that.balancePublic)                        
 
                         return false;
                     } else {  //购买失败提示

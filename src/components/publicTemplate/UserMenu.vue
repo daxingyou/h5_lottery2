@@ -59,6 +59,8 @@
 
 <script>
 import Mixin from '@/Mixin'
+import store from './../../_vuex/store'
+
 // import $ from "jquery";
 
 export default {
@@ -83,6 +85,8 @@ export default {
     },
     close:function(e){
       this.show = false;
+        this.$store.commit('Number')
+
     }
   },
 

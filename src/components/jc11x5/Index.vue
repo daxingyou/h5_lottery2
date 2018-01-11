@@ -85,7 +85,7 @@
 
                         </ul>
                     </div>
-                <div class="body_bg" > </div>
+                <div class="body_bg"></div>
                 <div  id="content-wrapper">
                     <div class="so-con-right " >  <!-- body_bg -->
                          <div id="scroller"  class="scroller" >
@@ -390,6 +390,9 @@
             betCountStat:function(xslen, xlen){
                 return  xslen*((xslen-1)/xlen);
             },
+              bgFocus: function () {
+                  this.$store.commit('Number')
+              },
             subTabChange:function(e, kind,index){
                   var $src = $(e.currentTarget);
                   $src.addClass('on').siblings().removeClass('on');

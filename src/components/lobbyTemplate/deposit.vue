@@ -144,7 +144,7 @@
                                             </fieldset>
                                         </div>
 
-                                        <div class="bank_account">
+                                        <div class="bank_account" id='bankInforDeposit'>
                                             <h5 class="push-left-tiny">收款账号</h5>
                                             <a class="mini_tip trans_step" href="javascript:;">
                                                 <span class="icon icon_question"></span>转账步骤</a>
@@ -156,31 +156,43 @@
                                                             <li>银行名称</li>
                                                         </th>
                                                         <td>{{userInfo.bankName}}</td>
+                                                        <td :data-clipboard-text='userInfo.bankName' class="text_name"
+                                                            @click='copyName($event)'>复制
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <th>
                                                             <li>收款人</li>
                                                         </th>
                                                         <td>{{userInfo.cardOwnerName}}</td>
+                                                        <td :data-clipboard-text='userInfo.cardOwnerName'
+                                                            class="text_people" @click='copyName($event)'>复制
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <th>
                                                             <li>开户行</li>
                                                         </th>
                                                         <td>{{userInfo.registerBankInfo}}</td>
+                                                        <td :data-clipboard-text='userInfo.registerBankInfo'
+                                                            class="text_bank" @click='copyName($event)'>复制
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <th>
                                                             <li>银行账号</li>
                                                         </th>
                                                         <td>{{userInfo.cardNo}}</td>
+                                                        <td :data-clipboard-text='userInfo.cardNo' class="text_count"
+                                                            @click='copyName($event)'>复制
+                                                        </td>
                                                     </tr>
                                                     </thead>
                                                 </table>
-                                                <a class="copy_link js-textareacopybtn copy-text" href="javascript:;"  @click="copyText()"
-                                                   :data-clipboard-text="'银行名称：'+userInfo.bankName+' 收款人：'+userInfo.cardOwnerName +' 开户行：'+userInfo.registerBankInfo +' 银行账号：'+userInfo.cardNo"
-                                                >
-                                                    <span class="icon icon_copy"></span>复制该信息</a>
+                                                <!--  <a class="copy_link js-textareacopybtn copy-text" href="javascript:;"  @click="copyText()"
+                                                    :data-clipboard-text="'银行名称：'+userInfo.bankName+' 收款人：'+userInfo.cardOwnerName +' 开户行：'+userInfo.registerBankInfo +' 银行账号：'+userInfo.cardNo"
+                                                 >
+                                                     <span class="icon icon_copy"></span>复制该信息</a> -->
                                             </div>
                                         </div>
                                         <div class="before_pay">
@@ -359,6 +371,7 @@
                 href: '',
                 depositPeoplehintWord: '请正确输入',
                 depositPeopleHint: false,
+                bankSubmitAllow: true,
 
             }
         },
@@ -714,12 +727,18 @@
                     url: _self.action.forseti + 'api/payment/incomeBank',
                     data: { },
                     success: function(res){
+
                         if(res.data){
                             _self.userInfo = res.data ;
+                        } else {
+                            _self.bankSubmitAllow = false;
+                            // console.log(_self.bankSubmitAllow, 'allow')
                         }
 
                     },
                     error: function (e) {
+                        _self.bankSubmitAllow = false;
+                        // console.log(_self.bankSubmitAllow, 'allow')
                         _self.errorAction(e) ;
                     }
                 });
@@ -745,6 +764,13 @@
             // 银行转账提交
             submitBankAction:function () {
                 var _self = this ;
+                // console.log(!(this.bankSubmitAllow), 'allowinfor')
+                // console.log((this.bankSubmitAllow), 'allowinfor2')
+
+                if (!(this.bankSubmitAllow)) {
+                    _self.$refs.autoCloseDialog.open('未获取到收款人信息');
+                    return false;
+                }
                 if( _self.submitpayunflag){
                     return false ;
                 }
@@ -825,6 +851,40 @@
                     clipboard.destroy() ;
                 })  ;
             },
+            copyName: function (e) {
+                var _self = this;
+                var $src = $(e.currentTarget);
+                var claName = $src.data('claName');
+
+                console.log(claName, 'name')
+                console.log($src, 'src')
+                console.log($src[0].classList.value, 'src0')
+                // console.log('.'+$src[0].classList.value )
+                var str = '.' + $src[0].classList.value
+                console.log(str, 'str')
+
+                // var clipboard = new Clipboard('.text_name') ;
+                var clipboard = new Clipboard(str);
+
+                // var clipboard = new Clipboard(" '.'+$src[0].classList.value ") ;
+
+                clipboard.on('success', function (e) {
+                    _self.$refs.autoCloseDialog.open('复制成功！', '', 'icon_check', 'd_check');
+                    // 释放内存
+                    clipboard.destroy();
+                });
+                clipboard.on('error', function (e) {
+                    _self.$refs.autoCloseDialog.open('浏览器不支持自动复制，请手动复制！');
+                    // 释放内存
+                    clipboard.destroy();
+                });
+            },
+
+
+
+
+
+
             //在线支付
             onlinePay :function (rsNameId,type) {
                 var _self=this;

@@ -6,6 +6,8 @@ import router from './router'
 import VueLazyload from 'vue-lazyload'
 import 'babel-polyfill'
 // import $ from "jquery";
+import store from './_vuex/store'
+
 
 Vue.use(VueLazyload)
 Vue.config.productionTip = false
@@ -14,6 +16,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+    store,
   template: '<App/>',
   components: { App }
 })
