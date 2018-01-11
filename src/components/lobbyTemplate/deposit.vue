@@ -764,8 +764,9 @@
             // 银行转账提交
             submitBankAction:function () {
                 var _self = this ;
+                console.log(!(this.bankSubmitAllow), 'allowinfor')
 
-                if (this.bankSubmitAllow) {
+                if (!(this.bankSubmitAllow)) {
                     _self.$refs.autoCloseDialog.open('未获取到收款人信息');
                     return false;
                 }

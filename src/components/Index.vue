@@ -429,7 +429,6 @@ export default {
                           }
                           _self.banner = res.data.itemPO;
                           var delay = res.data.delayTime * 1000
-                          console.log(delay, 'fff')
                           _self.$nextTick(function () {
                               TouchSlide({
                                   slideCell: "#focus",

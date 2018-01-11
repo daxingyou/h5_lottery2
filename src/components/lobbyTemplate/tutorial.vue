@@ -12,18 +12,19 @@
         <div class="content" id="freshContent">
             <div class="tabset">
                 <!-- Tab 1 -->
-                <input type="radio" name="tabset" id="tab1" aria-controls="agent" checked @click="gotoTop('xsjc')">
+                <input type="radio" name="tabset" id="tab1" aria-controls="agent" @click="gotoTop('xsjc')">
                 <label for="tab1" class="tab1">新手教程</label>
                 <!-- Tab 2 -->
                 <input type="radio" name="tabset" id="tab2" aria-controls="commission" @click="gotoTop('czjc')">
                 <label for="tab2" class="tab2">充值教程</label>
                 <!-- Tab 3 -->
 
-                <div class="tab-panels">
-                    <section id="fresh" class="tab-panel" v-html="copyContent">
+                <div class="tab-box">
+                    <section class="tab-panels" v-html="copyContent">
 
                     </section>
                 </div>
+
             </div>
         </div>
 
@@ -56,31 +57,37 @@ export default {
   mounted:function() {
       $('html,body').css('overflow-y','scroll' )  ;
       //scrollTo(0,0); // 回到顶部
-      document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
+      // document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
       // this.getCopyright('1','BT01')
       // this. getCopyright('1','BT05')
       // console.log( localStorage.getItem( 'freshEducationBT01' ) ,'j1')
       // console.log( localStorage.getItem( 'freshEducationBT05' ) ,'j5')
       this.freshEdu = JSON.parse(localStorage.getItem('freshEducationBT01'))
+
       this.depositEdu = JSON.parse(localStorage.getItem('freshEducationBT05'))
-      this.copyContent = this.freshEdu
+      this.copyContent = this.freshEdu.copyContent
       // console.log( this.freshEdu ,'obj1')
       // console.log( this.depositEdu ,'obj5')
 
   },
+    watch: {
+        copyContent: function () {
+            console.log(0)
+        }
+    },
   methods: {
       gotoTop: function (name) {
           //scrollTo(0,0);
           if (name == 'xsjc') {
               this.copyContent = this.freshEdu.copyContent
-              // console.log( this.copyContent ,'99')
+              // console.log( this.copyContent ,'copyContent99')
           }
           if (name == 'czjc') {
               this.copyContent = this.depositEdu.copyContent
-              // console.log( this.copyContent ,'98')
+              // console.log( this.copyContent ,'copyContent98')
 
           }
-          document.documentElement.scrollTop = document.body.scrollTop = 0; // 回到顶部
+          // document.documentElement.scrollTop = document.body.scrollTop = 0; // 回到顶部
       },
 }
 
@@ -99,15 +106,20 @@ export default {
     #freshContent .tab-panels p {
         line-height: 30px;
         margin: .5rem 0;
+        text-align: left;
     }
 
     #freshContent .tab-panels p strong {
         display: block;
         color: #b41a17;
+        text-align: left;
+
     }
 
     #freshContent .tab-panels p span {
         display: block;
         text-indent: 0.5em;
+        text-align: left;
+
     }
 </style>
