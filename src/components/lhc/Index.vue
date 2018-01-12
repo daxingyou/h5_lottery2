@@ -255,20 +255,38 @@
                             // console.log(!shut ,'open' )
 
                             if (shut) {
+                                console.log('shut999')
                                 that.notopen = true;                               
                                 that.now_time = that.formatTimeUnlix(res.data[0].endTime); // 当前期数时间
                                 that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
                                 that.now_pcode = res.data[0].issueAlias;  // 当前期数
+
+                                code = res.data[2].winNumber.split(',')
+                                // console.log(code,'noopencode')
+                                that.winNumber = code
+
+
                             }
                             if (!shut) {
                                 if (res.data[1].endTime < sys_time) { // 如果当期结束时间小于系统时间
                                     that.now_time = that.formatTimeUnlix(res.data[0].endTime); // 当前期数时间
                                     that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
                                     that.now_pcode = res.data[0].issueAlias;  // 当前期数
+                                    code = res.data[2].winNumber.split(',')
+                                    // console.log(code,'code,ordinary')
+                                    that.winNumber = code
+
+
                                 } else {
                                     that.now_time = that.formatTimeUnlix(res.data[1].endTime); // 当前期数时间
                                     that.nowover_time = that.formatTimeUnlix(res.data[1].prizeCloseTime);  // 当前期封盘时间
                                     that.now_pcode = res.data[1].issueAlias;  // 当前期数
+
+                                    code = res.data[1].winNumber.split(',')
+                                    that.winNumber = code
+
+                                    // console.log(code,'code,pass')
+
                                 }
 
                                 //code 上期开奖号码
