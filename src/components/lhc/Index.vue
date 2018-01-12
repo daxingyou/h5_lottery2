@@ -261,10 +261,11 @@
                                 that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
                                 that.now_pcode = res.data[0].issueAlias;  // 当前期数
 
-                                code = res.data[2].winNumber.split(',')
+                                code = res.data[1].winNumber.split(',')
+                                that.previous_pcode = res.data[1].issueAlias
+
                                 // console.log(code,'noopencode')
                                 that.winNumber = code
-
 
                             }
                             if (!shut) {
@@ -272,7 +273,7 @@
                                     that.now_time = that.formatTimeUnlix(res.data[0].endTime); // 当前期数时间
                                     that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
                                     that.now_pcode = res.data[0].issueAlias;  // 当前期数
-                                    code = res.data[2].winNumber.split(',')
+                                    code = res.data[1].winNumber.split(',')
                                     // console.log(code,'code,ordinary')
                                     that.winNumber = code
 
@@ -282,7 +283,7 @@
                                     that.nowover_time = that.formatTimeUnlix(res.data[1].prizeCloseTime);  // 当前期封盘时间
                                     that.now_pcode = res.data[1].issueAlias;  // 当前期数
 
-                                    code = res.data[1].winNumber.split(',')
+                                    code = res.data[2].winNumber.split(',')
                                     that.winNumber = code
 
                                     // console.log(code,'code,pass')
