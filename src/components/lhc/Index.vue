@@ -269,6 +269,7 @@
 
                             }
                             if (!shut) {
+                                that.notopen = false;   
                                 if (res.data[1].endTime < sys_time) { // 如果当期结束时间小于系统时间
                                     that.now_time = that.formatTimeUnlix(res.data[0].endTime); // 当前期数时间
                                     that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
@@ -285,7 +286,6 @@
                                     that.previous_pcode = res.data[2].issueAlias
                                     code = res.data[2].winNumber.split(',')
                                     that.winNumber = code
-
                                     console.log(code, 'code,pass')
 
                                 }
