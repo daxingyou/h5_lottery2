@@ -77,7 +77,7 @@ export default {
             if (this.lt_time_leave_over <0){ // 封盘倒计时结束
                 // this.$emit('entertainCountdownOver');
                 this.$emit('entertainCountdownBreak');
-                console.log(0)
+                // console.log(0)
             }
 
             // console.log(this.lt_time_leave_over)
