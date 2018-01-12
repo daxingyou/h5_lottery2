@@ -255,7 +255,7 @@
                             // console.log(!shut ,'open' )
 
                             if (shut) {
-                                that.entertainStatus = true;
+                                that.notopen = true;                               
                                 that.now_time = that.formatTimeUnlix(res.data[0].endTime); // 当前期数时间
                                 that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
                                 that.now_pcode = res.data[0].issueAlias;  // 当前期数
