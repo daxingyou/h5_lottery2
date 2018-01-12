@@ -881,6 +881,7 @@ var MyMixin = {
                     if (res.data[0]) {
                         if(res.err=="SUCCESS"){
                             _self.copyContent=res.data[0].content;
+                            _self.copyTitle=res.data[0].title;
                         }
                     } else {
                         _self.copyContent = res.data[0];
