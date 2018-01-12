@@ -94,6 +94,8 @@
                                                             <span><!-- orderStatus: -->{{item2.orderstatusname}}</span>
                                                             <div v-if="item2.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item2.payoff}}</div>
                                                             <div v-else></div>
+                                                            <p v-if = 'item2.playId=="1012" ' class="reword">返点：</p>
+                                                            <p v-if = 'item2.playId=="1012" ' class="reword">{{roundAmt(item2.reforwardPoint)}}元</p>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -492,6 +494,9 @@
                                         betDataObj.orderid = betData.orderId
                                         betDataObj.betcontent = betData.betContent
                                         betDataObj.playname = betData.playName
+                                        betDataObj.cid = betData.cid                                        
+                                        betDataObj.reforwardPoint = betData.reforwardPoint                                        
+                                        betDataObj.playId = betData.playId.toString().substr(0,4)
                                         _self.betRecordList[pdate].push(betDataObj)
                                     })
                                 }
@@ -604,5 +609,10 @@
     .swiper-container {
             height: 100%;
         }
+     #swiper1 .reword{
+        display: inline-block;
+        color: #71c341;
+        font-size: 0.25rem;
+    }
 </style>
 

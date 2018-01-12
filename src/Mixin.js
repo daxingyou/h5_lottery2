@@ -341,15 +341,10 @@ var MyMixin = {
                     url: this.action.hermes + 'api/balance/get',
                     data: { lotteryId: lotteryid },
                     success: (res) => {
-                        // console.log(res)
                         this.balanceData = res.data;
-                        // console.log( res.data ) 
-                        // _self.rootBalance.rootBalance = res.data.balance;
-                        // console.log( _self.rootBalance.rootBalance )
                         var mom = this.fortMoney(this.roundAmt(res.data.balance), 2);  // 用户余额
                         this.setCookie("membalance", mom);  // 把登录余额放在cookie里面
                         this.setCookie("balancePublic", mom);  // 把登录余额放在cookie里面
-                        
                         resolve();
                     },
                     error: function (e) {

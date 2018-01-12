@@ -167,7 +167,6 @@
             }).catch(function () {
                 console.log("Promise Rejected in method of create 1");
             });
-
             this.loadPlayTree(this.lotteryID)
         },
         mounted() {

@@ -590,7 +590,7 @@
                                         var li_html = '';
                                         // var pcode = ('' + v.pcode).substring(8, 11);
                                         var pname = v.playName.substring(0, 2) ; // 筛选连码
-
+                                        var pnameA = v.playName.substring(0, 3) ; // 筛选连码
                                         if(v.lotteryId =='8'){  // 北京pk10
                                             var pcode = ('' + v.issueAlias) ;
                                         }else{
@@ -629,11 +629,20 @@
                                             }else{
                                                 li_html += '<span>' + v.playName + '</span>' ;
                                             }
-                                            li_html +=  '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
-                                                '<div class="status ' + className + '" >' +
-                                                '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div></div>' +
-                                                '</div>' +
-                                                '</a></li>';
+                                            if(pnameA!='特码A'){
+                                                li_html +=  '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
+                                                    '<div class="status ' + className + '" >' +
+                                                    '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div></div>' +
+                                                    '</div>' +
+                                                    '</a></li>';
+                                            }else{
+                                                 li_html +=  '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
+                                                    '<div class="status ' + className + '" >' +
+                                                    '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div><p class= "reword">返点：</p><p class= "reword">'+ _self.roundAmt(v.reforwardPoint)+'元</p></div>' +
+                                                    '</div>' +
+                                                    '</a></li>';
+                                            }
+
                                             // '<span>' + v.orderStatusName + '</span><div>' + v.pcode + '期</div></div></a></li>';
                                         }
                                         $(t).find('ul')
@@ -662,7 +671,12 @@
 
 <style>
     .swiper-container {
-            height: 100%;
-        }
+        height: 100%;
+    }
+    #swiper1 .reword{
+         display: inline-block;
+        color: #71c341;
+        font-size: 0.25rem;
+    }
 </style>
 
