@@ -94,8 +94,8 @@
                                                             <span><!-- orderStatus: -->{{item2.orderstatusname}}</span>
                                                             <div v-if="item2.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item2.payoff}}</div>
                                                             <div v-else></div>
-                                                            <p v-if = 'item2.playId=="1012" ' class="reword">返点：</p>
-                                                            <p v-if = 'item2.playId=="1012" ' class="reword">{{roundAmt(item2.reforwardPoint)}}元</p>
+                                                            <p v-if = ' item2.playId=="1012"&&(item2.orderstatusname=="已中奖"||item2.orderstatusname=="未中奖")  ' class="reword">返点：</p>
+                                                            <p v-if = 'item2.playId=="1012"&&(item2.orderstatusname=="已中奖"||item2.orderstatusname=="未中奖") ' class="reword">{{roundAmt(item2.reforwardPoint)}}元</p>
                                                         </div>
                                                     </div>
                                                 </a>
