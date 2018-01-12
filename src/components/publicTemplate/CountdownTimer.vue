@@ -72,9 +72,12 @@ export default {
             // const lt_time_leave = this.lt_time_leave;
             // const lt_time_leave_over = this.lt_time_leave_over;
 
+            // console.log(this.lt_time_leave_over,'over1' )
+
             if (this.lt_time_leave_over <0){ // 封盘倒计时结束
                 // this.$emit('entertainCountdownOver');
                 this.$emit('entertainCountdownBreak');
+                console.log(0)
             }
 
             // console.log(this.lt_time_leave_over)
@@ -100,7 +103,9 @@ export default {
                // console.log('蒂ff冈你')
                 counter();
 
-               // console.log(this.lt_time_leave)
+                // console.log(this.lt_time_leave,'o2')
+                //   console.log(this.lt_time_leave,'over1' )
+
                 if (this.lt_time_leave <= -1) {
                     this.wrongFlag = true;
                 } else {
@@ -128,8 +133,8 @@ export default {
                     this.timeSpanStr = this.fftime(oDate.minute) + ':' + this.fftime(oDate.second); // 开奖倒计时
                     this.overTimeSpanStr = this.fftime(over_oDate.minute) + ':' + this.fftime(over_oDate.second); // 封盘倒计时
                 }else{   // 跨天时间有小时
-                    this.timeSpanStr = this.fftime(oDate.hour)+':'+this.fftime(oDate.minute) + ':' + this.fftime(oDate.second); // 开奖倒计时
-                    this.overTimeSpanStr = this.fftime(over_oDate.hour)+':'+this.fftime(over_oDate.minute) + ':' + this.fftime(over_oDate.second); // 封盘倒计时
+                    this.timeSpanStr = '22天' + this.fftime(oDate.hour) + ':' + this.fftime(oDate.minute) + ':' + this.fftime(oDate.second); // 开奖倒计时
+                    this.overTimeSpanStr = '22天' + this.fftime(over_oDate.hour) + ':' + this.fftime(over_oDate.minute) + ':' + this.fftime(over_oDate.second); // 封盘倒计时
                 }
                 // console.log( oDate.day ,'day')
                 if (oDate.day != 0) {

@@ -244,36 +244,51 @@
                             that.currentBaseShengXiao = res.data[1].zodiac
                             let code = res.data[2].winNumber.split(',')
                             that.previous_pcode = res.data[2].issueAlias
+                            var noOpenFlag1 = ( sys_time > res.data[0].startTime ) && (sys_time < res.data[0].endTime)
+                            var noOpenFlag2 = ( sys_time > res.data[1].startTime ) && (sys_time < res.data[1].endTime)
+                            // console.log(noOpenFlag1 ,'noopen1')
+                            // console.log(noOpenFlag2 ,'noopen2')
 
-                            if(res.data[1].endTime < sys_time ) { // 如果当期结束时间小于系统时间
-                                that.now_time = that.formatTimeUnlix(res.data[0].endTime); // 当前期数时间
-                                that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
-                                that.now_pcode = res.data[0].issueAlias;  // 当前期数
-                            }else{
-                                that.now_time = that.formatTimeUnlix(res.data[1].endTime); // 当前期数时间
-                                that.nowover_time = that.formatTimeUnlix(res.data[1].prizeCloseTime);  // 当前期封盘时间
-                                that.now_pcode = res.data[1].issueAlias;  // 当前期数
+                            var shut = !(noOpenFlag1 || noOpenFlag2)
+
+                            // console.log(shut ,'shut' )
+                            // console.log(!shut ,'open' )
+
+                            if (shut) {
+                                that.entertainStatus = true;
                             }
+                            if (!shut) {
+                                if (res.data[1].endTime < sys_time) { // 如果当期结束时间小于系统时间
+                                    that.now_time = that.formatTimeUnlix(res.data[0].endTime); // 当前期数时间
+                                    that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
+                                    that.now_pcode = res.data[0].issueAlias;  // 当前期数
+                                } else {
+                                    that.now_time = that.formatTimeUnlix(res.data[1].endTime); // 当前期数时间
+                                    that.nowover_time = that.formatTimeUnlix(res.data[1].prizeCloseTime);  // 当前期封盘时间
+                                    that.now_pcode = res.data[1].issueAlias;  // 当前期数
+                                }
 
-                            //code 上期开奖号码
-                            if (!code) {
-                                let hasFind = false
-                                _.forEach(res.data, (item, index) => {
-                                    if (_.size(item.winNumber) > 0 && index >= 3) {
-                                        that.winNumber = item.winNumber.split(',')
-                                        that.previous_pcode = item.issueAlias
-                                        hasFind = true
-                                        return false
+                                //code 上期开奖号码
+                                if (!code) {
+                                    let hasFind = false
+                                    _.forEach(res.data, (item, index) => {
+                                        if (_.size(item.winNumber) > 0 && index >= 3) {
+                                            that.winNumber = item.winNumber.split(',')
+                                            that.previous_pcode = item.issueAlias
+                                            hasFind = true
+                                            return false
+                                        }
+                                    })
+
+                                    if (!hasFind) {
+                                        that.winNumber = code
                                     }
-                                })
-
-                                if (!hasFind) {
+                                }
+                                else {
                                     that.winNumber = code
                                 }
                             }
-                            else {
-                                that.winNumber = code
-                            }
+
 
                             if(res.data[1].status > 1){ // 异常情况，如提前开盘 2
                                 that.entertainStatus = true;
