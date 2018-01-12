@@ -448,7 +448,7 @@ export default {
       getActivity : function () {
 
           var _self=this;
-          if (!sessionStorage.propActivityList) {
+          if (true) {
               $.ajax({
                   type: 'get',
                   url: _self.action.forseti + 'apid/cms/activity',
