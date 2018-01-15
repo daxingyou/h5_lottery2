@@ -384,15 +384,11 @@
 
             rewardShow: function (item2) {
                 var rewardFlag = false
-                rewardFlag = item2.playId == "1012" && (item2.orderstatusname == "已中奖" || item2.orderstatusname == "未中奖")
-                // console.log(  item2.playname ,'name')
-                // console.log(  item2.playname.substring(item2.playname.length-2, item2.playname.length) ,'name' )
+                rewardFlag = item2.playId == "1012" && (item2.orderstatusname == "已中奖" || item2.orderstatusname == "未中奖" || item2.orderstatusname == "已派彩" )
+                var t = rewardFlag              
                 var isNum = Number(item2.playname.substring(item2.playname.length - 2, item2.playname.length))
                 var numFlag = (isNum <= 49) && (isNum >= 0)
-                // console.log( isNum ,'isnum' )
-                // console.log( numFlag ,'isnumflag' ) 
                 rewardFlag = rewardFlag && numFlag
-                // console.log( rewardFlag ,'rewardFlag')
                 return rewardFlag
             },
             showClass(stat) {
@@ -401,7 +397,6 @@
                 if (stat == 1) {
                     classStr += ' active'
                 }
-
                 return classStr
             },
             showStatusClass(statCode) {
