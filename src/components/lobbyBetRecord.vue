@@ -591,6 +591,10 @@
                                         // var pcode = ('' + v.pcode).substring(8, 11);
                                         var pname = v.playName.substring(0, 2) ; // 筛选连码
                                         var pnameA = v.playName.substring(0, 3) ; // 筛选连码
+                                        var pnameANum = v.playName.substring(v.playName.length - 2, v.playName.length); // 筛选连码号码
+                                        var pnameANumFlag = Number(pnameANum) <= 49 && Number(pnameANum) >= 0
+                                        console.log(pnameANum, 'pnameANum')
+                                        console.log(pnameANumFlag, 'pnameANumFlag')
                                         if(v.lotteryId =='8'){  // 北京pk10
                                             var pcode = ('' + v.issueAlias) ;
                                         }else{
@@ -629,19 +633,39 @@
                                             }else{
                                                 li_html += '<span>' + v.playName + '</span>' ;
                                             }
-                                            if(pnameA!='特码A'){
-                                                li_html +=  '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
+                                            // if(pnameA!='特码A'){
+                                            //     li_html +=  '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
+                                            //         '<div class="status ' + className + '" >' +
+                                            //         '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div></div>' +
+                                            //         '</div>' +
+                                            //         '</a></li>';
+                                            // }else{
+
+                                            if (pnameA == '特码A' && pnameANumFlag && v.orderStatusName != '异常注单') {
+                                                li_html += '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
+                                                    '<div class="status ' + className + '" >' +
+                                                    '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div><p class= "reword">返点：</p><p class= "reword">' + _self.roundAmt(v.reforwardPoint) + '元</p></div>' +
+                                                    '</div>' +
+                                                    '</a></li>';
+                                            } else {
+
+                                                // li_html +=  '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
+                                                //    '<div class="status ' + className + '" >' +
+                                                //    '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div><p class= "reword">返点：</p><p class= "reword">'+ _self.roundAmt(v.reforwardPoint)+'元</p></div>' +
+                                                //    '</div>' +
+                                                //    '</a></li>';
+
+                                                li_html += '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
                                                     '<div class="status ' + className + '" >' +
                                                     '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div></div>' +
                                                     '</div>' +
                                                     '</a></li>';
-                                            }else{
-                                                 li_html +=  '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
-                                                    '<div class="status ' + className + '" >' +
-                                                    '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div><p class= "reword">返点：</p><p class= "reword">'+ _self.roundAmt(v.reforwardPoint)+'元</p></div>' +
-                                                    '</div>' +
-                                                    '</a></li>';
+
+
                                             }
+
+                                            // }
+                                            console.log(pnameA == '特码A' && pnameANumFlag, 'lst')
 
                                             // '<span>' + v.orderStatusName + '</span><div>' + v.pcode + '期</div></div></a></li>';
                                         }

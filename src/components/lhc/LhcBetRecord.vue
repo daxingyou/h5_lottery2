@@ -94,8 +94,11 @@
                                                             <span><!-- orderStatus: -->{{item2.orderstatusname}}</span>
                                                             <div v-if="item2.orderstatus == 32"><!-- 若己派彩則顯示 payoff：XXXX.X元 -->{{item2.payoff}}</div>
                                                             <div v-else></div>
-                                                            <p v-if = ' item2.playId=="1012"&&(item2.orderstatusname=="已中奖"||item2.orderstatusname=="未中奖")  ' class="reword">返点：</p>
-                                                            <p v-if = 'item2.playId=="1012"&&(item2.orderstatusname=="已中奖"||item2.orderstatusname=="未中奖") ' class="reword">{{roundAmt(item2.reforwardPoint)}}元</p>
+                                                            <!--  <p v-if = ' item2.playId=="1012"&&(item2.orderstatusname=="已中奖"||item2.orderstatusname=="未中奖")  ' class="reword">返点：</p> -->
+                                                            <p v-if=' rewardShow(item2) ' class="reword">返点：</p>
+                                                            <!--  <p v-if = 'item2.playId=="1012"&&(item2.orderstatusname=="已中奖"||item2.orderstatusname=="未中奖") ' class="reword">{{roundAmt(item2.reforwardPoint)}}元</p> -->
+                                                            <p v-if=' rewardShow(item2) ' class="reword">
+                                                                {{roundAmt(item2.reforwardPoint)}}元</p>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -378,6 +381,20 @@
         watch: {
         },
         methods: {
+
+            rewardShow: function (item2) {
+                var rewardFlag = false
+                rewardFlag = item2.playId == "1012" && (item2.orderstatusname == "已中奖" || item2.orderstatusname == "未中奖")
+                // console.log(  item2.playname ,'name')
+                // console.log(  item2.playname.substring(item2.playname.length-2, item2.playname.length) ,'name' )
+                var isNum = Number(item2.playname.substring(item2.playname.length - 2, item2.playname.length))
+                var numFlag = (isNum <= 49) && (isNum >= 0)
+                // console.log( isNum ,'isnum' )
+                // console.log( numFlag ,'isnumflag' ) 
+                rewardFlag = rewardFlag && numFlag
+                // console.log( rewardFlag ,'rewardFlag')
+                return rewardFlag
+            },
             showClass(stat) {
                 let classStr = "slide_toggle bet_day new_bet_day new_panel"
 
