@@ -448,7 +448,7 @@ export default {
       getActivity : function () {
 
           var _self=this;
-          if (!sessionStorage.propActivityList) {
+          if (true) {
               $.ajax({
                   type: 'get',
                   url: _self.action.forseti + 'apid/cms/activity',
@@ -485,7 +485,7 @@ export default {
       },
         getAppUrl: function () {
             var _self = this;
-            console.log(_self.appUrl, 'url')
+            // console.log(_self.appUrl, 'url')
 
             if (true) {
                 $.ajax({
@@ -493,11 +493,11 @@ export default {
                     url: _self.action.forseti + 'apid/config/appConfig',
                     data: {},
                     success: (res) => {
-                        console.log(res)
+                        // console.log(res)
                         _self.appUrl = res.data.url
                         // console.log( _self.appUrl )
                         sessionStorage.appUrl = res.data.url;
-                        console.log(_self.appUrl, 'url-in')
+                        // console.log(_self.appUrl, 'url-in')
                         // console.log( _self.appUrl )
                     },
                     err: (res) => {
@@ -506,7 +506,7 @@ export default {
                 })
             } else {
                 _self.appUrl = sessionStorage.appUrl
-                console.log(_self.appUrl, 'url-else')
+                // console.log(_self.appUrl, 'url-else')
             }
         },
   },

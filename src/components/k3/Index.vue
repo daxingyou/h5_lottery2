@@ -456,9 +456,9 @@
             resetAction:function(success){
                 this.betSelectedList = [];
                 $(".so-con-right p").removeClass('active');
-                if(success != '1'){
-                    this.$refs.bet.betAmount = '' ;
-                }
+                // if(success != '1'){
+                //     this.$refs.bet.betAmount = '' ;
+                // }
                 this.getMemberBalance(this.lotteryID) ; // 更新余额
                 this.$refs.bet.showList = false ; // 关闭下注弹窗
             },

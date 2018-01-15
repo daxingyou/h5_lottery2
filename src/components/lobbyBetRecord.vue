@@ -133,6 +133,7 @@
                     {id:'6','name':'江苏快3'} ,
                     {id:'22','name':'湖北快3'} ,
                     {id:'20','name':'安徽快3'} ,
+                    {id: '10', 'name': '香港六合彩'},
                 ],
                 tableLock: 0,
                 // 投注详情
@@ -479,6 +480,16 @@
                     if(lotterychooseid || lotterychooseid == '0'){
                         this.lotteryid = lotterychooseid ;
                     }
+                    if (this.lotteryid == 10) {
+                        this.setCookie('lottery_name', '香港六合彩')
+                        this.setCookie('lt_lotteryid', 10)
+
+                        // window.location = '/lhc/LhcBetRecord'
+                        this.$router.push('/lhc/LhcBetRecord')
+                        // this.$router.push('/lhc/LhcBetRecord')
+                        return
+                    }
+
                     this.seadata.page = 1; // 还原页码
                     $('.bet-recode-all').find('li').remove(); // 清空原来的数据
                     var $src = $(e.currentTarget);
@@ -579,7 +590,11 @@
                                         var li_html = '';
                                         // var pcode = ('' + v.pcode).substring(8, 11);
                                         var pname = v.playName.substring(0, 2) ; // 筛选连码
-
+                                        var pnameA = v.playName.substring(0, 3) ; // 筛选连码
+                                        var pnameANum = v.playName.substring(v.playName.length - 2, v.playName.length); // 筛选连码号码
+                                        var pnameANumFlag = Number(pnameANum) <= 49 && Number(pnameANum) >= 0
+                                        console.log(pnameANum, 'pnameANum')
+                                        console.log(pnameANumFlag, 'pnameANumFlag')
                                         if(v.lotteryId =='8'){  // 北京pk10
                                             var pcode = ('' + v.issueAlias) ;
                                         }else{
@@ -618,11 +633,40 @@
                                             }else{
                                                 li_html += '<span>' + v.playName + '</span>' ;
                                             }
-                                            li_html +=  '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
-                                                '<div class="status ' + className + '" >' +
-                                                '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div></div>' +
-                                                '</div>' +
-                                                '</a></li>';
+                                            // if(pnameA!='特码A'){
+                                            //     li_html +=  '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
+                                            //         '<div class="status ' + className + '" >' +
+                                            //         '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div></div>' +
+                                            //         '</div>' +
+                                            //         '</a></li>';
+                                            // }else{
+
+                                            if (pnameA == '特码A' && pnameANumFlag && (v.orderStatusName == '已派彩' || v.orderStatusName == '未中奖')) {
+                                                li_html += '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
+                                                    '<div class="status ' + className + '" >' +
+                                                    '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div><p class= "reword">返点：</p><p class= "reword">' + _self.roundAmt(v.reforwardPoint) + '元</p></div>' +
+                                                    '</div>' +
+                                                    '</a></li>';
+                                            } else {
+
+                                                // li_html +=  '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
+                                                //    '<div class="status ' + className + '" >' +
+                                                //    '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div><p class= "reword">返点：</p><p class= "reword">'+ _self.roundAmt(v.reforwardPoint)+'元</p></div>' +
+                                                //    '</div>' +
+                                                //    '</a></li>';
+
+                                                li_html += '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
+                                                    '<div class="status ' + className + '" >' +
+                                                    '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div></div>' +
+                                                    '</div>' +
+                                                    '</a></li>';
+
+
+                                            }
+
+                                            // }
+                                            console.log(pnameA == '特码A' && pnameANumFlag, 'lst')
+
                                             // '<span>' + v.orderStatusName + '</span><div>' + v.pcode + '期</div></div></a></li>';
                                         }
                                         $(t).find('ul')
@@ -651,7 +695,12 @@
 
 <style>
     .swiper-container {
-            height: 100%;
-        }
+        height: 100%;
+    }
+    #swiper1 .reword{
+         display: inline-block;
+        color: #71c341;
+        font-size: 0.25rem;
+    }
 </style>
 

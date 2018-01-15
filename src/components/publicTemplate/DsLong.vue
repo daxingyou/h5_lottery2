@@ -35,7 +35,7 @@
                     </ul>
                 </div>
                 <div class="bd">
-                    <ul class="tab_content">
+                    <ul class="tab_content" id='ds_content'>
                         <li class="ds_long">
                             <ul class="clong_open">
                                <!-- <li class="prod" data-status="not_open">
@@ -203,6 +203,7 @@ export default {
                 {id:'6','name':'江苏快3'} ,
                 {id:'22','name':'湖北快3'} ,
                 {id:'20','name':'安徽快3'} ,
+                {id: '10', 'name': '香港六合彩'},
             ],
 
         }
@@ -328,3 +329,12 @@ export default {
 
 }
 </script>
+<style scoped>
+
+
+    #ds_content .ds_long .lo_ball {
+        width: 4rem;
+        text-align: left;
+    }
+
+</style>
