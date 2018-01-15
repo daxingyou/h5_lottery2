@@ -277,7 +277,7 @@
                                     that.previous_pcode = res.data[1].issueAlias
 
                                     code = res.data[1].winNumber.split(',')
-                                    console.log(code, 'code,ordinary')
+                                    // console.log(code, 'code,ordinary')
                                     that.winNumber = code
                                 } else {
                                     that.now_time = that.formatTimeUnlix(res.data[1].endTime); // 当前期数时间
@@ -286,7 +286,7 @@
                                     that.previous_pcode = res.data[2].issueAlias
                                     code = res.data[2].winNumber.split(',')
                                     that.winNumber = code
-                                    console.log(code, 'code,pass')
+                                    // console.log(code, 'code,pass')
 
                                 }
 
