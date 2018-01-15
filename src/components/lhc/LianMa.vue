@@ -20,7 +20,7 @@
 								<h2>
 									{{lianMa.name}}
 								</h2>
-								<div class="bet_box">
+                                <div class="bet_box" id="lianmaBox">
 									<p :data-id="lianMaGrandChild.cid" :class="showLianMaClass(lianMaGrandChild)" v-for="lianMaGrandChild in lianMaItem.children" @click="selectLianType(lianMaGrandChild, lianMa)">
 										<span :class="'lhc_ball num_'+ (lianMaGrandChild.name)">{{lianMaGrandChild.name}}</span>
 										<span class="bet-times-group" v-if="lianMaGrandChild.cid == 1062101 || lianMaGrandChild.cid == 1064101">
