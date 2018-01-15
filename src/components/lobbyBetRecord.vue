@@ -641,7 +641,7 @@
                                             //         '</a></li>';
                                             // }else{
 
-                                            if (pnameA == '特码A' && pnameANumFlag && v.orderStatusName != '异常注单' && v.orderStatusName != '系统撤单') {
+                                            if (pnameA == '特码A' && pnameANumFlag && (v.orderStatusName == '已派彩' || v.orderStatusName == '未中奖')) {
                                                 li_html += '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
                                                     '<div class="status ' + className + '" >' +
                                                     '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div><p class= "reword">返点：</p><p class= "reword">' + _self.roundAmt(v.reforwardPoint) + '元</p></div>' +
