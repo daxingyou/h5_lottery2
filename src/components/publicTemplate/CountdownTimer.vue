@@ -72,7 +72,7 @@ export default {
             // const lt_time_leave = this.lt_time_leave;
             // const lt_time_leave_over = this.lt_time_leave_over;
 
-            // console.log(this.lt_time_leave_over,'over1' )
+            // console.log(this.lt_time_leave_over,'negative_start' )
 
             if (this.lt_time_leave_over <0){ // 封盘倒计时结束
                 // this.$emit('entertainCountdownOver');
@@ -104,13 +104,15 @@ export default {
                 counter();
 
                 // console.log(this.lt_time_leave,'o2')
-                //   console.log(this.lt_time_leave,'over1' )
 
                 if (this.lt_time_leave <= -1) {
                     this.wrongFlag = true;
                 } else {
                     this.wrongFlag = false;
                 }
+
+                // console.log(this.lt_time_leave,'open_reward' )
+                  
                 if (this.lt_time_leave <= 0) {   // 开奖倒计时结束
                     clearInterval(this.timer);
                     this.$emit('countdownOver');
