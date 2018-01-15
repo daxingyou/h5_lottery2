@@ -401,7 +401,6 @@
             },
             showStatusClass(statCode) {
                 let classStr = "status"
-
                 switch (parseInt(statCode)) {
                     case 32:
                         classStr += ' status02'
