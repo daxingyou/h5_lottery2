@@ -23,7 +23,7 @@
                                             <div class="form_g text money">
                                                 <legend>充值金额</legend>
                                                 <input type="tel" placeholder="请输入充值金额"
-                                                       @input='checkDepositMoney(paymount)' v-model="paymount">
+                                                       v-model="paymount">
                                                 <i class="close" @click="clearMoney()"></i>
                                             </div>
                                             <div  v-if = 'showDepositHint' class="depositHint" id="depositHint"> {{ hintContent }}</div>

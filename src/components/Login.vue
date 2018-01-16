@@ -87,7 +87,7 @@ export default {
        // this.username = 'admin' ;
       document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
       this.custUrl=localStorage.getItem('Url');
-      this.nologin()
+      // this.nologin()
 
   },
   methods: {
@@ -95,9 +95,9 @@ export default {
       // 十天内免登陆
       nologin: function () {
           console.log(this)
-          this.username = 99
-          this.setCookie('loginName', this.username)
-          this.getCookie('loginName')
+          this.username = this.getCookie('username')
+          // this.setCookie('loginName', this.username)
+          // this.getCookie('username')
           console.log(this.$refs.check.checked, 'checkbox')
 
 
@@ -169,7 +169,8 @@ export default {
                     this.setCookie("access_token", res.data.access_token);  // 把登录token放在cookie里面
                     // this.setCookie("username", this.username);  // 把登录用户名放在cookie里面
                     this.setCookie("username", res.data.username);  // 把登录用户名放在cookie里面
-                    // this.setCookie("username", res.data.username);  // 把登录用户名放在cookie里面
+                    // this.setCookie("psw", res.data.username,14);  // 把登录密码放在cookie里面
+
                     this.setCookie('acType',res.data.acType);   //把玩家类型放在cookie里面
                     this.$refs.autoCloseDialog.open('登录成功','','icon_check','d_check') ;
                       setTimeout(function () {
