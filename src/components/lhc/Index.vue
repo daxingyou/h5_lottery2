@@ -253,6 +253,7 @@
 
                             // console.log(shut ,'shut' )
                             // console.log(!shut ,'open' )
+                            console.log(res)
 
                             if (shut) {
                                 console.log('shut999')
@@ -277,7 +278,7 @@
                                     that.previous_pcode = res.data[1].issueAlias
 
                                     code = res.data[1].winNumber.split(',')
-                                    // console.log(code, 'code,ordinary')
+                                    console.log(code, 'code,ordinary')
                                     that.winNumber = code
                                 } else {
                                     that.now_time = that.formatTimeUnlix(res.data[1].endTime); // 当前期数时间
@@ -286,12 +287,15 @@
                                     that.previous_pcode = res.data[2].issueAlias
                                     code = res.data[2].winNumber.split(',')
                                     that.winNumber = code
-                                    // console.log(code, 'code,pass')
+                                    console.log(code, 'code,pass')
 
                                 }
 
                                 //code 上期开奖号码
-                                if (!code) {
+                                console.log(code.length > 1)
+                                console.log(!code.length)
+                                if (code.length <= 1) {
+                                    console.log('no-code')
                                     let hasFind = false
                                     _.forEach(res.data, (item, index) => {
                                         if (_.size(item.winNumber) > 0 && index >= 3) {
