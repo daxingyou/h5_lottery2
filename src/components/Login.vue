@@ -14,7 +14,8 @@
                     <fieldset>
                         <div class="form_g account">
                             <legend>帐号</legend>
-                            <input type="text" placeholder="请输入帐号" v-model="username" autocomplete="off" class="user-name" @input="checkUserName(username,'user-name')" >
+                            <input type="text" placeholder="请输入帐号" v-model="username" autocomplete="off"
+                                   class="user-name" @input="checkUserName(username,'user-name')">
                             <i class="close close1" @click="ClearInput('close1','user-name')"></i>
                         </div>
                         <label class="error-message "></label>
@@ -22,7 +23,9 @@
                     <fieldset>
                         <div class="form_g password">
                             <legend>密码</legend>
-                            <input type="text" placeholder="请输入密码" v-model="password" onfocus="this.type='password'" autocomplete="off" class="pass-word"  @input="checkpassword(password,'pass-word')">
+                            <input type="text" placeholder="请输入密码" v-model="password" ref='psw'
+                                   onfocus="this.type='password'" autocomplete="off" class="pass-word"
+                                   @input="checkpassword(password,'pass-word')">
                             <i class="close close2" @click="ClearInput('close2','pass-word')"></i>
                         </div>
                         <label class="error-message"> </label>
@@ -35,6 +38,9 @@
                         </div>
                         <label class="error-message "></label>
                     </fieldset>
+                    <div>
+                        <input type="checkbox" id="longinCheck" ref='check' name="">十天内免登陆
+                    </div>
                 </form>
                 <div class="btn btn_blue">
                     <a class="new_btn" href="javascript:;" @click="LoginAction()"><span class="big">登录</span></a>
@@ -81,11 +87,24 @@ export default {
        // this.username = 'admin' ;
       document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
       this.custUrl=localStorage.getItem('Url');
+      this.nologin()
 
   },
   methods: {
+
+      // 十天内免登陆
+      nologin: function () {
+          console.log(this)
+          this.username = 99
+          this.setCookie('loginName', this.username)
+          this.getCookie('loginName')
+          console.log(this.$refs.check.checked, 'checkbox')
+
+
+      },
+
       //清除model数据,cl元素class
-      clearVal :function (cl) {
+      clearVal: function (cl) {
           if(cl=='pass-word'){
               this.password ='';}
           if(cl=='user-name'){
@@ -142,11 +161,15 @@ export default {
             url: this.action.uaa + 'apid/member/login',
             data: logindata ,
             success: (res) => {
+                console.log(this.$refs.check.checked, 'checkbox-in')
+
+
                 if(res.err == 'SUCCESS'){ // 登录成功
                     _self.submitflage = false ;
                     this.setCookie("access_token", res.data.access_token);  // 把登录token放在cookie里面
                     // this.setCookie("username", this.username);  // 把登录用户名放在cookie里面
                     this.setCookie("username", res.data.username);  // 把登录用户名放在cookie里面
+                    // this.setCookie("username", res.data.username);  // 把登录用户名放在cookie里面
                     this.setCookie('acType',res.data.acType);   //把玩家类型放在cookie里面
                     this.$refs.autoCloseDialog.open('登录成功','','icon_check','d_check') ;
                       setTimeout(function () {

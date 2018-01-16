@@ -22,7 +22,8 @@
                                         <fieldset>
                                             <div class="form_g text money">
                                                 <legend>充值金额</legend>
-                                                <input type="tel" placeholder="请输入充值金额" v-model="paymount"   >
+                                                <input type="tel" placeholder="请输入充值金额"
+                                                       @input='checkDepositMoney(paymount)' v-model="paymount">
                                                 <i class="close" @click="clearMoney()"></i>
                                             </div>
                                             <div  v-if = 'showDepositHint' class="depositHint" id="depositHint"> {{ hintContent }}</div>
@@ -406,32 +407,48 @@
                 $("#paydate").mobiscroll().datetime({ });
             },500)
             _self.getCopyright('3','AT01')
+
+            // this.depositRang();
         },
         methods: {
 
             // 存款检测暂时取消
-            // checkDepositMoney:function(paymount){
+            checkDepositMoney: function (paymount) {
+                var ifInCorrect = this.isPositiveNum(paymount)
+                if (!ifInCorrect) {
+                    // $('#depositHint').text('请输入正确的存款金额')
+                    this.hintContent = "请输入正确的存款金额"
+                    this.showDepositHint = true;
+                } else {
+                    this.showDepositHint = false;
+                    if ((paymount >= 10000 || paymount < 100) && ( Number(paymount) != 0  )) {
+                        // $('#depositHint').text('存款金额必须在范围内')
+                        this.hintContent = "存款金额必须在范围内";
+                        this.showDepositHint = true;
+                    } else {
+                        this.showDepositHint = false;
+                    }
+                }
+                this.paymount = paymount;
+            },
+            // 从接口获取存款限额
+            // depositRang:function () {  
+            //     var _self = this ;
 
-            //     var ifInCorrect = this.isPositiveNum( paymount )
-            //     if(!ifInCorrect){
-            //        // $('#depositHint').text('请输入正确的存款金额')
-            //        this.hintContent = "请输入正确的存款金额"
-            //        this.showDepositHint = true;
-            //     }else{
-            //        this.showDepositHint = false;
-            //         if(   (paymount>=10000 ||paymount<100)&&( Number(paymount)!= 0  ) ){
-            //            // $('#depositHint').text('存款金额必须在范围内')
-            //            this.hintContent = "存款金额必须在范围内"
-            //            this.showDepositHint = true;
-            //         }else{
-            //             this.showDepositHint = false;
+            //     $.ajax({
+            //         type: 'get',
+            //         headers: {
+            //             "Authorization": "bearer  " + _self.getAccessToken ,
+            //         },
+            //         url: _self.action.forseti + '/api/pay/receiptClient',
+            //         // data: { orderId: id ,} ,
+            //         success: function(res){ // dataType 1 线上入款 , 3 二维码
+            //             console.log(res,'deposit')
+            //         },
+            //         error: function (res) {
 
             //         }
-
-            //     }
-
-            //     this.paymount = paymount;
-
+            //     });
             // },
             // 清空输入金额
             clearMoney:function () {
@@ -534,7 +551,7 @@
                         //  console.log(res)
                         // console.log( res.data.splice(0,4) )
 //                        res.data = res.data;
-//                    console.log(res.data)
+                        console.log(res.data)
                         _self.payWays = res.data;
                     },
                     error: function (e) {

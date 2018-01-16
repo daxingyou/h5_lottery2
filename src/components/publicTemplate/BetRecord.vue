@@ -486,6 +486,7 @@
                         // this.$router.push('/lhc')
                         return
                     }
+
                     this.seadata.page = 1; // 还原页码
                     $('.bet-recode-all').find('li').remove(); // 清空原来的数据
                     var $src = $(e.currentTarget);
