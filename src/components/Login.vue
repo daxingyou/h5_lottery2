@@ -38,9 +38,9 @@
                         </div>
                         <label class="error-message "></label>
                     </fieldset>
-                    <div>
-                        <input type="checkbox" id="longinCheck" ref='check' name="">十天内免登陆
-                    </div>
+                    <!--  <div>
+                         <input type="checkbox" id="longinCheck" ref='check' name="">十天内免登陆
+                     </div> -->
                 </form>
                 <div class="btn btn_blue">
                     <a class="new_btn" href="javascript:;" @click="LoginAction()"><span class="big">登录</span></a>
@@ -98,7 +98,7 @@ export default {
           this.username = this.getCookie('username')
           // this.setCookie('loginName', this.username)
           // this.getCookie('username')
-          console.log(this.$refs.check.checked, 'checkbox')
+          // console.log(this.$refs.check.checked, 'checkbox')
 
 
       },
@@ -161,7 +161,7 @@ export default {
             url: this.action.uaa + 'apid/member/login',
             data: logindata ,
             success: (res) => {
-                console.log(this.$refs.check.checked, 'checkbox-in')
+                // console.log(this.$refs.check.checked, 'checkbox-in')
 
 
                 if(res.err == 'SUCCESS'){ // 登录成功
