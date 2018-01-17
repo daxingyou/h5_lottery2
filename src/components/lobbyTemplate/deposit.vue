@@ -33,7 +33,7 @@
                                     <div class="step03 pay_way  payWayNet payWayTranster"  v-if = 'netPayShow'>
                                         <ul class="arrow_list_dark">
                                             <li v-for = '(payWay,key) in payWays' >
-                                                <a class="item" href="javascript:;" :data-hf="payWay.rsUrl" :data-type='payWay.rsNameId'  :data-val="payWay.flag" @click=" choosePayMoth($event)" >
+                                                <a class="item" href="javascript:;" :data-hf="payWay.rsUrl" :data-type='payWay.rsNameId'  :data-val="payWay.flag" @click=" choosePayMoth($event,payWay)" >
                                                     <span class="badge">
                                                         <span class="icon_account " :class="'icon_deposit_net'+payWay.rsNameId"></span>
                                                     </span>
@@ -467,7 +467,7 @@
                 });
             },
             // 选择支付方式
-            choosePayMoth:function (e) {
+            choosePayMoth:function (e,payWay) {
                 var _self = this ;
                 // 转账
 //                $('.payWayTranster').on('click','.item',function (e) {
@@ -480,10 +480,18 @@
                     //       return false ;
                     // }
                     // 范围暂时取消，只是将限额确定在大于100
-                    // if( (_self.paymount<100)||( Number(_self.paymount)!= 0  ) ){
-                    //       _self.$refs.autoCloseDialog.open('存款最低金额100元') ;
-                    //       return false ;
-                    // }
+                    if( ( _self.paymount*100>payWay.maxDepositAmount||_self.paymount*100<payWay.minDepositAmount)||( Number(_self.paymount)== 0  ) ){
+                          _self.$refs.autoCloseDialog.open('充值金额不符合限额要求') ;
+                          return false ;
+                    }
+
+                    // console.log(payWay,'payWay')
+                    // console.log(payWay.minDepositAmount,'minDepositAmount')
+                    // console.log(payWay.maxDepositAmount,'maxDepositAmount')
+                    // console.log(_self.paymount*100)
+                    // console.log(_self.paymount*100>payWay.maxDepositAmount,'过大')
+                    // console.log(_self.paymount*100<payWay.minDepositAmount,'过小')
+
                     var $src = $(e.currentTarget);
                     var type = $src.data('type');
                     var val= $src.data('val')
