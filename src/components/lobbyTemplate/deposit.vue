@@ -39,7 +39,10 @@
                                                     <span class="badge">
                                                         <span class="icon_account " :class="'icon_deposit_net'+payWay.rsNameId"></span>
                                                     </span>
-                                                    <span>{{ payWay.rsName}}</span>
+                                                    <span class="limitMoney">
+                                                        <span>{{ payWay.rsName}}</span>
+                                                        <span>限额：1~20000</span>
+                                                    </span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
                                             </li>
@@ -473,16 +476,24 @@
                 var _self = this ;
                 // 转账
 //                $('.payWayTranster').on('click','.item',function (e) {
-                    if(_self.paymount =='' || !_self.isPositiveNum(_self.paymount)){
-                        _self.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
-                        return false ;
-                    }
-                    // if( ( _self.paymount>=10000 ||_self.paymount<100)&&( Number(_self.paymount)!= 0  ) ){
-                    //       _self.$refs.autoCloseDialog.open('存款金额必须在范围内') ;
-                    //       return false ;
-                    // }
-                    // 范围暂时取消，只是将限额确定在大于100
-                if (( _self.paymount * 100 > payWay.maxDepositAmount || _self.paymount * 100 < payWay.minDepositAmount) || ( Number(_self.paymount) == 0  )) {
+                var notQuick = payWay.rsNameId
+                console.log( (notQuick != 0) ,'notquick')
+
+                if( (notQuick != 0)&& (_self.paymount =='' || !_self.isPositiveNum(_self.paymount) ) ){
+                    console.log(2)
+                    _self.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
+                    return false ;
+                }
+
+                // if( ( _self.paymount>=10000 ||_self.paymount<100)&&( Number(_self.paymount)!= 0  ) ){
+                //       _self.$refs.autoCloseDialog.open('存款金额必须在范围内') ;
+                //       return false ;
+                // }
+                // 范围暂时取消，只是将限额确定在大于100 (notQuick!= 0)||
+
+                var limitF = ( _self.paymount * 100 > payWay.maxDepositAmount || _self.paymount * 100 < payWay.minDepositAmount) || ( Number(_self.paymount) == 0  )
+
+                if ( notQuick&&limitF ) {
                     _self.$refs.autoCloseDialog.open('充值金额不符合限额要求');
                     return false;
                 }
@@ -1053,4 +1064,18 @@
         /*background-color: rgba(0, 0, 0, 0.5);*/
         margin-top: 0.185rem;
     }
+/*限额调整样式*/
+    .limitMoney{
+        width: 2.346rem;
+        margin-top: -0.25rem;
+    }
+    .limitMoney span:nth-of-type(1){
+        height: 0.577rem;        
+    }
+     .limitMoney span:nth-of-type(2){
+        font-size: 0.288rem;
+        height: 0.385rem;
+    }
+
+
 </style>
