@@ -38,9 +38,9 @@
                         </div>
                         <label class="error-message "></label>
                     </fieldset>
-                    <!--  <div>
-                         <input type="checkbox" id="longinCheck" ref='check' name="">十天内免登陆
-                     </div> -->
+                     <div>
+                         <input type="checkbox" id="longinCheck" v-model = 'checkStatu' ref='check' @click = 'checkl' name="">十天内免登陆
+                     </div>
                 </form>
                 <div class="btn btn_blue">
                     <a class="new_btn" href="javascript:;" @click="LoginAction()"><span class="big">登录</span></a>
@@ -77,7 +77,8 @@ export default {
             yzmcode:'',
             client:'',
             submitflage: false ,
-            custUrl:''
+            custUrl:'',
+            checkStatu:false
         }
     },
   created:function () {
@@ -87,20 +88,42 @@ export default {
        // this.username = 'admin' ;
       document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
       this.custUrl=localStorage.getItem('Url');
-      // this.nologin()
+      this.nologin()
+      $('.pass-word').focus()
+
 
   },
   methods: {
 
       // 十天内免登陆
       nologin: function () {
-          console.log(this)
-          this.username = this.getCookie('username')
-          // this.setCookie('loginName', this.username)
-          // this.getCookie('username')
-          // console.log(this.$refs.check.checked, 'checkbox')
+        var bool = !!this.getCookie('checkl')
 
+        if(this.getCookie('checkl')==1 ){
+          this.username = this.getCookie('uname')
+          this.password = this.getCookie('password') 
+          this.checkStatu = true
+        }
 
+        if( this.getCookie('checkl'== 0) ){
+          console.log('dfas')
+          this.username = ''
+          this.password = '' 
+          this.checkStatu = false
+          this.setCookie('checkl', 0) 
+        }
+
+      },
+
+      checkl:function(){
+        var checkf = 0;
+        if(this.$refs.check.checked){
+          checkf = 1;
+          this.setCookie('checkl', checkf)
+        }else{
+          checkf = 0;  
+          this.setCookie('checkl', checkf)                  
+        }
       },
 
       //清除model数据,cl元素class
@@ -166,15 +189,24 @@ export default {
 
                 if(res.err == 'SUCCESS'){ // 登录成功
                     _self.submitflage = false ;
+                    var cookieTime = 10*24*60*60*1000
                     this.setCookie("access_token", res.data.access_token);  // 把登录token放在cookie里面
                     // this.setCookie("username", this.username);  // 把登录用户名放在cookie里面
                     this.setCookie("username", res.data.username);  // 把登录用户名放在cookie里面
                     // this.setCookie("psw", res.data.username,14);  // 把登录密码放在cookie里面
 
+                    console.log( _self.username ,'username')
+
+                    console.log( _self.password ,'password',)
+                    this.setCookie("password", _self.password,cookieTime);
+                    this.setCookie("uname", res.data.username,cookieTime);  //免登陆用
+
+
+
                     this.setCookie('acType',res.data.acType);   //把玩家类型放在cookie里面
                     this.$refs.autoCloseDialog.open('登录成功','','icon_check','d_check') ;
                       setTimeout(function () {
-                          window.location = '/';
+                          // window.location = '/';
                           // _self.$router.push('');
                        },300)
                 }else{
