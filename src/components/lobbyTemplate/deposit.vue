@@ -41,7 +41,7 @@
                                                     </span>
                                                     <span class="limitMoney" >
                                                         <span>{{ payWay.rsName}}</span>
-                                                        <span  v-if=' payWay.rsNameId!=0'>限额：{{parseInt(payWay.minDepositAmount/100) }}~{{ payWay.maxDepositAmount/100  }}</span>
+                                                        <span  v-if=' payWay.rsNameId!=0'>限额：{{parseInt(payWay.minDepositAmount/100) }}~{{ parseInt(payWay.maxDepositAmount/100)  }}</span>
                                                     </span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
