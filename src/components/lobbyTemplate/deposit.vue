@@ -39,9 +39,9 @@
                                                     <span class="badge">
                                                         <span class="icon_account " :class="'icon_deposit_net'+payWay.rsNameId"></span>
                                                     </span>
-                                                    <span class="limitMoney">
+                                                    <span class="limitMoney" >
                                                         <span>{{ payWay.rsName}}</span>
-                                                        <span>限额：1~20000</span>
+                                                        <span  v-if=' payWay.rsNameId!=0'>限额：{{ fortMoney(roundAmt(payWay.minDepositAmount), 2) }}~{{ fortMoney(roundAmt(payWay.maxDepositAmount), 2) }}</span>
                                                     </span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
@@ -436,25 +436,7 @@
                 }
                 this.paymount = paymount;
             },
-            // 从接口获取存款限额
-            // depositRang:function () {  
-            //     var _self = this ;
-
-            //     $.ajax({
-            //         type: 'get',
-            //         headers: {
-            //             "Authorization": "bearer  " + _self.getAccessToken ,
-            //         },
-            //         url: _self.action.forseti + '/api/pay/receiptClient',
-            //         // data: { orderId: id ,} ,
-            //         success: function(res){ // dataType 1 线上入款 , 3 二维码
-            //             console.log(res,'deposit')
-            //         },
-            //         error: function (res) {
-
-            //         }
-            //     });
-            // },
+           
             // 清空输入金额
             clearMoney:function () {
                 this.paymount = ''  ;
@@ -1073,8 +1055,9 @@
         height: 0.577rem;        
     }
      .limitMoney span:nth-of-type(2){
-        font-size: 0.288rem;
+        font-size: 0.2692rem;
         height: 0.385rem;
+        white-space: nowrap;
     }
 
 
