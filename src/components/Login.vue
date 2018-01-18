@@ -38,8 +38,8 @@
                         </div>
                         <label class="error-message "></label>
                     </fieldset>
-                     <div>
-                         <input type="checkbox" id="longinCheck" v-model = 'checkStatu' ref='check' @click = 'checkl' name="">十天内免登陆
+                     <div class="no_login_box">
+                         <input type="checkbox" id="longinCheck" v-model = 'checkStatu' ref='check' @click = 'checkl' name="">七天内免登陆
                      </div>
                 </form>
                 <div class="btn btn_blue">
@@ -116,13 +116,14 @@ export default {
       },
 
       checkl:function(){
+        var timel = 7*24*60*60*1000
         var checkf = 0;
         if(this.$refs.check.checked){
           checkf = 1;
-          this.setCookie('checkl', checkf)
+          this.setCookie('checkl', checkf,timel)
         }else{
           checkf = 0;  
-          this.setCookie('checkl', checkf)                  
+          this.setCookie('checkl', checkf,timel)                  
         }
       },
 
@@ -189,7 +190,7 @@ export default {
 
                 if(res.err == 'SUCCESS'){ // 登录成功
                     _self.submitflage = false ;
-                    var cookieTime = 10*24*60*60*1000
+                    var cookieTime = 7*24*60*60*1000
                     this.setCookie("access_token", res.data.access_token);  // 把登录token放在cookie里面
                     // this.setCookie("username", this.username);  // 把登录用户名放在cookie里面
                     this.setCookie("username", res.data.username);  // 把登录用户名放在cookie里面
@@ -229,6 +230,9 @@ export default {
 }
 </script>
 <style type="text/css">
-  
+  .no_login_box{
+    margin-left: -76px;
+    margin-bottom: 5px;
+  }
 
 </style>

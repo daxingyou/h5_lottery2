@@ -41,7 +41,7 @@
                                                     </span>
                                                     <span class="limitMoney" >
                                                         <span>{{ payWay.rsName}}</span>
-                                                        <span  v-if=' payWay.rsNameId!=0'>限额：{{ fortMoney(roundAmt(payWay.minDepositAmount), 2) }}~{{ fortMoney(roundAmt(payWay.maxDepositAmount), 2) }}</span>
+                                                        <span  v-if=' payWay.rsNameId!=0'>限额：{{parseInt(payWay.minDepositAmount/100) }}~{{ payWay.maxDepositAmount/100  }}</span>
                                                     </span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
@@ -459,10 +459,9 @@
                 // 转账
 //                $('.payWayTranster').on('click','.item',function (e) {
                 var notQuick = payWay.rsNameId
-                console.log( (notQuick != 0) ,'notquick')
+                // console.log( (notQuick != 0) ,'notquick')
 
                 if( (notQuick != 0)&& (_self.paymount =='' || !_self.isPositiveNum(_self.paymount) ) ){
-                    console.log(2)
                     _self.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
                     return false ;
                 }
@@ -554,7 +553,7 @@
                         //  console.log(res)
                         // console.log( res.data.splice(0,4) )
 //                        res.data = res.data;
-                        console.log(res.data)
+                        // console.log(res.data)
                         _self.payWays = res.data;
                     },
                     error: function (e) {
@@ -876,12 +875,12 @@
                 var $src = $(e.currentTarget);
                 var claName = $src.data('claName');
 
-                console.log(claName, 'name')
-                console.log($src, 'src')
-                console.log($src[0].classList.value, 'src0')
+                // console.log(claName, 'name')
+                // console.log($src, 'src')
+                // console.log($src[0].classList.value, 'src0')
                 // console.log('.'+$src[0].classList.value )
                 var str = '.' + $src[0].classList.value
-                console.log(str, 'str')
+                // console.log(str, 'str')
 
                 // var clipboard = new Clipboard('.text_name') ;
                 var clipboard = new Clipboard(str);
@@ -927,7 +926,7 @@
                     data: senddata,
                     success: function(res){ // dataType 1 线上入款 , 3 二维码
                         if(res.err == 'SUCCESS'){
-                            console.log('seccess')
+                            // console.log('seccess')
                             if(type == '1'){ // 线上付款
                                 _self.submitpayflag = false ;
                                 if(res.data.dataType=='1'){ // 页面html
@@ -1049,15 +1048,17 @@
 /*限额调整样式*/
     .limitMoney{
         width: 2.346rem;
-        margin-top: -0.25rem;
+        margin-top: 0.09615rem;
     }
     .limitMoney span:nth-of-type(1){
         height: 0.577rem;        
+        line-height: 0.577rem;        
     }
      .limitMoney span:nth-of-type(2){
         font-size: 0.2692rem;
         height: 0.385rem;
-        white-space: nowrap;
+        line-height: 0.385rem;
+        margin-top: 0.05769rem;
     }
 
 
