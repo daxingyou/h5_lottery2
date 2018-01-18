@@ -116,6 +116,7 @@ export default {
       },
 
       checkl:function(){
+
         var timel = 7*24*60*60*1000
         var checkf = 0;
         if(this.$refs.check.checked){
@@ -150,7 +151,12 @@ export default {
       },
     // 登录接口 moved to 主页/index.vue
     LoginAction:function() {
+
+      
           var _self = this ;
+
+        console.log( _self.checkStatu )
+
           if(_self.submitflage){
               return false ;
           }
@@ -170,14 +176,26 @@ export default {
         if(falg){
             return false ;
         }
-        _self.submitflage = true ;
-        var logindata = {  // grant_type: 'password', username: 'bcappid02|admin', password: 'admin'
-            grant_type: 'password',
-            username: 'bcappid02|'+this.username ,
-            password: this.password ,
-            code: this.yzmcode ,  // 验证码
-            source: 2,
-        }
+        _self.submitflage = true ;  
+        var logindata ={}
+        if(_self.submitflage){
+              logindata = {  // grant_type: 'password', username: 'bcappid02|admin', password: 'admin'
+              grant_type: 'password',
+              username: 'bcappid02|'+this.username ,
+              password: this.password ,
+              code: this.yzmcode ,  // 验证码
+              source: 2,
+              tokenDay:7,
+          }
+        }else{
+          logindata = {  // grant_type: 'password', username: 'bcappid02|admin', password: 'admin'
+              grant_type: 'password',
+              username: 'bcappid02|'+this.username ,
+              password: this.password ,
+              code: this.yzmcode ,  // 验证码
+              source: 2,
+          }
+        }  
         $.ajax({
             type: 'post',
             headers: {clientId:this.client,Authorization: 'Basic d2ViX2FwcDo='},
@@ -185,9 +203,7 @@ export default {
             url: this.action.uaa + 'apid/member/login',
             data: logindata ,
             success: (res) => {
-                // console.log(this.$refs.check.checked, 'checkbox-in')
-
-
+               
                 if(res.err == 'SUCCESS'){ // 登录成功
                     _self.submitflage = false ;
                     var cookieTime = 7*24*60*60*1000
@@ -197,13 +213,9 @@ export default {
                     // this.setCookie("psw", res.data.username,14);  // 把登录密码放在cookie里面
 
                     console.log( _self.username ,'username')
-
                     console.log( _self.password ,'password',)
                     this.setCookie("password", _self.password,cookieTime);
                     this.setCookie("uname", res.data.username,cookieTime);  //免登陆用
-
-
-
                     this.setCookie('acType',res.data.acType);   //把玩家类型放在cookie里面
                     this.$refs.autoCloseDialog.open('登录成功','','icon_check','d_check') ;
                       setTimeout(function () {
