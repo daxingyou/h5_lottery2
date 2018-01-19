@@ -39,7 +39,7 @@
                         <label class="error-message "></label>
                     </fieldset>
                      <div class="no_login_box">
-                         <input type="checkbox" id="longinCheck" v-model = 'checkStatu' ref='check' @click = 'checkl' name="">七天内免登陆
+                         <input type="checkbox" id="longinCheck" v-model = 'checkStatu' ref='check'  name="">七天内免登陆
                      </div>
                 </form>
                 <div class="btn btn_blue">
@@ -88,45 +88,8 @@ export default {
        // this.username = 'admin' ;
       document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
       this.custUrl=localStorage.getItem('Url');
-      this.nologin()
-      $('.pass-word').focus()
-
-
   },
   methods: {
-
-      // 十天内免登陆
-      nologin: function () {
-        var bool = !!this.getCookie('checkl')
-
-        if(this.getCookie('checkl')==1 ){
-          this.username = this.getCookie('uname')
-          this.password = this.getCookie('password') 
-          this.checkStatu = true
-        }
-
-        if( this.getCookie('checkl'== 0) ){
-          console.log('dfas')
-          this.username = ''
-          this.password = '' 
-          this.checkStatu = false
-          this.setCookie('checkl', 0) 
-        }
-
-      },
-
-      checkl:function(){
-
-        var timel = 7*24*60*60*1000
-        var checkf = 0;
-        if(this.$refs.check.checked){
-          checkf = 1;
-          this.setCookie('checkl', checkf,timel)
-        }else{
-          checkf = 0;  
-          this.setCookie('checkl', checkf,timel)                  
-        }
-      },
 
       //清除model数据,cl元素class
       clearVal: function (cl) {
@@ -157,9 +120,9 @@ export default {
 
         console.log( _self.checkStatu )
 
-          if(_self.submitflage){
-              return false ;
-          }
+        if(_self.submitflage){
+            return false ;
+        }
         if(this.username ==''){
             this.$refs.autoCloseDialog.open('请输入用户名') ;
             return false ;
@@ -178,7 +141,7 @@ export default {
         }
         _self.submitflage = true ;  
         var logindata ={}
-        if(_self.submitflage){
+        if(_self.checkStatu ){
               logindata = {  // grant_type: 'password', username: 'bcappid02|admin', password: 'admin'
               grant_type: 'password',
               username: 'bcappid02|'+this.username ,
@@ -219,6 +182,7 @@ export default {
                     this.setCookie('acType',res.data.acType);   //把玩家类型放在cookie里面
                     this.$refs.autoCloseDialog.open('登录成功','','icon_check','d_check') ;
                       setTimeout(function () {
+                        // console.log(logindata,'logindata' )
                           window.location = '/';
                           // _self.$router.push('');
                        },300)
