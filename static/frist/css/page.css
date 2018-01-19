@@ -1123,7 +1123,7 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 .other_link > a:first-child { border-left: none; padding-left: 0; }
 .other_link > a.text-yellow { color: #ffbd00; margin: 0; padding: 0; border-left: none; text-decoration: underline !important; }
 
-.no_login_box{  padding: 0.1rem 0; margin-bottom: 0.2rem;}
+.no_login_box{  padding: 0.1rem 0; margin-bottom: 0.2rem; text-align: left; margin-left: 1.6rem;}
 .no_login_box input{ display: none;}
 .no_login_box label{ display: inline-block; color: #ffc388; padding-left: 0.3rem; }
 .no_login_box label:before{content: ''; display: inline-block; vertical-align: middle;margin-right: 0.1rem;margin-top: -0.05rem;width: 0.4rem;height: 0.4rem;border-radius: 0.1rem;border: 1px solid #d59559; background-color:#ffc388 }
