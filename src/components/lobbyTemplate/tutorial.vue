@@ -9,7 +9,8 @@
             <h2 class="center title_name">{{copyTitle}}</h2>
             <div class="right"></div>
         </header>
-        <div class="content" id="freshContent">
+        <div class="pa_content" id="freshContent">
+            <div class="tutorial_area page_box">
             <div class="tabset">
                 <!-- Tab 1 -->
                 <input type="radio" name="tabset" id="tab1" aria-controls="agent" checked @click="gotoTop('xsjc')">
@@ -25,6 +26,7 @@
                     </section>
                 </div>
 
+            </div>
             </div>
         </div>
 

@@ -39,7 +39,7 @@
                         <label class="error-message "></label>
                     </fieldset>
                      <div class="no_login_box">
-                         <input type="checkbox" id="longinCheck" v-model = 'checkStatu' ref='check'  name="">七天内免登陆
+                         <input type="checkbox" id="longinCheck" v-model = 'checkStatu' ref='check'  name=""><label for="longinCheck">七天内免登陆</label>
                      </div>
                 </form>
                 <div class="btn btn_blue">
@@ -206,9 +206,9 @@ export default {
 }
 </script>
 <style type="text/css">
-  .no_login_box{
+  /*.no_login_box{
     margin-left: -76px;
     margin-bottom: 5px;
-  }
+  }*/
 
 </style>
