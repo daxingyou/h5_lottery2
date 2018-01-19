@@ -23,14 +23,14 @@
                                         <div class="so-m-t-right" v-show="ishwowpriod">
                                             <div class="last-open-num">
                                                 <ul>
-                                                    <li :class="'lhc_ball num_' + ((item) < 10? '0'+ item: item)" v-if="index < 6" v-for="(item, index) in winNumber">{{item}}</li>
+                                                    <li :class="'lhc_ball num_' + ((item) < 10? '0'+ item: item)" v-if="index < 6" v-for="(item, index) in winNumber">{{item<10?'0'+item:item}}</li>
 
                                                     <li class="lhc_ball_plus">
                                                         <span></span>
                                                         <span></span>
                                                     </li>
 
-                                                    <li :class="'lhc_ball num_' + ((item) < 10? '0'+ item: item)" v-if="index == 6" v-for="(item, index) in winNumber">{{item}}</li>
+                                                    <li :class="'lhc_ball num_' + ((item) < 10? '0'+ item: item)" v-if="index == 6" v-for="(item, index) in winNumber">{{item<10?'0'+item:item}}</li>
                                                 </ul>
                                             </div>
                                         </div>
