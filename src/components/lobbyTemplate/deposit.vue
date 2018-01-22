@@ -22,7 +22,8 @@
                                         <fieldset>
                                             <div class="form_g text money">
                                                 <legend>充值金额</legend>
-                                                <input type="tel" placeholder="请输入充值金额" v-model="paymount"   >
+                                                <input type="tel" placeholder="请输入充值金额"
+                                                       v-model="paymount">
                                                 <i class="close" @click="clearMoney()"></i>
                                             </div>
                                             <div  v-if = 'showDepositHint' class="depositHint" id="depositHint"> {{ hintContent }}</div>
@@ -32,11 +33,16 @@
                                     <div class="step03 pay_way  payWayNet payWayTranster"  v-if = 'netPayShow'>
                                         <ul class="arrow_list_dark">
                                             <li v-for = '(payWay,key) in payWays' >
-                                                <a class="item" href="javascript:;" :data-hf="payWay.rsUrl" :data-type='payWay.rsNameId'  :data-val="payWay.flag" @click=" choosePayMoth($event)" >
+                                                <a class="item" href="javascript:;" :data-hf="payWay.rsUrl"
+                                                   :data-type='payWay.rsNameId' :data-val="payWay.flag"
+                                                   @click=" choosePayMoth($event,payWay)">
                                                     <span class="badge">
                                                         <span class="icon_account " :class="'icon_deposit_net'+payWay.rsNameId"></span>
                                                     </span>
-                                                    <span>{{ payWay.rsName}}</span>
+                                                    <span class="limitMoney" >
+                                                        <span>{{ payWay.rsName}}</span>
+                                                        <span  v-if=' payWay.rsNameId!=0'>限额：{{parseInt(payWay.minDepositAmount/100) }}~{{ parseInt(payWay.maxDepositAmount/100)  }}</span>
+                                                    </span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
                                             </li>
@@ -406,33 +412,31 @@
                 $("#paydate").mobiscroll().datetime({ });
             },500)
             _self.getCopyright('3','AT01')
+
+            // this.depositRang();
         },
         methods: {
 
             // 存款检测暂时取消
-            // checkDepositMoney:function(paymount){
-
-            //     var ifInCorrect = this.isPositiveNum( paymount )
-            //     if(!ifInCorrect){
-            //        // $('#depositHint').text('请输入正确的存款金额')
-            //        this.hintContent = "请输入正确的存款金额"
-            //        this.showDepositHint = true;
-            //     }else{
-            //        this.showDepositHint = false;
-            //         if(   (paymount>=10000 ||paymount<100)&&( Number(paymount)!= 0  ) ){
-            //            // $('#depositHint').text('存款金额必须在范围内')
-            //            this.hintContent = "存款金额必须在范围内"
-            //            this.showDepositHint = true;
-            //         }else{
-            //             this.showDepositHint = false;
-
-            //         }
-
-            //     }
-
-            //     this.paymount = paymount;
-
-            // },
+            checkDepositMoney: function (paymount) {
+                var ifInCorrect = this.isPositiveNum(paymount)
+                if (!ifInCorrect) {
+                    // $('#depositHint').text('请输入正确的存款金额')
+                    this.hintContent = "请输入正确的存款金额"
+                    this.showDepositHint = true;
+                } else {
+                    this.showDepositHint = false;
+                    if ((paymount >= 10000 || paymount < 100) && ( Number(paymount) != 0  )) {
+                        // $('#depositHint').text('存款金额必须在范围内')
+                        this.hintContent = "存款金额必须在范围内";
+                        this.showDepositHint = true;
+                    } else {
+                        this.showDepositHint = false;
+                    }
+                }
+                this.paymount = paymount;
+            },
+           
             // 清空输入金额
             clearMoney:function () {
                 this.paymount = ''  ;
@@ -450,23 +454,38 @@
                 });
             },
             // 选择支付方式
-            choosePayMoth:function (e) {
+            choosePayMoth: function (e, payWay) {
                 var _self = this ;
                 // 转账
 //                $('.payWayTranster').on('click','.item',function (e) {
-                    if(_self.paymount =='' || !_self.isPositiveNum(_self.paymount)){
-                        _self.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
-                        return false ;
-                    }
-                    // if( ( _self.paymount>=10000 ||_self.paymount<100)&&( Number(_self.paymount)!= 0  ) ){
-                    //       _self.$refs.autoCloseDialog.open('存款金额必须在范围内') ;
-                    //       return false ;
-                    // }
-                    // 范围暂时取消，只是将限额确定在大于100
-                    // if( (_self.paymount<100)||( Number(_self.paymount)!= 0  ) ){
-                    //       _self.$refs.autoCloseDialog.open('存款最低金额100元') ;
-                    //       return false ;
-                    // }
+                var notQuick = payWay.rsNameId
+                // console.log( (notQuick != 0) ,'notquick')
+
+                if( (notQuick != 0)&& (_self.paymount =='' || !_self.isPositiveNum(_self.paymount) ) ){
+                    _self.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
+                    return false ;
+                }
+
+                // if( ( _self.paymount>=10000 ||_self.paymount<100)&&( Number(_self.paymount)!= 0  ) ){
+                //       _self.$refs.autoCloseDialog.open('存款金额必须在范围内') ;
+                //       return false ;
+                // }
+                // 范围暂时取消，只是将限额确定在大于100 (notQuick!= 0)||
+
+                var limitF = ( _self.paymount * 100 > payWay.maxDepositAmount || _self.paymount * 100 < payWay.minDepositAmount) || ( Number(_self.paymount) == 0  )
+
+                if ( notQuick&&limitF ) {
+                    _self.$refs.autoCloseDialog.open('充值金额不符合限额要求');
+                    return false;
+                }
+
+                // console.log(payWay,'payWay')
+                // console.log(payWay.minDepositAmount,'minDepositAmount')
+                // console.log(payWay.maxDepositAmount,'maxDepositAmount')
+                // console.log(_self.paymount*100)
+                // console.log(_self.paymount*100>payWay.maxDepositAmount,'过大')
+                // console.log(_self.paymount*100<payWay.minDepositAmount,'过小')
+
                     var $src = $(e.currentTarget);
                     var type = $src.data('type');
                     var val= $src.data('val')
@@ -534,7 +553,7 @@
                         //  console.log(res)
                         // console.log( res.data.splice(0,4) )
 //                        res.data = res.data;
-//                    console.log(res.data)
+                        // console.log(res.data)
                         _self.payWays = res.data;
                     },
                     error: function (e) {
@@ -856,12 +875,12 @@
                 var $src = $(e.currentTarget);
                 var claName = $src.data('claName');
 
-                console.log(claName, 'name')
-                console.log($src, 'src')
-                console.log($src[0].classList.value, 'src0')
+                // console.log(claName, 'name')
+                // console.log($src, 'src')
+                // console.log($src[0].classList.value, 'src0')
                 // console.log('.'+$src[0].classList.value )
                 var str = '.' + $src[0].classList.value
-                console.log(str, 'str')
+                // console.log(str, 'str')
 
                 // var clipboard = new Clipboard('.text_name') ;
                 var clipboard = new Clipboard(str);
@@ -907,7 +926,7 @@
                     data: senddata,
                     success: function(res){ // dataType 1 线上入款 , 3 二维码
                         if(res.err == 'SUCCESS'){
-                            console.log('seccess')
+                            // console.log('seccess')
                             if(type == '1'){ // 线上付款
                                 _self.submitpayflag = false ;
                                 if(res.data.dataType=='1'){ // 页面html
@@ -1026,4 +1045,21 @@
         /*background-color: rgba(0, 0, 0, 0.5);*/
         margin-top: 0.185rem;
     }
+/*限额调整样式*/
+    .limitMoney{
+        width: 2.346rem;
+        margin-top: 0.09615rem;
+    }
+    .limitMoney span:nth-of-type(1){
+        height: 0.577rem;        
+        line-height: 0.577rem;        
+    }
+     .limitMoney span:nth-of-type(2){
+        font-size: 0.2692rem;
+        height: 0.385rem;
+        line-height: 0.385rem;
+        margin-top: 0.05769rem;
+    }
+
+
 </style>

@@ -593,8 +593,8 @@
                                         var pnameA = v.playName.substring(0, 3) ; // 筛选连码
                                         var pnameANum = v.playName.substring(v.playName.length - 2, v.playName.length); // 筛选连码号码
                                         var pnameANumFlag = Number(pnameANum) <= 49 && Number(pnameANum) >= 0
-                                        console.log(pnameANum, 'pnameANum')
-                                        console.log(pnameANumFlag, 'pnameANumFlag')
+                                        // console.log(pnameANum, 'pnameANum')
+                                        // console.log(pnameANumFlag, 'pnameANumFlag')
                                         if(v.lotteryId =='8'){  // 北京pk10
                                             var pcode = ('' + v.issueAlias) ;
                                         }else{
@@ -665,7 +665,7 @@
                                             }
 
                                             // }
-                                            console.log(pnameA == '特码A' && pnameANumFlag, 'lst')
+                                            // console.log(pnameA == '特码A' && pnameANumFlag, 'lst')
 
                                             // '<span>' + v.orderStatusName + '</span><div>' + v.pcode + '期</div></div></a></li>';
                                         }

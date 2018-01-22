@@ -169,7 +169,7 @@
 
 /*连码码号box调高，解决溢出问题*/
 #lhc #lianmaBox p {
-	height: 1.8rem;
+    height: 2rem;
 }
 
 #lhc #lianmaBox p span {
