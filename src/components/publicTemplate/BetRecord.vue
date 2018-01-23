@@ -145,6 +145,7 @@
                     {id:'22','name':'湖北快3'} ,
                     {id:'20','name':'安徽快3'} ,
                     {id: '10', 'name': '香港六合彩'},
+                    {id: '110', 'name': '五分六合彩'},
                 ],
                 ajaxSubmitAllow:false ,
             }
@@ -478,8 +479,8 @@
                     }
                     console.log(this.lotteryid)
 
-                    if (this.lotteryid == 10) {
-                        this.setCookie('lt_lotteryid', 10)
+                    if (this.lotteryid == 10 ||this.lotteryid == 110) {
+                        this.setCookie('lt_lotteryid', this.lotteryid)
                         this.setCookie('lottery_name', '香港六合彩')
                         // window.location = '/lhc/LhcBetRecord'
                         this.$router.push('/lhc/LhcBetRecord')

@@ -25,7 +25,7 @@ import MiaoSuK3Index from '@/components/k3/MiaoSuIndex'  // 秒速快3
 import LhcIndex from '@/components/lhc/Index' // 六合彩
 import LhcBetRecord from '@/components/lhc/LhcBetRecord' // 六合彩投注紀錄
 
-
+import WfLhcIndex from '@/components/wflhc/Index' // 五分六合彩
 
 import PastView from '@/components/publicTemplate/PastView'
 import lobbyPastView from '@/components/lobbyPastView'  // 大厅往期开奖
@@ -151,13 +151,16 @@ export default new Router({
         name: 'SecondSsc',
         component: SecondSsc
     },
-      {
-          path: '/lhc',
-          name: 'LhcIndex',
-          component: LhcIndex
-      },
-
-
+    {
+        path: '/lhc',
+        name: 'LhcIndex',
+        component: LhcIndex
+    },
+     {
+      path: '/wflhc',
+      name: 'WfLhcIndex',
+      component: WfLhcIndex
+    },
 
     { path: '/publicTemplate/pastView', name:'pastView', component: PastView },
     { path: '/lobbyPastView', name:'lobbyPastView', component: lobbyPastView },

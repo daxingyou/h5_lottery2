@@ -153,6 +153,7 @@
                 mySwiperTrack: null,
                 gamechoose :[
                     {id:'0','name':'全部'} ,
+
                    {id:'2','name':'重庆时时彩'} ,
                     {id:'102','name':'秒速时时彩'} ,
                     {id:'14','name':'新疆时时彩'} ,
@@ -169,7 +170,6 @@
                     {id:'22','name':'湖北快3'} ,
                     {id:'20','name':'安徽快3'} ,
                     {id:'10','name':'香港六合彩'},
-                    {id:'110','name':'五分六合彩'},
                 ],
                 ajaxSubmitAllow: false,
                 betRecordList: [[], [], []],

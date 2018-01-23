@@ -57,7 +57,7 @@
                                             <li>{{list.doubleData.lh_5}}</li>
 
                                         </ul>
-                                        <ul class="double-count" v-else-if="(lotteryid == '10')"> <!-- 上面一排数据 -->
+                                        <ul class="double-count" v-else-if="(lotteryid == '10'||lotteryid == '110' )"> <!-- 上面一排数据 -->
                                         </ul>
                                         <ul class="double-count" v-else>
                                             <li>{{list.doubleData.total}}</li>
@@ -76,7 +76,7 @@
                                         </li>
                                     </ul>
                                     <!-- 六合彩 -->
-                                    <ul class="new_panel_center lo_ball double-numbers lhc_winNumber_paner"  v-else-if="(list.lotteryId == '10')">
+                                    <ul class="new_panel_center lo_ball double-numbers lhc_winNumber_paner"  v-else-if="(list.lotteryId == '10') || (list.lotteryId == '110') ">
                                         <li v-for="(listnum, index) in list.winNumber.split(',')" :class="listnum < 10?'lhc_ball lhc_ball_b num_0'+ listnum : 'lhc_ball lhc_ball_b num_' + listnum" v-if="index < 6">{{listnum}}</li>
                                         <li class="lhc_ball_plus lhc_ball_plus_w">
                                             <span></span>
@@ -157,6 +157,7 @@ export default {
                 {id:'22','name':'湖北快3'} ,
                 {id:'20','name':'安徽快3'} ,
                 {id: '10', 'name': '香港六合彩'},
+                {id: '110', 'name': '五分六合彩'},
             ],
         }
     },
