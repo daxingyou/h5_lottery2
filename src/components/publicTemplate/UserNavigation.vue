@@ -92,6 +92,8 @@ export default {
             "22":"k3/huBeiK3Index",
               "106": 'k3/miaoSuK3Index',
               "10": 'lhc',
+            "24":"pk10/LuckyBoat",            
+              
             
           }, // 对应彩种的id
         }

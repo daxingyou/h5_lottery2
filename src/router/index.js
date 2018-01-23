@@ -14,6 +14,8 @@ import AnHuiK3Index from '@/components/k3/AnHuiIndex'  // 安徽快3
 import HuBeiK3Index from '@/components/k3/HuBeiIndex'  // 湖北快
 import Pk10Index from '@/components/pk10/Index'  // 北京 pk10
 import SecondPk10 from '@/components/pk10/SecondPk10'  // 北京 pk10
+import LuckyBoat from '@/components/pk10/LuckyBoat'  // 幸运飞艇
+
 
 import CqsscIndex from '@/components/cqssc/Index'  // 重庆时时彩
 import TjsscIndex from '@/components/cqssc/TianJinIndex'  // 天津时时彩
@@ -123,6 +125,11 @@ export default new Router({
       path: '/pk10/SecondPk10',
       name: 'SecondPk10',
       component: SecondPk10
+    },
+    {
+      path: '/pk10/LuckyBoat',
+      name: 'LuckyBoat',
+      component: LuckyBoat
     },
     { //重庆时时彩
       path: '/cqssc/',

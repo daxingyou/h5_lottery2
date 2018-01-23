@@ -16,7 +16,7 @@
                             <li class="prod cqssc" >
                                 <div class="new_panel_top play_th">
                                     <div class="prd_num"><i class="prd"></i><span>{{list.lotteryName}}</span></div>
-                                    <div class="prd_num02">第{{(list.lotteryId == '8' || list.lotteryId == '108')?list.issueAlias :list.pcode}}期</div>
+                                    <div class="prd_num02">第{{(list.lotteryId == '8' || list.lotteryId == '108'|| list.lotteryId == '24')?list.issueAlias :list.pcode}}期</div>
                                    <!-- <div class="time timerset" :data-time=" (format(formatTimeUnlix(list.endTime)).getTime() - format(formatTimeUnlix(sys_time)).getTime()) / 1000 ">-->
                                     <div class="time timerset endtime" :data-time="0" v-if="(format(formatTimeUnlix(list.endTime,0)).getTime() > format(formatTimeUnlix(sys_time,0)).getTime())">
                                        <!-- {{ (format(formatTimeUnlix(list.endTime)).getTime() - format(formatTimeUnlix(sys_time)).getTime()) / 1000 }}-->
@@ -28,7 +28,7 @@
                                     </div>
                                 </div>
                                 <!--  北京pk10  秒速赛车 江苏快3 -->
-                                <ul :class="'new_panel_center '+ulclass[list.lotteryId]" v-if="(list.lotteryId == '8') || (list.lotteryId == '108') || (list.lotteryId == '6') || (list.lotteryId == '106') || (list.lotteryId == '20') || (list.lotteryId == '22')">
+                                <ul :class="'new_panel_center '+ulclass[list.lotteryId]" v-if="(list.lotteryId == '8') || (list.lotteryId == '108')|| (list.lotteryId == '24') || (list.lotteryId == '6') || (list.lotteryId == '106') || (list.lotteryId == '20') || (list.lotteryId == '22')">
                                     <li v-for="listnum in list.winNumber.split(',')" >
                                        <!-- <span class="pk10_ball small_ball" :class="'num_'+listnum"></span>-->
                                         <span :class="[spanclass[list.lotteryId],'active num_'+listnum]"></span>
@@ -92,9 +92,9 @@ export default {
             sys_time :'',  // 当前系统时间
             pastView:{} ,
            // pastViewArray :{} ,
-            cssid :{'8':'pk10','108':'pk10','6':'k3','106':'k3'} ,
-            ulclass :{'8':'pk10_top_number','108':'pk10_top_number','6':'k3dice_top','106':'k3dice_top','20':'k3dice_top','22':'k3dice_top'} ,
-            spanclass :{'8':'pk10_ball','108':'pk10_ball','6':'k3_dice','106':'k3_dice','20':'k3_dice','22':'k3_dice'} ,
+            cssid :{'8':'pk10','108':'pk10','24':'pk10','6':'k3','106':'k3'} ,
+            ulclass :{'8':'pk10_top_number','108':'pk10_top_number','24':'pk10_top_number','6':'k3dice_top','106':'k3dice_top','20':'k3dice_top','22':'k3dice_top'} ,
+            spanclass :{'8':'pk10_ball','108':'pk10_ball','24':'pk10_ball','6':'k3_dice','106':'k3_dice','20':'k3_dice','22':'k3_dice'} ,
             gameHref : {
                 "2":"cqssc",
                 "12":"cqssc/tianJinIndex",
@@ -106,6 +106,7 @@ export default {
                 "16":"jc11x5/gd11x5Index",  //广东11选5
                 "8":"pk10",
                 "108":"pk10/SecondPk10",  // 秒速 赛车
+                "24":"pk10/LuckyBoat",  // 
                 "6":"k3/",  //江苏快3
                 "20":"k3/anHuiK3Index",
                 "22":"k3/huBeiK3Index",
@@ -124,6 +125,7 @@ export default {
                 "104":"秒速11选5",  //秒速11选5
                 "8":"北京PK10",
                 "108":"秒速赛车",
+                "24":"幸运飞艇",
                 "6":"江苏快3",  // 江苏快3
                 "20":"安徽快3",
                 "22":"湖北快3",
@@ -191,6 +193,7 @@ export default {
                             switch (v.lotteryId.toString()){
                                 case '8': // 北京pk10
                                 case '108': // 秒速赛车
+                                case '24': // 秒速赛车
                                     v.winNumber ='20,20,20,20,20,20,20,20,20,20' ;
                                     break;
                                 case '6' :   // 江苏K3
