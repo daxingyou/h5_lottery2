@@ -186,7 +186,6 @@
         computed:{
         },
         updated() {
-            console.log(this.now_pcode,'code' )
         },
         watch:{
             playTreeList() {
@@ -242,7 +241,7 @@
 
                             that.currentBaseShengXiao = res.data[1].zodiac
                             let code = res.data[2].winNumber.split(',')
-                            that.previous_pcode = res.data[2].issueAlias
+                            that.previous_pcode = res.data[2].pcode
                             var noOpenFlag1 = ( sys_time > res.data[0].startTime ) && (sys_time < res.data[0].endTime)
                             var noOpenFlag2 = ( sys_time > res.data[1].startTime ) && (sys_time < res.data[1].endTime)
                             // console.log(noOpenFlag1 ,'noopen1')
@@ -265,7 +264,7 @@
                                     that.now_pcode = res.data[0].pcode;  // 当前期数                                    
                                 }    
                                 code = res.data[1].winNumber.split(',')
-                                that.previous_pcode = res.data[1].issueAlias
+                                that.previous_pcode = res.data[1].pcode
 
                                 // console.log(code,'noopencode')
                                 that.winNumber = code
@@ -282,10 +281,8 @@
                                     }
                                     if(that.lotteryID=='110'){
                                         that.now_pcode = res.data[0].pcode;  // 当前期数                                    
-                                    }    
-
-
-                                    that.previous_pcode = res.data[1].issueAlias
+                                    }  
+                                    that.previous_pcode = res.data[1].pcode
 
                                     code = res.data[1].winNumber.split(',')
                                     console.log(code, 'code,ordinary')
@@ -295,14 +292,14 @@
                                     that.nowover_time = that.formatTimeUnlix(res.data[1].prizeCloseTime);  // 当前期封盘时间
                                     // that.now_pcode = res.data[1].issueAlias;  // 当前期数
                                     if(that.lotteryID!='110'){
-                                        that.now_pcode = res.data[0].issueAlias;  // 当前期数                                    
+                                        that.now_pcode = res.data[1].issueAlias;  // 当前期数                                    
                                     }
                                     if(that.lotteryID=='110'){
-                                        that.now_pcode = res.data[0].pcode;  // 当前期数                                    
+                                        that.now_pcode = res.data[1].pcode;  // 当前期数                                    
                                     }    
 
 
-                                    that.previous_pcode = res.data[2].issueAlias
+                                    that.previous_pcode = res.data[2].pcode
                                     code = res.data[2].winNumber.split(',')
                                     that.winNumber = code
                                     console.log(code, 'code,pass')
@@ -318,7 +315,7 @@
                                     _.forEach(res.data, (item, index) => {
                                         if (_.size(item.winNumber) > 0 && index >= 3) {
                                             that.winNumber = item.winNumber.split(',')
-                                            that.previous_pcode = item.issueAlias
+                                            that.previous_pcode = item.pcode
                                             hasFind = true
                                             return false
                                         }
