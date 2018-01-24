@@ -196,7 +196,7 @@ export default {
             return new Promise((resolve, reject)=>{
                 this.ajax({
                     url: this.action.forseti + 'api/pay/tradeList',
-                    data: {searchType: searchType || 1, pdate:pdate, page:1, rows:10 }, // 1全部，2充值，3提现
+                    data: {searchType: searchType || 1, pdate:pdate, page:1, rows:50 }, // 1全部，2充值，3提现
                     success: (res) => {
                         resolve(res);
                     },
