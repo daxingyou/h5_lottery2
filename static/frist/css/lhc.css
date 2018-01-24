@@ -7,12 +7,15 @@
 #lhc .so-in-main .so-m-t-left div:first-child{
 	text-align: left;
 	margin-right: inherit;
-	margin-left: .4rem;
+	margin-left: .2rem;
 }
 #lhc .so-in-main .so-main-down ul li > p{
 	text-align: left;
 	margin-right: inherit;
-	margin-left: .4rem;
+	margin-left: .2rem;
+}
+#lhc .last-date, #lhc .now-date{
+	letter-spacing: -1px;
 }
 #lhc .so-in-main .so-m-t-right{
 	width: 6.6rem;
