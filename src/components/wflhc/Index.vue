@@ -144,7 +144,7 @@
                 ishwowpriod:false,
                 betSelectedList:[],   //用户选中的注数
                 playType: 'normal',
-                lotteryID: 10,
+                lotteryID: 110,
                 combineCount: 0,
                 currentBaseShengXiao: "狗",
                 allLottery:{},
@@ -186,7 +186,7 @@
         computed:{
         },
         updated() {
-
+            console.log(this.now_pcode,'code' )
         },
         watch:{
             playTreeList() {
@@ -249,7 +249,6 @@
                             // console.log(noOpenFlag2 ,'noopen2')
 
                             var shut = !(noOpenFlag1 || noOpenFlag2)
-
                             // console.log(shut ,'shut' )
                             // console.log(!shut ,'open' )
                             console.log(res)
@@ -259,8 +258,12 @@
                                 that.notopen = true;                               
                                 that.now_time = that.formatTimeUnlix(res.data[0].endTime); // 当前期数时间
                                 that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
-                                that.now_pcode = res.data[0].issueAlias;  // 当前期数
-
+                                if(that.lotteryID!='110'){
+                                    that.now_pcode = res.data[0].issueAlias;  // 当前期数                                    
+                                }
+                                if(that.lotteryID=='110'){
+                                    that.now_pcode = res.data[0].pcode;  // 当前期数                                    
+                                }    
                                 code = res.data[1].winNumber.split(',')
                                 that.previous_pcode = res.data[1].issueAlias
 
@@ -273,7 +276,15 @@
                                 if (res.data[1].endTime < sys_time) { // 如果当期结束时间小于系统时间
                                     that.now_time = that.formatTimeUnlix(res.data[0].endTime); // 当前期数时间
                                     that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
-                                    that.now_pcode = res.data[0].issueAlias;  // 当前期数
+                                    // that.now_pcode = res.data[0].issueAlias;  // 当前期数
+                                    if(that.lotteryID!='110'){
+                                        that.now_pcode = res.data[0].issueAlias;  // 当前期数                                    
+                                    }
+                                    if(that.lotteryID=='110'){
+                                        that.now_pcode = res.data[0].pcode;  // 当前期数                                    
+                                    }    
+
+
                                     that.previous_pcode = res.data[1].issueAlias
 
                                     code = res.data[1].winNumber.split(',')
@@ -282,7 +293,15 @@
                                 } else {
                                     that.now_time = that.formatTimeUnlix(res.data[1].endTime); // 当前期数时间
                                     that.nowover_time = that.formatTimeUnlix(res.data[1].prizeCloseTime);  // 当前期封盘时间
-                                    that.now_pcode = res.data[1].issueAlias;  // 当前期数
+                                    // that.now_pcode = res.data[1].issueAlias;  // 当前期数
+                                    if(that.lotteryID!='110'){
+                                        that.now_pcode = res.data[0].issueAlias;  // 当前期数                                    
+                                    }
+                                    if(that.lotteryID=='110'){
+                                        that.now_pcode = res.data[0].pcode;  // 当前期数                                    
+                                    }    
+
+
                                     that.previous_pcode = res.data[2].issueAlias
                                     code = res.data[2].winNumber.split(',')
                                     that.winNumber = code
