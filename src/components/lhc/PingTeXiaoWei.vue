@@ -55,7 +55,7 @@
             },
             currentBaseShengXiao: {
                 type: String,
-				default:"狗"
+				default:"鸡"
 			}
         },
         data() {

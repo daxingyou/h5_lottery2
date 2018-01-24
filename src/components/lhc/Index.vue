@@ -146,7 +146,7 @@
                 playType: 'normal',
                 lotteryID: 10,
                 combineCount: 0,
-                currentBaseShengXiao: "狗",
+                currentBaseShengXiao: "鸡",
                 allLottery:{},
                 gameHref:{},
                 kinds:[],
