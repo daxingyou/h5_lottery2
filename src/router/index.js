@@ -26,6 +26,7 @@ import LhcIndex from '@/components/lhc/Index' // 六合彩
 import LhcBetRecord from '@/components/lhc/LhcBetRecord' // 六合彩投注紀錄
 
 import WfLhcIndex from '@/components/wflhc/Index' // 五分六合彩
+import Xy28Index from '@/components/xy28/Index' // 幸运28
 
 import PastView from '@/components/publicTemplate/PastView'
 import lobbyPastView from '@/components/lobbyPastView'  // 大厅往期开奖
@@ -160,6 +161,11 @@ export default new Router({
       path: '/wflhc',
       name: 'WfLhcIndex',
       component: WfLhcIndex
+    },
+    {
+      path: '/xy28',
+      name: 'Xy28Index',
+      component: Xy28Index
     },
 
     { path: '/publicTemplate/pastView', name:'pastView', component: PastView },

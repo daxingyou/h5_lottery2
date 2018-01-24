@@ -390,6 +390,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .icon.icon_arrow_down{background-position: 0 -1.92rem }
 .icon.icon_filter{background-position: -1.28rem -1.92rem }
 .icon.icon_check{background-position: -0.64rem -1.92rem }
+.icon.icon_equal{ background-position: -4.48rem -1.92rem;}
 
 .icon_account  { display: inline-block; vertical-align: middle; width: 1.5rem; 	height: 1.5rem; margin: 0 auto; background-image: url(/static/frist/images/icon_account.png);	 background-size: 7.5rem auto; background-position: 0 -4.5rem;}
 
@@ -546,6 +547,43 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 .pk10_ball.small_ball { transform: scale(0.6);-webkit-transform: scale(0.8); margin: -0.2rem -0.1rem; }
 .pk10_ball.active, p.active .pk10_ball { background-position-y: bottom; }
 
+/* 幸运28 ball */
+.xy28_ball{background: url('/static/frist/images/xy28.png'); background-size: 14rem 9.8rem; color: transparent; display: inline-block; width: 1.3rem; height: 1.34rem; text-align: center; overflow: hidden; position: relative; }
+.xy28_ball.num_0{ background-position-x: 0; background-position-y: 0;}
+.xy28_ball.num_1 { background-position-x: -1.4rem; background-position-y: 0;}
+.xy28_ball.num_2 { background-position-x: -2.8rem; background-position-y: 0;}
+.xy28_ball.num_3 { background-position-x: -4.2rem; background-position-y: 0;}
+.xy28_ball.num_4 { background-position-x: -5.6rem; background-position-y: 0;}
+.xy28_ball.num_5 { background-position-x: -7rem; background-position-y: 0;}
+.xy28_ball.num_6 { background-position-x: -8.4rem; background-position-y: 0;}
+.xy28_ball.num_7 { background-position-x: -9.8rem; background-position-y: 0;}
+.xy28_ball.num_8 { background-position-x: -11.2rem; background-position-y: 0;}
+.xy28_ball.num_9 { background-position-x: -12.6rem; background-position-y: 0;}
+.xy28_ball.num_10{ background-position-x: 0; background-position-y: -1.4rem;}
+.xy28_ball.num_11 { background-position-x: -1.4rem; background-position-y: -1.4rem;}
+.xy28_ball.num_12 { background-position-x: -2.8rem; background-position-y: -1.4rem;}
+.xy28_ball.num_13 { background-position-x: -4.2rem; background-position-y: -1.4rem;}
+.xy28_ball.num_14 { background-position-x: -5.6rem; background-position-y: -1.4rem;}
+.xy28_ball.num_15 { background-position-x: -7rem; background-position-y: -1.4rem;}
+.xy28_ball.num_16 { background-position-x: -8.4rem; background-position-y: -1.4rem;}
+.xy28_ball.num_17 { background-position-x: -9.8rem; background-position-y: -1.4rem;}
+.xy28_ball.num_18 { background-position-x: -11.2rem; background-position-y: -1.4rem;}
+.xy28_ball.num_19 { background-position-x: -12.6rem; background-position-y: -1.4rem;}
+.xy28_ball.num_20{ background-position-x: 0; background-position-y: -2.8rem;}
+.xy28_ball.num_21 { background-position-x: -1.4rem; background-position-y: -2.8rem;}
+.xy28_ball.num_22 { background-position-x: -2.8rem; background-position-y: -2.8rem;}
+.xy28_ball.num_23 { background-position-x: -4.2rem; background-position-y: -2.8rem;}
+.xy28_ball.num_24 { background-position-x: -5.6rem; background-position-y: -2.8rem;}
+.xy28_ball.num_25 { background-position-x: -7rem; background-position-y: -2.8rem;}
+.xy28_ball.num_26 { background-position-x: -8.4rem; background-position-y: -2.8rem;}
+.xy28_ball.num_27 { background-position-x: -9.8rem; background-position-y: -2.8rem;}
+p.active .xy28_ball.num_0,.xy28_ball.num_0.active,p.active .xy28_ball.num_1,.xy28_ball.num_1.active,p.active .xy28_ball.num_2,.xy28_ball.num_2.active,p.active .xy28_ball.num_3,.xy28_ball.num_3.active,p.active .xy28_ball.num_4,.xy28_ball.num_4.active,p.active .xy28_ball.num_5,.xy28_ball.num_5.active,p.active .xy28_ball.num_6,.xy28_ball.num_6.active,p.active .xy28_ball.num_7,.xy28_ball.num_7.active,p.active .xy28_ball.num_8,.xy28_ball.num_8.active,p.active .xy28_ball.num_9,.xy28_ball.num_9.active
+{background-position-y: -4.2rem;}
+p.active .xy28_ball.num_10,.xy28_ball.num_10.active,p.active .xy28_ball.num_11,.xy28_ball.num_11.active,p.active .xy28_ball.num_12,.xy28_ball.num_12.active,p.active .xy28_ball.num_13,.xy28_ball.num_13.active,p.active .xy28_ball.num_14,.xy28_ball.num_14.active,p.active .xy28_ball.num_15,.xy28_ball.num_15.active,p.active .xy28_ball.num_16,.xy28_ball.num_16.active,p.active .xy28_ball.num_17,.xy28_ball.num_17.active,p.active .xy28_ball.num_18,.xy28_ball.num_18.active,p.active .xy28_ball.num_19,.xy28_ball.num_19.active
+{background-position-y: -5.6rem;}
+p.active .xy28_ball.num_20,.xy28_ball.num_20.active,p.active .xy28_ball.num_21,.xy28_ball.num_21.active,p.active .xy28_ball.num_22,.xy28_ball.num_22.active,p.active .xy28_ball.num_23,.xy28_ball.num_23.active,p.active .xy28_ball.num_24,.xy28_ball.num_24.active,p.active .xy28_ball.num_25,.xy28_ball.num_25.active,p.active .xy28_ball.num_26,.xy28_ball.num_26.active,p.active .xy28_ball.num_27,.xy28_ball.num_27.active
+{background-position-y: -4.2rem;}
+
 /* bet panel */
 .bet_panel {width: 7.3rem; margin: auto; border-bottom: 1px solid rgba(56,32,30,0.2); padding: 0.2rem; box-sizing: border-box;}
 .bet_panel h2 { text-align: left; line-height: 1rem; }
@@ -584,6 +622,27 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 .bet_panel .bet_box.num_box p.k3_3same.active .k3_dice.small_dice{ transform: scale(0.6); }
 /* pk10 样式微调 */
 .bet_panel .bet_box.num_box p.active .pk10_ball{ transform: translate(0,-0.03rem) }
+/* 幸运28 样式微调 */
+.xy28_top_number .icon { margin: 0.11rem 0;}
+.xy28_top_number .xy28_ball.num_0:not(.active) { background-position: 0 -8.4rem;}
+.xy28_top_number .xy28_ball.num_1:not(.active) { background-position: -1.4rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_2:not(.active) { background-position: -2.8rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_3:not(.active) { background-position: -4.2rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_4:not(.active) { background-position: -5.6rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_5:not(.active) { background-position: -7rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_6:not(.active) { background-position: -8.4rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_7:not(.active) { background-position: -9.8rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_8:not(.active) { background-position: -11.2rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_9:not(.active) { background-position: -12.6rem -8.4rem;}
+.so-in-main .so-m-t-right .last-open-num ul.xy28_top_number li{ float: none; display: inline-block; vertical-align: middle;}
+.so-in-main .so-m-t-right div:first-child ul.xy28_top_number li {transform: scale(0.8);margin:0 -0.1rem;}
+.so-in-main .so-m-t-right .last-open-dou ul.xy28_top_detail{text-align: center;}
+.so-in-main .so-m-t-right .last-open-dou ul.xy28_top_detail li{ float: none; display: inline-block;}
+.bet_panel .bet_box p.ball_5x{ width: 1.3rem; margin: 0.04rem; text-align: center; border:none; padding: 0; margin-bottom: 0.3rem; box-shadow: none; line-height: 0.35rem; }
+.bet_panel .bet_box p.ball_5x span{ float: none;}
+.bet_panel .bet_box p.ball_5x span:first-child{ color: transparent; }
+.bet_panel .bet_box p.ball_5x span:last-child{ line-height: 0.35rem;}
+.bet_panel .bet_box p.ball_5x.active {background:none;}
 
 /* 开奖资讯 */
 .so-top-all { width: 100%; position: fixed;  z-index: 10;}
@@ -836,7 +895,7 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .bet_data > a > .item > div { display: inline-block; vertical-align: middle; line-height: .6rem; }
 .bet_data > a > .item > .status { float: right; max-width: 1.8rem; width: auto; }
 .bet_data > a > .item > .badge { background: url('/static/frist/images/logo_bg.png') no-repeat; background-size: 100% 100%; width: 1.5rem; height: 1.5rem; margin-right:0.15rem; }
-.bet_data > a > .item > .badge > img { width: 1.1rem; margin: 0.3rem 0.2rem;}
+.bet_data > a > .item > .badge > img { width: 1.1rem; height:0.85rem; margin: 0.3rem 0.2rem;}
 .bet_data strong { color: #ffbd00; font-size: .35rem; font-weight: 300; max-width: 3rem; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: top;}
 .bet_data .prd_num { color: #d59559; margin-right: 0.2rem;}
 .bet_data .status { min-width: 15%; width: 1.8rem; text-align: center; color: #fff; }
