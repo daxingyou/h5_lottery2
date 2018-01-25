@@ -170,6 +170,7 @@
                     {id:'22','name':'湖北快3'} ,
                     {id:'20','name':'安徽快3'} ,
                     {id:'10','name':'香港六合彩'},
+                    {id:'110','name':'五分六合彩'},
                 ],
                 ajaxSubmitAllow: false,
                 betRecordList: [[], [], []],
