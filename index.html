@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="cn">
-  <head>
+  <head id="head">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -13,7 +13,7 @@
      <meta name="msapplication-navbutton-color" content="#061626">
      <meta name="apple-mobile-web-app-status-bar-style" content="#061626">-->
     <title></title>
-    <link rel = "Shortcut Icon" href="">
+    <!-- <link rel = "Shortcut Icon" href="static/frist/images/ball.png"> -->
     <link href="/static/css/mobiscroll.css" id="linkto" rel="stylesheet" type="text/css">
     <script src="/static/js/flexible_css.js"></script>
     <script src="/static/js/flexible.debug.js"></script>
@@ -56,16 +56,18 @@
                 urlhtml = decodeURIComponent(RegExp.$1);
                 iconhtml = JSON.parse(urlhtml )
 
-                // console.log(urlhtml ,'urlhtml' )
-                // console.log(iconhtml ,'urlhtml' )
+                console.log(urlhtml ,'urlhtml' )
+                console.log(iconhtml ,'urlhtml' )
             } 
-        var linkIcon = document.getElementById('linkto')     
-        console.log(iconhtml.iconUrl,'999' )  
-        var strhtml =  'http://admin.baochiapi.com/photo/pic/'+iconhtml.iconUrl+'/0'
+       
+        var head = document.getElementById('head')   
+        var link = document.createElement('link');
+        link.href = 'http://admin.baochiapi.com/photo/pic/'+iconhtml.iconUrl+'/0';
         // var strhtml =  'https://img.will888.cn/photo/pic/'+iconhtml.iconUrl+'/0' //线上
-        linkIcon.href = strhtml
-        // console.log( linkIcon.href )
-        // console.log( strhtml )
+        
+        link.rel = "Shortcut Icon";
+        head.appendChild(link);
+ 
         
     },2000)
 
