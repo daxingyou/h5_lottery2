@@ -154,7 +154,7 @@
                 currentMethod: '特码',
                 moduleLotteryID: 110,
                 moduleName:'五分六合彩',
-                moduleplay: '根据香港赛马协会公布日期，六合彩每星期搅珠三次，通常於星期二丶星期四及非赛马日之星期六或日晚上举行。',
+                moduleplay: '五分六合彩销售时间为00:00-次日00:00，每5分钟一期，全天共288期',
             }
         },
         created() {
