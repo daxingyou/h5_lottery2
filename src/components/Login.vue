@@ -3,9 +3,9 @@
         <!--<header id="pa_head" class="login">
             <img src="static/frist/images/login_logo.png" alt="">
         </header>-->
-        <div class="login_title">
+        <div class="login_title" v-bind:style="{backgroundImage: 'url(' + logosrc + ')'}">
           <!-- <img   src="static/frist/images/login_logo.png">              -->
-        </div>
+        </div>  
 
         <div class="new_panel login_area">
             <div class="new_panel_top"></div>
@@ -78,7 +78,8 @@ export default {
             client:'',
             submitflage: false ,
             custUrl:'',
-            checkStatu:false
+            checkStatu:false,
+            logosrc:'',
         }
     },
   created:function () {
@@ -88,6 +89,7 @@ export default {
        // this.username = 'admin' ;
       document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
       this.custUrl=localStorage.getItem('Url');
+      this.getLoginIcon()
   },
   methods: {
 
@@ -112,6 +114,17 @@ export default {
               }
           })
       },
+
+    getLoginIcon:function(){
+      var loginStr =  this.getCookie("siteData")
+      var loginstrArray = JSON.parse(loginStr )
+
+      this.logosrc = this.action.picurl+loginstrArray.logoUrl+'/0'
+
+
+      // console.log( this.logosrc ,'loginstrArray' )
+      // console.log(333)
+    },
     // 登录接口 moved to 主页/index.vue
     LoginAction:function() {
 
