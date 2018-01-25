@@ -55,9 +55,8 @@
             if (re.test(document.cookie)) {
                 urlhtml = decodeURIComponent(RegExp.$1);
                 iconhtml = JSON.parse(urlhtml )
-
-                console.log(urlhtml ,'urlhtml' )
-                console.log(iconhtml ,'urlhtml' )
+                // console.log(urlhtml ,'urlhtml' )
+                // console.log(iconhtml ,'urlhtml' )
             } 
        
         var head = document.getElementById('head')   
@@ -66,7 +65,7 @@
         // var strhtml =  'https://img.will888.cn/photo/pic/'+iconhtml.iconUrl+'/0' //线上
         
         link.rel = "Shortcut Icon";
-        head.appendChild(link);
+        head.appendChild( link );
  
         
     },2000)
