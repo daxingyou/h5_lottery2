@@ -110,6 +110,8 @@ body{
 /*.new_header .right > a.guset { background-color: transparent; -webkit-box-shadow: inherit; box-shadow: inherit; line-height: .5rem; }
 .new_header .right > a.guset > i { background-image: url("/static/frist/images/signs.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: .5rem; height: .5rem; display: block; float: left; margin-right: .1rem; }*/
 .new_header .right .dropdown_icon { font-size: .34rem; padding: 0 0.2rem; color: #ffc388; line-height: 1.36rem; cursor: pointer; }
+.new_header .btn_notification{ position: relative; margin-right: 0.1rem;}
+.new_header .btn_notification:after {content:'';display:block; position: absolute; width: 0.25rem; height: 0.25rem; top: 0.05rem; right: -0.05rem; background-color: #ec1313;  border-radius: 1rem; overflow: hidden; }
 
 /* 投注页 header */
 .new_header ul > li { position: absolute; top: 0; }
@@ -154,6 +156,7 @@ footer.bot_nav ul li a span.Footer-font { display: block; }
 .so-left .so-l-c-con .all_lottery:after{ content: ''; display: table; clear: both;}
 /*.so-left .so-l-c-con .all_lottery .badge { display: none; }*/
 .so-left .so-l-c-con .all_lottery.active {  }
+.so-left .so-l-c-con .left_logout{margin-top: 1rem;}
 
 .so-left.active { left: 50%; margin-left: -5rem; }
 .so-left.close { left: -100%; }
@@ -391,6 +394,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .icon.icon_filter{background-position: -1.28rem -1.92rem }
 .icon.icon_check{background-position: -0.64rem -1.92rem }
 .icon.icon_equal{ background-position: -4.48rem -1.92rem;}
+.icon.icon_mail{ background-position: -5.12rem -1.92rem;}
 
 .icon_account  { display: inline-block; vertical-align: middle; width: 1.5rem; 	height: 1.5rem; margin: 0 auto; background-image: url(/static/frist/images/icon_account.png);	 background-size: 7.5rem auto; background-position: 0 -4.5rem;}
 
@@ -1427,16 +1431,22 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 
 /* 个人消息 */
 .message_area{ text-align: left;}
-.message_area .item { overflow: hidden; height: 1.5rem; line-height: .75rem; padding: .3rem; text-align: left; border-bottom: 1px solid #7e5c4c;color: #ffc388; }
+.message_area .item { padding: .3rem;overflow: hidden; box-sizing: border-box;border-bottom: 1px solid #90573e; position: relative;}
+.message_area .item:after{ content: ''; display: table; clear: both;}
 .message_area .item a{ color: #d59559; }
-.message_area .item .badge{ display: inline-block; }
-.message_area .item .icon { float: left; }
-.message_area .item .content {display: inline-block; vertical-align: middle; width: 6rem; height: 1.5rem; font-size: .35rem; }
-.message_area .item .content > .text { -o-text-overflow: ellipsis; text-overflow: ellipsis; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; height: 1.3em; line-height: 1.5em; }
-.message_area .item.read { color: #d59559; opacity: 0.7; }
-/*.message_area .item.read i.i_mail_status { background: url("/static/frist/images/icon_money.png") no-repeat; background-size: 100%; background-position-y: -4.65rem; margin-top: .12rem; }*/
-.message_area .item.read a { color: #d59559; }
-
+.message_area .item .badge{ float: left; background: url(/static/frist/images/logo_bg.png) no-repeat; background-size: 100% 100%; width: 1.5rem; height: 1.5rem; margin-right: 0.15rem;}
+.message_area .item .title{ }
+.message_area .item .title h2{ color: #ffe1bf; font-size: 0.4rem; padding-right: 1rem;}
+.message_area .item .detail{ margin: 0.1rem 0 0; line-height: 1.5em; height: 3em; overflow: hidden; text-overflow: ellipsis; color: #ffc388; position: relative;}
+/*.message_area .item .detail .dot{ position: absolute; bottom: 0; right: 0; padding-left: 0.1rem; background: -moz-radial-gradient(center, ellipse cover, rgba(170,108,69,1) 0%, rgba(170,108,69,1) 50%, rgba(170,108,69,0) 100%); background: -webkit-radial-gradient(center, ellipse cover, rgba(170,108,69,1) 0%,rgba(170,108,69,1) 50%,rgba(170,108,69,0) 100%);background: radial-gradient(ellipse at center, rgba(170,108,69,1) 0%,rgba(170,108,69,1) 50%,rgba(170,108,69,0) 100%); }*/
+.message_area .item.active .detail{height: auto; white-space: initial;}
+/*.message_area .item.active .detail .dot{display: none;}*/
+.message_area .item .content {float: left; width: 6.55rem; }
+.message_area .item .btn_collapse{ position: absolute; top: 0.3rem; right: 0.3rem;  }
+.message_area .item .btn_collapse span{ vertical-align: middle; display: inline-block; line-height: 1.2em;}
+.message_area .item .btn_collapse .icon{ margin:  -0.15rem ;transform: rotate(90deg);-webkit-transition: transform 200ms ;-moz-transition: transform 200ms ;transition: transform 200ms ;}
+.message_area .item.active .icon{ transform: rotate(270deg); -webkit-transition: transform 200ms ;-moz-transition: transform 200ms ;transition: transform 200ms ;}
+.message_area .item.active .icon_notice_1 { background-position: -1.5rem -6rem; } 
 
 .password_area { padding: 0.3rem; background-color: #6f3a23; box-shadow: 0px 0px 0.3rem rgba(0, 0, 0, 0.8);}
 .password_area > div {  text-align: center; }

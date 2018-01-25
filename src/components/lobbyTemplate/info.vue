@@ -72,14 +72,6 @@
                                 <span class="icon icon_arrow_dark"></span>
                             </a>
                         </li>
-                      <!--  <li>
-                            <router-link class="btn_icon" :to="'/lobbyTemplate/notification'">
-                                <div class="icon">
-                                    <div> <i class="info04"></i></div>
-                                </div>
-                                个人消息
-                            </router-link>
-                        </li>-->
                         <li>
                             <a class="btn_icon" :href="custUrl" target="_blank" >
                                 <span class="icon_account icon_info_3"></span>
@@ -87,6 +79,15 @@
                                 <span class="icon icon_arrow_dark"></span>
                             </a>
                         </li>
+                        <!--20180125 新增个人消息-->
+                        <li style="display:none">
+                            <router-link class="btn_icon" :to="'/lobbyTemplate/notification'">
+                                <span class="icon_account icon_info_4"></span>
+                                <span>个人消息</span>
+                                <span class="icon icon_arrow_dark"></span>
+                            </router-link>
+                        </li>
+                        <!--end 20180125 新增个人消息-->
                         <!--<li>-->
                             <!--<router-link class="btn_icon" :to="'/lobbyTemplate/join'">-->
                                 <!--<div class="icon_account icon_info_4"></div>-->

@@ -64,6 +64,11 @@
                                 在线客服
                             </a>
                         </li>
+                        <!--20180125 新增个人消息-->
+                        <div style="display:none" class="left_logout">
+                            <a href="javascript:;" class="new_btn"><span class="midunm">退出</span></a>
+                        </div>
+                        <!--end 20180125 新增个人消息-->
                     </ul>
                 </div>
             </div>

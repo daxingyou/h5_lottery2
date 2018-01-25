@@ -15,41 +15,60 @@
                 <div class="message_area new_panel">
                     <div class="new_panel_top"></div>
                     <div class="new_panel_center">
-                        <div class="item arrow_list_dark">
+                        <div class="item">
                             <div class="badge">
-                                <!--icon_notice_1 未读，icon_notice_2 已读-->
                                 <span class="icon_account icon_notice_1"></span>
                             </div>
-                            <div class="content msgc">
-                                <div class="description date">2017/07/21</div>
-                                <a class="text">亲爱的用户，您的取款审核已通过，请留 意银行账户余额变动！
-                                </a>
+                            <div class="content">
+                                <div class="title">
+                                    <h2>春节大回馈</h2>
+                                </div>
+                                <div class="detail">
+                                    <p>本公司會員最多可申請1個帳號投注，. 若超過1個以上的帳號投注同場賽事,. 本公司將保留最終的注單審核及刪除權利，. 敬請會員注意，謝謝。</p>
+                                    <p>春节大回馈春节大回馈春节大回馈春节大回馈春节大回馈春节大回馈</p>
+                                </div>
+                                <div class="date">2017/07/21</div>
                             </div>
-                            <span class="icon icon_arrow_light"></span>
+                            <div class="btn_collapse">
+                                <span>展开</span>
+                                <span class="icon icon_arrow_light"></span>
+                            </div>
                         </div>
-                        <div class="item arrow_list_dark">
+                        <div class="item">
                             <div class="badge">
-                                <!--icon_notice_1 未读，icon_notice_2 已读-->
                                 <span class="icon_account icon_notice_1"></span>
                             </div>
-                            <div class="content msgc">
-                                <div class="description date">2017/07/21</div>
-                                <a class="text">亲爱的用户，您的取款审核已通过，请留 意银行账户余额变动！
-                                </a>
+                            <div class="content">
+                                <div class="title">
+                                    <h2>投注相關規範公告</h2>
+                                </div>
+                                <div class="detail">
+                                    <p>本公司會員最多可申請1個帳號投注，. 若超過1個以上的帳號投注同場賽事,. 本公司將保留最終的注單審核及刪除權利，. 敬請會員注意，謝謝。</p>
+                                </div>
+                                <div class="date">2017/07/21</div>
                             </div>
-                            <span class="icon icon_arrow_light"></span>
+                            <div class="btn_collapse">
+                                <span>展开</span>
+                                <span class="icon icon_arrow_light"></span>
+                            </div>
                         </div>
-                        <div class="item arrow_list_dark read">
+                        <div class="item">
                             <div class="badge">
-                                <!--icon_notice_1 未读，icon_notice_2 已读-->
-                                <span class="icon_account icon_notice_2"></span>
+                                <span class="icon_account icon_notice_1"></span>
                             </div>
-                            <div class="content msgc">
-                                <div class="description date">2017/07/21</div>
-                                <a class="text">亲爱的用户，您的取款审核已通过，请留 意银行账户余额变动！
-                                </a>
+                            <div class="content">
+                                <div class="title">
+                                    <h2>春节大回馈</h2>
+                                </div>
+                                <div class="detail">
+                                    春节大回馈春节大回馈春节大回馈春节大回馈春节大回馈春节大回馈
+                                </div>
+                                <div class="date">2017/07/21</div>
                             </div>
-                            <span class="icon icon_arrow_light"></span>
+                            <div class="btn_collapse">
+                                <span>展开</span>
+                                <span class="icon icon_arrow_light"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -115,6 +134,20 @@ export default {
   mounted:function() {
       $('html,body').css('overflow-y','scroll' )  ;
 
+      //列表展开收合
+      $('.message_area').find('.item').on('click',function(){
+          var $this = $(this);
+          var $text = $(this).find('.btn_collapse span:first-child');
+
+          if (! $this.hasClass('active') ){
+              $this.addClass('active');
+              $this.siblings().removeClass('active');
+              $text.text('收合')
+          } else{
+              $this.removeClass('active');
+              $text.text('展开')
+          }
+      })
   },
   methods: {
 
