@@ -311,7 +311,8 @@ export default {
                 // appid:1,    
               },
               success:(res)=>{
-                 this.setCookie("noticeIndexRead", res.data)               
+                 this.setCookie("noticeIndexRead", res.data)  
+                 this.getMsglistStatus()            
               }
           })
       },
