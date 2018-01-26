@@ -22,7 +22,7 @@
                  <span class="memberaccount" v-show="haslogin && logintype=='1'">{{getCookie('username')}}</span>
                  <!-- <a class="new_btn_outline" href="javascript:;" v-show="haslogin" @click="loginOut()">退出</a> -->
                  <router-link to="/lobbyTemplate/notification" class="btn_notification" >
-                   <span :class="(!noticeIndexStatu && noticeIndexRead)?  'memberaccount icon icon_mail saw' : 'memberaccount icon icon_mail' " v-show="haslogin && logintype=='1'" ><!--消息--></span>
+                   <span :class="( !noticeIndexStatu)?  'memberaccount icon icon_mail saw' : 'memberaccount icon icon_mail' " v-show="haslogin && logintype=='1'" ><!--消息--></span>
                  </router-link>
              </div>
          </header>
@@ -286,8 +286,8 @@ export default {
       this.getCustom()
       this.getAppUrl()      
       this.getSite()  
-      // this.getMsglistStatus() 
-      // this.getMsglistRead()
+      this.getMsglistStatus() 
+      this.getMsglistRead()
       this.getMemberBalance()
       this.backNotice()
       // $('.icon_mail').addClass('saw')  
@@ -542,53 +542,55 @@ export default {
                   }
               })
           },
-          //  getMsglistStatus:function () {
-          //     var _self=this;
-          //     $.ajax({
-          //         type:'get',
-          //         url: _self.action.forseti + 'apid/cms/msg/status',
-          //         data:{
-          //           sourceType:2,
-          //           memberId:39130,
-          //           // page:1,
-          //           // appid:1,    
-          //         },
-          //         success:(res)=>{
-          //           _self.noticeIndexStatu = res.data  
+           getMsglistStatus:function () {
+              var _self=this;
+              $.ajax({
+                  type:'get',
+                  url: _self.action.forseti + 'apid/cms/msg/status',
+                  data:{
+                    sourceType:2,
+                    memberId:39130,
+                    // page:1,
+                    // appid:1,    
+                  },
+                  success:(res)=>{
 
-          //             // if(!_self.noticeIndexStatu&&_self.noticeIndexRead  ){
-          //             //  $('.icon_mail').addClass('saw')   
-          //             // }else{
-          //             //   $('.icon_mail').removeClass('saw')  
-          //             // }
-          //             console.log(!_self.noticeIndexStatu&&_self.noticeIndexRead ,'flag1' )
-          //         }
-          //     })
-          // },
-          // getMsglistRead:function () {
-          //     var _self=this;
-          //     $.ajax({
-          //         type:'get',
-          //         url: _self.action.forseti + 'apid/cms/msg/read',
-          //         data:{
-          //           sourceType:2,
-          //           memberId:39130,
-          //           page:1,
-          //         },
-          //         success:(res)=>{
-          //           console.log(res,'read') 
-          //           _self.noticeIndexRead = res.data
+                    _self.noticeIndexStatu = res.data  
 
-          //           if(_self.noticeIndexRead  && !_self.noticeIndexStatu){  
-          //             _self.noticeIndexRead = true
-          //             console.log(!_self.noticeIndexStatu&&_self.noticeIndexRead ,'flag2' )
-          //           }else{
-          //               console.log(1)
+                      // if(!_self.noticeIndexStatu&&_self.noticeIndexRead  ){
+                      //  $('.icon_mail').addClass('saw')   
+                      // }else{
+                      //   $('.icon_mail').removeClass('saw')  
+                      // }
+                      // console.log(!_self.noticeIndexStatu&&_self.noticeIndexRead ,'flag1' )
+                  }
+              })
+          },
+          getMsglistRead:function () {
+              var _self=this;
+              $.ajax({
+                  type:'get',
+                  url: _self.action.forseti + 'apid/cms/msg/read',
+                  data:{
+                    sourceType:2,
+                    memberId:39130,
+                    page:1,
+                  },
+                  success:(res)=>{
+                    console.log(res,'read') 
 
-          //           }                     
-          //         }
-          //     })
-          // },
+                    _self.noticeIndexRead = res.data
+
+                    // if(_self.noticeIndexRead  && !_self.noticeIndexStatu){  
+                    //   _self.noticeIndexRead = true
+                    //   console.log(!_self.noticeIndexStatu&&_self.noticeIndexRead ,'flag2' )
+                    // }else{
+                    //     console.log(1)
+
+                    // }                     
+                  }
+              })
+          },
 
           backNotice:function(){
              this.noticeIndexRead = this.getCookie('noticeIndexRead')=='true'?true:false

@@ -81,11 +81,11 @@
                         </li>
                         <!--20180125 新增个人消息-->
                         <li >
-                            <router-link class="btn_icon" :to="'/lobbyTemplate/notification'">
+                            <a class="btn_icon" @click= 'toMsg()' >
                                 <span class="icon_account icon_info_4"></span>
                                 <span>个人消息</span>
                                 <span class="icon icon_arrow_dark"></span>
-                            </router-link>
+                            </a>
                         </li>
                         <!--end 20180125 新增个人消息-->
                         <!--<li>-->
@@ -103,7 +103,7 @@
         </div>
         <FooterNav />
         <Confirm ref="confirm" />
-        <!--<AutoCloseDialog ref="autoCloseDialog" text=" " type="" />-->
+        <AutoCloseDialog ref="autoCloseDialog" text=" " type="" />
     </div>
 </template>
 
@@ -153,6 +153,17 @@ export default {
         this.custUrl=localStorage.getItem('Url');
   },
     methods: {
+      toMsg:function(){
+        var type = this.getCookie('acType')
+        if(type==1){
+          this.$router.push( '/lobbyTemplate/notification' )
+        }else{
+          console.log(99)
+          this.$refs.autoCloseDialog.open('登录后才可以操作')
+
+        }
+      } ,
+
       //获取用户信息
       getUserInfo: function () {
           var _self = this;

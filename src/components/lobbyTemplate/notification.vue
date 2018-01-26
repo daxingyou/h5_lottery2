@@ -15,7 +15,7 @@
                 <div class="message_area new_panel">
                     <div class="new_panel_top"></div>
                     <div class="new_panel_center">
-                        <div class="item"  v-for = "item in msgList " @click = 'openList($event)' >
+                        <div class="item"  v-for = "(item,index) in msgList " @click = 'openList($event,index)' >
                             <div class="badge">
                                 <span class="icon_account icon_notice_1"></span>
                             </div>
@@ -30,7 +30,7 @@
                                 <div class="date"> {{formTime(item.createTime)}} </div>
                             </div>
                             <div class="btn_collapse">
-                                <span >展开</span>
+                                <span class="open" >{{ (index==indexClick)?word2: word}}</span>
                                 <span class="icon icon_arrow_light"></span>
                             </div>
                         </div>
@@ -133,6 +133,10 @@ export default {
             ajaxSubmitAllow:false,
             biggerLockHeight:1,
             pageTotal:1,
+            word:'展开',
+            word2:'收合',
+            indexClick:0,
+            statusClick:true,
         }
     },
     computed:{
@@ -314,17 +318,30 @@ export default {
          var t = new Date(time)       
         return '' + t.getFullYear() +'/'+ (t.getMonth()+1)+'/' + t.getDate()
     },
-    openList:function(e){
-        console.log(999)
+    openList:function(e,index){
+        console.log(index) 
+        this.indexClick = index
+        console.log(this.indexClick ,'clickindex' )
         var $this =  $(e.currentTarget);
-        var $text = $(this).find('.btn_collapse span:first-child');
+        // console.log($this )
+        // console.log($(this).find('.btn_collapse span:first-child') )
+        var $text = $(this).find('.open').html('pppp');
          if (! $this.hasClass('active') ){
+              this.statusClick = true
               $this.addClass('active');
-              $this.siblings().removeClass('active');
-              $text.text('收合')
+              $this.siblings().removeClass('active');                
+              console.log($(this).find('.open').html() ,'text' )
+              this.word2= '收合' 
+              // this.word = '收合'
+              $text.html('收合')
           } else{
+              this.statusClick = false
               $this.removeClass('active');
-              $text.text('展开')
+              $text.html('展开')
+              // this.word = '展开'
+              this.word2= '展开' 
+            
+              console.log($(this).find('.open').html(),'text2' )
           }
     },
 
