@@ -288,6 +288,7 @@ export default {
       // this.getMsglistStatus() 
       this.getMsglistRead()
       this.getMemberBalanceId()
+
       // this.backNotice()
       // $('.icon_mail').addClass('saw')  
   },
@@ -610,13 +611,8 @@ export default {
                         this.setCookie("memberId", res.data.memberId);  // 把登录余额放在cookie里面     
                         _self.backNotice()  
                         _self.getMsglistStatus() 
-                        resolve();
                     },
-                    error: function (e) {
-                        console.log(e) ;
-                        _self.errorAction(e) ;
-                        reject(e);
-                    }
+                   
                 });
 
             })
