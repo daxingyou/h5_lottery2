@@ -102,8 +102,10 @@
 
         </div>
         <FooterNav />
+        <!-- <Confirm ref="confirm" /> -->
+        <!-- <AutoCloseDialog ref="autoCloseDialog" text=" " type="" /> -->
         <Confirm ref="confirm" />
-        <AutoCloseDialog ref="autoCloseDialog" text=" " type="" />
+
     </div>
 </template>
 
@@ -158,9 +160,7 @@ export default {
         if(type==1){
           this.$router.push( '/lobbyTemplate/notification' )
         }else{
-          console.log(99)
-          this.$refs.autoCloseDialog.open('登录后才可以操作')
-
+           this.$refs.confirm.open();
         }
       } ,
 
