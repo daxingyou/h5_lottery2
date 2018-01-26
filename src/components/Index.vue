@@ -288,6 +288,7 @@ export default {
       this.getMsglistStatus() 
       this.getMsglistRead()
       this.getMemberBalance()
+      $('.icon_mail').addClass('saw')  
   },
     methods:{
       getBulletinsContent :function () {
@@ -572,6 +573,7 @@ export default {
                   },
                   success:(res)=>{
                     console.log(res,'read') 
+                    _self.noticeIndexRead = res.data
                     if(res.data && !_self.noticeIndexStatu){  
                       _self.noticeIndexRead = true
                       $('.icon_mail').addClass('saw') 

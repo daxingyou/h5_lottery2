@@ -80,7 +80,7 @@
                             </a>
                         </li>
                         <!--20180125 新增个人消息-->
-                        <li style="display:none">
+                        <li >
                             <router-link class="btn_icon" :to="'/lobbyTemplate/notification'">
                                 <span class="icon_account icon_info_4"></span>
                                 <span>个人消息</span>
