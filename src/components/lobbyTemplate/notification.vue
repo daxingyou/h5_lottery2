@@ -7,7 +7,7 @@
                     <span class="icon icon_back" @click = ' noticeBack() '></span>
                 </a>
             </div>
-            <h2 class="center title_name">个人中心</h2>
+            <h2 class="center title_name">个人消息</h2>
             <div class="right"></div>
         </header>
         <div class="pa_content">
