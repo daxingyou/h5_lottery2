@@ -539,6 +539,7 @@ export default {
               })
           },
            getMsglistStatus:function () {
+            console.log(this.getCookie('memberId') ,'memberId')
               var _self=this;
               $.ajax({
                   type:'get',

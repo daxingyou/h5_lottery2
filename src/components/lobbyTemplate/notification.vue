@@ -288,7 +288,7 @@ export default {
               url: _self.action.forseti + 'apid/cms/msg/status',
               data:{
                 sourceType:2,
-                memberId:39130,
+                memberId:this.getCookie('memberId'),
                 // page:1,
                 // appid:1,    
               },
@@ -306,7 +306,7 @@ export default {
               url: _self.action.forseti + 'apid/cms/msg/read',
               data:{
                 sourceType:2,
-                memberId:39130,
+                memberId:this.getCookie('memberId'),
                 // page:1,
                 // appid:1,    
               },
