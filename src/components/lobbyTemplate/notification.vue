@@ -309,7 +309,6 @@ export default {
               },
               success:(res)=>{
                  this.setCookie("noticeIndexRead", res.data)               
-                 // console.log(res.data ,'rea' )                        
               }
           })
       },

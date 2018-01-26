@@ -286,7 +286,7 @@ export default {
       this.getAppUrl()      
       this.getSite()  
       // this.getMsglistStatus() 
-      this.getMsglistRead()
+      // this.getMsglistRead()
       this.getMemberBalanceId()
 
       // this.backNotice()
@@ -566,31 +566,31 @@ export default {
                   }
               })
           },
-          getMsglistRead:function () {
-              var _self=this;
-              $.ajax({
-                  type:'get',
-                  url: _self.action.forseti + 'apid/cms/msg/read',
-                  data:{
-                    sourceType:2,
-                    memberId:this.getCookie('memberId'),
-                    page:1,
-                  },
-                  success:(res)=>{
-                    console.log(res,'read') 
+          // getMsglistRead:function () {
+          //     var _self=this;
+          //     $.ajax({
+          //         type:'get',
+          //         url: _self.action.forseti + 'apid/cms/msg/read',
+          //         data:{
+          //           sourceType:2,
+          //           memberId:this.getCookie('memberId'),
+          //           page:1,
+          //         },
+          //         success:(res)=>{
+          //           console.log(res,'read') 
 
-                    _self.noticeIndexRead = res.data
+          //           _self.noticeIndexRead = res.data
 
-                    // if(_self.noticeIndexRead  && !_self.noticeIndexStatu){  
-                    //   _self.noticeIndexRead = true
-                    //   console.log(!_self.noticeIndexStatu&&_self.noticeIndexRead ,'flag2' )
-                    // }else{
-                    //     console.log(1)
+          //           // if(_self.noticeIndexRead  && !_self.noticeIndexStatu){  
+          //           //   _self.noticeIndexRead = true
+          //           //   console.log(!_self.noticeIndexStatu&&_self.noticeIndexRead ,'flag2' )
+          //           // }else{
+          //           //     console.log(1)
 
-                    // }                     
-                  }
-              })
-          },
+          //           // }                     
+          //         }
+          //     })
+          // },
           getMemberBalanceId:function (lotteryid) {
             var _self = this ;
             return new Promise((resolve, reject)=>{
