@@ -289,7 +289,7 @@ export default {
               data:{
                 sourceType:2,
                 memberId:39130,
-                page:1,
+                // page:1,
                 // appid:1,    
               },
               success:(res)=>{
@@ -307,7 +307,7 @@ export default {
               data:{
                 sourceType:2,
                 memberId:39130,
-                page:1,
+                // page:1,
                 // appid:1,    
               },
               success:(res)=>{
