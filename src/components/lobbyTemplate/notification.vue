@@ -134,7 +134,7 @@ export default {
             biggerLockHeight:1,
             pageTotal:1,
             word:'展开',
-            word2:'收合',
+            word2:'展开',
             indexClick:0,
             statusClick:true,
         }

@@ -198,7 +198,6 @@
                   </h2>
                   <p class="content left">
                       {{popMsgContent}}
-
                   </p>
 
               </div>
@@ -286,10 +285,10 @@ export default {
       this.getCustom()
       this.getAppUrl()      
       this.getSite()  
-      this.getMsglistStatus() 
+      // this.getMsglistStatus() 
       this.getMsglistRead()
-      this.getMemberBalance()
-      this.backNotice()
+      this.getMemberBalanceId()
+      // this.backNotice()
       // $('.icon_mail').addClass('saw')  
   },
     methods:{
@@ -549,7 +548,7 @@ export default {
                   url: _self.action.forseti + 'apid/cms/msg/status',
                   data:{
                     sourceType:2,
-                    memberId:39130,
+                    memberId:this.getCookie('memberId'),
                     // page:1,
                     // appid:1,    
                   },
@@ -573,7 +572,7 @@ export default {
                   url: _self.action.forseti + 'apid/cms/msg/read',
                   data:{
                     sourceType:2,
-                    memberId:39130,
+                    memberId:this.getCookie('memberId'),
                     page:1,
                   },
                   success:(res)=>{
@@ -591,6 +590,37 @@ export default {
                   }
               })
           },
+          getMemberBalanceId:function (lotteryid) {
+            var _self = this ;
+            return new Promise((resolve, reject)=>{
+                $.ajax({
+                    type: 'GET',
+                    headers: {
+                        "Authorization": "bearer  " + this.getAccessToken,
+                    },
+                    // dataType:'json',
+                    // contentType:"application/json; charset=utf-8",  // json格式传给后端
+                    url: this.action.hermes + 'api/balance/get',
+                    data: { lotteryId: lotteryid },
+                    success: (res) => {
+                        this.balanceData = res.data;
+                        var mom = this.fortMoney(this.roundAmt(res.data.balance), 2);  // 用户余额
+                        this.setCookie("membalance", mom);  // 把登录余额放在cookie里面
+                        this.setCookie("balancePublic", mom);  // 把登录余额放在cookie里面
+                        this.setCookie("memberId", res.data.memberId);  // 把登录余额放在cookie里面     
+                        _self.backNotice()  
+                        _self.getMsglistStatus() 
+                        resolve();
+                    },
+                    error: function (e) {
+                        console.log(e) ;
+                        _self.errorAction(e) ;
+                        reject(e);
+                    }
+                });
+
+            })
+        },
 
           backNotice:function(){
              this.noticeIndexRead = this.getCookie('noticeIndexRead')=='true'?true:false
