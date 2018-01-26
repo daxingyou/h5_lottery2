@@ -581,7 +581,7 @@ export default {
                         this.setCookie("membalance", mom);  // 把登录余额放在cookie里面
                         this.setCookie("balancePublic", mom);  // 把登录余额放在cookie里面
                         this.setCookie("memberId", res.data.memberId);  // 把登录余额放在cookie里面     
-                        _self.backNotice()  
+                        // _self.backNotice()  
                         _self.getMsglistStatus() 
                     },
                    
