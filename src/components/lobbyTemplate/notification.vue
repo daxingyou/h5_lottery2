@@ -150,6 +150,7 @@ export default {
             },
         },
   mounted:function() {
+      this.noticeBack()
       $('html,body').css('overflow-y','scroll' )  ;
       this.getMsglist(1)
          // 下拉加载更多
@@ -285,7 +286,9 @@ export default {
                 // appid:1,    
               },
               success:(res)=>{
-                  
+
+                 this.setCookie("noticeIndexStatu", res.data)  
+                 // console.log(res.data ,'sta' )                
               }
           })
       },
@@ -301,8 +304,8 @@ export default {
                 // appid:1,    
               },
               success:(res)=>{
-
-                  
+                 this.setCookie("noticeIndexRead", res.data)               
+                 // console.log(res.data ,'rea' )                        
               }
           })
       },

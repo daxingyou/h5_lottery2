@@ -22,7 +22,7 @@
                  <span class="memberaccount" v-show="haslogin && logintype=='1'">{{getCookie('username')}}</span>
                  <!-- <a class="new_btn_outline" href="javascript:;" v-show="haslogin" @click="loginOut()">退出</a> -->
                  <router-link to="/lobbyTemplate/notification" class="btn_notification" >
-                   <span class="memberaccount icon icon_mail" v-show="haslogin && logintype=='1'" ><!--消息--></span>
+                   <span :class="(!noticeIndexStatu && noticeIndexRead)?  'memberaccount icon icon_mail saw' : 'memberaccount icon icon_mail' " v-show="haslogin && logintype=='1'" ><!--消息--></span>
                  </router-link>
              </div>
          </header>
@@ -258,7 +258,8 @@ export default {
             siteData:[],
             logosrc:'',
             noticeIndexStatu:false,
-            noticeIndexRead:false,
+            noticeIndexRead:true,
+
         }
     },
     computed:{
@@ -285,10 +286,11 @@ export default {
       this.getCustom()
       this.getAppUrl()      
       this.getSite()  
-      this.getMsglistStatus() 
-      this.getMsglistRead()
+      // this.getMsglistStatus() 
+      // this.getMsglistRead()
       this.getMemberBalance()
-      $('.icon_mail').addClass('saw')  
+      this.backNotice()
+      // $('.icon_mail').addClass('saw')  
   },
     methods:{
       getBulletinsContent :function () {
@@ -540,50 +542,61 @@ export default {
                   }
               })
           },
-           getMsglistStatus:function () {
-              var _self=this;
-              $.ajax({
-                  type:'get',
-                  url: _self.action.forseti + 'apid/cms/msg/status',
-                  data:{
-                    sourceType:2,
-                    memberId:39130,
-                    // page:1,
-                    // appid:1,    
-                  },
-                  success:(res)=>{
-                    _self.noticeIndexStatu = res.data  
+          //  getMsglistStatus:function () {
+          //     var _self=this;
+          //     $.ajax({
+          //         type:'get',
+          //         url: _self.action.forseti + 'apid/cms/msg/status',
+          //         data:{
+          //           sourceType:2,
+          //           memberId:39130,
+          //           // page:1,
+          //           // appid:1,    
+          //         },
+          //         success:(res)=>{
+          //           _self.noticeIndexStatu = res.data  
 
-                      if(!_self.noticeIndexStatu&&_self.noticeIndexRead  ){
-                       $('.icon_mail').addClass('saw')   
-                      }
-                  }
-              })
-          },
-          getMsglistRead:function () {
-              var _self=this;
-              $.ajax({
-                  type:'get',
-                  url: _self.action.forseti + 'apid/cms/msg/read',
-                  data:{
-                    sourceType:2,
-                    memberId:39130,
-                    page:1,
-                    // appid:1,    
-                  },
-                  success:(res)=>{
-                    console.log(res,'read') 
-                    _self.noticeIndexRead = res.data
-                    if(res.data && !_self.noticeIndexStatu){  
-                      _self.noticeIndexRead = true
-                      $('.icon_mail').addClass('saw') 
-                    }                     
-                  }
-              })
-          },
+          //             // if(!_self.noticeIndexStatu&&_self.noticeIndexRead  ){
+          //             //  $('.icon_mail').addClass('saw')   
+          //             // }else{
+          //             //   $('.icon_mail').removeClass('saw')  
+          //             // }
+          //             console.log(!_self.noticeIndexStatu&&_self.noticeIndexRead ,'flag1' )
+          //         }
+          //     })
+          // },
+          // getMsglistRead:function () {
+          //     var _self=this;
+          //     $.ajax({
+          //         type:'get',
+          //         url: _self.action.forseti + 'apid/cms/msg/read',
+          //         data:{
+          //           sourceType:2,
+          //           memberId:39130,
+          //           page:1,
+          //         },
+          //         success:(res)=>{
+          //           console.log(res,'read') 
+          //           _self.noticeIndexRead = res.data
+
+          //           if(_self.noticeIndexRead  && !_self.noticeIndexStatu){  
+          //             _self.noticeIndexRead = true
+          //             console.log(!_self.noticeIndexStatu&&_self.noticeIndexRead ,'flag2' )
+          //           }else{
+          //               console.log(1)
+
+          //           }                     
+          //         }
+          //     })
+          // },
+
           backNotice:function(){
-            this.getMsglistStatus()
-            this.getMsglistRead()
+             this.noticeIndexRead = this.getCookie('noticeIndexRead')=='true'?true:false
+
+             this.noticeIndexStatu = this.getCookie('noticeIndexStatu')=='true'?true:false
+             // console.log( this.getCookie('noticeIndexRead') ,'noticeIndexRead')
+             // console.log( this.getCookie('noticeIndexStatu') ,'noticeIndexStatu')
+             // console.log(!this.noticeIndexStatu&&this.noticeIndexRead ,'flagall' )
           }
   },
 
