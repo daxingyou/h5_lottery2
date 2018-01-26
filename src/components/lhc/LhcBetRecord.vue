@@ -374,6 +374,8 @@
                     let pdate
 
                     pdate = _.findIndex(this.collapseCtrl, (item) => {return item == 1})
+                    console.log( pdate ,'pdate')
+                    console.log( this.collapseCtrl ,'collapseCtrl')
                     this.getBetRecord(pdate); // 投注记录
                 }
             });

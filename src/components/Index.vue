@@ -20,9 +20,9 @@
                   <router-link class="login" to="/lobbyTemplate/info" v-show="haslogin" ><i></i><b></b></router-link> <!-- 普通用户 -->
                  <a class="guset" href="javascript:;" v-show="haslogin && logintype=='2'" @click="CheckDemoPlay()"><span class="icon icon_user"></span>游客</a>  <!--  试玩帐号 -->
                  <span class="memberaccount" v-show="haslogin && logintype=='1'">{{getCookie('username')}}</span>
-                 <a class="new_btn_outline" href="javascript:;" v-show="haslogin" @click="loginOut()">退出</a>
-                 <router-link to="/lobbyTemplate/notification" class="btn_notification">
-                   <span class="memberaccount icon icon_mail" v-show="haslogin && logintype=='1'"><!--消息--></span>
+                 <!-- <a class="new_btn_outline" href="javascript:;" v-show="haslogin" @click="loginOut()">退出</a> -->
+                 <router-link to="/lobbyTemplate/notification" class="btn_notification" >
+                   <span class="memberaccount icon icon_mail" v-show="haslogin && logintype=='1'" ><!--消息--></span>
                  </router-link>
              </div>
          </header>
@@ -257,6 +257,8 @@ export default {
             appUrl: '',
             siteData:[],
             logosrc:'',
+            noticeIndexStatu:false,
+            noticeIndexRead:false,
         }
     },
     computed:{
@@ -282,8 +284,10 @@ export default {
       this.getActivity();
       this.getCustom()
       this.getAppUrl()      
-      this.getSite()      
-
+      this.getSite()  
+      this.getMsglistStatus() 
+      this.getMsglistRead()
+      this.getMemberBalance()
   },
     methods:{
       getBulletinsContent :function () {
@@ -535,6 +539,50 @@ export default {
                   }
               })
           },
+           getMsglistStatus:function () {
+              var _self=this;
+              $.ajax({
+                  type:'get',
+                  url: _self.action.forseti + 'apid/cms/msg/status',
+                  data:{
+                    sourceType:2,
+                    memberId:39130,
+                    // page:1,
+                    // appid:1,    
+                  },
+                  success:(res)=>{
+                    _self.noticeIndexStatu = res.data  
+
+                      if(!_self.noticeIndexStatu&&_self.noticeIndexRead  ){
+                       $('.icon_mail').addClass('saw')   
+                      }
+                  }
+              })
+          },
+          getMsglistRead:function () {
+              var _self=this;
+              $.ajax({
+                  type:'get',
+                  url: _self.action.forseti + 'apid/cms/msg/read',
+                  data:{
+                    sourceType:2,
+                    memberId:39130,
+                    page:1,
+                    // appid:1,    
+                  },
+                  success:(res)=>{
+                    console.log(res,'read') 
+                    if(res.data && !_self.noticeIndexStatu){  
+                      _self.noticeIndexRead = true
+                      $('.icon_mail').addClass('saw') 
+                    }                     
+                  }
+              })
+          },
+          backNotice:function(){
+            this.getMsglistStatus()
+            this.getMsglistRead()
+          }
   },
 
 }
