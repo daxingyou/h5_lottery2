@@ -26,7 +26,7 @@
                             <p>路珠</p>
                         </router-link>
                     </li>-->
-                    <li class="r_roadbeads" v-if=" (lotteryid != '10')|| (lotteryid != '110') ">
+                    <li class="r_roadbeads" v-if=" (lotteryid != '10')&&(lotteryid != '110') ">
                         <router-link to="/publicTemplate/roadBeads">
                             <p><span class="icon icon_r_roadbeads"></span>路珠</p>
                         </router-link>

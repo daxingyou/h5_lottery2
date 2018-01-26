@@ -498,7 +498,11 @@
                                     _.forEach(dataList, (betData, index) => {
                                         let betDataObj = {}
                                         betDataObj.lotteryid = betData.lotteryId
-                                        betDataObj.pcode = betData.issueAlias
+                                        if(betData.lotteryId == '10'){
+                                            betDataObj.pcode = betData.issueAlias
+                                        }else{
+                                            betDataObj.pcode = betData.pcode
+                                        }
                                         betDataObj.orderstatus = betData.orderStatus
                                         betDataObj.orderstatusname = betData.orderStatusName
                                         betDataObj.betamount = this.fortMoney(this.roundAmt(betData.betAmount), 2)
