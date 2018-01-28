@@ -272,15 +272,16 @@
                                 // that.now_pcode = res.data[0].issueAlias;  // 当前期数
                                 if(that.lotteryID!='110'){
                                     that.now_pcode = res.data[0].issueAlias;  // 当前期数                                    
+                                    that.previous_pcode = res.data[1].issueAlias
                                 }
                                 if(that.lotteryID=='110'){
-                                    that.now_pcode = res.data[0].pcode;  // 当前期数                                    
+                                    that.now_pcode = res.data[0].pcode;  // 当前期数  
+                                    that.previous_pcode = res.data[1].pcode                                
                                 }    
 
                                 code = res.data[1].winNumber.split(',')
-                                that.previous_pcode = res.data[1].issueAlias
 
-                                // console.log(code,'noopencode')
+                                console.log(code,'noopencode')
                                 that.winNumber = code
 
                             }
@@ -292,11 +293,12 @@
                                     // that.now_pcode = res.data[0].issueAlias;  // 当前期数
                                     if(that.lotteryID!='110'){
                                         that.now_pcode = res.data[0].issueAlias;  // 当前期数                                    
+                                        that.previous_pcode = res.data[1].issueAlias
                                     }
                                     if(that.lotteryID=='110'){
-                                        that.now_pcode = res.data[0].pcode;  // 当前期数                                    
+                                        that.now_pcode = res.data[0].pcode;  // 当前期数     
+                                        that.previous_pcode = res.data[1].pcode                                 
                                     }  
-                                    that.previous_pcode = res.data[1].issueAlias
                                     code = res.data[1].winNumber.split(',')
                                     // console.log(code, 'code,ordinary')
                                     that.winNumber = code
@@ -306,42 +308,47 @@
                                     // that.now_pcode = res.data[1].issueAlias;  // 当前期数
                                     if(that.lotteryID!='110'){
                                         that.now_pcode = res.data[1].issueAlias;  // 当前期数                                    
+                                        that.previous_pcode = res.data[2].issueAlias
                                     }
                                     if(that.lotteryID=='110'){
-                                        that.now_pcode = res.data[1].pcode;  // 当前期数                                    
+                                        that.now_pcode = res.data[1].pcode;  // 当前期数  
+                                        that.previous_pcode = res.data[2].pcode                                                                       
                                     }    
 
-
-                                    that.previous_pcode = res.data[2].issueAlias
                                     code = res.data[2].winNumber.split(',')
                                     that.winNumber = code
-                                    // console.log(code, 'code,pass')
+                                    console.log(code, 'code,pass')
 
                                 }
 
                                 //code 上期开奖号码
-                                console.log(code,'code')
                               
-                                if (code.length <= 1) {
-                                    console.log('no-code')
-                                    let hasFind = false
-                                    _.forEach(res.data, (item, index) => {
-                                        if (_.size(item.winNumber) > 0 && index >= 3) {
-                                            that.winNumber = item.winNumber.split(',')
+                            }
+                            if (code.length <= 1) {
+                                console.log('no-code')
+                                let hasFind = false
+                                _.forEach(res.data, (item, index) => {
+                                    if (_.size(item.winNumber) > 0 && index >= 3) {
+                                        that.winNumber = item.winNumber.split(',')
+                                        if(that.lotteryID!='110'){
                                             that.previous_pcode = item.issueAlias
-                                            hasFind = true
-                                            return false
                                         }
-                                    })
-
-                                    if (!hasFind) {
-                                        that.winNumber = code
+                                         if(that.lotteryID=='110'){
+                                            that.previous_pcode = item.pcode
+                                        }
+                                        hasFind = true
+                                        return false
                                     }
-                                }
-                                else {
+                                })
+                                if (!hasFind) {
                                     that.winNumber = code
                                 }
                             }
+                            else {
+                                that.winNumber = code
+                            }
+                                console.log(code,'code')
+
 
 
                             if(res.data[1].status > 1){ // 异常情况，如提前开盘 2
