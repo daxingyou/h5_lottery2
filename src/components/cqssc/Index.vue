@@ -482,7 +482,6 @@ export default {
 
         if (that.$refs.countdownTimer.wrongFlag) {
             that.entertainStatus = true;
-
         } else {
             that.entertainStatus = false;
         }

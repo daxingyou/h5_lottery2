@@ -128,7 +128,6 @@
             PlayMethodBar,
             Touzhu
         },
-        props:['moduleName', 'moduleLotteryID','moduleplay'],
         data() {
             return {
                 now_time:'',  // 当前期数销售截止时间
@@ -181,6 +180,7 @@
             this.initViewHeight();
             setTimeout(() => {
                 this.timerBegin();
+
             }, 500) ;
         },
         computed:{
