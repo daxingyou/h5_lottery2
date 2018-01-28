@@ -281,7 +281,7 @@
 
                                 code = res.data[1].winNumber.split(',')
 
-                                console.log(code,'noopencode')
+                                // console.log(code,'noopencode')
                                 that.winNumber = code
 
                             }
@@ -317,7 +317,7 @@
 
                                     code = res.data[2].winNumber.split(',')
                                     that.winNumber = code
-                                    console.log(code, 'code,pass')
+                                    // console.log(code, 'code,pass')
 
                                 }
 
@@ -347,7 +347,7 @@
                             else {
                                 that.winNumber = code
                             }
-                                console.log(code,'code')
+                                // console.log(code,'code')
 
 
 
