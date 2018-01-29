@@ -155,10 +155,11 @@ export default {
         },
   mounted:function() {
 
-      this.getMsglistStatus()
-      this.getMsglistRead()        
 
       $('html,body').css('overflow-y','scroll' )  ;
+      
+      this.getMsglistStatus()
+      this.getMsglistRead()        
       this.getMsglist(1)
          // 下拉加载更多
             function soyeScroll (selector) {
