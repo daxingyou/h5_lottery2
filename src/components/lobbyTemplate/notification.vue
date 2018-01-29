@@ -295,12 +295,9 @@ export default {
               data:{
                 sourceType:2,
                 // memberId:this.getCookie('memberId'),
-              
               },
               success:(res)=>{
-
                  this.setCookie("noticeIndexStatu", res.data)  
-                 // console.log(res.data ,'sta' )                
               }
           })
       },
@@ -334,25 +331,16 @@ export default {
         this.indexClick = index
         console.log(this.indexClick ,'clickindex' )
         var $this =  $(e.currentTarget);
-        // console.log($this )
-        // console.log($(this).find('.btn_collapse span:first-child') )
         var $text = $(this).find('.open').html('pppp');
          if (! $this.hasClass('active') ){
               this.statusClick = true
               $this.addClass('active');
               $this.siblings().removeClass('active');                
-              console.log($(this).find('.open').html() ,'text' )
               this.word2= '收合' 
-              // this.word = '收合'
-              $text.html('收合')
           } else{
               this.statusClick = false
               $this.removeClass('active');
-              $text.html('展开')
-              // this.word = '展开'
               this.word2= '展开' 
-            
-              console.log($(this).find('.open').html(),'text2' )
           }
     },
 
