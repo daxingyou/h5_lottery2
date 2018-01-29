@@ -338,17 +338,14 @@ export default {
           if(!this.haslogin){
               this.$refs.autoCloseDialog.open('登录后才可以操作')
               setTimeout(function () {
-                  // window.location = '/Login' ;
                   _self.$router.push('/login')
               },1000)
               return
           }
           if(cla=='CZ'){
-              // window.location = '/lobbyTemplate/deposit' ;
               _self.$router.push('/lobbyTemplate/deposit')
           }
           if(cla=='TK'){
-              // window.location = '/lobbyTemplate/Withdrawals' ;
               _self.$router.push('/lobbyTemplate/Withdrawals')
 
           }
@@ -364,8 +361,6 @@ export default {
       getPopMsg (){
 
           var _self=this;
-          // _self.propList = sessionStorage.propList;
-
           $.ajax({
               type: 'GET',
               url:  _self.action.forseti + 'apid/cms/popText',
@@ -496,8 +491,7 @@ export default {
       },
         getAppUrl: function () {
             var _self = this;
-            // console.log(_self.appUrl, 'url')
-
+           
             if (true) {
                 $.ajax({
                     type: 'get',
@@ -543,23 +537,15 @@ export default {
               var _self=this;
               $.ajax({
                   type:'get',
+                  headers: {
+                      "Authorization": "bearer  " + _self.getAccessToken,
+                  },
                   url: _self.action.forseti + 'apid/cms/msg/status',
                   data:{
-                    sourceType:2,
-                    memberId:this.getCookie('memberId'),
-                    // page:1,
-                    // appid:1,    
+                    sourceType:2,                    
                   },
                   success:(res)=>{
-
-                    _self.noticeIndexStatu = res.data  
-
-                      // if(!_self.noticeIndexStatu&&_self.noticeIndexRead  ){
-                      //  $('.icon_mail').addClass('saw')   
-                      // }else{
-                      //   $('.icon_mail').removeClass('saw')  
-                      // }
-                      // console.log(!_self.noticeIndexStatu&&_self.noticeIndexRead ,'flag1' )
+                    _self.noticeIndexStatu = res.data 
                   }
               })
           },
@@ -593,11 +579,7 @@ export default {
 
           backNotice:function(){
              this.noticeIndexRead = this.getCookie('noticeIndexRead')=='true'?true:false
-
-             this.noticeIndexStatu = this.getCookie('noticeIndexStatu')=='true'?true:false
-             // console.log( this.getCookie('noticeIndexRead') ,'noticeIndexRead')
-             // console.log( this.getCookie('noticeIndexStatu') ,'noticeIndexStatu')
-             // console.log(!this.noticeIndexStatu&&this.noticeIndexRead ,'flagall' )
+             this.noticeIndexStatu = this.getCookie('noticeIndexStatu')=='true'?true:false             
           }
   },
 

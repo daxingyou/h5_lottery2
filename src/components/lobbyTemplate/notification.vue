@@ -248,10 +248,13 @@ export default {
 
         $.ajax({
               type:'get',
+              headers: {
+                  "Authorization": "bearer  " + _self.getAccessToken,
+              },
               url: _self.action.forseti + 'apid/cms/msg/list',
               data:{
                 sourceType:2,
-                memberId:this.getCookie('memberId'),
+                // memberId:this.getCookie('memberId'),
                 page:pdate,
                 rows:5,    
               },
@@ -285,12 +288,14 @@ export default {
           var _self=this;
           $.ajax({
               type:'get',
+              headers: {
+                  "Authorization": "bearer  " + _self.getAccessToken,
+              },
               url: _self.action.forseti + 'apid/cms/msg/status',
               data:{
                 sourceType:2,
-                memberId:this.getCookie('memberId'),
-                // page:1,
-                // appid:1,    
+                // memberId:this.getCookie('memberId'),
+              
               },
               success:(res)=>{
 
@@ -303,10 +308,13 @@ export default {
           var _self=this;
           $.ajax({
               type:'get',
+              headers: {
+                  "Authorization": "bearer  " + _self.getAccessToken,
+              },
               url: _self.action.forseti + 'apid/cms/msg/read',
               data:{
                 sourceType:2,
-                memberId:this.getCookie('memberId'),
+                // memberId:this.getCookie('memberId'),
                 // page:1,
                 // appid:1,    
               },
