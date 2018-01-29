@@ -69,15 +69,11 @@ export default {
             const theOverend = overend ? overend : this.overend;
             let timeSpan = this.lt_time_leave = (this.format(theEnd).getTime() - this.format(theStart).getTime()) / 1000;//总秒数
             this.lt_time_leave_over = (this.format(theOverend).getTime() - this.format(theStart).getTime()) / 1000;//总秒数
-            // const lt_time_leave = this.lt_time_leave;
-            // const lt_time_leave_over = this.lt_time_leave_over;
-
-            console.log(this.lt_time_leave_over,'negative_start' )
+            // console.log(this.lt_time_leave_over,'negative_start' )
 
             if (this.lt_time_leave_over <0){ // 封盘倒计时结束
                 // this.$emit('entertainCountdownOver');
                 this.$emit('entertainCountdownBreak');
-                // console.log(0)
             }
 
             // console.log(this.lt_time_leave_over)
