@@ -54,9 +54,7 @@
             re = new RegExp(re);
             if (re.test(document.cookie)) {
                 urlhtml = decodeURIComponent(RegExp.$1);
-                iconhtml = JSON.parse(urlhtml )
-                // console.log(urlhtml ,'urlhtml' )
-                // console.log(iconhtml ,'urlhtml' )
+                iconhtml = JSON.parse(urlhtml )               
             } 
        
         var head = document.getElementById('head')   
@@ -64,9 +62,7 @@
         link.href = 'http://admin.baochiapi.com/photo/pic/'+iconhtml.iconUrl+'/0';
         // link.href = 'http://img.will888.cn/photo/pic/'+iconhtml.iconUrl+'/0';//线上
         link.rel = "Shortcut Icon";
-        head.appendChild( link );
- 
-        
+        head.appendChild( link );        
     },2000)
 
 
