@@ -99,28 +99,19 @@ export default {
                // console.log('蒂ff冈你')
                 counter();
 
-                // console.log(this.lt_time_leave,'o2')
-
                 if (this.lt_time_leave <= -1) {
                     this.wrongFlag = true;
                 } else {
                     this.wrongFlag = false;
                 }   
-                console.log( this.wrongFlag ,'this.wrongFlag')
-
-                console.log(this.lt_time_leave,'open_reward_over' )
                   
                 if (this.lt_time_leave <= 0) {   // 开奖倒计时结束
                     clearInterval(this.timer);
                     this.$emit('countdownOver');
                 }
-
-                //  console.log(this.lt_time_leave_over)
-
                 if(this.lt_time_leave_over == 0){  // 封盘倒计时结束
                     this.$emit('entertainCountdownOver');
                 }
-
                 this.lt_time_leave = this.lt_time_leave - 1;
                 var oDate = this.diff(this.lt_time_leave);  // 开奖倒计时
                 this.lt_time_leave_over = this.lt_time_leave_over - 1;
@@ -135,7 +126,6 @@ export default {
                     this.timeSpanStr = this.fftime(oDate.hour) + ':' + this.fftime(oDate.minute) + ':' + this.fftime(oDate.second); // 开奖倒计时
                     this.overTimeSpanStr = this.fftime(over_oDate.hour) + ':' + this.fftime(over_oDate.minute) + ':' + this.fftime(over_oDate.second); // 封盘倒计时
                 }
-                // console.log( oDate.day ,'day')
                 if (oDate.day != 0) {
                     console.log(22)
                     this.timeSpanStr = this.fftime(oDate.day) + '天' + this.fftime(oDate.hour) + ':' + this.fftime(oDate.minute) + ':' + this.fftime(oDate.second); // 开奖倒计时

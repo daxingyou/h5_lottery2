@@ -73,8 +73,10 @@ let LhcMixin = {
         },
         setScrollHeight(hasTabPanel, currentBarIndex) {
             // let scrolling_height =  window.innerHeight - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height())
+            console.log(  this.getCookie('scrollF') ,'cookief')
             var winH = this.getCookie('scrollF')?this.getCookie('scrollF'):window.innerHeight
-            let scrolling_height = winH  - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height())
+            console.log( winH ,'winH')
+            let scrolling_height = winH  - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height()) ;
             if (hasTabPanel) {
                 scrolling_height -= $('.tab_panel').height()
             }
@@ -84,7 +86,15 @@ let LhcMixin = {
         },
         setClickHeight(elem, height) {
             elem.height(height)
-        }
+        },
+        getCookie :function(name) {
+            var re = '(?:; )?' + encodeURIComponent(name) + '=([^;]*);?';
+            re = new RegExp(re);
+            if (re.test(document.cookie)) {
+                return decodeURIComponent(RegExp.$1);
+            }
+            return '';
+        },
     }
 };
 export default LhcMixin;

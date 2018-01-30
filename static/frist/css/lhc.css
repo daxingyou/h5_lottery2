@@ -84,6 +84,11 @@
 	width: 7.1rem;
 	padding: inherit;
 }
+
+#lhc  .bet_box:last-of-type{
+	/*padding-bottom: 2.2rem;*/
+}
+
 .bet_panel .bet_box p .bet-times{
 	/*font-size: .33rem;*/
 	letter-spacing: -.01rem;

@@ -256,8 +256,6 @@
 
                             if (shut) {
                                 console.log('shut999')
-                                // alert(( sys_time > res.data[0].endTime) )
-
                                 if(that.$refs.countdownTimer.wrongFlag  ){
                                     that.notopen = false;    
                                 }else{
@@ -278,12 +276,9 @@
                                     that.now_pcode = res.data[0].pcode;  // 当前期数  
                                     that.previous_pcode = res.data[1].pcode                                
                                 }    
-
                                 code = res.data[1].winNumber.split(',')
-
                                 // console.log(code,'noopencode')
                                 that.winNumber = code
-
                             }
                             if (!shut) {
                                 that.notopen = false;   
@@ -318,11 +313,7 @@
                                     code = res.data[2].winNumber.split(',')
                                     that.winNumber = code
                                     // console.log(code, 'code,pass')
-
                                 }
-
-                                //code 上期开奖号码
-                              
                             }
                             if (code.length <= 1) {
                                 console.log('no-code')
@@ -347,17 +338,11 @@
                             else {
                                 that.winNumber = code
                             }
-                                // console.log(code,'code')
-
-
-
                             if(res.data[1].status > 1){ // 异常情况，如提前开盘 2
                                 that.entertainStatus = true;
                             }
-
                             // 当天日期
                             that.now_day = res.data[0].pdate;
-
                             if(needIn =='1'){ // 倒计时结束后
                                 that.$refs.countdownTimer && that.$refs.countdownTimer.timerInit(that.sys_time, that.now_time, that.nowover_time);  // 重新倒计时
                             }

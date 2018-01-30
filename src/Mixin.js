@@ -248,7 +248,7 @@ var MyMixin = {
             return new Promise((resolve, reject)=>{
                 let maxUpdateTime = ""
                 let playTree
-
+                this.setCookie('scrollF',window.innerHeight) 
                 /* if browser support localStorage */
                 if (typeof(Storage) !== "undefined") {
                     // Code for localStorage/sessionStorage.
@@ -281,7 +281,7 @@ var MyMixin = {
                         playTreeIndexByCid.set(mydata)
                         this.$set(this, 'playTreeList', mydata)
                         this.$set(this, 'playTreeIndexByCid', mydata)
-                        this.setCookie('scrollF',window.innerHeight) 
+                        // this.setCookie('scrollF',window.innerHeight) 
                      setTimeout(function () {
                          _self.setInitHeight(gameid) ;
                      },200) ;
