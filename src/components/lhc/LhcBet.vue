@@ -8,7 +8,7 @@
             </div>
             <div class="bet_count">
                 <form>
-                    <input placeholder="输入金额" type="tel" class="bet-amount" v-model="betAmount">
+                    <input placeholder="输入金额" type="tel" id='betNum' class="bet-amount" v-model="betAmount" >
                     <!--<input type="reset" @click="$parent.resetAction()" value="重置" >-->
                     <a class="submit" href="javascript:;" @click="$parent.resetAction()">重置</a>
                 </form>
@@ -400,6 +400,7 @@
                 _.forEach(this.betSelectedList, getBetContent)
             },
             startBet(e) {
+                this.betAmount = Number( this.betAmount )
                 let amount = this.betAmount;  // 获取金额
                 const closet = 4;
                 // if(nums<1){ // 没有选择投注项目
