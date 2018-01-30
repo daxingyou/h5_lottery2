@@ -142,6 +142,7 @@
 	top: inherit; 
 	left: inherit; 
 	height: .9rem; 
+	border-radius: 0.5rem;
 }
 #lhc .lhc_tab.hd ul.tab_mid { background-color: #7e5c4c;  }
 #lhc .lhc_tab.hd ul.tab_mid > li { display: inline-block; height: .9rem; width: 1.6rem; padding-top: 0; }
