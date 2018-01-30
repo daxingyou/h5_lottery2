@@ -61,7 +61,7 @@
                                     -->
                                     <!-- 本周 -->
                                     <li :class="showClass(collapseCtrl[index2])" :data-val="item" v-for="(item, index2) in showTitleList">
-                                        <div class="panel_title new_panel_top" @click="getBetRecord(index2)">
+                                        <div class="panel_title new_panel_top" @click="getBetRecord(index2,$event)">
                                             <strong class="title-data" v-if="lotteryid == 10">{{item}}</strong>
                                             <strong class="title-data" v-else>{{showDateList[index2]}}</strong>
                                             <span><!-- 此為箭頭，點按後展開或收合，預設第一個為展開（父層li的class有active） --></span></div>
@@ -372,10 +372,7 @@
                     this.lock = 1;
                     this.restr = '';
                     let pdate
-
-                    pdate = _.findIndex(this.collapseCtrl, (item) => {return item == 1})
-                    console.log( pdate ,'pdate')
-                    console.log( this.collapseCtrl ,'collapseCtrl')
+                    pdate = _.findIndex(this.collapseCtrl, (item) => {return item == 1})                  
                     this.getBetRecord(pdate); // 投注记录
                 }
             });
@@ -396,7 +393,6 @@
             },
             showClass(stat) {
                 let classStr = "slide_toggle bet_day new_bet_day new_panel"
-
                 if (stat == 1) {
                     classStr += ' active'
                 }
@@ -434,7 +430,12 @@
                     nowDateData.setDate(nowDateData.getDate() - 1)
                 }
             },
-            getBetRecord(pdate) {
+            getBetRecord(pdate,$event) {
+                var showF = false;
+                if($event){
+                    var src = $event.currentTarget
+                    showF = (  $(src).next().height()>20 )                    
+                }
                 let _self = this ;
 
                 console.log("lock", this.lock)
@@ -447,7 +448,7 @@
                     return false ;
                 }
 
-                if (this.collapseCtrl[pdate] == 1 && this.lock == 0) {
+                if (showF||this.collapseCtrl[pdate] == 1 && this.lock == 0) {
                     this.$set(this.collapseCtrl, pdate, 0)
                     this.pageList[pdate] =  1
                     this.betRecordList[pdate] = []
