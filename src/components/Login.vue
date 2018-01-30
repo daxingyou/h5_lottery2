@@ -3,7 +3,7 @@
         <!--<header id="pa_head" class="login">
             <img src="static/frist/images/login_logo.png" alt="">
         </header>-->
-        <div class="login_title" v-bind:style="{backgroundImage: 'url(' + logosrc + ')'}">
+        <div class="login_title" v-bind:style="{backgroundImage: 'url(' + logosrc + ')'}" >
           <!-- <img   src="static/frist/images/login_logo.png">              -->
         </div>  
 
@@ -118,10 +118,7 @@ export default {
     getLoginIcon:function(){
       var loginStr =  this.getCookie("siteData")
       var loginstrArray = JSON.parse(loginStr )
-
       this.logosrc = this.action.picurl+loginstrArray.h5LogoUrl+'/0'
-
-
       // console.log( this.logosrc ,'loginstrArray' )
       // console.log(loginstrArray)
     },
