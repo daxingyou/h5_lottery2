@@ -400,7 +400,7 @@
                 _.forEach(this.betSelectedList, getBetContent)
             },
             startBet(e) {
-                this.betAmount = Number( this.betAmount )
+                this.betAmount = Number( this.betAmount ) ?Number( this.betAmount ) :''
                 let amount = this.betAmount;  // 获取金额
                 const closet = 4;
                 // if(nums<1){ // 没有选择投注项目
