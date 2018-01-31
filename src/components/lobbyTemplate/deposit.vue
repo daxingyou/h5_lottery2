@@ -1040,7 +1040,8 @@
     }
     .limitMoney span:nth-of-type(1){
         height: 0.577rem;        
-        line-height: 0.577rem;        
+        line-height: 0.577rem;      
+        margin-top: 0.315rem;  
     }
      .limitMoney span:nth-of-type(2){
         font-size: 0.2692rem;
