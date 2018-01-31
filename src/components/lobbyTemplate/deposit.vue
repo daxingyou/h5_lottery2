@@ -41,7 +41,8 @@
                                                     </span>
                                                     <span class="limitMoney" >
                                                         <span>{{ payWay.rsName}}</span>
-                                                        <span  v-if=' payWay.rsNameId!=0'>限额：{{parseInt(payWay.minDepositAmount/100) }}~{{ parseInt(payWay.maxDepositAmount/100)  }}</span>
+                                                       <!--  <span  v-if=' payWay.rsNameId!=0'>限额：{{parseInt(payWay.minDepositAmount/100) }}~{{ parseInt(payWay.maxDepositAmount/100)  }}</span> -->
+
                                                     </span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
@@ -466,25 +467,12 @@
                     return false ;
                 }
 
-                // if( ( _self.paymount>=10000 ||_self.paymount<100)&&( Number(_self.paymount)!= 0  ) ){
-                //       _self.$refs.autoCloseDialog.open('存款金额必须在范围内') ;
-                //       return false ;
-                // }
-                // 范围暂时取消，只是将限额确定在大于100 (notQuick!= 0)||
+                // var limitF = ( _self.paymount * 100 > payWay.maxDepositAmount || _self.paymount * 100 < payWay.minDepositAmount) || ( Number(_self.paymount) == 0  )
 
-                var limitF = ( _self.paymount * 100 > payWay.maxDepositAmount || _self.paymount * 100 < payWay.minDepositAmount) || ( Number(_self.paymount) == 0  )
-
-                if ( notQuick&&limitF ) {
-                    _self.$refs.autoCloseDialog.open('充值金额不符合限额要求');
-                    return false;
-                }
-
-                // console.log(payWay,'payWay')
-                // console.log(payWay.minDepositAmount,'minDepositAmount')
-                // console.log(payWay.maxDepositAmount,'maxDepositAmount')
-                // console.log(_self.paymount*100)
-                // console.log(_self.paymount*100>payWay.maxDepositAmount,'过大')
-                // console.log(_self.paymount*100<payWay.minDepositAmount,'过小')
+                // if ( notQuick&&limitF ) {
+                //     _self.$refs.autoCloseDialog.open('充值金额不符合限额要求');
+                //     return false;
+                // }暂时取消
 
                     var $src = $(e.currentTarget);
                     var type = $src.data('type');
