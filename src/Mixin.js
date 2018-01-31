@@ -481,7 +481,8 @@ var MyMixin = {
         formatTime:function(second, type) {
             var bk;
             if (type == 0) {
-                var h = parseInt(second / 3600);
+                var d = parseInt( second /(3600*24) )
+                var h = parseInt( second % (3600*24)/3600  );
                // var h = Math.floor(second / 3600);
                 var f = parseInt(second % 3600 / 60);
                // var f = Math.floor((second - (h * 60 * 60)) / 60);
@@ -490,6 +491,9 @@ var MyMixin = {
               // second --;
               bk = (h < 10 ? "0" + h : h)+ ":" + (f < 10 ? "0" + f : f) + ":" + (s < 10 ? "0" + s : s)
               // bk = h + ":" + (f < 10 ? "0" + f : f) + ":" + (s < 10 ? "0" + s : s)
+               if(d){
+                    bk = (d + "天")+ ":" +  (h < 10 ? "0" + h : h)+ ":" + (f < 10 ? "0" + f : f) + ":" + (s < 10 ? "0" + s : s)
+                }
             } else {
                 bk = second.split(":");
                 bk = parseInt(bk[0] * 3600) + parseInt(bk[1] * 60) + parseInt(bk[2])
