@@ -302,15 +302,7 @@ export default {
                       sideType: "2",
                       appid: "bcappid02",
                   },
-                  success: (result) => {
-                    
-                      var req = new XMLHttpRequest();
-                      req.open('GET', document.location, false);
-                      req.send(null);
-                      var headers = req.getAllResponseHeaders().toLowerCase();
-                      console.log(headers,'headnotice');
-
-
+                  success: (result) => {                    
                       sessionStorage.noticeList = JSON.stringify(result.data)
                       for (let i = 0; i < result.data.length; i++) {
                           bulletinsArr.push('&nbsp;&nbsp;' + result.data[i].content + '&nbsp;&nbsp;');
