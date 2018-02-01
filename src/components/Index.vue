@@ -368,6 +368,13 @@ export default {
               data:{},
               success:(res)=>{
 
+                var req = new XMLHttpRequest();
+                req.open('GET', " _self.action.forseti + 'apid/cms/popText' ", false);
+                req.send(null);
+                var headers = req.getAllResponseHeaders().toLowerCase();
+
+                console.log(headers,'head');
+
                   if(!res.data ||!res.data[0]||!res.data[0].title){
                       _self.offFlag=false;
                       return false

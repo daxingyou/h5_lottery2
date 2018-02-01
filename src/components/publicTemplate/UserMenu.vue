@@ -80,8 +80,6 @@ export default {
       this.show = true;
     })
 
-    console.log( this.lotteryid!='10' ,'lotteryid--user' )
-
   },
   methods:{
     play:function(e){
