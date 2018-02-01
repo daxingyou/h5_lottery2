@@ -45,14 +45,14 @@
                             </a>
                         </li>
                         <li>
-                            <router-link v-bind:to="'/lobbyTemplate/acdetial'">
+                            <a href ="/lobbyTemplate/acdetial">
                                 <div class="">
                                     <div>
                                         <i class="index_s index_s03"></i>
                                     </div>
                                 </div>
                                 帐户明细
-                            </router-link>
+                            </a>
                         </li>
                         <li>
                             <a :href="custUrl" target="_blank" >
