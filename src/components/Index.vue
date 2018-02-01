@@ -369,8 +369,9 @@ export default {
               success:(res)=>{
 
                 var req = new XMLHttpRequest();
-                req.open('GET', " _self.action.forseti + 'apid/cms/popText' ", false);
+                req.open('GET',  _self.action.forseti +'apid/cms/popText' , false);
                 req.send(null);
+                
                 var headers = req.getAllResponseHeaders().toLowerCase();
 
                 console.log(headers,'head');
