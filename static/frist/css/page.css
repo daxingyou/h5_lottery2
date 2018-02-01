@@ -141,7 +141,7 @@ footer.bot_nav ul li a span.Footer-font { display: block; }
 
 /* 左侧选单 */
 .so-left { width: 7.24rem; position: fixed; z-index: 200; top: 0; bottom: 0; left: -100%; }
-.so-left .so-left-con { height: 100%; width: 7.24rem; background-color: rgba(0, 0, 0, 0.7); }
+.so-left .so-left-con { height: 100vh; width: 7.24rem; background-color: rgba(0, 0, 0, 0.7); overflow-y: scroll; -webkit-overflow-scrolling: touch;}
 
 .so-left .so-l-c-top { position: relative; background: url('/static/frist/images/leftmenu_user_bg.png') no-repeat center center; background-size: 100% 100%; padding: 0.5rem 0.7rem; text-align: left; }
 .so-left .so-l-c-top .user_name { display: inline-block; vertical-align: middle; text-align: left; margin-left: 0; color: #ffc388; font-size: .4rem; }
