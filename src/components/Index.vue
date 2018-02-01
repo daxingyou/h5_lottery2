@@ -287,42 +287,8 @@ export default {
       if(this.haslogin&& this.getCookie("acType")=='1' ){  // 只有登录状态才需要调
           this.getMsglistStatus()
       }    
-      this.geturl()
   },
     methods:{
-      geturl:function(){
-         $.ajax({
-            type: 'HEAD', // 获取头信息，type=HEAD即可
-            url : this.action.forseti + 'apid/cms/popText', 
-            //url:"http://device.qq.com/cgi-bin/device_cgi/remote_bind_get_Verify",
-            complete: function( xhr,data ){
-                var wpoInfo = {
-                    // 服务器端时间
-                    "date" : xhr.getResponseHeader('Date'),
-                    // 如果开启了gzip，会返回这个东西
-                    "contentEncoding" : xhr.getResponseHeader('Content-Encoding'),
-                    // keep-alive ？ close？
-                    "connection" : xhr.getResponseHeader('Connection'),
-                    // 响应长度
-                    "contentLength" : xhr.getResponseHeader('content-length'),
-                    // 服务器类型，apache？lighttpd？
-                    "server" : xhr.getResponseHeader('Server'),
-                    "vary" : xhr.getResponseHeader('Vary'),
-                    "transferEncoding" : xhr.getResponseHeader('Transfer-Encoding'),
-                    // text/html ? text/xml?
-                    "contentType" : xhr.getResponseHeader('Content-Type'),
-                    "cacheControl" : xhr.getResponseHeader('Cache-Control'),
-                    // 生命周期？
-                    "exprires" : xhr.getResponseHeader('Exprires'),
-                    "lastModified" : xhr.getResponseHeader('Last-Modified'),
-                    "availableDomain" : xhr.getResponseHeader('Available-Domain'),
-
-                };
-                console.log(wpoInfo ,'headarray')
-                console.log(xhr.getAllResponseHeaders() ,'headone');
-            }
-        });
-      },
 
       getBulletinsContent :function () {
           let  self=this ;
@@ -409,13 +375,6 @@ export default {
               url:  _self.action.forseti + 'apid/cms/popText',
               data:{},
               success:(res, textStatus, request)=>{
-
-                var req = new XMLHttpRequest();
-                req.open('GET', document.location, false);
-                req.send(null);
-                var headers = req.getAllResponseHeaders().toLowerCase();
-
-                console.log(headers,'head');
 
                   if(!res.data ||!res.data[0]||!res.data[0].title){
                       _self.offFlag=false;
