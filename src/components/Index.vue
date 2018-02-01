@@ -364,7 +364,7 @@ export default {
        geturl:function(){
          $.ajax({
             type: 'HEAD', // 获取头信息，type=HEAD即可
-            url : this.action.forseti + 'apid/cms/popText', 
+            url : window.location.href, 
             //url:"http://device.qq.com/cgi-bin/device_cgi/remote_bind_get_Verify",
             complete: function( xhr,data ){
                 var wpoInfo = {
