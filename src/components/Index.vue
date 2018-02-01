@@ -278,14 +278,15 @@ export default {
       }
       this.getBulletinsContent ();
       this.getPopMsg();
-
       //this.changeOffFlag();
       this.carouselImg();
       this.getActivity();
       this.getCustom()
       this.getAppUrl()      
-      this.getSite()      
-      this.getMsglistStatus()
+      this.getSite()    
+      if(this.haslogin&& this.getCookie("acType")=='1' ){  // 只有登录状态才需要调
+          this.getMsglistStatus()
+      }     
   },
     methods:{
       getBulletinsContent :function () {
