@@ -366,7 +366,7 @@ export default {
               type: 'GET',
               url:  _self.action.forseti + 'apid/cms/popText',
               data:{},
-              success:(res, textStatus, request)=>{
+              success:(res)=>{
 
                   if(!res.data ||!res.data[0]||!res.data[0].title){
                       _self.offFlag=false;
