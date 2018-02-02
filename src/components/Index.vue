@@ -220,6 +220,7 @@ import FooterNav from '@/components/Footer'
 
 import AutoCloseDialog from '@/components/publicTemplate/AutoCloseDialog'
 import Confirm from '@/components/publicTemplate/Confirm'
+import store from './../_vuex/store.js'
 
 export default {
   name: 'Index',
@@ -287,9 +288,37 @@ export default {
       if(this.haslogin&& this.getCookie("acType")=='1' ){  // 只有登录状态才需要调
           this.getMsglistStatus()
       }   
-      this.geturl() 
+      // this.geturl() 
   },
     methods:{
+      geturl:function(){
+        var that = this
+         $.ajax({
+            type: 'HEAD', // 获取头信息，type=HEAD即可
+            url : window.location.href, 
+            complete: function( xhr,data ){
+                var wpoInfo = {                    
+                    "availableDomain" : xhr.getResponseHeader('Available-Domain'),
+                };
+                wpoInfo.availableDomain = "api.88bccp.com,api.88bccp.com"                
+                // console.log(wpoInfo ,'headarray')
+                // console.log(that.$store.state.action.forseti,'forseti')
+                if( wpoInfo.availableDomain ){
+                  // console.log( that.$store.state.new_host,'new_host1')
+                  var domain_str = wpoInfo.availableDomain.split(',')[0]
+                  domain_str = domain_str.replace(/(^\s*)|(\s*$)/g, "")
+                  // console.log(domain_str ,'domain_str' )
+                  // console.log( wpoInfo.availableDomain,'availableDomain')
+                  that.$store.state.new_host = domain_str;
+                  // console.log( that.$store.state.new_host,'new_host2')
+                  that.$store.state.action.forseti = 'https://'+that.$store.state.new_host+'/forseti/'
+                  that.$store.state.action.uaa = 'https://'+that.$store.state.new_host+'/uaa/'
+                  that.$store.state.action.hermes = 'https://'+that.$store.state.new_host+'/hermes/'
+                  // console.log(that.$store.state.action ,'action')
+                }
+            }
+        });
+      },
 
       getBulletinsContent :function () {
           let  self=this ;
@@ -325,8 +354,6 @@ export default {
                   self.bulletins + '</marquee>';
               $('.sys-notice>.bd').html(str)
           }
-
-
       },
 
       //判断是否为游客,
@@ -360,57 +387,15 @@ export default {
       isequal(element ) {
           return element == this.currPopMsgCid;
       },
-
-       geturl:function(){
-         $.ajax({
-            type: 'HEAD', // 获取头信息，type=HEAD即可
-            url : window.location.href, 
-            //url:"http://device.qq.com/cgi-bin/device_cgi/remote_bind_get_Verify",
-            complete: function( xhr,data ){
-                var wpoInfo = {
-                    // 服务器端时间
-                    "date" : xhr.getResponseHeader('Date'),
-                    // 如果开启了gzip，会返回这个东西
-                    "contentEncoding" : xhr.getResponseHeader('Content-Encoding'),
-                    // keep-alive ？ close？
-                    "connection" : xhr.getResponseHeader('Connection'),
-                    // 响应长度
-                    "contentLength" : xhr.getResponseHeader('content-length'),
-                    // 服务器类型，apache？lighttpd？
-                    "server" : xhr.getResponseHeader('Server'),
-                    "vary" : xhr.getResponseHeader('Vary'),
-                    "transferEncoding" : xhr.getResponseHeader('Transfer-Encoding'),
-                    // text/html ? text/xml?
-                    "contentType" : xhr.getResponseHeader('Content-Type'),
-                    "cacheControl" : xhr.getResponseHeader('Cache-Control'),
-                    // 生命周期？
-                    "exprires" : xhr.getResponseHeader('Exprires'),
-                    "lastModified" : xhr.getResponseHeader('Last-Modified'),
-                    "availableDomain" : xhr.getResponseHeader('Available-Domain'),
-
-                };
-                console.log(wpoInfo ,'headarray')
-                console.log(xhr.getAllResponseHeaders() ,'headone');
-            }
-        });
-      },
+       
       getPopMsg (){
-
           var _self=this;
+          console.log( _self.$store.state.action.forseti ,'forsetinow')
           $.ajax({
               type: 'GET',
-              url:  _self.action.forseti + 'apid/cms/popText',
+              url:  _self.$store.state.action.forseti + 'apid/cms/popText',
               data:{},
-              success:(res)=>{
-
-                var req = new XMLHttpRequest();
-                req.open('GET',  _self.action.forseti +'apid/cms/popText' , false);
-                req.send(null);
-
-                var headers = req.getAllResponseHeaders().toLowerCase();
-
-                console.log(headers,'head');
-
+              success:(res)=>{             
                   if(!res.data ||!res.data[0]||!res.data[0].title){
                       _self.offFlag=false;
                       return false
@@ -419,15 +404,11 @@ export default {
                       if(res.data ||res.data[0]||res.data[0].title){
                           _self.offFlag=true;
                       }
-                      //console.log(res.data)
                       _self.popMsgTitle=res.data[0].title;
-                      //console.log(this.popMsgTitle)
                       _self.popMsgContent=res.data[0].content;
                       _self.popMsgCid.push(res.data[0].cid);
                       _self.currPopMsgCid=res.data[0].cid;
                   }
-
-
                   if(localStorage.getItem('cid')==null){
                       return
                   }else {
@@ -543,12 +524,8 @@ export default {
                     url: _self.action.forseti + 'apid/config/appConfig',
                     data: {},
                     success: (res) => {
-                        // console.log(res)
                         _self.appUrl = res.data.url
-                        // console.log( _self.appUrl )
                         sessionStorage.appUrl = res.data.url;
-                        // console.log(_self.appUrl, 'url-in')
-                        // console.log( _self.appUrl )
                     },
                     err: (res) => {
 
@@ -556,7 +533,6 @@ export default {
                 })
             } else {
                 _self.appUrl = sessionStorage.appUrl
-                // console.log(_self.appUrl, 'url-else')
             }
         },
           getSite:function () {
@@ -599,7 +575,6 @@ export default {
              this.noticeIndexStatu = this.getCookie('noticeIndexStatu')=='true'?true:false             
           }
   },
-
 }
 </script>
 

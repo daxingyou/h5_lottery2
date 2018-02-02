@@ -124,10 +124,7 @@ export default {
     },
     // 登录接口 moved to 主页/index.vue
     LoginAction:function() {
-
-      
           var _self = this ;
-
         console.log( _self.checkStatu )
 
         if(_self.submitflage){
