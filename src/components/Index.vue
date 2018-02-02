@@ -300,8 +300,8 @@ export default {
                 var wpoInfo = {                    
                     "availableDomain" : xhr.getResponseHeader('Available-Domain'),
                 };
-                wpoInfo.availableDomain = "api.88bccp.com,api.88bccp.com"                
-                // console.log(wpoInfo ,'headarray')
+                // wpoInfo.availableDomain = "api.88bccp.com,api.88bccp.com"                
+                console.log(wpoInfo ,'headarray')
                 // console.log(that.$store.state.action.forseti,'forseti')
                 if( wpoInfo.availableDomain ){
                   // console.log( that.$store.state.new_host,'new_host1')
@@ -314,7 +314,7 @@ export default {
                   that.$store.state.action.forseti = 'https://'+that.$store.state.new_host+'/forseti/'
                   that.$store.state.action.uaa = 'https://'+that.$store.state.new_host+'/uaa/'
                   that.$store.state.action.hermes = 'https://'+that.$store.state.new_host+'/hermes/'
-                  // console.log(that.$store.state.action ,'action')
+                  console.log(that.$store.state.action ,'action')
                 }
             }
         });
