@@ -111,31 +111,23 @@
         } ,
         mounted:function() {
             var that = this;
-
-            $(this.el).on('click', ()=>{
+            $(this.el).on('touchend', ()=>{
                 this.showNavigation = true;
-
                 that.mainIndexBalance = that.getCookie('balancePublic');
-//                console.log(  this.mainIndexBalance )
-                // 调接口获取数据 添加到用户余额   
-
-                // console.log(that.lotteryID) 
-                // console.log(that.sys_time) 
-  //               that.priodDataNewly(that.lotteryID, sys_time).then(res=>{
-  // 334                      that.ishwowpriod = true ;           
-
-
-
+                e.preventDefault()
                 $('html,body').css({'height':'100%','overflow-y':'hidden'}) ; // 禁止页面滚动
             }) ;
             this.custUrl=localStorage.getItem('Url');
-
+             $('.so-shade')[0].addEventListener('touchend', function(e) {
+                  console.log(3);
+             });
         },
         methods:{
             // 关闭侧滑栏
             close:function(e){
                 this.showNavigation = false;
                 $('html,body').css({'height':'auto','overflow-y':'scroll'}) ;
+                e.preventDefault()
             },
 
             //判断是否为游客,cla为class

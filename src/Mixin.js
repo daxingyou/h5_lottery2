@@ -206,7 +206,7 @@ var MyMixin = {
             //     $('.so-con-right').css('height',(val-310)+'px') ;
             // }
             var winH = this.getCookie('scrollF')?this.getCookie('scrollF'):window.innerHeight
-            let scrolling_height = winH  - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height())
+            let scrolling_height = winH  - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height()) 
             $('.so-con-right').css('height',(val - scrolling_height)+'px') ;
         },
 

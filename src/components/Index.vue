@@ -269,7 +269,9 @@ export default {
       //this.changeOffFlag ();
 
     },
-    mounted:function() {
+    mounted:function() {   
+
+
       $('html,body').css('overflow-y','scroll' )  ;
       this.allLottery = this.$refs.navone.getLotterys() ;
       this.gameHref = this.$refs.navone.gameHref ; // 拿子组件的值
@@ -339,6 +341,7 @@ export default {
 
               $.ajax({
                   type: 'get',
+                  // url: this.action.forseti + 'apid/cms/activity',
                   url: forsetinow + 'apid/cms/activity',
                   data: {},
                   success: (res) => {

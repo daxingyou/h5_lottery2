@@ -104,17 +104,23 @@ export default {
   mounted:function() {
       this.haslogin = this.ifLogined() ;
       this.setCookie('haslogin', this.haslogin)
-     $(this.el).on('click', ()=>{
+     $(this.el).on('touchend', ()=>{
       this.showNavigation = true;
-    }) ;
+      e.preventDefault()
+     }) ;
+     // $(this.el)[3].addEventListener('touchend',function(){
+     //   e.preventDefault();
+     // })
+
 
   },
   methods:{
       // 关闭侧滑栏
     close:function(e){
       this.showNavigation = false;
-        this.showFocus = true;
-        this.$store.commit('Number')
+      this.showFocus = true;
+      this.$store.commit('Number')
+      e.preventDefault()
     },
       // 获取彩种
       getLotterys: function () {
