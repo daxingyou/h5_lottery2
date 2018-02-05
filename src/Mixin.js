@@ -173,7 +173,7 @@ var MyMixin = {
         },
         // 初始化滚动高度
         setInitHeight:function (lotteryid) {
-            var conth = $('.so-con-right .item_one').height() ;
+            var conth = $('.so-con-right .item_one.active').height() ;
            this.setClickHeight(conth) ;
             if(lotteryid == '6'){
                 /* var div = document.getElementById("k3-item0");
@@ -197,14 +197,17 @@ var MyMixin = {
         },
         // 点击切换 设置球区域高度
         setClickHeight:function (val) {
-            var winw = window.screen.width || window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight; // 获取屏幕宽度
-            if(winw >413){ // 大屏幕
-                $('.so-con-right').css('height',(val-380)+'px') ;
-            }else if(winw>300 && winw<375){ // 小屏幕
-                $('.so-con-right').css('height',(val-270)+'px') ;
-            }else{
-                $('.so-con-right').css('height',(val-310)+'px') ;
-            }
+            // var winw = window.screen.width || window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight; // 获取屏幕宽度
+            // if(winw >413){ // 大屏幕
+            //     $('.so-con-right').css('height',(val-380)+'px') ;
+            // }else if(winw>300 && winw<375){ // 小屏幕
+            //     $('.so-con-right').css('height',(val-270)+'px') ;
+            // }else{
+            //     $('.so-con-right').css('height',(val-310)+'px') ;
+            // }
+            var winH = this.getCookie('scrollF')?this.getCookie('scrollF'):window.innerHeight
+            let scrolling_height = winH  - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height())
+            $('.so-con-right').css('height',(val - scrolling_height)+'px') ;
         },
 
         ajax:function(userConfig){
