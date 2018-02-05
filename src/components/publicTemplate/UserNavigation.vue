@@ -108,11 +108,12 @@ export default {
       this.showNavigation = true;
       e.preventDefault()
      }) ;
+      $('.so-shade')[0].addEventListener('touchend', function(e) {
+            console.log(3);
+       });
      // $(this.el)[3].addEventListener('touchend',function(){
      //   e.preventDefault();
      // })
-
-
   },
   methods:{
       // 关闭侧滑栏

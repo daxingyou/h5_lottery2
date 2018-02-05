@@ -1,7 +1,7 @@
 <template>
 
     <div v-if="showNavigation" :class="'so-left '+ (showNavigation?'active':'')">
-        <div class="so-shade" @click="close"></div>
+        <div class="so-shade" id='shade-now' @click="close"></div>
         <!--<div class="so-left-close" @click="close">
             <img src="../../../static/frist/images/left/left808.png">
         </div>-->
@@ -118,9 +118,11 @@
                 $('html,body').css({'height':'100%','overflow-y':'hidden'}) ; // 禁止页面滚动
             }) ;
             this.custUrl=localStorage.getItem('Url');
-             $('.so-shade')[0].addEventListener('touchend', function(e) {
-                  console.log(3);
-             });
+            var shade 
+            shade = document.getElementById('shade-now')
+            shade.addEventListener('touchend', function(e) {
+                e.preventDefault()
+            });
         },
         methods:{
             // 关闭侧滑栏
