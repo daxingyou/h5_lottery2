@@ -1,7 +1,7 @@
 <template>
 
     <div v-if="showNavigation" :class="'so-left '+ (showNavigation?'active':'')">
-    <div class="so-shade" @click="close"></div>
+    <div class="so-shade" @click="close()"></div>
     <!--<div class="so-left-close" @click="close">
         <img src="/static/frist/images/left/left808.png">
     </div>-->
@@ -104,24 +104,17 @@ export default {
   mounted:function() {
       this.haslogin = this.ifLogined() ;
       this.setCookie('haslogin', this.haslogin)
-     $(this.el).on('touchend', ()=>{
+     $(this.el).on('click', ()=>{
       this.showNavigation = true;
-      e.preventDefault()
+      $('html,body').css({'height':'100%','overflow-y':'hidden'}) ; // 禁止页面滚动
      }) ;
-      $('.so-shade')[0].addEventListener('touchend', function(e) {
-            console.log(3);
-       });
-     // $(this.el)[3].addEventListener('touchend',function(){
-     //   e.preventDefault();
-     // })
   },
   methods:{
       // 关闭侧滑栏
-    close:function(e){
+    close:function(){
       this.showNavigation = false;
       this.showFocus = true;
-      this.$store.commit('Number')
-      e.preventDefault()
+      $('html,body').css({'height':'auto','overflow-y':'scroll'}) ;
     },
       // 获取彩种
       getLotterys: function () {

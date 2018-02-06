@@ -1,7 +1,7 @@
 <template>
 
     <div v-if="showNavigation" :class="'so-left '+ (showNavigation?'active':'')">
-        <div class="so-shade" id='shade-now' @click="close"></div>
+        <div class="so-shade" id='shade-now' @click="close()"></div>
         <!--<div class="so-left-close" @click="close">
             <img src="../../../static/frist/images/left/left808.png">
         </div>-->
@@ -111,25 +111,18 @@
         } ,
         mounted:function() {
             var that = this;
-            $(this.el).on('touchend', ()=>{
+            $(this.el).on('click', ()=>{
                 this.showNavigation = true;
                 that.mainIndexBalance = that.getCookie('balancePublic');
-                e.preventDefault()
-                $('html,body').css({'height':'100%','overflow-y':'hidden'}) ; // 禁止页面滚动
+                $('html,body').css({'height':'100%','overflow-y':'hidden'}) ; 
             }) ;
-            this.custUrl=localStorage.getItem('Url');
-            var shade 
-            shade = document.getElementById('shade-now')
-            shade.addEventListener('touchend', function(e) {
-                e.preventDefault()
-            });
+            this.custUrl=localStorage.getItem('Url');           
         },
         methods:{
             // 关闭侧滑栏
-            close:function(e){
+            close:function(){
                 this.showNavigation = false;
                 $('html,body').css({'height':'auto','overflow-y':'scroll'}) ;
-                e.preventDefault()
             },
 
             //判断是否为游客,cla为class

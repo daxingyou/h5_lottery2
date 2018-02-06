@@ -269,9 +269,7 @@ export default {
       //this.changeOffFlag ();
 
     },
-    mounted:function() {   
-
-
+    mounted:function() {  
       $('html,body').css('overflow-y','scroll' )  ;
       this.allLottery = this.$refs.navone.getLotterys() ;
       this.gameHref = this.$refs.navone.gameHref ; // 拿子组件的值
