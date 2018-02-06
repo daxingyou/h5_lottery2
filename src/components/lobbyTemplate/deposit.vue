@@ -139,7 +139,7 @@
 
                                     <div class="bank_transfer">
                                         <div class="before_pay">
-                                            <fieldset>
+                                            <!-- <fieldset>
                                                 <div class="form_g text">
                                                     <legend>选择银行</legend>
                                                     <select name="" v-model="bankInfo.bankCode">
@@ -148,7 +148,7 @@
                                                     </select>
                                                     <span class="icon icon_arrow_down"></span>
                                                 </div>
-                                            </fieldset>
+                                            </fieldset> -->
                                         </div>
 
                                         <div class="bank_account" id='bankInforDeposit'>

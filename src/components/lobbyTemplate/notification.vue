@@ -330,7 +330,6 @@ export default {
     openList:function(e,index){
         console.log(index) 
         this.indexClick = index
-        console.log(this.indexClick ,'clickindex' )
         var $this =  $(e.currentTarget);
         var $text = $(this).find('.open').html('pppp');
          if (! $this.hasClass('active') ){

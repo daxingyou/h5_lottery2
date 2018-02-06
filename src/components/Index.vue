@@ -290,7 +290,7 @@ export default {
       if(this.haslogin&& this.getCookie("acType")=='1' ){  // 只有登录状态才需要调
           this.getMsglistStatus()
       }   
-      this.geturl() 
+      // this.geturl() 
   },
     methods:{
       geturl:function(){
@@ -337,12 +337,12 @@ export default {
                   forsetinow = localStorage.getItem('forseti')
                }
             }
-            console.log(forsetinow,'forsetinow33')
+            // console.log(forsetinow,'forsetinow33')
 
               $.ajax({
                   type: 'get',
-                  // url: this.action.forseti + 'apid/cms/activity',
-                  url: forsetinow + 'apid/cms/activity',
+                  url: this.action.forseti + 'apid/cms/activity',
+                  // url: forsetinow + 'apid/cms/activity',
                   data: {},
                   success: (res) => {
                       sessionStorage.propActivityList = JSON.stringify(res.data.rows);
