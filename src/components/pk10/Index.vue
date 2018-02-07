@@ -339,7 +339,7 @@ export default {
         },
     },
     methods:{
-         refreshBalance:function(newBalance){
+        refreshBalance:function(newBalance){
             this.balancePublic = newBalance
             this.getMemberBalance(this.lotteryID)
         },
