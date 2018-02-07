@@ -272,7 +272,6 @@
 
                             //newBalance 為數值 ex: 123456
                             let newBalance = Number(data.msg)
-
                             if (newBalance >= 0) {
                                 this.parentRefs.betSuccessfulDialog.open('购买成功')
                                 this.$emit('refreshBalance', newBalance);

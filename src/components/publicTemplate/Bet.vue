@@ -87,6 +87,7 @@ export default {
             // shadeStatus:false,
             showList:false ,
             ajaxSubmitAllow :false ,  // 解决重复提交的问题
+            beforeBetBalance: 0 //下注前的餘額
         }
     },
     computed:{
@@ -152,6 +153,7 @@ export default {
 
             // var total_mon = Number($('.total-bet-mon').text()) ; // 总投注金额
             const total_mon = this.monAmt(this.totalAmount);
+             this.beforeBetBalance = this.balance 
 
             // console.log( total_mon )
             // console.log( this.balance )
@@ -205,19 +207,20 @@ export default {
                     if (data.length <= 0) {
                         return false;
                     }        
-                    if (data.err == 'SUCCESS') {  //购买成功
-                       
+                    if (data.err == 'SUCCESS') {  //购买成功                       
                         this.ajaxSubmitAllow = false ;     //解决瞬间提交2次的问题
-                        // this.parentRefs.autoCloseDialog.open('购买成功')
-                        this.parentRefs.betSuccessfulDialog.open('购买成功')
-                        this.resetAction('1') ;  // 下注成功不清空金额
-                        that.getMemberBalance() ; // 更新余额
-                        that.getCookie( 'balancePublic' )
-                        var x = Number(that.getCookie( 'balancePublic' ) )  - Number(total_mon)
-                         that.setCookie("balancePublic",x);
-                         this.$emit('refreshBalance') ;
 
-                        return false;
+                        let newBalance = Number(data.msg)
+                        if (newBalance >= 0) {
+                            this.parentRefs.betSuccessfulDialog.open('购买成功')
+                            this.$emit('refreshBalance', newBalance);
+                        }
+                        else {
+                            this.$emit('refreshBalance', that.beforeBetBalance)
+                            this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', '下注失败')
+                        }
+                        this.resetAction('1')
+                        return false;                       
                     } else {  //购买失败提示
                         this.ajaxSubmitAllow = false ;
                         if(data.data =='' || data.data ==null){ // 平台商不存在
@@ -232,6 +235,7 @@ export default {
 
                             }
                         }
+                        this.$emit('refreshBalance', that.beforeBetBalance)
 
                         return false ;
 

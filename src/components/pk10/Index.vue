@@ -339,13 +339,9 @@ export default {
         },
     },
     methods:{
-         refreshBalance:function(){
-                var afterBetCookie = this.getCookie( 'balancePublic' )
-                this.balancePublic = afterBetCookie
-             // console.log(afterBetCookie)
-        },
-        bgFocus: function () {
-            this.$store.commit('Number')
+         refreshBalance:function(newBalance){
+            this.balancePublic = newBalance
+            this.getMemberBalance(this.lotteryID)
         },
         switchTab:function(e){
             var _self = this ;
@@ -395,10 +391,8 @@ export default {
 
                     that.sys_time = that.formatTimeUnlix(sys_time) ;
                     that.priodDataNewly(that.lotteryID, sys_time).then(res=>{
-                          console.log(res.msg)
                         that.balancePublic = res.msg;
                         that.setCookie("balancePublic",res.msg)
-                        
                         that.ishwowpriod = true ;
                         that.next_pcode = res.data[0].pcode;  // 下期期数
                         let code = res.data[2].winNumber;
@@ -418,7 +412,6 @@ export default {
                                         that.now_pcode = res.data[1].issueAlias;  // 当前期数
                                         that.pk10_now_pcode = res.data[1].pcode;  // 当前期数
                                     }
-
                                 that.winNumber = res.data[2].winNumber;
                                 that.lastTermStatic = res.data[2].doubleData;    //上期开奖统计
                                 that.previous_pcode = res.data[2].issueAlias;  // 上期期数
@@ -439,9 +432,7 @@ export default {
                                     that.lastTermStatic = res.data[1].doubleData;    //上期开奖统计
                                     that.previous_pcode = res.data[1].issueAlias;  // 上期期数
                             }
-
                         }else{
-
                             if(res.data[1].endTime < sys_time ){  // 如果当期结束时间小于系统时间
                                 that.now_time = that.formatTimeUnlix(res.data[0].endTime); // 当前期数时间
                                 that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
@@ -458,13 +449,11 @@ export default {
                                 that.winNumber = res.data[3].winNumber;
                                 that.lastTermStatic = res.data[3].doubleData;    //上期开奖统计
                                 that.previous_pcode = res.data[3].issueAlias;  // 上期期数
-                            }else{
+                            }else{      
                                 that.winNumber = res.data[2].winNumber;
                                 that.lastTermStatic = res.data[2].doubleData;    //上期开奖统计
                                 that.previous_pcode = res.data[2].issueAlias;  // 上期期数
                             }
-
-
                         }
 
                         if(res.data[1].status >1){ // 异常情况，如提前开盘 2

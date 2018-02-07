@@ -292,27 +292,17 @@ export default {
     frontCenterBackList:function(){
         return this.getListByParentID(23000);
     },
-    // balancePublic:function(){
-    //     alert()
-    //     this.refreshBalance()
-    // },
+  
   },
   watch:{
-    /* balancePublic:function(){
-        // alert()
-        // this.refreshBalance()
-    },*/
+    
   },
 
   methods:{
-    refreshBalance:function(){
-        var afterBetCookie = this.getCookie( 'balancePublic' )
-        this.balancePublic = afterBetCookie
-        // console.log( this.balancePublic )      
-    },
-      bgFocus: function () {
-          this.$store.commit('Number')
-      },
+    refreshBalance:function(newBalance){
+        this.balancePublic = newBalance
+        this.getMemberBalance(this.lotteryID)
+    },     
     switchTab:function(e){
         var _self = this ;
         const $src = $(e.currentTarget);

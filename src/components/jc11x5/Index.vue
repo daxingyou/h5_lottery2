@@ -381,18 +381,14 @@
                 return this.getListByParentID(43000);
             },
           },
-          methods:{
-             refreshBalance:function(){
-                var afterBetCookie = this.getCookie( 'balancePublic' )
-                this.balancePublic = afterBetCookie
-                 // console.log(afterBetCookie)
+          methods:{           
+            refreshBalance:function(newBalance){
+                this.balancePublic = newBalance
+                this.getMemberBalance(this.lotteryID)
             },
             betCountStat:function(xslen, xlen){
                 return  xslen*((xslen-1)/xlen);
             },
-              bgFocus: function () {
-                  this.$store.commit('Number')
-              },
             subTabChange:function(e, kind,index){
                   var $src = $(e.currentTarget);
                   $src.addClass('on').siblings().removeClass('on');
