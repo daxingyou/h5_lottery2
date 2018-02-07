@@ -15,13 +15,13 @@ var MyMixin = {
                 // picurl: 'https://img.will888.cn/photo/pic/',  // 图片地址
                 picurl: 'http://admin.baochiapi.com/photo/pic/',
                 //
-                forseti: 'http://121.58.234.210:19093/forseti/',  // 测试环境
-                uaa:  'http://121.58.234.210:19093/uaa/',   // 测试环境
-                hermes:  'http://121.58.234.210:19093/hermes/', // 测试环境forseti-justin
+                forseti: 'http://121.58.234.210:19093/forseti-justin/',  // 测试环境
+                uaa:  'http://121.58.234.210:19093/uaa-justin/',   // 测试环境
+                hermes:  'http://121.58.234.210:19093/hermes-justin/', // 测试环境forseti-justin
 
                 // forseti: 'https://api.88bccp.com/forseti/',   // 线上环境
                 // uaa:'https://api.88bccp.com/uaa/',  // 线上环境
-                // hermes:'https://api.88bccp.com/hermes/',   // 线上环境
+                // hermes:'https://api.88bccp.com/hermes/',   // 线上环境forseti-justin uaa-justin
             },
 
             rootBalance:{

@@ -87,7 +87,7 @@ export default {
             // shadeStatus:false,
             showList:false ,
             ajaxSubmitAllow :false ,  // 解决重复提交的问题
-            beforeBetBalance: 0 //下注前的餘額
+            beforeBetBalance: 0 
         }
     },
     computed:{
