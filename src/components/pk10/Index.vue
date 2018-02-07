@@ -453,6 +453,24 @@ export default {
                                 that.previous_pcode = res.data[2].issueAlias;  // 上期期数
                             }
                         }
+                        if (code.length<2) {
+                            let hasFind = false
+                            _.forEach(res.data, (item, index) => {
+                                if (_.size(item.winNumber) > 0 && index >= 2) {
+                                    that.winNumber = item.winNumber
+                                    that.previous_pcode = item.issueAlias
+                                    that.lastTermStatic = item.doubleData;
+                                    hasFind = true
+                                    return false
+                                }
+                            })
+                            if (!hasFind) {
+                                that.winNumber = code
+                            }
+                        }
+                        else {
+                            that.winNumber = code
+                        }
 
                         if(res.data[1].status >1){ // 异常情况，如提前开盘 2
                             that.entertainStatus = true;

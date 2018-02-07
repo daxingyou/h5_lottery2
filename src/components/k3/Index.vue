@@ -418,6 +418,25 @@
                                     that.previous_pcode = res.data[2].pcode;  // 上期期数
                                 }
                             }
+                             if (code.length<2) {
+                                let hasFind = false
+                                _.forEach(res.data, (item, index) => {
+                                    if (_.size(item.winNumber) > 0 && index >= 2) {
+                                        that.winNumber = item.winNumber
+                                        that.lastTermStatic = item.doubleData;    //上期开奖统计
+                                        that.previous_pcode = item.pcode
+                                        hasFind = true
+                                        return false
+                                    }
+                                })
+                                if (!hasFind) {
+                                    that.winNumber = code
+                                }
+                            }
+                            else {
+                                that.winNumber = code
+                            }
+                            
                             if(res.data[1].status >1){ // 异常情况，如提前开盘 2
                                 that.entertainStatus = true;
                             }
