@@ -419,7 +419,7 @@ var MyMixin = {
             $(document).on("touchmove", function (e) {
                 var e = e || event,
                     target = e.target || e.srcElement;
-                if (e.target.className.indexOf("so-shade") >= 0) { //className為弹窗的蒙层的类名
+                if ( e.target.className.indexOf("so-shade") >= 0 || e.target.className.indexOf("so-left-con") >= 0 ) { //className為弹窗的蒙层的类名
                     e.preventDefault();
                 }
             });
