@@ -420,7 +420,7 @@ export default {
                             that.previous_pcode = res.data[1].pcode;  // 上期期数
                         }
 
-                    }else if(!OpenFlag1){
+                    }else if(!OpenFlag1){   
                             // console.log(5)
                         if(res.data[1].endTime < sys_time ) { // 如果当期结束时间小于系统时间
                             // console.log(6)
@@ -458,6 +458,7 @@ export default {
                         that.lastTermStatic = res.data[1].doubleData;    //上期开奖统计
                         that.previous_pcode = res.data[1].pcode;  // 上期期数
                     }
+                    code = that.winNumber
 
                     if (!code) {
                         let hasFind = false
