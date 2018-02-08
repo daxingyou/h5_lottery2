@@ -771,9 +771,6 @@
             // 银行转账提交
             submitBankAction:function () {
                 var _self = this ;
-                // console.log(!(this.bankSubmitAllow), 'allowinfor')
-                // console.log((this.bankSubmitAllow), 'allowinfor2')
-
                 if (!(this.bankSubmitAllow)) {
                     _self.$refs.autoCloseDialog.open('未获取到收款人信息');
                     return false;
@@ -781,10 +778,7 @@
                 if( _self.submitpayunflag){
                     return false ;
                 }
-                if(!_self.bankInfo.bankCode){
-                    _self.$refs.autoCloseDialog.open('请选择存款银行！') ;
-                    return false ;
-                }
+               
                 if(!_self.banksavename || !this.trueName(_self.banksavename)){
                     _self.$refs.autoCloseDialog.open('请输入正确的存款人姓名！') ;
                     return false ;

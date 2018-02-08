@@ -323,19 +323,15 @@ export default {
     },
     //开奖倒计时结束后处理
     playLottery:function(){
-      //  this.$refs.infoDialog.open('请至下期继续投注', 'title_end')
         this.timerBegin();
     },
     //封盘倒计时结束后处理
     entertain:function(){
-        // this.$refs.infoDialog.open('请至下期继续投注', 'title_end')
         this.$refs.infoDialog.open('请至下期继续投注', '本期投注已结束')
         this.entertainStatus = true;
         this.resetAction();
     },
       entertainBreak: function () {
-          // this.$refs.infoDialog.open('请至下期继续投注', 'title_end')
-          // this.$refs.infoDialog.open('请至下期继续投注', '本期投注已结束')
           this.entertainStatus = true;
           this.resetAction();
       },
@@ -348,11 +344,7 @@ export default {
             that.getSystemTime().then(sys_time=>{
                 that.sys_time = that.formatTimeUnlix(sys_time) ;
                 that.priodDataNewly(that.lotteryID, sys_time).then(res=>{
-                        // console.log(res)
-                        // console.log(res.msg)
                         that.balancePublic = res.msg;
-                        // console.log( that.rootBalance )
-                        // console.log( res.msg )
                         that.setCookie("balancePublic",that.balancePublic)
 
                     that.ishwowpriod = true ;
