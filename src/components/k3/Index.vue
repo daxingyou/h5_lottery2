@@ -418,7 +418,7 @@
                                     that.previous_pcode = res.data[2].pcode;  // 上期期数
                                 }
                             }
-                             if (code.length<2) {
+                             if (!code) {
                                 let hasFind = false
                                 _.forEach(res.data, (item, index) => {
                                     if (_.size(item.winNumber) > 0 && index >= 2) {
