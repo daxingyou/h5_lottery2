@@ -391,7 +391,7 @@ export default {
                     }else if(firstpcode =='001' && that.lotteryID != '2'){ // 天津，新疆 时时彩 白天第一期
                             // console.log(30)
                         if(res.data[1].endTime - sys_time >0) { // 凌晨最后一期未结束
-                            console.log(3)
+                            // console.log(3)
                             if(res.data[1].endTime < sys_time ) { // 如果当期结束时间小于系统时间
                                 that.now_time = that.formatTimeUnlix(res.data[0].endTime);  // 当前期数时间
                                 that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);   // 当前期封盘时间
@@ -422,17 +422,17 @@ export default {
                         }
 
                     }else {   
-                            console.log(5)
-                            console.log( res.data)
+                            // console.log(5)
+                            // console.log( res.data)
                         if(res.data[1].endTime < sys_time ) { // 如果当期结束时间小于系统时间
-                            console.log(6)
+                            // console.log(6)
                             that.now_time = that.formatTimeUnlix(res.data[0].endTime); // 当前期数时间
                             that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
                             that.now_pcode = res.data[0].pcode;  // 当前期数
                             that.winNumber = res.data[1].winNumber;
                             that.lastTermStatic = res.data[1].doubleData;    //上期开奖统计
                             that.previous_pcode = res.data[1].pcode;  // 上期期数
-                              console.log(that.winNumber,'code1')
+                              // console.log(that.winNumber,'code1')
                         }else{
                             console.log(7)
                             that.now_time = that.formatTimeUnlix(res.data[1].endTime); // 当前期数时间
@@ -442,7 +442,7 @@ export default {
                             that.lastTermStatic = res.data[2].doubleData;    //上期开奖统计
                             that.previous_pcode = res.data[2].pcode;  // 上期期数
                         }
-                            console.log(that.winNumber,'code')
+                            // console.log(that.winNumber,'code')
 
                         //code 上期开奖号码
                         // if (!code) {
@@ -459,14 +459,12 @@ export default {
                         // }
                     }
 
-                    console.log(OpenFlag1,'OpenFlag1')
-                    console.log( sys_time-res.data[0].endTime,'33')
-                    console.log( res.data[0].startTime-res.data[0].endTime,'23')
-                    // console.log( res.data[1].startTime-res.data[1].endTime,'22')
+                    // console.log(OpenFlag1,'OpenFlag1')
+                    // console.log( sys_time-res.data[0].endTime,'33')
+                    // console.log( res.data[0].startTime-res.data[0].endTime,'23')
 
                     if( that.lotteryID == '2'&& OpenFlag1&&firstpcode =='001'){
-                            console.log(9)
-
+                        // console.log(9)
                         that.notopen = true ;
                         that.now_time = that.formatTimeUnlix(res.data[0].endTime);  // 当前期数时间
                         that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
@@ -477,11 +475,10 @@ export default {
                         that.previous_pcode = res.data[1].pcode;  // 上期期数
                     }
                     code = that.winNumber
-                    console.log(that.winNumber,'code-boss')
+                    // console.log(that.winNumber,'code-boss')
 
                     if (!code) {
-                            console.log(10)
-
+                            // console.log(10)
                         let hasFind = false
                         _.forEach(res.data, (item, index) => {
                             if (_.size(item.winNumber) > 0 && index >= 2) {
