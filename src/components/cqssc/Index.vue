@@ -353,8 +353,9 @@ export default {
                     var firstpcode = res.data[0].pcode.toString().substr(8, 11) ;
                     let code = res.data[2].winNumber;
                     var OpenFlag1 = ( sys_time > res.data[1].endTime )&&(sys_time < res.data[0].startTime)
-
+                    var OpenFlag = (sys_time > res.data[0].startTime&&sys_time < res.data[0].endTime)
                     if(firstpcode =='024' && that.lotteryID == '2'){  // 重庆时时彩 白天第一期
+                        console.log('start')
                         if(res.data[1].endTime - sys_time >0){ // 凌晨最后一期未结束
                             if(res.data[1].endTime < sys_time ) { // 如果当期结束时间小于系统时间
                                 that.now_time = that.formatTimeUnlix(res.data[0].endTime);  // 当前期数时间
@@ -421,7 +422,6 @@ export default {
                             that.lastTermStatic = res.data[1].doubleData;    //上期开奖统计
                             that.previous_pcode = res.data[1].pcode;  // 上期期数
                         }else{
-                            console.log(7)
                             that.now_time = that.formatTimeUnlix(res.data[1].endTime); // 当前期数时间
                             that.nowover_time = that.formatTimeUnlix(res.data[1].prizeCloseTime);  // 当前期封盘时间
                             that.now_pcode = res.data[1].pcode;  // 当前期数
@@ -429,21 +429,7 @@ export default {
                             that.lastTermStatic = res.data[2].doubleData;    //上期开奖统计
                             that.previous_pcode = res.data[2].pcode;  // 上期期数
                         }
-                            // console.log(that.winNumber,'code')
-
-                        //code 上期开奖号码
-                        // if (!code) {
-                        //     // code = '-,-,-,-,-';
-                        //     console.log(8)
-                        //     that.winNumber = res.data[3].winNumber;
-                        //     that.lastTermStatic = res.data[3].doubleData;    //上期开奖统计
-                        //     that.previous_pcode = res.data[3].pcode;  // 上期期数
-                        // }else{
-                        //     console.log(81)
-                        //     that.winNumber = res.data[2].winNumber;
-                        //     that.lastTermStatic = res.data[2].doubleData;    //上期开奖统计
-                        //     that.previous_pcode = res.data[2].pcode;  // 上期期数
-                        // }
+                            
                     }
 
                     if( that.lotteryID == '2'&& OpenFlag1&&firstpcode =='001'){
@@ -456,6 +442,16 @@ export default {
                         that.lastTermStatic = res.data[1].doubleData;    //上期开奖统计
                         that.previous_pcode = res.data[1].pcode;  // 上期期数
                     }
+                    if( that.lotteryID == '2'&& OpenFlag&&firstpcode =='001'){
+                        that.notopen = false ;
+                        that.now_time = that.formatTimeUnlix(res.data[0].endTime);  // 当前期数时间
+                        that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
+                        that.now_pcode = res.data[0].pcode;  // 当前期数
+                        that.winNumber = res.data[1].winNumber;
+                        that.lastTermStatic = res.data[1].doubleData;    //上期开奖统计
+                        that.previous_pcode = res.data[1].pcode;  // 上期期数
+                    }
+
                     code = that.winNumber
                     // console.log(that.winNumber,'code-boss')
 

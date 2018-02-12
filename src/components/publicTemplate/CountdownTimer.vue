@@ -92,6 +92,9 @@ export default {
                 }else if (lt_time_leave==30){
                     spanSrrived();
                 }
+                if(this.lotteryID=='2'&&lt_time_leave % 60 == 0&&timeSpan-lt_time_leave<60*6){
+                    spanSrrived();     
+                }
             }
 
             clearInterval(this.timer);
