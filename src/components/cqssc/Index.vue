@@ -355,9 +355,7 @@ export default {
                     var OpenFlag1 = ( sys_time > res.data[1].endTime )&&(sys_time < res.data[0].startTime)
                     var OpenFlag = (sys_time > res.data[0].startTime&&sys_time < res.data[0].endTime)
                     if(firstpcode =='024' && that.lotteryID == '2'){  // 重庆时时彩 白天第一期
-                        console.log('start')
                         if(res.data[1].endTime - sys_time >0){ // 凌晨最后一期未结束
-                            console.log('notopenfirst')                            
                             if(res.data[1].endTime < sys_time ) { // 如果当期结束时间小于系统时间
                                 that.now_time = that.formatTimeUnlix(res.data[0].endTime);  // 当前期数时间
                                 that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
@@ -376,7 +374,6 @@ export default {
                             }else{
                                 that.notopen = false ;
                             }
-                            console.log('notopenfirst')
                             that.now_pcode = res.data[0].pcode;  // 当前期数
                             that.now_time = that.formatTimeUnlix(res.data[0].endTime);   // 当前期数时间
                             that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);   // 当前期封盘时间
@@ -435,7 +432,6 @@ export default {
                     }
 
                     if( that.lotteryID == '2'&& OpenFlag1&&firstpcode =='001'){
-                        console.log('qq')
 
                         that.notopen = true ;
                         that.now_time = that.formatTimeUnlix(res.data[0].endTime);  // 当前期数时间
@@ -447,7 +443,6 @@ export default {
                         that.previous_pcode = res.data[1].pcode;  // 上期期数
                     }
                     if( that.lotteryID == '2'&& OpenFlag&&firstpcode =='001'){
-                        console.log('s')
                         that.notopen = false ;
                         that.now_time = that.formatTimeUnlix(res.data[0].endTime);  // 当前期数时间
                         that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
