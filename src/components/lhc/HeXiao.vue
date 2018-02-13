@@ -50,7 +50,7 @@
             },
             currentBaseShengXiao: { //本命年生肖，在 index.vue 透過 API 取得再往下傳
                 type: String,
-                default:"鸡"
+                default:"狗"
             }
         },
         data() {

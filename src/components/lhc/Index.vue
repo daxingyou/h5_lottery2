@@ -149,7 +149,7 @@
                 betSelectedList:[],   //用户选中的注数
                 playType: 'normal',
                 combineCount: 0,
-                currentBaseShengXiao: "鸡",
+                currentBaseShengXiao: "狗",
                 allLottery:{},
                 gameHref:{},
                 kinds:[],
