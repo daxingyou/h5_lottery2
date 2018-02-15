@@ -26,10 +26,10 @@
 
           <div>
                 <div class="back_home" >
-                  <router-link v-bind:to="'/'">
+                  <a href="/">
                     <!--<span><img src="/static/frist/images/left/icon_home.png"></span>-->
                         <span>返回竞彩大厅</span>
-                  </router-link>
+                  </a>
                 </div>
                 <ul class="all_lottery">
                   <li :class="$route.path =='/'+gameHref[lottery.cid] ?'active':''" v-for="lottery in allLottery">
