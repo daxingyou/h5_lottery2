@@ -499,7 +499,7 @@
                                     _.forEach(dataList, (betData, index) => {
                                         let betDataObj = {}
                                         betDataObj.lotteryid = betData.lotteryId
-                                        if(betData.lotteryId == '10'){
+                                        if(betData.lotteryId == '10'||betData.lotteryId == '8'){
                                             betDataObj.pcode = betData.issueAlias
                                         }else{
                                             betDataObj.pcode = betData.pcode
