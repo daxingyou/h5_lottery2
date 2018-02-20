@@ -403,16 +403,24 @@ export default {
                                         that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
                                         that.now_pcode = res.data[0].issueAlias;  // 当前期数
                                         that.pk10_now_pcode = res.data[0].pcode;  // 当前期数
+                                        if(that.lotteryID == '108' ){
+                                            that.now_pcode = res.data[0].pcode;
+                                        }
                                     }else{
                                         that.now_time = that.formatTimeUnlix(res.data[1].endTime);  // 当前期数时间
                                         that.nowover_time = that.formatTimeUnlix(res.data[1].prizeCloseTime);  // 当前期封盘时间
                                         that.now_pcode = res.data[1].issueAlias;  // 当前期数
                                         that.pk10_now_pcode = res.data[1].pcode;  // 当前期数
+                                        if(that.lotteryID == '108' ){
+                                            that.now_pcode = res.data[1].pcode;
+                                        }
                                     }
                                 that.winNumber = res.data[2].winNumber;
                                 that.lastTermStatic = res.data[2].doubleData;    //上期开奖统计
                                 that.previous_pcode = res.data[2].issueAlias;  // 上期期数
-
+                                    if(that.lotteryID == '108' ){
+                                        that.previous_pcode = res.data[2].pcode;
+                                    }
                                 }else{
                                     if( res.data[0].startTime - sys_time >0){  // 未开盘状态
                                         that.notopen = true ;
@@ -421,6 +429,9 @@ export default {
                                     }
                                     that.now_pcode = res.data[0].issueAlias;  // 当前期数
                                     that.pk10_now_pcode = res.data[0].pcode;  // 当前期数
+                                    if(that.lotteryID == '108' ){
+                                        that.now_pcode = res.data[0].pcode;
+                                    }
                                     // 当前期数时间
                                     that.now_time = that.formatTimeUnlix(res.data[0].endTime);
                                     // 当前期封盘时间
@@ -428,6 +439,9 @@ export default {
                                     that.winNumber = res.data[1].winNumber;
                                     that.lastTermStatic = res.data[1].doubleData;    //上期开奖统计
                                     that.previous_pcode = res.data[1].issueAlias;  // 上期期数
+                                    if(that.lotteryID == '108' ){
+                                        that.previous_pcode = res.data[1].pcode;
+                                    }
                             }
                         }else{
                             if(res.data[1].endTime < sys_time ){  // 如果当期结束时间小于系统时间
@@ -435,10 +449,16 @@ export default {
                                 that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
                                 that.now_pcode = res.data[0].issueAlias;  // 当前期数
                                 that.pk10_now_pcode = res.data[0].pcode;  // 当前期数
+                                if(that.lotteryID == '108' ){
+                                    that.now_pcode = res.data[0].pcode;
+                                }
                             }else{
                                 that.now_time = that.formatTimeUnlix(res.data[1].endTime);    // 当前期数时间
                                 that.nowover_time = that.formatTimeUnlix(res.data[1].prizeCloseTime);
                                 that.now_pcode = res.data[1].issueAlias;  // 当前期数
+                                if(that.lotteryID == '108' ){
+                                    that.now_pcode = res.data[1].pcode;
+                                }
                                 that.pk10_now_pcode = res.data[1].pcode;  // 当前期数
                             }
                             if (!code) {  //code 上期开奖号码
@@ -446,10 +466,16 @@ export default {
                                 that.winNumber = res.data[3].winNumber;
                                 that.lastTermStatic = res.data[3].doubleData;    //上期开奖统计
                                 that.previous_pcode = res.data[3].issueAlias;  // 上期期数
+                                 if(that.lotteryID == '108' ){
+                                    that.previous_pcode = res.data[3].pcode;
+                                }
                             }else{      
                                 that.winNumber = res.data[2].winNumber;
                                 that.lastTermStatic = res.data[2].doubleData;    //上期开奖统计
                                 that.previous_pcode = res.data[2].issueAlias;  // 上期期数
+                                 if(that.lotteryID == '108' ){
+                                    that.previous_pcode = res.data[2].pcode;
+                                }
                             }
                         }
                         code = that.winNumber
@@ -459,6 +485,9 @@ export default {
                                 if (_.size(item.winNumber) > 0 && index >= 2) {
                                     that.winNumber = item.winNumber
                                     that.previous_pcode = item.issueAlias
+                                    if(that.lotteryID == '108' ){
+                                        that.previous_pcode = item.pcode;
+                                    }
                                     that.lastTermStatic = item.doubleData;
                                     hasFind = true
                                     return false
