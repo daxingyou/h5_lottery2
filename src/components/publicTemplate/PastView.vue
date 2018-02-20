@@ -43,7 +43,7 @@
                                     <div class="new_panel_top play_th">
                                         <div class="prd_num">
                                             <!--<i class="prd"></i>-->
-                                            <span>{{  ( (lotteryid == '8')||(lotteryid == '108')||(lotteryid == '24') )? list.issueAlias:list.pcode}}</span>
+                                            <span>{{  ( (lotteryid == '8')||(lotteryid == '24') )? list.issueAlias:list.pcode}}</span>
                                            <span>期</span>
                                         </div>
                                         <ul class="double-count" v-if="(lotteryid == '8')||(lotteryid == '108') ||(lotteryid == '24') "> <!-- 上面一排数据 -->

@@ -16,7 +16,7 @@
                             <li class="prod cqssc" >
                                 <div class="new_panel_top play_th">
                                     <div class="prd_num"><i class="prd"></i><span>{{list.lotteryName}}</span></div>
-                                    <div class="prd_num02">第{{(list.lotteryId == '8' || list.lotteryId == '108'|| list.lotteryId == '24')?list.issueAlias :list.pcode}}期</div>
+                                    <div class="prd_num02">第{{(list.lotteryId == '8' || list.lotteryId == '24')?list.issueAlias :list.pcode}}期</div>
                                    <!-- <div class="time timerset" :data-time=" (format(formatTimeUnlix(list.endTime)).getTime() - format(formatTimeUnlix(sys_time)).getTime()) / 1000 ">-->
                                     <div class="time timerset endtime" :data-time="0" v-if="(format(formatTimeUnlix(list.endTime,0)).getTime() > format(formatTimeUnlix(sys_time,0)).getTime())">
                                        <!-- {{ (format(formatTimeUnlix(list.endTime)).getTime() - format(formatTimeUnlix(sys_time)).getTime()) / 1000 }}-->
@@ -210,10 +210,10 @@ export default {
                         }
                        // console.log(v.endTime) ;
                         if(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() > _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime() ){ // 如果当前期结束时间大于系统时间
-                           console.log('结束时间大') ;
+                           // console.log('结束时间大') ;
                             $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000) ;
                         }else{
-                           console.log('结束时间小') ;
+                           // console.log('结束时间小') ;
                             $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.nextEndTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000) ;
                         }
 
