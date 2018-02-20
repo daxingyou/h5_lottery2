@@ -247,7 +247,8 @@
                             that.ishwowpriod = true ;
                             that.next_pcode = res.data[0].issueAlias;  // 下期期数
 
-                            that.currentBaseShengXiao = res.data[1].zodiac
+                            //that.currentBaseShengXiao = res.data[1].zodiac
+			    that.currentBaseShengXiao = '狗'
                             let code = res.data[2].winNumber.split(',')
                             that.previous_pcode = res.data[2].issueAlias
                             var noOpenFlag1 = ( sys_time > res.data[0].startTime ) && (sys_time < res.data[0].endTime)
