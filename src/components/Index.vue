@@ -326,22 +326,24 @@ export default {
        //获得优惠活动接口
       getActivity : function () {
           var _self=this;
-          console.log( localStorage.getItem('forseti') ,'activitynow' )
-            var forsetinow = _self.$store.state.action.forseti
-            if(!localStorage.getItem('forseti') ){
-                forsetinow = _self.$store.state.action.forseti
-                console.log(forsetinow,'forsetinow1' )
-            }else{
-               if(localStorage.getItem('forseti')!= _self.$store.state.action.forseti){
-                  forsetinow = localStorage.getItem('forseti')
-               }
-            }
+          // console.log( localStorage.getItem('forseti') ,'activitynow' )
+
+            // var forsetinow = _self.$store.state.action.forseti
+            // if(!localStorage.getItem('forseti') ){
+            //     forsetinow = _self.$store.state.action.forseti
+            //     console.log(forsetinow,'forsetinow1' )
+            // }else{
+            //    if(localStorage.getItem('forseti')!= _self.$store.state.action.forseti){
+            //       forsetinow = localStorage.getItem('forseti')
+            //    }
+            // }
+
             // console.log(forsetinow,'forsetinow33')
 
               $.ajax({
                   type: 'get',
+                  // url: this.action.forseti + 'apid/cms/activity',
                   url: this.action.forseti + 'apid/cms/activity',
-                  // url: forsetinow + 'apid/cms/activity',
                   data: {},
                   success: (res) => {
                       sessionStorage.propActivityList = JSON.stringify(res.data.rows);
@@ -426,10 +428,10 @@ export default {
        
       getPopMsg (){
           var _self=this;
-          console.log( _self.$store.state.action.forseti ,'forsetinow')
+          // console.log( _self.$store.state.action.forseti ,'forsetinow')
           $.ajax({
               type: 'GET',
-              url:  _self.$store.state.action.forseti + 'apid/cms/popText',
+              url:  _self.action.forseti + 'apid/cms/popText',
               data:{},
               success:(res)=>{             
                   if(!res.data ||!res.data[0]||!res.data[0].title){
