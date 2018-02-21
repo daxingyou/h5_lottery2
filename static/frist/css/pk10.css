@@ -28,8 +28,10 @@
   height: auto;
   padding-top: 0.3rem; }
 
-#pk10 .play_th .double-count li {width: 0.65rem; margin-left: 0; font-size: 0.3rem; }
-
+#pk10 .play_th .double-count li {width: 0.62rem; margin-left: 0; font-size: 0.3rem; }
+@media screen and (max-width: 330px){
+  #pk10 .play_th .double-count {margin-top: -0.074074rem;  }  
+}
 #pk10 .ds_long .prod > div {
   width: 4rem; }
   #pk10 .ds_long .prod > div:last-child {

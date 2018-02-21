@@ -1335,6 +1335,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 .print_data table tr th li { list-style: none; margin-left: .5em; position: relative; width: 1.5rem; font-size: .35rem;  }
 .print_data table tr td { text-align: left; padding-left: 1em; color: #d59559; word-break: break-all; line-height: 2em; width: 11rem; font-size: .35rem; }
 .print_data table tr td.text-yellow { color: #ffbd00; }
+.print_data table tr:nth-of-type(4)  td.text-yellow{ color:#ffc388; }
 
 #bankInforDeposit .print_data table tr td:last-of-type {
     width: 2rem
