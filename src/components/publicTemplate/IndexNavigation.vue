@@ -1,7 +1,7 @@
 <template>
 
     <div v-if="showNavigation" :class="'so-left '+ (showNavigation?'active':'')">
-        <div class="so-shade" @click="close"></div>
+        <div class="so-shade" id='shade-now' @click="close()"></div>
         <!--<div class="so-left-close" @click="close">
             <img src="../../../static/frist/images/left/left808.png">
         </div>-->
@@ -45,14 +45,14 @@
                             </a>
                         </li>
                         <li>
-                            <router-link v-bind:to="'/lobbyTemplate/acdetial'">
+                            <a href ="/lobbyTemplate/acdetial">
                                 <div class="">
                                     <div>
                                         <i class="index_s index_s03"></i>
                                     </div>
                                 </div>
                                 帐户明细
-                            </router-link>
+                            </a>
                         </li>
                         <li>
                             <a :href="custUrl" target="_blank" >
@@ -64,6 +64,11 @@
                                 在线客服
                             </a>
                         </li>
+                        <!--20180125 新增个人消息-->
+                        <div  class="left_logout">
+                            <a href="javascript:;" class="new_btn" @click="loginOut()"><span class="midunm">退出</span></a>
+                        </div>
+                        <!--end 20180125 新增个人消息-->
                     </ul>
                 </div>
             </div>
@@ -106,29 +111,16 @@
         } ,
         mounted:function() {
             var that = this;
-
             $(this.el).on('click', ()=>{
                 this.showNavigation = true;
-
                 that.mainIndexBalance = that.getCookie('balancePublic');
-//                console.log(  this.mainIndexBalance )
-                // 调接口获取数据 添加到用户余额   
-
-                // console.log(that.lotteryID) 
-                // console.log(that.sys_time) 
-  //               that.priodDataNewly(that.lotteryID, sys_time).then(res=>{
-  // 334                      that.ishwowpriod = true ;           
-
-
-
-                $('html,body').css({'height':'100%','overflow-y':'hidden'}) ; // 禁止页面滚动
+                $('html,body').css({'height':'100%','overflow-y':'hidden'}) ; 
             }) ;
-            this.custUrl=localStorage.getItem('Url');
-
+            this.custUrl=localStorage.getItem('Url');           
         },
         methods:{
             // 关闭侧滑栏
-            close:function(e){
+            close:function(){
                 this.showNavigation = false;
                 $('html,body').css({'height':'auto','overflow-y':'scroll'}) ;
             },

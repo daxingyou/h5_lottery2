@@ -15,13 +15,13 @@ var MyMixin = {
                 // picurl: 'https://img.will888.cn/photo/pic/',  // 图片地址
                 picurl: 'http://admin.baochiapi.com/photo/pic/',
                 //
-                forseti: 'http://121.58.234.210:19093/forseti/',  // 测试环境
-                uaa:  'http://121.58.234.210:19093/uaa/',   // 测试环境
-                hermes:  'http://121.58.234.210:19093/hermes/', // 测试环境
+                forseti: 'http://121.58.234.210:19093/forseti/',  // 测试环境 forseti-221
+                uaa:  'http://121.58.234.210:19093/uaa/',   // 测试环境uaa-221
+                hermes:  'http://121.58.234.210:19093/hermes/', // 测试环境forseti-justin  hermes-221
 
                 // forseti: 'https://api.88bccp.com/forseti/',   // 线上环境
                 // uaa:'https://api.88bccp.com/uaa/',  // 线上环境
-                // hermes:'https://api.88bccp.com/hermes/',   // 线上环境
+                // hermes:'https://api.88bccp.com/hermes/',   // 线上环境forseti-justin uaa-justin
             },
 
             rootBalance:{
@@ -173,7 +173,7 @@ var MyMixin = {
         },
         // 初始化滚动高度
         setInitHeight:function (lotteryid) {
-            var conth = $('.so-con-right .item_one').height() ;
+            var conth = $('.so-con-right .item_one.active').height() ;
            this.setClickHeight(conth) ;
             if(lotteryid == '6'){
                 /* var div = document.getElementById("k3-item0");
@@ -197,14 +197,17 @@ var MyMixin = {
         },
         // 点击切换 设置球区域高度
         setClickHeight:function (val) {
-            var winw = window.screen.width || window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight; // 获取屏幕宽度
-            if(winw >413){ // 大屏幕
-                $('.so-con-right').css('height',(val-380)+'px') ;
-            }else if(winw>300 && winw<375){ // 小屏幕
-                $('.so-con-right').css('height',(val-270)+'px') ;
-            }else{
-                $('.so-con-right').css('height',(val-310)+'px') ;
-            }
+            // var winw = window.screen.width || window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight; // 获取屏幕宽度
+            // if(winw >413){ // 大屏幕
+            //     $('.so-con-right').css('height',(val-380)+'px') ;
+            // }else if(winw>300 && winw<375){ // 小屏幕
+            //     $('.so-con-right').css('height',(val-270)+'px') ;
+            // }else{
+            //     $('.so-con-right').css('height',(val-310)+'px') ;
+            // }
+            var winH = this.getCookie('scrollF')?this.getCookie('scrollF'):window.innerHeight
+            let scrolling_height = winH  - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height()) 
+            $('.so-con-right').css('height',(val - scrolling_height)+'px') ;
         },
 
         ajax:function(userConfig){
@@ -248,7 +251,7 @@ var MyMixin = {
             return new Promise((resolve, reject)=>{
                 let maxUpdateTime = ""
                 let playTree
-
+                this.setCookie('scrollF',window.innerHeight) 
                 /* if browser support localStorage */
                 if (typeof(Storage) !== "undefined") {
                     // Code for localStorage/sessionStorage.
@@ -281,7 +284,7 @@ var MyMixin = {
                         playTreeIndexByCid.set(mydata)
                         this.$set(this, 'playTreeList', mydata)
                         this.$set(this, 'playTreeIndexByCid', mydata)
-
+                        // this.setCookie('scrollF',window.innerHeight) 
                      setTimeout(function () {
                          _self.setInitHeight(gameid) ;
                      },200) ;
@@ -345,6 +348,7 @@ var MyMixin = {
                         var mom = this.fortMoney(this.roundAmt(res.data.balance), 2);  // 用户余额
                         this.setCookie("membalance", mom);  // 把登录余额放在cookie里面
                         this.setCookie("balancePublic", mom);  // 把登录余额放在cookie里面
+                        this.setCookie("memberId", res.data.memberId);  // 把登录余额放在cookie里面                        
                         resolve();
                     },
                     error: function (e) {
@@ -415,7 +419,7 @@ var MyMixin = {
             $(document).on("touchmove", function (e) {
                 var e = e || event,
                     target = e.target || e.srcElement;
-                if (e.target.className.indexOf("so-shade") >= 0) { //className為弹窗的蒙层的类名
+                if ( e.target.className.indexOf("so-shade") >= 0 || e.target.className.indexOf("so-left-con") >= 0 ) { //className為弹窗的蒙层的类名
                     e.preventDefault();
                 }
             });
@@ -480,7 +484,8 @@ var MyMixin = {
         formatTime:function(second, type) {
             var bk;
             if (type == 0) {
-                var h = parseInt(second / 3600);
+                var d = parseInt( second /(3600*24) )
+                var h = parseInt( second % (3600*24)/3600  );
                // var h = Math.floor(second / 3600);
                 var f = parseInt(second % 3600 / 60);
                // var f = Math.floor((second - (h * 60 * 60)) / 60);
@@ -489,6 +494,9 @@ var MyMixin = {
               // second --;
               bk = (h < 10 ? "0" + h : h)+ ":" + (f < 10 ? "0" + f : f) + ":" + (s < 10 ? "0" + s : s)
               // bk = h + ":" + (f < 10 ? "0" + f : f) + ":" + (s < 10 ? "0" + s : s)
+               if(d){
+                    bk = (d + "天")+ ":" +  (h < 10 ? "0" + h : h)+ ":" + (f < 10 ? "0" + f : f) + ":" + (s < 10 ? "0" + s : s)
+                }
             } else {
                 bk = second.split(":");
                 bk = parseInt(bk[0] * 3600) + parseInt(bk[1] * 60) + parseInt(bk[2])

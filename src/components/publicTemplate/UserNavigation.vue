@@ -1,7 +1,7 @@
 <template>
 
     <div v-if="showNavigation" :class="'so-left '+ (showNavigation?'active':'')">
-    <div class="so-shade" @click="close"></div>
+    <div class="so-shade" @click="close()"></div>
     <!--<div class="so-left-close" @click="close">
         <img src="/static/frist/images/left/left808.png">
     </div>-->
@@ -26,10 +26,10 @@
 
           <div>
                 <div class="back_home" >
-                  <router-link v-bind:to="'/'">
+                  <a href="/">
                     <!--<span><img src="/static/frist/images/left/icon_home.png"></span>-->
                         <span>返回竞彩大厅</span>
-                  </router-link>
+                  </a>
                 </div>
                 <ul class="all_lottery">
                   <li :class="$route.path =='/'+gameHref[lottery.cid] ?'active':''" v-for="lottery in allLottery">
@@ -92,6 +92,8 @@ export default {
             "22":"k3/huBeiK3Index",
               "106": 'k3/miaoSuK3Index',
               "10": 'lhc',
+            "24":"pk10/LuckyBoat",    
+            "110":"wflhc",   
             
           }, // 对应彩种的id
         }
@@ -104,15 +106,15 @@ export default {
       this.setCookie('haslogin', this.haslogin)
      $(this.el).on('click', ()=>{
       this.showNavigation = true;
-    }) ;
-
+      $('html,body').css({'height':'100%','overflow-y':'hidden'}) ; // 禁止页面滚动
+     }) ;
   },
   methods:{
       // 关闭侧滑栏
-    close:function(e){
+    close:function(){
       this.showNavigation = false;
-        this.showFocus = true;
-        this.$store.commit('Number')
+      this.showFocus = true;
+      $('html,body').css({'height':'auto','overflow-y':'scroll'}) ;
     },
       // 获取彩种
       getLotterys: function () {

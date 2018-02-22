@@ -72,19 +72,27 @@ let LhcMixin = {
             return res;
         },
         setScrollHeight(hasTabPanel, currentBarIndex) {
-            let scrolling_height =  window.innerHeight - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height())
-
+            // let scrolling_height =  window.innerHeight - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height())
+            var winH = this.getCookie('scrollF')?this.getCookie('scrollF'):window.innerHeight
+            let scrolling_height = winH  - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height()) ;
             if (hasTabPanel) {
                 scrolling_height -= $('.tab_panel').height()
             }
 
             this.setClickHeight($('#scroller'), scrolling_height)
             this.setClickHeight($('.tab_container'), $('#so-item' + currentBarIndex).height() + 40)
-
         },
         setClickHeight(elem, height) {
             elem.height(height)
-        }
+        },
+        getCookie :function(name) {
+            var re = '(?:; )?' + encodeURIComponent(name) + '=([^;]*);?';
+            re = new RegExp(re);
+            if (re.test(document.cookie)) {
+                return decodeURIComponent(RegExp.$1);
+            }
+            return '';
+        },
     }
 };
 export default LhcMixin;

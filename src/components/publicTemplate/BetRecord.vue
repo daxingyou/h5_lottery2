@@ -129,11 +129,11 @@
                 mySwiperTrack: null,
                 gamechoose :[
                     {id:'0','name':'全部'} ,
-
                    {id:'2','name':'重庆时时彩'} ,
                     {id:'102','name':'秒速时时彩'} ,
                     {id:'14','name':'新疆时时彩'} ,
                     {id:'108','name':'秒速赛车'},
+                    {id:'24','name':'幸运飞艇'},
                     {id:'8','name':'北京PK10'} ,
                     {id:'12','name':'天津时时彩'} ,
                     {id:'4','name':'江西11选5'} ,
@@ -145,6 +145,7 @@
                     {id:'22','name':'湖北快3'} ,
                     {id:'20','name':'安徽快3'} ,
                     {id: '10', 'name': '香港六合彩'},
+                    {id: '110', 'name': '五分六合彩'},
                 ],
                 ajaxSubmitAllow:false ,
             }
@@ -478,8 +479,8 @@
                     }
                     console.log(this.lotteryid)
 
-                    if (this.lotteryid == 10) {
-                        this.setCookie('lt_lotteryid', 10)
+                    if (this.lotteryid == 10 ||this.lotteryid == 110) {
+                        this.setCookie('lt_lotteryid', this.lotteryid)
                         this.setCookie('lottery_name', '香港六合彩')
                         // window.location = '/lhc/LhcBetRecord'
                         this.$router.push('/lhc/LhcBetRecord')
@@ -590,7 +591,7 @@
                         var li_html = '';
                         // var pcode = ('' + v.pcode).substring(8, 11);
                         var pname = v.playName.substring(0, 2) ; // 筛选连码
-                        if(  (_self.lotteryid =='8')|| (_self.lotteryid =='108') ){  // 北京pk10
+                        if(  (_self.lotteryid =='8')|| (_self.lotteryid =='108')|| (_self.lotteryid =='24') ){  // 北京pk10
                             var pcode = ('' + v.issueAlias) ;
                         }else{
                             var pcode = ('' + v.pcode) ;

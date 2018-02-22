@@ -11,7 +11,8 @@
             <div class="right_menu_box" v-if="show">
                 <ul class="right_menu">
                     <li class="r_record">
-                        <router-link :to="(lotteryid =='10') ? '/lhc/LhcBetRecord' : '/publicTemplate/betRecord'">
+                        <!-- <router-link :to="(lotteryid =='10') ? '/lhc/LhcBetRecord' : '/publicTemplate/betRecord'"> -->
+                        <router-link :to=" '/lhc/LhcBetRecord' ">
                             <p><span class="icon icon_r_record"></span>投注记录</p>
                         </router-link>
                     </li>
@@ -25,7 +26,7 @@
                             <p>路珠</p>
                         </router-link>
                     </li>-->
-                    <li class="r_roadbeads" v-if="lotteryid != '10'">
+                    <li class="r_roadbeads" v-if=" (lotteryid != '10')&&(lotteryid != '110') ">
                         <router-link to="/publicTemplate/roadBeads">
                             <p><span class="icon icon_r_roadbeads"></span>路珠</p>
                         </router-link>

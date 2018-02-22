@@ -28,6 +28,7 @@
                                 <div class="form_g text">
                                     <legend>选择银行</legend>
                                     <select name="" v-model="bankId" class="bankselect">
+                                        <option value="" >请选择</option>   
                                         <option :value="bank.id" v-for="bank in bankList" :data-code="bank.bankCode" >{{bank.bankName}}</option>
                                     </select>
                                     <span class="icon icon_arrow_down"></span>

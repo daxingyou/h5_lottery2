@@ -10,15 +10,20 @@
                      <span class="icon icon_nav"></span>
                  </a>
              </div>
-             <h2 class="center logo" v-bind:class="[haslogin ? '' : 'logo_left']"><img src="static/frist/images/logo.png" alt="百乐彩"></h2>
+             <!-- <h2 class="center logo" v-bind:class="[haslogin ? '' : 'logo_left']"><img src="static/frist/images/logo.png" alt="百乐彩"></h2> -->
+             <h2 class="center logo" v-bind:class="[haslogin ? '' : 'logo_left']"><img :src="logosrc" alt="百乐彩"></h2>
+             
              <div class="right">
                  <router-link to="/login" class="new_btn_outline" v-show="!haslogin">登录</router-link>
                  <router-link to="/reg" class="new_btn_outline" v-show="!haslogin" >注册</router-link>
                  <a href="javascript:;" class="new_btn_outline" v-show="!haslogin"  @click="demoPlay()">试玩</a>
-                 <!-- <router-link class="login" to="/lobbyTemplate/info" v-show="haslogin" ><i></i><b></b></router-link>--> <!-- 普通用户 -->
+                  <router-link class="login" to="/lobbyTemplate/info" v-show="haslogin" ><i></i><b></b></router-link> <!-- 普通用户 -->
                  <a class="guset" href="javascript:;" v-show="haslogin && logintype=='2'" @click="CheckDemoPlay()"><span class="icon icon_user"></span>游客</a>  <!--  试玩帐号 -->
                  <span class="memberaccount" v-show="haslogin && logintype=='1'">{{getCookie('username')}}</span>
-                 <a class="new_btn_outline" href="javascript:;" v-show="haslogin" @click="loginOut()">退出</a>
+                 <!-- <a class="new_btn_outline" href="javascript:;" v-show="haslogin" @click="loginOut()">退出</a> -->
+                 <router-link to="/lobbyTemplate/notification" class="btn_notification" >
+                   <span :class="( !noticeIndexStatu)?  'memberaccount icon icon_mail saw' : 'memberaccount icon icon_mail' " v-show="haslogin && logintype=='1'" ><!--消息--></span>
+                 </router-link>
              </div>
          </header>
 
@@ -193,7 +198,6 @@
                   </h2>
                   <p class="content left">
                       {{popMsgContent}}
-
                   </p>
 
               </div>
@@ -216,6 +220,7 @@ import FooterNav from '@/components/Footer'
 
 import AutoCloseDialog from '@/components/publicTemplate/AutoCloseDialog'
 import Confirm from '@/components/publicTemplate/Confirm'
+import store from './../_vuex/store.js'
 
 export default {
   name: 'Index',
@@ -249,7 +254,12 @@ export default {
             cid:'',
             custUrl: '',
             corroleDataList: [],
-            appUrl: ''
+            appUrl: '',
+            siteData:[],
+            logosrc:'',
+            noticeIndexStatu:false,
+            noticeIndexRead:true,
+
         }
     },
     computed:{
@@ -259,7 +269,7 @@ export default {
       //this.changeOffFlag ();
 
     },
-    mounted:function() {
+    mounted:function() {  
       $('html,body').css('overflow-y','scroll' )  ;
       this.allLottery = this.$refs.navone.getLotterys() ;
       this.gameHref = this.$refs.navone.gameHref ; // 拿子组件的值
@@ -269,15 +279,85 @@ export default {
       }
       this.getBulletinsContent ();
       this.getPopMsg();
-
       //this.changeOffFlag();
-       this.carouselImg();
-       this.getActivity();
-       this.getCustom()
-        this.getAppUrl()      
-
+      this.carouselImg();
+      this.getActivity();
+      this.getCustom()
+      this.getAppUrl()      
+      this.getSite()    
+      if(this.haslogin&& this.getCookie("acType")=='1' ){  // 只有登录状态才需要调
+          this.getMsglistStatus()
+      }   
+      this.touchmove()
+      // this.geturl() 
   },
     methods:{
+      geturl:function(){
+        var that = this
+         $.ajax({
+            type: 'HEAD', // 获取头信息，type=HEAD即可
+            url : window.location.href, 
+            complete: function( xhr,data ){
+                var wpoInfo = {                    
+                    "availableDomain" : xhr.getResponseHeader('Available-Domain'),
+                };
+                // wpoInfo.availableDomain = "api.88bccp.com,api.88bccp.com"                
+                console.log(wpoInfo ,'headarray')
+                // console.log(that.$store.state.action.forseti,'forseti')
+                if( wpoInfo.availableDomain ){
+                  // console.log( that.$store.state.new_host,'new_host1')
+                  var domain_str = wpoInfo.availableDomain.split(',')[0]
+                  domain_str = domain_str.replace(/(^\s*)|(\s*$)/g, "")
+                  // console.log(domain_str ,'domain_str' )
+                  // console.log( wpoInfo.availableDomain,'availableDomain')
+                  that.$store.state.new_host = domain_str;
+                  // console.log( that.$store.state.new_host,'new_host2')
+                  that.$store.state.action.forseti = 'https://'+that.$store.state.new_host+'/forseti/'
+                  that.$store.state.action.uaa = 'https://'+that.$store.state.new_host+'/uaa/'
+                  that.$store.state.action.hermes = 'https://'+that.$store.state.new_host+'/hermes/'
+                  console.log(that.$store.state.action ,'action')
+                  localStorage.setItem("forseti",that.$store.state.action.forseti)
+                  localStorage.setItem("uaa",that.$store.state.action.uaa)
+                  localStorage.setItem("hermes",that.$store.state.action.hermes)
+                }
+            }
+        });
+      },
+       //获得优惠活动接口
+      getActivity : function () {
+          var _self=this;
+          // console.log( localStorage.getItem('forseti') ,'activitynow' )
+
+            // var forsetinow = _self.$store.state.action.forseti
+            // if(!localStorage.getItem('forseti') ){
+            //     forsetinow = _self.$store.state.action.forseti
+            //     console.log(forsetinow,'forsetinow1' )
+            // }else{
+            //    if(localStorage.getItem('forseti')!= _self.$store.state.action.forseti){
+            //       forsetinow = localStorage.getItem('forseti')
+            //    }
+            // }
+
+            // console.log(forsetinow,'forsetinow33')
+
+              $.ajax({
+                  type: 'get',
+                  // url: this.action.forseti + 'apid/cms/activity',
+                  url: this.action.forseti + 'apid/cms/activity',
+                  data: {},
+                  success: (res) => {
+                      sessionStorage.propActivityList = JSON.stringify(res.data.rows);
+                      if (res.data.rows) {
+                          _self.picture = _self.action.picurl + res.data.rows[0].titlePic + '/0';
+                          _self.cid = res.data.rows[0].cid
+                      }
+                  },
+                  err: (res) => {
+
+                  }
+              })
+      },
+
       getBulletinsContent :function () {
           let  self=this ;
           let bulletinsArr=[];
@@ -290,7 +370,7 @@ export default {
                       sideType: "2",
                       appid: "bcappid02",
                   },
-                  success: (result) => {
+                  success: (result) => {                    
                       sessionStorage.noticeList = JSON.stringify(result.data)
                       for (let i = 0; i < result.data.length; i++) {
                           bulletinsArr.push('&nbsp;&nbsp;' + result.data[i].content + '&nbsp;&nbsp;');
@@ -312,8 +392,6 @@ export default {
                   self.bulletins + '</marquee>';
               $('.sys-notice>.bd').html(str)
           }
-
-
       },
 
       //判断是否为游客,
@@ -327,17 +405,14 @@ export default {
           if(!this.haslogin){
               this.$refs.autoCloseDialog.open('登录后才可以操作')
               setTimeout(function () {
-                  // window.location = '/Login' ;
                   _self.$router.push('/login')
               },1000)
               return
           }
           if(cla=='CZ'){
-              // window.location = '/lobbyTemplate/deposit' ;
               _self.$router.push('/lobbyTemplate/deposit')
           }
           if(cla=='TK'){
-              // window.location = '/lobbyTemplate/Withdrawals' ;
               _self.$router.push('/lobbyTemplate/Withdrawals')
 
           }
@@ -350,16 +425,15 @@ export default {
       isequal(element ) {
           return element == this.currPopMsgCid;
       },
+       
       getPopMsg (){
-
           var _self=this;
-          // _self.propList = sessionStorage.propList;
-
+          // console.log( _self.$store.state.action.forseti ,'forsetinow')
           $.ajax({
               type: 'GET',
               url:  _self.action.forseti + 'apid/cms/popText',
               data:{},
-              success:(res)=>{
+              success:(res)=>{             
                   if(!res.data ||!res.data[0]||!res.data[0].title){
                       _self.offFlag=false;
                       return false
@@ -368,15 +442,11 @@ export default {
                       if(res.data ||res.data[0]||res.data[0].title){
                           _self.offFlag=true;
                       }
-                      //console.log(res.data)
                       _self.popMsgTitle=res.data[0].title;
-                      //console.log(this.popMsgTitle)
                       _self.popMsgContent=res.data[0].content;
                       _self.popMsgCid.push(res.data[0].cid);
                       _self.currPopMsgCid=res.data[0].cid;
                   }
-
-
                   if(localStorage.getItem('cid')==null){
                       return
                   }else {
@@ -444,35 +514,7 @@ export default {
 
 
        },
-      //获得优惠活动接口
-      getActivity : function () {
-
-          var _self=this;
-          if (true) {
-              $.ajax({
-                  type: 'get',
-                  url: _self.action.forseti + 'apid/cms/activity',
-                  data: {},
-                  success: (res) => {
-                      sessionStorage.propActivityList = JSON.stringify(res.data.rows);
-                      if (res.data.rows) {
-                          _self.picture = _self.action.picurl + res.data.rows[0].titlePic + '/0';
-                          _self.cid = res.data.rows[0].cid
-                      }
-                  },
-                  err: (res) => {
-
-                  }
-              })
-
-          } else {
-              var activity_prop = JSON.parse(sessionStorage.propActivityList)
-              if (activity_prop) {
-                  _self.picture = _self.action.picurl + activity_prop[0].titlePic + '/0';
-                  _self.cid = activity_prop[0].cid
-              }
-          }
-      },
+     
       setCid:function (e) {
           var _self = this;
           var $src = $(e.currentTarget);
@@ -485,20 +527,15 @@ export default {
       },
         getAppUrl: function () {
             var _self = this;
-            // console.log(_self.appUrl, 'url')
-
+           
             if (true) {
                 $.ajax({
                     type: 'get',
                     url: _self.action.forseti + 'apid/config/appConfig',
                     data: {},
                     success: (res) => {
-                        // console.log(res)
                         _self.appUrl = res.data.url
-                        // console.log( _self.appUrl )
                         sessionStorage.appUrl = res.data.url;
-                        // console.log(_self.appUrl, 'url-in')
-                        // console.log( _self.appUrl )
                     },
                     err: (res) => {
 
@@ -506,11 +543,48 @@ export default {
                 })
             } else {
                 _self.appUrl = sessionStorage.appUrl
-                // console.log(_self.appUrl, 'url-else')
             }
         },
+          getSite:function () {
+              var _self=this;
+              $.ajax({
+                  type:'get',
+                   // headers: {
+                   //      "Authorization": "bearer  " + this.getAccessToken,
+                   //  },
+                  url: _self.action.forseti + 'apid/cms/site',             
+                  success:(res)=>{
+                    _self.siteData = res.data;
+                    // console.log(_self.siteData,'site3') 
+                    _self.setCookie('siteData', JSON.stringify(_self.siteData ) )
+                    document.title = _self.siteData.h5Name   
+                    _self.logosrc = _self.action.picurl+_self.siteData.logoUrl+'/0'
+                    // console.log( _self.logosrc ,'logosrc')
+                  }
+              })
+          },
+           getMsglistStatus:function () {
+              var _self=this;
+              $.ajax({
+                  type:'get',
+                  headers: {
+                      "Authorization": "bearer  " + _self.getAccessToken,
+                  },
+                  url: _self.action.forseti + 'apid/cms/msg/status',
+                  data:{
+                    sourceType:2,                    
+                  },
+                  success:(res)=>{
+                    _self.noticeIndexStatu = res.data 
+                  }
+              })
+          },
+         
+          backNotice:function(){
+             this.noticeIndexRead = this.getCookie('noticeIndexRead')=='true'?true:false
+             this.noticeIndexStatu = this.getCookie('noticeIndexStatu')=='true'?true:false             
+          }
   },
-
 }
 </script>
 

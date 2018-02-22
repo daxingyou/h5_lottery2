@@ -299,16 +299,11 @@
                 return this.getListByParentID(64000); 
             },
           },
-          methods:{
-             refreshBalance:function(){
-                var afterBetCookie = this.getCookie( 'balancePublic' )
-                this.balancePublic = afterBetCookie
-                 // console.log(afterBetCookie)
+          methods:{            
+            refreshBalance:function(newBalance){
+                this.balancePublic = newBalance
+                this.getMemberBalance(this.lotteryID)
             },
-              bgFocus: function () {
-                  this.$store.commit('Number')
-              },
-
             betCountStat:function(xslen, xlen){
                 return  xslen*((xslen-1)/xlen);
             },
@@ -423,6 +418,26 @@
                                     that.previous_pcode = res.data[2].pcode;  // 上期期数
                                 }
                             }
+                              code = that.winNumber
+                             if (!code) {
+                                let hasFind = false
+                                _.forEach(res.data, (item, index) => {
+                                    if (_.size(item.winNumber) > 0 && index >= 2) {
+                                        that.winNumber = item.winNumber
+                                        that.lastTermStatic = item.doubleData;    //上期开奖统计
+                                        that.previous_pcode = item.pcode
+                                        hasFind = true
+                                        return false
+                                    }
+                                })
+                                if (!hasFind) {
+                                    that.winNumber = code
+                                }
+                            }
+                            else {
+                                that.winNumber = code
+                            }
+                            
                             if(res.data[1].status >1){ // 异常情况，如提前开盘 2
                                 that.entertainStatus = true;
                             }

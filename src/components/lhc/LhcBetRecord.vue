@@ -61,7 +61,7 @@
                                     -->
                                     <!-- 本周 -->
                                     <li :class="showClass(collapseCtrl[index2])" :data-val="item" v-for="(item, index2) in showTitleList">
-                                        <div class="panel_title new_panel_top" @click="getBetRecord(index2)">
+                                        <div class="panel_title new_panel_top" @click="getBetRecord(index2,$event)">
                                             <strong class="title-data" v-if="lotteryid == 10">{{item}}</strong>
                                             <strong class="title-data" v-else>{{showDateList[index2]}}</strong>
                                             <span><!-- 此為箭頭，點按後展開或收合，預設第一個為展開（父層li的class有active） --></span></div>
@@ -153,11 +153,11 @@
                 mySwiperTrack: null,
                 gamechoose :[
                     {id:'0','name':'全部'} ,
-
                    {id:'2','name':'重庆时时彩'} ,
                     {id:'102','name':'秒速时时彩'} ,
                     {id:'14','name':'新疆时时彩'} ,
                     {id:'108','name':'秒速赛车'},
+                    {id:'24','name':'幸运飞艇'},
                     {id:'8','name':'北京PK10'} ,
                     {id:'12','name':'天津时时彩'} ,
                     {id:'4','name':'江西11选5'} ,
@@ -169,6 +169,7 @@
                     {id:'22','name':'湖北快3'} ,
                     {id:'20','name':'安徽快3'} ,
                     {id:'10','name':'香港六合彩'},
+                    {id:'110','name':'五分六合彩'},
                 ],
                 ajaxSubmitAllow: false,
                 betRecordList: [[], [], []],
@@ -371,8 +372,7 @@
                     this.lock = 1;
                     this.restr = '';
                     let pdate
-
-                    pdate = _.findIndex(this.collapseCtrl, (item) => {return item == 1})
+                    pdate = _.findIndex(this.collapseCtrl, (item) => {return item == 1})                  
                     this.getBetRecord(pdate); // 投注记录
                 }
             });
@@ -393,7 +393,6 @@
             },
             showClass(stat) {
                 let classStr = "slide_toggle bet_day new_bet_day new_panel"
-
                 if (stat == 1) {
                     classStr += ' active'
                 }
@@ -431,7 +430,12 @@
                     nowDateData.setDate(nowDateData.getDate() - 1)
                 }
             },
-            getBetRecord(pdate) {
+            getBetRecord(pdate,$event) {
+                var showF = false;
+                if($event){
+                    var src = $event.currentTarget
+                    showF = (  $(src).next().height()>20 )                    
+                }
                 let _self = this ;
 
                 console.log("lock", this.lock)
@@ -444,7 +448,7 @@
                     return false ;
                 }
 
-                if (this.collapseCtrl[pdate] == 1 && this.lock == 0) {
+                if (showF||this.collapseCtrl[pdate] == 1 && this.lock == 0) {
                     this.$set(this.collapseCtrl, pdate, 0)
                     this.pageList[pdate] =  1
                     this.betRecordList[pdate] = []
@@ -495,7 +499,11 @@
                                     _.forEach(dataList, (betData, index) => {
                                         let betDataObj = {}
                                         betDataObj.lotteryid = betData.lotteryId
-                                        betDataObj.pcode = betData.issueAlias
+                                        if(betData.lotteryId == '10'||betData.lotteryId == '8'){
+                                            betDataObj.pcode = betData.issueAlias
+                                        }else{
+                                            betDataObj.pcode = betData.pcode
+                                        }
                                         betDataObj.orderstatus = betData.orderStatus
                                         betDataObj.orderstatusname = betData.orderStatusName
                                         betDataObj.betamount = this.fortMoney(this.roundAmt(betData.betAmount), 2)

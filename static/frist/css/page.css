@@ -64,7 +64,7 @@ body{
 /* btn */
 .new_btn{ font-size: 0.34rem; margin: 0.1rem; display: inline-block; line-height: .7rem;  color: #ffc388; border-radius: 0.5rem; box-shadow: 0px 1px 1px rgba(20, 0, 0, 0.68); -webkit-box-shadow: 0px 1px 1px rgba(20, 0, 0, 0.68); background: #eaaa75; /* Old browsers */background: -moz-linear-gradient(top, #f3c894 0%, #eaaa75 100%); /* FF3.6-15 */background: -webkit-linear-gradient(top, #f3c894 0%,#eaaa75 100%); /* Chrome10-25,Safari5.1-6 */background: linear-gradient(to bottom, #f3c894 0%,#eaaa75 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
 .new_btn span{ border:2px solid transparent; width: 3rem; /*background-color: #d4a164;*/color:#7a4220;background-clip: content-box; display: block; text-align: center; border-radius: 0.5rem; box-shadow: 0px 0px 0px 1px rgba(121,64,32,0.64) inset; -webkit-box-shadow: 0px 0px 0px 1px rgba(121,64,32,0.64) inset; }
-.new_btn.cancel span{ width: 2.2rem; background-color: #d4a164;}
+.new_btn.cancel span{ /*width: 2.2rem;*/ background-color: #d4a164;}
 .new_btn.ok span{ width: 3rem; color:#ffc388; background: rgb(186,4,26); /* Old browsers */background: -moz-linear-gradient(top, rgba(186,4,26,1) 0%, rgba(225,26,51,1) 50%, rgba(186,4,26,1) 100%); /* FF3.6-15 */background: -webkit-linear-gradient(top, rgba(186,4,26,1) 0%,rgba(225,26,51,1) 50%,rgba(186,4,26,1) 100%); /* Chrome10-25,Safari5.1-6 */background: linear-gradient(to bottom, rgba(186,4,26,1) 0%,rgba(225,26,51,1) 50%,rgba(186,4,26,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */background-clip: content-box;}
 .new_btn span.midunm { width: 4.35rem; line-height: 0.8rem; font-weight: bold;}
 .new_btn span.big { width: 6rem; line-height: 0.8rem; }
@@ -110,6 +110,9 @@ body{
 /*.new_header .right > a.guset { background-color: transparent; -webkit-box-shadow: inherit; box-shadow: inherit; line-height: .5rem; }
 .new_header .right > a.guset > i { background-image: url("/static/frist/images/signs.svg"); background-repeat: no-repeat; background-position: 0; background-color: transparent; background-size: 100%; width: .5rem; height: .5rem; display: block; float: left; margin-right: .1rem; }*/
 .new_header .right .dropdown_icon { font-size: .34rem; padding: 0 0.2rem; color: #ffc388; line-height: 1.36rem; cursor: pointer; }
+.new_header .btn_notification .icon{ position: relative; margin-right: 0.1rem; }
+.new_header .btn_notification .icon:after {content:'';display:block; position: absolute; width: 0.25rem; height: 0.25rem; top: 0rem; right: -0.05rem; background-color: #ec1313;  border-radius: 1rem; overflow: hidden; }
+.new_header .btn_notification .icon.saw:after {display:none;}
 
 /* 投注页 header */
 .new_header ul > li { position: absolute; top: 0; }
@@ -138,7 +141,7 @@ footer.bot_nav ul li a span.Footer-font { display: block; }
 
 /* 左侧选单 */
 .so-left { width: 7.24rem; position: fixed; z-index: 200; top: 0; bottom: 0; left: -100%; }
-.so-left .so-left-con { height: 100%; width: 7.24rem; background-color: rgba(0, 0, 0, 0.7); }
+.so-left .so-left-con { height: 100vh; width: 7.24rem; background-color: rgba(0, 0, 0, 0.7); overflow-y: scroll; -webkit-overflow-scrolling: touch;}
 
 .so-left .so-l-c-top { position: relative; background: url('/static/frist/images/leftmenu_user_bg.png') no-repeat center center; background-size: 100% 100%; padding: 0.5rem 0.7rem; text-align: left; }
 .so-left .so-l-c-top .user_name { display: inline-block; vertical-align: middle; text-align: left; margin-left: 0; color: #ffc388; font-size: .4rem; }
@@ -154,6 +157,7 @@ footer.bot_nav ul li a span.Footer-font { display: block; }
 .so-left .so-l-c-con .all_lottery:after{ content: ''; display: table; clear: both;}
 /*.so-left .so-l-c-con .all_lottery .badge { display: none; }*/
 .so-left .so-l-c-con .all_lottery.active {  }
+.so-left .so-l-c-con .left_logout{margin-top: 1rem;}
 
 .so-left.active { left: 50%; margin-left: -5rem; }
 .so-left.close { left: -100%; }
@@ -177,7 +181,7 @@ footer.bot_nav ul li a span.Footer-font { display: block; }
 }
 .modal .m_content:before { content: ''; position: absolute; display: block; top: -0.3rem; left: 0; z-index: 33; height: 1.173rem; width: 100%; background: url("/static/frist/images/pop/bg_top.png") no-repeat;  background-size: 100%; }
 .modal .m_content:after { content: ''; position: absolute; display: block; bottom: -0.3rem; left: 0; z-index: 33; height: 1.173rem; width: 100%; background: url("/static/frist/images/pop/bg_bottom.png") no-repeat;  background-size: 100%; }
-@media (max-width: 359px) {.modal .m_content { width: 7.5rem; } }
+/*@media (max-width: 359px) {.modal .m_content { width: 7.5rem; } }*/
 .modal .m_content > *{ position: relative; z-index: 35;}
 .modal .m_content h2 { background: url('/static/frist/images/pop/title_bg.jpg') no-repeat; background-size: 100% 0.8rem; height: 0.8rem; line-height: 0.8rem; font-size: 0.45rem; font-weight: bold; font-style: italic; text-align: center; color: #4b280c; }
 .modal .m_content h2 a { width: 0.7467rem; height: 0.7467rem; position: absolute; right: -0.65rem; top: -0.7rem; background: url("/static/frist/images/pop/close.png") no-repeat; background-size: 100%; }
@@ -390,6 +394,8 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .icon.icon_arrow_down{background-position: 0 -1.92rem }
 .icon.icon_filter{background-position: -1.28rem -1.92rem }
 .icon.icon_check{background-position: -0.64rem -1.92rem }
+.icon.icon_equal{ background-position: -4.48rem -1.92rem;}
+.icon.icon_mail{ background-position: -5.12rem -1.92rem;}
 
 .icon_account  { display: inline-block; vertical-align: middle; width: 1.5rem; 	height: 1.5rem; margin: 0 auto; background-image: url(/static/frist/images/icon_account.png);	 background-size: 7.5rem auto; background-position: 0 -4.5rem;}
 
@@ -546,6 +552,43 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 .pk10_ball.small_ball { transform: scale(0.6);-webkit-transform: scale(0.8); margin: -0.2rem -0.1rem; }
 .pk10_ball.active, p.active .pk10_ball { background-position-y: bottom; }
 
+/* 幸运28 ball */
+.xy28_ball{background: url('/static/frist/images/xy28.png'); background-size: 14rem 9.8rem; color: transparent; display: inline-block; width: 1.3rem; height: 1.34rem; text-align: center; overflow: hidden; position: relative; }
+.xy28_ball.num_0{ background-position-x: 0; background-position-y: 0;}
+.xy28_ball.num_1 { background-position-x: -1.4rem; background-position-y: 0;}
+.xy28_ball.num_2 { background-position-x: -2.8rem; background-position-y: 0;}
+.xy28_ball.num_3 { background-position-x: -4.2rem; background-position-y: 0;}
+.xy28_ball.num_4 { background-position-x: -5.6rem; background-position-y: 0;}
+.xy28_ball.num_5 { background-position-x: -7rem; background-position-y: 0;}
+.xy28_ball.num_6 { background-position-x: -8.4rem; background-position-y: 0;}
+.xy28_ball.num_7 { background-position-x: -9.8rem; background-position-y: 0;}
+.xy28_ball.num_8 { background-position-x: -11.2rem; background-position-y: 0;}
+.xy28_ball.num_9 { background-position-x: -12.6rem; background-position-y: 0;}
+.xy28_ball.num_10{ background-position-x: 0; background-position-y: -1.4rem;}
+.xy28_ball.num_11 { background-position-x: -1.4rem; background-position-y: -1.4rem;}
+.xy28_ball.num_12 { background-position-x: -2.8rem; background-position-y: -1.4rem;}
+.xy28_ball.num_13 { background-position-x: -4.2rem; background-position-y: -1.4rem;}
+.xy28_ball.num_14 { background-position-x: -5.6rem; background-position-y: -1.4rem;}
+.xy28_ball.num_15 { background-position-x: -7rem; background-position-y: -1.4rem;}
+.xy28_ball.num_16 { background-position-x: -8.4rem; background-position-y: -1.4rem;}
+.xy28_ball.num_17 { background-position-x: -9.8rem; background-position-y: -1.4rem;}
+.xy28_ball.num_18 { background-position-x: -11.2rem; background-position-y: -1.4rem;}
+.xy28_ball.num_19 { background-position-x: -12.6rem; background-position-y: -1.4rem;}
+.xy28_ball.num_20{ background-position-x: 0; background-position-y: -2.8rem;}
+.xy28_ball.num_21 { background-position-x: -1.4rem; background-position-y: -2.8rem;}
+.xy28_ball.num_22 { background-position-x: -2.8rem; background-position-y: -2.8rem;}
+.xy28_ball.num_23 { background-position-x: -4.2rem; background-position-y: -2.8rem;}
+.xy28_ball.num_24 { background-position-x: -5.6rem; background-position-y: -2.8rem;}
+.xy28_ball.num_25 { background-position-x: -7rem; background-position-y: -2.8rem;}
+.xy28_ball.num_26 { background-position-x: -8.4rem; background-position-y: -2.8rem;}
+.xy28_ball.num_27 { background-position-x: -9.8rem; background-position-y: -2.8rem;}
+p.active .xy28_ball.num_0,.xy28_ball.num_0.active,p.active .xy28_ball.num_1,.xy28_ball.num_1.active,p.active .xy28_ball.num_2,.xy28_ball.num_2.active,p.active .xy28_ball.num_3,.xy28_ball.num_3.active,p.active .xy28_ball.num_4,.xy28_ball.num_4.active,p.active .xy28_ball.num_5,.xy28_ball.num_5.active,p.active .xy28_ball.num_6,.xy28_ball.num_6.active,p.active .xy28_ball.num_7,.xy28_ball.num_7.active,p.active .xy28_ball.num_8,.xy28_ball.num_8.active,p.active .xy28_ball.num_9,.xy28_ball.num_9.active
+{background-position-y: -4.2rem;}
+p.active .xy28_ball.num_10,.xy28_ball.num_10.active,p.active .xy28_ball.num_11,.xy28_ball.num_11.active,p.active .xy28_ball.num_12,.xy28_ball.num_12.active,p.active .xy28_ball.num_13,.xy28_ball.num_13.active,p.active .xy28_ball.num_14,.xy28_ball.num_14.active,p.active .xy28_ball.num_15,.xy28_ball.num_15.active,p.active .xy28_ball.num_16,.xy28_ball.num_16.active,p.active .xy28_ball.num_17,.xy28_ball.num_17.active,p.active .xy28_ball.num_18,.xy28_ball.num_18.active,p.active .xy28_ball.num_19,.xy28_ball.num_19.active
+{background-position-y: -5.6rem;}
+p.active .xy28_ball.num_20,.xy28_ball.num_20.active,p.active .xy28_ball.num_21,.xy28_ball.num_21.active,p.active .xy28_ball.num_22,.xy28_ball.num_22.active,p.active .xy28_ball.num_23,.xy28_ball.num_23.active,p.active .xy28_ball.num_24,.xy28_ball.num_24.active,p.active .xy28_ball.num_25,.xy28_ball.num_25.active,p.active .xy28_ball.num_26,.xy28_ball.num_26.active,p.active .xy28_ball.num_27,.xy28_ball.num_27.active
+{background-position-y: -4.2rem;}
+
 /* bet panel */
 .bet_panel {width: 7.3rem; margin: auto; border-bottom: 1px solid rgba(56,32,30,0.2); padding: 0.2rem; box-sizing: border-box;}
 .bet_panel h2 { text-align: left; line-height: 1rem; }
@@ -584,6 +627,27 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 .bet_panel .bet_box.num_box p.k3_3same.active .k3_dice.small_dice{ transform: scale(0.6); }
 /* pk10 样式微调 */
 .bet_panel .bet_box.num_box p.active .pk10_ball{ transform: translate(0,-0.03rem) }
+/* 幸运28 样式微调 */
+.xy28_top_number .icon { margin: 0.11rem 0;}
+.xy28_top_number .xy28_ball.num_0:not(.active) { background-position: 0 -8.4rem;}
+.xy28_top_number .xy28_ball.num_1:not(.active) { background-position: -1.4rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_2:not(.active) { background-position: -2.8rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_3:not(.active) { background-position: -4.2rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_4:not(.active) { background-position: -5.6rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_5:not(.active) { background-position: -7rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_6:not(.active) { background-position: -8.4rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_7:not(.active) { background-position: -9.8rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_8:not(.active) { background-position: -11.2rem -8.4rem;}
+.xy28_top_number .xy28_ball.num_9:not(.active) { background-position: -12.6rem -8.4rem;}
+.so-in-main .so-m-t-right .last-open-num ul.xy28_top_number li{ float: none; display: inline-block; vertical-align: middle;}
+.so-in-main .so-m-t-right div:first-child ul.xy28_top_number li {transform: scale(0.8);margin:0 -0.1rem;}
+.so-in-main .so-m-t-right .last-open-dou ul.xy28_top_detail{text-align: center;}
+.so-in-main .so-m-t-right .last-open-dou ul.xy28_top_detail li{ float: none; display: inline-block;}
+.bet_panel .bet_box p.ball_5x{ width: 1.3rem; margin: 0.04rem; text-align: center; border:none; padding: 0; margin-bottom: 0.3rem; box-shadow: none; line-height: 0.35rem; }
+.bet_panel .bet_box p.ball_5x span{ float: none;}
+.bet_panel .bet_box p.ball_5x span:first-child{ color: transparent; }
+.bet_panel .bet_box p.ball_5x span:last-child{ line-height: 0.35rem;}
+.bet_panel .bet_box p.ball_5x.active {background:none;}
 
 /* 开奖资讯 */
 .so-top-all { width: 100%; position: fixed;  z-index: 10;}
@@ -600,19 +664,19 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 .so-in-main .so-m-t-right div:last-child ul li { display: block; float: left; width: .9rem; height: .44rem;text-align: center; margin-top: 0.14rem; margin-right: 0.23rem; font-size: 0.34rem; line-height: 0.44rem; color:#fea832; box-shadow: 0px 1px 2px rgba(0,0,0,0.7) inset;  border-bottom: solid 1px rgba(255,255,255,0.25); background-color: #522f2c; -webkit-border-radius: .3rem; -moz-border-radius: .3rem; border-radius: .3rem; }
 .so-in-main .so-main-down { width: 100%; height: 0.8rem; }
 .so-in-main .so-main-down ul { text-align: right;}
-.so-in-main .so-main-down ul li { display: inline-block;}
+.so-in-main .so-main-down ul li { display: inline-block; white-space:nowrap;}
 .so-in-main .so-main-down ul li:first-child{ width: 3.42rem; float: left; }
 
 .so-in-main .so-main-down ul li:nth-child(2) {
     /*float: left;*/
     margin: 0 0.2rem 0 0rem;
-    width: 30%;
+    width: 29%;
     text-align: center
 }
 
 .so-in-main .so-main-down ul li:nth-child(3) {
     margin-right: 0.2rem;
-    width: 30%;
+    width: 29%;
     text-align: center
 }
 .so-in-main .so-main-down ul li:after{ content:''; display: table; clear:both;}
@@ -637,10 +701,8 @@ i.index_s.index_s04 { background-position-y: -7.2rem; margin-top: .2rem; }*/
 .so-con-left ul li a { margin: 0.2rem auto; background: url("/static/frist/images/ball.png") no-repeat; background-size: auto 3.2rem; display: block; width: 1.6rem; height: 1.6rem; box-sizing: border-box; padding-top: 0.4rem;line-height: 0.6rem; }
 .so-con-left ul li.active a { background-position-y: -1.6rem; }
 
-.so-con-right {  width: 7.7rem;  height: 100%; padding-bottom: .8rem;  position: fixed;  z-index: 5; margin-left: 2.3rem ; }
-
-
-
+/*.so-con-right {  width: 7.7rem;  height: 100%;  position: fixed;  z-index: 5; margin-left: 2.3rem ; }*/
+.so-con-right {  width: 7.7rem;  height: 100%; padding-bottom: 2rem;  position: fixed;  z-index: 5; margin-left: 2.3rem ; }
 /* bet footer */
 .so-foot { background: url("/static/frist/images/bg_wood.jpg") no-repeat center bottom; background-size: 100% auto; height: 1.5rem; width: 10rem; position: fixed; z-index:20; bottom: 0rem; }
 
@@ -836,7 +898,7 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .bet_data > a > .item > div { display: inline-block; vertical-align: middle; line-height: .6rem; }
 .bet_data > a > .item > .status { float: right; max-width: 1.8rem; width: auto; }
 .bet_data > a > .item > .badge { background: url('/static/frist/images/logo_bg.png') no-repeat; background-size: 100% 100%; width: 1.5rem; height: 1.5rem; margin-right:0.15rem; }
-.bet_data > a > .item > .badge > img { width: 1.1rem; margin: 0.3rem 0.2rem;}
+.bet_data > a > .item > .badge > img { width: 1.1rem; height:0.85rem; margin: 0.3rem 0.2rem;}
 .bet_data strong { color: #ffbd00; font-size: .35rem; font-weight: 300; max-width: 3rem; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: top;}
 .bet_data .prd_num { color: #d59559; margin-right: 0.2rem;}
 .bet_data .status { min-width: 15%; width: 1.8rem; text-align: center; color: #fff; }
@@ -1273,6 +1335,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 .print_data table tr th li { list-style: none; margin-left: .5em; position: relative; width: 1.5rem; font-size: .35rem;  }
 .print_data table tr td { text-align: left; padding-left: 1em; color: #d59559; word-break: break-all; line-height: 2em; width: 11rem; font-size: .35rem; }
 .print_data table tr td.text-yellow { color: #ffbd00; }
+.print_data table tr:nth-of-type(4)  td.text-yellow{ color:#ffc388; }
 
 #bankInforDeposit .print_data table tr td:last-of-type {
     width: 2rem
@@ -1368,16 +1431,24 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 
 /* 个人消息 */
 .message_area{ text-align: left;}
-.message_area .item { overflow: hidden; height: 1.5rem; line-height: .75rem; padding: .3rem; text-align: left; border-bottom: 1px solid #7e5c4c;color: #ffc388; }
+.message_area .item { padding: .3rem 0.2rem;overflow: hidden; box-sizing: border-box;border-bottom: 1px solid #90573e; position: relative;}
+.message_area .item:after{ content: ''; display: table; clear: both;}
 .message_area .item a{ color: #d59559; }
-.message_area .item .badge{ display: inline-block; }
-.message_area .item .icon { float: left; }
-.message_area .item .content {display: inline-block; vertical-align: middle; width: 6rem; height: 1.5rem; font-size: .35rem; }
-.message_area .item .content > .text { -o-text-overflow: ellipsis; text-overflow: ellipsis; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; height: 1.3em; line-height: 1.5em; }
-.message_area .item.read { color: #d59559; opacity: 0.7; }
-/*.message_area .item.read i.i_mail_status { background: url("/static/frist/images/icon_money.png") no-repeat; background-size: 100%; background-position-y: -4.65rem; margin-top: .12rem; }*/
-.message_area .item.read a { color: #d59559; }
-
+.message_area .item .badge{ float: left; background: url(/static/frist/images/logo_bg.png) no-repeat; background-size: 100% 100%; width: 1rem; height: 1rem; margin-right: 0.2rem;}
+.message_area .item .badge .icon_account{ transform: scale(0.7) translate(-0.35rem, -0.35rem); }
+.message_area .item .title{ }
+.message_area .item .title h2{ color: #ffe1bf; font-size: 0.4rem; padding-right: 1.5rem;}
+.message_area .item .detail{ margin: 0.1rem 0 0; line-height: 1.5em; height: 3em; overflow: hidden; 
+  text-overflow: ellipsis; color: #ffc388; position: relative;}
+/*.message_area .item .detail .dot{ position: absolute; bottom: 0; right: 0; padding-left: 0.1rem; background: -moz-radial-gradient(center, ellipse cover, rgba(170,108,69,1) 0%, rgba(170,108,69,1) 50%, rgba(170,108,69,0) 100%); background: -webkit-radial-gradient(center, ellipse cover, rgba(170,108,69,1) 0%,rgba(170,108,69,1) 50%,rgba(170,108,69,0) 100%);background: radial-gradient(ellipse at center, rgba(170,108,69,1) 0%,rgba(170,108,69,1) 50%,rgba(170,108,69,0) 100%); }*/
+.message_area .item.active .detail{height: auto; white-space: initial; min-height: 3em;}
+/*.message_area .item.active .detail .dot{display: none;}*/
+.message_area .item .content {float: left; width: 6.7rem; }
+.message_area .item .btn_collapse{ position: absolute; top: 0.3rem; right: 0.3rem;  }
+.message_area .item .btn_collapse span{ vertical-align: middle; display: inline-block; line-height: 1.2em;}
+.message_area .item .btn_collapse .icon{ margin:  -0.15rem ;transform: rotate(90deg);-webkit-transition: transform 200ms ;-moz-transition: transform 200ms ;transition: transform 200ms ;}
+.message_area .item.active .icon{ transform: rotate(270deg); -webkit-transition: transform 200ms ;-moz-transition: transform 200ms ;transition: transform 200ms ;}
+.message_area .item.active .icon_notice_1 { background-position: -1.5rem -6rem; } 
 
 .password_area { padding: 0.3rem; background-color: #6f3a23; box-shadow: 0px 0px 0.3rem rgba(0, 0, 0, 0.8);}
 .password_area > div {  text-align: center; }
