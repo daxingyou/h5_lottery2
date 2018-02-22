@@ -12,9 +12,9 @@
                 <ul class="right_menu">
                     <li class="r_record">
                         <!-- <router-link :to="(lotteryid =='10') ? '/lhc/LhcBetRecord' : '/publicTemplate/betRecord'"> -->
-                        <router-link :to=" '/lhc/LhcBetRecord' ">
+                        <a href = '/lhc/LhcBetRecord' >
                             <p><span class="icon icon_r_record"></span>投注记录</p>
-                        </router-link>
+                        </a>
                     </li>
                     <li class="r_pastview">
                         <router-link to="/publicTemplate/pastView">
