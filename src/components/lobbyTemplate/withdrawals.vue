@@ -43,7 +43,7 @@
                                         <th>
                                             <li>提示</li>
                                         </th>
-                                        <td class="text-yellow"  v-if='deductStatu=="2"'>您投注太少，本次提款将扣除费用￥{{fortMoney(roundAmt(deductFee), 2)}}元</td>
+                                        <td class="text-yellow"  v-if='deductFee>0'>您投注太少，本次提款将扣除费用￥{{fortMoney(roundAmt(deductFee), 2)}}元</td>
                                     </tr>
                                     </thead>
                                 </table>
@@ -290,10 +290,10 @@ export default {
                       _self.$refs.autoCloseDialog.open('提款余额不足');
                       return
                   }
-
-                  if(_self.userMoney*100<=_self.deductFee&&_self.deductStatu=='2'){
-                      _self.$refs.autoCloseDialog.open('取款金额必须大于扣除费用');
-                      return
+                  
+                  if(_self.userMoney*100<=_self.deductFee&&(_self.deductFee>0) ){
+                    _self.$refs.autoCloseDialog.open('取款金额必须大于扣除费用');
+                    return
                   }
 
                   if(_self.userMoney>_self.drawMaxMoney){
