@@ -39,11 +39,11 @@
                                         </th>
                                         <td class="text-yellow">{{fortMoney(roundAmt(memBalance), 2)}}</td>
                                     </tr>
-                                     <tr >
+                                     <tr v-if='deductFee>0'>
                                         <th>
                                             <li>提示</li>
                                         </th>
-                                        <td class="text-yellow"  v-if='deductFee>0'>您投注太少，本次提款将扣除费用￥{{fortMoney(roundAmt(deductFee), 2)}}元</td>
+                                        <td class="text-yellow"  >您投注太少，本次提款将扣除费用￥{{fortMoney(roundAmt(deductFee), 2)}}元</td>
                                     </tr>
                                     </thead>
                                 </table>
