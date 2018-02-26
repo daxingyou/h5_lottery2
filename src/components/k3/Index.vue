@@ -283,7 +283,21 @@
             }, 500) ;
             this.initViewHeight();
             // $('body').attr('id', 'k3')
-            this.setScroll() // 下拉回弹
+            // this.setScroll() // 下拉回弹
+            this.conScroll = new iScroll("content-wrapper",{  // 投注区域
+                onScrollEnd: function(){
+                    this.refresh() ;
+                },              
+                vScroll:true,
+                mouseWheel: true ,
+                hScrollbar:false ,
+                vScrollbar:false ,
+                click: true ,
+                useTransform: false ,
+                useTransition: false ,
+            });
+             this.conScroll.refresh()
+             this.conScroll.scrollTo(0, 100)
           },
           computed:{
             singleDiceList:function(){
