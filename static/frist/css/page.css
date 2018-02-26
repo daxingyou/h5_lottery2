@@ -702,7 +702,7 @@ p.active .xy28_ball.num_20,.xy28_ball.num_20.active,p.active .xy28_ball.num_21,.
 .so-con-left ul li.active a { background-position-y: -1.6rem; }
 
 /*.so-con-right {  width: 7.7rem;  height: 100%;  position: fixed;  z-index: 5; margin-left: 2.3rem ; }*/
-.so-con-right {  width: 7.7rem;  height: 100%; padding-bottom: 2rem;  position: fixed;  z-index: 5; margin-left: 2.3rem ; }
+.so-con-right {  width: 7.7rem;  height: 100%; padding-bottom: 1.3rem;  position: fixed;  z-index: 5; margin-left: 2.3rem ; }
 /* bet footer */
 .so-foot { background: url("/static/frist/images/bg_wood.jpg") no-repeat center bottom; background-size: 100% auto; height: 1.5rem; width: 10rem; position: fixed; z-index:20; bottom: 0rem; }
 
