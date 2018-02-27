@@ -207,7 +207,11 @@ var MyMixin = {
             // }
             var winH = this.getCookie('scrollF')?this.getCookie('scrollF'):window.innerHeight
             let scrolling_height = winH  - ($('.so-in-top').height() + $('.so-in-main').height() + $('.so-foot').height()) 
-            $('.so-con-right').css('height',(val - scrolling_height)+'px') ;
+            if ( $('.jx11_tab').is(':visible')){
+                $('.so-con-right').css('height',(val - scrolling_height + 50)+'px') ;
+            } else {
+                $('.so-con-right').css('height',(val - scrolling_height )+'px') ;
+            }
         },
 
         ajax:function(userConfig){
