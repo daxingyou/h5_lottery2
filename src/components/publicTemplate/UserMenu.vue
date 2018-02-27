@@ -78,9 +78,7 @@ export default {
     $(this.el).on('click', (e)=>{
       this.show = true;
       e.preventDefault()
-
     })
-
   },
   methods:{
     play:function(e){
@@ -90,7 +88,6 @@ export default {
       this.show = false;
     }
   },
-
 }
 </script>
 <style scoped>
