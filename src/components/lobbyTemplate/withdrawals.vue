@@ -43,7 +43,7 @@
                                         <th>
                                             <li>提示</li>
                                         </th>
-                                        <td class="text-yellow"  >您投注太少，本次提款将扣除费用￥{{fortMoney(roundAmt(deductFee), 2)}}元</td>
+                                        <td class="text-yellow"  >您投注未达标，本次提款将扣除费用￥{{fortMoney(roundAmt(deductFee), 2)}}元</td>
                                     </tr>
                                     </thead>
                                 </table>
