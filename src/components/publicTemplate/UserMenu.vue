@@ -76,8 +76,10 @@ export default {
         }
     },
   mounted:function() {
-    $(this.el).on('click', ()=>{
+    $(this.el).on('click', (e)=>{
       this.show = true;
+      e.preventDefault()
+
     })
 
   },
@@ -88,7 +90,6 @@ export default {
     close:function(e){
       this.show = false;
         this.$store.commit('Number')
-
     }
   },
 
