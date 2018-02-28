@@ -310,6 +310,7 @@ export default {
         });
     },
     mounted:function() {
+        this.deleteCookie('scrollF');
         var lotteryid = this.lotteryID ; // 彩种id
         var lotteryname = this.moduleName || '北京PK10' ; // 彩种名称
         this.setCookie('lt_lotteryid',lotteryid) ; // 彩种id

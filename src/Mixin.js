@@ -212,6 +212,7 @@ var MyMixin = {
             } else {
                 $('.so-con-right').css('height',(val - scrolling_height )+'px') ;
             }
+            $('#haxhax').html('scrollHeight: ' + scrolling_height + '<br/>innerHeight: ' + winH + '<br/>headerHeight: ' + ($('.so-in-top').height() + $('.so-in-main').height()) + '<br/>footerHeight: ' + $('.so-foot').height());
         },
 
         ajax:function(userConfig){
@@ -609,6 +610,9 @@ var MyMixin = {
                 return decodeURIComponent(RegExp.$1);
             }
             return '';
+        },
+        deleteCookie:function(name) {
+            this.setCookie(name, '');
         },
         //清除所有cookie函数
          clearAllCookie:function() {
