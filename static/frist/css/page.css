@@ -610,7 +610,7 @@ p.active .xy28_ball.num_20,.xy28_ball.num_20.active,p.active .xy28_ball.num_21,.
 .bet_panel .bet_ball:after{ content: ''; display: table; clear: both;}
 .bet_panel .bet_ball p { float: left; width: 20%; margin-bottom: 0.2rem; }
 /* 11x5 样式微调 */
-.jx11_tab.hd { display: none; position: absolute;right: 0.3rem; height: .9rem; width: 7.1rem; overflow: hidden; margin: 0 auto; border-radius: 0.5rem;  margin-top: 0.2rem; }
+.jx11_tab.hd { display: none; position: absolute;right: 0.3rem; height: .9rem; width: 7.1rem; overflow: hidden; margin: 0 auto 0.35rem; border-radius: 0.5rem;  margin-top: 0.2rem; }
 .jx11_tab.hd ul { white-space: nowrap; width: 100% !important; overflow-y: auto; /* winphone8和android4+ */ -webkit-overflow-scrolling: touch; /* ios5+ */ position: relative; top: inherit; left: inherit; height: .9rem; }
 .jx11_tab.hd ul.tab_mid { background-color: #7e5c4c; border-radius: 1rem; }
 .jx11_tab.hd ul.tab_mid > li { display: inline-block; height: .9rem; width: 2rem; padding-top: 0; }
@@ -702,7 +702,7 @@ p.active .xy28_ball.num_20,.xy28_ball.num_20.active,p.active .xy28_ball.num_21,.
 .so-con-left ul li.active a { background-position-y: -1.6rem; }
 
 /*.so-con-right {  width: 7.7rem;  height: 100%;  position: fixed;  z-index: 5; margin-left: 2.3rem ; }*/
-.so-con-right {  width: 7.7rem;  height: 100%; padding-bottom: 2rem;  position: fixed;  z-index: 5; margin-left: 2.3rem ; }
+.so-con-right {  width: 7.7rem;  height: 100%; /*padding-bottom: 1.3rem;*/  position: fixed;  z-index: 5; margin-left: 2.3rem ; }
 /* bet footer */
 .so-foot { background: url("/static/frist/images/bg_wood.jpg") no-repeat center bottom; background-size: 100% auto; height: 1.5rem; width: 10rem; position: fixed; z-index:20; bottom: 0rem; }
 

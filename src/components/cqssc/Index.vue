@@ -267,7 +267,8 @@ export default {
 
   },
   mounted:function() {
-      var _self = this ;
+    this.deleteCookie('scrollF');
+    var _self = this ;
     var lotteryid = this.lotteryID ; // 彩种id
     var lotteryname = this.moduleName || '重庆时时彩' ; // 彩种名称
     this.setCookie('lt_lotteryid',lotteryid) ; // 彩种id

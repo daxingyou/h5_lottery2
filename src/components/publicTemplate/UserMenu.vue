@@ -12,9 +12,11 @@
                 <ul class="right_menu">
                     <li class="r_record">
                         <!-- <router-link :to="(lotteryid =='10') ? '/lhc/LhcBetRecord' : '/publicTemplate/betRecord'"> -->
-                        <router-link :to=" '/lhc/LhcBetRecord' ">
+                        <!-- <a href = '/lhc/LhcBetRecord' > -->
+                          <router-link :to=" '/lhc/LhcBetRecord' ">
                             <p><span class="icon icon_r_record"></span>投注记录</p>
-                        </router-link>
+                          </router-link>
+                        <!-- </a> -->
                     </li>
                     <li class="r_pastview">
                         <router-link to="/publicTemplate/pastView">
@@ -61,7 +63,6 @@
 
 <script>
 import Mixin from '@/Mixin'
-import store from './../../_vuex/store'
 
 // import $ from "jquery";
 
@@ -76,10 +77,10 @@ export default {
         }
     },
   mounted:function() {
-    $(this.el).on('click', ()=>{
+    $(this.el).on('click', (e)=>{
       this.show = true;
+      e.preventDefault()
     })
-
   },
   methods:{
     play:function(e){
@@ -87,11 +88,8 @@ export default {
     },
     close:function(e){
       this.show = false;
-        this.$store.commit('Number')
-
     }
   },
-
 }
 </script>
 <style scoped>

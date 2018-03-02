@@ -39,6 +39,12 @@
                                         </th>
                                         <td class="text-yellow">{{fortMoney(roundAmt(memBalance), 2)}}</td>
                                     </tr>
+                                     <tr v-if='deductFee>0'>
+                                        <th>
+                                            <li>提示</li>
+                                        </th>
+                                        <td class="text-yellow"  >您投注未达标，本次提款将扣除费用￥{{fortMoney(roundAmt(deductFee), 2)}}元</td>
+                                    </tr>
                                     </thead>
                                 </table>
                             </div>
@@ -107,7 +113,9 @@ export default {
              PaySubmit:false ,//重复提交
              inCorrectMessage:'提款金额必须在范围内',
              placeholderLimit:'提款金额必须在范围内',
-
+             feeWaiver:0,
+             deductFee:0,
+             deductStatu:1,
         }
     },
     created: function() {
@@ -115,20 +123,17 @@ export default {
         this.getUserInfo();
     },
   mounted:function() {
-
       $('html,body').css('overflow-y','scroll' )  ;
       this.getLimit()
+      this.getDeduct()
   },
   methods: {
       // 检查提款数据并提示
-
       checkWithdrawMoneyNow:function(userMoney,el){
-
           var ifInCorrect = this.isPositiveNum( userMoney )
           var defi = ( userMoney<this.drawMinMoney  ||  userMoney> this.drawMaxMoney)
           // var notEnough = (userMoney > 3000000 )
           var notEnough = (userMoney > this.memBalance )
-
           if(!ifInCorrect){
               this.hintWord = "请输入正确的提款金额"
              this.showHint = true;
@@ -152,6 +157,22 @@ export default {
           }
       },
 
+            //获取扣除费用接口
+    getDeduct:function () {
+          var _self = this ;
+          $.ajax({
+              type: 'post',
+              headers: {
+                  "Authorization": "bearer  " + this.getAccessToken ,
+              },
+              url: _self.action.forseti + 'api/pay/drawOrder/judge',
+              success: function(res){               
+                 _self.deductFee = res.data.auditDeduction;
+                 _self.deductStatu = res.data.auditStatus;
+              }
+          });
+      },
+
       //获取限额
     getLimit:function () {
           var _self = this ;
@@ -163,9 +184,6 @@ export default {
               url: _self.action.uaa + 'api/data/member/discount',
               data: { },
               success: function(res){
-                // console.log(res.data.dispCapped)
-                // console.log(res.data.dispLower)
-                // console.log(!!res)
                 _self.drawMaxMoney = Number(res.data.dispCapped)/100;
                 _self.drawMinMoney = Number(res.data.dispLower)/100;
 
@@ -271,6 +289,11 @@ export default {
                   if(_self.userMoney*100>_self.memBalance){
                       _self.$refs.autoCloseDialog.open('提款余额不足');
                       return
+                  }
+                  
+                  if(_self.userMoney*100<=_self.deductFee&&(_self.deductFee>0) ){
+                    _self.$refs.autoCloseDialog.open('取款金额必须大于扣除费用');
+                    return
                   }
 
                   if(_self.userMoney>_self.drawMaxMoney){

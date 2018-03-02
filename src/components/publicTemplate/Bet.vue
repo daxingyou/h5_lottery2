@@ -302,7 +302,7 @@ export default {
 
             if(!amount || !this.isPositiveNum(amount) || amount =='0'){ // 投注金额不正确  .modal.m08
                 // this.parentRefs.autoCloseDialog.open('请输入整数的投注金额，金额不能为0','title_bet_fail')
-                this.parentRefs.autoCloseDialog.open('请输入整数的投注金额，金额不能为0', '下注失败')
+                this.parentRefs.autoCloseDialog.open('请输入整数的投注金额', '下注失败')
                 return false;
             }
             // 注单金额正确
