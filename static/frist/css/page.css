@@ -352,7 +352,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .promo_area .promo_list li { background:url('/static/frist/images/promo_panel_center.png') no-repeat; background-size: 100% 100%; position: relative; margin: 0.2rem 0 0.7rem;}
 .promo_area .promo_list li:before{content: ''; display: block; background:url('/static/frist/images/promo_panel_top.png') no-repeat; background-size: 100% 100%; position: absolute; top:-0.2rem; left: 0; right: 0; height:0.2rem;}
 .promo_area .promo_list li:after{content: ''; display: block; background:url('/static/frist/images/promo_panel_bottom.png') no-repeat; background-size: 100% 100%; position: absolute; bottom:-0.2rem; left: 0; right: 0; height:0.2rem;}
-.promo_area .promo_list li img{ border-radius: 0; margin: 0 0.3rem; width: calc(100% - 0.6rem); border:none;max-height: 1.8rem; position: relative; z-index: 10;}
+.promo_area .promo_list li img{ border-radius: 0; margin: 0 0.3rem; width: calc(100% - 0.6rem); border:none; position: relative; z-index: 10;}
 .promo_area .promo_list li h3 { padding: 0rem .3rem ;  /*font-size: 0.4rem;*/font-size: 0.34rem; text-align: left; line-height: 0.7rem; color:#4b280c;/*border-bottom:1px solid #e4ccaa;*/ }
 .promo_area .promo_list li p.btn_detail { border-top: 1px solid rgba(22, 22, 22, 0.58); padding: 0.1rem 0 0; margin: 0.25rem 0.3rem; }
 .promo_area .promo_list li a { color: #4b280c; }
