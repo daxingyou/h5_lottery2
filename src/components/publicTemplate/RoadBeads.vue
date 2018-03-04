@@ -27,10 +27,11 @@
                 </div>
             </div>
         </div>
-        <div id="pa_content">
+        <div id="pa_content" style="overflow: auto;">
             <div class="page_box">
                 <div id="road01" class="new_road tab_container tabBox">
                     <div class="hd">
+                        <span style="color:#FFF" id="haha"></span>
                         <ul class="tab tab01 tab_mid" :class="ulclass[lotteryid]">
                             <!-- pk10 -->
                             <li class="on" data-tab="road01_1" data-val="1" v-if=" (lotteryid=='8')|| (lotteryid=='108') || (lotteryid=='24')"><a href="javascript:;">冠亚和大小</a></li>
@@ -153,23 +154,23 @@
                         <!-- pk10 -->
                         <div id="road02_6" class="tab_content_out" v-if="(lotteryid =='8')||(lotteryid =='108')||(lotteryid =='24')">
                             <RoadBeadItem :dataResult="dataResult.size_6" class="dx_size" />
-                            <RoadBeadItem :dataResult="dataResult.sd_6" class="ds_dx" />
+                            <RoadBeadItem :dataResult="dataResult.sd_6" class="ds_dx" /><br clear="all"/>
                         </div>
                         <div id="road02_7" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108')||(lotteryid =='24') ">
                             <RoadBeadItem :dataResult="dataResult.size_7" class="dx_size" />
-                            <RoadBeadItem :dataResult="dataResult.sd_7" class="ds_dx" />
+                            <RoadBeadItem :dataResult="dataResult.sd_7" class="ds_dx" /><br clear="all"/>
                         </div>
                         <div id="road02_8" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108')||(lotteryid =='24') ">
                             <RoadBeadItem :dataResult="dataResult.size_8" class="dx_size" />
-                            <RoadBeadItem :dataResult="dataResult.sd_8" class="ds_dx" />
+                            <RoadBeadItem :dataResult="dataResult.sd_8" class="ds_dx" /><br clear="all"/>
                         </div>
                         <div id="road02_9" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108')||(lotteryid =='24') ">
                             <RoadBeadItem :dataResult="dataResult.size_9" class="dx_size" />
-                            <RoadBeadItem :dataResult="dataResult.sd_9" class="ds_dx" />
+                            <RoadBeadItem :dataResult="dataResult.sd_9" class="ds_dx" /><br clear="all"/>
                         </div>
                         <div id="road02_10" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108')||(lotteryid =='24') ">
                             <RoadBeadItem :dataResult="dataResult.size_10" class="dx_size" />
-                            <RoadBeadItem :dataResult="dataResult.sd_10" class="ds_dx" />
+                            <RoadBeadItem :dataResult="dataResult.sd_10" class="ds_dx" /><br clear="all"/>
                         </div>
 
 
@@ -196,6 +197,7 @@
         mixins:[Mixin],
         data :function() {
             return {
+                scHeight:0,
                 gameshowid:{
                     '8':'pk10',
                     '108':'pk10',
@@ -245,14 +247,18 @@
         //scrollTo(0,0); // 回到顶部
         document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
         // 标签切换
-        this.roadChangeTab() ;
-
+        this.roadChangeTab();
+        this.scHeight = $('.page_box').prop('clientHeight') - 106;
+    },
+    updated:function() {
+        $('#pa_content').css('height', this.scHeight);
     },
     methods:{
         /*
         * 路珠数据，路珠页面
         * */
         loadRoadAction:function (lotteryid,maxtime) {
+            var _this = this;
             var senddata ={
                 lotteryId : lotteryid ,
                 maxUpdateTime: maxtime ,
@@ -269,6 +275,9 @@
                 data: senddata ,
                 success: (function(data) {
                     this.dataResult = data.data;
+                    //$('#haha').html($('html').prop('scrollHeight') + ' : ' + $('html').prop('clientHeight') + ' : ' + $('html').prop('offsetHeight') + ' : ' + $('#pa_con').prop('clientHeight'));
+                    //$('#haha').append(' : ' + $('#road01').prop('offsetHeight'));
+                    //$('html').css('height',1150);
                 }).bind(this),
                 error: function (data) {  // 错误提示
                     // this.$refs.infoDialog.open('您的登录已过期，请重新登录', 'title_tip')
@@ -334,3 +343,8 @@
 
 }
 </script>
+<style>
+html, body {
+    height: 100%;
+}
+</style>
