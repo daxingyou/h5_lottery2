@@ -151,7 +151,7 @@ export default {
     },
     mounted:function() {
       $('html,body').css('overflow-y','scroll' )  ;
-//        this.getCustom()
+        this.getCustom()
         this.custUrl=localStorage.getItem('Url');
   },
     methods: {
