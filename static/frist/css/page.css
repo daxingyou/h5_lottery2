@@ -342,7 +342,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 
 .about_area { text-align: left; width: 90%; margin: 0 auto; padding: 1.5rem 0; font-size: .35rem; }
 .about_area p { margin: .5rem 0; }
-.about_area h5 { margin: .5rem 0; color: #980110; }
+/*.about_area h5 { margin: .5rem 0; color: #980110; }*/
 
 /* 优惠活动 */
 .promo_area { text-align: left; width: 9.4rem; margin: 0 auto; padding: 0.3rem; font-size: .34rem; line-height: 1.7em; }
@@ -361,7 +361,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .promo_area img { display: block; width: calc( 100% - 2px); border: 1px solid transparent;border-radius: .2rem }
 /*.promo_area p { margin: .2rem 0;}*/
 .promo_area h3 { margin: .2rem 0 0.3rem; color: #4b280c; font-size: 0.43rem; }
-.promo_area strong { color: #980110; }
+/*.promo_area strong { color: #980110; }*/
 
 /* -----------------------------------------
 // icon
