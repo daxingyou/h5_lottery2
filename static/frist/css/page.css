@@ -898,7 +898,7 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .bet_data > a > .item > div { display: inline-block; vertical-align: middle; line-height: .6rem; }
 .bet_data > a > .item > .status { float: right; max-width: 1.8rem; width: auto; }
 .bet_data > a > .item > .badge { background: url('/static/frist/images/logo_bg.png') no-repeat; background-size: 100% 100%; width: 1.5rem; height: 1.5rem; margin-right:0.15rem; }
-.bet_data > a > .item > .badge > img { width: 1.1rem; height:0.85rem; margin: 0.3rem 0.2rem;}
+.bet_data > a > .item > .badge > img { width: 1.1rem; height:1.1rem; margin: 0.2rem;}
 .bet_data strong { color: #ffbd00; font-size: .35rem; font-weight: 300; max-width: 3rem; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: top;}
 .bet_data .prd_num { color: #d59559; margin-right: 0.2rem;}
 .bet_data .status { min-width: 15%; width: 1.8rem; text-align: center; color: #fff; }
