@@ -47,6 +47,19 @@
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
                                             </li>
+                                            <!--钱包秒充-->
+                                            <!--<li>
+                                                <a class="item" href="javascript:;" data-type="10" data-val="0" @click=" choosePayMoth2()">
+                                                    <span class="badge">
+                                                        <span class="icon_account icon_deposit_net11"></span>
+                                                    </span>
+                                                    <span class="limitMoney">
+                                                        <span>钱包秒充</span>
+                                                    </span>
+                                                    <span class="icon icon_arrow_light"></span>
+                                                </a>
+                                            </li>-->
+                                            <!--end 钱包秒充-->
                                         </ul>
                                     </div>
                                 </div>
@@ -278,6 +291,110 @@
                                     </div>
                                 </div>
                                 <!--  银行转账结束 -->
+                                <!--  钱包秒充开始-->
+                                <div class="webbank_wallet_all" style="display: none ;">
+                                    <!-- qr code -->
+                                    <div class="wallet_deposit">
+                                        <form class="form_deposit">
+                                            <fieldset>
+                                                <div class="form_g text money">
+                                                    <legend>充值金额</legend>
+                                                    <input type="tel" placeholder=" " v-model="paymount" readonly>
+                                                    <!--  <i class="close"></i>-->
+                                                </div>
+                                            </fieldset>
+                                        </form>
+
+                                        <div class="wallet_content">
+                                            <div class="wallet_method_select">
+                                                <a href="javascript:;" class="active">微信</a>
+                                                <a href="javascript:;">支付宝</a>
+                                            </div>
+                                            <div class="wallet_method_content">
+                                                <div class="wallet_account">
+                                                    <p>
+                                                        <span>账号：</span>
+                                                        <span>123456@qq.com</span>
+                                                        <span class="wallet_account-copy">复制</span>
+                                                    </p>
+                                                    <p class="wallet-name">
+                                                        <span>昵称：</span>
+                                                        <span>kris</span>
+                                                    </p>
+                                                    <p class="wallet-name">
+                                                        <span>真实姓名：</span>
+                                                        <span>kris</span>
+                                                    </p>
+                                                </div>
+                                                <div class="wallet_method_qrcode">
+                                                    <img src="/static/frist/images/qrcode.jpg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wallet_msg">
+                                            <p>扫码转账请一定在支付备注中填写本平台的会员账号，因未填写备注造成的任何损失与本平台无关。
+                                            <a @click="walletModalOpen()" href="javascript:;">充值步骤 &#62;</a></p>
+                                        </div>
+                                        <div class="btn btn_blue">
+                                            <a class="new_btn bank-underline" href="javascript:;" @click="walletNextAction()"><span class="big">下一步</span></a>
+                                        </div>
+                                    </div>
+                                    <!-- 帐号 -->
+                                    <div class="wallet_account" style="display:none;">
+                                        <h5 class="wallet_paymoney">充值金额：￥300.00元</h5>
+                                        <fieldset>
+                                            <div class="form_g text">
+                                                <legend for="">充值日期</legend>
+                                                <input type="text" class="date"  id="walletPaydate" readonly>
+                                                <i class="input_date"></i>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset>
+                                            <div class="form_g text">
+                                                <legend for="">微信账号</legend>
+                                                <input type="text" placeholder="请输入您充值使用的应用账号">
+                                            </div>
+                                        </fieldset>
+                                        <div class="wallet_msg">
+                                            <p>特别说明：请核对充值金额，并准确填写充值日期、充值使用账号。</p>
+                                        </div>
+                                        <div class="btn btn_blue">
+                                            <a class="new_btn bank-underline" href="javascript:;" @click="submitWalletAction()"><span class="big">完成</span></a>
+                                        </div>
+                                    </div>
+                                    <!-- 提交存款成功后 -->
+                                    <div class="wallet_success" style="display: none ;">
+                                        <div class="success_msg">
+                                            <p>充值申请已提交，请牢记以下信息</p>
+                                        </div>
+                                        <div class="success_info">
+                                            <h5>您的充值信息</h5>
+                                            <ul>
+                                                <li>
+                                                    <span>订单编号：</span>
+                                                    <span>201803021928332</span>
+                                                </li>
+                                                <li>
+                                                    <span>支付宝账号：</span>
+                                                    <span>1231231@qq.com</span>
+                                                </li>
+                                                <li>
+                                                    <span>充值日期：</span>
+                                                    <span>2018-02-03 15:30</span>
+                                                </li>
+                                                <li>
+                                                    <span>存款方式：</span>
+                                                    <span>支付宝钱包</span>
+                                                </li>
+                                                <li>
+                                                    <span>充值金额：</span>
+                                                    <span>￥300.00元</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  钱包秒充结束 -->
                             </div>
                         </div>
                     </div>
@@ -286,7 +403,7 @@
         </div>
         <!-- <deposit_bank_transfer v-if="false"></deposit_bank_transfer>-->
         <!--充值弹框-->
-        <div class="modal" style="display: block">
+        <div class="modal aModal" style="display: block">
             <div class="m_content">
                 <h2 class="title">★【{{copyTitle}}】※
                     <a></a>
@@ -305,7 +422,7 @@
                 </div>
             </div>
         </div>
-        <div class="bModal">
+        <div class="modal bModal" style="display:none">
             <div class="m_content">
                 <h2 class="title">银行转账使用步骤
                     <a></a>
@@ -323,6 +440,26 @@
                 </div>
             </div>
         </div>
+        <!--钱包秒充 充值步骤弹窗-->
+        <div class="modal wModal" style="display:none" @click="walletModalClose()">
+            <div class="m_content">
+                <h2 class="title">充值步骤
+                    <a></a>
+                </h2>
+                <p class="content left">
+                    1. 请截屏或点击保存图片，保存二维码图片到手机；
+                    <br/> 2. 打开微信，找到”扫一扫“进入；
+                    <br/> 3. 进入后点击右上角“从相册选取”，选择保存的二维码；
+                    <br/> 4. 完成支付，记得在支付留言中输入您的会员账号完成后，点击下一步；
+                    <br/> 5. 核对充值金额，充值时间以及充值使用的微信或支付宝账号，确认无误后点击“完成”按钮提交；
+                    <br/>
+                </p>
+                <div class="action">
+                    <a class="new_btn"><span>关闭</span></a>
+                </div>
+            </div>
+        </div>
+        <!-- //钱包秒充 充值步骤弹窗-->
         <FooterNav />
 
         <AutoCloseDialog ref="autoCloseDialog" text=" " type="" />
@@ -411,6 +548,7 @@
                     endYear:2020 //结束年份
                 });
                 $("#paydate").mobiscroll().datetime({ });
+                $("#walletPaydate").mobiscroll().datetime({ });
             },500)
             _self.getCopyright('3','AT01')
 
@@ -444,8 +582,8 @@
             },
             // 银行转账步骤提示框
             bankTipShow:function () {
-                $('.modal').click(function () {
-                    $('.modal').toggle();
+                $('.aModal').click(function () {
+                    $('.aModal').toggle();
                 });
                 $('.mini_tip').click(function () {
                     $('.bModal').toggle();
@@ -505,6 +643,33 @@
                     }
 //                }) ;
             },
+            // 钱包秒充（暂时居所）
+            choosePayMoth2: function (){
+                $('.paymethods_all').hide() ;
+                $('.webbank_wallet_all').show() ;
+                $('html,body').scrollTop(0);
+            },
+            // 钱包秒充下一步
+            walletNextAction: function () {
+                $('.wallet_deposit').hide() ;
+                $('.wallet_account').show() ;
+                $('html,body').scrollTop(0);
+            },
+            // 钱包秒充提交成功
+            submitWalletAction: function () {
+                $('.wallet_account').hide() ;
+                $('.wallet_success').show() ;
+                $('html,body').scrollTop(0);
+            },
+            // 钱包秒充充值步骤弹窗开启
+            walletModalOpen: function(){
+                $('.wModal').show();
+            },
+            // 钱包秒充充值步骤弹窗关闭
+            walletModalClose: function(){
+                $('.wModal').hide();
+            },
+
             // 获取银行列表
             getBankList:function (type) {
                 var _self = this ;
@@ -984,7 +1149,7 @@
     }
 </script>
 
-<style type="text/css">
+<style scoped>
     #depositHint{
         display: block;
         padding-left: 2.444rem;
@@ -995,7 +1160,7 @@
         /*background-color: rgba(0, 0, 0, 0.5);*/
         margin-top: 0.185rem;
     }
-    .bModal { display: none; position: fixed; top: 0; left: 50%; width: 10rem; margin-left: -5rem; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 1000; }
+    /*.bModal { display: none; position: fixed; top: 0; left: 50%; width: 10rem; margin-left: -5rem; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 1000; }
     .bModal .m_content { position: fixed; z-index: 33; width: 8rem; top: 25%; left: 50%; margin-left: -4rem; padding: 0.3rem 0.5rem 0.7rem; box-sizing: border-box; color: #4b280c; background: url("/static/frist/images/pop/bg_center.png") repeat-y;  background-size: 100%; word-wrap: break-word;}
     .bModal .m_content:before { content: ''; position: absolute; display: block; top: -0.3rem; left: 0; z-index: 33; height: 1.173rem; width: 100%; background: url("/static/frist/images/pop/bg_top.png") no-repeat;  background-size: 100%; }
     .bModal .m_content:after { content: ''; position: absolute; display: block; bottom: -0.3rem; left: 0; z-index: 33; height: 1.173rem; width: 100%; background: url("/static/frist/images/pop/bg_bottom.png") no-repeat;  background-size: 100%; }
@@ -1010,12 +1175,12 @@
     .bModal .m_content .left { text-align: left; padding: .5rem; }
     .bModal .m_content .action { text-align: center;}
     .bModal .m_content .tip_icon { width: 0.8rem; height:0.8rem; margin: 0.5rem auto 0.3rem;}
-    .bModal .m_content .tip_icon img{ width: 100%;}
+    .bModal .m_content .tip_icon img{ width: 100%;}*/
     /*.bModal > .m_content > .content > div { margin: 0 auto; text-align: center; }*/
 
-    .bModal > .m_content > .content > div > img { height: 1rem; display: block; margin: 0 auto; }
+    /*.bModal > .m_content > .content > div > img { height: 1rem; display: block; margin: 0 auto; }
 
-    .bModal > .m_content > .content > div > img:last-child { height: 0.8rem; margin: .2rem auto; }
+    .bModal > .m_content > .content > div > img:last-child { height: 0.8rem; margin: .2rem auto; }*/
 
     .depositPeopleHint {
         display: block;
