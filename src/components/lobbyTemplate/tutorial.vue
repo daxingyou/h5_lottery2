@@ -21,7 +21,7 @@
                 <!-- Tab 3 -->
 
                 <div class="tab-box">
-                    <section class="tab-panels" v-html="copyContent">
+                    <section class="tab-panels force-align-left" v-html="copyContent">
 
                     </section>
                 </div>
@@ -108,5 +108,8 @@ export default {
         text-indent: 0.5em;
         text-align: left;
 
+    }
+    .force-align-left {
+      text-align: left;
     }
 </style>
