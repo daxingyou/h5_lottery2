@@ -1173,6 +1173,9 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 
 .last-open-num > ul { height: 1.3rem; width: 100%; display: block; }
 
+/* 新手教程 */
+.tutorial_area .tab-box{ text-align: left; }
+
 /* -----------------------------------------
 // 登入页
 -----------------------------------------*/
