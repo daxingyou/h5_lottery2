@@ -20,6 +20,8 @@ import CqsscIndex from '@/components/cqssc/Index'  // 重庆时时彩
 import TjsscIndex from '@/components/cqssc/TianJinIndex'  // 天津时时彩
 import XjsscIndex from '@/components/cqssc/XinJiangIndex'  // 新疆时时彩
 import SecondSsc from '@/components/cqssc/SecondSsc'  // 秒速时时彩
+import HanGuoIndex from '@/components/cqssc/HanGuoIndex'  // 韩国1.5分彩
+import DongJingIndex from '@/components/cqssc/DongJingIndex'  // 东京1.5分彩
 import MiaoSuK3Index from '@/components/k3/MiaoSuIndex'  // 秒速快3
 import LhcIndex from '@/components/lhc/Index' // 六合彩
 import LhcBetRecord from '@/components/lhc/LhcBetRecord' // 六合彩投注紀錄
@@ -136,7 +138,7 @@ export default new Router({
       path: '/cqssc/',
       name: 'cqsscIndex',
       component: CqsscIndex
-    }, 
+    },
     {  // 天津时时彩
       path: '/cqssc/tianJinIndex',
       name: 'tjsscIndex',
@@ -146,6 +148,16 @@ export default new Router({
         path: '/cqssc/xinJiangIndex',
         name: 'xjsscIndex',
         component: XjsscIndex
+    },
+    {  // 韩国1.5分彩
+        path: '/cqssc/HanGuoIndex',
+        name: 'HanGuoIndex',
+        component: HanGuoIndex
+    },
+    {  // 东京1.5分彩
+        path: '/cqssc/DongJingIndex',
+        name: 'DongJingIndex',
+        component: DongJingIndex
     },
      {  // 新疆时时彩
         path: '/cqssc/SecondSscIndex',

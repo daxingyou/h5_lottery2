@@ -100,6 +100,8 @@ export default {
                 "12":"cqssc/tianJinIndex",
                 "14":"cqssc/xinJiangIndex",
                 "102":"cqssc/SecondSscIndex",
+                "112":"cqssc/HanGuoIndex", //韩国1.5分彩
+                "114":"cqssc/DongJingIndex", //东京1.5分彩
                 "4":"jc11x5",     //江西11选5
                 "18":"jc11x5/sd11x5Index",  //山东11选5
                 "104":"jc11x5/ms11x5Index",  // 秒速11选5
@@ -119,6 +121,8 @@ export default {
                 "12":"天津时时彩",
                 "14":"新疆时时彩",
                 "102":"秒速时时彩",
+                "112":"韩国1.5分彩",
+                "114":"东京1.5分彩",
                 "4":"江西11选5",     //江西11选5
                 "18":"山东11选5",  //山东11选5
                 "16":"广东11选5",  //广东11选5

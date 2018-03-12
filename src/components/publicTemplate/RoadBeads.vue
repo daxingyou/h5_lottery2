@@ -37,19 +37,19 @@
                             <li class="on" data-tab="road01_1" data-val="1" v-if=" (lotteryid=='8')|| (lotteryid=='108') || (lotteryid=='24')"><a href="javascript:;">冠亚和大小</a></li>
                             <li data-tab="road01_2" data-val="1" v-if=" (lotteryid=='8')||(lotteryid=='108') ||(lotteryid=='24')"><a href="javascript:;">冠亚和单双</a></li>
                             <!-- pk10 赛车没有 -->
-                            <li class="on" data-tab="road01_1" data-val="1" v-if="(lotteryid =='2') || (lotteryid =='4') || (lotteryid =='6')||(lotteryid =='12')||(lotteryid =='14')||(lotteryid =='16')||(lotteryid =='18')||(lotteryid =='20') ||(lotteryid =='22')|| (lotteryid =='102') || (lotteryid =='104')|| (lotteryid =='106') ">
+                            <li class="on" data-tab="road01_1" data-val="1" v-if="(lotteryid =='2') || (lotteryid =='4') || (lotteryid =='6')||(lotteryid =='12')||(lotteryid =='14')||(lotteryid =='16')||(lotteryid =='18')||(lotteryid =='20') ||(lotteryid =='22')|| (lotteryid =='102') || (lotteryid =='104')|| (lotteryid =='106') || (lotteryid =='112') || (lotteryid =='114') ">
                                 <a href="javascript:;">
                                     总和大小</a>
                             </li>
                             <!-- 快3 pk10 没有 -->
-                            <li data-tab="road01_2" data-val="1" v-if="(lotteryid =='2') ||(lotteryid =='102')|| (lotteryid =='4') || (lotteryid =='104')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18')">
+                            <li data-tab="road01_2" data-val="1" v-if="(lotteryid =='2') ||(lotteryid =='102')|| (lotteryid =='4') || (lotteryid =='104')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18') || (lotteryid =='112') || (lotteryid =='114')">
                                 <a href="javascript:;">总和单双</a>
                             </li>
                             <!-- 11 选5才有-->
                             <li data-tab="road01_4" data-val="1" class="jxsyxw_tab"  v-if="(lotteryid =='4') ||(lotteryid =='104')|| (lotteryid =='16') || (lotteryid =='18')">
                                 <a href="javascript:;">总和尾大小</a>
                             </li>
-                            <li data-tab="road01_3" data-val="1" v-if="(lotteryid =='2')||(lotteryid =='102') || (lotteryid =='4') || (lotteryid =='104')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18')">
+                            <li data-tab="road01_3" data-val="1" v-if="(lotteryid =='2')||(lotteryid =='102') || (lotteryid =='4') || (lotteryid =='104')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18') || (lotteryid =='112') || (lotteryid =='114')">
                                 <a href="javascript:;" >龙 虎</a>
                             </li>
 
@@ -71,7 +71,7 @@
                         <RoadBeadItem id="road01_3" v-if="!(['6','106','20','22'].includes(lotteryid))" :dataResult="dataResult.total_lhh" class="tab_content_out" />
                     </div>
                 </div>
-                <div id="road02" class="new_road tab_container tabBox" v-if="(lotteryid =='2')||(lotteryid =='102') || (lotteryid =='4') ||(lotteryid =='104') || (lotteryid =='8')|| (lotteryid =='108')|| (lotteryid =='24')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18')">
+                <div id="road02" class="new_road tab_container tabBox" v-if="(lotteryid =='2')||(lotteryid =='102') || (lotteryid =='4') ||(lotteryid =='104') || (lotteryid =='8')|| (lotteryid =='108')|| (lotteryid =='24')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18') || (lotteryid =='112') || (lotteryid =='114')">
                     <div class="hd">
                         <ul class="tab tab02 tab_mid tab_five" v-if="(lotteryid == '8')||(lotteryid == '108')||(lotteryid == '24')">
                             <li data-tab="road02_1" class="on" data-val="2"><a href="javascript:;">冠军</a></li>
@@ -211,6 +211,8 @@
                    {id:'2','name':'重庆时时彩'} ,
                     {id:'102','name':'秒速时时彩'} ,
                     {id:'14','name':'新疆时时彩'} ,
+                    {id:'112','name':'韩国1.5分彩'} ,
+                    {id:'114','name':'东京1.5分彩'} ,
                     {id:'108','name':'秒速赛车'},
                     {id:'24','name':'幸运飞艇'},
                     {id:'8','name':'北京PK10'} ,
@@ -229,6 +231,8 @@
                     '102':'tab_three',
                     '12':'tab_three',
                     '14':'tab_three',
+                    '112':'tab_three',
+                    '114':'tab_three',
                     '6':'tab_two',
                     '106':'tab_two',
                     '20':'tab_two',
