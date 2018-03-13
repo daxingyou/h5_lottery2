@@ -1071,7 +1071,7 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 -----------------------------------------*/
 /* banner */
 .news { margin-top: 1.36rem; overflow-x: hidden; position: relative;min-height: 3.8rem; }
-.news img { width: 100%; display: block; }
+.news img { width: 10rem; display: block; height: 3.8rem; }
 .news .focus { position: relative; }
 .news .hd { display: none;  }
 
