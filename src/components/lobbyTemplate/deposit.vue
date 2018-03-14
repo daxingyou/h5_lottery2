@@ -72,7 +72,7 @@
                                         <fieldset>
                                             <div class="form_g text money">
                                                 <legend>充值金额</legend>
-                                                <input type="tel" placeholder=" " class="depositmount"  v-model="paymount"    readonly>
+                                                <input type="tel" placeholder=" " class="depositmount"  v-model="paymount" readonly>
                                                 <!--  <i class="close"></i>-->
                                             </div>
                                             <!-- <div  v-if = 'showDepositHint' class="depositHint" id="depositHint" > 请输入正确金额</div>  -->
@@ -299,7 +299,7 @@
                                             <fieldset>
                                                 <div class="form_g text money">
                                                     <legend>充值金额</legend>
-                                                    <input type="tel" placeholder=" " v-model="paymount"/>
+                                                    <input type="tel" placeholder=" " v-model="paymount" readonly />
                                                     <!--  <i class="close"></i>-->
                                                 </div>
                                             </fieldset>
@@ -638,12 +638,6 @@
             choosePayMoth: function (e, payWay) {
                 var _self = this ;
                 // 转账
-                var $src = $(e.currentTarget);
-                if($src.data('type') == '11') {
-                    _self.choosePayMoth2();
-                    console.log(1);
-                    return false;
-                }
 
 //                $('.payWayTranster').on('click','.item',function (e) {
                 var notQuick = payWay.rsNameId
@@ -667,6 +661,14 @@
                     var Href=$src.data('hf')
                    if(val=='0'){
 
+                    if($src.data('type') == '11') {
+                        if(_self.weiXinWalletPayAccount == null && _self.zhiFuBaoWalletPayAccount == null) {
+                            _self.$refs.autoCloseDialog.open('充值渠道暂时维护中，请选择其他方式充值');
+                            return false;
+                        }
+                        _self.choosePayMoth2();
+                        return false;
+                    }
                        if(type == '10'){  // 网银支付
                            _self.getBankList('2') ;
                            $('.paymethods_all').hide() ;
