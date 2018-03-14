@@ -48,7 +48,7 @@
                                                 </a>
                                             </li>
                                             <!--钱包秒充-->
-                                            <!--<li>
+                                            <li>
                                                 <a class="item" href="javascript:;" data-type="10" data-val="0" @click=" choosePayMoth2()">
                                                     <span class="badge">
                                                         <span class="icon_account icon_deposit_net11"></span>
@@ -58,7 +58,7 @@
                                                     </span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
-                                            </li>-->
+                                            </li>
                                             <!--end 钱包秒充-->
                                         </ul>
                                     </div>
@@ -299,7 +299,7 @@
                                             <fieldset>
                                                 <div class="form_g text money">
                                                     <legend>充值金额</legend>
-                                                    <input type="tel" placeholder=" " v-model="paymount" readonly>
+                                                    <input type="tel" placeholder=" " v-model="paymount">
                                                     <!--  <i class="close"></i>-->
                                                 </div>
                                             </fieldset>
@@ -307,14 +307,34 @@
 
                                         <div class="wallet_content">
                                             <div class="wallet_method_select">
-                                                <a href="javascript:;" class="active">微信</a>
-                                                <a href="javascript:;">支付宝</a>
+                                                <a @click="clickOnWeiXinTab" v-bind:class="{active:weiXinTab}" href="javascript:;" v-if="weiXinWalletPayAccount != null">微信</a>
+                                                <a @click="clickOnZhiFuBaoTab" v-bind:class="{active:zhiFuBaoTab}" href="javascript:;" v-if="zhiFuBaoWalletPayAccount != null">支付宝</a>
                                             </div>
-                                            <div class="wallet_method_content">
+                                            <div class="wallet_method_content" v-if="weiXinAct">
                                                 <div class="wallet_account">
                                                     <p>
                                                         <span>账号：</span>
-                                                        <span>123456@qq.com</span>
+                                                        <input v-bind:value="weiXinWalletPayAccount.accountNo">
+                                                        <span class="wallet_account-copy">复制</span>
+                                                    </p>
+                                                    <p class="wallet-name">
+                                                        <span>昵称：</span>
+                                                        <span>kris</span>
+                                                    </p>
+                                                    <p class="wallet-name">
+                                                        <span>真实姓名：</span>
+                                                        <span>kris</span>
+                                                    </p>
+                                                </div>
+                                                <div class="wallet_method_qrcode">
+                                                    <img src="/static/frist/images/qrcode.jpg">
+                                                </div>
+                                            </div>
+                                            <div class="wallet_method_content" v-if="zhiFuBaoAct">
+                                                <div class="wallet_account">
+                                                    <p>
+                                                        <span>账号：</span>
+                                                        <input v-bind:value="zhiFuBaoWalletPayAccount.accountNo">
                                                         <span class="wallet_account-copy">复制</span>
                                                     </p>
                                                     <p class="wallet-name">
@@ -516,14 +536,70 @@
                 depositPeoplehintWord: '请正确输入',
                 depositPeopleHint: false,
                 bankSubmitAllow: true,
-
+                walletApi: {
+                              "data" : {
+                                "rows" : [
+                                    {
+                                        "id" : 92,
+                                        "ownerId" : 38,
+                                        "currency" : "CNY",
+                                        "accountType" : 1,
+                                        "accountNo" : "weixin@weixin.com",
+                                        "accountName" : "微信",
+                                        "realName" : "微信实名",
+                                        "qrCode" : "T1cthTBy_T1RCvBVdK",
+                                        "transferRemark" : "",
+                                        "status" : 1,
+                                        "stopAmount" : 0,
+                                        "warnAmount" : 0,
+                                        "incomeTimes" : 0,
+                                        "incomeAmount" : 0,
+                                        "createTime" : 1520928457383,
+                                        "lastIncomeTime" : 0,
+                                        "updateTime" : 1520935939555,
+                                        "updateName" : "victor",
+                                        "userLevels" : null
+                                    },
+                                    {
+                                        "id" : 93,
+                                        "ownerId" : 39,
+                                        "currency" : "CNY",
+                                        "accountType" : 2,
+                                        "accountNo" : "zhifubao@zhifubao.com",
+                                        "accountName" : "支付宝",
+                                        "realName" : "支付宝实名",
+                                        "qrCode" : "T1cthTBy_T1RCvBVdK",
+                                        "transferRemark" : "",
+                                        "status" : 1,
+                                        "stopAmount" : 0,
+                                        "warnAmount" : 0,
+                                        "incomeTimes" : 0,
+                                        "incomeAmount" : 0,
+                                        "createTime" : 1520928457383,
+                                        "lastIncomeTime" : 0,
+                                        "updateTime" : 1520935939555,
+                                        "updateName" : "victor",
+                                        "userLevels" : null
+                                    }
+                                ],
+                              },
+                              "err" : "SUCCESS",
+                              "msg" : "",
+                              "maxUpdateTime" : null
+                            },
+                weiXinWalletPayAccount: null,
+                zhiFuBaoWalletPayAccount: null,
+                weiXinAct: false,
+                zhiFuBaoAct: false,
+                weiXinTab: false,
+                zhiFuBaoTab: false
             }
         },
         created:function () {
             this.getPayWayList()
         },
         mounted:function() {
-
+            this.getWalletPayAccount();
             // this.getLimit()
 
             var _self = this ;
@@ -880,6 +956,57 @@
 
                     }
                 });
+            },
+            //获取秒速钱包充值帐户信息
+            getWalletPayAccount: function() {
+                var _self = this;
+                $.ajax({
+                    type: 'get',
+                    headers: {
+                        'Authorization': "bearer  " + _self.getAccessToken,
+                    },
+                    url: _self.action.forseti + 'api/pay/getWalletPayAccount',
+                    data: {} ,
+                    success: function(res){
+                        if(res.err == 'SUCCESS'){
+                            console.log(res);
+                            let accounts = _self.walletApi.data.rows;
+                            let weiXinExist = false;
+                            _.forEach(accounts, function(item, id) {
+                                if(item.accountType === 1) {
+                                    _self.weiXinWalletPayAccount = item;
+                                    _self.weiXinTab = true;
+                                    _self.weiXinAct = true;
+                                    weiXinExist = true;
+
+                                }
+                                if(item.accountType === 2) {
+                                    _self.zhiFuBaoWalletPayAccount = item;
+                                    console.log(weiXinExist, 'out');
+                                    if(weiXinExist != true) {
+                                        _self.zhiFuBaoTab = true;
+                                        _self.zhiFuBaoAct = false;
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    error: function (res) {
+
+                    }
+                });
+            },
+            clickOnWeiXinTab: function() {
+                this.zhiFuBaoAct = false;
+                this.zhiFuBaoTab = false;
+                this.weiXinTab = true;
+                this.weiXinAct = true;
+            },
+            clickOnZhiFuBaoTab: function() {
+                this.zhiFuBaoAct = true;
+                this.zhiFuBaoTab = true;
+                this.weiXinTab = false;
+                this.weiXinAct = false;
             },
             depositPeopleInput: function (word) {
                 if (word.length < 2 || word.length > 13) {
