@@ -77,7 +77,9 @@ export default {
             "2":"cqssc",
             "12":"cqssc/tianJinIndex",
             "14":"cqssc/xinJiangIndex",//新疆时时彩
-            "102":"cqssc/SecondSscIndex", 
+            "102":"cqssc/SecondSscIndex",
+            "112":"cqssc/HanGuoIndex", //韩国1.5分彩
+            "114":"cqssc/DongJingIndex", //东京1.5分彩
 
             "4":"jc11x5",     //江西11选5
             "18":"jc11x5/sd11x5Index",  //山东11选5

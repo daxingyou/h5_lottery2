@@ -100,6 +100,8 @@ export default {
                 "12":"cqssc/tianJinIndex",
                 "14":"cqssc/xinJiangIndex",
                 "102":"cqssc/SecondSscIndex",
+                "112":"cqssc/HanGuoIndex", //韩国1.5分彩
+                "114":"cqssc/DongJingIndex", //东京1.5分彩
                 "4":"jc11x5",     //江西11选5
                 "18":"jc11x5/sd11x5Index",  //山东11选5
                 "104":"jc11x5/ms11x5Index",  // 秒速11选5
@@ -119,6 +121,8 @@ export default {
                 "12":"天津时时彩",
                 "14":"新疆时时彩",
                 "102":"秒速时时彩",
+                "112":"韩国1.5分彩",
+                "114":"东京1.5分彩",
                 "4":"江西11选5",     //江西11选5
                 "18":"山东11选5",  //山东11选5
                 "16":"广东11选5",  //广东11选5
@@ -189,7 +193,7 @@ export default {
             success: (data) => {
               /*  for(var i=0;i<data.data.length;i++){*/
                     $.each(data.data,function (i,v) {
-                       // console.log(v) ;
+                        //console.log(v) ;
                         if(!v.winNumber || v.winNumber==''){
                             switch (v.lotteryId.toString()){
                                 case '8': // 北京pk10
@@ -208,7 +212,10 @@ export default {
                                     break ;
                             }
                         }
-                       // console.log(v.endTime) ;
+                        if(v.lotteryId == 114 || v.lotteryId == 112) {
+                          console.log(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime());
+                        }
+
                         if(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() > _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime() ){ // 如果当前期结束时间大于系统时间
                            // console.log('结束时间大') ;
                             $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000) ;

@@ -27,28 +27,29 @@
                 </div>
             </div>
         </div>
-        <div id="pa_content">
+        <div id="pa_content" style="overflow: auto;">
             <div class="page_box">
                 <div id="road01" class="new_road tab_container tabBox">
                     <div class="hd">
+                        <span style="color:#FFF" id="haha"></span>
                         <ul class="tab tab01 tab_mid" :class="ulclass[lotteryid]">
                             <!-- pk10 -->
                             <li class="on" data-tab="road01_1" data-val="1" v-if=" (lotteryid=='8')|| (lotteryid=='108') || (lotteryid=='24')"><a href="javascript:;">冠亚和大小</a></li>
                             <li data-tab="road01_2" data-val="1" v-if=" (lotteryid=='8')||(lotteryid=='108') ||(lotteryid=='24')"><a href="javascript:;">冠亚和单双</a></li>
                             <!-- pk10 赛车没有 -->
-                            <li class="on" data-tab="road01_1" data-val="1" v-if="(lotteryid =='2') || (lotteryid =='4') || (lotteryid =='6')||(lotteryid =='12')||(lotteryid =='14')||(lotteryid =='16')||(lotteryid =='18')||(lotteryid =='20') ||(lotteryid =='22')|| (lotteryid =='102') || (lotteryid =='104')|| (lotteryid =='106') ">
+                            <li class="on" data-tab="road01_1" data-val="1" v-if="(lotteryid =='2') || (lotteryid =='4') || (lotteryid =='6')||(lotteryid =='12')||(lotteryid =='14')||(lotteryid =='16')||(lotteryid =='18')||(lotteryid =='20') ||(lotteryid =='22')|| (lotteryid =='102') || (lotteryid =='104')|| (lotteryid =='106') || (lotteryid =='112') || (lotteryid =='114') ">
                                 <a href="javascript:;">
                                     总和大小</a>
                             </li>
                             <!-- 快3 pk10 没有 -->
-                            <li data-tab="road01_2" data-val="1" v-if="(lotteryid =='2') ||(lotteryid =='102')|| (lotteryid =='4') || (lotteryid =='104')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18')">
+                            <li data-tab="road01_2" data-val="1" v-if="(lotteryid =='2') ||(lotteryid =='102')|| (lotteryid =='4') || (lotteryid =='104')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18') || (lotteryid =='112') || (lotteryid =='114')">
                                 <a href="javascript:;">总和单双</a>
                             </li>
                             <!-- 11 选5才有-->
                             <li data-tab="road01_4" data-val="1" class="jxsyxw_tab"  v-if="(lotteryid =='4') ||(lotteryid =='104')|| (lotteryid =='16') || (lotteryid =='18')">
                                 <a href="javascript:;">总和尾大小</a>
                             </li>
-                            <li data-tab="road01_3" data-val="1" v-if="(lotteryid =='2')||(lotteryid =='102') || (lotteryid =='4') || (lotteryid =='104')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18')">
+                            <li data-tab="road01_3" data-val="1" v-if="(lotteryid =='2')||(lotteryid =='102') || (lotteryid =='4') || (lotteryid =='104')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18') || (lotteryid =='112') || (lotteryid =='114')">
                                 <a href="javascript:;" >龙 虎</a>
                             </li>
 
@@ -70,7 +71,7 @@
                         <RoadBeadItem id="road01_3" v-if="!(['6','106','20','22'].includes(lotteryid))" :dataResult="dataResult.total_lhh" class="tab_content_out" />
                     </div>
                 </div>
-                <div id="road02" class="new_road tab_container tabBox" v-if="(lotteryid =='2')||(lotteryid =='102') || (lotteryid =='4') ||(lotteryid =='104') || (lotteryid =='8')|| (lotteryid =='108')|| (lotteryid =='24')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18')">
+                <div id="road02" class="new_road tab_container tabBox" v-if="(lotteryid =='2')||(lotteryid =='102') || (lotteryid =='4') ||(lotteryid =='104') || (lotteryid =='8')|| (lotteryid =='108')|| (lotteryid =='24')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18') || (lotteryid =='112') || (lotteryid =='114')">
                     <div class="hd">
                         <ul class="tab tab02 tab_mid tab_five" v-if="(lotteryid == '8')||(lotteryid == '108')||(lotteryid == '24')">
                             <li data-tab="road02_1" class="on" data-val="2"><a href="javascript:;">冠军</a></li>
@@ -153,23 +154,23 @@
                         <!-- pk10 -->
                         <div id="road02_6" class="tab_content_out" v-if="(lotteryid =='8')||(lotteryid =='108')||(lotteryid =='24')">
                             <RoadBeadItem :dataResult="dataResult.size_6" class="dx_size" />
-                            <RoadBeadItem :dataResult="dataResult.sd_6" class="ds_dx" />
+                            <RoadBeadItem :dataResult="dataResult.sd_6" class="ds_dx" /><br clear="all"/>
                         </div>
                         <div id="road02_7" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108')||(lotteryid =='24') ">
                             <RoadBeadItem :dataResult="dataResult.size_7" class="dx_size" />
-                            <RoadBeadItem :dataResult="dataResult.sd_7" class="ds_dx" />
+                            <RoadBeadItem :dataResult="dataResult.sd_7" class="ds_dx" /><br clear="all"/>
                         </div>
                         <div id="road02_8" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108')||(lotteryid =='24') ">
                             <RoadBeadItem :dataResult="dataResult.size_8" class="dx_size" />
-                            <RoadBeadItem :dataResult="dataResult.sd_8" class="ds_dx" />
+                            <RoadBeadItem :dataResult="dataResult.sd_8" class="ds_dx" /><br clear="all"/>
                         </div>
                         <div id="road02_9" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108')||(lotteryid =='24') ">
                             <RoadBeadItem :dataResult="dataResult.size_9" class="dx_size" />
-                            <RoadBeadItem :dataResult="dataResult.sd_9" class="ds_dx" />
+                            <RoadBeadItem :dataResult="dataResult.sd_9" class="ds_dx" /><br clear="all"/>
                         </div>
                         <div id="road02_10" class="tab_content_out" v-if=" (lotteryid =='8')||(lotteryid =='108')||(lotteryid =='24') ">
                             <RoadBeadItem :dataResult="dataResult.size_10" class="dx_size" />
-                            <RoadBeadItem :dataResult="dataResult.sd_10" class="ds_dx" />
+                            <RoadBeadItem :dataResult="dataResult.sd_10" class="ds_dx" /><br clear="all"/>
                         </div>
 
 
@@ -196,6 +197,7 @@
         mixins:[Mixin],
         data :function() {
             return {
+                scHeight:0,
                 gameshowid:{
                     '8':'pk10',
                     '108':'pk10',
@@ -209,6 +211,8 @@
                    {id:'2','name':'重庆时时彩'} ,
                     {id:'102','name':'秒速时时彩'} ,
                     {id:'14','name':'新疆时时彩'} ,
+                    {id:'112','name':'韩国1.5分彩'} ,
+                    {id:'114','name':'东京1.5分彩'} ,
                     {id:'108','name':'秒速赛车'},
                     {id:'24','name':'幸运飞艇'},
                     {id:'8','name':'北京PK10'} ,
@@ -227,6 +231,8 @@
                     '102':'tab_three',
                     '12':'tab_three',
                     '14':'tab_three',
+                    '112':'tab_three',
+                    '114':'tab_three',
                     '6':'tab_two',
                     '106':'tab_two',
                     '20':'tab_two',
@@ -245,14 +251,18 @@
         //scrollTo(0,0); // 回到顶部
         document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
         // 标签切换
-        this.roadChangeTab() ;
-
+        this.roadChangeTab();
+        this.scHeight = $('.page_box').prop('clientHeight') - 106;
+    },
+    updated:function() {
+        $('#pa_content').css('height', this.scHeight);
     },
     methods:{
         /*
         * 路珠数据，路珠页面
         * */
         loadRoadAction:function (lotteryid,maxtime) {
+            var _this = this;
             var senddata ={
                 lotteryId : lotteryid ,
                 maxUpdateTime: maxtime ,
@@ -269,6 +279,9 @@
                 data: senddata ,
                 success: (function(data) {
                     this.dataResult = data.data;
+                    //$('#haha').html($('html').prop('scrollHeight') + ' : ' + $('html').prop('clientHeight') + ' : ' + $('html').prop('offsetHeight') + ' : ' + $('#pa_con').prop('clientHeight'));
+                    //$('#haha').append(' : ' + $('#road01').prop('offsetHeight'));
+                    //$('html').css('height',1150);
                 }).bind(this),
                 error: function (data) {  // 错误提示
                     // this.$refs.infoDialog.open('您的登录已过期，请重新登录', 'title_tip')
@@ -334,3 +347,8 @@
 
 }
 </script>
+<style>
+html, body {
+    height: 100%;
+}
+</style>

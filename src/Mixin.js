@@ -212,7 +212,6 @@ var MyMixin = {
             } else {
                 $('.so-con-right').css('height',(val - scrolling_height )+'px') ;
             }
-            $('#haxhax').html('scrollHeight: ' + scrolling_height + '<br/>innerHeight: ' + winH + '<br/>headerHeight: ' + ($('.so-in-top').height() + $('.so-in-main').height()) + '<br/>footerHeight: ' + $('.so-foot').height());
         },
 
         ajax:function(userConfig){

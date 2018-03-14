@@ -342,7 +342,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 
 .about_area { text-align: left; width: 90%; margin: 0 auto; padding: 1.5rem 0; font-size: .35rem; }
 .about_area p { margin: .5rem 0; }
-.about_area h5 { margin: .5rem 0; color: #980110; }
+/*.about_area h5 { margin: .5rem 0; color: #980110; }*/
 
 /* 优惠活动 */
 .promo_area { text-align: left; width: 9.4rem; margin: 0 auto; padding: 0.3rem; font-size: .34rem; line-height: 1.7em; }
@@ -352,7 +352,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .promo_area .promo_list li { background:url('/static/frist/images/promo_panel_center.png') no-repeat; background-size: 100% 100%; position: relative; margin: 0.2rem 0 0.7rem;}
 .promo_area .promo_list li:before{content: ''; display: block; background:url('/static/frist/images/promo_panel_top.png') no-repeat; background-size: 100% 100%; position: absolute; top:-0.2rem; left: 0; right: 0; height:0.2rem;}
 .promo_area .promo_list li:after{content: ''; display: block; background:url('/static/frist/images/promo_panel_bottom.png') no-repeat; background-size: 100% 100%; position: absolute; bottom:-0.2rem; left: 0; right: 0; height:0.2rem;}
-.promo_area .promo_list li img{ border-radius: 0; margin: 0 0.3rem; width: calc(100% - 0.6rem); border:none;max-height: 1.8rem; position: relative; z-index: 10;}
+.promo_area .promo_list li img{ border-radius: 0; margin: 0 0.3rem; width: calc(100% - 0.6rem); border:none; position: relative; z-index: 10;}
 .promo_area .promo_list li h3 { padding: 0rem .3rem ;  /*font-size: 0.4rem;*/font-size: 0.34rem; text-align: left; line-height: 0.7rem; color:#4b280c;/*border-bottom:1px solid #e4ccaa;*/ }
 .promo_area .promo_list li p.btn_detail { border-top: 1px solid rgba(22, 22, 22, 0.58); padding: 0.1rem 0 0; margin: 0.25rem 0.3rem; }
 .promo_area .promo_list li a { color: #4b280c; }
@@ -361,7 +361,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .promo_area img { display: block; width: calc( 100% - 2px); border: 1px solid transparent;border-radius: .2rem }
 /*.promo_area p { margin: .2rem 0;}*/
 .promo_area h3 { margin: .2rem 0 0.3rem; color: #4b280c; font-size: 0.43rem; }
-.promo_area strong { color: #980110; }
+/*.promo_area strong { color: #980110; }*/
 
 /* -----------------------------------------
 // icon
@@ -432,6 +432,7 @@ img.fixbot { position: fixed; bottom: 0; margin: 0 auto; width: 100%; left: 0; m
 .icon_account.icon_deposit_net8{ background-position: -6rem -4.5rem;}/* 银联扫码 */
 .icon_account.icon_deposit_net9 {background-position: -3rem -4.5rem;} /* 银行转帐 */
 .icon_account.icon_deposit_net10 { background-position: 3rem 1.5rem; } /* 网银支付(扫码) */
+.icon_account.icon_deposit_net11 { background-position: -6rem -6rem; } /* 钱包秒充 */
 .icon_account.icon_notice_1 { background-position: 0rem -6rem; } /* 个人消息(未读) */
 .icon_account.icon_notice_2 { background-position: -1.5rem -6rem; } /* 个人消息(已读) */
 .icon_account.icon_ac01 { background-position: 0rem -7.5rem; }
@@ -898,7 +899,7 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .bet_data > a > .item > div { display: inline-block; vertical-align: middle; line-height: .6rem; }
 .bet_data > a > .item > .status { float: right; max-width: 1.8rem; width: auto; }
 .bet_data > a > .item > .badge { background: url('/static/frist/images/logo_bg.png') no-repeat; background-size: 100% 100%; width: 1.5rem; height: 1.5rem; margin-right:0.15rem; }
-.bet_data > a > .item > .badge > img { width: 1.1rem; height:0.85rem; margin: 0.3rem 0.2rem;}
+.bet_data > a > .item > .badge > img { width: 1.1rem; height:1.1rem; margin: 0.2rem;}
 .bet_data strong { color: #ffbd00; font-size: .35rem; font-weight: 300; max-width: 3rem; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: top;}
 .bet_data .prd_num { color: #d59559; margin-right: 0.2rem;}
 .bet_data .status { min-width: 15%; width: 1.8rem; text-align: center; color: #fff; }
@@ -1070,7 +1071,7 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 -----------------------------------------*/
 /* banner */
 .news { margin-top: 1.36rem; overflow-x: hidden; position: relative;min-height: 3.8rem; }
-.news img { width: 100%; display: block; }
+.news img { width: 10rem; display: block; height: 3.8rem; }
 .news .focus { position: relative; }
 .news .hd { display: none;  }
 
@@ -1171,6 +1172,9 @@ ul.sixball > li:last-child:before { background-image: url("/static/frist/images/
 .all_lottery > li > p { line-height: .7rem; }
 
 .last-open-num > ul { height: 1.3rem; width: 100%; display: block; }
+
+/* 新手教程 */
+.tutorial_area .tab-box{ text-align: left; }
 
 /* -----------------------------------------
 // 登入页
@@ -1310,8 +1314,8 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 /*@media (max-width: 480px) { .pay_content .step03 .btn_bank a { line-height: 3em; height: 3em; padding: .5em 0; } }*/
 
 
-
-.pay_way > ul > li {  border-top: 1px solid #90573e;   position: relative; }
+.pay_way > ul {border-bottom: 1px solid #90573e;}
+.pay_way > ul > li {  border-top: 1px solid #90573e; border-bottom: 1px solid #90573e; margin-bottom: -1px;  position: relative; }
 
 /*.pay_way > ul > li:nth-child(3) { border-bottom: 1px solid rgba(255, 255, 255, 0.03); }*/
 
@@ -1322,6 +1326,36 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 .pay_way > ul > li > a > div.icon { display: inline-block; margin: 0 1em 0 2.2em; float: left; }
 
 .pay_way > ul > li > a span { vertical-align: -webkit-baseline-middle; vertical-align: -moz-middle-with-baseline; line-height: 1.5rem; float: left; font-size: 0.35rem; }
+
+/* 钱包秒充 */
+.wallet_content{ width: 7rem; margin: 0px auto;}
+
+.wallet_account{ line-height: 0.6rem; color: #ffc388;}
+.wallet_account p{ line-height: 0.8rem;}
+.wallet_account p.wallet-name{ display: inline-block; min-width: 50%; margin-right: -4px;}
+.wallet_account p span:first-child{}
+.wallet_account .wallet_account-copy{ border: 1px solid #895b43; border-radius: 0.1rem; float: right;  padding: 0 0.2rem; line-height: 0.6rem; margin-top: 0.1rem;}
+.wallet_account input {background-color: transparent; border: 0; color: #ffc388;}
+.wallet_paymoney{ font-size: 0.44rem; margin: 0.5rem 0.3rem; }
+
+.wallet_method_content { background-color: rgba(83, 29, 0, 0.58); padding: 0.3rem; text-align: left; border-radius: 0 0 0.1rem 0.1rem;}
+.wallet_method_select { background-color: #422623; white-space: nowrap; overflow-y: scroll; text-align: left; border-radius: 0.1rem 0.1rem 0 0; overflow: hidden;}
+.wallet_method_select a{ display: inline-block; text-align: center; position: relative; min-width: 1rem; padding: 0 0.5rem; line-height: 1rem; color: #ffc388;}
+.wallet_method_select a.active:after{ content: ''; display: block; background-color: #ffc388; height: 3px; width: 100%; position: absolute; bottom: 0; left: 0; }
+.wallet_method_qrcode{ text-align: center; padding: 0.3rem;}
+.wallet_method_qrcode img{ width: 4.5rem;}
+
+.wallet_msg{ margin: 0.3rem auto; color: #ffc388; text-align: left; }
+.wallet_msg p{ line-height: 0.6rem; }
+.wallet_msg a{ color: #7a4220; white-space: nowrap; }
+
+.wallet_success { color: #ffc388;}
+.success_msg{ background: url(/static/frist/images/icon_check.svg) no-repeat 0 0.05rem; background-size: 0.8rem; width: 3.5rem; margin: 0.5rem auto; padding-left: 1.1rem; text-align: left; }
+.success_info{  width: 7rem; margin: 0px auto; background-color: rgba(83, 29, 0, 0.58); text-align: left;  box-sizing: border-box; padding: 0.3rem 0.5rem; border-radius: 0.1rem; margin-bottom: 0.5rem; }
+.success_info h5{ text-align: center; font-size: 0.4rem; margin: 0.3rem 0;}
+.success_info ul li{ line-height: 0.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+/*.success_info ul li span:first-child{ display: inline-block; min-width: 2.2rem;}*/
+
 
 /* -----------------------------------------
 // 提现
