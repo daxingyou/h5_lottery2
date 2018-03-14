@@ -48,7 +48,7 @@
                                                 </a>
                                             </li>
                                             <!--钱包秒充-->
-                                            <li>
+                                            <!--<li>
                                                 <a class="item" href="javascript:;" data-type="10" data-val="0" @click=" choosePayMoth2()">
                                                     <span class="badge">
                                                         <span class="icon_account icon_deposit_net11"></span>
@@ -58,7 +58,7 @@
                                                     </span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
-                                            </li>
+                                            </li>-->
                                             <!--end 钱包秒充-->
                                         </ul>
                                     </div>
