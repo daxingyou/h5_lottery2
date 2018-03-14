@@ -48,7 +48,7 @@
                                                 </a>
                                             </li>
                                             <!--钱包秒充-->
-                                            <li>
+                                            <!--<li>
                                                 <a class="item" href="javascript:;" data-type="10" data-val="0" @click=" choosePayMoth2()">
                                                     <span class="badge">
                                                         <span class="icon_account icon_deposit_net11"></span>
@@ -58,7 +58,7 @@
                                                     </span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
-                                            </li>
+                                            </li>-->
                                             <!--end 钱包秒充-->
                                         </ul>
                                     </div>
@@ -638,6 +638,13 @@
             choosePayMoth: function (e, payWay) {
                 var _self = this ;
                 // 转账
+                var $src = $(e.currentTarget);
+                if($src.data('type') == '11') {
+                    _self.choosePayMoth2();
+                    console.log(1);
+                    return false;
+                }
+
 //                $('.payWayTranster').on('click','.item',function (e) {
                 var notQuick = payWay.rsNameId
                 // console.log( (notQuick != 0) ,'notquick')
