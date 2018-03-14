@@ -1335,6 +1335,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 .wallet_account p.wallet-name{ display: inline-block; min-width: 50%; margin-right: -4px;}
 .wallet_account p span:first-child{}
 .wallet_account .wallet_account-copy{ border: 1px solid #895b43; border-radius: 0.1rem; float: right;  padding: 0 0.2rem; line-height: 0.6rem; margin-top: 0.1rem;}
+.wallet_account input {background-color: transparent; border: 0; color: #ffc388;}
 .wallet_paymoney{ font-size: 0.44rem; margin: 0.5rem 0.3rem; }
 
 .wallet_method_content { background-color: rgba(83, 29, 0, 0.58); padding: 0.3rem; text-align: left; border-radius: 0 0 0.1rem 0.1rem;}

@@ -48,7 +48,7 @@
                                                 </a>
                                             </li>
                                             <!--钱包秒充-->
-                                            <!--<li>
+                                            <li>
                                                 <a class="item" href="javascript:;" data-type="10" data-val="0" @click=" choosePayMoth2()">
                                                     <span class="badge">
                                                         <span class="icon_account icon_deposit_net11"></span>
@@ -58,7 +58,7 @@
                                                     </span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
-                                            </li>-->
+                                            </li>
                                             <!--end 钱包秒充-->
                                         </ul>
                                     </div>
@@ -299,7 +299,7 @@
                                             <fieldset>
                                                 <div class="form_g text money">
                                                     <legend>充值金额</legend>
-                                                    <input type="tel" placeholder=" " v-model="paymount" readonly>
+                                                    <input type="tel" placeholder=" " v-model="paymount"/>
                                                     <!--  <i class="close"></i>-->
                                                 </div>
                                             </fieldset>
@@ -307,27 +307,47 @@
 
                                         <div class="wallet_content">
                                             <div class="wallet_method_select">
-                                                <a href="javascript:;" class="active">微信</a>
-                                                <a href="javascript:;">支付宝</a>
+                                                <a @click="clickOnWeiXinTab" v-bind:class="{active:weiXinTab}" href="javascript:;" v-if="weiXinWalletPayAccount != null">微信</a>
+                                                <a @click="clickOnZhiFuBaoTab" v-bind:class="{active:zhiFuBaoTab}" href="javascript:;" v-if="zhiFuBaoWalletPayAccount != null">支付宝</a>
                                             </div>
-                                            <div class="wallet_method_content">
+                                            <div class="wallet_method_content" v-if="weiXinAct">
                                                 <div class="wallet_account">
                                                     <p>
                                                         <span>账号：</span>
-                                                        <span>123456@qq.com</span>
-                                                        <span class="wallet_account-copy">复制</span>
+                                                        <span>{{weiXinWalletPayAccount.accountNo}}</span>
+                                                        <span :data-clipboard-text="weiXinWalletPayAccount.accountNo" class="wallet_account-copy" @click="copyName($event)">复制</span>
                                                     </p>
                                                     <p class="wallet-name">
                                                         <span>昵称：</span>
-                                                        <span>kris</span>
+                                                        <span>{{weiXinWalletPayAccount.accountName}}</span>
                                                     </p>
                                                     <p class="wallet-name">
                                                         <span>真实姓名：</span>
-                                                        <span>kris</span>
+                                                        <span>{{weiXinWalletPayAccount.realName}}</span>
                                                     </p>
                                                 </div>
                                                 <div class="wallet_method_qrcode">
-                                                    <img src="/static/frist/images/qrcode.jpg">
+                                                    <img :src="weiXinQrImg">
+                                                </div>
+                                            </div>
+                                            <div class="wallet_method_content" v-if="zhiFuBaoAct">
+                                                <div class="wallet_account">
+                                                    <p>
+                                                        <span>账号：</span>
+                                                        <span>{{zhiFuBaoWalletPayAccount.accountNo}}</span>
+                                                        <span :data-clipboard-text="zhiFuBaoWalletPayAccount.accountNo" class="wallet_account-copy" @click="copyName($event)">复制</span>
+                                                    </p>
+                                                    <p class="wallet-name">
+                                                        <span>昵称：</span>
+                                                        <span>{{zhiFuBaoWalletPayAccount.accountName}}</span>
+                                                    </p>
+                                                    <p class="wallet-name">
+                                                        <span>真实姓名：</span>
+                                                        <span>{{zhiFuBaoWalletPayAccount.realName}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="wallet_method_qrcode">
+                                                    <img :src="zhiFuBaoQrImg">
                                                 </div>
                                             </div>
                                         </div>
@@ -336,30 +356,31 @@
                                             <a @click="walletModalOpen()" href="javascript:;">充值步骤 &#62;</a></p>
                                         </div>
                                         <div class="btn btn_blue">
-                                            <a class="new_btn bank-underline" href="javascript:;" @click="walletNextAction()"><span class="big">下一步</span></a>
+                                            <a class="new_btn bank-underline" href="javascript:;" @click="clickOnNextStep()"><span class="big">下一步</span></a>
                                         </div>
                                     </div>
                                     <!-- 帐号 -->
                                     <div class="wallet_account" style="display:none;">
-                                        <h5 class="wallet_paymoney">充值金额：￥300.00元</h5>
+                                        <h5 class="wallet_paymoney">充值金额：￥{{fortMoney(roundAmt(paymount*100), 2)}}元</h5>
                                         <fieldset>
                                             <div class="form_g text">
                                                 <legend for="">充值日期</legend>
-                                                <input type="text" class="date"  id="walletPaydate" readonly>
+                                                <input type="text" class="date" id="walletPaydate" readonly/>
                                                 <i class="input_date"></i>
                                             </div>
                                         </fieldset>
+
                                         <fieldset>
                                             <div class="form_g text">
-                                                <legend for="">微信账号</legend>
-                                                <input type="text" placeholder="请输入您充值使用的应用账号">
+                                                <legend for="">{{accountTypeName}}账号</legend>
+                                                <input type="text" v-model="myAccountName" placeholder="请输入您充值使用的应用账号"/>
                                             </div>
                                         </fieldset>
                                         <div class="wallet_msg">
                                             <p>特别说明：请核对充值金额，并准确填写充值日期、充值使用账号。</p>
                                         </div>
                                         <div class="btn btn_blue">
-                                            <a class="new_btn bank-underline" href="javascript:;" @click="submitWalletAction()"><span class="big">完成</span></a>
+                                            <a class="new_btn bank-underline" href="javascript:;" @click="submitPay()"><span class="big">完成</span></a>
                                         </div>
                                     </div>
                                     <!-- 提交存款成功后 -->
@@ -372,23 +393,23 @@
                                             <ul>
                                                 <li>
                                                     <span>订单编号：</span>
-                                                    <span>201803021928332</span>
+                                                    <span>{{orderNumber}}</span>
                                                 </li>
                                                 <li>
-                                                    <span>支付宝账号：</span>
-                                                    <span>1231231@qq.com</span>
+                                                    <span>{{accountTypeName}}账号：</span>
+                                                    <span>{{myAccountName}}</span>
                                                 </li>
                                                 <li>
                                                     <span>充值日期：</span>
-                                                    <span>2018-02-03 15:30</span>
+                                                    <span>{{walletPaydate}}</span>
                                                 </li>
                                                 <li>
                                                     <span>存款方式：</span>
-                                                    <span>支付宝钱包</span>
+                                                    <span>{{accountTypeName}}钱包</span>
                                                 </li>
                                                 <li>
                                                     <span>充值金额：</span>
-                                                    <span>￥300.00元</span>
+                                                    <span>￥{{fortMoney(roundAmt(paymount*100), 2)}}元</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -516,14 +537,31 @@
                 depositPeoplehintWord: '请正确输入',
                 depositPeopleHint: false,
                 bankSubmitAllow: true,
-
+                walletApi: null,
+                weiXinWalletPayAccount: null,
+                zhiFuBaoWalletPayAccount: null,
+                weiXinAct: false,
+                zhiFuBaoAct: false,
+                weiXinTab: false,
+                zhiFuBaoTab: false,
+                miaoSuChargeAmount: null,
+                weiXinQrImg: null,
+                zhiFuBaoQrImg: null,
+                accountTypeName: null,
+                walletPaydateLong: null,
+                walletPaydate: null,
+                myAccountName: null,
+                orderNumber: null,
+                accountType: null,
+                qianBaoAccountName: null
             }
         },
         created:function () {
             this.getPayWayList()
         },
         mounted:function() {
-
+            this.getWalletPayAccount();
+            console.log(this.action.picurl);
             // this.getLimit()
 
             var _self = this ;
@@ -544,14 +582,18 @@
                     max: maxDate,
                     defaultValue:_self.setAmerTime('#paydate'), //时间默认值
                     dateWheels: '|yy M d|',
-                    startYear: 2017, //开始年份
-                    endYear:2020 //结束年份
+                    startYear: 2018, //开始年份
+                    endYear:2025 //结束年份
                 });
-                $("#paydate").mobiscroll().datetime({ });
+                //$("#paydate").mobiscroll().datetime({ });
                 $("#walletPaydate").mobiscroll().datetime({ });
             },500)
             _self.getCopyright('3','AT01')
-
+            $(document).on('change', '#walletPaydate', function() {
+                _self.walletPaydate = $('#walletPaydate').val();
+                _self.walletPaydateLong = new Date(_self.walletPaydate).getTime();
+                console.log(_self.walletPaydateLong);
+            });
             // this.depositRang();
         },
         methods: {
@@ -732,6 +774,53 @@
                     }
                 });
             },
+            submitPay:function () {
+                var _self = this ;
+                let pType = null;
+                let pMethod = null;
+
+                if(_self.accountType == 1) {
+                    pType = 1;
+                    pMethod = 8;
+                } else {
+                    pType = 2;
+                    pMethod = 9;
+                }
+                var senddata ={
+                    chargeAmount: _self.paymount*100 , //  入款金额
+                    source: '2' , //   来源类型   1,PC, 2,H5
+                    cardNo: _self.myAccountName ,  // 银行代码
+                    payMethod: pMethod ,  // 支付方式/银行代码(对应payment_type_id和bank_code)
+                    cardOwnerName: _self.qianBaoAccountName ,  // 支付名称/银行名称(对应payment_type_name/bank_name)
+                    depositorName : _self.myAccountName ,  // 真实姓名
+                    flowType : pType ,  // 入款方式 3-银行第三方支付，4-快捷支付
+                }
+                _self.submitpayflag = true ;
+
+
+                $.ajax({
+                    type: 'post',
+                    headers: {
+                        "Authorization": "bearer  " + this.getAccessToken ,
+                    },
+                    url: _self.action.forseti + 'api/pay/offlineOrder',
+                    data: senddata ,
+                    success: function(res){
+                        if(!res.data){
+                            _self.$refs.autoCloseDialog.open(res.msg) ;
+                        }
+                        if(res.err == 'SUCCESS'){
+                            _self.orderNumber = res.data;
+                            _self.submitWalletAction();
+                        }
+                    },
+                    error: function (res) {
+                        _self.submitpayunflag = false ;
+                        _self.$refs.autoCloseDialog.open('存款失败') ;
+                    }
+                });
+
+            },
             // 网银支付确定提交 type 1 线上入款 ，3 二维码
             submitOnlinePay:function (code,type) {
                 var _self = this ;
@@ -880,6 +969,83 @@
 
                     }
                 });
+            },
+            //获取秒速钱包充值帐户信息
+            getWalletPayAccount: function() {
+                var _self = this;
+                $.ajax({
+                    type: 'get',
+                    headers: {
+                        'Authorization': "bearer  " + _self.getAccessToken,
+                    },
+                    url: _self.action.forseti + 'api/pay/getWalletPayAccount',
+                    data: {} ,
+                    success: function(res){
+                        if(res.err == 'SUCCESS'){
+                            _self.walletApi = res.data;
+                            let accounts = _self.walletApi;
+                            let weiXinExist = false;
+                            _.forEach(accounts, function(item, id) {
+                                if(item.accountType === 1) {
+                                    _self.weiXinWalletPayAccount = item;
+                                    _self.weiXinTab = true;
+                                    _self.weiXinAct = true;
+                                    weiXinExist = true;
+                                    _self.accountTypeName = '微信';
+                                    _self.accountType = 1;
+                                    _self.weiXinQrImg = _self.action.picurl + item.qrCode + '/0';
+                                    _self.qianBaoAccountName = item.accountName;
+
+                                }
+                                if(item.accountType === 2) {
+                                    _self.zhiFuBaoWalletPayAccount = item;
+                                    _self.zhiFuBaoQrImg = _self.action.picurl + item.qrCode + '/0';
+                                    if(weiXinExist != true) {
+                                        _self.zhiFuBaoTab = true;
+                                        _self.zhiFuBaoAct = false;
+                                        _self.accountTypeName = '支付宝';
+                                        _self.accountType = 2;
+                                        _self.qianBaoAccountName = item.accountName;
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    error: function (res) {
+
+                    }
+                });
+            },
+            clickOnWeiXinTab: function() {
+                this.zhiFuBaoAct = false;
+                this.zhiFuBaoTab = false;
+                this.weiXinTab = true;
+                this.weiXinAct = true;
+                this.accountTypeName = '微信';
+                this.qianBaoAccountName = this.weiXinWalletPayAccount.accountName;
+            },
+            clickOnZhiFuBaoTab: function() {
+                this.zhiFuBaoAct = true;
+                this.zhiFuBaoTab = true;
+                this.weiXinTab = false;
+                this.weiXinAct = false;
+                this.accountTypeName = '支付宝';
+                this.qianBaoAccountName = this.zhiFuBaoWalletPayAccount.accountName;
+            },
+            clickOnNextStep: function() {
+                var _self = this;
+                
+                if( (_self.paymount =='' || !_self.isPositiveNum(_self.paymount))){
+                    _self.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
+                    return false ;
+                } else {
+                    $('.wallet_deposit').hide() ;
+                    $('.wallet_account').show() ;
+                    $('html,body').scrollTop(0);
+                }
+            },
+            dateSelected: function() {
+                console.log(this.walletPaydate);
             },
             depositPeopleInput: function (word) {
                 if (word.length < 2 || word.length > 13) {
@@ -1045,10 +1211,6 @@
                     clipboard.destroy();
                 });
             },
-
-
-
-
 
 
             //在线支付

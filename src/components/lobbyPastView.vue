@@ -193,7 +193,7 @@ export default {
             success: (data) => {
               /*  for(var i=0;i<data.data.length;i++){*/
                     $.each(data.data,function (i,v) {
-                       // console.log(v) ;
+                        //console.log(v) ;
                         if(!v.winNumber || v.winNumber==''){
                             switch (v.lotteryId.toString()){
                                 case '8': // 北京pk10
@@ -212,7 +212,10 @@ export default {
                                     break ;
                             }
                         }
-                       // console.log(v.endTime) ;
+                        if(v.lotteryId == 114 || v.lotteryId == 112) {
+                          console.log(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime());
+                        }
+
                         if(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() > _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime() ){ // 如果当前期结束时间大于系统时间
                            // console.log('结束时间大') ;
                             $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000) ;
