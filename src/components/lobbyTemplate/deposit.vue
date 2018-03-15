@@ -551,7 +551,8 @@
                 zhiFuBaoPop: null,
                 weiXinPop: null,
                 chargeTitle: '',
-                chargeStep: ''
+                chargeStep: '',
+                qianBaoAccountNo: null
             }
         },
         created:function () {
@@ -814,7 +815,7 @@
                 var senddata ={
                     chargeAmount: _self.paymount*100 , //  入款金额
                     source: '2' , //   来源类型   1,PC, 2,H5
-                    cardNo: _self.qianBaoAccountName ,  // 银行代码
+                    cardNo: _self.qianBaoAccountNo ,  // 银行代码
                     payMethod: pMethod ,  // 支付方式/银行代码(对应payment_type_id和bank_code)
                     cardOwnerName: _self.qianBaoAccountName ,  // 支付名称/银行名称(对应payment_type_name/bank_name)
                     depositorName : _self.myAccountName ,  // 真实姓名
@@ -1020,6 +1021,7 @@
                                     _self.accountType = 1;
                                     _self.weiXinQrImg = _self.action.picurl + item.qrCode + '/0';
                                     _self.qianBaoAccountName = item.accountName;
+                                    _self.qianBaoAccountNo = item.accountNo;
                                     _self.getQuickPayContent(3, 'AT03');
 
                                 }
@@ -1032,6 +1034,7 @@
                                         _self.accountTypeName = '支付宝';
                                         _self.accountType = 2;
                                         _self.qianBaoAccountName = item.accountName;
+                                        _self.qianBaoAccountNo = item.accountNo;
                                         _self.zhiFuBaoQrImg = _self.action.picurl + item.qrCode + '/0';
                                         _self.getQuickPayContent(3, 'AT02');
                                     }
@@ -1078,6 +1081,7 @@
                 this.weiXinAct = true;
                 this.accountTypeName = '微信';
                 this.qianBaoAccountName = this.weiXinWalletPayAccount.accountName;
+                this.qianBaoAccountName = this.weiXinWalletPayAccount.accountNo;
                 this.getQuickPayContent(3, 'AT03');
 
             },
@@ -1087,7 +1091,8 @@
                 this.weiXinTab = false;
                 this.weiXinAct = false;
                 this.accountTypeName = '支付宝';
-                this.qianBaoAccountName = this.zhiFuBaoWalletPayAccount.accountName;
+                this.qianBaoAccountNo = this.zhiFuBaoWalletPayAccount.accountName;
+                this.qianBaoAccountNo = this.zhiFuBaoWalletPayAccount.accountNo;
                 this.getQuickPayContent(3, 'AT02');
             },
             clickOnNextStep: function() {
