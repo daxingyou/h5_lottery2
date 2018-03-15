@@ -788,6 +788,16 @@
                 let pType = null;
                 let pMethod = null;
 
+                if(_self.walletPaydateLong == null) {
+                    _self.$refs.autoCloseDialog.open('请输入充值日期');
+                    return false;
+                }
+
+                if(_self.myAccountName == null) {
+                    _self.$refs.autoCloseDialog.open('请输入您充值使用的应用账号');
+                    return false;
+                }
+
                 if(_self.accountType == 1) {
                     pType = 1;
                     pMethod = 8;
@@ -798,7 +808,7 @@
                 var senddata ={
                     chargeAmount: _self.paymount*100 , //  入款金额
                     source: '2' , //   来源类型   1,PC, 2,H5
-                    cardNo: _self.myAccountName ,  // 银行代码
+                    cardNo: _self.qianBaoAccountName ,  // 银行代码
                     payMethod: pMethod ,  // 支付方式/银行代码(对应payment_type_id和bank_code)
                     cardOwnerName: _self.qianBaoAccountName ,  // 支付名称/银行名称(对应payment_type_name/bank_name)
                     depositorName : _self.myAccountName ,  // 真实姓名
@@ -1015,6 +1025,7 @@
                                         _self.accountTypeName = '支付宝';
                                         _self.accountType = 2;
                                         _self.qianBaoAccountName = item.accountName;
+                                        _self.zhiFuBaoQrImg = _self.action.picurl + item.qrCode + '/0';
                                     }
                                 }
                             });

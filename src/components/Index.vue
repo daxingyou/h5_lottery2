@@ -357,7 +357,23 @@ export default {
                   }
               })
       },
+      getCustom:function () {
+          let _self=this;
+          $.ajax({
+              type:'get',
+              url: _self.action.forseti + 'apid/config/custConfig',
+              data:{},
+              success:(res)=>{
+                  if(res.data){
+                      _self.custUrl=res.data.h5CustUrl;
+                      console.log(_self.custUrl, 'res.data.h5CustUrl');
+                  }
+              },
+              err:(res)=>{
 
+              }
+          })
+      },
       getBulletinsContent :function () {
           let  self=this ;
           let bulletinsArr=[];
