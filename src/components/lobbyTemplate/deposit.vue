@@ -1058,7 +1058,6 @@
                     url: _self.action.forseti + 'apid/cms/copyright',
                     data: senddata ,
                     success: function(res){
-                        console.log(res)
                         if (res.data[0]) {
                             if(res.err=="SUCCESS"){
                                 _self.chargeStep=res.data[0].content;

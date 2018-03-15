@@ -212,27 +212,9 @@ export default {
 
                         if(v.endTime > _self.sys_time) { // 如果当前期结束时间大于系统时间
                            // console.log('结束时间大') ;
-                           if(v.lotteryId == 114) {
-                            // console.log(_self.format(_self.newDateFormater(v.endTime)).getTime(), '结束时间大');
-                            // console.log(v.endTime, '结束时间大');
-                            // console.log(_self.format(_self.newDateFormater(_self.sys_time)).getTime());
-                            // console.log(_self.sys_time);
-                             console.log(Math.floor((v.endTime - _self.sys_time)/1000));
-                            // //console.log((_self.format(_self.newDateFormater(v.endTime)).getTime() - _self.format(_self.newDateFormater(_self.sys_time)).getTime()) / 1000);
-                            // console.log('===============================');
-                            }
-                            $('.timerset').eq(i).attr('data-time',Math.floor((v.endTime - _self.sys_time)/1000)) ;
+                            $('.timerset').eq(i).attr('data-time',Math.floor((v.endTime - _self.sys_time)/1000));
                         } else {
                            // console.log('结束时间小') ;
-                           if(v.lotteryId == 114) {
-                            // console.log(_self.format(_self.newDateFormater(v.nextEndTime)).getTime(), '结束时间小');
-                            // console.log(v.nextEndTime);
-                            // console.log(_self.format(_self.newDateFormater(_self.sys_time)).getTime());
-                            // console.log(_self.sys_time);
-                             console.log(Math.floor((v.nextEndTime - _self.sys_time)/1000));
-                            // console.log((_self.format(_self.newDateFormater(v.nextEndTime)).getTime() - _self.format(_self.newDateFormater(_self.sys_time)).getTime()) / 1000);
-                            // console.log('===============================');
-                            }
                             $('.timerset').eq(i).attr('data-time', Math.floor((v.nextEndTime - _self.sys_time)/1000));
                         }
 
