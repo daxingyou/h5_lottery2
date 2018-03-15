@@ -18,13 +18,10 @@
                                     <div class="prd_num"><i class="prd"></i><span>{{list.lotteryName}}</span></div>
                                     <div class="prd_num02">第{{(list.lotteryId == '8' || list.lotteryId == '24')?list.issueAlias :list.pcode}}期</div>
                                    <!-- <div class="time timerset" :data-time=" (format(formatTimeUnlix(list.endTime)).getTime() - format(formatTimeUnlix(sys_time)).getTime()) / 1000 ">-->
-                                    <div class="time timerset endtime" :data-time="0" v-if="(format(formatTimeUnlix(list.endTime,0)).getTime() > format(formatTimeUnlix(sys_time,0)).getTime())">
-                                       <!-- {{ (format(formatTimeUnlix(list.endTime)).getTime() - format(formatTimeUnlix(sys_time)).getTime()) / 1000 }}-->
-                                        <!--{{setTimerAction(list.endTime,sys_time) }}-->
-                                        {{ formatTime((format(formatTimeUnlix(list.endTime,0)).getTime() - format(formatTimeUnlix(sys_time),0).getTime())/1000 ,0)}}
+                                    <div class="time timerset endtime" :data-time="0" v-if="list.endTime > sys_time">
                                     </div>
                                     <div class="time timerset nextendtime"  v-else>
-                                        {{ formatTime((format(formatTimeUnlix(list.nextEndTime,0)).getTime() - format(formatTimeUnlix(sys_time),0).getTime())/1000 ,0)}}
+                                        
                                     </div>
                                 </div>
                                 <!--  北京pk10  秒速赛车 江苏快3 -->
@@ -213,22 +210,30 @@ export default {
                             }
                         }
 
-                        if(_self.format(_self.newDateFormater(v.endTime)).getTime() > _self.format(_self.newDateFormater(_self.sys_time)).getTime() ){ // 如果当前期结束时间大于系统时间
+                        if(v.endTime > _self.sys_time) { // 如果当前期结束时间大于系统时间
                            // console.log('结束时间大') ;
                            if(v.lotteryId == 114) {
-                            console.log(_self.format(_self.newDateFormater(v.endTime)).getTime(), '结束时间大');
-                            console.log(v.endTime, '结束时间大');
-                            console.log('===============================');
+                            // console.log(_self.format(_self.newDateFormater(v.endTime)).getTime(), '结束时间大');
+                            // console.log(v.endTime, '结束时间大');
+                            // console.log(_self.format(_self.newDateFormater(_self.sys_time)).getTime());
+                            // console.log(_self.sys_time);
+                             console.log(Math.floor((v.endTime - _self.sys_time)/1000));
+                            // //console.log((_self.format(_self.newDateFormater(v.endTime)).getTime() - _self.format(_self.newDateFormater(_self.sys_time)).getTime()) / 1000);
+                            // console.log('===============================');
                             }
-                            $('.timerset').eq(i).attr('data-time',(_self.format(_self.newDateFormater(v.endTime)).getTime() - _self.format(_self.newDateFormater(_self.sys_time)).getTime()) / 1000) ;
-                        }else{
+                            $('.timerset').eq(i).attr('data-time',Math.floor((v.endTime - _self.sys_time)/1000)) ;
+                        } else {
                            // console.log('结束时间小') ;
                            if(v.lotteryId == 114) {
-                            console.log(_self.format(_self.newDateFormater(v.nextEndTime)).getTime(), '结束时间小');
-                            console.log(v.nextEndTime);
-                            console.log('===============================');
+                            // console.log(_self.format(_self.newDateFormater(v.nextEndTime)).getTime(), '结束时间小');
+                            // console.log(v.nextEndTime);
+                            // console.log(_self.format(_self.newDateFormater(_self.sys_time)).getTime());
+                            // console.log(_self.sys_time);
+                             console.log(Math.floor((v.nextEndTime - _self.sys_time)/1000));
+                            // console.log((_self.format(_self.newDateFormater(v.nextEndTime)).getTime() - _self.format(_self.newDateFormater(_self.sys_time)).getTime()) / 1000);
+                            // console.log('===============================');
                             }
-                            $('.timerset').eq(i).attr('data-time',(_self.format(_self.newDateFormater(v.nextEndTime)).getTime() - _self.format(_self.newDateFormater(_self.sys_time)).getTime()) / 1000);
+                            $('.timerset').eq(i).attr('data-time', Math.floor((v.nextEndTime - _self.sys_time)/1000));
                         }
 
                     }) ;
@@ -250,7 +255,7 @@ export default {
               return false ;
           }
           _self.hasaction = true ;
-          _self.getSystemTime('0').then(sys_time=>{
+          _self.newGetSystemTime().then(sys_time=>{
               _self.sys_time = sys_time ;
               _self.doubleCount('') ;
               setTimeout(function () {
@@ -264,27 +269,46 @@ export default {
  // 定时器，倒计时处理
       gameTimer:function () {
               //倒计时定时器
+              //countdown(90);
               var that = this ;
               this.gametimerInt = window.setInterval(function() {
                   var $obj_nav_span = $(".timerset");
                   for (var i = 0; i < $obj_nav_span.length; i++) {
                       var _times = "";
                       if ($obj_nav_span.eq(i).html() == "") {
-                          $obj_nav_span.eq(i).html($obj_nav_span.eq(i).attr("data-time"));
+                          $obj_nav_span.eq(i).html();
                       }
-                      if (parseInt(that.formatTime($obj_nav_span.eq(i).html(), 1)) > 0) {
-                          _times = parseInt(that.formatTime($obj_nav_span.eq(i).html(), 1)) - 1;
+                      if (parseInt($obj_nav_span.eq(i).attr("data-time")) > 0) {
+                          _times = parseInt($obj_nav_span.eq(i).attr("data-time")) - 1;
+                          $obj_nav_span.eq(i).attr("data-time", _times);
                       } else { // 当前倒计时结束
-                          that.lobbytimerBegin() ;
+                          that.lobbytimerBegin();
                          _times = $obj_nav_span.eq(i).attr("data-time");
-
                       }
-                      $obj_nav_span.eq(i).html(that.formatTime(_times, 0));
+                      $obj_nav_span.eq(i).html(that.startTimer(_times));
                   }
               }, 1000);
 
       },
 
+      startTimer:function(seconds) {
+        let days        = Math.floor(seconds/24/60/60);
+        let hoursLeft   = Math.floor((seconds) - (days*86400));
+        let hours       = Math.floor(hoursLeft/3600);
+        let minutesLeft = Math.floor((hoursLeft) - (hours*3600));
+        let minutes     = Math.floor(minutesLeft/60);
+        let remainingSeconds = seconds % 60;
+        if(hours < 10){
+            hours = '0' + hours;
+        }
+        if(minutes < 10){
+            minutes = '0' + minutes;
+        }
+        if (remainingSeconds < 10) {
+            remainingSeconds = '0' + remainingSeconds;
+        }
+        return hours + ':' + minutes + ':' + remainingSeconds;
+      }
   }
 
 }
