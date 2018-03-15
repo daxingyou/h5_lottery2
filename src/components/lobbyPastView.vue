@@ -213,12 +213,22 @@ export default {
                             }
                         }
 
-                        if(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() > _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime() ){ // 如果当前期结束时间大于系统时间
+                        if(_self.format(_self.newDateFormater(v.endTime)).getTime() > _self.format(_self.newDateFormater(_self.sys_time)).getTime() ){ // 如果当前期结束时间大于系统时间
                            // console.log('结束时间大') ;
-                            $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000) ;
+                           if(v.lotteryId == 114) {
+                            console.log(_self.format(_self.newDateFormater(v.endTime)).getTime(), '结束时间大');
+                            console.log(v.endTime, '结束时间大');
+                            console.log('===============================');
+                            }
+                            $('.timerset').eq(i).attr('data-time',(_self.format(_self.newDateFormater(v.endTime)).getTime() - _self.format(_self.newDateFormater(_self.sys_time)).getTime()) / 1000) ;
                         }else{
                            // console.log('结束时间小') ;
-                            $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.nextEndTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000);
+                           if(v.lotteryId == 114) {
+                            console.log(_self.format(_self.newDateFormater(v.nextEndTime)).getTime(), '结束时间小');
+                            console.log(v.nextEndTime);
+                            console.log('===============================');
+                            }
+                            $('.timerset').eq(i).attr('data-time',(_self.format(_self.newDateFormater(v.nextEndTime)).getTime() - _self.format(_self.newDateFormater(_self.sys_time)).getTime()) / 1000);
                         }
 
                     }) ;

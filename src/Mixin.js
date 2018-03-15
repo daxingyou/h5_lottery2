@@ -521,7 +521,17 @@ var MyMixin = {
         fftime:function (n) {
             return Number(n) < 10 ? '' + 0 + Number(n) : Number(n);
         },
-
+        newDateFormater:function (v) {
+            var a = new Date(v);
+            var year = a.getFullYear();
+            var month = a.getMonth() + 1;
+            var date = a.getDate();
+            var hour = a.getHours();
+            var min = a.getMinutes();
+            var sec = a.getSeconds();
+            var time = year + '/' + month + '/' + date + ' ' + hour + ':' + min + ':' + sec;
+            return time;
+        },
         format:function(dateStr) {  //格式化时间
            return new Date(dateStr.replace(/[\-\u4e00-\u9fa5]/g, '/'));
         },
