@@ -380,7 +380,8 @@
                                             <p>特别说明：请核对充值金额，并准确填写充值日期、充值使用账号。</p>
                                         </div>
                                         <div class="btn btn_blue">
-                                            <a class="new_btn bank-underline" href="javascript:;" @click="submitPay()"><span class="big">完成</span></a>
+                                            <a class="new_btn bank-underline" v-if="hideSend" href="javascript:;" @click="submitPay()"><span class="big">完成</span></a>
+                                            <a class="new_btn bank-underline" v-if="hideProgress"><span class="big">数据传输中...</span></a>
                                         </div>
                                     </div>
                                     <!-- 提交存款成功后 -->
@@ -552,7 +553,9 @@
                 weiXinPop: null,
                 chargeTitle: '',
                 chargeStep: '',
-                qianBaoAccountNo: null
+                qianBaoAccountNo: null,
+                hideSend: true,
+                hideProgress: false,
             }
         },
         created:function () {
@@ -822,7 +825,8 @@
                     flowType : 1 ,  // 入款方式 3-银行第三方支付，4-快捷支付
                 }
                 _self.submitpayflag = true ;
-
+                _self.hideSend = false;
+                _self.hideProgress = true;
 
                 $.ajax({
                     type: 'post',
@@ -839,10 +843,14 @@
                             _self.orderNumber = res.data;
                             _self.submitWalletAction();
                         }
+                        _self.hideSend = true;
+                        _self.hideProgress = false;
                     },
                     error: function (res) {
                         _self.submitpayunflag = false ;
                         _self.$refs.autoCloseDialog.open('存款失败') ;
+                        _self.hideSend = true;
+                        _self.hideProgress = false;
                     }
                 });
 
