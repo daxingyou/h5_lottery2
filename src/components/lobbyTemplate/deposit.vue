@@ -320,7 +320,7 @@
                                                     <p class="wallet-name" v-if="weiXinWalletPayAccount.showAccountName">
                                                         <span>昵称：</span>
                                                         <span>{{weiXinWalletPayAccount.accountName}}</span>
-                                                    </p>
+                                                    </p><br/>
                                                     <p class="wallet-name" v-if="weiXinWalletPayAccount.showRealName">
                                                         <span>真实姓名：</span>
                                                         <span>{{weiXinWalletPayAccount.realName}}</span>
@@ -340,7 +340,7 @@
                                                     <p class="wallet-name" v-if="zhiFuBaoWalletPayAccount.showAccountName">
                                                         <span>昵称：</span>
                                                         <span>{{zhiFuBaoWalletPayAccount.accountName}}</span>
-                                                    </p>
+                                                    </p><br/>
                                                     <p class="wallet-name" v-if="zhiFuBaoWalletPayAccount.showRealName">
                                                         <span>真实姓名：</span>
                                                         <span>{{zhiFuBaoWalletPayAccount.realName}}</span>
@@ -578,12 +578,21 @@
                     display: 'bottom',
                     min: minDate,
                     max: maxDate,
-                    defaultValue:_self.setAmerTime('#paydate'), //时间默认值
+                    defaultValue: _self.setAmerTime('#paydate'), //时间默认值
                     dateWheels: '|yy M d|',
                     startYear: 2018, //开始年份
                     endYear:2025 //结束年份
                 });
                 //$("#paydate").mobiscroll().datetime({ });
+                let today = new Date();
+                let dateStr = '';
+                dateStr += today.getFullYear() + '/';
+                dateStr += (today.getMonth() + 1) + '/';
+                dateStr += today.getDate() + ' ';
+                dateStr += today.getHours() + ':';
+                dateStr += today.getMinutes();
+                $("#walletPaydate").val(dateStr);
+                $("#walletPaydate").trigger('change');
                 $("#walletPaydate").mobiscroll().datetime({ });
             },500)
             _self.getCopyright('3','AT01');
