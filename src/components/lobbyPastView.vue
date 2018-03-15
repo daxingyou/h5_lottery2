@@ -212,16 +212,13 @@ export default {
                                     break ;
                             }
                         }
-                        if(v.lotteryId == 114 || v.lotteryId == 112) {
-                          console.log(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime());
-                        }
 
                         if(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() > _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime() ){ // 如果当前期结束时间大于系统时间
                            // console.log('结束时间大') ;
                             $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000) ;
                         }else{
                            // console.log('结束时间小') ;
-                            $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.nextEndTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000) ;
+                            $('.timerset').eq(i).attr('data-time',(_self.format(_self.formatTimeUnlix(v.nextEndTime,0)).getTime() - _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime()) / 1000);
                         }
 
                     }) ;
