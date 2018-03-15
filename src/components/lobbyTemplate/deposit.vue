@@ -788,6 +788,16 @@
                 let pType = null;
                 let pMethod = null;
 
+                if(_self.walletPaydateLong == null) {
+                    _self.$refs.autoCloseDialog.open('请输入充值日期');
+                    return false;
+                }
+
+                if(_self.myAccountName == null) {
+                    _self.$refs.autoCloseDialog.open('请输入您充值使用的应用账号');
+                    return false;
+                }
+
                 if(_self.accountType == 1) {
                     pType = 1;
                     pMethod = 8;
