@@ -1086,6 +1086,7 @@
                 this.zhiFuBaoTab = false;
                 this.weiXinTab = true;
                 this.weiXinAct = true;
+		this.accountType = 1;
                 this.accountTypeName = '微信';
                 this.qianBaoAccountName = this.weiXinWalletPayAccount.accountName;
                 this.qianBaoAccountNo = this.weiXinWalletPayAccount.accountNo;
@@ -1097,6 +1098,7 @@
                 this.zhiFuBaoTab = true;
                 this.weiXinTab = false;
                 this.weiXinAct = false;
+		this.accountType = 2;
                 this.accountTypeName = '支付宝';
                 this.qianBaoAccountName = this.zhiFuBaoWalletPayAccount.accountName;
                 this.qianBaoAccountNo = this.zhiFuBaoWalletPayAccount.accountNo;
