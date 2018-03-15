@@ -400,6 +400,29 @@ var MyMixin = {
             })
         },
 
+        newGetSystemTime:function() {
+            var _self = this ;
+            return new Promise((resolve, reject)=>{
+                $.ajax({
+                    type: 'get',
+                    headers: {
+                        "Authorization": "bearer  " + _self.getAccessToken,
+                    },
+                    url: this.action.forseti + 'apid/serverCurrentTime',
+                    data: {},
+                    success: (res) => {
+                        var sys_time = res.data ;
+                        resolve(sys_time);
+                    },
+                    error: function (e) {
+                        _self.errorAction(e);
+                        reject(e);
+                    }
+                });
+
+            })
+        },
+
         // 此方法用来初始化页面高度
         initViewHeight :function() {
             var viewHeight = $(window).height();

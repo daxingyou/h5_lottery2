@@ -48,7 +48,7 @@
                                                 </a>
                                             </li>
                                             <!--钱包秒充-->
-                                            <!--<li>
+                                            <li>
                                                 <a class="item" href="javascript:;" data-type="10" data-val="0" @click=" choosePayMoth2()">
                                                     <span class="badge">
                                                         <span class="icon_account icon_deposit_net11"></span>
@@ -58,7 +58,7 @@
                                                     </span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
-                                            </li>-->
+                                            </li>
                                             <!--end 钱包秒充-->
                                         </ul>
                                     </div>
@@ -553,7 +553,9 @@
                 myAccountName: null,
                 orderNumber: null,
                 accountType: null,
-                qianBaoAccountName: null
+                qianBaoAccountName: null,
+                zhiFuBaoPop: null,
+                weiXinPop: null
             }
         },
         created:function () {
@@ -588,7 +590,9 @@
                 //$("#paydate").mobiscroll().datetime({ });
                 $("#walletPaydate").mobiscroll().datetime({ });
             },500)
-            _self.getCopyright('3','AT01')
+            _self.getCopyright('3','AT01');
+            //_self.zhiFuBaoPop = _self.getCopyright('3','AT02');
+            //_self.weiXinPop = _self.getCopyright('3','AT03');
             $(document).on('change', '#walletPaydate', function() {
                 _self.walletPaydate = $('#walletPaydate').val();
                 _self.walletPaydateLong = new Date(_self.walletPaydate).getTime();
@@ -1021,7 +1025,7 @@
                                     _self.zhiFuBaoQrImg = _self.action.picurl + item.qrCode + '/0';
                                     if(weiXinExist != true) {
                                         _self.zhiFuBaoTab = true;
-                                        _self.zhiFuBaoAct = false;
+                                        _self.zhiFuBaoAct = true;
                                         _self.accountTypeName = '支付宝';
                                         _self.accountType = 2;
                                         _self.qianBaoAccountName = item.accountName;
