@@ -282,7 +282,7 @@ export default {
                           _times = parseInt($obj_nav_span.eq(i).attr("data-time")) - 1;
                           $obj_nav_span.eq(i).attr("data-time", _times);
                       } else { // 当前倒计时结束
-                          that.lobbytimerBegin() ;
+                          that.lobbytimerBegin();
                          _times = $obj_nav_span.eq(i).attr("data-time");
                       }
                       $obj_nav_span.eq(i).html(that.startTimer(_times));
@@ -298,14 +298,14 @@ export default {
         let minutesLeft = Math.floor((hoursLeft) - (hours*3600));
         let minutes     = Math.floor(minutesLeft/60);
         let remainingSeconds = seconds % 60;
-        if(hours<10){
-            hours = "0"+ hours;
+        if(hours < 10){
+            hours = '0' + hours;
         }
-        if(minutes<10){
-            minutes = "0"+ minutes;
+        if(minutes < 10){
+            minutes = '0' + minutes;
         }
         if (remainingSeconds < 10) {
-            remainingSeconds = "0" + remainingSeconds;
+            remainingSeconds = '0' + remainingSeconds;
         }
         return hours + ':' + minutes + ':' + remainingSeconds;
       }
