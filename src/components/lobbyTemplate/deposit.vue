@@ -1080,7 +1080,7 @@
                 this.weiXinAct = true;
                 this.accountTypeName = '微信';
                 this.qianBaoAccountName = this.weiXinWalletPayAccount.accountName;
-                this.qianBaoAccountName = this.weiXinWalletPayAccount.accountNo;
+                this.qianBaoAccountNo = this.weiXinWalletPayAccount.accountNo;
                 this.getQuickPayContent(3, 'AT03');
 
             },
@@ -1090,7 +1090,7 @@
                 this.weiXinTab = false;
                 this.weiXinAct = false;
                 this.accountTypeName = '支付宝';
-                this.qianBaoAccountNo = this.zhiFuBaoWalletPayAccount.accountName;
+                this.qianBaoAccountName = this.zhiFuBaoWalletPayAccount.accountName;
                 this.qianBaoAccountNo = this.zhiFuBaoWalletPayAccount.accountNo;
                 this.getQuickPayContent(3, 'AT02');
             },
