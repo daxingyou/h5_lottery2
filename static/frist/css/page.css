@@ -187,6 +187,7 @@ footer.bot_nav ul li a span.Footer-font { display: block; }
 .modal .m_content h2 a { width: 0.7467rem; height: 0.7467rem; position: absolute; right: -0.65rem; top: -0.7rem; background: url("/static/frist/images/pop/close.png") no-repeat; background-size: 100%; }
 .modal .m_content h2.noclose a { display: none;}
 .modal .m_content .content { text-align: center; line-height: .6rem; font-size: 0.34rem; margin: .5rem auto; }
+.modal .m_content .content > ol { margin-left: 0.5rem;}
 .modal .m_content .danger { color: #b41a17; }
 .modal .m_content .check { color: #d59559; }
 .modal .m_content .left { text-align: left; padding: .5rem; }
