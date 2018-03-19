@@ -62,9 +62,9 @@
                                         <ul class="double-count" v-else>
                                             <li>{{list.doubleData.total}}</li>
                                             <li>{{list.doubleData.sizer}}</li>
-                                            <li v-if="(  lotteryid == '2' || lotteryid == '4' ||  lotteryid == '12'|| lotteryid == '14' || lotteryid == '16' || lotteryid == '18'|| lotteryid == '102' || lotteryid == '104' || lotteryid == '112' || lotteryid == '114'  )">{{list.doubleData.doubler}}</li> <!-- 快三没有 -->
+                                            <li v-if="(  lotteryid == '2' || lotteryid == '4' ||  lotteryid == '12'|| lotteryid == '14' || lotteryid == '16' || lotteryid == '18'|| lotteryid == '102' || lotteryid == '104' || lotteryid == '112' || lotteryid == '114' || lotteryid == '26' || lotteryid == '28' )">{{list.doubleData.doubler}}</li> <!-- 快三没有 -->
                                             <li v-if="(  lotteryid == '4' || lotteryid == '104'  || lotteryid == '16') || (lotteryid == '18')">{{list.doubleData.sizerEnd}}</li>
-                                            <li v-if="(  lotteryid == '2' || lotteryid == '4' ||  lotteryid == '12'|| lotteryid == '14' || lotteryid == '16' || lotteryid == '18'|| lotteryid == '102' || lotteryid == '104' || lotteryid == '112' || lotteryid == '114'  )">{{list.doubleData.longer}}</li> <!-- 快三没有 -->
+                                            <li v-if="(  lotteryid == '2' || lotteryid == '4' ||  lotteryid == '12'|| lotteryid == '14' || lotteryid == '16' || lotteryid == '18'|| lotteryid == '102' || lotteryid == '104' || lotteryid == '112' || lotteryid == '114' || lotteryid == '26' || lotteryid == '28' )">{{list.doubleData.longer}}</li> <!-- 快三没有 -->
 
                                         </ul>
                                     </div>
@@ -144,6 +144,8 @@ export default {
                 {id: '2', 'name': '重庆时时彩'},
                 {id:'102','name':'秒速时时彩'} ,
                 {id:'14','name':'新疆时时彩'} ,
+                {id:'26','name':'北京时时彩'} ,
+                {id:'28','name':'台湾5分彩'} ,
                 {id:'112','name':'韩国1.5分彩'} ,
                 {id:'114','name':'东京1.5分彩'} ,
                 {id:'108','name':'秒速赛车'},

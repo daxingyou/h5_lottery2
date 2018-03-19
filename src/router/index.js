@@ -19,6 +19,8 @@ import LuckyBoat from '@/components/pk10/LuckyBoat'  // 幸运飞艇
 import CqsscIndex from '@/components/cqssc/Index'  // 重庆时时彩
 import TjsscIndex from '@/components/cqssc/TianJinIndex'  // 天津时时彩
 import XjsscIndex from '@/components/cqssc/XinJiangIndex'  // 新疆时时彩
+import BeiJingIndex from '@/components/cqssc/BeiJingIndex'  // 北京时时彩
+import TaiWanIndex from '@/components/cqssc/TaiWanIndex'  // 台湾5分彩
 import SecondSsc from '@/components/cqssc/SecondSsc'  // 秒速时时彩
 import HanGuoIndex from '@/components/cqssc/HanGuoIndex'  // 韩国1.5分彩
 import DongJingIndex from '@/components/cqssc/DongJingIndex'  // 东京1.5分彩
@@ -163,6 +165,16 @@ export default new Router({
         path: '/cqssc/SecondSscIndex',
         name: 'SecondSsc',
         component: SecondSsc
+    },
+    {  // 北京时时彩
+      path: '/cqssc/BeiJingIndex',
+      name: 'BeiJingIndex',
+      component: BeiJingIndex
+    },
+    {  // 台湾5分彩
+      path: '/cqssc/TaiWanIndex',
+      name: 'TaiWanIndex',
+      component: TaiWanIndex
     },
     {
         path: '/lhc',
