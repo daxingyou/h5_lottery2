@@ -18,10 +18,6 @@
                     <div class="new_panel_top"></div>
                     <div class="new_panel_center">
                         <div class="new_panel_tip"><span class="icon icon_info"></span>为了您的资金安全，请使用真实资料！</div>
-                        <div class="new_panel_tip">
-                            <p>{{regInfoTitle}}</p>
-                            <span v-html="regInfoContent"></span>
-                        </div>
                         <div class="before-add">
                             <form>
                             <!-- <fieldset>
@@ -331,15 +327,11 @@
                 bankselectObj:{},
                 bankAddObj:{},
                 bankNumObj:{},
-                bankCode:"",
-                regInfoTitle : '',
-                regInfoContent : '',
-
+                bankCode:""
             }
         },
         created:function(){
            this.switchYzmcode() ;
-           this.getRegInfo();
         },
         mounted:function(){
             document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
@@ -670,32 +662,8 @@
                     }
                 })
             },
-            getRegInfo : function() {
-                let _self = this;
-                let senddata = {
-                    type:2,
-                    code:'ZT03',
-                    };
-                $.ajax({
-                    type: 'get',
-                    url: _self.action.forseti + 'apid/cms/copyright',
-                    data: senddata ,
-                    success: function(res){
-                        if (res.data[0]) {
-                            if(res.err=="SUCCESS"){
-                                _self.regInfoContent=res.data[0].content;
-                                _self.regInfoTitle=res.data[0].title;
-                            }
-                        } else {
-                            _self.chargeStep = res.data[0];
 
-                        }
-                    },
-                    error: function (res) {
 
-                    }
-                });
-            }
         }
 
 
