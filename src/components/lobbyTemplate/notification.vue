@@ -139,9 +139,9 @@ export default {
             statusClick:true,
         }
     },
-    updated:function() {
-        this.expand();
-    },
+    // updated:function() {
+    //     this.expand();
+    // },
     computed:{
             year: function(){
                 return this.nowDate.getYear() + 1900;
@@ -282,23 +282,23 @@ export default {
       },
 
       // 内容不到2排时，隐藏展开收合按钮
-      expand:function() {
-        $('.item').each(function(){
-            var detail = $(this).find('.detail');
-            var detailFontSize = detail.css('fontSize');
-            var detailH = detail.height();
-            var btn = $(this).find('.btn_collapse');
-            // console.log('detailH',detailH)
-            // console.log('detailSize',parseInt(detailFontSize)* 3.2)
+    //   expand:function() {
+    //     $('.item').each(function(){
+    //         var detail = $(this).find('.detail');
+    //         var detailFontSize = detail.css('fontSize');
+    //         var detailH = detail.height();
+    //         var btn = $(this).find('.btn_collapse');
+    //         // console.log('detailH',detailH)
+    //         // console.log('detailSize',parseInt(detailFontSize)* 3.2)
 
-            if (detailH >= (parseInt(detailFontSize)* 3.2)){ // 2排字高度约3.2em
-                btn.show();
-                detail.addClass('expendHeight');
-            } else {
-                if (! detail.hasClass('expendHeight') ) btn.hide();
-            }
-        });
-      },
+    //         if (detailH >= (parseInt(detailFontSize)* 3.2)){ // 2排字高度约3.2em
+    //             btn.show();
+    //             detail.addClass('expendHeight');
+    //         } else {
+    //             if (! detail.hasClass('expendHeight') ) btn.hide();
+    //         }
+    //     });
+    //   },
 
       noticeBack:function(){
         var _self=this;
