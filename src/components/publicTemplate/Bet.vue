@@ -242,6 +242,10 @@ export default {
                     }
                 },
                 error: function (e) {  // 错误提示
+                    if(e.status == 401) {
+                        window.location = '/login';
+                        return false;
+                    }
                     // initTipPop05(false,3,'投注失败，请稍后再试') ;
                     // this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试','title_bet_fail')
                     this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试', '下注失败')

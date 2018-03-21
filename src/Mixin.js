@@ -233,6 +233,10 @@ var MyMixin = {
         // 接口异常处理
         errorAction:function (e) {
             var _self = this ;
+            if(e.status == 401) {
+                window.location = '/login';
+                return false;
+            }
             if(e.responseJSON.error == 'Conflict' || e.responseJSON.error == 'Unauthorized'){ // 帐号重复登录   帐号注销
                 _self.$refs.autoCloseDialog.open(e.responseJSON.message) ;
                 _self.clearAllCookie() ;
