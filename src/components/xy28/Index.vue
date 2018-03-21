@@ -297,7 +297,7 @@
         <BetSuccessfulDialog ref="betSuccessfulDialog" />
 
         <!--玩法说明-->
-        <PlayDialog ref="playDialog" :moduleName="moduleName" :moduleplay="moduleplay" />
+        <PlayDialog ref="playDialog" :moduleName="lotteryName " :moduleplay="moduleplay" />
   </div>
 
 
@@ -364,6 +364,7 @@
             allLottery:{} ,
             gameHref:{} ,
             kinds:['混合', '特码合值'],
+            lotteryName: '幸运28'
 
         }
       },
@@ -375,10 +376,11 @@
 
             this.loadPlayTree(this.lotteryID);  // 玩法树，彩种id 为2
         });
+        this.lotteryName = this.getLotteryNameById(this.lotteryID);
       },
         mounted:function() {
             var lotteryid = this.lotteryID ; // 彩种id
-            var lotteryname = this.moduleName || '幸运28' ; // 彩种名称
+            var lotteryname = this.lotteryName ; // 彩种名称
             this.setCookie('lt_lotteryid',lotteryid) ; // 彩种id
             this.setCookie('lottery_name',lotteryname) ; // 彩种名称
             this.allLottery = this.$refs.navone.getLotterys() ;

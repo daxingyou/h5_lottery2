@@ -21,7 +21,7 @@
                             <span class="icon icon_nav"></span>
                         </li>
                         <li class="left_top_logo">
-                            {{moduleName || '北京PK10'}}
+                            {{moduleName || lotteryName}}
                         </li>
 
                         <li class="purse">
@@ -234,7 +234,7 @@
             open 打开对话框
             close 关闭对话框
     -->
-    <PlayDialog ref="playDialog"  :moduleName="moduleName" :moduleplay="moduleplay" />
+    <PlayDialog ref="playDialog"  :moduleName="lotteryName" :moduleplay="moduleplay" />
 
 
     </div>
@@ -298,6 +298,7 @@ export default {
             allLottery:{} ,
             gameHref:{} ,
             kinds:['两面', '冠亚和值', '1-5名','6-10名'],
+            lotteryName:'北京PK10'
 
         }
     },
@@ -308,11 +309,12 @@ export default {
         this.getMemberBalance(this.lotteryID).then(()=>{
             this.loadPlayTree(this.lotteryID);  // 玩法树，彩种id 为2
         });
+        this.lotteryName = this.getLotteryNameById(this.lotteryID);
     },
     mounted:function() {
         this.deleteCookie('scrollF');
         var lotteryid = this.lotteryID ; // 彩种id
-        var lotteryname = this.moduleName || '北京PK10' ; // 彩种名称
+        var lotteryname = this.moduleName || this.lotteryName ; // 彩种名称
         this.setCookie('lt_lotteryid',lotteryid) ; // 彩种id
         this.setCookie('lottery_name',lotteryname) ; // 彩种名称
         this.allLottery = this.$refs.navone.getLotterys() ;

@@ -15,7 +15,7 @@
 
             <div class="so-index">
                 <div class="so-top-all">
-                    <MenuBar :moduleName="moduleName || '香港六合彩'" :balance="balancePublic" />
+                    <MenuBar :moduleName="lotteryName" :balance="balancePublic" />
                         <div class="so-in-main">
                             <div>
                                 <div class="so-main-top">
@@ -91,8 +91,8 @@
             <AutoCloseDialog ref="autoCloseDialog" text="您的余额不足" type="" />
 
             <BetSuccessfulDialog ref="betSuccessfulDialog" />
-            <PlayDialog v-if = 'lotteryID=="10" ' ref="playDialog" :moduleName="moduleName" :moduleplay="moduleplay" />
-            <WfPlayDialog v-if = 'lotteryID=="110" ' ref="playDialog" :moduleName="moduleName" :moduleplay="moduleplay" />
+            <PlayDialog v-if = 'lotteryID=="10" ' ref="playDialog" :moduleName="lotteryName" :moduleplay="moduleplay" />
+            <WfPlayDialog v-if = 'lotteryID=="110" ' ref="playDialog" :moduleName="lotteryName " :moduleplay="moduleplay" />
         </div><!-- so-con -->
 </template>
 
@@ -156,6 +156,7 @@
                 balancePublic:'',
                 currentMethod: '特码',
                 lotteryID: 10,
+                lotteryName: '香港六合彩'
                 // moduleLotteryID: 10,
                 // moduleName:'香港六合彩',
                 // moduleplay: '根据香港赛马协会公布日期，六合彩每星期搅珠三次，通常於星期二丶星期四及非赛马日之星期六或日晚上举行。',
@@ -172,12 +173,13 @@
                 console.log("Promise Rejected in method of create 1");
             });
             this.loadPlayTree(this.lotteryID)
+            this.lotteryName = this.getLotteryNameById(this.lotteryID);
         },
         mounted() {
             let _self = this;
             let lotteryid = this.lotteryID ; // 彩种id
 
-            let lotteryname = this.moduleName || '香港六合彩' ; // 彩种名称
+            let lotteryname = this.lotteryName ; // 彩种名称
             this.setCookie('lt_lotteryid', lotteryid) ; // 彩种id
             this.setCookie('lottery_name', lotteryname) ; // 彩种名称
             this.allLottery = this.$refs.navone.getLotterys() ;

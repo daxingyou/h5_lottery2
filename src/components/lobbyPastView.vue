@@ -138,7 +138,8 @@ export default {
                 "10": "香港六合彩",
                 "110": "五分六合彩",
 
-            }, // 对应彩种的名称
+            },
+            gameAliasName: [], // 对应彩种的名称
 
         }
     },
@@ -151,6 +152,7 @@ export default {
         if( !_self.haslogin){
             _self.$router.push('/login')  ;
         }
+        this.gameAliasName = this.getLotteryNameList();
     },
   mounted:function() {
       var _self = this ;
@@ -225,8 +227,18 @@ export default {
                     }) ;
 
                /* }*/
-
+                let gmaeList = this.getLotteryNameList();
                 this.pastView = data.data ;
+
+                console.log(this.pastView );
+
+                this.pastView.forEach(function(item) {
+                  _self.gameAliasName.forEach(function(gName, gId) {
+                     if(item.lotteryId == gId) {
+                        item.lotteryName = gName;
+                     }
+                  });
+                });
 
             },
             error: function (e) {  // 错误提示

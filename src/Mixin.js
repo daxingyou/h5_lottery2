@@ -22,6 +22,7 @@ var MyMixin = {
                 // forseti: 'https://api.88bccp.com/forseti/',   // 线上环境
                 // uaa:'https://api.88bccp.com/uaa/',  // 线上环境
                 // hermes:'https://api.88bccp.com/hermes/',   // 线上环境forseti-justin uaa-justin
+
             },
 
             rootBalance:{
@@ -95,7 +96,6 @@ var MyMixin = {
             return this.getCookie("access_token");
         },
     },
-
     methods:{
         // 退出函数
         loginOut:function (type) {
@@ -252,7 +252,82 @@ var MyMixin = {
                 return false ;
             }
         },
+        testHaha:function() {
+            return [{id:1, value: 'aa'}];
+        },
+        //获取彩种名称
+        getLotteryNameById: function(id) {
+             var _self = this ;
+             var lotteryName = '';
+              $.ajax({
+                  type: 'GET',
+                  async:false,
+                  url: _self.action.forseti + 'apid/lotterys',
+                  data: { sideType :2 }, // sideType， 1官彩，2双面彩，为空默认为1，即官彩
+                  dataType: 'json',
+                  success:(res)=> {
+                    let nameArray = [];
+                    if(res.data && res.data.length > 0) {
+                        res.data.forEach(function(item) {
+                            nameArray.push({id: item.cid, name: item.name});
+                        });
+                        
+                        nameArray = nameArray.filter(function(item) {
+                            return item.id == id;
+                        });
+                        lotteryName = nameArray[0].name;
+                    }
+                  },
+                  error: function () {
 
+                  }
+              });
+              return lotteryName;
+        },
+        getLotteryNameList: function() {
+             var _self = this ;
+             let nameArray = [];
+              $.ajax({
+                  type: 'GET',
+                  async:false,
+                  url: _self.action.forseti + 'apid/lotterys',
+                  data: { sideType :2 }, // sideType， 1官彩，2双面彩，为空默认为1，即官彩
+                  dataType: 'json',
+                  success:(res)=> {
+                    if(res.data && res.data.length > 0) {
+                        res.data.forEach(function(item) {
+                            nameArray[item.cid] = item.name;
+                        });
+                    }
+                  },
+                  error: function () {
+
+                  }
+              });
+              return nameArray;
+        },
+        getLotteryBetRecordNameList: function() {
+             var _self = this ;
+             let nameArray = [];
+              $.ajax({
+                  type: 'GET',
+                  async:false,
+                  url: _self.action.forseti + 'apid/lotterys',
+                  data: { sideType :2 }, // sideType， 1官彩，2双面彩，为空默认为1，即官彩
+                  dataType: 'json',
+                  success:(res)=> {
+                    if(res.data && res.data.length > 0) {
+                        res.data.forEach(function(item) {
+                            nameArray.push({id: item.cid, name: item.name});
+                        });
+                    }
+                  },
+                  error: function () {
+
+                  }
+              });
+              return nameArray;
+        },
         // 玩法树
         loadPlayTree:function(gameid) {
             var _self = this ;

@@ -16,7 +16,7 @@
 
         <div class="so-index">
             <div class="so-top-all">
-                <MenuBar :moduleName="moduleName || '重庆时时彩'" :balance="balancePublic" />
+                <MenuBar :moduleName="lotteryName" :balance="balancePublic" />
                 <div class="so-in-main">
                     <div>
                         <div class="so-main-top">
@@ -191,7 +191,7 @@
                 open 打开对话框
                 close 关闭对话框
         -->
-        <PlayDialog ref="playDialog" :moduleName="moduleName" :moduleplay="moduleplay" />
+        <PlayDialog ref="playDialog" :moduleName="lotteryName" :moduleplay="moduleplay" />
     </div>
   
 </template>
@@ -249,6 +249,7 @@ export default {
         gameHref:{} ,
         kinds:['两面', '1-5球', '前中后'],
         balancePublic:'',
+        lotteryName:'重庆时时彩'
     }
   },
   created:function(){
@@ -264,13 +265,14 @@ export default {
     }).catch(function () {
         console.log("Promise Rejected in method of create 1");
     });
+    this.lotteryName = this.getLotteryNameById(this.lotteryID);
 
   },
   mounted:function() {
     this.deleteCookie('scrollF');
     var _self = this ;
     var lotteryid = this.lotteryID ; // 彩种id
-    var lotteryname = this.moduleName || '重庆时时彩' ; // 彩种名称
+    var lotteryname = this.lotteryName; // 彩种名称
     this.setCookie('lt_lotteryid',lotteryid) ; // 彩种id
     this.setCookie('lottery_name',lotteryname) ; // 彩种名称
     this.allLottery = this.$refs.navone.getLotterys() ;
