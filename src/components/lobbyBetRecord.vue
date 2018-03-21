@@ -139,6 +139,7 @@
                     {id: '10', 'name': '香港六合彩'},
                     {id: '110', 'name': '五分六合彩'},
                 ],
+                gameAliasName:[],
                 tableLock: 0,
                 // 投注详情
                 touzhuXQ: {},
@@ -155,6 +156,7 @@
                 // _self.$refs.autoCloseDialog.open('请先登录！') ;
                 _self.$router.push('/login')  ;
             }
+            this.gamechoose = this.getLotteryBetRecordNameList();
         },
 
         computed:{

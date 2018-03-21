@@ -8,7 +8,7 @@
         
         <div class="so-index">
             <div class="so-top-all">
-                <MenuBar :moduleName="moduleName" :balance="balancePublic" />
+                <MenuBar :moduleName="lotteryName" :balance="balancePublic" />
 
                 <div class="so-in-main">
                     <div>
@@ -192,7 +192,7 @@
         <BetSuccessfulDialog ref="betSuccessfulDialog" />
 
         <!--玩法说明-->
-        <PlayDialog ref="playDialog" :moduleName="moduleName" :moduleplay="moduleplay" />
+        <PlayDialog ref="playDialog" :moduleName="lotteryName" :moduleplay="moduleplay" />
   </div>
 
 
@@ -258,6 +258,7 @@
             allLottery:{} ,
             gameHref:{} ,
             kinds:['单骰', '不同号', '同号', '总和'],
+            lotteryName: '江苏快3'
 
         }
       },
@@ -269,10 +270,11 @@
 
             this.loadPlayTree(this.lotteryID);  // 玩法树，彩种id 为2
         });
+        this.lotteryName = this.getLotteryNameById(this.lotteryID);
       },
         mounted:function() {
             var lotteryid = this.lotteryID ; // 彩种id
-            var lotteryname = this.moduleName || '江苏快3' ; // 彩种名称
+            var lotteryname = this.lotteryName ; // 彩种名称
             this.setCookie('lt_lotteryid',lotteryid) ; // 彩种id
             this.setCookie('lottery_name',lotteryname) ; // 彩种名称
             this.allLottery = this.$refs.navone.getLotterys() ;
