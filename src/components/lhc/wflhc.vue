@@ -16,7 +16,7 @@
             lotteryID:110,
             moduleLotteryID:110,
             moduleName:' 五分六合彩',
-            moduleplay:'五分六合彩销售时间为00:00-次日00:00，每5分钟一期，全天共288期',
+            moduleplay:'极速六合彩销售时间为00:00-次日00:00，每5分钟一期，全天共288期',
         }
       }
     }
