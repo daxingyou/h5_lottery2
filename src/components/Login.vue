@@ -55,6 +55,8 @@
             </div>
         </div>
         <AutoCloseDialog ref="autoCloseDialog" text=" " type="" />
+        <GoUrlDialog ref="goUrlDialog" text=" " type="" />
+        
     </div>
 </template>
 
@@ -62,12 +64,14 @@
 // import $ from "jquery";
 import Mixin from '@/Mixin'
 import AutoCloseDialog from '@/components/publicTemplate/AutoCloseDialog'
+import GoUrlDialog from '@/components/publicTemplate/GoUrlDialog'
 
 export default {
   name: 'Login',
   mixins:[Mixin],
   components: {
     AutoCloseDialog,
+    GoUrlDialog,
   },
     data: function() {
         return {
@@ -80,6 +84,7 @@ export default {
             custUrl:'',
             checkStatu:false,
             logosrc:'',
+            errCheckCount : 0,
         }
     },
   created:function () {
@@ -195,10 +200,19 @@ export default {
                        },300)
                 }else{
                     _self.submitflage = false ;
-                    this.$refs.autoCloseDialog.open(res.cnMsg) ;
-                    this.switchYzmcode()
+                    if ( res.code == 103 || res.code == 102 ) { // 检查用户名与密码，若用户名不存在(102)或用户名与密码不匹配(103)反馈“用户名或密码错误”
+                        res.cnMsg = '用户名或密码错误';
+                        if ( res.code == 103 ) {
+                            this.errCheckCount++;
+                        }
+                    }
+                    if ( this.errCheckCount > 2 && res.code == 103 ) {
+                        this.$refs.goUrlDialog.open('用户名或密码错误，建议您联系客服', '在线客服', this.custUrl) ;
+                    } else {
+                        this.$refs.autoCloseDialog.open(res.cnMsg) ;
+                        this.switchYzmcode()
+                    }
                 }
-
                this.$nextTick(function () {
 
                })
