@@ -43,7 +43,7 @@
                                         <th>
                                             <li>提示</li>
                                         </th>
-                                        <td class="text-yellow"  >您投注未达标，本次提款将扣除费用￥{{fortMoney(roundAmt(deductFee), 2)}}元</td>
+                                        <td class="text-yellow">您投注未达标，本次提款将扣除费用 ￥{{fortMoney(roundAmt(deductFee), 2)}}元，若再进行有效投注 ￥{{fortMoney(roundAmt(differenceAmount), 2)}} 可免除费用</td>
                                     </tr>
                                     </thead>
                                 </table>
@@ -115,6 +115,7 @@ export default {
              placeholderLimit:'提款金额必须在范围内',
              feeWaiver:0,
              deductFee:0,
+             differenceAmount: 0, // 有效投注额差值
              deductStatu:1,
         }
     },
@@ -156,8 +157,7 @@ export default {
             this.showHint = false;
           }
       },
-
-            //获取扣除费用接口
+      //获取扣除费用接口
     getDeduct:function () {
           var _self = this ;
           $.ajax({
@@ -168,6 +168,7 @@ export default {
               url: _self.action.forseti + 'api/pay/drawOrder/judge',
               success: function(res){               
                  _self.deductFee = res.data.auditDeduction;
+                 _self.differenceAmount = res.data.differenceAmount;
                  _self.deductStatu = res.data.auditStatus;
               }
           });
