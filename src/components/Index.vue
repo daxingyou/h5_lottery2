@@ -234,7 +234,7 @@ export default {
   },
   data :function() {
         return {
-            haslogin:false ,
+            haslogin:true ,
             logintype: this.getCookie('acType') || 1 ,
             balanceData:{ },
             allLottery:{} ,
@@ -265,11 +265,10 @@ export default {
     computed:{
 
     },
-    created:function () {
-      //this.changeOffFlag ();
-
-    },
     mounted:function() {  
+      if(this.getCookie("access_token")) {
+        this.haslogin = true;
+      }
       $('html,body').css('overflow-y','scroll' )  ;
       this.allLottery = this.$refs.navone.getLotterys() ;
       this.gameHref = this.$refs.navone.gameHref ; // 拿子组件的值
