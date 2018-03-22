@@ -245,6 +245,9 @@
             RoadBeadItem,
             InfoDialog
         },
+    created: function(){
+        this.gamechoose = this.getLotteryBetRecordNameList();
+    },
     mounted:function() {
         this.loadRoadAction(this.lotteryid,'') ;
         this.setMenuAction() ;
