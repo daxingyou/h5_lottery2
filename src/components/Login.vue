@@ -176,7 +176,10 @@ export default {
                
                 if(res.err == 'SUCCESS'){ // 登录成功
                     _self.submitflage = false ;
-                    var cookieTime = 7*24*60*60*1000
+                    var cookieTime = 1*24*60*60*1000;
+                    if(_self.checkStatu) {
+                      cookieTime = 7*24*60*60*1000;
+                    }
                     this.setCookie("access_token", res.data.access_token, cookieTime);  // 把登录token放在cookie里面
                     // this.setCookie("username", this.username);  // 把登录用户名放在cookie里面
                     this.setCookie("username", res.data.username,cookieTime);  // 把登录用户名放在cookie里面
