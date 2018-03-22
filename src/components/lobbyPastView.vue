@@ -45,7 +45,7 @@
                                 </ul>
 
                                 <div class="function_btn">
-                                    <router-link class="bell new_btn btn_outline" to="publicTemplate/pastView" @click.native="setActionToView(list.lotteryId,gameName[list.lotteryId])"><i></i><span>往期开奖</span></router-link>
+                                    <router-link class="bell new_btn btn_outline" to="publicTemplate/pastView" @click.native="setActionToView(list.lotteryId,gameAliasName[list.lotteryId])"><i></i><span>往期开奖</span></router-link>
                                    <!-- <a class="bell btn btn_outline" href="publicTemplate/pastView" @click="setActionToView(list.lotteryId,gameName[list.lotteryId])"><i></i>往期开奖</a>-->
                                     <router-link class="check new_btn ok btn_blue" :to="'/'+gameHref[list.lotteryId]"><i></i><span>立即投注</span></router-link>
                                 </div>
