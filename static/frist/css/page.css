@@ -658,7 +658,7 @@ p.active .xy28_ball.num_20,.xy28_ball.num_20.active,p.active .xy28_ball.num_21,.
 .so-in-main .so-main-top { width: 100%; height: 2.3rem; border-bottom: 1px solid rgba(56,32,30,0.2); box-sizing: border-box; padding-top: 0.2rem; }
 .so-in-main .so-main-top > div { float: left; }
 .so-in-main .so-m-t-left { height: 100%; width: 3.42rem; }
-.so-in-main .so-m-t-left div:first-child {  line-height: 0.8rem; text-align: right; margin-right:0.1rem; white-space: nowrap; }
+.so-in-main .so-m-t-left div:first-child {  line-height: 0.8rem; text-align: center; margin-right:0.1rem; white-space: nowrap; }
 .so-in-main .so-m-t-left div:last-child a { display: block; margin: 0px auto;  width: 1.64rem; height: 0.5rem; line-height: .5rem; text-align: center; font-size: 0.26rem; border: 1px solid #4b280c; border-radius: 0.7rem; box-sizing: content-box; }
 .so-in-main .so-m-t-right { width: 6.57rem; height: 100%; }
 .so-in-main .so-m-t-right div:first-child ul li { float: left; transform: scale(0.9);}
@@ -682,7 +682,7 @@ p.active .xy28_ball.num_20,.xy28_ball.num_20.active,p.active .xy28_ball.num_21,.
     text-align: center
 }
 .so-in-main .so-main-down ul li:after{ content:''; display: table; clear:both;}
-.so-in-main .so-main-down ul li > p { line-height:0.8rem; text-align:right; width:3.3rem; font-size:.34rem; }
+.so-in-main .so-main-down ul li > p { line-height:0.8rem; text-align:center; width:3.3rem; font-size:.34rem; }
 .so-in-main .so-main-down ul li > i { display: none; }
 
 .so-in-main .so-main-down ul li > span {
