@@ -214,6 +214,9 @@ export default {
 
         }
     },
+    created: function(){
+        this.gamechoose = this.getLotteryBetRecordNameList();
+    },
   mounted:function() {
     var lotteryname = this.getCookie('lottery_name') ; // 彩种 名称
     $('.lottery_name').html(lotteryname+' 双面长龙') ;
