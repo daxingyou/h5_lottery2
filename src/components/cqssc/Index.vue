@@ -104,7 +104,7 @@
                                                     </h2>
                                                     <div class="bet_ball">
                                                         <p :data-id="itemChild.cid" v-for="(itemChild,index) in item.childrens">
-                                                            <span :class="'round_ball num_' + index" @click="OFSelect($event, itemChild, item)">{{itemChild.name}}</span>
+                                                            <span :class="'round_ball num_' + itemChild.name" @click="OFSelect($event, itemChild, item)">{{itemChild.name}}</span>
                                                             <span class="bet-times">{{payoffFormat(itemChild.oddsData.payoff)}}</span>
                                                         </p>
                                                     </div>
