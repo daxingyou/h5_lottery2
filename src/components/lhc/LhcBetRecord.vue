@@ -175,6 +175,7 @@
                     {id:'10','name':'香港六合彩'},
                     {id:'110','name':'五分六合彩'},
                 ],
+                gameAliasName:[],
                 ajaxSubmitAllow: false,
                 betRecordList: [[], [], []],
                 collapseCtrl: [0, 0, 0], //控制本週，下週，下下週的選單是否展開，0 為不展開，1 為展開
@@ -189,6 +190,7 @@
         created() {
             this.setDateList()
             this.getBetRecord(0)
+            this.gamechoose = this.getLotteryBetRecordNameList();
         },
         computed:{
             year() {
