@@ -177,16 +177,16 @@ export default {
                 if(res.err == 'SUCCESS'){ // 登录成功
                     _self.submitflage = false ;
                     var cookieTime = 7*24*60*60*1000
-                    this.setCookie("access_token", res.data.access_token);  // 把登录token放在cookie里面
+                    this.setCookie("access_token", res.data.access_token, cookieTime);  // 把登录token放在cookie里面
                     // this.setCookie("username", this.username);  // 把登录用户名放在cookie里面
-                    this.setCookie("username", res.data.username);  // 把登录用户名放在cookie里面
+                    this.setCookie("username", res.data.username,cookieTime);  // 把登录用户名放在cookie里面
                     // this.setCookie("psw", res.data.username,14);  // 把登录密码放在cookie里面
 
                     console.log( _self.username ,'username')
                     console.log( _self.password ,'password',)
                     this.setCookie("password", _self.password,cookieTime);
                     this.setCookie("uname", res.data.username,cookieTime);  //免登陆用
-                    this.setCookie('acType',res.data.acType);   //把玩家类型放在cookie里面
+                    this.setCookie('acType',res.data.acType,cookieTime);   //把玩家类型放在cookie里面
                     this.$refs.autoCloseDialog.open('登录成功','','icon_check','d_check') ;
                       setTimeout(function () {
                         // console.log(logindata,'logindata' )
