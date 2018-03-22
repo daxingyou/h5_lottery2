@@ -97,6 +97,16 @@ var MyMixin = {
         },
     },
     methods:{
+        checkJson:function(data) {
+            try {
+                let output = null;
+                if(data) {
+                    let output = JSON.parse(data);
+                }
+            } catch(e) {
+                window.location = '/';
+            }
+        },
         // 退出函数
         loginOut:function (type) {
             var _self = this ;
@@ -353,6 +363,7 @@ var MyMixin = {
                     data: {lotteryId: gameid, maxUpdateTime: maxUpdateTime}, // 当前彩种id
                     dataType: 'json',
                     success: (res) => {
+                        _self.checkJson(res.data);
                         let mydata
                         if (res.data) {
                             localStorage.setItem("playTree" + gameid, JSON.stringify(res.data.childrens))
