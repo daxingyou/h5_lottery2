@@ -682,6 +682,9 @@
                         _self.choosePayMoth2();
                         return false;
                     }
+                    if($src.data('type') == '12') {
+                        _self.submitYingLianPay();
+                    }
                        if(type == '10'){  // 网银支付
                            _self.getBankList('2') ;
                            $('.paymethods_all').hide() ;
@@ -971,6 +974,64 @@
                     }
                 });
 
+            },
+            // 银联支付确定提交
+            submitYingLianPay:function () {
+                var _self = this ;
+                if(_self.submitpayflag){
+                    return false ;
+                }
+                var senddata ={
+                    chargeAmount: _self.paymount*100 , //  入款金额
+                    source: '2' , //   来源类型   1,PC, 2,H5
+                    thirdPayCode: 'UNION_QUICK' ,  // 银行代码
+                    paymentType: '' ,  // 支付方式/银行代码(对应payment_type_id和bank_code)
+                    paymentTypeName: '' ,  // 支付名称/银行名称(对应payment_type_name/bank_name)
+                    realName : '' ,  // 真实姓名
+                    flowType : '5' ,  // 入款方式 3-银行第三方支付，4-快捷支付
+                }
+                _self.submitpayflag = true ;
+                $.ajax({
+                    type: 'post',
+                    headers: {
+                        "Authorization": "bearer  " + this.getAccessToken ,
+                    },
+                    url: _self.action.forseti + 'api/pay/onlineOrder',
+                    async: false,
+                    data: senddata ,
+                    success: function(res){ // dataType 1 线上入款 , 3 二维码
+                        if (!res.data) {
+                            if (res.msg == 'SUCCESS') {
+                                _self.$refs.autoCloseDialog.open('充值失败，请联系客服');
+                            } else {
+                                _self.$refs.autoCloseDialog.open(res.msg);
+
+                            }
+                        }
+                        if(res.err == 'SUCCESS'){
+                            var win = _self.openGame() ;
+                            _self.submitpayflag = false ;
+                            if(res.data.dataType=='1'){ // 页面html
+                                var loadStr = res.data.html ;
+                                win.document.write(loadStr) ;
+                            }else if(res.data.dataType=='2'){ // 链接跳转
+                                    var loadurl = res.data.url ;
+                                    win.location.href = loadurl ;
+                            }
+                        }else{
+                            _self.submitpayflag = false ;
+                            _self.$refs.autoCloseDialog.open(res.msg);
+                            // setTimeout(function () {
+                                // window.location = '/lobbyTemplate/deposit' ;
+                            // },300)
+                        }
+                    },
+                    error: function (res) {
+                        _self.submitpayflag = false ;
+                        win.close() ;
+                        _self.$refs.autoCloseDialog.open('支付失败') ;
+                    }
+                });
             },
             // 扫码支付轮询接口
             getScanStatus:function (id) {
