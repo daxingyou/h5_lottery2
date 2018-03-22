@@ -43,7 +43,7 @@
                                     <div class="new_panel_top play_th">
                                         <div class="prd_num">
                                             <!--<i class="prd"></i>-->
-                                            <span>{{  ( (lotteryid == '8')||(lotteryid == '24') )? list.issueAlias:list.pcode}}</span>
+                                            <span>{{  ( (lotteryid == '8')||(lotteryid == '24')||(lotteryid == '26')||(lotteryid == '28') )? list.issueAlias:list.pcode}}</span>
                                            <span>期</span>
                                         </div>
                                         <ul class="double-count" v-if="(lotteryid == '8')||(lotteryid == '108') ||(lotteryid == '24') "> <!-- 上面一排数据 -->
@@ -161,7 +161,7 @@ export default {
                 {id:'22','name':'湖北快3'} ,
                 {id:'20','name':'安徽快3'} ,
                 {id: '10', 'name': '香港六合彩'},
-                {id: '110', 'name': '极速六合彩'},
+                {id: '110', 'name': '五分六合彩'},
             ],
         }
     },

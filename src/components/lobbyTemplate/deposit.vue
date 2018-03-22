@@ -661,12 +661,12 @@
                     return false ;
                 }
 
-                var limitF = ( _self.paymount *100 > payWay.maxDepositAmount || _self.paymount *100 < payWay.minDepositAmount) || ( Number(_self.paymount) == 0  )
+                // var limitF = ( _self.paymount * 100 > payWay.maxDepositAmount || _self.paymount * 100 < payWay.minDepositAmount) || ( Number(_self.paymount) == 0  )
 
-                if ( notQuick&&limitF ) {
-                     _self.$refs.autoCloseDialog.open('充值金额不在范围内');
-                     return false;
-                }
+                // if ( notQuick&&limitF ) {
+                //     _self.$refs.autoCloseDialog.open('充值金额不符合限额要求');
+                //     return false;
+                // }暂时取消
 
                     var $src = $(e.currentTarget);
                     var type = $src.data('type');

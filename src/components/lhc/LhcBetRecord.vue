@@ -173,7 +173,7 @@
                     {id:'22','name':'湖北快3'} ,
                     {id:'20','name':'安徽快3'} ,
                     {id:'10','name':'香港六合彩'},
-                    {id:'110','name':'极速六合彩'},
+                    {id:'110','name':'五分六合彩'},
                 ],
                 ajaxSubmitAllow: false,
                 betRecordList: [[], [], []],
@@ -503,7 +503,7 @@
                                     _.forEach(dataList, (betData, index) => {
                                         let betDataObj = {}
                                         betDataObj.lotteryid = betData.lotteryId
-                                        if(betData.lotteryId == '10'||betData.lotteryId == '8'){
+                                        if(betData.lotteryId == '10'||betData.lotteryId == '8'||betData.lotteryId == '26'||betData.lotteryId == '28'){
                                             betDataObj.pcode = betData.issueAlias
                                         }else{
                                             betDataObj.pcode = betData.pcode

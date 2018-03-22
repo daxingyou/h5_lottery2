@@ -158,6 +158,7 @@
             :balance="balancePublic" 
             :now_pcode="now_pcode" :next_pcode="next_pcode" :now_day="now_day" 
              @refreshBalance = 'refreshBalance'
+            :pk10_now_pcode="pk10_now_pcode"
         />
 
         <!--封盘底部遮挡-->
@@ -233,6 +234,7 @@ export default {
         nowover_time:'',  // 当前期数封盘时间
         next_pcode:'',  // 下一期数
         now_pcode:'',  // 当前期数
+        pk10_now_pcode:'',  // 当前期数
         previous_pcode:'',//上一期期数
         winNumber:'',    //上期开奖号
         lastTermStatic:'',  //上期开奖数据统计
@@ -420,16 +422,30 @@ export default {
                             that.now_time = that.formatTimeUnlix(res.data[0].endTime); // 当前期数时间
                             that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
                             that.now_pcode = res.data[0].pcode;  // 当前期数
+                            that.pk10_now_pcode = res.data[0].pcode;  // 当前期数
+                            if( that.lotteryID == '26' || that.lotteryID == '28' ){
+                                that.now_pcode = res.data[0].issueAlias;  // 当前期数
+                            }
                             that.winNumber = res.data[1].winNumber;
                             that.lastTermStatic = res.data[1].doubleData;    //上期开奖统计
                             that.previous_pcode = res.data[1].pcode;  // 上期期数
+                            if( that.lotteryID == '26' || that.lotteryID == '28' ){
+                                that.previous_pcode = res.data[1].issueAlias;  // 上期期数
+                            }
                         }else{
                             that.now_time = that.formatTimeUnlix(res.data[1].endTime); // 当前期数时间
                             that.nowover_time = that.formatTimeUnlix(res.data[1].prizeCloseTime);  // 当前期封盘时间
                             that.now_pcode = res.data[1].pcode;  // 当前期数
+                            that.pk10_now_pcode = res.data[1].pcode;  // 当前期数
+                            if( that.lotteryID == '26' || that.lotteryID == '28' ){
+                                that.now_pcode = res.data[1].issueAlias;  // 当前期数
+                            }
                             that.winNumber = res.data[2].winNumber;
                             that.lastTermStatic = res.data[2].doubleData;    //上期开奖统计
                             that.previous_pcode = res.data[2].pcode;  // 上期期数
+                            if( that.lotteryID == '26' || that.lotteryID == '28' ){
+                                that.previous_pcode = res.data[2].issueAlias;  // 上期期数
+                            }
                         }
                             
                     }
@@ -464,6 +480,9 @@ export default {
                             if (_.size(item.winNumber) > 0 && index >= 2) {
                                 that.winNumber = item.winNumber
                                 that.previous_pcode = item.pcode
+                                if( that.lotteryID == '26' || that.lotteryID == '28' ){
+                                    that.previous_pcode = item.issueAlias
+                                }
                                 that.lastTermStatic = item.doubleData;
                                 hasFind = true
                                 return false

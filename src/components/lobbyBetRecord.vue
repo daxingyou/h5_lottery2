@@ -139,7 +139,7 @@
                     {id:'22','name':'湖北快3'} ,
                     {id:'20','name':'安徽快3'} ,
                     {id: '10', 'name': '香港六合彩'},
-                    {id: '110', 'name': '极速六合彩'},
+                    {id: '110', 'name': '五分六合彩'},
                 ],
                 gameAliasName:[],
                 tableLock: 0,
@@ -603,7 +603,7 @@
                                         var pnameANumFlag = Number(pnameANum) <= 49 && Number(pnameANum) >= 0
                                         // console.log(pnameANum, 'pnameANum')
                                         // console.log(pnameANumFlag, 'pnameANumFlag')
-                                        if(v.lotteryId =='8'){  // 北京pk10
+                                        if(v.lotteryId =='8' || v.lotteryId =='26' || v.lotteryId =='28'){  // 北京pk10、北京时时彩、台湾5分彩
                                             var pcode = ('' + v.issueAlias) ;
                                         }else{
                                             var pcode = ('' + v.pcode) ;
