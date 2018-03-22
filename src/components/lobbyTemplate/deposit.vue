@@ -813,6 +813,12 @@
                     return false;
                 }
 
+                let re = new RegExp(/[\w+\-@]{2,30}/);
+                if(!re.test(_self.myAccountName)) {
+                    _self.$refs.autoCloseDialog.open('帐号格式错误');
+                    return false;
+                }
+
                 if(_self.accountType == 1) {
                     pMethod = 8;
                 } else {
