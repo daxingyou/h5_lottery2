@@ -261,6 +261,11 @@ var MyMixin = {
                 },300)
                 return false ;
             }
+            else {
+                console.log('e: ', e);
+                window.location = '/login';
+            }
+            
         },
         testHaha:function() {
             return [{id:1, value: 'aa'}];
