@@ -332,6 +332,7 @@ var MyMixin = {
                   dataType: 'json',
                   success:(res)=> {
                     if(res.data && res.data.length > 0) {
+                        nameArray.push({id: 0, name: '全部'});
                         res.data.forEach(function(item) {
                             nameArray.push({id: item.cid, name: item.name});
                         });
