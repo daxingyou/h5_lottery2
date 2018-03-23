@@ -248,7 +248,7 @@
             InfoDialog
         },
     created: function(){
-        this.gamechoose = this.getLotteryBetRecordNameList();
+        this.gamechoose = this.getLotteryBetRoadNameList();
     },
     mounted:function() {
         this.loadRoadAction(this.lotteryid,'') ;

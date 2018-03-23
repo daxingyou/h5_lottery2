@@ -344,6 +344,30 @@ var MyMixin = {
               });
               return nameArray;
         },
+        getLotteryBetRoadNameList: function() {
+             var _self = this ;
+             let nameArray = [];
+              $.ajax({
+                  type: 'GET',
+                  async:false,
+                  url: _self.action.forseti + 'apid/lotterys',
+                  data: { sideType :2 }, // sideType， 1官彩，2双面彩，为空默认为1，即官彩
+                  dataType: 'json',
+                  success:(res)=> {
+                    if(res.data && res.data.length > 0) {
+                        res.data.forEach(function(item) {
+                            if(item.cid != 10 && item.cid != 110) {
+                                nameArray.push({id: item.cid, name: item.name});
+                            }
+                        });
+                    }
+                  },
+                  error: function () {
+
+                  }
+              });
+              return nameArray;
+        },
         // 玩法树
         loadPlayTree:function(gameid) {
             var _self = this ;
