@@ -166,7 +166,7 @@ export default {
         }
     },
     created: function(){
-        this.gamechoose = this.getLotteryBetRecordNameList();
+        this.gamechoose = this.getLotteryPastNameList();
     },
   mounted:function() {
 this.setMenuAction() ;

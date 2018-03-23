@@ -215,7 +215,7 @@ export default {
         }
     },
     created: function(){
-        this.gamechoose = this.getLotteryBetRecordNameList();
+        this.gamechoose = this.getLotteryPastNameList();
     },
   mounted:function() {
     var lotteryname = this.getCookie('lottery_name') ; // 彩种 名称
