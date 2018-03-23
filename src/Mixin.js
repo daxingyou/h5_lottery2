@@ -368,7 +368,6 @@ var MyMixin = {
                     data: {lotteryId: gameid, maxUpdateTime: maxUpdateTime}, // 当前彩种id
                     dataType: 'json',
                     success: (res) => {
-                        _self.checkJson(res.data);
                         let mydata
                         if (res.data) {
                             localStorage.setItem("playTree" + gameid, JSON.stringify(res.data.childrens))
