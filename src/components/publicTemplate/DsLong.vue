@@ -228,6 +228,7 @@ export default {
      TouchSlide({
           slideCell: "#betting_record",
       });
+      $('html,body').css({'height':'auto','overflow':'auto'})
   },
   methods:{
 

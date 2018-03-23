@@ -257,10 +257,11 @@
         document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
         // 标签切换
         this.roadChangeTab();
-        this.scHeight = $('.page_box').prop('clientHeight') - 106;
+        // this.scHeight = $('.page_box').prop('clientHeight') - 106;
+        $('html,body').css({'height':'auto','overflow':'auto'})
     },
     updated:function() {
-        $('#pa_content').css('height', this.scHeight);
+        // $('#pa_content').css('height', this.scHeight);
     },
     methods:{
         /*
@@ -352,8 +353,8 @@
 
 }
 </script>
-<style>
+<style scoped>
 html, body {
-    height: 100%;
+    height: auto;
 }
 </style>
