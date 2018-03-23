@@ -207,7 +207,7 @@
             },
         },/*computed*/
         mounted() {
-            $('html,body').css('overflow-y','scroll' )  ;
+            $('html,body').css({'height':'auto','overflow':'auto'})
             if (this.lotteryid != 10) {
                 this.seadata.pdate = this.newpdate;
             }
