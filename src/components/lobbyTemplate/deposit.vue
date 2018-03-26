@@ -661,11 +661,13 @@
                     return false ;
                 }
 
-                var limitF = ( _self.paymount *100 > payWay.maxDepositAmount || _self.paymount *100 < payWay.minDepositAmount) || ( Number(_self.paymount) == 0  )
+                if ( payWay.maxDepositAmount != null && payWay.minDepositAmount != null ) {
+                    var limitF = ( _self.paymount *100 > payWay.maxDepositAmount || _self.paymount *100 < payWay.minDepositAmount) || ( Number(_self.paymount) == 0  )
 
-                if ( notQuick&&limitF ) {
-                     _self.$refs.autoCloseDialog.open('充值金额不在范围内');
-                     return false;
+                    if ( notQuick&&limitF ) {
+                        _self.$refs.autoCloseDialog.open('充值金额不在范围内');
+                        return false;
+                    }
                 }
 
                     var $src = $(e.currentTarget);
@@ -1083,6 +1085,7 @@
                     url: _self.action.forseti + 'api/pay/getWalletPayAccount',
                     data: {} ,
                     success: function(res){
+                        console.log('getWalletPayAccount: ', res);
                         if(res.err == 'SUCCESS'){
                             _self.walletApi = res.data;
                             let accounts = _self.walletApi;
