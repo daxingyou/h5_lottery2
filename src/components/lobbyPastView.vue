@@ -16,7 +16,7 @@
                             <li class="prod cqssc" >
                                 <div class="new_panel_top play_th">
                                     <div class="prd_num"><i class="prd"></i><span>{{list.lotteryName}}</span></div>
-                                    <div class="prd_num02">第{{(list.lotteryId == '8' || list.lotteryId == '24' || list.lotteryId == '26' || list.lotteryId == '28')?list.issueAlias :list.pcode}}期</div>
+                                    <div class="prd_num02">第{{(list.lotteryId == '8' || list.lotteryId == '24' || list.lotteryId == '26' || list.lotteryId == '28' || list.lotteryId == '32')?list.issueAlias :list.pcode}}期</div>
                                    <!-- <div class="time timerset" :data-time=" (format(formatTimeUnlix(list.endTime)).getTime() - format(formatTimeUnlix(sys_time)).getTime()) / 1000 ">-->
                                     <div class="time timerset endtime" :data-time="0" v-if="list.endTime > sys_time">
                                     </div>
@@ -101,6 +101,7 @@ export default {
                 "102":"cqssc/SecondSscIndex",
                 "112":"cqssc/HanGuoIndex", //韩国1.5分彩
                 "114":"cqssc/DongJingIndex", //东京1.5分彩
+                "32":"cqssc/QQIndex", //QQ分分彩
                 "4":"jc11x5",     //江西11选5
                 "18":"jc11x5/sd11x5Index",  //山东11选5
                 "104":"jc11x5/ms11x5Index",  // 秒速11选5

@@ -603,7 +603,7 @@
                                         var pnameANumFlag = Number(pnameANum) <= 49 && Number(pnameANum) >= 0
                                         // console.log(pnameANum, 'pnameANum')
                                         // console.log(pnameANumFlag, 'pnameANumFlag')
-                                        if(v.lotteryId =='8' || v.lotteryId =='26' || v.lotteryId =='28'){  // 北京pk10、北京时时彩、台湾5分彩
+                                        if(v.lotteryId =='8' || v.lotteryId =='26' || v.lotteryId =='28' || v.lotteryId =='32'){  // 北京pk10、北京时时彩、台湾5分彩、QQ分分彩
                                             var pcode = ('' + v.issueAlias) ;
                                         }else{
                                             var pcode = ('' + v.pcode) ;
