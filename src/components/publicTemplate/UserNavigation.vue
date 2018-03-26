@@ -79,6 +79,7 @@ export default {
             "14":"cqssc/xinJiangIndex",//新疆时时彩
             "26":"cqssc/BeiJingIndex", //北京时时彩
             "28":"cqssc/TaiWanIndex", //台湾5分彩
+            "32":"cqssc/QQIndex", //台湾5分彩
             "102":"cqssc/SecondSscIndex",
             "112":"cqssc/HanGuoIndex", //韩国1.5分彩
             "114":"cqssc/DongJingIndex", //东京1.5分彩

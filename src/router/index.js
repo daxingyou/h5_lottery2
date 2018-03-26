@@ -24,6 +24,7 @@ import TaiWanIndex from '@/components/cqssc/TaiWanIndex'  // 台湾5分彩
 import SecondSsc from '@/components/cqssc/SecondSsc'  // 秒速时时彩
 import HanGuoIndex from '@/components/cqssc/HanGuoIndex'  // 韩国1.5分彩
 import DongJingIndex from '@/components/cqssc/DongJingIndex'  // 东京1.5分彩
+import QQIndex from '@/components/cqssc/QQIndex'  // QQ分分彩
 import MiaoSuK3Index from '@/components/k3/MiaoSuIndex'  // 秒速快3
 import LhcIndex from '@/components/lhc/Index' // 六合彩
 import LhcBetRecord from '@/components/lhc/LhcBetRecord' // 六合彩投注紀錄
@@ -175,6 +176,11 @@ export default new Router({
       path: '/cqssc/TaiWanIndex',
       name: 'TaiWanIndex',
       component: TaiWanIndex
+    },
+    {  // QQ分分彩
+      path: '/cqssc/QQIndex',
+      name: 'QQIndex',
+      component: QQIndex
     },
     {
         path: '/lhc',
