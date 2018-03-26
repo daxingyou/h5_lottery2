@@ -480,7 +480,7 @@ export default {
                             if (_.size(item.winNumber) > 0 && index >= 2) {
                                 that.winNumber = item.winNumber
                                 that.previous_pcode = item.pcode
-                                if( that.lotteryID == '26' || that.lotteryID == '28' ){
+                                if( that.lotteryID == '26' || that.lotteryID == '28' || that.lotteryID == '32' ){
                                     that.previous_pcode = item.issueAlias
                                 }
                                 that.lastTermStatic = item.doubleData;
