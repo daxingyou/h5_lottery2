@@ -253,7 +253,7 @@ export default {
           if(cla=='TK'){
               //console.log('_self.userBindBankType: ', _self.userBindBankType);
               if ( _self.userBindBankType ){
-                _self.$router.push('/lobbyTemplate/Withdrawals'):
+                _self.$router.push('/lobbyTemplate/Withdrawals');
               } else {
                 _self.$router.push('/lobbyTemplate/withdrawals_bind');
               }
