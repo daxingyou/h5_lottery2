@@ -1474,7 +1474,7 @@ fieldset { display: block; margin: .3rem 0; font-size: .34rem; text-align: left;
 .message_area .item .badge .icon_account{ transform: scale(0.7) translate(-0.35rem, -0.35rem); }
 .message_area .item .title{ }
 .message_area .item .title h2{ color: #ffe1bf; font-size: 0.4rem; padding-right: 1.5rem;}
-.message_area .item .detail{ margin: 0.1rem 0 0; line-height: 1.5em; overflow: hidden; text-overflow: ellipsis; color: #ffc388; position: relative;}
+.message_area .item .detail{ margin: 0.1rem 0 0; line-height: 1.5em; overflow: hidden; word-break: break-all; color: #ffc388; position: relative;}
 /*.message_area .item .detail .dot{ position: absolute; bottom: 0; right: 0; padding-left: 0.1rem; background: -moz-radial-gradient(center, ellipse cover, rgba(170,108,69,1) 0%, rgba(170,108,69,1) 50%, rgba(170,108,69,0) 100%); background: -webkit-radial-gradient(center, ellipse cover, rgba(170,108,69,1) 0%,rgba(170,108,69,1) 50%,rgba(170,108,69,0) 100%);background: radial-gradient(ellipse at center, rgba(170,108,69,1) 0%,rgba(170,108,69,1) 50%,rgba(170,108,69,0) 100%); }*/
 /*.message_area .item.active .detail{height: auto; white-space: initial; min-height: 3em;}*/
 .message_area .item .detail.expendHeight{ height: 3em}
