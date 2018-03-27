@@ -758,7 +758,7 @@
                     url: _self.action.forseti + 'api/pay/receiptClient',
                     // data: { type: type},  // 查询类型：1 扫码支付，2 银行卡支付
                     success: function(res){
-//                    console.log('getPayWayList', res.data)
+                   console.log('getPayWayList', res.data)
                         _self.payWays = res.data;
                     },
                     error: function (e) {
@@ -798,8 +798,9 @@
                     return false;
                 }
 
-                let re = new RegExp(/[\w+\-@]{2,30}/);
+                let re = new RegExp("^[\w+\-@]{2,30}$");
                 if(!re.test(_self.myAccountName)) {
+                    //console.log('_self.myAccountName.length: ', _self.myAccountName.length);
                     _self.$refs.autoCloseDialog.open('帐号格式错误');
                     return false;
                 }
