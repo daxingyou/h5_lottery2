@@ -136,6 +136,7 @@ export default {
             acType:'',
             memberId:'',
             userLogin:'',
+            userBindBankType : false,
             custUrl:''
         }
     },
@@ -152,6 +153,7 @@ export default {
     mounted:function() {
       $('html,body').css('overflow-y','scroll' )  ;
         this.getCustom()
+        this.getBankInfo();
         this.custUrl=localStorage.getItem('Url');
   },
     methods: {
@@ -216,6 +218,27 @@ export default {
               }
           })
       },
+      //获取用户银行账户信息
+      getBankInfo: function() {
+          var _self = this;
+          $.ajax({
+              type:'get',
+              headers: { 'Authorization': 'bearer ' + _self.getAccessToken ,},
+              dataType: 'json',
+              url: _self.action.forseti + 'api/payment/memberBank',
+              data: { },
+              success: (res) => {
+                  if(res.data.bindType==null||res.data.bindType==1){
+                  }
+                  else {
+                    _self.userBindBankType = true
+                  }
+              },
+              error: (err) =>{
+
+              }
+          })
+      },
       //判断是否为游客,
       CheckDemoPlay:function (cla) {
           var _self =this;
@@ -228,13 +251,15 @@ export default {
               _self.$router.push('/lobbyTemplate/deposit')
           }
           if(cla=='TK'){
-              _self.$router.push('/lobbyTemplate/Withdrawals')
-
+              //console.log('_self.userBindBankType: ', _self.userBindBankType);
+              if ( _self.userBindBankType ){
+                _self.$router.push('/lobbyTemplate/Withdrawals'):
+              } else {
+                _self.$router.push('/lobbyTemplate/withdrawals_bind');
+              }
           }
           if(cla=='ZH'){
-
               _self.$router.push('/lobbyTemplate/info_data')
-
           }
       },
       //游客显示
