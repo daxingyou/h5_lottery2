@@ -1084,6 +1084,7 @@
                                     _self.weiXinQrImg = _self.action.picurl + item.qrCode + '/0';
                                     _self.qianBaoAccountName = item.accountName;
                                     _self.qianBaoAccountNo = item.accountNo;
+                                    _self.payConfigId = item.id;
                                     _self.getQuickPayContent(3, 'AT03');
 
                                 }
@@ -1097,6 +1098,7 @@
                                         _self.accountType = 2;
                                         _self.qianBaoAccountName = item.accountName;
                                         _self.qianBaoAccountNo = item.accountNo;
+                                        _self.payConfigId = item.id;
                                         _self.zhiFuBaoQrImg = _self.action.picurl + item.qrCode + '/0';
                                         _self.getQuickPayContent(3, 'AT02');
                                     }
@@ -1266,6 +1268,7 @@
                     realName : _self.banksavename ,  // 存款人姓名
                     depositorBankCode : _self.bankInfo.bankCode ,  // 存款人银行代码
                     cardNo: userInfo.cardNo , // 收款人 存入银行账号/快充账户
+                    payConfigId: _self.payConfigId,
                     bankCode: userInfo.bankCode ,  // 收款人银行代码
                     registerBankInfo : userInfo.registerBankInfo ,  // 收款人开户行
                     cardOwnerName : userInfo.cardOwnerName ,  // 收款人名字
