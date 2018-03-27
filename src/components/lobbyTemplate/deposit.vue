@@ -814,6 +814,7 @@
                     chargeAmount: _self.paymount*100 , //  入款金额
                     source: '2' , //   来源类型   1,PC, 2,H5
                     cardNo: _self.qianBaoAccountNo ,  // 银行代码
+                    payConfigId: _self.payConfigId ,  // 银行代码
                     payMethod: pMethod ,  // 支付方式/银行代码(对应payment_type_id和bank_code)
                     cardOwnerName: _self.qianBaoAccountName ,  // 支付名称/银行名称(对应payment_type_name/bank_name)
                     depositorName : _self.myAccountName ,  // 真实姓名
@@ -1268,7 +1269,6 @@
                     realName : _self.banksavename ,  // 存款人姓名
                     depositorBankCode : _self.bankInfo.bankCode ,  // 存款人银行代码
                     cardNo: userInfo.cardNo , // 收款人 存入银行账号/快充账户
-                    payConfigId: _self.payConfigId,
                     bankCode: userInfo.bankCode ,  // 收款人银行代码
                     registerBankInfo : userInfo.registerBankInfo ,  // 收款人开户行
                     cardOwnerName : userInfo.cardOwnerName ,  // 收款人名字
