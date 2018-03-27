@@ -966,7 +966,7 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .ds_long  { -webkit-border-radius: 0.2rem; -moz-border-radius: 0.2rem; -ms-border-radius: 0.2rem; font-size: .4rem; }
 
 .ds_long ul.lo_ball {
-    width: 3.5rem;
+    width: 3rem;
 }
 .ds_long ul.lo_ball.two { width: auto; }
 .ds_long .prod { box-shadow: 0px 2px 2px rgba(20, 0, 0, 0.8); margin-bottom: 0.2rem; background: url('/static/frist/images/dslong_list_bg.jpg'); background-size: 100% 100%;}
@@ -974,7 +974,7 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .ds_long .prod > * { display: block; float: left; line-height: 1.3rem; height: 1.3rem; margin: 0 .2rem; }
 .ds_long .prod i { margin-top: .25rem; height: .6rem; }
 .ds_long .prod > div.periods { float: right; width: auto; margin-right: .2rem; }
-.ds_long .prod > div { width: 3rem; margin: 0 auto; text-align: left; }
+.ds_long .prod > div { width: 3.5rem; margin: 0 auto; text-align: left; white-space: nowrap; }
 
 /* -----------------------------------------
 // 路珠
