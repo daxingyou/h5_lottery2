@@ -22,8 +22,7 @@
                                         <fieldset>
                                             <div class="form_g text money">
                                                 <legend>充值金额</legend>
-                                                <input type="tel" placeholder="请输入充值金额"
-                                                       v-model="paymount">
+                                                <input type="tel" placeholder="请输入充值金额" v-model="paymount"   >
                                                 <i class="close" @click="clearMoney()"></i>
                                             </div>
                                             <div  v-if = 'showDepositHint' class="depositHint" id="depositHint"> {{ hintContent }}</div>
@@ -33,16 +32,13 @@
                                     <div class="step03 pay_way  payWayNet payWayTranster"  v-if = 'netPayShow'>
                                         <ul class="arrow_list_dark">
                                             <li v-for = '(payWay,key) in payWays' >
-                                                <a class="item" href="javascript:;" :data-hf="payWay.rsUrl"
-                                                   :data-type='payWay.rsNameId' :data-val="payWay.flag"
-                                                   @click=" choosePayMoth($event,payWay)">
+                                                <a class="item" href="javascript:;" :data-hf="payWay.rsUrl" :data-type='payWay.rsNameId'  :data-val="payWay.flag" @click=" choosePayMoth($event,payWay)" >
                                                     <span class="badge">
                                                         <span class="icon_account " :class="'icon_deposit_net'+payWay.rsNameId"></span>
                                                     </span>
                                                     <span class="limitMoney" >
                                                         <span>{{ payWay.rsName}}</span>
                                                        <!--  <span  v-if=' payWay.rsNameId!=0'>限额：{{parseInt(payWay.minDepositAmount/100) }}~{{ parseInt(payWay.maxDepositAmount/100)  }}</span> -->
-
                                                     </span>
                                                     <span class="icon icon_arrow_light"></span>
                                                 </a>
@@ -226,12 +222,9 @@
                                             <fieldset>
                                                 <div class="form_g text">
                                                     <legend for="">存款人</legend>
-                                                    <input type="text" placeholder="请输入存款人姓名" v-model="banksavename"
-                                                           @input="depositPeopleInput(banksavename)">
+                                                    <input type="text" placeholder="请输入存款人姓名" v-model="banksavename" @input="depositPeopleInput(banksavename)">
                                                 </div>
-                                                <div v-if='depositPeopleHint' class="depositPeopleHint"
-                                                     id="depositPeopleHint"> {{depositPeoplehintWord}}
-                                                </div>
+                                                <div  v-if = 'depositPeopleHint' class="depositPeopleHint" id = "depositPeopleHint"> {{depositPeoplehintWord}} </div>
 
                                             </fieldset>
                                             <fieldset>
@@ -528,9 +521,9 @@
                 hintContent:'',
                 notNetPayShow:true,
                 netPayShow:true,
-                href: '',
-                depositPeoplehintWord: '请正确输入',
-                depositPeopleHint: false,
+                href:'',
+                depositPeoplehintWord:'请正确输入',
+                depositPeopleHint:false,
                 bankSubmitAllow: true,
                 walletApi: null,
                 weiXinWalletPayAccount: null,
@@ -563,12 +556,10 @@
         },
         mounted:function() {
             this.getWalletPayAccount();
-            console.log(this.action.picurl);
             // this.getLimit()
 
             var _self = this ;
             $('html,body').css('overflow-y','scroll' )  ;
-//            _self.choosePayMoth() ;
             _self.bankTipShow() ;
             setTimeout(function () {
                 var now = new Date(),
@@ -582,7 +573,7 @@
                     display: 'bottom',
                     min: minDate,
                     max: maxDate,
-                    defaultValue: _self.setAmerTime('#paydate'), //时间默认值
+                    defaultValue:_self.setAmerTime('#paydate'), //时间默认值
                     dateWheels: '|yy M d|',
                     startYear: 2018, //开始年份
                     endYear:2025 //结束年份
@@ -600,14 +591,11 @@
                 $("#walletPaydate").mobiscroll().datetime({ });
             },500)
             _self.getCopyright('3','AT01');
-            //_self.zhiFuBaoPop = _self.getCopyright('3','AT02');
-            //_self.weiXinPop = _self.getCopyright('3','AT03');
             $(document).on('change', '#walletPaydate', function() {
                 _self.walletPaydate = $('#walletPaydate').val();
                 _self.walletPaydateLong = new Date(_self.walletPaydate).getTime();
-                console.log(_self.walletPaydateLong);
+                //console.log('_self.walletPaydateLong: ', _self.walletPaydateLong);
             });
-            // this.depositRang();
         },
         methods: {
 
@@ -648,13 +636,11 @@
                 });
             },
             // 选择支付方式
-            choosePayMoth: function (e, payWay) {
+            choosePayMoth:function (e,payWay) {
                 var _self = this ;
                 // 转账
 
-//                $('.payWayTranster').on('click','.item',function (e) {
                 var notQuick = payWay.rsNameId
-                // console.log( (notQuick != 0) ,'notquick')
 
                 if( (notQuick != 0)&& (_self.paymount =='' || !_self.isPositiveNum(_self.paymount) ) ){
                     _self.$refs.autoCloseDialog.open('请输入正确的存款金额') ;
@@ -675,7 +661,6 @@
                     var val= $src.data('val')
                     var Href=$src.data('hf')
                    if(val=='0'){
-
                     if($src.data('type') == '11') {
                         if(_self.weiXinWalletPayAccount == null && _self.zhiFuBaoWalletPayAccount == null) {
                             _self.$refs.autoCloseDialog.open('充值渠道暂时维护中，请选择其他方式充值');
@@ -684,15 +669,16 @@
                         _self.choosePayMoth2();
                         return false;
                     }
+
                     if($src.data('type') == '12') {
                         _self.submitYingLianPay();
                     }
-                       if(type == '10'){  // 网银支付
-                           _self.getBankList('2') ;
-                           $('.paymethods_all').hide() ;
-                           $('.webbank_pay_all').show() ;
-                       }
 
+                    if(type == '10') {  // 网银支付
+                        _self.getBankList('2');
+                        $('.paymethods_all').hide();
+                        $('.webbank_pay_all').show();
+                       }
                        if(type =='1'||type=='2'||type=='3'||type=='4'||type=='8'){
 //                  // 扫码支付
 //                    _self.getBankList() ;
@@ -772,10 +758,7 @@
                     url: _self.action.forseti + 'api/pay/receiptClient',
                     // data: { type: type},  // 查询类型：1 扫码支付，2 银行卡支付
                     success: function(res){
-                        //  console.log(res)
-                        // console.log( res.data.splice(0,4) )
-//                        res.data = res.data;
-                        // console.log(res.data)
+//                    console.log('getPayWayList', res.data)
                         _self.payWays = res.data;
                     },
                     error: function (e) {
@@ -911,7 +894,7 @@
                                 _self.submitpayflag = false ;
                                 if(res.data.dataType=='1'){ // 页面html
                                     var loadStr = res.data.html ;
-//                               console.log(loadStr) ;
+//                               console.log('submitOnlinePay.loadStr:', loadStr) ;
                                     win.document.write(loadStr) ;
                                 }else if(res.data.dataType=='2'){ // 链接跳转
                                     var loadurl = res.data.url ;
@@ -1085,7 +1068,6 @@
                     url: _self.action.forseti + 'api/pay/getWalletPayAccount',
                     data: {} ,
                     success: function(res){
-                        console.log('getWalletPayAccount: ', res);
                         if(res.err == 'SUCCESS'){
                             _self.walletApi = res.data;
                             let accounts = _self.walletApi;
@@ -1188,12 +1170,12 @@
                 }
             },
             dateSelected: function() {
-                console.log(this.walletPaydate);
+                console.log('dateSelected', this.walletPaydate);
             },
-            depositPeopleInput: function (word) {
-                if (word.length < 2 || word.length > 13) {
+            depositPeopleInput:function(word){
+                if( word.length<2||word.length>13 ){
                     this.depositPeopleHint = true;
-                } else {
+                }else{
                     this.depositPeopleHint = false;
                 }
             },
@@ -1208,7 +1190,6 @@
                     url: _self.action.forseti + 'api/payment/incomeBank',
                     data: { },
                     success: function(res){
-
                         if(res.data){
                             _self.userInfo = res.data ;
                         } else {
@@ -1219,7 +1200,7 @@
                     },
                     error: function (e) {
                         _self.bankSubmitAllow = false;
-                        // console.log(_self.bankSubmitAllow, 'allow')
+
                         _self.errorAction(e) ;
                     }
                 });
@@ -1245,14 +1226,20 @@
             // 银行转账提交
             submitBankAction:function () {
                 var _self = this ;
-                if (!(this.bankSubmitAllow)) {
-                    _self.$refs.autoCloseDialog.open('未获取到收款人信息');
-                    return false;
-                }
                 if( _self.submitpayunflag){
                     return false ;
                 }
+                
+                if (!(this.bankSubmitAllow)) {
+                    //_self.$refs.autoCloseDialog.open('未获取到收款人信息');
+                    _self.$refs.autoCloseDialog.open('充值渠道暂时维护中，请选择其他方式充值'); // CAIPIAOH5-845
+                    return false;
+                }
                
+                // if(!_self.bankInfo.bankCode){
+                //     _self.$refs.autoCloseDialog.open('请选择存款银行！') ;
+                //     return false ;
+                // }
                 if(!_self.banksavename || !this.trueName(_self.banksavename)){
                     _self.$refs.autoCloseDialog.open('请输入正确的存款人姓名！') ;
                     return false ;
@@ -1261,6 +1248,13 @@
                     _self.$refs.autoCloseDialog.open('请选择存款方式！') ;
                     return false ;
                 }
+
+                //console.log('_self.depositPeopleHint: ', _self.depositPeopleHint);
+                if(_self.depositPeopleHint){
+                    _self.$refs.autoCloseDialog.open('输入正确的存款人姓名！') ;
+                    return false ;
+                }
+
                 _self.submitpayunflag = true ;
                 var userInfo = _self.userInfo ;
                 var senddata ={
@@ -1285,9 +1279,13 @@
                     url: _self.action.forseti + 'api/pay/offlineOrder',
                     data: senddata ,
                     success: function(res){
+                        //console.log('submitBankAction res:', res)
+
                         if(!res.data){
                             _self.$refs.autoCloseDialog.open(res.msg) ;
+
                         }
+
                         if(res.err == 'SUCCESS'){
                             _self.submitpayunflag = false ;
                             _self.$refs.autoCloseDialog.open('存款申请已提交，请牢记以下信息','','icon_check','d_check') ;
@@ -1355,7 +1353,6 @@
                 });
             },
 
-
             //在线支付
             onlinePay :function (rsNameId,type) {
                 var _self=this;
@@ -1378,7 +1375,7 @@
                     data: senddata,
                     success: function(res){ // dataType 1 线上入款 , 3 二维码
                         if(res.err == 'SUCCESS'){
-                            // console.log('seccess')
+                            //console.log('seccess')
                             if(type == '1'){ // 线上付款
                                 _self.submitpayflag = false ;
                                 if(res.data.dataType=='1'){ // 页面html
@@ -1391,7 +1388,7 @@
                                     win.location.href = loadurl ;
                                 }
                             }else if(type == '3'){  // 扫码支付
-                                console.log(!res.data + 'chongshi')
+                                //console.log('chongshi', !res.data )
                                 if(!res.data){
                                     _self.$refs.autoCloseDialog.open('请重试！') ;
                                     setTimeout(function () {
