@@ -17,9 +17,9 @@
                 <div class="new_panel login_area">
                     <div class="new_panel_top"></div>
                     <div class="new_panel_center">
-                        <div class="new_panel_tip"><span class="icon icon_info"></span>为了您的资金安全，请使用真实资料！</div>
+                        <!--<div class="new_panel_tip"><span class="icon icon_info"></span>为了您的资金安全，请使用真实资料！</div>-->
                         <div class="new_panel_tip">
-                            <p>{{regInfoTitle}}</p>
+                            <!--<p>{{regInfoTitle}}</p>-->
                             <span v-html="regInfoContent"></span>
                         </div>
                         <div class="before-add">
@@ -333,7 +333,7 @@
                 bankNumObj:{},
                 bankCode:"",
                 regInfoTitle : '',
-                regInfoContent : '',
+                regInfoContent : '<span class="icon icon_info"></span>为了您的资金安全，请使用真实资料！',
 
             }
         },
