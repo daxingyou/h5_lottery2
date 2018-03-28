@@ -798,7 +798,7 @@
                     return false;
                 }
 
-                let re = new RegExp("^[\w+\-@]{2,30}$");
+                let re = new RegExp(/^[\w\-@]{2,30}$/);
                 if(!re.test(_self.myAccountName)) {
                     //console.log('_self.myAccountName.length: ', _self.myAccountName.length);
                     _self.$refs.autoCloseDialog.open('帐号格式错误');
