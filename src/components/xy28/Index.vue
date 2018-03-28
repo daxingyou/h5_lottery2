@@ -360,7 +360,7 @@
 
             betSelectedList:[],   //用户选中的注数
             playTreeList:[], //玩法树
-            lotteryID:30,
+            lotteryID:22,
             allLottery:{} ,
             gameHref:{} ,
             kinds:['混合', '特码合值'],
