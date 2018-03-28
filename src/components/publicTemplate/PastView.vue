@@ -32,7 +32,7 @@
                     <ul class="tab tab_mid tab_three">
                         <li class="on" data-val="30" @click="changeTab($event)"><a href="javascript:;" data-filter="" >近30期</a></li>
                         <li  data-val="50"  @click="changeTab($event)"><a href="javascript:;" data-filter="not_open">近50期</a></li>
-                        <li data-val="0"  @click="changeTab($event)"><a href="javascript:;" data-filter="winning" >今日数据</a></li>
+                        <li data-val="0"  @click="changeTab($event)" v-if="lotteryid != 10"><a href="javascript:;" data-filter="winning" >今日数据</a></li>
                     </ul>
                 </div>
                 <div class="bd" :id="cssid[lotteryid]">
