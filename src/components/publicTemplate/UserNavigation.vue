@@ -99,7 +99,8 @@ export default {
               "10": 'lhc',
             "24":"pk10/LuckyBoat",    
             "110":"wflhc",   
-            
+
+            "30":"xy28" //幸运28
           }, // 对应彩种的id
         }
     },
