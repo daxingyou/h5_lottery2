@@ -177,13 +177,13 @@
                 ],
                 gameAliasName:[],
                 ajaxSubmitAllow: false,
-                betRecordList: [[], [], []],
-                collapseCtrl: [0, 0, 0], //控制本週，下週，下下週的選單是否展開，0 為不展開，1 為展開
-                numOfDate: 3, //控制其它彩種的顯示日期的天數，目前是今天日期，昨天日期跟前天日期，三天的資料
-                pageList: [1, 1, 1], //控制本周，下週，下下週的資料取得的頁數，起始跟後端從第一頁開始拿
-                loadingList: [0, 0, 0], //控制是否顯示加載數據，0 不顯示， 1 顯示
+                betRecordList: [[], [], [], [], [], [], []],
+                collapseCtrl: [0, 0, 0, 0, 0, 0, 0], //控制本週，下週，下下週的選單是否展開，0 為不展開，1 為展開
+                numOfDate: 7, //控制其它彩種的顯示日期的天數，目前是今天日期，昨天日期跟前天日期，三天的資料
+                pageList: [1, 1, 1, 1, 1, 1, 1], //控制本周，下週，下下週的資料取得的頁數，起始跟後端從第一頁開始拿
+                loadingList: [0, 0, 0, 0, 0, 0, 0], //控制是否顯示加載數據，0 不顯示， 1 顯示
                 showDateList:[], //放置其他彩種的日期，用來顯示在 UI 上
-                showTitleList:["本周", "上周", "上上周"],
+                showTitleList:["本周", "上周", "上上周", "", "", "", ""],
                 pDateList:[], //放置其他彩種用來傳給後端 API pdate 參數的值
             }
         },
@@ -214,6 +214,8 @@
             else {
                 this.seadata.pdate = 0
             }
+            this.listAmount();
+            this.getBetRecord(0);
             this.setMenuAction();
             this.initView();
             this.initDateMeun() ;
@@ -222,13 +224,10 @@
             let mySwiperRecode = new Swiper('#swiper1', {
                 // autoplay: 5000,//可选选项，自动滑动
                 onSlideChangeStart: (swiper) => {
-                    this.betRecordList = [[], [], []]
-                    this.pageList = [1, 1, 1]
-                    this.collapseCtrl = [0, 0, 0]
-                    this.loadingList = [0, 0, 0]
                     let index = swiper.activeIndex
                     this.seadata.statusType = index + 1
                     this.seadata.page = 1
+                    this.listAmount()
                     this.getBetRecord(0)
                     this.initView()
                     $('#betting_record .recode-tab .tab_mid  li').each((i, t) => {
@@ -271,10 +270,7 @@
             // 二级标签
             /*(function () {*/
             $('.tab_mid > li').click((e) => {
-                this.betRecordList = [[], [], []]
-                this.pageList = [1, 1, 1]
-                this.collapseCtrl = [0, 0, 0]
-                this.loadingList = [0, 0, 0]
+                this.listAmount()
                 document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
                 const $src = $(e.currentTarget);
                 let dateval = $('.tab_content').find('.slide_toggle:first-child').data('val') ;
@@ -387,7 +383,24 @@
         watch: {
         },
         methods: {
-
+            // 记录调整为7天，香港六合彩为3周
+            listAmount(){
+                if ( this.lotteryid == 10 ){
+                    this.numOfDate = 3
+                    this.betRecordList = [[], [], []]
+                    this.pageList = [1, 1, 1]
+                    this.collapseCtrl = [0, 0, 0]
+                    this.loadingList = [0, 0, 0]
+                    this.showTitleList = ["本周", "上周", "上上周"]
+                } else {
+                    this.numOfDate = 7
+                    this.betRecordList = [[], [], [], [], [], [], []]
+                    this.pageList = [1, 1, 1, 1, 1, 1, 1]
+                    this.collapseCtrl = [0, 0, 0, 0, 0, 0, 0]
+                    this.loadingList = [0, 0, 0, 0, 0, 0, 0]
+                    this.showTitleList = ["本周", "上周", "上上周", "", "", "", ""]
+                }
+            },
             rewardShow: function (item2) {
                 var rewardFlag = false
                 rewardFlag = item2.playId == "1012" && (item2.orderstatusname == "已中奖" || item2.orderstatusname == "未中奖" || item2.orderstatusname == "已派彩" )
@@ -463,7 +476,7 @@
                     this.$set(this.collapseCtrl, pdate, 1)
                     //關掉其他展開的資料
                     _.forEach(this.collapseCtrl, (val, index2) => {
-                        if (pdate != index2 && index2 <= 2) {
+                        if (pdate != index2 && index2 < this.numOfDate ) {
                             this.$set(this.collapseCtrl, index2, 0)
                             this.pageList[index2] = 1
                             this.betRecordList[index2] = []
@@ -598,10 +611,7 @@
                 });
                 //确定提交
                 $('.btn_submit').on('click', (e) => {
-                    this.betRecordList = [[], [], []]
-                    this.pageList = [1, 1, 1]
-                    this.collapseCtrl = [0, 0, 0]
-                    this.loadingList = [0, 0, 0]
+                    var _self = this;
                     if(lotterychooseid || lotterychooseid == '0'){
                         this.lotteryid = lotterychooseid ;
                     }
@@ -613,6 +623,7 @@
                         if(flag){
                             lottery_name = $(this).find('li.active').find('a').text() ;
                             this.lotteryid = $(this).find('li.active').data('val') ;
+                            _self.listAmount()
                         }
                     }) ;
                     $('.lottery_name').html(lottery_name + ' 投注记录'); // 彩种名称
