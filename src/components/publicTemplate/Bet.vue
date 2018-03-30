@@ -15,7 +15,8 @@
             </div>
             <div class="bet_btn">
                 <div class="so-add" @click="startBet($event)">
-                    <p>下注</p>
+                    <p v-if="lotteryID==116" class="bet_btn-big">马上开奖</p> <!--秒秒彩-->
+                    <p v-else>下注</p>
                 </div>
             </div>
         </div>
@@ -58,6 +59,38 @@
             <a>已封盘</a>
         </div>  -->
 
+        <!--秒秒彩开奖弹屏-->
+        <div class="mmc-tool" style="display:none">
+            <div class="mmc-tool_machine">
+                <!-- 开奖动画 -->
+                <div class="mmc-tool_number" id="slotMachine"></div>
+                <!-- 开奖后 -->
+                <div class="mmc-tool_draw" style="display:none">
+                    <!--中奖标题-->
+                    <div class="mmc-tool_title mmc-tool_title-win">
+                        <p>总计<span>200.00</span>元</p>
+                    </div>
+                    <!--没中奖标题-->
+                    <div class="mmc-tool_title mmc-tool_title-lose" style="display:none">
+                    </div>
+                    <!--投注清单-->
+                    <div class="mmc-tool_list">
+                        <ul>
+                            <li>【第一球-大】@1.98X10 <span class="status-win">已派彩：1.89元</span></li>
+                            <li>【第一球-7】@9.95X10 <span class="status-lose">未中奖</span></li>
+                            <li>【第一球-7】@9.95X10 <span class="status-lose">未中奖</span></li>
+                            <li>【第一球-7】@9.95X10 <span class="status-lose">未中奖</span></li>
+                            <li>【第一球-7】@9.95X10 <span class="status-lose">未中奖</span></li>
+                        </ul>
+                    </div>
+                </div><!-- end 开奖后 -->
+                <!--按钮-->
+                <div class="mmc-tool_btn">
+                    <a href="javascript:;" class="btn_reset" @click="closeMmcTool()"></a>
+                    <a href="javascript:;" class="btn_replay" @click="mmcReplay()"></a>
+                </div>
+            </div>
+        </div><!--end 秒秒彩开奖弹屏-->
     </div>
 </template>
 
@@ -121,8 +154,41 @@ export default {
     },
     mounted:function(){
         this.focuFirst()
+        // 秒秒彩
+        $(function(){
+            var number = [
+                '<span class="mmc-tool_0"></span>',
+                '<span class="mmc-tool_1"></span>',
+                '<span class="mmc-tool_2"></span>',
+                '<span class="mmc-tool_3"></span>',
+                '<span class="mmc-tool_4"></span>',
+                '<span class="mmc-tool_5"></span>',
+                '<span class="mmc-tool_6"></span>',
+                '<span class="mmc-tool_7"></span>',
+                '<span class="mmc-tool_8"></span>',
+                '<span class="mmc-tool_9"></span>'
+            ];
+            var rem = $('.so-con').width() / 10;
+            var mmc = new EZSlots("slotMachine",{
+                "reelCount":5,
+                "winningSet":[0,0,0,0,0],
+                // "startingSet":[0,0,0,0,0],
+                "symbols":number,
+                "height": 2.11*rem,
+                "width": 1.604*rem
+            });
+            var results = slotMachine.spin(); //.win() would force "winning" spin
+        })
     },
     methods:{
+        // 秒秒彩再玩一次
+        mmcReplay:function(){
+            $('.mmc-tool_draw').hide();
+        },
+        // 关闭秒秒彩开奖弹屏
+        closeMmcTool:function(){
+            $('.mmc-tool').hide();
+        },
         /*
         * 重置投注页，提交表单后调用 success 1 投注成功
         * */

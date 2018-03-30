@@ -1,6 +1,9 @@
 <template>
     <div class="so-m-t-left">
-        <div>
+        <div v-if="lotteryID == 116">
+            上期号码
+        </div>
+        <div v-else>
             第 <span class="last-date">{{previous_pcode}}</span> 期 <!-- 上期 -->
         </div>
         <div>
@@ -16,6 +19,6 @@
 <script>
 export default {
     name: 'HistoryTerm',
-    props:['previous_pcode']
+    props:['previous_pcode','lotteryID']
 }
 </script>

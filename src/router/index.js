@@ -25,13 +25,15 @@ import SecondSsc from '@/components/cqssc/SecondSsc'  // 秒速时时彩
 import HanGuoIndex from '@/components/cqssc/HanGuoIndex'  // 韩国1.5分彩
 import DongJingIndex from '@/components/cqssc/DongJingIndex'  // 东京1.5分彩
 import QQIndex from '@/components/cqssc/QQIndex'  // QQ分分彩
+import CQmmcIndex from '@/components/cqssc/CQmmcIndex'  // 重庆秒秒彩
+
 import MiaoSuK3Index from '@/components/k3/MiaoSuIndex'  // 秒速快3
 import LhcIndex from '@/components/lhc/Index' // 六合彩
 import LhcBetRecord from '@/components/lhc/LhcBetRecord' // 六合彩投注紀錄
 
 import WfLhcIndex from '@/components/lhc/wflhc' // 五分六合彩
 // import WfLhcIndex from '@/components/wflhc/Index' // 五分六合彩
-// import Xy28Index from '@/components/xy28/Index' // 幸运28
+import Xy28Index from '@/components/xy28/Index' // 幸运28
 
 import PastView from '@/components/publicTemplate/PastView'
 import lobbyPastView from '@/components/lobbyPastView'  // 大厅往期开奖
@@ -182,6 +184,11 @@ export default new Router({
       name: 'QQIndex',
       component: QQIndex
     },
+    {  // 重庆秒秒彩
+      path: '/cqssc/CQmmcIndex',
+      name: 'CQmmcIndex',
+      component: CQmmcIndex
+    },
     {
         path: '/lhc',
         name: 'LhcIndex',
@@ -192,11 +199,11 @@ export default new Router({
       name: 'WfLhcIndex',
       component: WfLhcIndex
     },
-    // {
-    //   path: '/xy28',
-    //   name: 'Xy28Index',
-    //   component: Xy28Index
-    // },
+    {
+      path: '/xy28',
+      name: 'Xy28Index',
+      component: Xy28Index
+    },
 
     { path: '/publicTemplate/pastView', name:'pastView', component: PastView },
     { path: '/lobbyPastView', name:'lobbyPastView', component: lobbyPastView },

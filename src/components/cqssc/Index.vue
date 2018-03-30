@@ -14,13 +14,13 @@
         -->
         <UserMenu el=".so-top-zoushi" @play="$refs.playDialog.open()" :payoff="balanceData.payoff" />
 
-        <div class="so-index">
+        <div class="so-index" :class="lotteryID==116?'bet_mms':''">
             <div class="so-top-all">
                 <MenuBar :moduleName="lotteryName" :balance="balancePublic" />
                 <div class="so-in-main">
                     <div>
                         <div class="so-main-top">
-                            <HistoryTerm :previous_pcode="previous_pcode" />
+                            <HistoryTerm :lotteryID="lotteryID" :previous_pcode="previous_pcode" />
                             <div class="so-m-t-right" v-show="ishwowpriod">
                                 <div class="last-open-num">
                                     <ul>
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                         </div>
-                        <CountdownTimer ref="countdownTimer"
+                        <CountdownTimer v-if="lotteryID != 116" ref="countdownTimer"
                                         @countdownOver="playLottery"
                                         @entertainCountdownOver="entertain"
                                         @entertainCountdownBreak="entertainBreak"
@@ -55,6 +55,7 @@
                         <li :class="(index == 0 && 'active')"  v-for="(kind,index) in kinds" @click="switchTab">
                            <!-- <a :href="'#so-item'+index">{{kind}}</a>-->
                             <a>{{kind}}</a>
+                            <span v-if="lotteryID == 116" class="left-menu_bet-count">88</span>
                         </li>
                     </ul>
                 </div>
