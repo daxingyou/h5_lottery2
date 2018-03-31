@@ -18,19 +18,17 @@
                             <div class="so-m-t-right">
                                 <div class="last-open-num">
                                     <ul class="xy28_top_number">
-                                        <li><span class="xy28_ball num_1">1</span></li>
-                                        <li><span class="xy28_ball num_2">2</span></li>
-                                        <li><span class="xy28_ball num_1">1</span></li>
+                                        <li :class="'active xy28_ball num_' + item" v-if="index < 3" v-for="(item, index) in winNumber.split(',')">{{item}}</li>
                                         <li><span class="icon icon_equal"></span></li>
-                                        <li><span class="xy28_ball active num_4">4</span></li>
+                                        <li :class="'active xy28_ball num_' + item" v-if="index == 3" v-for="(item, index) in winNumber.split(',')">{{item}}</li>
                                     </ul>
                                 </div>
                                 <div class="last-open-k3dou last-open-dou">
                                     <ul class="xy28_top_detail ">
-                                        <li>小</li>
-                                        <li>双</li>
-                                        <li>极小</li>
-                                        <li>绿波</li>
+                                        <li>{{lastTermStatic.doubler}}</li>
+                                        <li>{{lastTermStatic.longer}}</li>
+                                        <li>{{lastTermStatic.sizer}}</li>
+                                        <li>{{lastTermStatic.total}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -63,51 +61,15 @@
                         <!-- xy28 混合 -->
                         <div id="xy28-item0" class="active xy28_item item_one">
                             <ul>
-                                <li class="select-li">
+                                <li class="select-li" v-for="item in mixedList">
                                     <div class="bet_panel">
                                         <h2>
-                                            混合
+                                            {{item.name}}
                                         </h2>
                                         <div class="bet_box num_box">
-                                            <p>
-                                                <span>大</span>
-                                                <span class="bet-times">1.995</span>
-                                            </p>
-                                            <p>
-                                                <span>小</span>
-                                                <span class="bet-times">1.995</span>
-                                            </p>
-                                            <p class="active">
-                                                <span>单</span>
-                                                <span class="bet-times">1.995</span>
-                                            </p>
-                                            <p>
-                                                <span>双</span>
-                                                <span class="bet-times">1.995</span>
-                                            </p>
-                                            <p>
-                                                <span>极大</span>
-                                                <span class="bet-times">1.995</span>
-                                            </p>
-                                            <p>
-                                                <span>极小</span>
-                                                <span class="bet-times">1.995</span>
-                                            </p>
-                                            <p>
-                                                <span>豹子</span>
-                                                <span class="bet-times">1.995</span>
-                                            </p>
-                                            <p>
-                                                <span>红波</span>
-                                                <span class="bet-times">1.995</span>
-                                            </p>
-                                            <p>
-                                                <span>绿波</span>
-                                                <span class="bet-times">1.995</span>
-                                            </p>
-                                            <p>
-                                                <span>蓝波</span>
-                                                <span class="bet-times">1.995</span>
+                                            <p v-for="(itemChild,index) in item.childrens" @click="betSelect($event, itemChild, item)">
+                                                <span>{{itemChild.name}}</span>
+                                                <span class="bet-times">{{payoffFormat(itemChild.oddsData.payoff)}}</span>
                                             </p>
                                         </div>
                                     </div>
@@ -117,123 +79,15 @@
                         <!-- xy28 特码合值 -->
                         <div id="xy28-item1" class="xy28_item" style="display:none;">
                             <ul>
-                                <li class="select-li">
+                                <li class="select-li" v-for="item in spNumberList">
                                     <div class="bet_panel">
                                         <h2>
-                                            特码合值
+                                            {{item.name}}
                                         </h2>
                                         <div class="bet_box num_box">
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_0">0</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_1">1</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_2">2</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x active">
-                                                <span class="xy28_ball num_3">3</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_4">4</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x active">
-                                                <span class="xy28_ball num_5">5</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_6">6</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x active">
-                                                <span class="xy28_ball num_7">7</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_8">8</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_9">9</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_10">10</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_11">11</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_12">12</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x active">
-                                                <span class="xy28_ball num_13">13</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_14">14</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_15">15</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_16">16</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_17">17</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_18">18</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_19">19</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_20">20</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_21">21</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_22">22</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_23">23</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_24">24</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_25">25</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_26">26</span>
-                                                <span class="bet-times">279.00</span>
-                                            </p>
-                                            <p class="ball_5x">
-                                                <span class="xy28_ball num_27">27</span>
-                                                <span class="bet-times">279.00</span>
+                                            <p class="ball_5x" v-for="(itemChild,index) in item.childrens" @click="betSelect($event, itemChild, item)">
+                                                <span :class="'xy28_ball num_' + (index)">{{itemChild.name}}</span>
+                                                <span class="bet-times">{{payoffFormat(itemChild.oddsData.payoff)}}</span>
                                             </p>
                                         </div>
                                     </div>
@@ -360,7 +214,7 @@
 
             betSelectedList:[],   //用户选中的注数
             playTreeList:[], //玩法树
-            lotteryID:22,
+            lotteryID:30,
             allLottery:{} ,
             gameHref:{} ,
             kinds:['混合', '特码合值'],
@@ -385,28 +239,32 @@
             this.setCookie('lottery_name',lotteryname) ; // 彩种名称
             this.allLottery = this.$refs.navone.getLotterys() ;
             this.gameHref = this.$refs.navone.gameHref ; // 拿子组件的值
-
+            this.refreshBalance();
             setTimeout(() => {
                 this.timerBegin();
             }, 500) ;
             this.initViewHeight();
-            // $('body').attr('id', 'xy28')
+            // $('body').attr('id', 'k3')
             this.setScroll() // 下拉回弹
+           
           },
-          methods:{
-              showMethodClass(index, kind) {
-                let classStr = ""
-
-                if (this.currentMethodIndex == index) {
-                    classStr += " active"
-                }
-
-                if (kind.length >= 4) {
-                    classStr += " methodNavS"
-                }
-
-                return classStr
+          computed:{
+            mixedList:function(){
+                return this.getListByParentID(121000); 
             },
+            spNumberList:function(){
+                return this.getListByParentID(122000); 
+            }
+          },
+          methods:{            
+            refreshBalance:function(newBalance){
+                this.balancePublic = newBalance
+                this.getMemberBalance(this.lotteryID)
+            },
+            betCountStat:function(xslen, xlen){
+                return  xslen*((xslen-1)/xlen);
+            },
+            
             switchTab:function(e){
                 var _self = this ;
                 const $src = $(e.currentTarget);
@@ -420,7 +278,190 @@
                 //  _self.setScroll() ;
                 _self.conScroll.refresh() ; _self.conScroll.scrollTo(0, 300)  ;
             },
+            getListByParentID:function(parentID){
+                return this.playTreeList.filter((item,i)=>{
+                    return item.parentId == parentID;
+                });
+            },
+            //开奖倒计时结束后处理
+            playLottery:function(){
+               // this.$refs.infoDialog.open('请至下期继续投注', 'title_end') ;
+                this.timerBegin();
+            },
+            //封盘倒计时结束后处理
+            entertain:function(){
+                // this.$refs.infoDialog.open('请至下期继续投注', 'title_end') ;
+                this.$refs.infoDialog.open('请至下期继续投注', '本期投注已结束');
+                this.entertainStatus = true;
+                this.resetAction();
+            },
 
+            entertainBreak: function () {
+                // this.$refs.infoDialog.open('请至下期继续投注', 'title_end')
+                // this.$refs.infoDialog.open('请至下期继续投注', '本期投注已结束')
+                this.entertainStatus = true;
+                this.resetAction();
+            },
+
+            lotteryDataFetch:function(needIn){
+                const that = this;
+                return new Promise((resolve)=>{
+                    that.getSystemTime().then(sys_time=>{
+                        // sys_time = '2017-10-30 19:39:10';    //5秒后封盘所需时间，然后5秒后开奖
+                        // sys_time = '2017-10-30 19:39:16';   //封盘状态所需时间，5秒后开奖 
+                        that.sys_time = that.formatTimeUnlix(sys_time) ;
+                        that.priodDataNewly(that.lotteryID, sys_time).then(res=>{
+                            // 将余额放入cookie
+                              // console.log(res.msg)
+                            that.balancePublic = res.msg;
+                            that.setCookie("balancePublic",res.msg)
+
+                            that.ishwowpriod = true ;
+                            that.next_pcode = res.data[0].pcode;  // 下期期数
+                            let code = res.data[2].winNumber;
+                            var firstpcode = res.data[0].pcode.toString().substr(8, 11) ;
+                            if(firstpcode =='001'){  //  白天第一期
+                                if(res.data[1].endTime - sys_time >0) { // 凌晨最后一期未结束
+
+                                    if(res.data[1].endTime < sys_time ) { // 如果当期结束时间小于系统时间
+                                        that.now_time = that.formatTimeUnlix(res.data[0].endTime);   // 当前期数时间
+                                        that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
+                                        that.now_pcode = res.data[0].pcode;  // 当前期数
+                                    }else{
+                                        that.now_time = that.formatTimeUnlix(res.data[1].endTime);   // 当前期数时间
+                                        that.nowover_time = that.formatTimeUnlix(res.data[1].prizeCloseTime);  // 当前期封盘时间
+                                        that.now_pcode = res.data[1].pcode;  // 当前期数
+                                    }
+
+                                    that.winNumber = res.data[2].winNumber;
+                                    that.lastTermStatic = res.data[2].doubleData;    //上期开奖统计
+                                    that.previous_pcode = res.data[2].pcode;  // 上期期数
+                                }else {
+                                    if( res.data[0].startTime - sys_time >0){  // 未开盘状态
+                                        that.notopen = true ;
+                                    }else{
+                                        that.notopen = false ;
+                                    }
+                                    that.now_time = that.formatTimeUnlix(res.data[0].endTime);  // 当前期数时间
+                                    that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime); // 当前期封盘时间
+
+                                    that.now_pcode = res.data[0].pcode;  // 当前期数
+                                    that.winNumber = res.data[1].winNumber;
+                                    that.lastTermStatic = res.data[1].doubleData;    //上期开奖统计
+                                    that.previous_pcode = res.data[1].pcode;  // 上期期数
+                                }
+
+                            }else{  // 普通时间
+
+                                if(res.data[1].endTime < sys_time ) { // 如果当期结束时间小于系统时间
+                                    that.now_time = that.formatTimeUnlix(res.data[0].endTime);   // 当前期数时间
+                                    that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);   // 当前期封盘时间
+                                    that.now_pcode = res.data[0].pcode;  // 当前期数
+                                }else{
+                                    that.now_time = that.formatTimeUnlix(res.data[1].endTime);   // 当前期数时间
+                                    that.nowover_time = that.formatTimeUnlix(res.data[1].prizeCloseTime);   // 当前期封盘时间
+                                    that.now_pcode = res.data[1].pcode;  // 当前期数
+                                }
+
+                                //code 上期开奖号码
+                                if (!code) {
+                                    // code = '-,-,-,-,-';
+                                    that.winNumber = res.data[3].winNumber;
+                                    that.lastTermStatic = res.data[3].doubleData;    //上期开奖统计
+                                    that.previous_pcode = res.data[3].pcode;  // 上期期数
+                                }else{
+                                    that.winNumber = res.data[2].winNumber;
+                                    that.lastTermStatic = res.data[2].doubleData;    //上期开奖统计
+                                    that.previous_pcode = res.data[2].pcode;  // 上期期数
+                                }
+                            }
+                              code = that.winNumber
+                             if (!code) {
+                                let hasFind = false
+                                _.forEach(res.data, (item, index) => {
+                                    if (_.size(item.winNumber) > 0 && index >= 2) {
+                                        that.winNumber = item.winNumber
+                                        that.lastTermStatic = item.doubleData;    //上期开奖统计
+                                        that.previous_pcode = item.pcode
+                                        hasFind = true
+                                        return false
+                                    }
+                                })
+                                if (!hasFind) {
+                                    that.winNumber = code
+                                }
+                            }
+                            else {
+                                that.winNumber = code
+                            }
+                            
+                            if(res.data[1].status >1){ // 异常情况，如提前开盘 2
+                                that.entertainStatus = true;
+                            }
+                            if(needIn =='1'){ // 倒计时结束后
+                                that.$refs.countdownTimer && that.$refs.countdownTimer.timerInit(that.sys_time, that.now_time, that.nowover_time);  // 重新倒计时
+                            }
+                            // 当天日期
+                            that.now_day = ( res.data[1].pcode).toString().substr(0, 8);
+
+                            resolve();
+                        });
+                    }); 
+                })
+                
+            },
+            timerBegin:function(){
+                var that = this;
+                that.lotteryDataFetch('1')
+               /* this.lotteryDataFetch().then(()=>{
+                    that.$refs.countdownTimer && that.$refs.countdownTimer.timerInit(that.sys_time, that.now_time, that.nowover_time);
+                })*/
+                // that.entertainStatus = false;
+                if (that.$refs.countdownTimer.wrongFlag) {
+                    that.entertainStatus = true;
+                } else {
+                    that.entertainStatus = false;
+                }
+
+                that.notopen = false;
+            },
+            resetAction:function(success){
+                this.betSelectedList = [];
+                $(".so-con-right p").removeClass('active');
+                // if(success != '1'){
+                //     this.$refs.bet.betAmount = '' ;
+                // }
+                this.getMemberBalance(this.lotteryID) ; // 更新余额
+                this.$refs.bet.showList = false ; // 关闭下注弹窗
+            },
+            //当用户选择球时（普通），保存相应数据
+            betSelect:function(e, item, parentItem){
+                if (this.entertainStatus || this.notopen){
+                    return false;
+                }
+                var $src = $(e.currentTarget);
+                if ($src.prop('class').indexOf('active') < 0){
+                    $src.addClass('active');
+                    item.parentItem = parentItem;
+                    this.betSelectedList.push(item);
+                }else{
+                    $src.removeClass('active');
+                    this.betSelectedList = this.betSelectedList.filter((selected)=>{ return selected.cid != item.cid; });
+                }
+            },
+            showMethodClass(index, kind) {
+                let classStr = ""
+
+                if (this.currentMethodIndex == index) {
+                    classStr += " active"
+                }
+
+                if (kind.length >= 4) {
+                    classStr += " methodNavS"
+                }
+
+                return classStr
+            }
           }
 
     }

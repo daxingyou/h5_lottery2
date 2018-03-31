@@ -177,7 +177,7 @@ export default {
                 "height": 2.11*rem,
                 "width": 1.604*rem
             });
-            var results = slotMachine.spin(); //.win() would force "winning" spin
+            //var results = slotMachine.spin(); //.win() would force "winning" spin
         })
     },
     methods:{
