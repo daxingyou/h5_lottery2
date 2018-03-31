@@ -3,10 +3,10 @@
         <header id="pa_head" class="new_header">
             <div class="left">
                 <router-link :to="'/'" class="before-add">
-                    <span class="icon icon_back"></span>
+                    <span class="back"></span>
                 </router-link>
                 <a href="javascript:;"  class="after-add" @click="lastAction()" style="display: none ;">
-                    <span class="icon icon_back"></span>
+                    <span class="back"></span>
                 </a>
             </div>
             <h2 class="center title_name">注册</h2>
@@ -17,7 +17,7 @@
                 <div class="new_panel login_area">
                     <div class="new_panel_top"></div>
                     <div class="new_panel_center">
-                        <div class="new_panel_tip"><span class="icon icon_info"></span>为了您的资金安全，请使用真实资料！</div>
+                        <div class="new_panel_tip"><span class="info"></span>为了您的资金安全，请使用真实资料！</div>
                         <div class="new_panel_tip">
                             <p>{{regInfoTitle}}</p>
                             <span v-html="regInfoContent"></span>
@@ -122,7 +122,7 @@
                                             <option value="" >请选择</option>                                            
                                             <option :value="bank.id" v-for="bank in bankList" :data-code="bank.bankCode" >{{bank.bankName}}</option>
                                         </select>
-                                        <span class="icon icon_arrow_down"></span>
+                                        <span class="arrow_down"></span>
                                     </div>
                                 </fieldset>
                                 <fieldset v-if="!!bankAddObj.ifView">
@@ -140,6 +140,30 @@
                                         <input type="text" name="bankNum" v-model="bankNum" class="bankNum" placeholder="请输入取款银行卡号"
                                                @input="checkBankNum(bankNum,'bankNum')">
                                         <i class="close close3" @click="ClearInput('close3','bankNum')"></i>
+                                    </div>
+                                    <label class="error-message"></label>
+                                </fieldset>
+                                <fieldset v-if="!!eMailObj.ifView">
+                                    <div class="form_g account">
+                                        <legend>电子邮箱</legend>
+                                        <input type="text" placeholder="请输入电子邮箱" v-model="eMail" class="eMail" @input="checkeMail(eMail,'eMail')">
+                                        <i class="close cs5" @click="ClearInput('cs5','eMail')"></i>
+                                    </div>
+                                    <label class="error-message"></label>
+                                </fieldset>
+                                <fieldset v-if="!!QQObj.ifView">
+                                    <div class="form_g account">
+                                        <legend>QQ</legend>
+                                        <input type="tel" placeholder="请输入QQ号" v-model="QQ" class="QQ" @input="checkQQ(QQ,'QQ')">
+                                        <i class="close cs4" @click="ClearInput('cs6','QQ')"></i>
+                                    </div>
+                                    <label class="error-message"></label>
+                                </fieldset>
+                                <fieldset v-if="!!weiChatObj.ifView">
+                                    <div class="form_g account">
+                                        <legend>微信</legend>
+                                        <input type="text" placeholder="请输入微信号" v-model="weiChat" class="weiChat" @input="checkWx(weiChat,'weiChat')">
+                                        <i class="close cs4" @click="ClearInput('cs7','weiChat')"></i>
                                     </div>
                                     <label class="error-message"></label>
                                 </fieldset>
@@ -331,6 +355,9 @@
                 bankselectObj:{},
                 bankAddObj:{},
                 bankNumObj:{},
+                eMailObj : {},
+                QQObj : {},
+                weiChatObj :{},
                 bankCode:"",
                 regInfoTitle : '',
                 regInfoContent : '',
@@ -530,7 +557,24 @@
                         return false
                     }
                 }
-
+                if(!!this.eMailObj.ifRequired){
+                    if(_self.eMail==""){
+                        _self.$refs.autoCloseDialog.open('请输入电子邮箱') ;
+                        return false
+                    }
+                }
+                if(!!this.QQObj.ifRequired){
+                    if(_self.QQ==""){
+                        _self.$refs.autoCloseDialog.open('请输入QQ号') ;
+                        return false
+                    }
+                }
+                if(!!this.weiChatObj.ifRequired){
+                    if(_self.weiChat==""){
+                        _self.$refs.autoCloseDialog.open('请输入微信号') ;
+                        return false
+                    }
+                }
 
                if(this.yzmcode ==''){
                     this.$refs.autoCloseDialog.open('请输入验证码') ;
@@ -561,8 +605,11 @@
                     code: _self.yzmcode ,   // 验证码
                     bankCode:_self.bankCode, //银行卡code
                     bankAddress:_self.bankAdd,//银行卡地址
-                    bankCard: _self.bankNum,//银行卡号码
-                    source: 2,
+                    bankCard:_self.bankNum, //银行卡号码
+                    wechat:_self.weChat,  //微信
+                    qq:_self.QQ,
+                    email:_self.eMail,
+                    source:2,
                 }
                 $.ajax({
                     type: 'post',
