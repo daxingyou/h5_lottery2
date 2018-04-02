@@ -199,11 +199,11 @@ export default new Router({
       name: 'WfLhcIndex',
       component: WfLhcIndex
     },
-    // { // 幸运28
-    //   path: '/xy28',
-    //   name: 'Xy28Index',
-    //   component: Xy28Index
-    // },
+    { // 幸运28
+      path: '/xy28',
+      name: 'Xy28Index',
+      component: Xy28Index
+    },
 
     { path: '/publicTemplate/pastView', name:'pastView', component: PastView },
     { path: '/lobbyPastView', name:'lobbyPastView', component: lobbyPastView },
