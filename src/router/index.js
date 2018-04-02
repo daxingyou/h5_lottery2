@@ -179,13 +179,6 @@ export default new Router({
       name: 'TaiWanIndex',
       component: TaiWanIndex
     },
-<<<<<<< HEAD
-    // {  // QQ分分彩
-    //   path: '/cqssc/QQIndex',
-    //   name: 'QQIndex',
-    //   component: QQIndex
-    // },
-=======
     {  // QQ分分彩
       path: '/cqssc/QQIndex',
       name: 'QQIndex',
@@ -196,7 +189,6 @@ export default new Router({
       name: 'CQmmcIndex',
       component: CQmmcIndex
     },
->>>>>>> dev0326
     {
         path: '/lhc',
         name: 'LhcIndex',
@@ -207,19 +199,11 @@ export default new Router({
       name: 'WfLhcIndex',
       component: WfLhcIndex
     },
-<<<<<<< HEAD
     // { // 幸运28
     //   path: '/xy28',
     //   name: 'Xy28Index',
     //   component: Xy28Index
     // },
-=======
-    {
-      path: '/xy28',
-      name: 'Xy28Index',
-      component: Xy28Index
-    },
->>>>>>> dev0326
 
     { path: '/publicTemplate/pastView', name:'pastView', component: PastView },
     { path: '/lobbyPastView', name:'lobbyPastView', component: lobbyPastView },
