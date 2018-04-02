@@ -521,7 +521,7 @@
                 $('.tab_content').html('');
                 this.nowDate = new Date();
                 var restr = '';
-                for (var i = 0; i < 3; i++) {
+                for (var i = 0; i < 7; i++) {
                     var pdate = '' + (this.nowDate.getMonth() + 1) + '月' + this.nowDate.getDate() + '日';
                     var first_li = '';
                     if (i === 0) {
@@ -542,7 +542,7 @@
                 }
                 $(DateclassName).each((i, t) => {
                     if ($(t).attr('class')
-                            .indexOf('active') < 0 && i % 3 === 0) {
+                            .indexOf('active') < 0 && i % 7 === 0) {
                         $(t).addClass('active')
                             .siblings()
                             .removeClass('active');

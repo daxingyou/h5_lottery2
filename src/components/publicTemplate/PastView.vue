@@ -84,6 +84,12 @@
                                         </li>
                                         <li v-for="(listnum, index) in list.winNumber.split(',')" :class="listnum < 10?'lhc_ball lhc_ball_b num_0'+ listnum : 'lhc_ball lhc_ball_b num_' + listnum" v-if="index == 6">{{listnum}}</li>
                                     </ul>
+                                    <!-- 幸运28 -->
+                                    <ul class="new_panel_center lo_ball double-numbers xy28_top_number"  v-else-if="list.lotteryId == '30'">
+                                        <li v-if="index < 3" v-for="(listnum, index) in list.winNumber.split(',')" :class="'active xy28_ball num_'+listnum">{{listnum}}</li>
+                                        <span class="icon icon_equal"></span>
+                                        <li v-if="index == 3" v-for="(listnum, index) in list.winNumber.split(',')" :class="'active xy28_ball num_'+listnum">{{listnum}}</li>
+                                    </ul>
                                     <!-- 六合彩 -->
                                     <ul class="new_panel_center lo_ball double-numbers"  v-else>
                                         <li v-for="listnum in list.winNumber.split(',')" :class="'active round_ball num_'+listnum">{{listnum}}</li>
