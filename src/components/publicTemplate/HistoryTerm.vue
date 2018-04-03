@@ -1,6 +1,6 @@
 <template>
     <div class="so-m-t-left">
-        <div v-if="lotteryID == 116">
+        <div v-if="lotteryID == 116 || lotteryID == 118">
             上期号码
         </div>
         <div v-else>

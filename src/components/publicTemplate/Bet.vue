@@ -59,11 +59,20 @@
             <a>已封盘</a>
         </div>  -->
 
-        <!--重庆秒秒彩(id:116)开奖弹屏-->
-        <div class="mmc-tool" style="display:none">
+        <!--秒秒彩开奖弹屏-->
+        <div class="mmc-tool" >
             <div class="mmc-tool_machine">
                 <!-- 开奖动画 -->
-                <div class="mmc-tool_number" id="slotMachine"></div>
+                <div id="res"></div>
+                <div class="mmc-tool_number">
+                    <div class="mmc_num_box">
+                        <div class="mmc_num"></div>
+                        <div class="mmc_num"></div>
+                        <div class="mmc_num"></div>
+                        <div class="mmc_num"></div>
+                        <div class="mmc_num"></div>
+                    </div>
+                </div>
                 <!-- 开奖后 -->
                 <div class="mmc-tool_draw" style="display:none">
                     <!--中奖标题-->
@@ -86,48 +95,13 @@
                 </div><!-- end 开奖后 -->
                 <!--按钮-->
                 <div class="mmc-tool_btn">
-                    <a href="javascript:;" class="btn_reset disable" @click="closeMmcTool()"></a>
-                    <a href="javascript:;" class="btn_replay" @click="mmcReplay()"></a>
+                    <a href="javascript:;" class="btn_reset" @click="closeMmcTool()"></a>
+                    <a href="javascript:;" class="btn_replay"></a>
                 </div>
             </div>
         </div><!--end 重庆秒秒彩开奖弹屏-->
 
-        <!--赛车秒秒彩开奖弹屏-->
-        <div class="mmc-tool pk10-mmc-tool">
-            <div class="mmc-tool_machine">
-                <!-- 开奖动画 -->
-                <div class="mmc-tool_number" id="pk10_slotMachine"></div>
-                <!-- 开奖后 -->
-                <div class="mmc-tool_draw" style="display:none">
-                    <!--中奖标题-->
-                    <div class="mmc-tool_title mmc-tool_title-win">
-                        <p>总计<span>200.00</span>元</p>
-                    </div>
-                    <!--没中奖标题-->
-                    <div class="mmc-tool_title mmc-tool_title-lose" style="display:none">
-                    </div>
-                    <!--投注清单-->
-                    <div class="mmc-tool_list">
-                        <ul>
-                            <li>【冠亚和-冠军大】@1.98X10 <span class="status-win">已派彩：1.89元</span></li>
-                            <li>【冠亚和值-9】@1.995X10 <span class="status-lose">未中奖</span></li>
-                            <li>【冠军-10】@1.995X10 <span class="status-lose">未中奖</span></li>
-                            <li>【冠军-10】@1.995X10 <span class="status-lose">未中奖</span></li>
-                            <li>【冠军-10】@1.995X10 <span class="status-lose">未中奖</span></li>
-                            <li>【冠军-10】@1.995X10 <span class="status-lose">未中奖</span></li>
-                            <li>【冠军-10】@1.995X10 <span class="status-lose">未中奖</span></li>
-                            <li>【冠军-10】@1.995X10 <span class="status-lose">未中奖</span></li>
-                            <li>【冠军-10】@1.995X10 <span class="status-lose">未中奖</span></li>
-                        </ul>
-                    </div>
-                </div><!-- end 开奖后 -->
-                <!--按钮-->
-                <div class="mmc-tool_btn">
-                    <a href="javascript:;" class="btn_reset" @click="closeMmcTool()"></a>
-                    <a href="javascript:;" class="btn_replay" @click="saiCheMmcReplay()"></a>
-                </div>
-            </div>
-        </div><!--end 秒秒彩开奖弹屏-->
+
     </div>
 </template>
 
@@ -182,7 +156,7 @@ export default {
         foc: function () {
             this.focuFirst()
             return this.$store.state.foc
-        }
+        },
     },
 
     watch: {
@@ -190,67 +164,72 @@ export default {
         }
     },
     mounted:function(){
-        this.focuFirst()
-        // 秒秒彩
-        $(function(){
-            var number = [
-                '<span class="mmc-tool_0"></span>',
-                '<span class="mmc-tool_1"></span>',
-                '<span class="mmc-tool_2"></span>',
-                '<span class="mmc-tool_3"></span>',
-                '<span class="mmc-tool_4"></span>',
-                '<span class="mmc-tool_5"></span>',
-                '<span class="mmc-tool_6"></span>',
-                '<span class="mmc-tool_7"></span>',
-                '<span class="mmc-tool_8"></span>',
-                '<span class="mmc-tool_9"></span>'
-            ];
-            var rem = $('.so-con').width() / 10;
-            mmc = new EZSlots("slotMachine",{
-                "reelCount":5,
-                "winningSet":[0,0,0,0,0],
-                // "startingSet":[0,0,0,0,0],
-                "symbols":number,
-                "height": 2.11*rem,
-                "width": 1.604*rem
-            });
-            //var results = slotMachine.spin(); //.win() would force "winning" spin
-        })
+        var _self = this;
+        this.focuFirst();
 
-        var saiCheMmcNumber = [
-                '<span class="pk10-mmc-tool_1"></span>',
-                '<span class="pk10-mmc-tool_2"></span>',
-                '<span class="pk10-mmc-tool_3"></span>',
-                '<span class="pk10-mmc-tool_4"></span>',
-                '<span class="pk10-mmc-tool_5"></span>',
-                '<span class="pk10-mmc-tool_6"></span>',
-                '<span class="pk10-mmc-tool_7"></span>',
-                '<span class="pk10-mmc-tool_8"></span>',
-                '<span class="pk10-mmc-tool_9"></span>',
-                '<span class="pk10-mmc-tool_10"></span>'
-            ];
-        this.pk10_mmc = new EZSlots("pk10_slotMachine",{
-            "reelCount":10,
-            "winningSet":[10,4,5,1,9,6,2,8,3,7],
-            "startingSet":[1,2,3,4,5,6,7,8,9,10],
-            "symbols":saiCheMmcNumber,
-            "height": 2.11*rem,
-            "width": 1.604*rem
+        function numRand() {
+            if ( _self.lotteryID==118){
+                var x = '9999999999'; //上限
+                var y = '0000000000'; //下限
+            } else {
+                var x = '99999'; //上限
+                var y = '00000'; //下限
+            }
+            var rand = parseInt(Math.random() * (x - y + 1) + y);
+            return rand;
+        }
+        var isBegin = false;
+        $(function(){
+            var rem = $('.so-con').width() / 10;
+            var u = 2.11*rem;
+            $('.btn_replay').click(function(){
+                if(isBegin) return false;
+                isBegin = true;
+                
+                $(".mmc_num").css('backgroundPositionY',0);
+                var result = numRand();
+
+                // var result = '3627';
+
+                $('.mmc-tool_btn').find('a').addClass('disable');  // 按钮不能点选样式
+
+                $('#res').text('随机摇奖结果 = '+result);
+                var num_arr = (result+'').split('');
+                $($(".mmc_num").get().reverse()).each(function(index){
+                    var _num = $(this);
+                    setTimeout(function(){
+                        _num.animate({
+                            backgroundPositionY: (u*60) - (u*num_arr[index])
+                        },{
+                            duration: 2000+index*10,
+                            // easing: "easeInOutCirc", // 这个会报错先注解
+                            complete: function(){
+                                if(index==3) isBegin = false;
+                            }
+                        });
+                    }, index * 300);
+
+                    // 移除按钮不能点选状态
+                    setTimeout(function(){
+                        $('.mmc-tool_btn').find('a').removeClass('disable');
+                    }, 4000)
+                });
+            });
         });
     },
     methods:{
-        mmc: null,
-        pk10_mmc :null,
-        // 秒秒彩再玩一次
-        mmcReplay:function(){
+        // 转动轮盘
+        runSpin:function() {
+            // this.mmc.spin();
             $('.mmc-tool_draw').hide();
         },
-        // 关闭秒秒彩开奖弹屏
-        closeMmcTool:function(){
-            $('.mmc-tool').hide();
+        // 秒秒彩再玩一次
+        mmcReplay:function() {
+            //$('.mmc-tool_draw').hide();
         },
-        saiCheMmcReplay:function(){
-            this.pk10_mmc.spin();
+        // 关闭秒秒彩开奖弹屏
+        closeMmcTool:function() {
+            $('.mmc-tool').hide();
         },
         /*
         * 重置投注页，提交表单后调用 success 1 投注成功

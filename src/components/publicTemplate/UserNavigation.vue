@@ -92,6 +92,7 @@ export default {
             
             "8":"pk10",
             "108":"pk10/SecondPk10",//赛车
+            "118":"pk10/SaiCheMmc",//赛车秒秒彩
             
             "6":"k3/",  //江苏快3
             "20":"k3/anHuiK3Index",  

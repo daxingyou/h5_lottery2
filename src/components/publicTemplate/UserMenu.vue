@@ -28,12 +28,12 @@
                             <p>路珠</p>
                         </router-link>
                     </li>-->
-                    <li class="r_roadbeads" v-if=" (lotteryid != '10')&&(lotteryid != '110')&&(lotteryid != '116') ">
+                    <li class="r_roadbeads" v-if=" (lotteryid != '10')&&(lotteryid != '110')&&(lotteryid != '116')&&(lotteryid != '118') ">
                         <router-link to="/publicTemplate/roadBeads">
                             <p><span class="icon icon_r_roadbeads"></span>路珠</p>
                         </router-link>
                     </li>
-                    <li class="r_long" v-if=" (lotteryid != '116')">
+                    <li class="r_long" v-if=" (lotteryid != '116')&&(lotteryid != '118')">
                         <router-link to="/publicTemplate/dsLong">
                             <p><span class="icon icon_r_long"></span>双面长龙</p>
                         </router-link>
