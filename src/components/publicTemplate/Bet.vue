@@ -60,17 +60,17 @@
         </div>  -->
 
         <!--秒秒彩开奖弹屏-->
-        <div class="mmc-tool" >
+        <div class="mmc-tool" v-show="lotteryID == 116">
             <div class="mmc-tool_machine">
                 <!-- 开奖动画 -->
                 <div id="res"></div>
                 <div class="mmc-tool_number">
                     <div class="mmc_num_box">
-                        <div class="mmc_num"></div>
-                        <div class="mmc_num"></div>
-                        <div class="mmc_num"></div>
-                        <div class="mmc_num"></div>
-                        <div class="mmc_num"></div>
+                        <div class="mmc_num cqmmc_num"></div>
+                        <div class="mmc_num cqmmc_num"></div>
+                        <div class="mmc_num cqmmc_num"></div>
+                        <div class="mmc_num cqmmc_num"></div>
+                        <div class="mmc_num cqmmc_num"></div>
                     </div>
                 </div>
                 <!-- 开奖后 -->
@@ -96,12 +96,74 @@
                 <!--按钮-->
                 <div class="mmc-tool_btn">
                     <a href="javascript:;" class="btn_reset" @click="closeMmcTool()"></a>
-                    <a href="javascript:;" class="btn_replay"></a>
+                    <a href="javascript:;" class="btn_replay" @click="spinAction('.cqmmc_num')"></a>
                 </div>
             </div>
         </div><!--end 重庆秒秒彩开奖弹屏-->
 
-
+        <!--赛车秒秒彩开奖弹屏-->
+        <div class="mmc-tool pk10-mmc-tool"  v-show="lotteryID == 118">
+            <div class="mmc-tool_machine">
+                <!-- 开奖动画 -->
+                <!-- <div id="res"></div> -->
+                <div class="mmc-tool_number">
+                    <!--设计稿多加的pk10特有开奖讯息-->
+                    <div class="pk10-mmc_marquee">
+                        <span class="num_1">1</span>
+                        <span class="num_2">2</span>
+                        <span class="num_3">3</span>
+                        <span class="num_4">4</span>
+                        <span class="num_5">5</span>
+                        <span class="num_6">6</span>
+                        <span class="num_7">7</span>
+                        <span class="num_8">8</span>
+                        <span class="num_9">9</span>
+                        <span class="num_10">10</span>
+                    </div>
+                    <div class="mmc_num_box">
+                        <div class="mmc_num pk10mmc_num"></div>
+                        <div class="mmc_num pk10mmc_num"></div>
+                        <div class="mmc_num pk10mmc_num"></div>
+                        <div class="mmc_num pk10mmc_num"></div>
+                        <div class="mmc_num pk10mmc_num"></div>
+                        <div class="mmc_num pk10mmc_num"></div>
+                        <div class="mmc_num pk10mmc_num"></div>
+                        <div class="mmc_num pk10mmc_num"></div>
+                        <div class="mmc_num pk10mmc_num"></div>
+                        <div class="mmc_num pk10mmc_num"></div>
+                    </div>
+                </div>
+                <!-- 开奖后 -->
+                <div class="mmc-tool_draw" style="display:none;">
+                    <!--中奖标题-->
+                    <div class="mmc-tool_title mmc-tool_title-win">
+                        <p>总计<span>200.00</span>元</p>
+                    </div>
+                    <!--没中奖标题-->
+                    <div class="mmc-tool_title mmc-tool_title-lose" style="display:none">
+                    </div>
+                    <!--投注清单-->
+                    <div class="mmc-tool_list">
+                        <ul>
+                            <li>【冠亚和-冠军大】@1.98X10 <span class="status-win">已派彩：1.89元</span></li>
+                            <li>【冠亚和值-9】@1.995X10 <span class="status-lose">未中奖</span></li>
+                            <li>【冠军-10】@1.995X10 <span class="status-lose">未中奖</span></li>
+                            <li>【冠军-10】@1.995X10 <span class="status-lose">未中奖</span></li>
+                            <li>【冠军-10】@1.995X10 <span class="status-lose">未中奖</span></li>
+                            <li>【冠军-10】@1.995X10 <span class="status-lose">未中奖</span></li>
+                            <li>【冠军-10】@1.995X10 <span class="status-lose">未中奖</span></li>
+                            <li>【冠军-10】@1.995X10 <span class="status-lose">未中奖</span></li>
+                            <li>【冠军-10】@1.995X10 <span class="status-lose">未中奖</span></li>
+                        </ul>
+                    </div>
+                </div><!-- end 开奖后 -->
+                <!--按钮-->
+                <div class="mmc-tool_btn">
+                    <a href="javascript:;" class="btn_reset" @click="closeMmcTool()"></a>
+                    <a href="javascript:;" class="btn_replay" @click="spinAction('.pk10mmc_num')"></a>
+                </div>
+            </div>
+        </div><!--end 秒秒彩开奖弹屏-->
     </div>
 </template>
 
@@ -131,7 +193,7 @@ export default {
             // shadeStatus:false,
             showList:false ,
             ajaxSubmitAllow :false ,  // 解决重复提交的问题
-            beforeBetBalance: 0 
+            beforeBetBalance: 0
         }
     },
     computed:{
@@ -157,18 +219,14 @@ export default {
             this.focuFirst()
             return this.$store.state.foc
         },
-    },
-
-    watch: {
-        foc: function () {
-        }
-    },
-    mounted:function(){
-        var _self = this;
-        this.focuFirst();
-
-        function numRand() {
-            if ( _self.lotteryID==118){
+        unit: function() {
+             return 2.11 * this.rem;
+        },
+        rem: function() {
+            return $('.so-con').width() / 10;
+        },
+        numRand: function() {
+            if ( this.lotteryID==118){
                 var x = '9999999999'; //上限
                 var y = '0000000000'; //下限
             } else {
@@ -178,44 +236,15 @@ export default {
             var rand = parseInt(Math.random() * (x - y + 1) + y);
             return rand;
         }
-        var isBegin = false;
-        $(function(){
-            var rem = $('.so-con').width() / 10;
-            var u = 2.11*rem;
-            $('.btn_replay').click(function(){
-                if(isBegin) return false;
-                isBegin = true;
-                
-                $(".mmc_num").css('backgroundPositionY',0);
-                var result = numRand();
+    },
 
-                // var result = '3627';
-
-                $('.mmc-tool_btn').find('a').addClass('disable');  // 按钮不能点选样式
-
-                $('#res').text('随机摇奖结果 = '+result);
-                var num_arr = (result+'').split('');
-                $($(".mmc_num").get().reverse()).each(function(index){
-                    var _num = $(this);
-                    setTimeout(function(){
-                        _num.animate({
-                            backgroundPositionY: (u*60) - (u*num_arr[index])
-                        },{
-                            duration: 2000+index*10,
-                            // easing: "easeInOutCirc", // 这个会报错先注解
-                            complete: function(){
-                                if(index==3) isBegin = false;
-                            }
-                        });
-                    }, index * 300);
-
-                    // 移除按钮不能点选状态
-                    setTimeout(function(){
-                        $('.mmc-tool_btn').find('a').removeClass('disable');
-                    }, 4000)
-                });
-            });
-        });
+    watch: {
+        foc: function () {
+        }
+    },
+    mounted:function(){
+        var _self = this;
+        this.focuFirst();
     },
     methods:{
         // 转动轮盘
@@ -248,6 +277,45 @@ export default {
                 // $('.bet-amount').focus();
                 console.log('')
             }
+
+        },
+
+        spinAction: function(el) {
+            var isBegin = false;
+            var _self = this;
+            // 秒秒彩动画
+
+            if(isBegin) return false;
+            isBegin = true;
+
+            $(el).css('backgroundPositionY',0);
+            var result = _self.numRand;
+
+            // var result = '3627';
+
+            $('.mmc-tool_btn').find('a').addClass('disable');  // 按钮不能点选样式
+
+            $('#res').text('随机摇奖结果 = '+result);
+            var num_arr = (result+'').split('');
+            $($(el).get().reverse()).each(function(index){
+                var _num = $(this);
+                setTimeout(function(){
+                    _num.animate({
+                        backgroundPositionY: (_self.unit * 60) - (_self.unit * num_arr[index])
+                    },{
+                        duration: 2000+index*10,
+                        // easing: "easeInOutCirc", // 这个会报错先注解
+                        complete: function(){
+                            if(index==3) isBegin = false;
+                        }
+                    });
+                }, index * 300);
+
+                // 移除按钮不能点选状态
+                setTimeout(function(){
+                    $('.mmc-tool_btn').find('a').removeClass('disable');
+                }, 4000)
+            });
 
         },
 

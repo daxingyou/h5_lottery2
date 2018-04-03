@@ -890,8 +890,8 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .mmc-tool{ position: fixed; top:0; left: 50%; bottom:0; z-index: 1000; width: 10rem; margin-left: -5rem; background:url(/static/frist/images/mmc/bg.png) rgba(0, 0, 0, 0.6); background-size: 10rem 100%; }
 .mmc-tool_machine{ background: url(/static/frist/images/mmc/machine.png) no-repeat top center; background-size: 10rem; height: 11.45rem; width:10rem; position: relative; top: 50%; margin-top: -7rem;}
 .mmc-tool_number{ position: absolute; top: 5.5rem; left: 50%; width: 8.024rem; height: 2.11rem; margin-left: -3.95rem; border-radius: 0.2rem; box-shadow: 0 0 0.4rem 0.1rem  rgba(37, 22, 87, 0.76) inset; }
-.mmc_num{width: 1.6rem; height: 2.11rem; background: url(/static/frist/images/mmc/mmc_num.png) repeat-y top center; background-size: 1.29rem 21.1rem; float:left;}
-.mmc_num.pk10-mmc_num{ background-image: url(/static/frist/images/mmc/pk10_num.png); margin-bottom: 0.5rem;}
+.cqmmc_num{width: 1.6rem; height: 2.11rem; background: url(/static/frist/images/mmc/mmc_num.png) repeat-y top center; background-size: 1.29rem 21.1rem; float:left;}
+.pk10mmc_num{ width: 1.6rem; height: 2.11rem; background: url(/static/frist/images/mmc/pk10_num.png) repeat-y top center; background-size: 1.29rem 21.1rem; float:left; margin-bottom: 0.5rem;}
 .mmc-tool_btn{ position: absolute; bottom: 1rem; z-index: 11; text-align: center; width: 10rem; }
 .mmc-tool_btn a{ display:inline-block; width: 2.718rem; height:0.871rem; margin: 0 0.5rem;}
 .btn_replay{ background: url(/static/frist/images/mmc/btn_replay.png) no-repeat center center; background-size: 100% 100%; }
@@ -913,7 +913,7 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 /* 赛车秒秒彩开奖 */
 .pk10-mmc-tool{  background:url(/static/frist/images/mmc/pk10_bg.png) rgba(0, 0, 0, 0.6); background-size: 10rem 100%; }
 .pk10-mmc-tool .mmc-tool_machine{ background: url(/static/frist/images/mmc/pk10_machine.png) no-repeat top center; background-size: 10rem; height: 11.67rem; }
-.pk10-mmc-tool .mmc-tool_number{ top: 3.3rem; }
+.pk10-mmc-tool .mmc-tool_number{ top: 3.3rem; box-shadow: none; }
 .pk10-mmc-tool .mmc-tool_draw{ background: url(/static/frist/images/mmc/pk10_mask.png) no-repeat center center transparent; background-size: 100% 100%;}
 .pk10-mmc-tool .mmc-tool_title{ margin-top: 2.5rem;}
 .pk10-mmc-tool .mmc-tool_list{ background-color: transparent; height: 3.7rem;}
@@ -931,6 +931,11 @@ img.bet_ok { position: absolute; width: 100%; top: -2rem; left: 0; z-index: 1; }
 .pk10-mmc_marquee .num_8{ background-position-y: -3.5rem;}
 .pk10-mmc_marquee .num_9{ background-position-y: -4rem;}
 .pk10-mmc_marquee .num_10{ background-position-y: -4.5rem;}
+.pk10-mmc-tool .mmc-tool_btn a { width: 2.879rem; height: 1.016rem; margin: 0 0.3rem;}
+.pk10-mmc-tool .btn_replay{ background-image: url(/static/frist/images/mmc/pk10_btn_replay.png); background-size: 100% 100%; }
+.pk10-mmc-tool .btn_replay.disable{ background-image:url(/static/frist/images/mmc/pk10_btn_replay_disable.png)}
+.pk10-mmc-tool .btn_reset{ background-image: url(/static/frist/images/mmc/pk10_btn_reset.png); background-size: 100% 100%; }
+.pk10-mmc-tool .btn_reset.disable{ background-image:url(/static/frist/images/mmc/pk10_btn_reset_disable.png)}
 
 /* -----------------------------------------
 // 投注纪录
