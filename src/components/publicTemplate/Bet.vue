@@ -60,7 +60,7 @@
         </div>  -->
 
         <!--秒秒彩开奖弹屏-->
-        <div class="mmc-tool" style="display:none">
+        <div class="mmc-tool">
             <div class="mmc-tool_machine">
                 <!-- 开奖动画 -->
                 <div class="mmc-tool_number" id="slotMachine"></div>
@@ -87,7 +87,7 @@
                 <!--按钮-->
                 <div class="mmc-tool_btn">
                     <a href="javascript:;" class="btn_reset" @click="closeMmcTool()"></a>
-                    <a href="javascript:;" class="btn_replay" @click="mmcReplay()"></a>
+                    <a href="javascript:;" class="btn_replay" @click="runSpin()"></a>
                 </div>
             </div>
         </div><!--end 秒秒彩开奖弹屏-->
@@ -145,7 +145,7 @@ export default {
         foc: function () {
             this.focuFirst()
             return this.$store.state.foc
-        }
+        },
     },
 
     watch: {
@@ -153,41 +153,50 @@ export default {
         }
     },
     mounted:function(){
-        this.focuFirst()
-        // 秒秒彩
-        $(function(){
-            var number = [
-                '<span class="mmc-tool_0"></span>',
-                '<span class="mmc-tool_1"></span>',
-                '<span class="mmc-tool_2"></span>',
-                '<span class="mmc-tool_3"></span>',
-                '<span class="mmc-tool_4"></span>',
-                '<span class="mmc-tool_5"></span>',
-                '<span class="mmc-tool_6"></span>',
-                '<span class="mmc-tool_7"></span>',
-                '<span class="mmc-tool_8"></span>',
-                '<span class="mmc-tool_9"></span>'
-            ];
-            var rem = $('.so-con').width() / 10;
-            var mmc = new EZSlots("slotMachine",{
-                "reelCount":5,
-                "winningSet":[0,0,0,0,0],
-                // "startingSet":[0,0,0,0,0],
-                "symbols":number,
-                "height": 2.11*rem,
-                "width": 1.604*rem
-            });
-            //var results = slotMachine.spin(); //.win() would force "winning" spin
-        })
+        var _self = this;
+        this.focuFirst();
+        var spinNumbers = [
+            '<span class="mmc-tool_0"></span>',
+            '<span class="mmc-tool_1"></span>',
+            '<span class="mmc-tool_2"></span>',
+            '<span class="mmc-tool_3"></span>',
+            '<span class="mmc-tool_4"></span>',
+            '<span class="mmc-tool_5"></span>',
+            '<span class="mmc-tool_6"></span>',
+            '<span class="mmc-tool_7"></span>',
+            '<span class="mmc-tool_8"></span>',
+            '<span class="mmc-tool_9"></span>'
+        ];
+        var rem = $('.so-con').width() / 10;
+        this.mmc = new EZSlots('slotMachine', {
+            'reelCount': 5,
+            'startingSet': [0,0,0,0,0],
+            'symbols': spinNumbers,
+            'height': 2.11 * rem,
+            'width': 1.604 * rem,
+            'time': 4,
+            'callback': _self.openResult
+        });
     },
     methods:{
-        // 秒秒彩再玩一次
-        mmcReplay:function(){
+        mmc:null,
+        // 转动轮盘
+        runSpin:function() {
+            this.mmc.spin();
             $('.mmc-tool_draw').hide();
         },
+        // 秒秒彩再玩一次
+        mmcReplay:function() {
+            //$('.mmc-tool_draw').hide();
+        },
         // 关闭秒秒彩开奖弹屏
-        closeMmcTool:function(){
+        closeMmcTool:function() {
             $('.mmc-tool').hide();
+        },
+        openResult:function() {
+            setTimeout(function() {
+                $('.mmc-tool_draw').show();
+            }, 2000);
         },
         /*
         * 重置投注页，提交表单后调用 success 1 投注成功
