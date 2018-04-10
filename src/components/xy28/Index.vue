@@ -216,7 +216,7 @@
             lotteryID:30,
             allLottery:{} ,
             gameHref:{} ,
-            kinds:['混合', '特码合值'],
+            kinds:['混合', '特码和值'],
             lotteryName: '幸运28'
 
         }
