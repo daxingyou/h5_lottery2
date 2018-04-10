@@ -59,6 +59,8 @@
                                         </ul>
                                         <ul class="double-count" v-else-if="(lotteryid == '10'||lotteryid == '110' )"> <!-- 上面一排数据 -->
                                         </ul>
+                                        <ul class="double-count" v-else-if="(lotteryid == '30')" v-html="getDoubleData(list.doubleData)"> <!-- 上面一排数据 -->
+                                        </ul>
                                         <ul class="double-count" v-else>
                                             <li>{{list.doubleData.total}}</li>
                                             <li>{{list.doubleData.sizer}}</li>
@@ -284,6 +286,20 @@ this.setMenuAction() ;
               $('.so-shade').fadeToggle("fast", "linear");
 
           });
+      },
+      // 幸运28 返回值为"-":隐藏
+      getDoubleData: function(list) {
+        return [
+            list.colorWave, 
+            list.doubler, 
+            list.sizer, 
+            list.verySizer, 
+        ]. filter(function(item) { 
+            return item != '-' 
+        }).map(function(item){
+            console.log('item: ', item);
+            return `<li>${item}</li>`
+        }).join(""); 
       },
 
   }

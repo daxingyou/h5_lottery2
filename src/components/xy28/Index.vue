@@ -25,10 +25,7 @@
                                 </div>
                                 <div class="last-open-k3dou last-open-dou">
                                     <ul class="xy28_top_detail ">
-                                        <li>{{lastTermStatic.doubler}}</li>
-                                        <li>{{lastTermStatic.longer}}</li>
-                                        <li>{{lastTermStatic.sizer}}</li>
-                                        <li>{{lastTermStatic.total}}</li>
+                                        <li v-for="(item, index) in lastTermStatic">{{item}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -312,7 +309,6 @@
                         that.sys_time = that.formatTimeUnlix(sys_time) ;
                         that.priodDataNewly(that.lotteryID, sys_time).then(res=>{
                             // 将余额放入cookie
-                              // console.log(res.msg)
                             that.balancePublic = res.msg;
                             that.setCookie("balancePublic",res.msg)
 
@@ -403,7 +399,16 @@
                             }
                             // 当天日期
                             that.now_day = ( res.data[1].pcode).toString().substr(0, 8);
-
+                            that.lastTermStatic = [
+                                that.lastTermStatic.colorWave, 
+                                that.lastTermStatic.doubler, 
+                                that.lastTermStatic.sizer, 
+                                that.lastTermStatic.verySizer, 
+                                ]
+                            that.lastTermStatic = that.lastTermStatic.filter(function(item) { 
+                                console.log(item);
+                                return item != '-' 
+                                });
                             resolve();
                         });
                     }); 
