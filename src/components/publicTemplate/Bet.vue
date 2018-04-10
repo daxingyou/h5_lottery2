@@ -60,7 +60,7 @@
         </div>  -->
 
         <!--秒秒彩开奖弹屏-->
-        <div class="mmc-tool" v-show="lotteryID == 116">
+        <div class="mmc-tool" v-if="lotteryID == 116" style="display:none">
             <div class="mmc-tool_machine">
                 <!-- 开奖动画 -->
                 <div id="res"></div>
@@ -102,7 +102,7 @@
         </div><!--end 重庆秒秒彩开奖弹屏-->
 
         <!--赛车秒秒彩开奖弹屏-->
-        <div class="mmc-tool pk10-mmc-tool"  v-show="lotteryID == 118">
+        <div class="mmc-tool pk10-mmc-tool"  v-if="lotteryID == 118">
             <div class="mmc-tool_machine">
                 <!-- 开奖动画 -->
                 <!-- <div id="res"></div> -->

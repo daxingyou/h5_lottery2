@@ -55,7 +55,7 @@
                         <li :class="(index == 0 && 'active')"  v-for="(kind,index) in kinds" @click="switchTab">
                            <!-- <a :href="'#so-item'+index">{{kind}}</a>-->
                             <a>{{kind}}</a>
-                            <span v-if="lotteryID == 116" class="left-menu_bet-count">88</span>
+                            <span v-if="lotteryID == 116" class="left-menu_bet-count">{{betSubCount[index]}}</span>
                         </li>
                     </ul>
                 </div>
@@ -252,7 +252,8 @@ export default {
         gameHref:{} ,
         kinds:['两面', '1-5球', '前中后'],
         balancePublic:'',
-        lotteryName:'重庆时时彩'
+        lotteryName:'重庆时时彩',
+        betSubCount: [0, 0, 0]
     }
   },
   created:function(){
@@ -297,8 +298,7 @@ export default {
     },
     frontCenterBackList:function(){
         return this.getListByParentID(23000);
-    },
-  
+    }
   },
   watch:{
     
