@@ -115,6 +115,7 @@ export default {
                 "106":"k3/miaoSuK3Index",  // 秒速k3
                 "10": "lhc",  // 
                 "110": "wflhc",  // 
+                "30": "xy28", // 幸运28
             }, // 对应彩种的id
             gameName : {
                 "2":"重庆时时彩",
