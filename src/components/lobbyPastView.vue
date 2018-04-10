@@ -31,8 +31,10 @@
                                         <span :class="[spanclass[list.lotteryId],'active num_'+listnum]"></span>
                                     </li>
                                 </ul>
-
-
+                                <!--  幸运28 -->
+                                <ul class="new_panel_center lo_ball double-numbers xy28_top_number" v-else-if="(list.lotteryId == '30')" v-html="getDoubleContent(list.winNumber.split(','))" >
+                                </ul>
+                                <!-- -->
                                 <ul class="new_panel_center lo_ball" v-else>
                                     <li v-if="(list.lotteryId != '10'&&list.lotteryId != '110') " v-for="listnum in list.winNumber.split(',')"
                                         :class="'round_ball active num_'+ listnum ">{{listnum}}
@@ -232,7 +234,7 @@ export default {
                 let gmaeList = this.getLotteryNameList();
                 this.pastView = data.data ;
 
-                console.log(this.pastView );
+            // console.log(this.pastView );
 
                 this.pastView.forEach(function(item) {
                   _self.gameAliasName.forEach(function(gName, gId) {
@@ -291,7 +293,7 @@ export default {
 
       },
 
-      startTimer:function(seconds) {
+    startTimer:function(seconds) {
         let days        = Math.floor(seconds/24/60/60);
         let hoursLeft   = Math.floor((seconds) - (days*86400));
         let hours       = Math.floor(hoursLeft/3600);
@@ -308,7 +310,15 @@ export default {
             remainingSeconds = '0' + remainingSeconds;
         }
         return hours + ':' + minutes + ':' + remainingSeconds;
-      }
+    },
+    getDoubleContent: function(list) {
+        return list.map(function(item, i){
+            let liStr = "<li class='active xy28_ball num_"+item+"'>"+item+"</li>";
+            if( i == 3 )
+                liStr = "<!----> <span class='icon icon_equal'></span> <!----><!----><!---->"+ liStr;
+            return liStr;
+        }).join('');
+    }
   }
 
 }
