@@ -30,9 +30,9 @@
             <div id="betting_record" class="tab_container tabBox">
                 <div class="hd">
                     <ul class="tab tab_mid tab_three">
-                        <li class="on" data-val="30" @click="changeTab($event)"><a href="javascript:;" data-filter="" >近30期</a></li>
-                        <li  data-val="50"  @click="changeTab($event)"><a href="javascript:;" data-filter="not_open">近50期</a></li>
-                        <li data-val="0"  @click="changeTab($event)" v-if="lotteryid != 10"><a href="javascript:;" data-filter="winning" >今日数据</a></li>
+                        <li :class="{'on': count==30}" data-val="30" @click="changeTab($event)"><a href="javascript:;" data-filter="" >近30期</a></li>
+                        <li :class="{'on': count==50}" data-val="50"  @click="changeTab($event)"><a href="javascript:;" data-filter="not_open">近50期</a></li>
+                        <li :class="{'on': count==0}" data-val="0"  @click="changeTab($event)" v-if="lotteryid != 10"><a href="javascript:;" data-filter="winning" >今日数据</a></li>
                     </ul>
                 </div>
                 <div class="bd" :id="cssid[lotteryid]">
@@ -43,11 +43,16 @@
                                     <div class="new_panel_top play_th">
                                         <div class="prd_num">
                                             <!--<i class="prd"></i>-->
+<<<<<<< HEAD
                                             <span>
                                                 {{  ( (lotteryid == '8')||(lotteryid == '24')||(lotteryid == '26')||(lotteryid == '28')||(lotteryid == '32') )? list.issueAlias:list.pcode}}
                                                 {{(lotteryid == '116')?newDateFormater(list.prizeCloseTime):''}}
                                             </span>
                                            <span>{{(lotteryid == '116')?'&nbsp;':'期'}}</span>
+=======
+                                            <span>{{  ( (lotteryid == '8')||(lotteryid == '24')||(lotteryid == '26')||(lotteryid == '28')||(lotteryid == '32') ||(lotteryid == '30') )? list.issueAlias:list.pcode}}</span>
+                                           <span>期</span>
+>>>>>>> a64d01a0e45112d207cdd4daeb59035309eca9dc
                                         </div>
                                         <ul class="double-count" v-if="(lotteryid == '8')||(lotteryid == '108') ||(lotteryid == '24') "> <!-- 上面一排数据 -->
                                             <li>{{list.doubleData.top2_total}}</li>
@@ -61,6 +66,8 @@
 
                                         </ul>
                                         <ul class="double-count" v-else-if="(lotteryid == '10'||lotteryid == '110' )"> <!-- 上面一排数据 -->
+                                        </ul>
+                                        <ul class="double-count" v-else-if="(lotteryid == '30')" v-html="getDoubleData(list.doubleData)"> <!-- 上面一排数据 -->
                                         </ul>
                                         <ul class="double-count" v-else>
                                             <li>{{list.doubleData.total}}</li>
@@ -197,6 +204,12 @@ this.setMenuAction() ;
             pcount: rows ,
             maxUpdateTime: maxtime ,
         }
+
+        console.log('rows: ', rows);
+        $("#tab_mid li").each(function(item){
+            console.log('item: ', item);
+        });
+        // $(e.currentTarget).addClass('on').siblings().removeClass('on') ;
         $.ajax({
             type: 'get',
             headers: {
@@ -247,8 +260,7 @@ this.setMenuAction() ;
             this.count = $(e.currentTarget).data('val') ;
             $(e.currentTarget).addClass('on').siblings().removeClass('on') ;
             this.doubleCount(this.lotteryid,this.count,'') ;
-           document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
-
+            document.documentElement.scrollTop = document.body.scrollTop=0; // 回到顶部
     },
 
       //筛选下拉单
@@ -281,12 +293,28 @@ this.setMenuAction() ;
                   }
               }) ;
               $('.lottery_name').html(lottery_name + ' 往期开奖'); // 彩种名称
+              if( this.lotteryid == '10' && this.count == 0 ) { // 香港六合彩没有今日数据
+                this.count = 30;
+              }
               this.doubleCount(this.lotteryid,this.count) ;
               $(".dropdown").slideToggle("fast", () => {
               });
               $('.so-shade').fadeToggle("fast", "linear");
 
           });
+      },
+      // 幸运28 返回值为"-":隐藏
+      getDoubleData: function(list) {
+        return [
+            list.colorWave, 
+            list.doubler, 
+            list.sizer, 
+            list.verySizer, 
+        ]. filter(function(item) { 
+            return item != '-' 
+        }).map(function(item){
+            return `<li>${item}</li>`
+        }).join(""); 
       },
 
   }

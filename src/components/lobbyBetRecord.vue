@@ -466,11 +466,23 @@
                     }
                 }) ;
             },
-
+            setPlayAreaScroll: function(){
+                let setH = true;
+                if ( !setH ) return;
+                let [winH, playH, headerH, footerH] = [document.documentElement.clientHeight, $(".play_area").height(), $(".new_header").height(), $(".bot_nav").height()];
+                let overH = winH - headerH - footerH ;
+                if( (playH - overH) > 0 && setH ) {
+                    let setOverH = Math.floor( overH / winH * 100, 0);
+                    $(".play_area").css({"height": setOverH+"%" , 'overflow-y':'scroll'});
+                    setH = false;
+                }
+                return;
+            },
             //筛选下拉单
             setMenuAction:function () {
                 $(".dropdown_icon,.btn_outline").click(() => {
                     $(".dropdown").slideToggle("fast", () => {
+                        this.setPlayAreaScroll();
                     });
                     $('.so-shade').fadeToggle("fast", "linear");
                 });
@@ -603,7 +615,7 @@
                                         var pnameANumFlag = Number(pnameANum) <= 49 && Number(pnameANum) >= 0
                                         // console.log(pnameANum, 'pnameANum')
                                         // console.log(pnameANumFlag, 'pnameANumFlag')
-                                        if(v.lotteryId =='8' || v.lotteryId =='26' || v.lotteryId =='28' || v.lotteryId =='32'){  // 北京pk10、北京时时彩、台湾5分彩、QQ分分彩
+                                        if(v.lotteryId =='8' || v.lotteryId =='26' || v.lotteryId =='28' || v.lotteryId =='32' || v.lotteryId =='30'){  // 北京pk10、北京时时彩、台湾5分彩、QQ分分彩、幸运28
                                             var pcode = ('' + v.issueAlias) ;
                                         }else{
                                             var pcode = ('' + v.pcode) ;

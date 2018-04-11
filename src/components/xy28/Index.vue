@@ -25,10 +25,7 @@
                                 </div>
                                 <div class="last-open-k3dou last-open-dou">
                                     <ul class="xy28_top_detail ">
-                                        <li>{{lastTermStatic.doubler}}</li>
-                                        <li>{{lastTermStatic.longer}}</li>
-                                        <li>{{lastTermStatic.sizer}}</li>
-                                        <li>{{lastTermStatic.total}}</li>
+                                        <li v-for="(item, index) in lastTermStatic">{{item}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -40,7 +37,7 @@
                             @entertainCountdownBreak="entertainBreak"
                             @spanArrived="lotteryDataFetch"
                             @visibility="timerBegin"
-                            :now_pcode="now_pcode" :lotteryID="lotteryID"
+                            :now_pcode="nowIssueAliasPcode" :lotteryID="lotteryID"
                             :start="sys_time" :end="now_time" :overend="nowover_time" />
                     </div>
                 </div>
@@ -198,7 +195,9 @@
       data: function() {
         return {
             now_pcode:'',  // 当前期数
+            pk10_now_pcode : '',
             previous_pcode:'',//上一期期数
+            nowIssueAliasPcode: '',
             winNumber:'',    //上期开奖号
             lastTermStatic:'',  //上期开奖数据统计
             entertainStatus:false,
@@ -217,7 +216,7 @@
             lotteryID:30,
             allLottery:{} ,
             gameHref:{} ,
-            kinds:['混合', '特码合值'],
+            kinds:['混合', '特码和值'],
             lotteryName: '幸运28'
 
         }
@@ -312,7 +311,6 @@
                         that.sys_time = that.formatTimeUnlix(sys_time) ;
                         that.priodDataNewly(that.lotteryID, sys_time).then(res=>{
                             // 将余额放入cookie
-                              // console.log(res.msg)
                             that.balancePublic = res.msg;
                             that.setCookie("balancePublic",res.msg)
 
@@ -327,10 +325,12 @@
                                         that.now_time = that.formatTimeUnlix(res.data[0].endTime);   // 当前期数时间
                                         that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);  // 当前期封盘时间
                                         that.now_pcode = res.data[0].pcode;  // 当前期数
+                                        that.nowIssueAliasPcode = res.data[0].issueAlias;
                                     }else{
                                         that.now_time = that.formatTimeUnlix(res.data[1].endTime);   // 当前期数时间
                                         that.nowover_time = that.formatTimeUnlix(res.data[1].prizeCloseTime);  // 当前期封盘时间
                                         that.now_pcode = res.data[1].pcode;  // 当前期数
+                                        that.nowIssueAliasPcode = res.data[1].issueAlias;
                                     }
 
                                     that.winNumber = res.data[2].winNumber;
@@ -346,6 +346,7 @@
                                     that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime); // 当前期封盘时间
 
                                     that.now_pcode = res.data[0].pcode;  // 当前期数
+                                    that.nowIssueAliasPcode = res.data[0].issueAlias;
                                     that.winNumber = res.data[1].winNumber;
                                     that.lastTermStatic = res.data[1].doubleData;    //上期开奖统计
                                     that.previous_pcode = res.data[1].pcode;  // 上期期数
@@ -357,10 +358,12 @@
                                     that.now_time = that.formatTimeUnlix(res.data[0].endTime);   // 当前期数时间
                                     that.nowover_time = that.formatTimeUnlix(res.data[0].prizeCloseTime);   // 当前期封盘时间
                                     that.now_pcode = res.data[0].pcode;  // 当前期数
+                                    that.nowIssueAliasPcode = res.data[0].issueAlias;
                                 }else{
                                     that.now_time = that.formatTimeUnlix(res.data[1].endTime);   // 当前期数时间
                                     that.nowover_time = that.formatTimeUnlix(res.data[1].prizeCloseTime);   // 当前期封盘时间
                                     that.now_pcode = res.data[1].pcode;  // 当前期数
+                                    that.nowIssueAliasPcode = res.data[1].issueAlias;
                                 }
 
                                 //code 上期开奖号码
@@ -368,11 +371,11 @@
                                     // code = '-,-,-,-,-';
                                     that.winNumber = res.data[3].winNumber;
                                     that.lastTermStatic = res.data[3].doubleData;    //上期开奖统计
-                                    that.previous_pcode = res.data[3].pcode;  // 上期期数
+                                    that.previous_pcode = res.data[3].issueAlias;  // 上期期数
                                 }else{
                                     that.winNumber = res.data[2].winNumber;
                                     that.lastTermStatic = res.data[2].doubleData;    //上期开奖统计
-                                    that.previous_pcode = res.data[2].pcode;  // 上期期数
+                                    that.previous_pcode = res.data[2].issueAlias;  // 上期期数
                                 }
                             }
                               code = that.winNumber
@@ -382,7 +385,7 @@
                                     if (_.size(item.winNumber) > 0 && index >= 2) {
                                         that.winNumber = item.winNumber
                                         that.lastTermStatic = item.doubleData;    //上期开奖统计
-                                        that.previous_pcode = item.pcode
+                                        that.previous_pcode = item.issueAlias;
                                         hasFind = true
                                         return false
                                     }
@@ -403,7 +406,16 @@
                             }
                             // 当天日期
                             that.now_day = ( res.data[1].pcode).toString().substr(0, 8);
-
+                            that.lastTermStatic = [
+                                that.lastTermStatic.colorWave, 
+                                that.lastTermStatic.doubler, 
+                                that.lastTermStatic.sizer, 
+                                that.lastTermStatic.verySizer, 
+                                ]
+                            that.lastTermStatic = that.lastTermStatic.filter(function(item) { 
+                                console.log(item);
+                                return item != '-' 
+                                });
                             resolve();
                         });
                     }); 

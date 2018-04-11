@@ -20,29 +20,29 @@
                             <div>
                                 <div class="so-main-top">
                                     <HistoryTerm :previous_pcode="previous_pcode" />
-                                        <div class="so-m-t-right" v-show="ishwowpriod">
-                                            <div class="last-open-num">
-                                                <ul>
-                                                    <li :class="'lhc_ball num_' + ((item) < 10? '0'+ item: item)" v-if="index < 6" v-for="(item, index) in winNumber">{{item<10?'0'+item:item}}</li>
-
-                                                    <li class="lhc_ball_plus">
-                                                        <span></span>
-                                                        <span></span>
-                                                    </li>
-
-                                                    <li :class="'lhc_ball num_' + ((item) < 10? '0'+ item: item)" v-if="index == 6" v-for="(item, index) in winNumber">{{item<10?'0'+item:item}}</li>
-                                                </ul>
-                                            </div>
+                                    <div class="so-m-t-right" v-show="ishwowpriod">
+                                        <div class="last-open-num">
+                                            <ul class="">
+                                                <li :class="'lhc_ball num_' + ((item) < 10? '0'+ item: item)" v-if="index < 6" v-for="(item, index) in winNumber">{{item<10?'0'+item:item}}</li>
+                                                <li class="lhc_ball_plus"><span></span> <span></span></li>
+                                                <li :class="'lhc_ball num_' + ((item) < 10? '0'+ item: item)" v-if="index == 6" v-for="(item, index) in winNumber">{{item<10?'0'+item:item}}</li>
+                                            </ul>
                                         </div>
+                                        <div class="last-open-k3dou last-open-dou">
+                                            <ul class="xy28_top_detail ">
+                                                <li v-for="(item, index) in lastTermStatic.split(',')">{{item}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                                    <CountdownTimer ref="countdownTimer"
-                                                    @countdownOver="playLottery"
-                                                    @entertainCountdownOver="entertain"
-                                                    @entertainCountdownBreak="entertainBreak"
-                                                    @spanArrived="lotteryDataFetch"
-                                                    @visibility="timerBegin"
-                                                    :now_pcode="now_pcode" :lotteryID="lotteryID"
-                                                    :start="sys_time" :end="now_time" :overend="nowover_time" />
+                                <CountdownTimer ref="countdownTimer"
+                                    @countdownOver="playLottery"
+                                    @entertainCountdownOver="entertain"
+                                    @entertainCountdownBreak="entertainBreak"
+                                    @spanArrived="lotteryDataFetch"
+                                    @visibility="timerBegin"
+                                    :now_pcode="now_pcode" :lotteryID="lotteryID"
+                                    :start="sys_time" :end="now_time" :overend="nowover_time" />
                             </div>
                         </div>
                 </div>
@@ -154,6 +154,7 @@
                 gameHref:{},
                 kinds:[],
                 balancePublic:'',
+                lastTermStatic: '',
                 currentMethod: '特码',
                 lotteryID: 10,
                 lotteryName: '香港六合彩'
@@ -248,9 +249,8 @@
 
                             that.ishwowpriod = true ;
                             that.next_pcode = res.data[0].issueAlias;  // 下期期数
-
                             //that.currentBaseShengXiao = res.data[1].zodiac
-			    that.currentBaseShengXiao = '狗'
+			                that.currentBaseShengXiao = '狗'
                             let code = res.data[2].winNumber.split(',')
                             that.previous_pcode = res.data[2].issueAlias
                             var noOpenFlag1 = ( sys_time > res.data[0].startTime ) && (sys_time < res.data[0].endTime)
@@ -278,8 +278,9 @@
                                     that.now_pcode = res.data[0].pcode;  // 当前期数  
                                     that.previous_pcode = res.data[1].pcode                                
                                 }    
+                                
+                                that.lastTermStatic = res.data[1].doubleData.zodiac;    //上期
                                 code = res.data[1].winNumber.split(',')
-                                // console.log(code,'noopencode')
                                 that.winNumber = code
                             }
                             if (!shut) {
@@ -296,8 +297,8 @@
                                         that.now_pcode = res.data[0].pcode;  // 当前期数     
                                         that.previous_pcode = res.data[1].pcode                                 
                                     }  
+                                    that.lastTermStatic = res.data[1].doubleData.zodiac;    //上期
                                     code = res.data[1].winNumber.split(',')
-                                    // console.log(code, 'code,ordinary')
                                     that.winNumber = code
                                 } else {
                                     that.now_time = that.formatTimeUnlix(res.data[1].endTime); // 当前期数时间
@@ -312,9 +313,9 @@
                                         that.previous_pcode = res.data[2].pcode                                                                       
                                     }    
 
+                                    that.lastTermStatic = res.data[2].doubleData.zodiac;    // 上期开奖 生肖
                                     code = res.data[2].winNumber.split(',')
                                     that.winNumber = code
-                                    // console.log(code, 'code,pass')
                                 }
                             }
                             if (code.length <= 1) {
@@ -347,7 +348,6 @@
                             if(needIn =='1'){ // 倒计时结束后
                                 that.$refs.countdownTimer && that.$refs.countdownTimer.timerInit(that.sys_time, that.now_time, that.nowover_time);  // 重新倒计时
                             }
-
                             resolve();
                         }).catch(function () {
                             console.log("Promise Rejected in method of timeBegin");
@@ -479,3 +479,47 @@
         }
     }
 </script>
+
+<style scoped>
+#lhc .so-in-main .so-m-t-right div:first-child ul {
+    margin-top:  .4rem;
+    height: 1rem;
+}
+#lhc .so-in-main .so-m-t-right div:first-child ul li {
+    width: .8rem;
+    height: .8rem;
+}
+#lhc .so-in-main .so-m-t-right div:last-child ul {
+    margin-top:  -.2rem;
+}
+#lhc .so-in-main .so-m-t-right div:last-child ul li {
+    background-color : #522f2c;
+    height: auto;
+    margin-left: -.2rem;
+}
+#lhc .so-in-main .so-m-t-right ul li.lhc_ball_plus {
+	position: relative;
+	display: inline-block;
+	box-shadow: none;
+	border: 0;
+	background-color: transparent;
+	width: .8rem;
+	height: .8rem;
+}
+#lhc .so-in-main .so-m-t-right ul li.lhc_ball_plus span {
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	display: block;
+	width: .1rem;
+	height: .45rem;
+	background-color: #000;
+}
+#lhc .so-in-main .so-m-t-right ul li.lhc_ball_plus span:last-child {
+	width: .45rem;
+	height: .1rem;
+}
+</style>
