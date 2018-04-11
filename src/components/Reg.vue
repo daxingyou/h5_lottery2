@@ -614,8 +614,6 @@
                     source:2,
                 }
 
-                    console.log('logindata: ', logindata);
-                    return;
                 $.ajax({
                     type: 'post',
                     headers: {
