@@ -871,7 +871,7 @@ var MyMixin = {
             return re.test(val);
         },
         checkqq :function(val) { // 验证qq
-            var re = /^[1-9][0-9]{4,}$/;
+            var re = /^[1-9][0-9]{4,20}$/;
             return re.test(val);
         },
         // 用户名，验证 ，val输入框值，el 输入框class content 提示内容
