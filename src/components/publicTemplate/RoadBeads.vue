@@ -52,6 +52,12 @@
                             <li data-tab="road01_3" data-val="1" v-if="(lotteryid =='2')||(lotteryid =='102') || (lotteryid =='4') || (lotteryid =='104')|| (lotteryid =='12') || (lotteryid =='14') ||(lotteryid =='16') || (lotteryid =='18') || (lotteryid =='112') || (lotteryid =='114') || (lotteryid =='26') || (lotteryid =='28') || (lotteryid =='32')">
                                 <a href="javascript:;" >龙 虎</a>
                             </li>
+                            <li data-tab="road01_1" class="on" data-val="1" v-if="(lotteryid =='30')">
+                                <a href="javascript:;" >大 小</a>
+                            </li>
+                            <li data-tab="road01_2" data-val="1" v-if="(lotteryid =='30')">
+                                <a href="javascript:;" >单 双</a>
+                            </li>
 
                         </ul>
                     </div>
