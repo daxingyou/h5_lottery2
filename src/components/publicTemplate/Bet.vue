@@ -387,6 +387,7 @@ export default {
         },
 
         playAgain: function(resdata) {
+            var that = this;
             let disabledLock = false;
             this.showResult = false;
             this.showLoseResult = false;
@@ -425,7 +426,7 @@ export default {
                                         this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试', '下注失败')
                                         this.ajaxSubmitAllow = false;
                                         this.resetAction();
-                                        
+                                        $('.mmc-tool_btn').find('a').removeClass('disable');
                                         return false;
                                     }
                                     this.gameResult = data.data.winNumber.replace(/,/g, '').split("").reverse().join("");
@@ -460,6 +461,7 @@ export default {
                             else {
                                 this.$emit('refreshBalance', that.beforeBetBalance)
                                 this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', '下注失败');
+                                $('.mmc-tool_btn').find('a').removeClass('disable');
                             }
                             if(this.lotteryID != 116) {
                                 this.resetAction('1');
@@ -480,7 +482,7 @@ export default {
                                 }
                             }
                             this.$emit('refreshBalance', that.beforeBetBalance)
-
+                            $('.mmc-tool_btn').find('a').removeClass('disable');
                             return false ;
 
                         }
@@ -492,7 +494,8 @@ export default {
                         }
                         // initTipPop05(false,3,'投注失败，请稍后再试') ;
                         // this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试','title_bet_fail')
-                        this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试', '下注失败')
+                        this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试', '下注失败');
+                        $('.mmc-tool_btn').find('a').removeClass('disable');
                         this.ajaxSubmitAllow = false;
                     }
                 });
