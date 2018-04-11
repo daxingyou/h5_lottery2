@@ -608,7 +608,7 @@
                     bankCode:_self.bankCode, //银行卡code
                     bankAddress:_self.bankAdd,//银行卡地址
                     bankCard:_self.bankNum, //银行卡号码
-                    wechat:_self.weChat,  //微信
+                    wechat:_self.weiChat,  //微信
                     qq:_self.QQ,
                     email:_self.eMail,
                     source:2,
