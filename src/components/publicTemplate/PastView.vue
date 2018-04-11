@@ -43,16 +43,10 @@
                                     <div class="new_panel_top play_th">
                                         <div class="prd_num">
                                             <!--<i class="prd"></i>-->
-<<<<<<< HEAD
-                                            <span>
-                                                {{  ( (lotteryid == '8')||(lotteryid == '24')||(lotteryid == '26')||(lotteryid == '28')||(lotteryid == '32') )? list.issueAlias:list.pcode}}
+                                            <span>{{  ( (lotteryid == '8')||(lotteryid == '24')||(lotteryid == '26')||(lotteryid == '28')||(lotteryid == '32') ||(lotteryid == '30') )? list.issueAlias:list.pcode}}
                                                 {{(lotteryid == '116')?newDateFormater(list.prizeCloseTime):''}}
                                             </span>
                                            <span>{{(lotteryid == '116')?'&nbsp;':'期'}}</span>
-=======
-                                            <span>{{  ( (lotteryid == '8')||(lotteryid == '24')||(lotteryid == '26')||(lotteryid == '28')||(lotteryid == '32') ||(lotteryid == '30') )? list.issueAlias:list.pcode}}</span>
-                                           <span>期</span>
->>>>>>> a64d01a0e45112d207cdd4daeb59035309eca9dc
                                         </div>
                                         <ul class="double-count" v-if="(lotteryid == '8')||(lotteryid == '108') ||(lotteryid == '24') "> <!-- 上面一排数据 -->
                                             <li>{{list.doubleData.top2_total}}</li>
