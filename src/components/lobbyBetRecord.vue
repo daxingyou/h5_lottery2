@@ -620,6 +620,9 @@
                                         }else{
                                             var pcode = ('' + v.pcode) ;
                                         }
+                                        if(v.lotteryId =='116' ) {
+                                            var pcode = this.newDateFormater(v.pcode);
+                                        }
                                         var className = 'status00';
                                         var payoff = ''
                                         switch (parseInt(v.orderStatus)) {
@@ -674,8 +677,11 @@
                                                 //    '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div><p class= "reword">返点：</p><p class= "reword">'+ _self.roundAmt(v.reforwardPoint)+'元</p></div>' +
                                                 //    '</div>' +
                                                 //    '</a></li>';
-
-                                                li_html += '</p> <span class="prd_num"><span>' + pcode + '</span>期</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
+                                                let unit = '期';
+                                                if(v.lotteryId == '116') {
+                                                    unit = '';
+                                                }
+                                                li_html += '</p> <span class="prd_num"><span>' + pcode + '</span>' + unit + '</span> <strong>' + _self.fortMoney(_self.roundAmt(v.betAmount), 2) + '</strong> </div>' +
                                                     '<div class="status ' + className + '" >' +
                                                     '<span>' + v.orderStatusName + '</span><div>' + payoff + '</div></div>' +
                                                     '</div>' +

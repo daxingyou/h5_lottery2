@@ -693,6 +693,21 @@ var MyMixin = {
             var hour = a.getHours();
             var min = a.getMinutes();
             var sec = a.getSeconds();
+            if(month < 10) {
+                month = '0' + month;
+            }
+            if(date < 10) {
+                date = '0' + date;
+            }
+            if(hour < 10) {
+                hour = '0' + hour;
+            }
+            if(min < 10) {
+                min = '0' + min;
+            }
+            if(sec < 10) {
+                sec = '0' + sec;
+            }
             var time = year + '/' + month + '/' + date + ' ' + hour + ':' + min + ':' + sec;
             return time;
         },
