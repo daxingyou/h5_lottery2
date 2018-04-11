@@ -519,3 +519,44 @@
 .bet_panel h2 .bet-times span{
 	color: #b41a17;
 }
+#lhc .so-in-main .so-m-t-right div:first-child ul {
+    margin-top:  .4rem;
+    height: 1rem;
+}
+#lhc .so-in-main .so-m-t-right div:first-child ul li {
+    width: .8rem;
+    height: .8rem;
+}
+#lhc .so-in-main .so-m-t-right div:last-child ul {
+    margin-top:  -.2rem;
+}
+#lhc .so-in-main .so-m-t-right div:last-child ul li {
+    background-color : #522f2c;
+    height: auto;
+    margin-left: -.2rem;
+}
+#lhc .so-in-main .so-m-t-right ul li.lhc_ball_plus {
+	position: relative;
+	display: inline-block;
+	box-shadow: none;
+	border: 0;
+	background-color: transparent;
+	width: .8rem;
+	height: .8rem;
+}
+#lhc .so-in-main .so-m-t-right ul li.lhc_ball_plus span {
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	display: block;
+	width: .1rem;
+	height: .45rem;
+	background-color: #000;
+}
+#lhc .so-in-main .so-m-t-right ul li.lhc_ball_plus span:last-child {
+	width: .45rem;
+	height: .1rem;
+}

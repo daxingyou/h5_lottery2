@@ -30,7 +30,7 @@
                                         </div>
                                         <div class="last-open-k3dou last-open-dou">
                                             <ul class="xy28_top_detail ">
-                                                <li v-for="(item, index) in lastTermStatic.split(',')">{{item}}</li>
+                                                <li v-for="(item, index) in lastTermStatic.split(',')" v-if="(item!='-')">{{item}}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -249,8 +249,8 @@
 
                             that.ishwowpriod = true ;
                             that.next_pcode = res.data[0].issueAlias;  // 下期期数
-                            //that.currentBaseShengXiao = res.data[1].zodiac
-			                that.currentBaseShengXiao = '狗'
+                            that.currentBaseShengXiao = res.data[1].zodiac
+			                      //that.currentBaseShengXiao = '狗'
                             let code = res.data[2].winNumber.split(',')
                             that.previous_pcode = res.data[2].issueAlias
                             var noOpenFlag1 = ( sys_time > res.data[0].startTime ) && (sys_time < res.data[0].endTime)
@@ -481,45 +481,4 @@
 </script>
 
 <style scoped>
-#lhc .so-in-main .so-m-t-right div:first-child ul {
-    margin-top:  .4rem;
-    height: 1rem;
-}
-#lhc .so-in-main .so-m-t-right div:first-child ul li {
-    width: .8rem;
-    height: .8rem;
-}
-#lhc .so-in-main .so-m-t-right div:last-child ul {
-    margin-top:  -.2rem;
-}
-#lhc .so-in-main .so-m-t-right div:last-child ul li {
-    background-color : #522f2c;
-    height: auto;
-    margin-left: -.2rem;
-}
-#lhc .so-in-main .so-m-t-right ul li.lhc_ball_plus {
-	position: relative;
-	display: inline-block;
-	box-shadow: none;
-	border: 0;
-	background-color: transparent;
-	width: .8rem;
-	height: .8rem;
-}
-#lhc .so-in-main .so-m-t-right ul li.lhc_ball_plus span {
-	position: absolute;
-	margin: auto;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	display: block;
-	width: .1rem;
-	height: .45rem;
-	background-color: #000;
-}
-#lhc .so-in-main .so-m-t-right ul li.lhc_ball_plus span:last-child {
-	width: .45rem;
-	height: .1rem;
-}
 </style>
