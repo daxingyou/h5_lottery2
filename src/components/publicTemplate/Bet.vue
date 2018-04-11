@@ -395,6 +395,7 @@ export default {
                 disabledLock = true;
             }
             if(!disabledLock) {
+                $('.mmc-tool_btn').find('a').addClass('disable');
                 $.ajax({
                     type: 'POST',
                     headers: {
