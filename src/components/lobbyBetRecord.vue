@@ -466,11 +466,22 @@
                     }
                 }) ;
             },
-
+            setPlayAreaScroll: function(){
+                let setH = true;
+                if ( !setH ) return;
+                let [winH, playH, headerH, footerH] = [screen.height, $(".play_area").height(), $(".new_header").height(), $(".bot_nav").height()];
+                let overH = winH - headerH - footerH ;
+                if( (playH - overH) > 0 && setH ) {
+                    $(".play_area").css({"height": "75%" , 'overflow-y':'scroll'});
+                    setH = false;
+                }
+                return;
+            },
             //筛选下拉单
             setMenuAction:function () {
                 $(".dropdown_icon,.btn_outline").click(() => {
                     $(".dropdown").slideToggle("fast", () => {
+                        this.setPlayAreaScroll();
                     });
                     $('.so-shade').fadeToggle("fast", "linear");
                 });
