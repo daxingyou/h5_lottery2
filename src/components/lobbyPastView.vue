@@ -16,7 +16,8 @@
                             <li class="prod cqssc" >
                                 <div class="new_panel_top play_th">
                                     <div class="prd_num"><i class="prd"></i><span>{{list.lotteryName}}</span></div>
-                                    <div class="prd_num02">第{{(list.lotteryId == '8' || list.lotteryId == '24' || list.lotteryId == '26' || list.lotteryId == '28' || list.lotteryId == '32')?list.issueAlias :list.pcode}}期</div>
+                                    <div class="prd_num02" v-if="list.lotteryId != '116'">第{{(list.lotteryId == '8' || list.lotteryId == '24' || list.lotteryId == '26' || list.lotteryId == '28' || list.lotteryId == '32')?list.issueAlias :list.pcode}}期</div>
+                                    <div class="prd_num02" v-if="list.lotteryId == '116'">{{newDateFormater(list.prizeCloseTime)}}</div>
                                    <!-- <div class="time timerset" :data-time=" (format(formatTimeUnlix(list.endTime)).getTime() - format(formatTimeUnlix(sys_time)).getTime()) / 1000 ">-->
                                     <div class="time timerset endtime" :data-time="0" v-if="list.endTime > sys_time">
                                     </div>
@@ -116,6 +117,7 @@ export default {
                 "10": "lhc",  // 
                 "110": "wflhc",  // 
                 "30": "xy28", // 幸运28
+                "116": "cqssc/CQmmcIndex", //重庆秒秒彩
             }, // 对应彩种的id
             gameName : {
                 "2":"重庆时时彩",

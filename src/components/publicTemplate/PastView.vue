@@ -43,8 +43,11 @@
                                     <div class="new_panel_top play_th">
                                         <div class="prd_num">
                                             <!--<i class="prd"></i>-->
-                                            <span>{{  ( (lotteryid == '8')||(lotteryid == '24')||(lotteryid == '26')||(lotteryid == '28')||(lotteryid == '32') )? list.issueAlias:list.pcode}}</span>
-                                           <span>期</span>
+                                            <span>
+                                                {{  ( (lotteryid == '8')||(lotteryid == '24')||(lotteryid == '26')||(lotteryid == '28')||(lotteryid == '32') )? list.issueAlias:list.pcode}}
+                                                {{(lotteryid == '116')?newDateFormater(list.prizeCloseTime):''}}
+                                            </span>
+                                           <span>{{(lotteryid == '116')?'&nbsp;':'期'}}</span>
                                         </div>
                                         <ul class="double-count" v-if="(lotteryid == '8')||(lotteryid == '108') ||(lotteryid == '24') "> <!-- 上面一排数据 -->
                                             <li>{{list.doubleData.top2_total}}</li>
@@ -62,9 +65,9 @@
                                         <ul class="double-count" v-else>
                                             <li>{{list.doubleData.total}}</li>
                                             <li>{{list.doubleData.sizer}}</li>
-                                            <li v-if="(  lotteryid == '2' || lotteryid == '4' ||  lotteryid == '12'|| lotteryid == '14' || lotteryid == '16' || lotteryid == '18'|| lotteryid == '102' || lotteryid == '104' || lotteryid == '112' || lotteryid == '114' || lotteryid == '26' || lotteryid == '28' || lotteryid == '32' )">{{list.doubleData.doubler}}</li> <!-- 快三没有 -->
+                                            <li v-if="(  lotteryid == '2' || lotteryid == '4' ||  lotteryid == '12'|| lotteryid == '14' || lotteryid == '16' || lotteryid == '18'|| lotteryid == '102' || lotteryid == '104' || lotteryid == '112' || lotteryid == '114' || lotteryid == '116' || lotteryid == '26' || lotteryid == '28' || lotteryid == '32' )">{{list.doubleData.doubler}}</li> <!-- 快三没有 -->
                                             <li v-if="(  lotteryid == '4' || lotteryid == '104'  || lotteryid == '16') || (lotteryid == '18')">{{list.doubleData.sizerEnd}}</li>
-                                            <li v-if="(  lotteryid == '2' || lotteryid == '4' ||  lotteryid == '12'|| lotteryid == '14' || lotteryid == '16' || lotteryid == '18'|| lotteryid == '102' || lotteryid == '104' || lotteryid == '112' || lotteryid == '114' || lotteryid == '26' || lotteryid == '28' || lotteryid == '32' )">{{list.doubleData.longer}}</li> <!-- 快三没有 -->
+                                            <li v-if="(  lotteryid == '2' || lotteryid == '4' ||  lotteryid == '12'|| lotteryid == '14' || lotteryid == '16' || lotteryid == '18'|| lotteryid == '102' || lotteryid == '104' || lotteryid == '112' || lotteryid == '114' || lotteryid == '116' || lotteryid == '26' || lotteryid == '28' || lotteryid == '32' )">{{list.doubleData.longer}}</li> <!-- 快三没有 -->
 
                                         </ul>
                                     </div>

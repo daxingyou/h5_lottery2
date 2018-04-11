@@ -60,7 +60,7 @@
         </div>  -->
 
         <!--秒秒彩开奖弹屏-->
-        <div class="mmc-tool" v-if="lotteryID == 116" style="display:none">
+        <div class="mmc-tool" v-if="lotteryID == 116" v-show="showSlot">
             <div class="mmc-tool_machine">
                 <!-- 开奖动画 -->
                 <div id="res"></div>
@@ -74,29 +74,27 @@
                     </div>
                 </div>
                 <!-- 开奖后 -->
-                <div class="mmc-tool_draw" style="display:none">
+                <div class="mmc-tool_draw" v-show="showResult">
                     <!--中奖标题-->
-                    <div class="mmc-tool_title mmc-tool_title-win">
-                        <p>总计<span>200.00</span>元</p>
+                    <div class="mmc-tool_title mmc-tool_title-win" v-show="showWinResult">
+                        <p>总计<span>{{totalPayoff}}</span>元</p>
                     </div>
                     <!--没中奖标题-->
-                    <div class="mmc-tool_title mmc-tool_title-lose" style="display:none">
+                    <div class="mmc-tool_title mmc-tool_title-lose" v-show="showLoseResult">
                     </div>
                     <!--投注清单-->
                     <div class="mmc-tool_list">
                         <ul>
-                            <li>【第一球-大】@1.98X10 <span class="status-win">已派彩：1.89元</span></li>
-                            <li>【第一球-7】@9.95X10 <span class="status-lose">未中奖</span></li>
-                            <li>【第一球-7】@9.95X10 <span class="status-lose">未中奖</span></li>
-                            <li>【第一球-7】@9.95X10 <span class="status-lose">未中奖</span></li>
-                            <li>【第一球-7】@9.95X10 <span class="status-lose">未中奖</span></li>
+                            <li v-for="(item,index) in gameResult">
+                                {{item.name}}<span :class="item.payoff?'status-win':'status-lose'" v-html="item.payoff?'已派彩：' + item.payoff + '元':'未中奖'"></span>
+                            </li>
                         </ul>
                     </div>
                 </div><!-- end 开奖后 -->
                 <!--按钮-->
                 <div class="mmc-tool_btn">
-                    <a href="javascript:;" class="btn_reset" @click="closeMmcTool()"></a>
-                    <a href="javascript:;" class="btn_replay" @click="spinAction('.cqmmc_num')"></a>
+                    <a href="javascript:;" class="btn_reset" @click="resetAction()"></a>
+                    <a href="javascript:;" class="btn_replay" @click="playAgain(savedData)"></a>
                 </div>
             </div>
         </div><!--end 重庆秒秒彩开奖弹屏-->
@@ -185,6 +183,9 @@ export default {
         'playType',     //玩法类型
         'combineCount', //组合玩法注数
     ],
+    inject: [
+        'lotteryDataFetch'
+    ],
     mixins:[Mixin],
     data () {
         return {
@@ -193,7 +194,16 @@ export default {
             // shadeStatus:false,
             showList:false ,
             ajaxSubmitAllow :false ,  // 解决重复提交的问题
-            beforeBetBalance: 0
+            beforeBetBalance: 0,
+            showSlot: false,
+            showResult: false,
+            showLoseResult: false,
+            showWinResult: false,
+            savedData: null,
+            gameResult: null,
+            eachAmount: null,
+            winStatus: false,
+            totalPayoff: 0,
         }
     },
     computed:{
@@ -269,13 +279,19 @@ export default {
                 this.betAmount = '';
             }
             this.showList = false;
+            this.showSlot = false;
+            this.showResult = false;
+            this.showLoseResult = false;
+            this.showWinResult = false;
+            this.savedData = null;
+            this.gameResult = null;
         },
 
         focuFirst: function () {
             var betF = $('.bet-amount').html()
             if (!betF) {
                 // $('.bet-amount').focus();
-                console.log('')
+                // console.log('')
             }
 
         },
@@ -289,13 +305,13 @@ export default {
             isBegin = true;
 
             $(el).css('backgroundPositionY',0);
-            var result = _self.numRand;
+            var result = _self.gameResult;
 
             // var result = '3627';
 
             $('.mmc-tool_btn').find('a').addClass('disable');  // 按钮不能点选样式
 
-            $('#res').text('随机摇奖结果 = '+result);
+            //$('#res').text('随机摇奖结果 = '+result);
             var num_arr = (result+'').split('');
             $($(el).get().reverse()).each(function(index){
                 var _num = $(this);
@@ -310,13 +326,19 @@ export default {
                         }
                     });
                 }, index * 300);
-
-                // 移除按钮不能点选状态
-                setTimeout(function(){
-                    $('.mmc-tool_btn').find('a').removeClass('disable');
-                }, 4000)
             });
-
+            // 移除按钮不能点选状态
+            setTimeout(function(){
+                $('.mmc-tool_btn').find('a').removeClass('disable');
+                _self.lotteryDataFetch();
+                // console.log(_self.winStatus, 'winStatus');
+                if(_self.winStatus) {
+                    _self.showWinResult = true;
+                } else {
+                    _self.showLoseResult = true;
+                }
+                _self.showResult = true;
+            }, 4000)
         },
 
         /*
@@ -324,9 +346,6 @@ export default {
         * */
 
         submitAction:function(lotteryid) {
-
-
-
             // var total_mon = Number($('.total-bet-mon').text()) ; // 总投注金额
             const total_mon = this.monAmt(this.totalAmount);
              this.beforeBetBalance = this.balance 
@@ -365,71 +384,124 @@ export default {
                 'sourceType':'2', // 1是pc端，2是h5
             };
             this.ajaxSubmitAllow = true ;
-            this.doSubmitAction(resdata.list) ;
-            $.ajax({
-                type: 'POST',
-                headers: {
-                    "Authorization": "bearer  " + this.getAccessToken,
-                    // 'sourceType':'2', // 1是pc端，2是h5
-                    // 'sideType':'1',  // 1是传统盘，2是双面盘
-                },
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                url: this.action.forseti + 'api/orders/betOrder',
-                timeout: 600000,
-                //  data:  $(form).serialize() + "&randomNum=" + randomNum ,
-                data: JSON.stringify(resdata),
-                success: (data) => {
-                    if (data.length <= 0) {
-                        return false;
-                    }        
-                    if (data.err == 'SUCCESS') {  //购买成功                       
-                        this.ajaxSubmitAllow = false ;     //解决瞬间提交2次的问题
+            this.doSubmitAction(resdata.list);
+            this.savedData = resdata;
+            this.playAgain(this.savedData);
+        },
 
-                        let newBalance = Number(data.msg)
-                        if (newBalance >= 0) {
-                            this.parentRefs.betSuccessfulDialog.open('购买成功')
-                            this.$emit('refreshBalance', newBalance);
+        playAgain: function(resdata) {
+            let disabledLock = false;
+            this.showResult = false;
+            this.showLoseResult = false;
+            this.showWinResult = false;
+            console.log($('.mmc-tool_btn').find('a').hasClass('disable')), 'lock';
+            if(this.lotteryID == 116 && $('.mmc-tool_btn').find('a').hasClass('disable')) {
+                disabledLock = true;
+            }
+            if(!disabledLock) {
+                $.ajax({
+                    type: 'POST',
+                    headers: {
+                        "Authorization": "bearer  " + this.getAccessToken,
+                        // 'sourceType':'2', // 1是pc端，2是h5
+                        // 'sideType':'1',  // 1是传统盘，2是双面盘
+                    },
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    url: this.action.forseti + 'api/orders/betOrder',
+                    timeout: 600000,
+                    //  data:  $(form).serialize() + "&randomNum=" + randomNum ,
+                    data: JSON.stringify(resdata),
+                    success: (data) => {
+                        if (data.length <= 0) {
+                            return false;
                         }
-                        else {
-                            this.$emit('refreshBalance', that.beforeBetBalance)
-                            this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', '下注失败')
-                        }
-                        this.resetAction('1')
-                        return false;                       
-                    } else {  //购买失败提示
-                        this.ajaxSubmitAllow = false ;
-                        if(data.data =='' || data.data ==null){ // 平台商不存在
-                            // this.parentRefs.autoCloseDialog.open(data.msg,'title_bet_fail')
-                            this.parentRefs.autoCloseDialog.open(data.msg, '下注失败')
-                            // initTipPop05(false,3,data.msg) ;
-                        }else{   // 各种错误提示
-                            if(data.data.params.ErrInfo !=''){
-                                // initTipPop05(false,3,data.data.params.ErrInfo) ;
-                                // this.parentRefs.autoCloseDialog.open(data.data.params.ErrInfo,'title_bet_fail') ;
-                                this.parentRefs.autoCloseDialog.open(data.data.params.ErrInfo, '下注失败');
 
+                        if(!data.data.winNumber) {
+                            this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试', '下注失败')
+                            this.ajaxSubmitAllow = false;
+                            this.resetAction();
+                            
+                            return false;
+                        }
+                        if (data.err == 'SUCCESS') {  //购买成功
+                            this.ajaxSubmitAllow = false ;     //解决瞬间提交2次的问题
+
+                            let newBalance = Number(data.msg)
+                            if (newBalance >= 0) {
+                                if(this.lotteryID == 116) {
+                                    this.showSlot = true;
+                                    console.log(data.data.winNumber);
+                                    this.gameResult = data.data.winNumber.replace(/,/g, '').split("").reverse().join("");
+                                    this.spinAction('.cqmmc_num');
+
+                                    let container = [];
+                                    let betAmount = this.betAmount;
+                                    this.betSelectedList.forEach((item) => {
+                                        container[item.cid] = '【' + item.parentItem.name + ' ' + item.name + '】 @' + (item.oddsData.payoff / 10000) + 'x' + betAmount;
+                                    });
+                                    let prizeList = [];
+                                    data.data.listOrder.forEach((item) => {
+                                        prizeList.push({id: item.playId, payoff: item.payoff / 100});
+                                    });
+                                    prizeList = prizeList.map((item, index, arr) => {
+                                        arr[index].name = container[arr[index].id];
+                                        return arr[index];
+                                    });
+                                    this.gameResult = prizeList;
+                                    if(data.data.payTotal > 0) {
+                                        this.winStatus = true;
+                                        this.totalPayoff = (data.data.payTotal / 100);
+                                    } else {
+                                        this.winStatus = false;
+                                        this.totalPayoff = 0;
+                                    }
+                                    this.showList = false;
+                                } else {
+                                    this.parentRefs.betSuccessfulDialog.open('购买成功');
+                                }
+                                this.$emit('refreshBalance', newBalance);
                             }
+                            else {
+                                this.$emit('refreshBalance', that.beforeBetBalance)
+                                this.parentRefs.infoDialog.open('余额不足，请充值后继续进行！', '下注失败');
+                            }
+                            if(this.lotteryID != 116) {
+                                this.resetAction('1');
+                            }
+                            return false;                       
+                        } else {  //购买失败提示
+                            this.ajaxSubmitAllow = false ;
+                            if(data.data =='' || data.data ==null){ // 平台商不存在
+                                // this.parentRefs.autoCloseDialog.open(data.msg,'title_bet_fail')
+                                this.parentRefs.autoCloseDialog.open(data.msg, '下注失败')
+                                // initTipPop05(false,3,data.msg) ;
+                            }else{   // 各种错误提示
+                                if(data.data.params.ErrInfo !=''){
+                                    // initTipPop05(false,3,data.data.params.ErrInfo) ;
+                                    // this.parentRefs.autoCloseDialog.open(data.data.params.ErrInfo,'title_bet_fail') ;
+                                    this.parentRefs.autoCloseDialog.open(data.data.params.ErrInfo, '下注失败');
+
+                                }
+                            }
+                            this.$emit('refreshBalance', that.beforeBetBalance)
+
+                            return false ;
+
                         }
-                        this.$emit('refreshBalance', that.beforeBetBalance)
-
-                        return false ;
-
+                    },
+                    error: function (e) {  // 错误提示
+                        if(e.status == 401) {
+                            window.location = '/login';
+                            return false;
+                        }
+                        // initTipPop05(false,3,'投注失败，请稍后再试') ;
+                        // this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试','title_bet_fail')
+                        this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试', '下注失败')
+                        this.ajaxSubmitAllow = false;
                     }
-                },
-                error: function (e) {  // 错误提示
-                    if(e.status == 401) {
-                        window.location = '/login';
-                        return false;
-                    }
-                    // initTipPop05(false,3,'投注失败，请稍后再试') ;
-                    // this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试','title_bet_fail')
-                    this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试', '下注失败')
-                    this.ajaxSubmitAllow = false;
-                }
-            });
-
-
+                });
+            }
         },
 
         /*
@@ -470,7 +542,7 @@ export default {
             return false;
         },
 
-        startBet:function(e){
+        startBet:function(e){ 
             var amount = this.betAmount;  // 获取金额
             var nums = this.betSelectedList.length;
             const closet = 4;
