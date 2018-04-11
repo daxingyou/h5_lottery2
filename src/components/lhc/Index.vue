@@ -23,9 +23,9 @@
                                     <div class="so-m-t-right" v-show="ishwowpriod">
                                         <div class="last-open-num">
                                             <ul class="">
-                                                <li :class="'lhc_ball num_' + ((item) < 10? '0'+ item: item)" v-if="index < 6" v-for="(item, index) in winNumber">{{item<10?'0'+item:item}}</li>
+                                                <li :class="'lhc_ball active num_' + ((item) < 10? '0'+ item: item)" v-if="index < 6" v-for="(item, index) in winNumber">{{item<10?'0'+item:item}}</li>
                                                 <li class="lhc_ball_plus"><span></span> <span></span></li>
-                                                <li :class="'lhc_ball num_' + ((item) < 10? '0'+ item: item)" v-if="index == 6" v-for="(item, index) in winNumber">{{item<10?'0'+item:item}}</li>
+                                                <li :class="'lhc_ball active num_' + ((item) < 10? '0'+ item: item)" v-if="index == 6" v-for="(item, index) in winNumber">{{item<10?'0'+item:item}}</li>
                                             </ul>
                                         </div>
                                         <div class="last-open-k3dou last-open-dou">
@@ -278,7 +278,7 @@
                                     that.now_pcode = res.data[0].pcode;  // 当前期数  
                                     that.previous_pcode = res.data[1].pcode                                
                                 }    
-                                
+
                                 that.lastTermStatic = res.data[1].doubleData.zodiac;    //上期
                                 code = res.data[1].winNumber.split(',')
                                 that.winNumber = code
@@ -318,27 +318,28 @@
                                     that.winNumber = code
                                 }
                             }
+                            // 如果前一期没开奖，就捉最后一期有开奖
                             if (code.length <= 1) {
-                                let hasFind = false
-                                _.forEach(res.data, (item, index) => {
-                                    if (_.size(item.winNumber) > 0 && index >= 2) {
-                                        that.winNumber = item.winNumber.split(',')
-                                        if(that.lotteryID!='110'){
-                                            that.previous_pcode = item.issueAlias
-                                        }
-                                         if(that.lotteryID=='110'){
-                                            that.previous_pcode = item.pcode
-                                        }
-                                        hasFind = true
-                                        return false
+                              let hasFind = false
+                              _.forEach(res.data, (item, index) => {
+                                  if (_.size(item.winNumber) > 0 && index >= 2) {
+                                    that.winNumber = item.winNumber.split(',')
+                                    that.previous_pcode = item.issueAlias
+                                    if(that.lotteryID=='110'){
+                                      that.previous_pcode = item.pcode
                                     }
-                                })
-                                if (!hasFind) {
-                                    that.winNumber = code
-                                }
+                                    that.lastTermStatic = item.doubleData.zodiac;    // 上期开奖 生肖
+                                    hasFind = true
+                                    return false
+                                  }
+                              })
+
+                              if (!hasFind) {
+                                that.winNumber = code
+                              }
                             }
                             else {
-                                that.winNumber = code
+                              that.winNumber = code
                             }
                             if(res.data[1].status > 1){ // 异常情况，如提前开盘 2
                                 that.entertainStatus = true;
