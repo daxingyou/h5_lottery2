@@ -275,9 +275,9 @@ export default {
         * */
         resetAction:function(success) {
             this.$emit('betSuccess');
-            if(success != '1'){
-                this.betAmount = '';
-            }
+            // if(success != '1'){
+            //     this.betAmount = '';
+            // }
             this.showList = false;
             this.showSlot = false;
             this.showResult = false;
@@ -297,6 +297,8 @@ export default {
         },
 
         spinAction: function(el) {
+            // 按钮不能点选样式
+            $('.mmc-tool_btn').find('a').addClass('disable'); 
             var isBegin = false;
             var _self = this;
             // 秒秒彩动画
@@ -307,11 +309,6 @@ export default {
             $(el).css('backgroundPositionY',0);
             var result = _self.gameResult;
 
-            // var result = '3627';
-
-            $('.mmc-tool_btn').find('a').addClass('disable');  // 按钮不能点选样式
-
-            //$('#res').text('随机摇奖结果 = '+result);
             var num_arr = (result+'').split('');
             $($(el).get().reverse()).each(function(index){
                 var _num = $(this);
@@ -394,11 +391,11 @@ export default {
             this.showResult = false;
             this.showLoseResult = false;
             this.showWinResult = false;
-            console.log($('.mmc-tool_btn').find('a').hasClass('disable')), 'lock';
             if(this.lotteryID == 116 && $('.mmc-tool_btn').find('a').hasClass('disable')) {
                 disabledLock = true;
             }
             if(!disabledLock) {
+                $('.mmc-tool_btn').find('a').addClass('disable');
                 $.ajax({
                     type: 'POST',
                     headers: {
@@ -416,25 +413,23 @@ export default {
                         if (data.length <= 0) {
                             return false;
                         }
-
-                        if(!data.data.winNumber) {
-                            this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试', '下注失败')
-                            this.ajaxSubmitAllow = false;
-                            this.resetAction();
-                            
-                            return false;
-                        }
+                        this.showSlot = true;
                         if (data.err == 'SUCCESS') {  //购买成功
                             this.ajaxSubmitAllow = false ;     //解决瞬间提交2次的问题
 
-                            let newBalance = Number(data.msg)
+                            let newBalance = Number(data.msg);
                             if (newBalance >= 0) {
                                 if(this.lotteryID == 116) {
-                                    this.showSlot = true;
-                                    console.log(data.data.winNumber);
+                                    if(!data.data.winNumber) {
+                                        this.showSlot = false;
+                                        this.parentRefs.autoCloseDialog.open('投注失败，请稍后再试', '下注失败')
+                                        this.ajaxSubmitAllow = false;
+                                        this.resetAction();
+                                        
+                                        return false;
+                                    }
                                     this.gameResult = data.data.winNumber.replace(/,/g, '').split("").reverse().join("");
                                     this.spinAction('.cqmmc_num');
-
                                     let container = [];
                                     let betAmount = this.betAmount;
                                     this.betSelectedList.forEach((item) => {
