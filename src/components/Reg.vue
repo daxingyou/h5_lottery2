@@ -17,7 +17,6 @@
                 <div class="new_panel login_area">
                     <div class="new_panel_top"></div>
                     <div class="new_panel_center">
-                        <!--<div class="new_panel_tip"><span class="icon icon_info"></span>为了您的资金安全，请使用真实资料！</div>-->
                         <div class="new_panel_tip">
                             <!--<p>{{regInfoTitle}}</p>-->
                             <span v-html="regInfoContent"></span>
@@ -338,6 +337,9 @@
                 bankId:'',
                 bankAdd:"",
                 bankNum:'',
+                eMail: '',
+                QQ:'',
+                weiChat:'',
                 withPassword: '',
                 show:true,
                 showC:true,
@@ -559,19 +561,19 @@
                 }
                 if(!!this.eMailObj.ifRequired){
                     if(_self.eMail==""){
-                        _self.$refs.autoCloseDialog.open('请输入电子邮箱') ;
+                        _self.$refs.autoCloseDialog.open('请输入邮箱地址') ;
                         return false
                     }
                 }
                 if(!!this.QQObj.ifRequired){
                     if(_self.QQ==""){
-                        _self.$refs.autoCloseDialog.open('请输入QQ号') ;
+                        _self.$refs.autoCloseDialog.open('请输入QQ号码') ;
                         return false
                     }
                 }
                 if(!!this.weiChatObj.ifRequired){
                     if(_self.weiChat==""){
-                        _self.$refs.autoCloseDialog.open('请输入微信号') ;
+                        _self.$refs.autoCloseDialog.open('请输入微信账号') ;
                         return false
                     }
                 }
@@ -611,6 +613,9 @@
                     email:_self.eMail,
                     source:2,
                 }
+
+                    console.log('logindata: ', logindata);
+                    return;
                 $.ajax({
                     type: 'post',
                     headers: {

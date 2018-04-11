@@ -866,7 +866,8 @@ var MyMixin = {
             return re.test(val);
         },
         checkWechat :function(val) { // 验证微信
-            var re = /^[a-zA-Z\d_]{5,}$/;
+            //var re = /^[a-zA-Z\d_\-@]{5,30}$/;
+            var re = /^[\w\-@]{2,30}$/;
             return re.test(val);
         },
         checkqq :function(val) { // 验证qq
@@ -1160,6 +1161,7 @@ var MyMixin = {
 
                         }
                     }
+                    console.log('reg:', res);
 
 
                 }
