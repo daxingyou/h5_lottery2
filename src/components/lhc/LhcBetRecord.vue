@@ -78,7 +78,7 @@
                                                         <div class="lottery_t ssc">
                                                             <p><!-- orderId: -->{{item2.orderid}}</p>
                                                             <p><span><!-- playName: -->{{item2.playname}}</span></p>
-                                                            <span v-if="lotteryid != 116" class="prd_num"><span><!-- pcode: -->{{item2.pcode}}</span>期</span>
+                                                            <span v-if="item2.lotteryid != 116" class="prd_num"><span><!-- pcode: -->{{item2.pcode}}</span>期</span>
                                                             <span v-else class="prd_num"><span>{{newDateFormater(item2.pcode)}}</span></span>
                                                             <strong><!-- 倍率?multiple: -->{{item2.betamount}}</strong>
                                                         </div>
