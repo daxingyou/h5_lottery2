@@ -449,7 +449,7 @@
                 var _self =this ;
                 $('.tab_content').on('click','.panel_title',function (e) {
                     var $src = $(this).parent('.slide_toggle ') ;
-                    if ( $src.data('val') == _self.seadata.pdate) return;
+                    //if ( $src.data('val') == _self.seadata.pdate) return;
                     $('.bet-recode-all').find('li').remove();
                     _self.seadata.page = 1;
                     var hsac = $src.hasClass('active') ;
@@ -506,7 +506,6 @@
 
                         // window.location = '/lhc/LhcBetRecord'
                         this.$router.push('/lhc/LhcBetRecord')
-                        // this.$router.push('/lhc/LhcBetRecord')
                         return
                     }
 
@@ -719,7 +718,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     .swiper-container {
         height: 100%;
     }
