@@ -194,7 +194,7 @@
                 open 打开对话框
                 close 关闭对话框
         -->
-        <PlayDialog ref="playDialog" :moduleName="lotteryName" :moduleplay="moduleplay" />
+        <PlayDialog ref="playDialog" :moduleName="lotteryName" :moduleplay="moduleplay" :lotteryId="lotteryID" />
     </div>
   
 </template>
