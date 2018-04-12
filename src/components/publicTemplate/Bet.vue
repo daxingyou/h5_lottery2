@@ -316,13 +316,13 @@ export default {
                     _num.animate({
                         backgroundPositionY: (_self.unit * 60) - (_self.unit * num_arr[index])
                     },{
-                        duration: 2000+index*10,
+                        duration: 3000+index*10,
                         // easing: "easeInOutCirc", // 这个会报错先注解
                         complete: function(){
                             if(index==3) isBegin = false;
                         }
                     });
-                }, index * 300);
+                }, index * 600);
             });
             // 移除按钮不能点选状态
             setTimeout(function(){
@@ -335,7 +335,7 @@ export default {
                     _self.showLoseResult = true;
                 }
                 _self.showResult = true;
-            }, 4000)
+            }, 6000)
         },
 
         /*
