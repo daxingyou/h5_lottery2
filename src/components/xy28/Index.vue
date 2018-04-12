@@ -349,7 +349,7 @@
                                     that.nowIssueAliasPcode = res.data[0].issueAlias;
                                     that.winNumber = res.data[1].winNumber;
                                     that.lastTermStatic = res.data[1].doubleData;    //上期开奖统计
-                                    that.previous_pcode = res.data[1].pcode;  // 上期期数
+                                    that.previous_pcode = res.data[1].issueAlias;  // 上期期数
                                 }
 
                             }else{  // 普通时间
