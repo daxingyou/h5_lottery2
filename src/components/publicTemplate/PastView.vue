@@ -30,9 +30,9 @@
             <div id="betting_record" class="tab_container tabBox">
                 <div class="hd">
                     <ul class="tab tab_mid tab_three">
-                        <li :class="{'on': count==30}" data-val="30" @click="changeTab($event)"><a href="javascript:;" data-filter="" >近30期</a></li>
+                        <li :class="{'on': count==30}" data-val="30" @click="changeTab($event)"><a href="javascript:;" data-filter="" v-if="lotteryid != 116" >近30期</a></li>
                         <li :class="{'on': count==50}" data-val="50"  @click="changeTab($event)"><a href="javascript:;" data-filter="not_open">近50期</a></li>
-                        <li :class="{'on': count==0}" data-val="0"  @click="changeTab($event)" v-if="lotteryid != 10"><a href="javascript:;" data-filter="winning" >今日数据</a></li>
+                        <li :class="{'on': count==0}" data-val="0"  @click="changeTab($event)" v-if="lotteryid != 10"><a href="javascript:;" data-filter="winning" v-if="lotteryid != 116">今日数据</a></li>
                     </ul>
                 </div>
                 <div class="bd" :id="cssid[lotteryid]">
@@ -176,6 +176,9 @@ export default {
         }
     },
     created: function(){
+        if(this.lotteryid == 116) {
+            this.count = 50;
+        }
         this.gamechoose = this.getLotteryPastNameList();
     },
   mounted:function() {
@@ -289,6 +292,9 @@ this.setMenuAction() ;
               $('.lottery_name').html(lottery_name + ' 往期开奖'); // 彩种名称
               if( this.lotteryid == '10' && this.count == 0 ) { // 香港六合彩没有今日数据
                 this.count = 30;
+              }
+              if( this.lotteryid == '116') { // 香港六合彩没有今日数据
+                this.count = 50;
               }
               this.doubleCount(this.lotteryid,this.count) ;
               $(".dropdown").slideToggle("fast", () => {
