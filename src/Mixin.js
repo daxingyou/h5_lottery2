@@ -913,6 +913,17 @@ var MyMixin = {
                 $('.'+el).parent('.form_g').next('.error-message').removeClass('red').text('') ;
             }
         },
+        //验证确认密码
+        checkIsEqual:function (el) {
+            if(this.confirmpassword == this.userPd){
+                $(el).parent('.form_g').next('.error-message').removeClass('red').text('');
+                return
+            }else if((this.confirmpassword && !this.positiveEngNum(this.confirmpassword) ) || this.confirmpassword.length<6 || this.confirmpassword.length>20){
+                $(el).parent('.form_g').next('.error-message').addClass('red').text('请输入6~20位英数密码') ;
+            }else{
+                $(el).parent('.form_g').next('.error-message').addClass('red').text('两次密码输入不一致') ;
+            }
+        },
         // 真实姓名 验证，val输入框值，el 输入框class content 提示内容
         checkrealyName:function (val,el) {
             var content = '请输入真实姓名' ;
@@ -973,19 +984,6 @@ var MyMixin = {
                 $('.'+el).parent('.form_g').next('.error-message').removeClass('red').text('') ;
             }
         },
-        //验证确认密码
-        checkIsEqual:function (el) {
-            if(this.confirmpassword != this.userPd){
-                $(el).parent('.form_g').next('.error-message').addClass('red').text('两次密码输入不一致') ;
-
-            }else if((this.confirmpassword && !this.positiveEngNum(this.confirmpassword) ) || this.confirmpassword.length<6 || this.confirmpassword.length>20){
-                $(el).parent('.form_g').next('.error-message').addClass('red').text('请输入6~20位英数密码') ;
-            }else{
-                $(el).parent('.form_g').next('.error-message').removeClass('red').text('');
-            }
-        },
-        // 输入框清除数据,el当前元素class,cl是input的class
-        //验证邮箱
         checkeMail:function (val,el) {
             var content = '请输入正确邮箱地址' ;
             if(val &&!this.checkEmail(val)){
@@ -1109,6 +1107,7 @@ var MyMixin = {
                 url: _self.action.uaa + 'apid/member/testLogin',
                 data:{},
                 success:(res)=>{
+                    console.log(res)
                     if(res.err == 'SUCCESS'){ // 登录成功
                         _self.setCookie("access_token", res.data.access_token);  // 把登录token放在cookie里面
                         _self.setCookie("username", res.data.username);  // 把登录用户名放在cookie里面
