@@ -5,7 +5,8 @@
             <h2>{{moduleName || '重庆时时彩'}}玩法说明<a @click="close"></a></h2>
             <div class="content">
                 <div class="playtext">
-                    <h3>一、开奖与结束时间</h3>
+                    <h3 v-if="lotteryId != 116">一、开奖与结束时间</h3>
+                    <h3 v-else>一、开奖说明</h3>
                     <p>{{moduleplay|| '首期开奖时间 00:05，全天120期。10:00 - 22:00，10分钟一期，共72期。22:00 - 01:55，5分钟一期，共48期。'}}</p>
                     <h3>二、两面玩法</h3>
                     <p>总和大小：根据相应单项投注的第一球 ~ 第五球开出的球号大於或等於23为大，小於或等於22为小。</p>
@@ -41,7 +42,7 @@
 
 export default {
   name: 'InfoDialog',
-  props:['moduleName', 'moduleplay'],
+  props:['moduleName', 'moduleplay', 'lotteryId'],
   methods:{
     //打开弹窗
     open:function(e){

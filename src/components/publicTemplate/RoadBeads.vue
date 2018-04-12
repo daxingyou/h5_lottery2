@@ -17,7 +17,7 @@
                 <div class="sort">
                     <h5>游戏筛选</h5>
                     <ul>
-                        <li :class="{'active':lotteryid== list.id}" :data-val="list.id" v-for="list in gamechoose"><a href="javascript:void(0);"> {{list.name}} </a></li>
+                        <li :class="{'active':lotteryid== list.id}" :data-val="list.id" v-for="list in gamechoose" v-if="list.id != 116"><a href="javascript:void(0);"> {{list.name}} </a></li>
 
                     </ul>
                     <div>
