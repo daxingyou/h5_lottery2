@@ -20,20 +20,21 @@
                                     <div class="prd_num02" v-if="list.lotteryId != '116'">第{{( list.lotteryId == '8' 
                                         || list.lotteryId == '24' 
                                         || list.lotteryId == '26' 
-                                        || list.lotteryId == '28' 
                                         || list.lotteryId == '32'
                                         || list.lotteryId == '30'
                                         )?list.issueAlias :list.pcode}}期</div>
                                     <div class="prd_num02" v-if="list.lotteryId == '116'">{{newDateFormater(list.prizeCloseTime)}}</div>
-                                   <!-- <div class="time timerset" :data-time=" (format(formatTimeUnlix(list.endTime)).getTime() - format(formatTimeUnlix(sys_time)).getTime()) / 1000 ">-->
-                                    <div class="time timerset endtime" :data-time="0" v-if="list.endTime > sys_time">
+                                    <!-- <div class="time timerset" :data-time=" (format(formatTimeUnlix(list.endTime)).getTime() - format(formatTimeUnlix(sys_time)).getTime()) / 1000 ">-->
+                                    <!-- 【重庆秒秒彩】除了百乐彩之外，其他平台往期开奖中需要除去开奖倒计时 -->
+                                    <div class="time timerset endtime" :data-time="0" v-if="list.endTime > sys_time" v-bind:class="{'hide': list.openingTimeHide}">
                                     </div>
-                                    <div class="time timerset nextendtime"  v-else>
-                                        
+                                    <div class="time timerset nextendtime"  v-else v-bind:class="{'hide': list.openingTimeHide}">
                                     </div>
                                 </div>
                                 <!--  北京pk10  秒速赛车 江苏快3 -->
-                                <ul :class="'new_panel_center '+ulclass[list.lotteryId]" v-if="(list.lotteryId == '8') || (list.lotteryId == '108')|| (list.lotteryId == '24') || (list.lotteryId == '6') || (list.lotteryId == '106') || (list.lotteryId == '20') || (list.lotteryId == '22')">
+                                <ul :class="'new_panel_center '+ulclass[list.lotteryId]" v-if="(list.lotteryId == '8') 
+                                || (list.lotteryId == '108') || (list.lotteryId == '24') || (list.lotteryId == '6') 
+                                || (list.lotteryId == '106') || (list.lotteryId == '20') || (list.lotteryId == '22')">
                                     <li v-for="listnum in list.winNumber.split(',')" >
                                        <!-- <span class="pk10_ball small_ball" :class="'num_'+listnum"></span>-->
                                         <span :class="[spanclass[list.lotteryId],'active num_'+listnum]"></span>
@@ -153,7 +154,6 @@ export default {
 
             },
             gameAliasName: [], // 对应彩种的名称
-
         }
     },
     beforeDestroy:function(){
@@ -228,22 +228,29 @@ export default {
                                     break ;
                             }
                         }
-
-                        if(v.endTime > _self.sys_time) { // 如果当前期结束时间大于系统时间
-                           // console.log('结束时间大') ;
+                       // console.log(v.endTime) ;
+                       let openTime = '';
+                        if(_self.format(_self.formatTimeUnlix(v.endTime,0)).getTime() > _self.format(_self.formatTimeUnlix(_self.sys_time,0)).getTime() ){ // 如果当前期结束时间大于系统时间
+//                            console.log('结束时间大') ;
+                            openTime = Math.floor((v.endTime - _self.sys_time)/1000);
                             $('.timerset').eq(i).attr('data-time',Math.floor((v.endTime - _self.sys_time)/1000));
-                        } else {
-                           // console.log('结束时间小') ;
+                        }else{
+//                            console.log('结束时间小') ;
+                            openTime = Math.floor((v.nextEndTime - _self.sys_time)/1000); 
                             $('.timerset').eq(i).attr('data-time', Math.floor((v.nextEndTime - _self.sys_time)/1000));
                         }
+                        //console.log(v.lotteryId, openTime, v.endTime, v.nextEndTime);
 
+                        v.openingTimeHide = false;
+                        if ( [116].includes(parseInt(v.lotteryId)) ) {
+                            v.openingTimeHide = true;
+                        }                            
                     }) ;
 
                /* }*/
                 let gmaeList = this.getLotteryNameList();
                 this.pastView = data.data ;
 
-            // console.log(this.pastView );
 
                 this.pastView.forEach(function(item) {
                   _self.gameAliasName.forEach(function(gName, gId) {
@@ -333,5 +340,5 @@ export default {
 }
 </script>
 <style scoped>
-
+.hide { display: none;}
 </style>

@@ -549,8 +549,10 @@ export default {
                     url: _self.action.forseti + 'apid/config/appConfig',
                     data: {},
                     success: (res) => {
-                        _self.appUrl = res.data.url
-                        sessionStorage.appUrl = res.data.url;
+                        if( res.data ) {
+                            _self.appUrl = res.data.url
+                            sessionStorage.appUrl = res.data.url;
+                        }
                     },
                     err: (res) => {
 
