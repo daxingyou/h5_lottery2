@@ -274,17 +274,18 @@ export default {
         * 重置投注页，提交表单后调用 success 1 投注成功
         * */
         resetAction:function(success) {
-            this.$emit('betSuccess');
-            // if(success != '1'){
-            //     this.betAmount = '';
-            // }
-            this.showList = false;
-            this.showSlot = false;
-            this.showResult = false;
-            this.showLoseResult = false;
-            this.showWinResult = false;
-            this.savedData = null;
-            this.gameResult = null;
+            if(this.lotteryID == 116 && $('.mmc-tool_btn').find('a').hasClass('disable')) {
+                // do nothing
+            } else {
+                this.$emit('betSuccess');
+                this.showList = false;
+                this.showSlot = false;
+                this.showResult = false;
+                this.showLoseResult = false;
+                this.showWinResult = false;
+                this.savedData = null;
+                this.gameResult = null;
+            }
         },
 
         focuFirst: function () {
