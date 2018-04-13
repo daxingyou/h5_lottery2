@@ -388,6 +388,7 @@ export default {
         },
 
         playAgain: function(resdata) {
+            
             var that = this;
             let disabledLock = false;
             this.showResult = false;
@@ -397,6 +398,7 @@ export default {
                 disabledLock = true;
             }
             if(!disabledLock) {
+                console.log(1111111);
                 $('.mmc-tool_btn').find('a').addClass('disable');
                 $.ajax({
                     type: 'POST',
@@ -415,6 +417,16 @@ export default {
                         if (data.length <= 0) {
                             return false;
                         }
+                        // data = {
+                        //     "data": {
+                        //         "orderId" : "213kp15235538774860c4l26co",
+                        //         "listOrder" : null
+                        //     },
+                        //     "err": "FALL",
+                        //     "msg": "1516711",
+                        //     "maxUpdateTime": null
+                        // }
+
                         this.showSlot = true;
                         if (data.err == 'SUCCESS') {  //购买成功
                             this.ajaxSubmitAllow = false ;     //解决瞬间提交2次的问题
@@ -475,6 +487,14 @@ export default {
                                 this.parentRefs.autoCloseDialog.open(data.msg, '下注失败')
                                 // initTipPop05(false,3,data.msg) ;
                             }else{   // 各种错误提示
+                                if(data.err == 'FALL') {
+                                    this.parentRefs.autoCloseDialog.open('下注失败，请稍后重试！');
+                                    this.showList = false;
+                                    this.showSlot = false;
+                                    disabledLock = true;
+                                    $('.mmc-tool_btn').find('a').removeClass('disable')
+                                    return false;
+                                }
                                 if(data.data.params.ErrInfo !=''){
                                     // initTipPop05(false,3,data.data.params.ErrInfo) ;
                                     // this.parentRefs.autoCloseDialog.open(data.data.params.ErrInfo,'title_bet_fail') ;
