@@ -243,7 +243,7 @@ var MyMixin = {
         // 接口异常处理
         errorAction:function (e) {
             var _self = this ;
-            if(e.status == 401) {
+            if( e.status == 401 || e.status == 409 ) {
                 window.location = '/login';
                 return false;
             }
@@ -263,7 +263,7 @@ var MyMixin = {
             }
             else {
                 console.log('e: ', e);
-                window.location = '/login';
+                // window.location = '/login';
             }
             
         },
