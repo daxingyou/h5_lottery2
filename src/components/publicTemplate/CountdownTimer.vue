@@ -83,7 +83,7 @@ export default {
                     this.$emit('spanArrived');
                 }
                 const lt_time_leave = this.lt_time_leave;
-                if (timeSpan-lt_time_leave<60*1 && lt_time_leave % 10 == 0){
+                if (timeSpan-lt_time_leave<60*1 && lt_time_leave % 5 == 0){
                     spanSrrived();
                 } else if (timeSpan-lt_time_leave<60*2 && lt_time_leave % 20 == 0){
                     spanSrrived();
